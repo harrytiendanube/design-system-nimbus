@@ -1,6 +1,6 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
-import { withKnobs, text, color } from "@storybook/addon-knobs";
+import { withKnobs, select, text, color } from "@storybook/addon-knobs";
 import { withA11y } from '@storybook/addon-a11y';
 import Button from '../components/Button/Button';
 
