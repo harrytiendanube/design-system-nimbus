@@ -1,0 +1,39 @@
+import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
+import { withKnobs, select, text } from "@storybook/addon-knobs";
+
+import Button from "../components/Button/Button";
+
+<Meta title="Actions/Button" component={Button} />
+
+# Avatar
+
+## Displays an image that represents a user or organization
+
+Use an avatar for attributing actions or content to specific users. The user's name should _always_ be present when using Avatar – either printed beside the avatar or in a tooltip.
+
+<Preview>
+  <Story name="standard" parameters={{ decorators: [withKnobs] }}>
+    <Button className={select('Class', ['default', 'blue', 'red'])}> { text('Texto', 'Texto inicial') } </Button>
+  </Story>
+</Preview>
+
+1. Lista
+2. organization
+3. Mas
+
+<Props of={Button} />
+
+<Preview withToolbar>
+  <Story name="clases" >
+    <div>
+      <Button className="red"> Texto </Button>
+      <Button className="blue"> Texto </Button>
+      <Button className="black"> Texto </Button>
+    </div>
+  </Story>
+</Preview>
+
+
+| foo | bar |
+| :-- | :-: |
+| baz | qux |
