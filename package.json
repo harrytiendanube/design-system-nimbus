@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "test": "SKIP_PREFLIGHT_CHECK=true react-scripts test",
-    "start": "SKIP_PREFLIGHT_CHECK=true react-scripts start",
+    "test": "react-scripts test",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook"
@@ -36,6 +36,7 @@
     "@storybook/addon-knobs": "^5.3.18",
     "@storybook/addon-links": "^5.3.18",
     "@storybook/addon-storyshots": "^5.3.18",
+    "@storybook/addon-storyshots-puppeteer": "^5.3.18",
     "@storybook/addon-storysource": "^5.3.18",
     "@storybook/addons": "^5.3.18",
     "@storybook/preset-create-react-app": "^2.1.1",
@@ -43,6 +44,7 @@
     "babel-loader": "^8.1.0",
     "react": "^16.13.1",
     "react-is": "^16.13.1",
+    "puppeteer": "^2.1.1",
     "react-test-renderer": "^16.13.1"
   },
   "eslintConfig": {
