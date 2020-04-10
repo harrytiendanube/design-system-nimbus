@@ -18,7 +18,7 @@ describe("Button", () => {
   });
   it("Render Blue Button", () => {
     const { getByTestId } = render(
-      <Button className="blue">this is my blue button </Button>
+      <Button className="blue"> this is my blue button </Button>
     );
     const button = getByTestId("button");
     expect(button).toHaveClass("blue");
@@ -26,7 +26,10 @@ describe("Button", () => {
   it("Click on Button must run callback", () => {
     const callback = jest.fn();
     const { getByTestId } = render(
-      <Button className="blue" onClick={callback} />
+      <Button className="blue" onClick={callback}>
+        {" "}
+        this is my button{" "}
+      </Button>
     );
     const button = getByTestId("button");
     fireEvent.click(button);
