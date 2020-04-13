@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "test": "react-scripts test",
+    "test": "react-scripts test --watchAll=false",
+    "test-snap": "react-scripts test Storyshots --watchAll=false",
+    "test-unit": "react-scripts test --testPathIgnorePatterns=src/Storyshots.test.js --watchAll=false",
+    "test-coverage": "react-scripts test --testPathIgnorePatterns=src/Storyshots.test.js --coverage --watchAll=false",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "storybook": "start-storybook -p 9009 -s public",
@@ -49,6 +52,13 @@
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "jest": {
+    "coveragePathIgnorePatterns": [
+      "<rootDir>/src/serviceWorker.js",
+      "<rootDir>/src/index.js",
+      "<rootDir>/src/Storyshots.test.js"
+    ]
   },
   "browserslist": {
     "production": [

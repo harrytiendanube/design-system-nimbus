@@ -1,21 +1,21 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import './Button.css';
+import React from "react";
+import PropTypes from "prop-types";
+import "./Button.css";
 
 /**
   Utiliza `Button` como componente de acción.
 */
-const Button = (props) => {
-  return(
-    <button {...props}  className={`button ${ props.className }`}>{ props.children }</button>
-  )
-}
-
+const Button = props => {
+  return (
+    <button {...props} className={`button ${props.className}`}>
+      {props.children}
+    </button>
+  );
+};
 
 Button.defaultProps = {
-  children: 'texto',
-  className: ''
-}
+  className: ""
+};
 
 Button.propTypes = {
   /**
@@ -25,7 +25,7 @@ Button.propTypes = {
   /**
    * Cambia el estilo del componente
    */
-  className: PropTypes.string,
-}
+  className: PropTypes.string
+};
 
 export default Button;
