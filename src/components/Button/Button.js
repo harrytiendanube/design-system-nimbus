@@ -7,11 +7,7 @@ import "./Button.css";
 */
 const Button = props => {
   return (
-    <button
-      {...props}
-      data-testid="button"
-      className={`button ${props.className}`}
-    >
+    <button {...props} className={`button ${props.className}`}>
       {props.children}
     </button>
   );
