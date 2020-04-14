@@ -9,6 +9,7 @@
     "test-coverage": "react-scripts test --testPathIgnorePatterns=src/Storyshots.test.js --coverage --watchAll=false",
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "test:ci": "start-server-and-test storybook http://localhost:9009",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook"
   },
@@ -29,7 +30,8 @@
     "@testing-library/user-event": "^7.1.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "start-server-and-test": "^1.10.11"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
@@ -45,9 +47,9 @@
     "@storybook/preset-create-react-app": "^2.1.1",
     "@storybook/react": "^5.3.18",
     "babel-loader": "^8.1.0",
+    "puppeteer": "^2.1.1",
     "react": "^16.13.1",
     "react-is": "^16.13.1",
-    "puppeteer": "^2.1.1",
     "react-test-renderer": "^16.13.1"
   },
   "eslintConfig": {
