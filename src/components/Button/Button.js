@@ -1,20 +1,26 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./Button.css";
+
+import '../reset.css';
+import "./Button.scss";
 
 /**
   Utiliza `Button` como componente de acción.
 */
 const Button = props => {
+  console.log(props.left)
   return (
-    <button {...props} className={`button ${props.className}`}>
-      {props.children}
+    <button {...props} className={`button ${props.className} ${props.color}`}>
+      { props.start }
+      { props.children }
+      { props.end && props.end }
     </button>
   );
 };
 
 Button.defaultProps = {
-  className: ""
+  className: "",
+  color: "primary"
 };
 
 Button.propTypes = {
@@ -25,7 +31,20 @@ Button.propTypes = {
   /**
    * Cambia el estilo del componente
    */
-  className: PropTypes.string
+  className: PropTypes.string,
+  /**
+   * Colores "primary", "secondary", "Light", "Danger", "Transparent"
+   */
+  color: PropTypes.oneOf(["primary", "secondary", "light", "danger", "transparent"]),
+  /**
+   * Icono al comienzo del botón
+   */
+  start: PropTypes.node,
+  /**
+   * Icono al final del botón
+   */
+  end: PropTypes.node,
+  
 };
 
 export default Button;

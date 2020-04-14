@@ -1,0 +1,3 @@
+@import "../../node_modules/reset-css/reset.css";
+
+* { outline: none; box-sizing: border-box; border: none; }

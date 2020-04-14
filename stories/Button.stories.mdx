@@ -1,0 +1,35 @@
+import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
+import { withKnobs, select, text } from "@storybook/addon-knobs";
+import { withA11y } from '@storybook/addon-a11y';
+
+import Button from "../src/components/Button/Button";
+import { Icon } from "./utils/mocks";
+import './utils/style.css';
+
+<Meta title="Atoms/Button" component={Button} />
+
+# Buttons
+
+## Botones para el administrador con sus estados.
+
+Utiliza los botones para acciones que no requieran cambios en la URL.
+
+<Preview>
+  <Story name="standard" parameters={{ decorators: [withKnobs, withA11y] }}>
+    <Button start={ <Icon /> } end={ <Icon /> } color={select('Color', ['default', 'secondary', 'light'])}> { text('Texto', 'Texto inicial') } </Button>
+  </Story>
+</Preview>
+
+<Props of={Button} />
+
+##  Colores
+
+<Preview withToolbar >
+  <Story name="clases">
+    <div className="separate">
+      <Button color="primary"> Primary </Button>
+      <Button color="secondary"> Secondary </Button>
+      <Button color="light"> Light </Button>
+    </div>
+  </Story>
+</Preview>

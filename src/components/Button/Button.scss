@@ -1,0 +1,5 @@
+.button {
+  background-color: #029CDC; border-radius: 4px; color: #FFFFFF; padding: 8px 10px; cursor: pointer;
+  &.secondary { background-color: #2C3357; color: white; }
+  &.light { color: #2C3357; background-color: #ECEBEC; }
+}
