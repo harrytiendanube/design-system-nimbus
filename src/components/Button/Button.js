@@ -5,7 +5,7 @@ import "./Button.css";
 /**
   Utiliza `Button` como componente de acción.
 */
-const Button = props => {
+const Button = (props) => {
   return (
     <button {...props} className={`button ${props.className}`}>
       {props.children}
@@ -14,7 +14,7 @@ const Button = props => {
 };
 
 Button.defaultProps = {
-  className: ""
+  className: "",
 };
 
 Button.propTypes = {
@@ -25,7 +25,7 @@ Button.propTypes = {
   /**
    * Cambia el estilo del componente
    */
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 export default Button;
