@@ -49,6 +49,7 @@
     "babel-loader": "8.1.0",
     "husky": "4.2.5",
     "prettier": "2.0.4",
+    "pretty-quick": "2.0.1",
     "puppeteer": "2.1.1",
     "react": "16.13.1",
     "react-is": "16.13.1",
@@ -82,7 +83,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn test:ci",
+      "pre-commit": "pretty-quick --staged",
       "pre-push": "yarn test:ci"
     }
   }
