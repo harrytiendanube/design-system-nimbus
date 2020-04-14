@@ -47,6 +47,7 @@
     "@storybook/preset-create-react-app": "^2.1.1",
     "@storybook/react": "^5.3.18",
     "babel-loader": "^8.1.0",
+    "husky": "^4.2.5",
     "puppeteer": "^2.1.1",
     "react": "^16.13.1",
     "react-is": "^16.13.1",
@@ -77,5 +78,11 @@
   "engines": {
     "node": ">=8",
     "yarn": "^1.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn test:ci",
+      "pre-push": "yarn test:ci"
+    }
   }
 }
