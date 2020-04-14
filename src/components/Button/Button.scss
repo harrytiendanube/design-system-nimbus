@@ -1,5 +1,26 @@
+$color-primary: #029CDC;
+
+@mixin outline($color) {
+  &.button_outline {
+    background: transparent;
+    border: 1px solid $color;
+    color: $color;
+  }
+}
+
 .button {
-  background-color: #029CDC; border-radius: 4px; color: #FFFFFF; padding: 8px 10px; cursor: pointer;
-  &.secondary { background-color: #2C3357; color: white; }
-  &.light { color: #2C3357; background-color: #ECEBEC; }
+  background-color: $color-primary; border-radius: 4px; color: #FFFFFF; padding: 8px 10px; cursor: pointer;
+  font-size: 16px;
+  @include outline($color-primary);
+
+  &.buton_secondary { 
+    background-color: #2C3357; color: white;
+    @include outline(#2C3357);
+  }
+  &.buton_danger { 
+    background-color: #DC4B43; color: #FFFFFF;
+    @include outline(#DC4B43);
+  }
+  &.buton_light { color: #2C3357; background-color: #ECEBEC; }
+  &.buton_transparent { background-color: transparent; color: $color-primary; }
 }

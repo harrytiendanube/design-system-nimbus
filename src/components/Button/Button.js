@@ -8,19 +8,21 @@ import "./Button.scss";
   Utiliza `Button` como componente de acción.
 */
 const Button = props => {
-  console.log(props.left)
+  const { start, children, end, className, color, outline } = props;
+
   return (
-    <button {...props} className={`button ${props.className} ${props.color}`}>
-      { props.start }
-      { props.children }
-      { props.end && props.end }
+    <button {...props} className={`button ${className} buton_${color} ${ outline ? 'button_outline' : '' }`}>
+      { start }
+      { children }
+      { end }
     </button>
   );
 };
 
 Button.defaultProps = {
   className: "",
-  color: "primary"
+  color: "primary",
+  outline: false
 };
 
 Button.propTypes = {
@@ -44,6 +46,10 @@ Button.propTypes = {
    * Icono al final del botón
    */
   end: PropTypes.node,
+  /**
+   * Fondo transparente con borde de color.
+   */
+  outline: PropTypes.bool,
   
 };
 
