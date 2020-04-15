@@ -1,7 +1,7 @@
 {
   "private": false,
   "name": "@tiendanube/design-system-nimbus",
-  "version": "0.10.3",
+  "version": "0.10.4",
   "description": "Public design system tiendanube/nimbus",
   "main": "dist/index.js",
   "scripts": {
