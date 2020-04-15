@@ -1,5 +1,5 @@
 {
-  "name": "design-system-nimbus",
+  "name": "@tiendanube/design-system-nimbus",
   "version": "0.10.1",
   "description": "Public design system tiendanube/nimbus",
   "scripts": {
