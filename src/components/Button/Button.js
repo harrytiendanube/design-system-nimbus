@@ -11,7 +11,7 @@ const Button = props => {
   const { start, children, end, className, color, outline } = props;
 
   return (
-    <button {...props} className={`button ${className} buton_${color} ${ outline ? 'button_outline' : '' }`}>
+    <button {...props} className={`${className} button_${color}${ outline ? '_outline' : '' }`}>
       { start }
       { children }
       { end }

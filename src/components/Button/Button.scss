@@ -1,26 +1,149 @@
-$color-primary: #029CDC;
+// Global Variables
+// 
+// Defining the global vars that should be replaced with tokens
 
-@mixin outline($color) {
-  &.button_outline {
-    background: transparent;
-    border: 1px solid $color;
-    color: $color;
+$primary-blue:     #029CDC;
+$sky-blue:         #4C629E;
+$dark-blue:        #2C3357;
+$deep-blue:        #2D2938;
+$nube-white:       #ECEBEC;
+$light-gray:       #BFBBBD;
+$mid-gray:         #918A8D;
+$dark-gray:        #62595D;
+$text-gray:        #473C41;
+$success:          #0CA76B;
+$warning:          #FFB337;
+$danger:           #DC4B43;
+$white:            #FFFFFF;
+
+$nimbus-colors: (
+  "primaryBlue":  $primary-blue,
+  "skyBlue":      $sky-blue,
+  "darkBlue":     $dark-blue,
+  "deepBlue":     $deep-blue,
+  "nubeWhite":    $nube-white,
+  "lightGray":    $light-gray,
+  "midGray":      $mid-gray,
+  "darkGray":     $dark-gray,
+  "textGray":     $text-gray,
+  "success":      $success,
+  "warning":      $warning,
+  "danger":       $danger,
+  "white":        $white
+);
+
+// Sizing
+// 
+// Default base sizing
+
+$size-base:       1rem;
+
+// Typography
+
+$font-family:     'CentraNube', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+// Theme Colors
+// 
+// Translating Design System colors into theme colors for components
+
+$primary:         $primary-blue;
+$secondary:       $dark-blue;
+$light:           $nube-white;
+$danger:          $danger;
+
+$theme-colors: (
+  "primary":      $primary,
+  "secondary":    $secondary,
+  "light":        $light,
+  "danger":       $danger
+);
+
+// Contrast Colors
+// 
+// For the contrast function
+
+$contrast-dark:   $dark-blue;
+$contrast-light:  $white;
+$contrast-threshold: 150;
+
+// Button Sizing
+// 
+// Defining basic button padding and sizing
+
+$button-font-size:    $size-base;
+$button-line-height:  $button-font-size * 1.5;
+$button-padding-y:    $size-base * .5;
+$button-padding-x:    $size-base * .625;
+
+// Functions
+
+// Color Contrast
+// 
+// This function checks the color of a component against YIQ color contrast standard and returns a value
+
+@function color-contrast($color, $dark: $contrast-dark, $light: $contrast-light) {
+  $r: red($color);
+  $g: green($color);
+  $b: blue($color);
+
+  $contrast: (($r * 299) + ($g * 587) + ($b * 114)) / 1000;
+
+  @if ($contrast >= $contrast-threshold) {
+    @return $dark;
+  } @else {
+    @return $light;
   }
 }
 
-.button {
-  background-color: $color-primary; border-radius: 4px; color: #FFFFFF; padding: 8px 10px; cursor: pointer;
-  font-size: 16px;
-  @include outline($color-primary);
+// Mixins
 
-  &.buton_secondary { 
-    background-color: #2C3357; color: white;
-    @include outline(#2C3357);
+@mixin button($color, $hover-color: darken($color, 15%)){
+  background-color: $color;
+  color: color-contrast($color);
+  border-color: $color;
+  &:hover {
+    background-color: $hover-color;
+    border-color: $hover-color;
   }
-  &.buton_danger { 
-    background-color: #DC4B43; color: #FFFFFF;
-    @include outline(#DC4B43);
+}
+
+@mixin button-outline($color, $hover-color: darken($color, 15%)){
+  color: $color;
+  border-color: $color;
+  &:hover {
+    background-color: $color;
+    color: color-contrast($color);
+    border-color: $hover-color;
   }
-  &.buton_light { color: #2C3357; background-color: #ECEBEC; }
-  &.buton_transparent { background-color: transparent; color: $color-primary; }
+}
+
+// Buttons
+
+.button {
+  display: inline-block;
+  padding: $button-padding-y $button-padding-x;
+  font-family: $font-family;
+  font-size: $button-font-size;
+  line-height: $button-line-height;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: $size-base * 0.25;
+  transition: .15s ease;
+}
+
+@each $color, $value in $theme-colors {
+  .button_#{$color} {
+    @extend .button;
+    @include button($value);
+  }
+}
+
+@each $color, $value in $theme-colors {
+  .button_#{$color}_outline {
+    @extend .button;
+    @include button-outline($value);
+  }
 }
