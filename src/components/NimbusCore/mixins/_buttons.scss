@@ -1,0 +1,25 @@
+// Mixins
+
+// Buttons
+// 
+// Defining mixins to be used by buttons
+
+@mixin button($color, $hover-color: darken($color, 15%)){
+  background-color: $color;
+  color: color-contrast($color);
+  border-color: $color;
+  &:hover {
+    background-color: $hover-color;
+    border-color: $hover-color;
+  }
+}
+
+@mixin button-outline($color, $hover-color: darken($color, 15%)){
+  color: $color;
+  border-color: $color;
+  &:hover {
+    background-color: $color;
+    color: color-contrast($color);
+    border-color: $hover-color;
+  }
+}
