@@ -1,7 +1,7 @@
 {
   "name": "design-system-nimbus",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.10.1",
+  "description": "Public design system tiendanube/nimbus",
   "scripts": {
     "test": "react-scripts test --watchAll=false",
     "test-snap": "react-scripts test Storyshots --watchAll=false",
@@ -18,8 +18,10 @@
     "type": "git",
     "url": "git+https://github.com/TiendaNube/design-system-nimbus.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "kelman.celis@tiendanube.com"
+  ],
+  "author": "tiendanube",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/TiendaNube/design-system-nimbus/issues"
