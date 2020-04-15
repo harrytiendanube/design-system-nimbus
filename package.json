@@ -1,6 +1,6 @@
 {
   "name": "@tiendanube/design-system-nimbus",
-  "version": "0.10.1",
+  "version": "0.10.3",
   "description": "Public design system tiendanube/nimbus",
   "scripts": {
     "test": "react-scripts test --watchAll=false",
