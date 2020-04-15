@@ -21,7 +21,9 @@
     "url": "git+https://github.com/TiendaNube/design-system-nimbus.git"
   },
   "keywords": [
-    "kelman.celis@tiendanube.com"
+    "Design system",
+    "tiendanube",
+    "nimbus"
   ],
   "author": "tiendanube",
   "license": "MIT",
