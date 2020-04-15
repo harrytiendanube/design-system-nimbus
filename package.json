@@ -1,14 +1,16 @@
 {
+  "private": false,
   "name": "@tiendanube/design-system-nimbus",
   "version": "0.10.3",
   "description": "Public design system tiendanube/nimbus",
+  "main": "dist/index.js",
   "scripts": {
     "test": "react-scripts test --watchAll=false",
     "test-snap": "react-scripts test Storyshots --watchAll=false",
     "test-unit": "react-scripts test --testPathIgnorePatterns=src/Storyshots.test.js --watchAll=false",
     "test-coverage": "react-scripts test --testPathIgnorePatterns=src/Storyshots.test.js --coverage --watchAll=false",
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "cross-env BABEL_ENV=production babel src/components -d dist",
     "format": "yarn prettier --write  src/**/*.js ",
     "test:ci": "start-server-and-test storybook http://localhost:9009",
     "storybook": "start-storybook -p 9009 -s public",
@@ -37,6 +39,7 @@
     "start-server-and-test": "1.10.11"
   },
   "devDependencies": {
+    "@babel/cli": "^7.8.4",
     "@babel/core": "7.9.0",
     "@storybook/addon-a11y": "5.3.18",
     "@storybook/addon-actions": "5.3.18",
@@ -50,7 +53,9 @@
     "@storybook/preset-create-react-app": "2.1.1",
     "@storybook/react": "5.3.18",
     "@tiendanube/eslint-config": "^0.2.0",
+    "auto": "^9.27.1",
     "babel-loader": "8.1.0",
+    "cross-env": "^7.0.2",
     "eslint": "^6.8.0",
     "husky": "4.2.5",
     "prettier": "2.0.4",
@@ -91,5 +96,10 @@
       "pre-commit": "pretty-quick --staged",
       "pre-push": "yarn test:ci"
     }
+  },
+  "babel": {
+    "presets": [
+      "react-app"
+    ]
   }
 }

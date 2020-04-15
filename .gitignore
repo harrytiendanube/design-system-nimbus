@@ -5,3 +5,4 @@ coverage
 /storybook-static
 /dist
 /build
+.env
