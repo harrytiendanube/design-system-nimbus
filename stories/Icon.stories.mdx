@@ -1,0 +1,19 @@
+import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
+import { withKnobs, select, text } from "@storybook/addon-knobs";
+import { withA11y } from '@storybook/addon-a11y';
+
+import Icon from "../src/components/Icon/Icon";
+
+<Meta title="Atoms/Icon" component={Icon} />
+
+# Avatar
+
+## Displays an image that represents a user or organization
+
+Use an avatar for attributing actions or content to specific users. The user's name should _always_ be present when using Avatar – either printed beside the avatar or in a tooltip.
+
+<Preview>
+  <Story name="standard" parameters={{ decorators: [withKnobs, withA11y] }}>
+    <Icon icon="faAlicorn" size="6x"/>
+  </Story>
+</Preview>
