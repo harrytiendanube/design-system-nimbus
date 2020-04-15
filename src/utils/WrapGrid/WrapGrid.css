@@ -1,0 +1,6 @@
+.wrapgrid { display: flex; flex-flow: row wrap; justify-content: space-around; }
+.wrapgrid .wrapgrid_icon-block {
+  width: calc(100% / 5); text-align: center; border: 1px solid #a5a5a5; margin: 5px;
+}
+
+.wrapgrid .wrapgrid_icon-block h3 { font-size: 14px; }
