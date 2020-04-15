@@ -3,6 +3,6 @@ coverage
 **/.DS_Store
 
 /storybook-static
-/dist
+
 /build
 .env

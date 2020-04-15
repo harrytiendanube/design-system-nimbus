@@ -1,0 +1,9 @@
+.button {
+  padding: 20px;
+}
+.button.red {
+  background: red;
+}
+.button.blue {
+  background: blue;
+}
