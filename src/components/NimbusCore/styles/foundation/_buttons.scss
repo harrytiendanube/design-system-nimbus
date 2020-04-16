@@ -1,5 +1,14 @@
 // Mixins
 
+// Button Sizing
+// 
+// Defining basic button padding and sizing
+
+$button-font-size:    $size-base;
+$button-line-height:  $button-font-size * 1.5;
+$button-padding-y:    $size-base * .5;
+$button-padding-x:    $size-base * .625;
+
 // Buttons
 // 
 // Defining mixins to be used by buttons
