@@ -36,7 +36,7 @@ const WrapGrid = () => {
   };
 
   const iconsListFiltered = variantIcons.filter((icon) =>
-    icon.includes(filter)
+    icon.toLowerCase().includes(filter.toLowerCase())
   );
 
   const arrayListIcons =
