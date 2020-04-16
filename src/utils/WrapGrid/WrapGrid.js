@@ -1,50 +1,60 @@
 import React, { useState } from "react";
-
+import PropTypes from "prop-types";
 import "./WrapGrid.css";
-import Icon from "../../components/Icon/Icon";
-import { fal } from "@fortawesome/pro-light-svg-icons";
-import { fab } from "@fortawesome/free-brands-svg-icons";
 
-const Icons = { ...fal, ...fab };
+import { Icon, icons, variantIcons } from "../../components";
 
-const iconNames = Object.keys(Icons).map((icon) =>
-  icon.substring(2).toLowerCase()
-);
-
-function IconList({ icons, filtered }) {
+function IconList({ iconList }) {
   return (
     <div className={`grid`}>
-      {icons.map((icon) => {
-        return (
-          <div className="wrapgrid_icon-block" key={icon}>
-            <h3>{icon}</h3>
-            <Icon icon={`${icon}`} size="2x" />
-          </div>
-        );
-      })}
+      {iconList &&
+        iconList.map((name) => {
+          return (
+            <div className="wrapgrid_icon-block" key={name}>
+              <h3>{name}</h3>
+              <Icon name={name} size="2x" />
+            </div>
+          );
+        })}
     </div>
   );
 }
 
-const WrapGrid = (props) => {
+IconList.propTypes = {
+  iconList: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
+
+const WrapGrid = () => {
+  /*
+   * ${filter}params of value input
+   * ${setFilter}method change filter
+   */
   const [filter, setFilter] = useState("");
+
   const handleOnChange = ({ target: { value } }) => {
     setFilter(value);
   };
-  const foo = iconNames.map((iconName) => iconName);
-  console.log(foo);
+
+  const iconsListFiltered = variantIcons.filter((icon) =>
+    icon.includes(filter)
+  );
+
+  const arrayListIcons =
+    iconsListFiltered && iconsListFiltered.length
+      ? iconsListFiltered
+      : variantIcons;
+
   return (
-    <div class="wrapgrid">
-      <div>
-        <input
-          type="text"
-          class="filter"
-          value={filter}
-          placeholder="Buscador"
-          onChange={handleOnChange}
-        />
-      </div>
-      <IconList icons={iconNames} />
+    <div className="wrapgrid">
+      <input
+        type="text"
+        className="filter"
+        value={filter}
+        placeholder="Buscador"
+        onChange={handleOnChange}
+      />
+
+      <IconList iconList={arrayListIcons} />
     </div>
   );
 };
