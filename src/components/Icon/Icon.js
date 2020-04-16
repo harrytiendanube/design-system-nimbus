@@ -1,17 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
-/* import './Icon.scss'; */
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import * as Icons from "@fortawesome/pro-light-svg-icons";
+import { fal } from "@fortawesome/pro-light-svg-icons";
+import { fab } from "@fortawesome/free-brands-svg-icons";
 
-const Icon = props => {
+const Icon = (props) => {
+  const Icons = { ...fal, ...fab };
   return (
     <FontAwesomeIcon
       {...props}
       className={`button ${props.className}`}
-      icon={Icons[props.icon]}
+      icon={Icons["fa" + props.icon]}
       size={props.size}
-      color= { props.color }
+      color={props.color}
     />
   );
 };
@@ -19,7 +20,7 @@ const Icon = props => {
 Icon.defaultProps = {
   className: "",
   size: "1x",
-  color: "#2C3357"
+  color: "#2C3357",
 };
 
 Icon.propTypes = {
@@ -31,7 +32,7 @@ Icon.propTypes = {
    * Tamaño del icono
    */
   size: PropTypes.string,
-  color: PropTypes.string
+  color: PropTypes.string,
 };
 
 export default Icon;
