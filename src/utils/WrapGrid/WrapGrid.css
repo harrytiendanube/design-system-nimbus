@@ -1,7 +1,14 @@
 .wrapgrid .filter {
   margin: 15px 22px;
+  padding: 0px 10px;
+  height: 30px;
+  width: 40%;
+  border-width: 0px;
+  border-bottom-width: 1px;
 }
-
+.wrapgrid .filter:focus {
+  outline: none;
+}
 .wrapgrid .grid {
   display: flex;
   flex-flow: row wrap;
@@ -12,7 +19,15 @@
   text-align: center;
   border: 1px solid #a5a5a5;
   margin: 5px;
+  border-radius: 10px;
+}
+.wrapgrid .grid .wrapgrid_icon-block:hover {
+  box-shadow: 0 0 13px rgba(33, 33, 33, 0.2);
 }
 .wrapgrid .grid .wrapgrid_icon-block h3 {
   font-size: 14px;
+}
+
+.hide {
+  display: none;
 }

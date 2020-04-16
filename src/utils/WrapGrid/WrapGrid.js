@@ -5,9 +5,34 @@ import Icon from "../../components/Icon/Icon";
 import { fal } from "@fortawesome/pro-light-svg-icons";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 
+const Icons = { ...fal, ...fab };
+
+const iconNames = Object.keys(Icons).map((icon) =>
+  icon.substring(2).toLowerCase()
+);
+
+function IconList({ icons, filtered }) {
+  return (
+    <div className={`grid`}>
+      {icons.map((icon) => {
+        return (
+          <div className="wrapgrid_icon-block" key={icon}>
+            <h3>{icon}</h3>
+            <Icon icon={`${icon}`} size="2x" />
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 const WrapGrid = (props) => {
-  const Icons = { ...fal, ...fab };
   const [filter, setFilter] = useState("");
+  const handleOnChange = ({ target: { value } }) => {
+    setFilter(value);
+  };
+  const foo = iconNames.map((iconName) => iconName);
+  console.log(foo);
   return (
     <div class="wrapgrid">
       <div>
@@ -16,29 +41,10 @@ const WrapGrid = (props) => {
           class="filter"
           value={filter}
           placeholder="Buscador"
-          onChange={(e) => {
-            setFilter(e.target.value);
-          }}
+          onChange={handleOnChange}
         />
       </div>
-      <div {...props} className={`grid ${props.className}`}>
-        {Object.keys(Icons)
-          .filter((i) =>
-            i
-              .substring(2)
-              .toLowerCase()
-              .startsWith(filter.toLowerCase())
-          )
-          .map((i) => {
-            const internalIconName = i.substring(2);
-            return (
-              <div className="wrapgrid_icon-block" key={i}>
-                <h3>{internalIconName}</h3>
-                <Icon icon={i.substring(2)} size="2x" />
-              </div>
-            );
-          })}
-      </div>
+      <IconList icons={iconNames} />
     </div>
   );
 };

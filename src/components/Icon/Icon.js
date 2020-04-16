@@ -10,7 +10,9 @@ const Icon = (props) => {
     <FontAwesomeIcon
       {...props}
       className={`button ${props.className}`}
-      icon={Icons["fa" + props.icon]}
+      icon={
+        Icons["fa" + props.icon.charAt(0).toUpperCase() + props.icon.slice(1)]
+      }
       size={props.size}
       color={props.color}
     />
