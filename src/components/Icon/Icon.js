@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fal } from "@fortawesome/pro-light-svg-icons";
 import { fab } from "@fortawesome/free-brands-svg-icons";
-export const icons = { ...fab };
+export const icons = { ...fal, ...fab };
 
 export const variantIcons = Object.keys(icons).map((icon) => icon.substring(2));
 
