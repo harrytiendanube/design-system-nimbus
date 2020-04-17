@@ -40,9 +40,7 @@ const WrapGrid = () => {
   );
 
   const arrayListIcons =
-    iconsListFiltered && iconsListFiltered.length
-      ? iconsListFiltered
-      : variantIcons;
+    filter && filter.length ? iconsListFiltered : variantIcons;
 
   return (
     <div className="wrapgrid">
@@ -52,6 +50,7 @@ const WrapGrid = () => {
         value={filter}
         placeholder="Buscador"
         onChange={handleOnChange}
+        data-testid="icon-search"
       />
 
       <IconList iconList={arrayListIcons} />
