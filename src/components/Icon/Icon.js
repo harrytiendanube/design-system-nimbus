@@ -22,6 +22,7 @@ const Icon = ({ name, className, size, color }) => {
       icon={icons[`fa${name}`]}
       size={size}
       color={color}
+      data-testid={`icon-${name}`}
     />
   );
 };
