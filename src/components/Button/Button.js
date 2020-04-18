@@ -20,9 +20,9 @@ const Button = ({
       {...defaultProps}
       className={`${className} button_${color}${outline ? "_outline" : ""}`}
     >
-      {start && <Icon name={start} />}
+      {start && <Icon name={start} className="button_start" />}
       {children}
-      {end && <Icon name={end} />}
+      {end && <Icon name={end} className="button_end" />}
     </button>
   );
 };

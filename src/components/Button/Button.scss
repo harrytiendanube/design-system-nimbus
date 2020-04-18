@@ -14,7 +14,13 @@
   background-color: transparent;
   border: 1px solid transparent;
   border-radius: $size-base * 0.25;
-  transition: .15s ease;
+  transition: 0.15s ease;
+  .button_start {
+    margin-right: 8px;
+  }
+  .button_end {
+    margin-left: 8px;
+  }
 }
 
 @each $color, $value in $theme-colors {
