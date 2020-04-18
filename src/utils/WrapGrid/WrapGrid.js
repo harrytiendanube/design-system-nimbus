@@ -12,7 +12,7 @@ function IconList({ iconList }) {
           return (
             <div className="wrapgrid_icon-block" key={name}>
               <h3>{name}</h3>
-              <Icon name={name} size="2x" />
+              <Icon role="icon" name={name} size="2x" />
             </div>
           );
         })}
