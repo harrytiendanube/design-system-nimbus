@@ -1,10 +1,9 @@
 import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
 import { withKnobs, select, text } from "@storybook/addon-knobs";
-import { withA11y } from '@storybook/addon-a11y';
+import { withA11y } from "@storybook/addon-a11y";
 
 import Button from "../src/components/Button/Button";
-import { Icon } from "./utils/mocks";
-import './utils/style.css';
+import "./utils/style.css";
 
 <Meta title="Atoms/Button" component={Button} />
 
@@ -16,15 +15,22 @@ Utiliza los botones para acciones que no requieran cambios en la URL.
 
 <Preview>
   <Story name="standard" parameters={{ decorators: [withKnobs, withA11y] }}>
-    <Button start={ <Icon /> } end={ <Icon /> } color={select('Color', ['default', 'secondary', 'light'])}> { text('Texto', 'Texto inicial') } </Button>
+    <Button
+      start="Facebook"
+      end="LongArrowRight"
+      color={select("Color", ["default", "secondary", "light"])}
+    >
+      {" "}
+      {text("Texto", "Texto inicial")}{" "}
+    </Button>
   </Story>
 </Preview>
 
 <Props of={Button} />
 
-##  Colores
+## Colores
 
-<Preview withToolbar >
+<Preview withToolbar>
   <Story name="clases">
     <div className="separate">
       <Button color="primary"> Primary </Button>
@@ -36,14 +42,23 @@ Utiliza los botones para acciones que no requieran cambios en la URL.
   </Story>
 </Preview>
 
-##  Outline
+## Outline
 
-<Preview withToolbar >
+<Preview withToolbar>
   <Story name="outline">
     <div className="separate">
-      <Button color="primary" outline> Primary </Button>
-      <Button color="secondary" outline> Secondary </Button>
-      <Button color="danger" outline> Danger </Button>
+      <Button color="primary" outline={true}>
+        {" "}
+        Primary{" "}
+      </Button>
+      <Button color="secondary" outline={true}>
+        {" "}
+        Secondary{" "}
+      </Button>
+      <Button color="danger" outline={true}>
+        {" "}
+        Danger{" "}
+      </Button>
     </div>
   </Story>
 </Preview>

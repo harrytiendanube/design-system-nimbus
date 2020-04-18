@@ -1,19 +1,28 @@
 import React from "react";
 import PropTypes from "prop-types";
-
+import Icon from "../Icon/Icon";
 import "./Button.scss";
 
 /**
   Utiliza `Button` como componente de acción.
 */
-const Button = props => {
-  const { start, children, end, className, color, outline } = props;
-
+const Button = ({
+  start,
+  children,
+  end,
+  className,
+  color,
+  outline,
+  ...defaultProps
+}) => {
   return (
-    <button {...props} className={`${className} button_${color}${ outline ? '_outline' : '' }`}>
-      { start }
-      { children }
-      { end }
+    <button
+      {...defaultProps}
+      className={`${className} button_${color}${outline ? "_outline" : ""}`}
+    >
+      {start && <Icon name={start} />}
+      {children}
+      {end && <Icon name={end} />}
     </button>
   );
 };
@@ -21,7 +30,7 @@ const Button = props => {
 Button.defaultProps = {
   className: "",
   color: "primary",
-  outline: false
+  outline: false,
 };
 
 Button.propTypes = {
@@ -36,20 +45,25 @@ Button.propTypes = {
   /**
    * Colores "primary", "secondary", "Light", "Danger", "Transparent"
    */
-  color: PropTypes.oneOf(["primary", "secondary", "light", "danger", "transparent"]),
+  color: PropTypes.oneOf([
+    "primary",
+    "secondary",
+    "light",
+    "danger",
+    "transparent",
+  ]),
   /**
-   * Icono al comienzo del botón
+   * Nombre del Icono que mostrará al comienzo del botón.
    */
-  start: PropTypes.node,
+  start: PropTypes.string,
   /**
-   * Icono al final del botón
+   * Nombre del Icono que mostrará al final del botón.
    */
-  end: PropTypes.node,
+  end: PropTypes.string,
   /**
    * Fondo transparente con borde de color.
    */
   outline: PropTypes.bool,
-  
 };
 
 export default Button;
