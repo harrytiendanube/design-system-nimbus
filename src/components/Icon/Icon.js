@@ -7,18 +7,19 @@ export const icons = { ...fal, ...fab };
 
 export const variantIcons = Object.keys(icons).map((icon) => icon.substring(2));
 
-const DEFAULT_COLOR = "#2C3357";
-const DEFAULT_SIZE = "1x";
+const DEFAULT_COLOR = "inherit";
+const DEFAULT_SIZE = "sm";
 
 /*
  *   example icon to use icons["fa" + "Accusoft"]
  *   ${param} name : string in Capitalized
  */
 
-const Icon = ({ name, className, size, color }) => {
+const Icon = ({ name, className, size, color, ...defaultProps }) => {
   return (
     <FontAwesomeIcon
-      className={`button ${className}`}
+      {...defaultProps}
+      className={`icon ${className}`}
       icon={icons[`fa${name}`]}
       size={size}
       color={color}
@@ -47,7 +48,7 @@ Icon.propTypes = {
 };
 
 Icon.defaultProps = {
-  className: undefined,
+  className: "",
   size: DEFAULT_SIZE,
   color: DEFAULT_COLOR,
 };

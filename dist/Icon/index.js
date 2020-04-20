@@ -22,34 +22,26 @@ function _typeof(obj) {
 Object.defineProperty(exports, "__esModule", {
   value: true,
 });
-Object.defineProperty(exports, "Button", {
-  enumerable: true,
-  get: function get() {
-    return _Button.default;
-  },
-});
-Object.defineProperty(exports, "Icon", {
+var _exportNames = {};
+Object.defineProperty(exports, "default", {
   enumerable: true,
   get: function get() {
     return _Icon.default;
   },
 });
-Object.defineProperty(exports, "icons", {
-  enumerable: true,
-  get: function get() {
-    return _Icon.icons;
-  },
-});
-Object.defineProperty(exports, "variantIcons", {
-  enumerable: true,
-  get: function get() {
-    return _Icon.variantIcons;
-  },
-});
-
-var _Button = _interopRequireDefault(require("./Button"));
 
 var _Icon = _interopRequireWildcard(require("./Icon"));
+
+Object.keys(_Icon).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _Icon[key];
+    },
+  });
+});
 
 function _getRequireWildcardCache() {
   if (typeof WeakMap !== "function") return null;
@@ -94,8 +86,4 @@ function _interopRequireWildcard(obj) {
     cache.set(obj, newObj);
   }
   return newObj;
-}
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
 }

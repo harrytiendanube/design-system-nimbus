@@ -21,6 +21,8 @@
   margin: 5px;
   border-radius: 10px;
   padding: 10px;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 .wrapgrid .grid .wrapgrid_icon-block:hover {
   -webkit-box-shadow: 4px 8px 11px 0px rgba(0, 0, 0, 0.75);

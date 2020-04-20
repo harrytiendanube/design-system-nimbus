@@ -1,0 +1,34 @@
+// Mixins
+
+// Button Sizing
+// 
+// Defining basic button padding and sizing
+
+$button-font-size:    $size-base;
+$button-line-height:  $button-font-size * 1.5;
+$button-padding-y:    $size-base * .5;
+$button-padding-x:    $size-base * .625;
+
+// Buttons
+// 
+// Defining mixins to be used by buttons
+
+@mixin button($color, $hover-color: darken($color, 15%)){
+  background-color: $color;
+  color: color-contrast($color);
+  border-color: $color;
+  &:hover {
+    background-color: $hover-color;
+    border-color: $hover-color;
+  }
+}
+
+@mixin button-outline($color, $hover-color: darken($color, 15%)){
+  color: $color;
+  border-color: $color;
+  &:hover {
+    background-color: $color;
+    color: color-contrast($color);
+    border-color: $hover-color;
+  }
+}
