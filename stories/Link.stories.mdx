@@ -1,0 +1,30 @@
+import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
+import { withKnobs, select, text } from "@storybook/addon-knobs";
+import { withA11y } from "@storybook/addon-a11y";
+import { action } from "@storybook/addon-actions";
+
+import { Link } from "../src/components";
+import "./utils/style.css";
+
+<Meta title="Atoms/Link" component={Link} />
+
+# Links
+
+## Links para Inputs
+
+Utiliza los botones para acciones que no requieran cambios en la URL.
+
+<Preview>
+  <Story name="standard" parameters={{ decorators: [withKnobs, withA11y] }}>
+    <Link
+      onClick={action("onClick")}
+      start="Facebook"
+      end="LongArrowRight"
+      color={select("Color", ["default", "secondary", "light"])}
+    >
+      {text("Texto", "Texto inicial")}
+    </Link>
+  </Story>
+</Preview>
+
+<Props of={Link} />
