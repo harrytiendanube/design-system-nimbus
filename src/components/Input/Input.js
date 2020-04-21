@@ -20,7 +20,7 @@ const Input = ({
   };
 
   return (
-    <div {...defaultProps} className={`input ${className}`}>
+    <div {...defaultProps} className={`nimbus--input ${className}`}>
       <label className="" htmlFor={`input_${name}`}>
         {label}
       </label>
