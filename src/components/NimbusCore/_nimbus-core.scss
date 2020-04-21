@@ -1,3 +1,7 @@
 @import "styles/nimbus-tokens";
 @import "styles/utilities";
-@import "styles/foundation";
+
+// Global Prefix
+//
+// Sets the prefix for all classes
+$prefix: "nimbus" !default;
