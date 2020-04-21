@@ -1,5 +1,27 @@
 @import "../NimbusCore/nimbus-core";
 
-.link {
+// Links
+
+.#{$prefix}--link {
+  display: inline-block;
+  font-family: $font-family;
+  font-size: $font-size-base;
   cursor: pointer;
+  text-decoration: underline;
+  color: $primary-blue;
+  transition: 0.15s ease;
+
+  &:hover {
+    color: darken($primary-blue, 0.15);
+  }
+}
+
+.#{$prefix}--link__icon {
+  &--start {
+    margin-right: $size-base * 0.5;
+  }
+
+  &--end {
+    margin-left: $size-base * 0.5;
+  }
 }

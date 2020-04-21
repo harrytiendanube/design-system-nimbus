@@ -23,12 +23,12 @@ const Link = ({
   return (
     <a
       {...defaultProps}
-      className={`link ${className} link_${color}`}
+      className={`nimbus--link ${className} link_${color}`}
       onClick={handleLink}
     >
-      {start && <Icon name={start} className="link_start" />}
+      {start && <Icon name={start} className="nimbus--link__icon--start" />}
       {children}
-      {end && <Icon name={end} className="link_end" />}
+      {end && <Icon name={end} className="nimbus--link__icon--end" />}
     </a>
   );
 };
