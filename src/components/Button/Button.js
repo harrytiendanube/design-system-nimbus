@@ -18,7 +18,9 @@ const Button = ({
   return (
     <button
       {...defaultProps}
-      className={`${className} button_${color}${outline ? "_outline" : ""}`}
+      className={`${className} nimbus--button_${color}${
+        outline ? "_outline" : ""
+      }`}
     >
       {start && <Icon name={start} className="button_start" />}
       {children}
