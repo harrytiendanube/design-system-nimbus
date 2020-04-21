@@ -2,7 +2,7 @@
 
 // Inputs
 
-.input {
+.#{$prefix}--input {
   font-family: $font-family;
 
   label {
