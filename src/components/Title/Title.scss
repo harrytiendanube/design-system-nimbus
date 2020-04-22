@@ -1,14 +1,12 @@
 @import "../NimbusCore/nimbus-core";
 
-// Text
+// Title
 
-.#{$prefix}--text {
+.#{$prefix}--title {
   display: inline-block;
   font-family: $font-family;
-  font-size: $font-size-03;
+  font-weight: 500;
+  font-size: $font-size-07;
   text-align: left;
   color: $text-gray;
-  &--small {
-    font-size: $font-size-01;
-  }
 }

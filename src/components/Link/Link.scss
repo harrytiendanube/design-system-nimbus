@@ -5,7 +5,7 @@
 .#{$prefix}--link {
   display: inline-block;
   font-family: $font-family;
-  font-size: $font-size-base;
+  font-size: inherit;
   cursor: pointer;
   text-decoration: underline;
   color: $primary-blue;
