@@ -6,20 +6,50 @@
   "author": "tiendanube",
   "scripts": {
     "clean": "find . -name node_modules -exec rm -rf '{}' + && rm -rf yarn.lock",
+    "lint": "yarn workspaces run lint",
     "start:components": "yarn workspace @tiendanube/components run start",
     "start:storybook": "yarn workspace @tiendanube/storybook run storybook",
     "start:dev": "concurrently --kill-others \"yarn start:components\" \"yarn start:storybook\""
   },
   "npmClient": "yarn",
-  "license": "MIT",
   "workspaces": [
     "packages/*"
   ],
+  "lint-staged": {
+    "packages/cirrus/**/*.{js,ts}": [
+      "yarn workspace @tiendanube/components format",
+      "yarn workspace @tiendanube/components lint-staged"
+    ],
+    "packages/stratus/**/*.{js,jsx,ts,tsx}": [
+      "yarn workspace @tiendanube/storybook format",
+      "yarn workspace @tiendanube/storybook lint-staged"
+    ]
+  },
   "contributors": [
     "kelman.celis@tiendanube.com",
     "pablo.radomski@tiendanube.com"
   ],
+  "dependencies": {
+    "cross-env": "7.0.2"
+  },
   "devDependencies": {
-    "concurrently": "5.2.0"
-  }
+    "@tiendanube/eslint-config": "^0.2.0",
+    "@typescript-eslint/eslint-plugin": "2.23.0",
+    "@typescript-eslint/parser": "2.23.0",
+    "concurrently": "5.1.0",
+    "eslint": "6.8.0",
+    "eslint-config-airbnb-typescript": "7.2.1",
+    "eslint-config-prettier": "6.10.0",
+    "eslint-plugin-import": "2.20.1",
+    "eslint-plugin-prettier": "^3.1.3",
+    "eslint-plugin-react": "7.19.0",
+    "husky": "4.2.5",
+    "lint-staged": ">=10",
+    "prettier": "1.19.1",
+    "pretty-quick": "2.0.1"
+  },
+  "license": "MIT",
+  "nohoist": [
+    "**/jest"
+  ]
 }

@@ -1,8 +1,8 @@
-import React from "react";
-import { ExampleComponent } from "@tiendanube/components";
+import React from 'react';
+import { ExampleComponent } from '@tiendanube/components';
 
 export default {
-  title: "ExampleComponent",
+  title: 'ExampleComponent',
   component: ExampleComponent,
 };
 
@@ -11,5 +11,5 @@ export const ToStorybook = () => (
 );
 
 ToStorybook.story = {
-  name: "Example component",
+  name: 'Example component',
 };

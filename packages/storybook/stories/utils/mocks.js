@@ -1,3 +1,3 @@
 import React from 'react';
 
-export const Icon = () => (<span> * </span>);
+export const Icon = () => <span> * </span>;
