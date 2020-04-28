@@ -1,0 +1,53 @@
+$primary-blue:     #029CDC;
+$sky-blue:         #4C629E;
+$dark-blue:        #2C3357;
+$deep-blue:        #2D2938;
+$nube-white:       #ECEBEC;
+$light-gray:       #BFBBBD;
+$mid-gray:         #918A8D;
+$dark-gray:        #62595D;
+$text-gray:        #473C41;
+$success:          #0CA76B;
+$warning:          #FFB337;
+$danger:           #DC4B43;
+$white:            #FFFFFF;
+
+$nimbus-colors: (
+  "primary-blue":  $primary-blue,
+  "sky-blue":      $sky-blue,
+  "dark-blue":     $dark-blue,
+  "deep-blue":     $deep-blue,
+  "nube-white":    $nube-white,
+  "light-gray":    $light-gray,
+  "mid-gray":      $mid-gray,
+  "dark-gray":     $dark-gray,
+  "text-gray":     $text-gray,
+  "success":      $success,
+  "warning":      $warning,
+  "danger":       $danger,
+  "white":        $white
+);
+
+// Theme Colors
+// 
+// Translating Design System colors into theme colors for components
+
+$primary:         $primary-blue;
+$secondary:       $dark-blue;
+$light:           $nube-white;
+$danger:          $danger;
+
+$theme-colors: (
+  "primary":      $primary,
+  "secondary":    $secondary,
+  "light":        $light,
+  "danger":       $danger
+);
+
+// Contrast Colors
+// 
+// For the contrast function
+
+$contrast-dark:   $dark-blue;
+$contrast-light:  $white;
+$contrast-threshold: 150;
