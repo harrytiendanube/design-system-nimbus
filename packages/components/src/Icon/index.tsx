@@ -5,7 +5,7 @@ import { fal } from '@fortawesome/pro-light-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 export const icons = { ...fab, ...fal };
 
-export const variantIcons = Object.keys(icons).map((icon) => icon.substring(2));
+export const variantIcons = Object.keys(icons).map(icon => icon.substring(2));
 
 type Props = {
   name: string;
