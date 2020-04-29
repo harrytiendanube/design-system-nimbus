@@ -16,13 +16,13 @@
     "packages/*"
   ],
   "lint-staged": {
-    "packages/cirrus/**/*.{js,ts}": [
-      "yarn workspace @tiendanube/components format",
-      "yarn workspace @tiendanube/components lint-staged"
-    ],
-    "packages/stratus/**/*.{js,jsx,ts,tsx}": [
+    "packages/storybook/**/*.{js,ts}": [
       "yarn workspace @tiendanube/storybook format",
       "yarn workspace @tiendanube/storybook lint-staged"
+    ],
+    "packages/components/**/*.{js,jsx,ts,tsx}": [
+      "yarn workspace @tiendanube/components format",
+      "yarn workspace @tiendanube/components lint-staged"
     ]
   },
   "contributors": [
@@ -44,6 +44,11 @@
     "eslint-plugin-import": "2.20.1",
     "eslint-plugin-prettier": "^3.1.3",
     "eslint-plugin-react": "7.19.0",
+    "eslint-config-standard": "14.1.0",
+    "eslint-config-standard-react": "9.2.0",
+    "eslint-plugin-node": "11.0.0",
+    "eslint-plugin-promise": "4.2.1",
+    "eslint-plugin-standard": "4.0.1",
     "husky": "4.2.5",
     "lint-staged": ">=10",
     "prettier": "1.19.1",

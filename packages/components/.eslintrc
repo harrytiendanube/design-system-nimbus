@@ -1,6 +1,6 @@
 {
   "parser": "@typescript-eslint/parser",
-  "extends": ["../../.eslintrc.js", "plugin:react/recommended"],
+  "extends": ["../../.eslintrc.js"],
 
   "env": {
     "node": true

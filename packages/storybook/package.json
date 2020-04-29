@@ -7,8 +7,9 @@
     "format": "prettier --write \"stories/**/*.js\"",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "lint": "cd ../.. && eslint packages/storybook --quiet --ext .ts",
-    "test": "jest"
+    "test": "jest",
+    "lint": "cd ../.. && eslint packages/storybook --quiet --ext .js",
+    "lint-staged": "cd ../.. && eslint --ext .js,.jsx"
   },
   "dependencies": {
     "@tiendanube/components": "1.0.0"
