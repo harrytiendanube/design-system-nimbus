@@ -5,7 +5,7 @@ interface Props {
   text: string;
 }
 
-const ExampleComponent = ({ text }: Props) => {
+const ExampleComponent: React.FC<Props> = ({ text }) => {
   return <div className={styles.test}>Example Component : {text}</div>;
 };
 
