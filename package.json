@@ -8,9 +8,11 @@
     "clean": "find . -name node_modules -exec rm -rf '{}' + && rm -rf yarn.lock",
     "lint": "yarn workspaces run lint",
     "test": "yarn workspaces run test",
+    "format": "yarn workspaces run format",
     "start:components": "yarn workspace @tiendanube/components run start",
     "start:storybook": "yarn workspace @tiendanube/storybook run storybook",
-    "start:dev": "concurrently --kill-others \"yarn start:components\" \"yarn start:storybook\""
+    "start:theme": "yarn workspace @tiendanube/theme run start",
+    "start:dev": "concurrently --kill-others \"yarn start:components\" \"yarn start:storybook\" \"yarn start:theme\""
   },
   "npmClient": "yarn",
   "workspaces": [
@@ -24,6 +26,10 @@
     "packages/components/**/*.{js,jsx,ts,tsx}": [
       "yarn workspace @tiendanube/components format",
       "yarn workspace @tiendanube/components lint-staged"
+    ],
+    "packages/theme/**/*.{js,jsx,ts,tsx}": [
+      "yarn workspace @tiendanube/theme format",
+      "yarn workspace @tiendanube/theme lint-staged"
     ]
   },
   "contributors": [
@@ -58,6 +64,7 @@
   },
   "license": "MIT",
   "nohoist": [
-    "**/jest"
+    "**/jest",
+    "**/react-is"
   ]
 }
