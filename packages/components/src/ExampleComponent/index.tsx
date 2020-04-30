@@ -8,7 +8,7 @@ const ExampleComponentStyled = styled.div`
   border: 2px solid red;
   font-size: 2em;
   text-align: center;
-  background-color: ${variables.secondary};}
+  background-color: ${variables.primary}};
 `;
 
 interface Props {
@@ -16,6 +16,7 @@ interface Props {
 }
 
 const ExampleComponent: React.FC<Props> = ({ text }) => {
+  console.log('styles');
   return (
     <ExampleComponentStyled>Example Component : {text}</ExampleComponentStyled>
   );
