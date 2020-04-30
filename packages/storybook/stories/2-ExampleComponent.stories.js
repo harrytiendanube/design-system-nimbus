@@ -7,7 +7,7 @@ export default {
 };
 
 export const ToStorybook = () => (
-  <ExampleComponent text="Create React Library Example 😄" />
+  <ExampleComponent text="with sass theme provider lib 😄" />
 );
 
 ToStorybook.story = {
