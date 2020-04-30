@@ -21,22 +21,38 @@
     "test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
     "test:watch": "react-scripts test --env=jsdom",
     "predeploy": "cd example && yarn install && yarn run build",
-    "deploy": "gh-pages -d example/build"
-  },
-  "peerDependencies": {
-    "react": "16.0.0"
+    "deploy": "gh-pages -d example/build",
+    "format": "prettier --write \"src/**/*.tsx\"",
+    "lint": "cd ../.. && eslint packages/theme --quiet --ext .ts",
+    "lint-staged": "cd ../.. && eslint --ext .js,.jsx,.ts,.tsx"
   },
   "devDependencies": {
     "@types/jest": "25.1.4",
     "@types/react": "16.9.27",
-    "microbundle-crl": "0.13.8",
+    "typescript-styled-plugin": "0.15.0",
     "babel-eslint": "10.0.3",
     "cross-env": "7.0.2",
     "gh-pages": "2.2.0",
+    "microbundle-crl": "0.13.8",
+    "node-sass": "4.14.0",
     "npm-run-all": "4.1.5",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "sass-extract": "2.1.0",
+    "sass-extract-js": "0.4.0",
+    "sass-extract-loader": "1.1.0"
+  },
+  "peerDependencies": {
+    "react": "16.0.0"
+  },
+  "dependencies": {
+    "@types/styled-components": "5.1.0",
+    "babel-loader": "8.1.0",
+    "node-sass": "4.14.0",
+    "react": "16.13.1",
+    "react-is": "16.13.1",
+    "styled-components": "5.1.0"
   },
   "files": [
     "dist"
