@@ -1,25 +1,23 @@
 import * as React from 'react';
 
-import { styled, variables } from '@tiendanube/theme';
+/* import { styled, variables } from '@tiendanube/theme/src'; */
 
-const ExampleComponentStyled = styled.div`
+/* const ExampleComponentStyled = styled.div`
   margin: 2em;
   padding: 0.5em;
   border: 2px solid red;
   font-size: 2em;
   text-align: center;
   background-color: ${variables.primary}};
-`;
+`; */
 
 interface Props {
+  /** Texto */
   text: string;
 }
 
-const ExampleComponent: React.FC<Props> = ({ text }) => {
-  console.log('styles');
-  return (
-    <ExampleComponentStyled>Example Component : {text}</ExampleComponentStyled>
-  );
+const ExampleComponent = ({ text = 'Inicial' }: Props) => {
+  return <div>Example Component 123 : {text}</div>;
 };
 
 export default ExampleComponent;

@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { ExampleComponent } from '@tiendanube/components';
 
 export default {
