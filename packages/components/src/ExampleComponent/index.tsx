@@ -12,11 +12,13 @@ import * as React from 'react';
 `; */
 
 interface Props {
-  /** Texto */
+  /** Texto una descripción para ayudar */
   text: string;
 }
 
-const ExampleComponent = ({ text = 'Inicial' }: Props) => {
+const ExampleComponent: React.FC<Props> = ({
+  text = 'Inicial desde comienzo',
+}) => {
   return <div>Example Component 123 : {text}</div>;
 };
 
