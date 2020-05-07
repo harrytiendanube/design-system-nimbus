@@ -3,7 +3,7 @@ import { ExampleComponent } from '../../components/src';
 
 export default {
   title: 'ExampleComponent',
-  component: ExampleComponent
+  component: ExampleComponent,
 };
 
 export const ToStorybook = () => (
