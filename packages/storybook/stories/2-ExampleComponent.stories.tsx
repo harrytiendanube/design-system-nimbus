@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import { ExampleComponent } from '../../components/src';
 
 export default {
@@ -6,10 +7,6 @@ export default {
   component: ExampleComponent,
 };
 
-export const ToStorybook = () => (
+export const ToStorybook = (): JSX.Element => (
   <ExampleComponent text="with sass theme provider lib 😄" />
 );
-
-ToStorybook.story = {
-  name: 'Example component',
-};

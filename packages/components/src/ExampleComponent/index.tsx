@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export type Props = {
+export type TypePropsExampleComponent = {
   /**
    * @prop text
    * @value 'Buttons's label
@@ -8,7 +8,9 @@ export type Props = {
   text: string;
 };
 
-const ExampleComponent: React.FC<Props> = ({ text = 'Default text' }) => {
+const ExampleComponent: React.FC<TypePropsExampleComponent> = ({
+  text = 'Default text',
+}) => {
   return <div>Example Component : {text}</div>;
 };
 
