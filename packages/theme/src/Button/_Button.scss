@@ -1,0 +1,41 @@
+@import '../NimbusCore/nimbus-core';
+@import 'mixins';
+
+// Buttons
+
+.#{$prefix}--button {
+  display: inline-block;
+  padding: $button-padding-y $button-padding-x;
+  font-family: $font-family;
+  font-size: $font-size-base;
+  line-height: $text-line-height;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: $size-base * 0.5;
+  transition: 0.15s ease;
+
+  .button_start {
+    margin-right: 8px;
+  }
+
+  .button_end {
+    margin-left: 8px;
+  }
+}
+
+@each $color, $value in $theme-colors {
+  .#{$prefix}--button_#{$color} {
+    @extend .#{$prefix}--button;
+    @include button($value);
+  }
+}
+
+@each $color, $value in $theme-colors {
+  .#{$prefix}--button_#{$color}_outline {
+    @extend .#{$prefix}--button;
+    @include button-outline($value);
+  }
+}

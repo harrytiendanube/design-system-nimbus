@@ -1,7 +1,7 @@
 /* eslint-disable import/no-webpack-loader-syntax */
 /* eslint-disable @typescript-eslint/no-var-requires */
 import styled from 'styled-components'
-
+// comment
 type Colors = {
   primary: string
   secondary: string
