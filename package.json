@@ -11,8 +11,8 @@
     "format": "yarn workspaces run format",
     "start:components": "yarn workspace @tiendanube/components run start",
     "start:storybook": "yarn workspace @tiendanube/storybook run storybook",
-    "start:theme": "yarn workspace @tiendanube/theme run start",
-    "start:dev": "concurrently --kill-others \"yarn start:components\" \"yarn start:storybook\" \"yarn start:theme\""
+    "start:theme": "yarn workspace @tiendanube/theme run sass",
+    "start:dev": "concurrently --kill-others \"yarn start:storybook\" \"yarn start:theme\" \"yarn start:components\""
   },
   "npmClient": "yarn",
   "workspaces": [
