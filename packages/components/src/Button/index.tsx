@@ -1,6 +1,6 @@
 import * as React from 'react';
-/* import '@tiendanube/theme/dist/Button/Button.css';
- */
+import '@tiendanube/theme/dist/Button/Button.css';
+
 type Color = 'primary' | 'secondary' | 'light' | 'danger' | 'transparent';
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
