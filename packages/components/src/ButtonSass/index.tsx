@@ -1,6 +1,6 @@
 import * as React from 'react';
-import '@tiendanube/theme/dist/index.css';
-
+/* import '@tiendanube/theme/dist/index.css';
+ */
 interface Props {
   /** Good job guys */
   text: string;

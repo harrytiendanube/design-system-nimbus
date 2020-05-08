@@ -1,19 +1,54 @@
-import { Meta, Story, Props, Preview } from '@storybook/addon-docs/blocks';
+import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
+import { withKnobs, select, text } from "@storybook/addon-knobs";
+import { withA11y } from "@storybook/addon-a11y";
+import Button from '../../components/src/Button';
 
-import { ExampleComponent } from '../../components/src';
+import '../utils/style.css';
 
-<Meta title="Atoms/Example MDX Example" component={ExampleComponent} />
+<Meta title="Atoms/Button" component={Button} />
 
-# ExampleComponent
+# Buttons
 
-## ExampleComponent para el administrador con sus estados.
+## Botones para el administrador con sus estados.
 
 Utiliza los botones para acciones que no requieran cambios en la URL.
 
 <Preview>
-  <Story name="standard">
-    <ExampleComponent text="with sass theme provider MDX 😄" />
+  <Story name="standard" parameters={{ decorators: [withKnobs, withA11y] }}>
+    <Button
+      start="Facebook"
+      end="LongArrowRight"
+      color={select("Color", ["default", "secondary", "light"])}
+    >
+      {text("Texto", "Texto inicial")}
+    </Button>
   </Story>
 </Preview>
 
-<Props of={ExampleComponent} />
+<Props of={Button} />
+
+## Colores
+
+<Preview withToolbar>
+  <Story name="clases">
+    <div className="separate">
+      <Button color="primary"> Primary </Button>
+      <Button color="secondary"> Secondary </Button>
+      <Button color="light"> Light </Button>
+      <Button color="danger"> Danger </Button>
+      <Button color="transparent"> Transparent </Button>
+    </div>
+  </Story>
+</Preview>
+
+## Outline
+
+<Preview withToolbar>
+  <Story name="outline">
+    <div className="separate">
+      <Button color="primary" outline={true}>Primary</Button>
+      <Button color="secondary" outline={true}>Secondary</Button>
+      <Button color="danger" outline={true}>Danger</Button>
+    </div>
+  </Story>
+</Preview>
