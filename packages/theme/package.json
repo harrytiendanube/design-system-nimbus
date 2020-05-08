@@ -16,7 +16,7 @@
   "scripts": {
     "clean": "rm -rf dist",
     "build:sass": "yarn clean && node-sass src -o dist --output-style compressed",
-    "sass": "yarn build:sass &&  node-sass -w -r src -o dist --output-style compressed",
+    "sass": "yarn build:sass && node-sass -w -r src -o dist --output-style compressed",
     "____________": "Borrar todo para abajo",
     "build": "microbundle-crl --no-compress --format modern,cjs",
     "start": "microbundle-crl watch --no-compress --format modern,cjs",
