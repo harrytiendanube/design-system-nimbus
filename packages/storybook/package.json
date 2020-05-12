@@ -4,12 +4,12 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "format": "prettier --write \"stories/**/*.ts*\"",
+    "format": "prettier --write \"stories/**/*.tsx\"",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "test": "jest",
-    "lint": "cd ../.. && eslint packages/storybook --quiet --ext .js",
-    "lint-staged": "cd ../.. && eslint --ext .js,.jsx"
+    "lint": "cd ../.. && eslint packages/storybook --quiet --ext .tsx",
+    "lint-staged": "cd ../.. && eslint --ext .ts,.tsx"
   },
   "dependencies": {
     "@tiendanube/components": "1.0.0",

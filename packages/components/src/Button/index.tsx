@@ -1,33 +1,33 @@
-import * as React from 'react';
-import '@tiendanube/styles/dist/Button.css';
+import * as React from 'react'
+import '@tiendanube/styles/dist/Button.css'
 
-type Color = 'primary' | 'secondary' | 'light' | 'danger' | 'transparent';
+type Color = 'primary' | 'secondary' | 'light' | 'danger' | 'transparent'
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   /**
     Escribe dentro de las las etiquetas para renderizar el contenido.
   */
-  children: React.ReactNode;
+  children: React.ReactNode
   /**
    * Cambia el estilo del componente
    */
-  className?: string;
+  className?: string
   /**
    * Colores "primary", "secondary", "Light", "Danger", "Transparent"
    */
-  color: Color;
+  color: Color
   /**
    * Nombre del Icono que mostrará al comienzo del botón.
    */
-  start?: string;
+  start?: string
   /**
    * Nombre del Icono que mostrará al final del botón.
    */
-  end?: string;
+  end?: string
   /**
    * Fondo transparente con borde de color.
    */
-  outline?: boolean;
+  outline?: boolean
 }
 
 /**
@@ -53,7 +53,7 @@ const Button: React.FC<Props> = ({
       {children}
       {/* {end && <span name={end} className="button_end"></span>} */}
     </button>
-  );
-};
+  )
+}
 
-export default Button;
+export default Button

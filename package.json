@@ -19,15 +19,15 @@
     "packages/*"
   ],
   "lint-staged": {
-    "packages/storybook/**/*.{js,jsx}": [
+    "packages/storybook/**/*.{ts,tsx}": [
       "yarn workspace @tiendanube/storybook format",
       "yarn workspace @tiendanube/storybook lint-staged"
     ],
-    "packages/components/**/*.{js,jsx,ts,tsx}": [
+    "packages/components/**/*.{ts,tsx}": [
       "yarn workspace @tiendanube/components format",
       "yarn workspace @tiendanube/components lint-staged"
     ],
-    "packages/styles/**/*.{js,jsx,ts,tsx}": [
+    "packages/styles/**/*.{scss}": [
       "yarn workspace @tiendanube/styles format",
       "yarn workspace @tiendanube/styles lint-staged"
     ]

@@ -1,5 +1,5 @@
 describe('smoke test', () => {
   it('Should be return sum', () => {
-    expect(2).toBe(2);
-  });
-});
+    expect(2).toBe(2)
+  })
+})
