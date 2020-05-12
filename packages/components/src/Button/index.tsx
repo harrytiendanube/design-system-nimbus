@@ -1,5 +1,5 @@
 import * as React from 'react'
-import '@tiendanube/styles/dist/Button.css'
+import '@tiendanube/styles/css/Button.css'
 
 type Color = 'primary' | 'secondary' | 'light' | 'danger' | 'transparent'
 

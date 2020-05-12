@@ -14,10 +14,10 @@
     "node": ">=10"
   },
   "scripts": {
-    "clean": "rm -rf dist && rm -rf css-tmp",
+    "clean": "rm -rf css && rm -rf css-tmp",
     "start": "yarn clean && yarn watch-css",
     "build-css": "node-sass -r src -o css-tmp --output-style compressed",
-    "prefix": "postcss css-tmp --use autoprefixer -d dist && rm -rf css-tmp",
+    "prefix": "postcss css-tmp --use autoprefixer -d css && rm -rf css-tmp",
     "watch-css": "nodemon -e scss -x 'yarn build-css && yarn prefix'",
     "lint": "echo Review is it necesary lint",
     "test": "echo Review is it necesary test",

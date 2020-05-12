@@ -29,6 +29,8 @@
 
 ## Styles ignoring
 /packages/styles/dist
+/packages/styles/css
+/packages/styles/scss
 
 ##root
 npm-debug.log*
