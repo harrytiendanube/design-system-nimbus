@@ -11,8 +11,8 @@
     "format": "yarn workspaces run format",
     "start:components": "yarn workspace @tiendanube/components run start",
     "start:storybook": "yarn workspace @tiendanube/storybook run storybook",
-    "start:theme": "yarn workspace @tiendanube/theme run start",
-    "start:dev": "concurrently --kill-others \"yarn start:storybook\" \"yarn start:theme\" \"yarn start:components\""
+    "start:styles": "yarn workspace @tiendanube/styles run start",
+    "start:dev": "concurrently --kill-others \"yarn start:storybook\" \"yarn start:styles\" \"yarn start:components\""
   },
   "npmClient": "yarn",
   "workspaces": [
@@ -27,9 +27,9 @@
       "yarn workspace @tiendanube/components format",
       "yarn workspace @tiendanube/components lint-staged"
     ],
-    "packages/theme/**/*.{js,jsx,ts,tsx}": [
-      "yarn workspace @tiendanube/theme format",
-      "yarn workspace @tiendanube/theme lint-staged"
+    "packages/styles/**/*.{js,jsx,ts,tsx}": [
+      "yarn workspace @tiendanube/styles format",
+      "yarn workspace @tiendanube/styles lint-staged"
     ]
   },
   "contributors": [

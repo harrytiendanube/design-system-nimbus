@@ -54,7 +54,7 @@
     "@fortawesome/free-brands-svg-icons": "5.13.0",
     "@fortawesome/pro-light-svg-icons": "5.13.0",
     "@fortawesome/react-fontawesome": "0.1.9",
-    "@tiendanube/theme": "1.0.0",
+    "@tiendanube/styles": "1.0.0",
     "babel-loader": "8.1.0",
     "react": "16.13.1",
     "react-is": "16.13.1"

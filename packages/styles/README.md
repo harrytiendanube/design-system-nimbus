@@ -13,14 +13,14 @@ npm install --save @tiendanube/theme
 ## Usage
 
 ```tsx
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
-import MyComponent from '@tiendanube/theme'
-import '@tiendanube/theme/dist/index.css'
+import MyComponent from "@tiendanube/components";
+import "@tiendanube/styles/dist/index.css";
 
 class Example extends Component {
   render() {
-    return <MyComponent />
+    return <MyComponent />;
   }
 }
 ```

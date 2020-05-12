@@ -1,7 +1,7 @@
 {
-  "name": "@tiendanube/theme",
+  "name": "@tiendanube/styles",
   "version": "1.0.0",
-  "description": "Shereable theme styles",
+  "description": "Shareable styles",
   "author": "tiendanube",
   "license": "MIT",
   "repository": "missing",
