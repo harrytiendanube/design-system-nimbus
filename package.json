@@ -38,7 +38,7 @@
   ],
   "dependencies": {
     "cross-env": "7.0.2",
-    "eslint-config-react-app": "^5.2.1"
+    "eslint-config-react-app": "5.2.1"
   },
   "devDependencies": {
     "@tiendanube/eslint-config": "^0.2.0",
