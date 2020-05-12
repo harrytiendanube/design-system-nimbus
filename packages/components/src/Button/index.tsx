@@ -1,5 +1,5 @@
 import * as React from 'react';
-import '@tiendanube/theme/dist/Button/Button.css';
+import '@tiendanube/theme/dist/Button.css';
 
 type Color = 'primary' | 'secondary' | 'light' | 'danger' | 'transparent';
 
