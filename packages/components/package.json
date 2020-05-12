@@ -56,7 +56,6 @@
     "@fortawesome/react-fontawesome": "0.1.9",
     "@tiendanube/theme": "1.0.0",
     "babel-loader": "8.1.0",
-    "node-sass": "4.14.0",
     "react": "16.13.1",
     "react-is": "16.13.1"
   },

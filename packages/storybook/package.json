@@ -12,8 +12,6 @@
     "lint-staged": "cd ../.. && eslint --ext .js,.jsx"
   },
   "dependencies": {
-    "@emotion/core": "10.0.28",
-    "@emotion/styled": "10.0.27",
     "@tiendanube/components": "1.0.0",
     "react-docgen-typescript-loader": "^3.7.2"
   },
