@@ -37,5 +37,10 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ]
+  ],
+  "devDependencies": {
+    "stylelint-config-sass-guidelines": "7.0.0",
+    "stylelint-order": "4.0.0",
+    "stylelint-selector-bem-pattern": "2.1.0"
+  }
 }
