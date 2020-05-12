@@ -1,4 +1,4 @@
-@import "core";
+@import 'core';
 // Buttons
 
 .#{$prefix}--button {
@@ -27,6 +27,7 @@
 @each $color, $value in $theme-colors {
   .#{$prefix}--button_#{$color} {
     @extend .#{$prefix}--button;
+
     @include button($value);
   }
 }
@@ -34,6 +35,7 @@
 @each $color, $value in $theme-colors {
   .#{$prefix}--button_#{$color}_outline {
     @extend .#{$prefix}--button;
+
     @include button-outline($value);
   }
 }

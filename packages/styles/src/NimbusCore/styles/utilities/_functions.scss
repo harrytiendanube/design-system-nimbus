@@ -1,10 +1,14 @@
 // Functions
 
 // Color Contrast
-// 
+//
 // This function checks the color of a component against YIQ color contrast standard and returns a value
 
-@function color-contrast($color, $dark: $contrast-dark, $light: $contrast-light) {
+@function color-contrast(
+  $color,
+  $dark: $contrast-dark,
+  $light: $contrast-light
+) {
   $r: red($color);
   $g: green($color);
   $b: blue($color);

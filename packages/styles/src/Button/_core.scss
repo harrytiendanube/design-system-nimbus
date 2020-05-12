@@ -1,4 +1,4 @@
-@import "../NimbusCore/nimbus-core";
+@import '../NimbusCore/nimbus-core';
 
 // Mixins
 
@@ -10,6 +10,7 @@
   background-color: $color;
   color: color-contrast($color);
   border-color: $color;
+
   &:hover {
     background-color: $hover-color;
     border-color: $hover-color;
@@ -19,6 +20,7 @@
 @mixin button-outline($color, $hover-color: darken($color, 15%)) {
   color: $color;
   border-color: $color;
+
   &:hover {
     background-color: $hover-color;
     color: color-contrast($color);
