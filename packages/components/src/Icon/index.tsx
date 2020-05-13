@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 import {
   FontAwesomeIcon,
   Props as FAProps
@@ -9,20 +9,24 @@ export const icons = { ...fal, ...fab }
 
 export const variantIcons = Object.keys(icons).map((icon) => icon.substring(2))
 
-const DEFAULT_COLOR = 'inherit'
 const DEFAULT_SIZE = 'sm'
+const DEFAULT_COLOR = 'inherit'
 
 interface Props {
   /**
-   * Icon name's
+   * Cambia el estilo del componente
    */
-  name: FAProps['name']
+  className?: string
   /**
-   * Icon sizes's
+   * Nombre del icono (ver Galería valores permitidos)
+   */
+  name: string
+  /**
+   * Tamaño: "sm" | "xs" | "lg" | "1x" | "2x" | "3x" | "4x" | "5x" | "6x" | "7x" | "8x" | "9x" | "10x"
    */
   size?: FAProps['size']
   /**
-   * Icon color's
+   * Color
    */
   color?: FAProps['color']
 }
@@ -33,12 +37,14 @@ interface Props {
  */
 
 const Icon: React.FC<Props> = ({
+  className = '',
   name,
   size = DEFAULT_SIZE,
   color = DEFAULT_COLOR
 }: Props) => {
   return (
     <FontAwesomeIcon
+      className={className}
       icon={icons[`fa${name}`]}
       size={size}
       color={color}

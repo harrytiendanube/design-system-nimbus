@@ -1,5 +1,6 @@
 import * as React from "react";
 import "@tiendanube/styles/css/Button.css";
+import { Icon } from "../";
 
 type Color = "primary" | "secondary" | "light" | "danger" | "transparent";
 
@@ -34,6 +35,7 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   Utiliza `Button` como componente de acción.
 */
 const Button: React.FC<Props> = ({
+  className = "",
   start,
   children,
   end,
@@ -44,11 +46,13 @@ const Button: React.FC<Props> = ({
   return (
     <button
       {...defaultProps}
-      className={`nimbus--button--${color}${outline ? "-outline" : ""}`}
+      className={`${className} nimbus--button--${color}${
+        outline ? "-outline" : ""
+      }`}
     >
-      {/* {start && <span name={start} className="button_start"></span>} */}
+      {start && <Icon name={start} className="button_start" />}
       {children}
-      {/* {end && <span name={end} className="button_end"></span>} */}
+      {end && <Icon name={end} className="button_end" />}
     </button>
   );
 };

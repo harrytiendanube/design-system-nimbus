@@ -1,2 +1,3 @@
-export { default as Button } from "./Button";
-export * from "./Button";
+import Button from "./Button";
+import Icon, { variantIcons } from "./Icon";
+export { Button, Icon, variantIcons };
