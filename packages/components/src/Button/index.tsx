@@ -37,7 +37,6 @@ const Button: React.FC<Props> = ({
   start,
   children,
   end,
-  className = "",
   color = "primary",
   outline = false,
   ...defaultProps
@@ -45,9 +44,7 @@ const Button: React.FC<Props> = ({
   return (
     <button
       {...defaultProps}
-      className={`${className} nimbus--button_${color}${
-        outline ? "_outline" : ""
-      }`}
+      className={`nimbus--button--${color}${outline ? "-outline" : ""}`}
     >
       {/* {start && <span name={start} className="button_start"></span>} */}
       {children}
