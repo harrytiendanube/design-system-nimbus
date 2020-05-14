@@ -1,4 +1,6 @@
 import * as React from 'react'
+import '@tiendanube/styles/css/Icon.css'
+
 import {
   FontAwesomeIcon,
   Props as FAProps
@@ -14,10 +16,6 @@ const DEFAULT_COLOR = 'inherit'
 
 interface Props {
   /**
-   * Cambia el estilo del componente
-   */
-  className?: string
-  /**
    * Nombre del icono (ver Galería valores permitidos)
    */
   name: string
@@ -29,6 +27,14 @@ interface Props {
    * Color
    */
   color?: FAProps['color']
+  /**
+   * Add start space to icon
+   */
+  startPadding?: boolean
+  /**
+   * Add end space to icon
+   */
+  endPadding?: boolean
 }
 
 /*
@@ -37,20 +43,30 @@ interface Props {
  */
 
 const Icon: React.FC<Props> = ({
-  className = '',
   name,
-  size = DEFAULT_SIZE,
-  color = DEFAULT_COLOR
+  size,
+  color,
+  startPadding,
+  endPadding
 }: Props) => {
   return (
     <FontAwesomeIcon
-      className={className}
+      className={`${startPadding ? 'icon__padding_start' : ''} ${
+        endPadding ? 'icon__padding_end' : ''
+      }`}
       icon={icons[`fa${name}`]}
       size={size}
       color={color}
       data-testid={`icon-${name}`}
     />
   )
+}
+
+Icon.defaultProps = {
+  size: DEFAULT_SIZE,
+  color: DEFAULT_COLOR,
+  startPadding: false,
+  endPadding: false
 }
 
 export default Icon
