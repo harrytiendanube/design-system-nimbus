@@ -1,0 +1,35 @@
+@import '../NimbusCore/nimbus-core';
+
+// Inputs
+
+.#{$prefix}--input {
+  font-family: $font-family;
+
+  label {
+    display: block;
+    width: 100%;
+    margin-bottom: $size-base * 0.5;
+    font-size: $font-size-base * 0.875;
+    color: $text-gray;
+  }
+
+  input {
+    padding: $button-padding-y;
+    width: 100%;
+    font-size: $font-size-base;
+    text-align: left;
+    background-color: transparent;
+    color: $dark-blue;
+    border: 1px solid $light-gray;
+    border-radius: $size-base * 0.5;
+    transition: 0.15s ease;
+
+    &::placeholder {
+      color: $light-gray;
+    }
+
+    &:focus {
+      border-color: $dark-blue;
+    }
+  }
+}
