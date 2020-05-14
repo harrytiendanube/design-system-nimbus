@@ -1,6 +1,6 @@
 {
   "name": "components-example",
-  "homepage": "https://tiendanube.github.io/components",
+  "homepage": "https://tiendanube.github.io/tiendanube#components",
   "version": "0.0.0",
   "private": true,
   "dependencies": {
