@@ -14,14 +14,6 @@
   text-align: center;
   transition: 0.15s ease;
   vertical-align: middle;
-
-  .button_start {
-    margin-right: 8px;
-  }
-
-  .button_end {
-    margin-left: 8px;
-  }
 }
 
 @each $color, $value in $theme-colors {
