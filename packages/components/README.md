@@ -1,13 +1,24 @@
-# components
+  <section style="text-align:center;">
+  <img src="https://d26lpennugtm8s.cloudfront.net/assets/insti/img/json-ld-tiendanube.png" style="width: 300px; margin-bottom: 20px">
+  </section>
 
-> shereable tiendanube&#x27;s components
+# @tiendanube/components
+
+> shareable tiendanube&#x27;s components
 
 [![NPM](https://img.shields.io/npm/v/components.svg)](https://www.npmjs.com/package/components) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Install
 
+<p>Npm<p>
+
 ```bash
-npm install --save components
+npm install --save @tiendanube/components
+```
+
+<p>Yarn</p>
+```bash
+yarn  add @tiendanube/components -E
 ```
 
 ## Usage
@@ -15,12 +26,11 @@ npm install --save components
 ```tsx
 import React, { Component } from 'react'
 
-import MyComponent from 'components'
-import 'components/dist/index.css'
+import {Button} from '@tiendanube/components'
 
-class Example extends Component {
+function Example () {
   render() {
-    return <MyComponent />
+    return <Button color='primary'>Example Button</Button>
   }
 }
 ```
