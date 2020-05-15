@@ -1,5 +1,5 @@
-import { addons } from '@storybook/addons';
-import storyTheme from './storyTheme';
+import { addons } from "@storybook/addons";
+import storyTheme from "./storyTheme";
 
 addons.setConfig({
   theme: storyTheme,

@@ -7,6 +7,10 @@ module.exports = {
   globals: {
     Promise: true,
   },
+  plugins: ["prettier"],
+  rules: {
+    "prettier/prettier": "error",
+  },
   extends: [
     "standard",
     "standard-react",
@@ -19,4 +23,4 @@ module.exports = {
     "prettier/@typescript-eslint",
     "plugin:react/recommended",
   ],
-};
+}

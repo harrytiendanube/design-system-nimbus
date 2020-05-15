@@ -21,7 +21,7 @@
     "watch-css": "nodemon -e scss -x 'yarn build-css && yarn prefix'",
     "lint": "stylelint \"src/**/*.scss\"",
     "test": "echo Review is it necesary test",
-    "format": "prettier \"src/**/*.scss\" --fix",
+    "format": "stylelint \"src/**/*.scss\" --fix",
     "lint-staged": "echo add rules staged"
   },
   "dependencies": {

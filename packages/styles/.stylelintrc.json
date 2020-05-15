@@ -1,5 +1,6 @@
 {
   "rules": {
+    "string-quotes": "double",
     "plugin/selector-bem-pattern": {
       "componentName": "[A-Z]+",
       "componentSelectors": {
