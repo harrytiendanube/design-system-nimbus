@@ -1,40 +1,40 @@
-import * as React from 'react'
-import '@tiendanube/styles/css/Icon.css'
+import * as React from "react";
+import "@tiendanube/styles/css/Icon.css";
 
 import {
   FontAwesomeIcon,
-  Props as FAProps
-} from '@fortawesome/react-fontawesome'
-import { fal } from '@fortawesome/pro-light-svg-icons'
-import { fab } from '@fortawesome/free-brands-svg-icons'
-export const icons = { ...fal, ...fab }
+  Props as FAProps,
+} from "@fortawesome/react-fontawesome";
+import { fal } from "@fortawesome/pro-light-svg-icons";
+import { fab } from "@fortawesome/free-brands-svg-icons";
+export const icons = { ...fal, ...fab };
 
-export const variantIcons = Object.keys(icons).map((icon) => icon.substring(2))
+export const variantIcons = Object.keys(icons).map((icon) => icon.substring(2));
 
-const DEFAULT_SIZE = 'sm'
-const DEFAULT_COLOR = 'inherit'
+const DEFAULT_SIZE = "sm";
+const DEFAULT_COLOR = "inherit";
 
 interface Props {
   /**
    * Nombre del icono (ver Galería valores permitidos)
    */
-  name: string
+  name: string;
   /**
    * Tamaño: "sm" | "xs" | "lg" | "1x" | "2x" | "3x" | "4x" | "5x" | "6x" | "7x" | "8x" | "9x" | "10x"
    */
-  size?: FAProps['size']
+  size?: FAProps["size"];
   /**
    * Color
    */
-  color?: FAProps['color']
+  color?: FAProps["color"];
   /**
    * Add start space to icon
    */
-  startPadding?: boolean
+  startPadding?: boolean;
   /**
    * Add end space to icon
    */
-  endPadding?: boolean
+  endPadding?: boolean;
 }
 
 /*
@@ -47,26 +47,26 @@ const Icon: React.FC<Props> = ({
   size,
   color,
   startPadding,
-  endPadding
+  endPadding,
 }: Props) => {
   return (
     <FontAwesomeIcon
-      className={`${startPadding ? 'icon__padding_start' : ''} ${
-        endPadding ? 'icon__padding_end' : ''
+      className={`${startPadding ? "icon__padding_start" : ""} ${
+        endPadding ? "icon__padding_end" : ""
       }`}
       icon={icons[`fa${name}`]}
       size={size}
       color={color}
       data-testid={`icon-${name}`}
     />
-  )
-}
+  );
+};
 
 Icon.defaultProps = {
   size: DEFAULT_SIZE,
   color: DEFAULT_COLOR,
   startPadding: false,
-  endPadding: false
-}
+  endPadding: false,
+};
 
-export default Icon
+export default Icon;
