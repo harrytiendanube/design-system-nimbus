@@ -17,9 +17,7 @@
 
   @if ($contrast >= $contrast-threshold) {
     @return $dark;
-  }
-
-  @else {
+  } @else {
     @return $light;
   }
 }

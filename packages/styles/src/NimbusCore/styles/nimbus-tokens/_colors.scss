@@ -13,19 +13,19 @@ $danger: #dc4b43;
 $white: #fff;
 
 $nimbus-colors: (
-  'primary-blue': $primary-blue,
-  'sky-blue': $sky-blue,
-  'dark-blue': $dark-blue,
-  'deep-blue': $deep-blue,
-  'nube-white': $nube-white,
-  'light-gray': $light-gray,
-  'mid-gray': $mid-gray,
-  'dark-gray': $dark-gray,
-  'text-gray': $text-gray,
-  'success': $success,
-  'warning': $warning,
-  'danger': $danger,
-  'white': $white
+  "primary-blue": $primary-blue,
+  "sky-blue": $sky-blue,
+  "dark-blue": $dark-blue,
+  "deep-blue": $deep-blue,
+  "nube-white": $nube-white,
+  "light-gray": $light-gray,
+  "mid-gray": $mid-gray,
+  "dark-gray": $dark-gray,
+  "text-gray": $text-gray,
+  "success": $success,
+  "warning": $warning,
+  "danger": $danger,
+  "white": $white,
 );
 
 // Theme Colors
@@ -38,10 +38,10 @@ $light: $nube-white;
 $danger: $danger;
 
 $theme-colors: (
-  'primary': $primary,
-  'secondary': $secondary,
-  'light': $light,
-  'danger': $danger
+  "primary": $primary,
+  "secondary": $secondary,
+  "light": $light,
+  "danger": $danger,
 );
 
 // Contrast Colors
