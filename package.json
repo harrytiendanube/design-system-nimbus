@@ -11,6 +11,7 @@
     "test": "yarn workspaces run test",
     "format": "yarn workspaces run format",
     "build-storybook": "yarn workspace @tiendanube/storybook run build-storybook",
+    "test:components": "yarn workspace @tiendanube/components run test:unit --verbose",
     "start:components": "yarn workspace @tiendanube/components run start",
     "start:storybook": "yarn workspace @tiendanube/storybook run storybook",
     "start:styles": "yarn workspace @tiendanube/styles run start",

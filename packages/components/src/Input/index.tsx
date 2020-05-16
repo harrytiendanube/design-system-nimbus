@@ -4,7 +4,7 @@ import "@tiendanube/styles/css/Input.css";
 interface Props
   extends Omit<
     React.InputHTMLAttributes<HTMLInputElement>,
-    "onChange" | "value" | "id" | "name"
+    "className" | "style" | "onChange" | "id" | "name" | "value"
   > {
   /**
    * Nombre
@@ -27,10 +27,8 @@ interface Props
 const Input: React.FunctionComponent<Props> = ({ label, ...shared }) => {
   return (
     <div className="nimbus--input">
-      <label className="" htmlFor={`input_${name}`}>
-        {label}
-      </label>
-      <input id={`input_${name}`} {...shared} />
+      <label htmlFor={`input_${name}`}>{label}</label>
+      <input {...shared} className="" style={{}} id={`input_${name}`} />
     </div>
   );
 };

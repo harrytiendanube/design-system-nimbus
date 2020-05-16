@@ -7,7 +7,7 @@ type Color = "primary" | "secondary" | "light" | "danger" | "transparent";
 interface Props
   extends Omit<
     React.ButtonHTMLAttributes<HTMLButtonElement>,
-    "onClick" | "className"
+    "onClick" | "className" | "style"
   > {
   /**
     Escribe dentro de las las etiquetas para renderizar el contenido.
@@ -49,6 +49,7 @@ const Button: React.FC<Props> = ({
   return (
     <button
       {...share}
+      style={{}}
       className={`nimbus--button--${color}${outline ? "-outline" : ""}`}
     >
       {start && <Icon name={start} startPadding />}
