@@ -1,11 +1,5 @@
 /* eslint-disable */
 
-const getCssData = (variable) => {
-  return (
-    "." + getCssClassName(variable) + " {  /* Escriba el estilo aquí */  }"
-  );
-};
-
 const getCssClassName = (variable) => {
   var className = "";
   for (var index = 0; index < variable.length; index++) {
@@ -45,7 +39,9 @@ import "@testing-library/jest-dom/extend-expect";
 
 describe("${variable}", () => {
   it("Render ${variable}", () => {
-    const { getByTestId } = render(<${variable} data-testid="${variable}">children</${variable}>);
+    const { getByTestId } = render(
+      <${variable} data-testid="${variable}">children</${variable}>
+    );
     const component = getByTestId("${variable}");
     /** Validate than text is the same as the content tag */
     expect(component).toHaveTextContent("children");
@@ -54,21 +50,28 @@ describe("${variable}", () => {
 `;
 };
 
-const getJsData = (variable) => {
-  const ctrlName = variable + "Ctrl";
+const getScssData = (variable) => {
+  return `@import "core";
+// ${variable}
 
-  return (
-    "(function () { \n\t'use strict'; \n\tangular \n\t\t.module('clemente.components') \n\t\t.controller('" +
-    ctrlName +
-    "', " +
-    ctrlName +
-    "); \n\n\t\tfunction " +
-    ctrlName +
-    "($scope) { \n\t\t\treturn { \n\t\t\t/* Escribir código */\n\t\t\t} \n\t\t}; \n})();"
-  );
+%#{$prefix}--${getCssClassName(variable)} {}
+`;
+};
+
+const getInsertStyle = (variable) => {
+  return `@import "./${variable}/${variable}";\n`;
+};
+
+const getInsertComponent = (variable) => {
+  return `\n// ${variable} reference added
+export { default as ${variable} } from "./${variable}";
+export * from "./${variable}";\n`;
 };
 
 module.exports = {
   getTsxData,
   getTestData,
+  getScssData,
+  getInsertStyle,
+  getInsertComponent,
 };
