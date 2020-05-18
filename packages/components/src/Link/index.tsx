@@ -2,21 +2,15 @@ import * as React from "react";
 import Icon from "../Icon";
 import "@tiendanube/styles/css/Link.css";
 
-type Color = "primary" | "secondary" | "light" | "danger" | "transparent";
-
 interface Props
   extends Omit<
     React.AnchorHTMLAttributes<HTMLAnchorElement>,
-    "className" | "onClick" | "style"
+    "className" | "style"
   > {
   /**
     Escribe dentro de las las etiquetas para renderizar el contenido.
   */
   children: React.ReactNode;
-  /**
-   * Colores "primary", "secondary", "Light", "Danger", "Transparent"
-   */
-  color: Color;
   /**
    * Nombre del Icono que mostrará al comienzo del botón.
    */
@@ -27,31 +21,15 @@ interface Props
   end?: string;
 }
 
-const Link: React.FC<Props> = ({
-  start,
-  children,
-  end,
-  color,
-  ...share
-}: Props) => {
+const Link: React.FC<Props> = ({ start, children, end, ...share }: Props) => {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  function avoidOnclick(): void {}
   return (
-    <a
-      {...share}
-      onClick={avoidOnclick}
-      style={{}}
-      className={`nimbus--link link_${color}`}
-    >
-      {start && <Icon name={start} startMargin />}
+    <a {...share} style={{}} className="nimbus--link">
+      {start && <Icon name={start} startPadding />}
       {children}
-      {end && <Icon name={end} endMargin />}
+      {end && <Icon name={end} endPadding />}
     </a>
   );
-};
-
-Link.defaultProps = {
-  color: "primary",
 };
 
 export default Link;

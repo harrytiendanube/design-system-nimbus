@@ -35,14 +35,6 @@ interface Props {
    * Add end space to icon
    */
   endPadding?: boolean;
-  /**
-   * Add start space to icon
-   */
-  startMargin?: boolean;
-  /**
-   * Add end space to icon
-   */
-  endMargin?: boolean;
 }
 
 /*
@@ -56,15 +48,11 @@ const Icon: React.FC<Props> = ({
   color,
   startPadding,
   endPadding,
-  startMargin,
-  endMargin,
 }: Props) => {
   return (
     <FontAwesomeIcon
       className={`${startPadding ? "icon__padding_start" : ""} ${
         endPadding ? "icon__padding_end" : ""
-      } ${startMargin ? "icon__margin_start" : ""} ${
-        endMargin ? "icon__margin_end" : ""
       }`}
       icon={icons[`fa${name}`]}
       size={size}
@@ -79,8 +67,6 @@ Icon.defaultProps = {
   color: DEFAULT_COLOR,
   startPadding: false,
   endPadding: false,
-  startMargin: false,
-  endMargin: false,
 };
 
 export default Icon;

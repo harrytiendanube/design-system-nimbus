@@ -15,13 +15,3 @@
     color: darken($primary-blue, 0.15);
   }
 }
-
-.#{$prefix}--link__icon {
-  &--start {
-    margin-right: $size-base * 0.5;
-  }
-
-  &--end {
-    margin-left: $size-base * 0.5;
-  }
-}
