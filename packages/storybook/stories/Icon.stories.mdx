@@ -1,0 +1,36 @@
+import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
+import { withKnobs, color, select } from "@storybook/addon-knobs";
+import { withA11y } from "@storybook/addon-a11y";
+import { Icon } from '../../components/src';
+import { WrapGrid } from "./utils";
+
+<Meta title="Atoms/Icon" component={Icon} />
+
+# Icon
+
+## detail component
+
+Other description
+
+<Preview>
+  <Story
+    name="standard"
+    parameters={{ decorators: [withKnobs, withA11y] }}
+  >
+    <Icon
+      name="Alicorn"
+      size={select("Tamaño", ["1x", "2x", "3x", "4x", "5x"], "4x")}
+      color={color("Color", "#2C3357")}
+    />
+  </Story>
+</Preview>
+
+<Props of={Icon} />
+
+## Icon Galery
+
+<Preview>
+  <Story name="Icon Galery">
+    <WrapGrid />
+  </Story>
+</Preview>

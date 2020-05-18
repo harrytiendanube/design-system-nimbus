@@ -9,7 +9,8 @@
       },
       "utilitySelectors": "^\\.util-[a-z]+$"
     },
-    "selector-class-pattern": null
+    "selector-class-pattern": null,
+    "max-nesting-depth": 2
   },
   "extends": ["stylelint-config-sass-guidelines"],
   "plugins": ["stylelint-order", "stylelint-selector-bem-pattern"]

@@ -1,0 +1,96 @@
+import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
+import { withKnobs, select, text } from "@storybook/addon-knobs";
+import { withA11y } from "@storybook/addon-a11y";
+import { action } from "@storybook/addon-actions";
+import { Link } from '../../components/src';
+
+import '../utils/style.css';
+
+<Meta title="Atoms/Link" component={Link} />
+
+# Links
+
+## detail component
+
+Other description
+
+<Preview>
+  <Story name="standard" parameters={{ decorators: [withKnobs, withA11y] }}>
+    <Link
+      href={text("href", "http://www.tiendanube.com")}
+      target = "_blank"
+      onClick={action("onClick")}
+      start="Facebook"
+      end="LongArrowRight"
+      color={select("Color", ["default", "secondary", "light"])}
+    >
+      {text("Texto", "Texto")}
+    </Link>
+  </Story>
+</Preview>
+
+<Props of={Link} />
+
+## widthout con
+
+<Preview withToolbar>
+  <Story
+    name="widthout icon"
+  >
+     <Link
+      href={"http://www.tiendanube.com"}
+      target = "_blank"
+    >
+      Texto
+    </Link>
+  </Story>
+</Preview>
+
+## width start icon
+
+<Preview withToolbar>
+  <Story
+    name="width start icon"
+  >
+     <Link
+      href={"http://www.tiendanube.com"}
+      target = "_blank"
+      start = "Facebook"
+    >
+      Texto
+    </Link>
+  </Story>
+</Preview>
+
+## width end icon
+
+<Preview withToolbar>
+  <Story
+    name="width end icon"
+  >
+     <Link
+      href = {"http://www.tiendanube.com"}
+      target = "_blank"
+      end = "LongArrowRight"
+    >
+      Texto
+    </Link>
+  </Story>
+</Preview>
+
+## width start and end icon
+
+<Preview withToolbar>
+  <Story
+    name="width start and end icon"
+  >
+     <Link
+      href = {"http://www.tiendanube.com"}
+      target = "_blank"
+      start = "Facebook"
+      end = "LongArrowRight"
+    >
+      Texto
+    </Link>
+  </Story>
+</Preview>

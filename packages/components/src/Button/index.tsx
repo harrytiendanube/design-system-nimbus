@@ -1,21 +1,24 @@
 import * as React from "react";
 import "@tiendanube/styles/css/Button.css";
+import { Icon } from "../";
 
-type Color = "primary" | "secondary" | "light" | "danger" | "transparent";
-
-interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface Props
+  extends Omit<
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
+    "onClick" | "className" | "style"
+  > {
   /**
     Escribe dentro de las las etiquetas para renderizar el contenido.
   */
   children: React.ReactNode;
   /**
-   * Cambia el estilo del componente
+   * Click event
    */
-  className?: string;
+  onClick(event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void;
   /**
-   * Colores "primary", "secondary", "Light", "Danger", "Transparent"
+   * Color
    */
-  color: Color;
+  color: "primary" | "secondary" | "light" | "danger" | "transparent";
   /**
    * Nombre del Icono que mostrará al comienzo del botón.
    */
@@ -36,24 +39,26 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 const Button: React.FC<Props> = ({
   start,
   children,
+  color,
+  outline,
   end,
-  className = "",
-  color = "primary",
-  outline = false,
-  ...defaultProps
+  ...share
 }: Props) => {
   return (
     <button
-      {...defaultProps}
-      className={`${className} nimbus--button_${color}${
-        outline ? "_outline" : ""
-      }`}
+      {...share}
+      className={`nimbus--button--${color}${outline ? "-outline" : ""}`}
     >
-      {/* {start && <span name={start} className="button_start"></span>} */}
+      {start && <Icon name={start} startPadding />}
       {children}
-      {/* {end && <span name={end} className="button_end"></span>} */}
+      {end && <Icon name={end} endPadding />}
     </button>
   );
+};
+
+Button.defaultProps = {
+  color: "primary",
+  outline: false,
 };
 
 export default Button;
