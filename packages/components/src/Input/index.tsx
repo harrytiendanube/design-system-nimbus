@@ -28,7 +28,7 @@ const Input: React.FunctionComponent<Props> = ({ label, ...shared }) => {
   return (
     <div className="nimbus--input">
       <label htmlFor={`input_${name}`}>{label}</label>
-      <input {...shared} className="" style={{}} id={`input_${name}`} />
+      <input {...shared} id={`input_${name}`} />
     </div>
   );
 };

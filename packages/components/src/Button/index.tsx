@@ -2,8 +2,6 @@ import * as React from "react";
 import "@tiendanube/styles/css/Button.css";
 import { Icon } from "../";
 
-type Color = "primary" | "secondary" | "light" | "danger" | "transparent";
-
 interface Props
   extends Omit<
     React.ButtonHTMLAttributes<HTMLButtonElement>,
@@ -18,9 +16,9 @@ interface Props
    */
   onClick(event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void;
   /**
-   * Values: "primary", "secondary", "Light", "Danger", "Transparent"
+   * Color
    */
-  color: Color;
+  color: "primary" | "secondary" | "light" | "danger" | "transparent";
   /**
    * Nombre del Icono que mostrará al comienzo del botón.
    */
@@ -49,7 +47,6 @@ const Button: React.FC<Props> = ({
   return (
     <button
       {...share}
-      style={{}}
       className={`nimbus--button--${color}${outline ? "-outline" : ""}`}
     >
       {start && <Icon name={start} startPadding />}

@@ -3,7 +3,7 @@ import * as React from "react";
 interface Props
   extends Omit<
     React.HTMLAttributes<HTMLHeadingElement>,
-    "className" | "children"
+    "className" | "children" | "style"
   > {
   /** Element inside tag component */
   children: React.ReactNode;

@@ -24,7 +24,7 @@ interface Props
 const Link: React.FC<Props> = ({ start, children, end, ...share }: Props) => {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   return (
-    <a {...share} style={{}} className="nimbus--link">
+    <a {...share} className="nimbus--link">
       {start && <Icon name={start} startPadding />}
       {children}
       {end && <Icon name={end} endPadding />}

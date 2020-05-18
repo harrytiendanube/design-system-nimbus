@@ -4,12 +4,15 @@ import "@tiendanube/styles/css/Text.css";
 type Size = "regular";
 
 interface Props
-  extends Omit<React.HTMLAttributes<HTMLParagraphElement>, "className"> {
+  extends Omit<
+    React.HTMLAttributes<HTMLParagraphElement>,
+    "className" | "style"
+  > {
   /**
     Escribe dentro de las las etiquetas para renderizar el contenido.
   */
   children: React.ReactNode;
-  /** Tamaños "regular" */
+  /** Tamaño "regular" */
   size: Size;
 }
 
