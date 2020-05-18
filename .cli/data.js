@@ -18,6 +18,8 @@ const getCssClassName = (variable) => {
 
 const getTsxData = (variable) => {
   return `import * as React from "react";\n
+import "@tiendanube/styles/css/${variable}.css";
+
 interface Props
   extends Omit<React.HTMLAttributes<HTMLElement>, "className" | "children"> {
   /** Element inside tag component */
