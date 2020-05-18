@@ -7,7 +7,7 @@
   "scripts": {
     "format": "prettier --write \"stories/**/*.tsx\"",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
+    "build-storybook": "build-storybook -c .storybook -o .build",
     "test": "jest",
     "lint": "cd ../.. && eslint packages/storybook --quiet --ext .tsx",
     "lint-staged": "cd ../.. && eslint --ext .ts,.tsx"
