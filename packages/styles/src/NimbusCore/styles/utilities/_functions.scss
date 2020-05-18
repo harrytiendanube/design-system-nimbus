@@ -21,3 +21,15 @@
     @return $light;
   }
 }
+
+// Provide a map and index, and get back de relevant key value
+@function nimbus--key-by-index($map, $index) {
+  $keys: map-keys($map);
+  @return nth($keys, $index);
+}
+
+// Pass in a map, and get the last one in the list back
+@function last-map-item($map) {
+  $total-length: length($map);
+  @return map-get($map, nimbus--key-by-index($map, $total-length));
+}
