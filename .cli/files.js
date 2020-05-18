@@ -1,7 +1,6 @@
 /* eslint-disable */
-const inquirier = require("./inquirer");
-
-const fs = require("fs"),
+const inquirier = require("./inquirer"),
+  fs = require("fs"),
   chalk = require("chalk"),
   data = require("./data.js");
 
@@ -11,9 +10,8 @@ const routs = {
 };
 
 const createComponent = (variable) => {
-  console.log("Crear archivo");
+  console.log(`Creating component ${chalk.cyan(variable)} \n`);
   return new Promise((resolve, reject) => {
-    console.log("crear HTML");
     /* if (!rootProject()) {
       return reject("❗  NO TE ENCUENTRAS EN EL ROOT DEL PROYECTO  😱");
     } */

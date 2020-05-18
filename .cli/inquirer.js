@@ -13,8 +13,8 @@ const getMenu = () => {
         {
           type: "list",
           name: "accion",
-          message: "¿QUÉ QUIERES HACER?",
-          choices: ["1 - Crear Componente", new inquirer.Separator()],
+          message: "WHAT DO YOU WANT TO DO?",
+          choices: ["1 - Create Component", new inquirer.Separator()],
         },
       ])
       .then((answers) => {
@@ -31,7 +31,8 @@ let inputName = () => {
         {
           type: "input",
           name: "nombre",
-          message: "¿Qué nombre deseas utilizar? (debe comenzar con mayúscula)",
+          message:
+            "¿What name do you want to use?? (you must respect upper and lower case)",
           validate: (name) => {
             return name !== "";
           },
@@ -39,7 +40,7 @@ let inputName = () => {
       ])
       .then((answers) => {
         console.log("\n");
-        resolve(answers.nombre);
+        resolve(answers.nombre[0].toUpperCase() + answers.nombre.slice(1));
       });
   });
 };

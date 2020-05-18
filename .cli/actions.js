@@ -2,7 +2,6 @@
 
 const chalk = require("chalk"),
   files = require("./files.js"),
-  /* child_process = require("./child_process"), */
   inquirer = require("./inquirer.js");
 
 function init() {
