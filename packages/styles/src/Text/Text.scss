@@ -3,10 +3,11 @@
 // Links
 
 .#{$prefix}--text {
+  color: #000;
   display: inline-block;
   font-family: $font-family;
   font-size: $font-size-base;
-  color: black;
+
   &_small {
     font-size: 10px;
   }

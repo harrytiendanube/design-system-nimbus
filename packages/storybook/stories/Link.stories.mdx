@@ -10,12 +10,12 @@ import '../utils/style.css';
 
 # Links
 
-## Subtítulo
+## detail component
 
-Descripción
+Other description
 
 <Preview>
-  <Story name="Implementación" parameters={{ decorators: [withKnobs, withA11y] }}>
+  <Story name="standard" parameters={{ decorators: [withKnobs, withA11y] }}>
     <Link
       href={text("href", "http://www.tiendanube.com")}
       target = "_blank"
@@ -31,11 +31,11 @@ Descripción
 
 <Props of={Link} />
 
-## Sin Icono
+## widthout con
 
 <Preview withToolbar>
   <Story
-    name="Sin Icono"
+    name="widthout icon"
   >
      <Link
       href={"http://www.tiendanube.com"}
@@ -46,11 +46,11 @@ Descripción
   </Story>
 </Preview>
 
-## Con Icono Inicial
+## width start icon
 
 <Preview withToolbar>
   <Story
-    name="Con Icono Inicial"
+    name="width start icon"
   >
      <Link
       href={"http://www.tiendanube.com"}
@@ -62,11 +62,11 @@ Descripción
   </Story>
 </Preview>
 
-## Con Icono  Final
+## width end icon
 
 <Preview withToolbar>
   <Story
-    name="Con Icono Final"
+    name="width end icon"
   >
      <Link
       href = {"http://www.tiendanube.com"}
@@ -78,11 +78,11 @@ Descripción
   </Story>
 </Preview>
 
-## Con Icono Inicial y Final
+## width start and end icon
 
 <Preview withToolbar>
   <Story
-    name="Con Icono Inicial y Final"
+    name="width start and end icon"
   >
      <Link
       href = {"http://www.tiendanube.com"}

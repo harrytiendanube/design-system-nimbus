@@ -18,7 +18,7 @@ interface Props
    */
   onClick(event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void;
   /**
-   * Colores "primary", "secondary", "Light", "Danger", "Transparent"
+   * Values: "primary", "secondary", "Light", "Danger", "Transparent"
    */
   color: Color;
   /**

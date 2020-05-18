@@ -1,0 +1,24 @@
+import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
+import { withKnobs, select, text } from "@storybook/addon-knobs";
+import { action } from '@storybook/addon-actions';
+import { withA11y } from "@storybook/addon-a11y";
+import { Text } from '../../components/src';
+
+import '../utils/style.css';
+
+<Meta title="Atoms/Text" component={Text} />
+
+# Text
+
+## detail component
+
+Other description
+
+<Preview>
+  <Story name="standard" parameters={{ decorators: [withKnobs, withA11y] }}>
+    <Text> {text("Texto", "Texto inicial")} </Text>
+  </Story>
+</Preview>
+
+<Props of={Text} />
+  
