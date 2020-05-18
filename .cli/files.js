@@ -7,6 +7,7 @@ const inquirier = require("./inquirer"),
 const routs = {
   components: "packages/components/src/",
   styles: "packages/styles/src/",
+  storybook: "packages/storybook/stories/",
 };
 
 const createComponent = (variable) => {
@@ -24,6 +25,7 @@ const createComponent = (variable) => {
         createFile(variable, "tsx", data.getTsxData(variable)),
         createFile(variable, "test.js", data.getTestData(variable)),
         createFile(variable, "scss", data.getScssData(variable)),
+        createStory(variable, "mdx", data.getStoryData(variable)),
       ])
         .then(() => {
           Promise.all([
@@ -60,7 +62,7 @@ const addReferences = (variable, package, extension) => {
       file,
       data,
       function(err) {
-        if (err) throw err;
+        if (err) reject(err);
       },
       () => {
         console.log("\n✔️   Reference added to " + file);
@@ -78,7 +80,31 @@ const getImportData = (variable, package) => {
 };
 
 const getRoutType = (extension) => {
-  return extension == "scss" ? "styles" : "components";
+  return {
+    scss: "styles",
+    tsx: "components",
+    "test.js": "components",
+    mdx: "storybook",
+  }[extension];
+};
+
+const createStory = (variable, extension, data) => {
+  return new Promise((resolve, reject) => {
+    const type = getRoutType(extension);
+    /** Create File  */
+    const fileRoute = routs[type] + variable + ".stories." + extension;
+    fs.appendFile(
+      fileRoute,
+      data,
+      function(err) {
+        if (err) reject(err);
+      },
+      () => {
+        console.log("✔️   File created  " + fileRoute);
+        resolve();
+      },
+    );
+  });
 };
 
 const createFile = (variable, extension, data) => {
@@ -86,7 +112,7 @@ const createFile = (variable, extension, data) => {
     const type = getRoutType(extension);
     /** Create folder  */
     fs.mkdirSync(routs[type] + variable, { recursive: true }, (err) => {
-      if (err) throw err;
+      if (err) reject(err);
     });
     /** Create File  */
     const fileRoute =
@@ -95,7 +121,7 @@ const createFile = (variable, extension, data) => {
       fileRoute,
       data,
       function(err) {
-        if (err) throw err;
+        if (err) reject(err);
       },
       () => {
         console.log("✔️   File created  " + fileRoute);
