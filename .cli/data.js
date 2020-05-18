@@ -51,7 +51,7 @@ describe("${variable}", () => {
 };
 
 const getScssData = (variable) => {
-  return `@import "core";
+  return `@import "../NimbusCore/nimbus-core";
 // ${variable}
 
 %#{$prefix}--${getCssClassName(variable)} {}
@@ -68,10 +68,38 @@ export { default as ${variable} } from "./${variable}";
 export * from "./${variable}";\n`;
 };
 
+const getStoryData = (variable) => {
+  return `import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
+import { withKnobs, select, text } from "@storybook/addon-knobs";
+import { action } from '@storybook/addon-actions';
+import { withA11y } from "@storybook/addon-a11y";
+import { ${variable} } from '../../components/src';
+
+import '../utils/style.css';
+
+<Meta title="Atoms/${variable}" component={${variable}} />
+
+# ${variable}
+
+## detail component
+
+Other description
+
+<Preview>
+  <Story name="standard" parameters={{ decorators: [withKnobs, withA11y] }}>
+    <${variable}> {text("Texto", "Texto inicial")} </${variable}>
+  </Story>
+</Preview>
+
+<Props of={${variable}} />
+  `;
+};
+
 module.exports = {
   getTsxData,
   getTestData,
   getScssData,
   getInsertStyle,
   getInsertComponent,
+  getStoryData,
 };
