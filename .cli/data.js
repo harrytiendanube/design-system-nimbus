@@ -17,7 +17,9 @@ const getCssClassName = (variable) => {
 };
 
 const getTsxData = (variable) => {
-  return `import * as React from "react";\n
+  return `import * as React from "react";
+import "@tiendanube/styles/css/${variable}.css";
+
 interface Props
   extends Omit<React.HTMLAttributes<HTMLElement>, "className" | "children"> {
   /** Element inside tag component */
@@ -54,7 +56,7 @@ const getScssData = (variable) => {
   return `@import "../NimbusCore/nimbus-core";
 // ${variable}
 
-%#{$prefix}--${getCssClassName(variable)} {}
+.#{$prefix}--${getCssClassName(variable)} {}
 `;
 };
 
