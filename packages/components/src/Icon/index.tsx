@@ -14,7 +14,7 @@ export const variantIcons = Object.keys(icons).map((icon) => icon.substring(2));
 const DEFAULT_SIZE = "sm";
 const DEFAULT_COLOR = "inherit";
 
-export interface Props {
+export interface InterfaceIcon {
   /**
    * Nombre del icono (ver Galería valores permitidos)
    */
@@ -42,13 +42,13 @@ export interface Props {
  *   ${param} name : string in Capitalized
  */
 
-const Icon: React.FC<Props> = ({
+const Icon: React.FC<InterfaceIcon> = ({
   name,
   size,
   color,
   startPadding,
   endPadding,
-}: Props) => {
+}: InterfaceIcon) => {
   return (
     <FontAwesomeIcon
       className={`${startPadding ? "icon__padding_start" : ""} ${

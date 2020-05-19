@@ -1,8 +1,7 @@
 import * as React from "react";
-import { Link } from "../../../components/src";
-import { Props } from "../../../components/src/Link";
+import { Link, InterfaceLink } from "../../../components/src";
 
-const Wrapper: React.FC<Props> = ({
+const Wrapper: React.FC<InterfaceLink> = ({
   href,
   target,
   onClick,
@@ -10,7 +9,7 @@ const Wrapper: React.FC<Props> = ({
   end,
   color,
   children,
-}: Props) => (
+}: InterfaceLink) => (
   <Link
     href={href}
     target={target}

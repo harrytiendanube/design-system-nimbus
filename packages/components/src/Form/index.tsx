@@ -2,13 +2,15 @@ import * as React from "react";
 import "@tiendanube/styles/css/Form.css";
 import { Button } from "..";
 
-export interface Props
+export interface InterfaceForm
   extends Omit<
     React.HTMLAttributes<HTMLElement>,
     "className" | "style" | "children"
   > {
   /** Element inside tag component */
   children: React.ReactNode;
+  /** Dinamic content slot */
+  mySlot: React.ReactNode;
   /** Submit text */
   submitText: string;
   /** Submit callback */
@@ -23,20 +25,20 @@ export interface Props
   ) => void;
 }
 
-const Form: React.FC<Props> = ({
+const Form: React.FC<InterfaceForm> = ({
   children,
+  mySlot,
   submitText,
   submitCallback,
   optionalButtonText,
   optionalCallback,
   ...share
-}: Props) => {
+}: InterfaceForm) => {
+  console.log(globalThis);
   return (
     <div {...share}>
       <div>Mancheta</div>
-      <form action="">
-        <input type="text" />
-      </form>
+      <form action="">{mySlot}</form>
       <div className="buttons">
         {optionalCallback && (
           <Button color="light" onClick={optionalCallback}>

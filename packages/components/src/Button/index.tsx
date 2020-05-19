@@ -2,7 +2,7 @@ import * as React from "react";
 import "@tiendanube/styles/css/Button.css";
 import { Icon } from "../";
 
-export interface Props
+export interface InterfaceButton
   extends Omit<
     React.ButtonHTMLAttributes<HTMLButtonElement>,
     "onClick" | "className" | "style"
@@ -36,14 +36,14 @@ export interface Props
 /**
   Utiliza `Button` como componente de acción.
 */
-const Button: React.FC<Props> = ({
+const Button: React.FC<InterfaceButton> = ({
   start,
   children,
   color,
   outline,
   end,
   ...share
-}: Props) => {
+}: InterfaceButton) => {
   return (
     <button
       {...share}

@@ -1,14 +1,13 @@
 import * as React from "react";
-import { Button } from "../../../components/src";
-import { Props } from "../../../components/src/Button";
+import { Button, InterfaceButton } from "../../../components/src";
 
-const Wrapper: React.FC<Props> = ({
+const Wrapper: React.FC<InterfaceButton> = ({
   start,
   end,
   color,
   children,
   onClick,
-}: Props) => (
+}: InterfaceButton) => (
   <Button start={start} end={end} color={color} onClick={onClick}>
     {children}
   </Button>

@@ -1,7 +1,7 @@
 import * as React from "react";
 import "@tiendanube/styles/css/Input.css";
 
-export interface Props
+export interface InterfaceInput
   extends Omit<
     React.InputHTMLAttributes<HTMLInputElement>,
     "className" | "style" | "onChange" | "id" | "name" | "value"
@@ -24,7 +24,10 @@ export interface Props
   onChange(event: React.ChangeEvent<HTMLInputElement>): void;
 }
 
-const Input: React.FunctionComponent<Props> = ({ label, ...shared }) => {
+const Input: React.FunctionComponent<InterfaceInput> = ({
+  label,
+  ...shared
+}: InterfaceInput) => {
   return (
     <div className="nimbus--input">
       <label htmlFor={`input_${name}`}>{label}</label>

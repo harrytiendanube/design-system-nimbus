@@ -1,14 +1,13 @@
 import * as React from "react";
-import { Input } from "../../../components/src";
-import { Props } from "../../../components/src/Input";
+import { Input, InterfaceInput } from "../../../components/src";
 
-const Wrapper: React.FC<Props> = ({
+const Wrapper: React.FC<InterfaceInput> = ({
   label,
   placeholder,
   value,
   name,
   onChange,
-}: Props) => (
+}: InterfaceInput) => (
   <Input
     label={label}
     placeholder={placeholder}

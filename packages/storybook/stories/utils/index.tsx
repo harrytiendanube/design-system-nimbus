@@ -1,2 +1,3 @@
 import WrapGrid from "./WrapGrid";
-export { WrapGrid };
+import LoginForm from "./LoginForm";
+export { WrapGrid, LoginForm };

@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export interface Props
+export interface InterfaceTitle
   extends Omit<
     React.HTMLAttributes<HTMLHeadingElement>,
     "className" | "children" | "style"
@@ -11,7 +11,11 @@ export interface Props
   type?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 }
 
-const Title: React.FC<Props> = ({ children, type, ...share }: Props) => {
+const Title: React.FC<InterfaceTitle> = ({
+  children,
+  type,
+  ...share
+}: InterfaceTitle) => {
   const HeadTag = `${type}`;
   return <HeadTag {...share}>{children}</HeadTag>;
 };

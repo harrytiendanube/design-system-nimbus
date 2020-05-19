@@ -1,8 +1,7 @@
 import * as React from "react";
-import { Text } from "../../../components/src";
-import { Props } from "../../../components/src/Text";
+import { Text, InterfaceText } from "../../../components/src";
 
-const Wrapper: React.FC<Props> = ({ children }: Props) => (
+const Wrapper: React.FC<InterfaceText> = ({ children }: InterfaceText) => (
   <Text> {children} </Text>
 );
 
