@@ -1,7 +1,7 @@
 import * as React from "react";
 import "@tiendanube/styles/css/Input.css";
 
-interface Props
+export interface Props
   extends Omit<
     React.InputHTMLAttributes<HTMLInputElement>,
     "className" | "style" | "onChange" | "id" | "name" | "value"

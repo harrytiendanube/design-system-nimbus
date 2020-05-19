@@ -2,7 +2,7 @@ import * as React from "react";
 import "@tiendanube/styles/css/Button.css";
 import { Icon } from "../";
 
-interface Props
+export interface Props
   extends Omit<
     React.ButtonHTMLAttributes<HTMLButtonElement>,
     "onClick" | "className" | "style"

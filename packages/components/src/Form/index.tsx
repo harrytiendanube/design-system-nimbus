@@ -2,8 +2,11 @@ import * as React from "react";
 import "@tiendanube/styles/css/Form.css";
 import { Button } from "..";
 
-interface Props
-  extends Omit<React.HTMLAttributes<HTMLElement>, "className" | "children"> {
+export interface Props
+  extends Omit<
+    React.HTMLAttributes<HTMLElement>,
+    "className" | "style" | "children"
+  > {
   /** Element inside tag component */
   children: React.ReactNode;
   /** Submit text */

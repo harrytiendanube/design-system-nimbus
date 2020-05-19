@@ -2,7 +2,7 @@ import * as React from "react";
 import Icon from "../Icon";
 import "@tiendanube/styles/css/Link.css";
 
-interface Props
+export interface Props
   extends Omit<
     React.AnchorHTMLAttributes<HTMLAnchorElement>,
     "className" | "style"

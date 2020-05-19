@@ -14,7 +14,7 @@ export const variantIcons = Object.keys(icons).map((icon) => icon.substring(2));
 const DEFAULT_SIZE = "sm";
 const DEFAULT_COLOR = "inherit";
 
-interface Props {
+export interface Props {
   /**
    * Nombre del icono (ver Galería valores permitidos)
    */

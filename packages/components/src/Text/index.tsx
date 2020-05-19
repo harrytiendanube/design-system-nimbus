@@ -1,9 +1,7 @@
 import * as React from "react";
 import "@tiendanube/styles/css/Text.css";
 
-type Size = "regular";
-
-interface Props
+export interface Props
   extends Omit<
     React.HTMLAttributes<HTMLParagraphElement>,
     "className" | "style"
@@ -12,8 +10,8 @@ interface Props
     Escribe dentro de las las etiquetas para renderizar el contenido.
   */
   children: React.ReactNode;
-  /** Tamaño "regular" */
-  size: Size;
+  /** Tamaño */
+  size?: "regular";
 }
 
 const Text: React.FC<Props> = ({ children, size, ...share }: Props) => {
