@@ -1,0 +1,29 @@
+import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
+import { withKnobs, select, text } from "@storybook/addon-knobs";
+import { action } from '@storybook/addon-actions';
+import { withA11y } from "@storybook/addon-a11y";
+import { Form } from '../../components/src';
+
+import '../utils/style.css';
+
+<Meta title="Atoms/Form" component={Form} />
+
+# Form
+
+## detail component
+
+Other description
+
+<Preview>
+  <Story name="standard" parameters={{ decorators: [withKnobs, withA11y] }}>
+    <Form
+      submitText="Login"
+      submitCallback={ (e) => alert('Login click') }
+      optionalButtonText="Cancelar"
+      optionalCallback={(e)=> alert('Cancel')}> {text("Texto", "Texto inicial")}
+    </Form>
+  </Story>
+</Preview>
+
+<Props of={Form} />
+  
