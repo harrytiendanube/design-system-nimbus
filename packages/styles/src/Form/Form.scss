@@ -1,4 +1,6 @@
 @import "../NimbusCore/nimbus-core";
 // Form
 
-.#{$prefix}---form {}
+.#{$prefix}---form {
+  display: block;
+}
