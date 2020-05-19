@@ -1,0 +1,24 @@
+@import "../NimbusCore/nimbus-core";
+
+// Title Mixins
+
+@function nimbus--font-size($size) {
+  @return map-get($nimbus--font-sizes, $size);
+}
+
+@mixin nimbus--font-size($size) {
+  font-size: nimbus--font-size($size);
+}
+
+@mixin nimbus--title-classes {
+  @each $name, $value in $nimbus--title-sizes {
+    .#{$prefix}--title-#{$name} {
+      @include nimbus--font-style();
+
+      color: $primary;
+      font-size: $value;
+      font-weight: 500;
+      line-height: $nimbus-font-line-height-02;
+    }
+  }
+}

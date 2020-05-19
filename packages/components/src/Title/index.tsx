@@ -1,4 +1,5 @@
 import * as React from "react";
+import "@tiendanube/styles/css/Title.css";
 
 interface Props
   extends Omit<React.HTMLAttributes<HTMLHeadingElement>, "children" | "style"> {
@@ -11,12 +12,13 @@ interface Props
 const Title: React.FC<Props> = ({ children, type = "h1", ...share }: Props) => {
   const HeadTag = `${type}`;
 
-  // TODO: @Juan falta definir estas clases.
   const classesTypes = {
-    h1: "main-title",
-    h2: "second-title",
-    h3: "t-title",
-    h4: "t-title",
+    h1: "nimbus--title-01",
+    h2: "nimbus--title-02",
+    h3: "nimbus--title-03",
+    h4: "nimbus--title-04",
+    h5: "nimbus--title-05",
+    h6: "nimbus--title-06",
   };
   const props = Object.assign({}, share, { className: classesTypes[type] });
   return <HeadTag {...props}>{children}</HeadTag>;
