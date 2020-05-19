@@ -1,4 +1,5 @@
 import * as React from "react";
+import "@tiendanube/styles/css/Title.css";
 
 export interface InterfaceTitle
   extends Omit<
@@ -13,11 +14,21 @@ export interface InterfaceTitle
 
 const Title: React.FC<InterfaceTitle> = ({
   children,
-  type,
+  type = "h1",
   ...share
 }: InterfaceTitle) => {
   const HeadTag = `${type}`;
-  return <HeadTag {...share}>{children}</HeadTag>;
+
+  const classesTypes = {
+    h1: "nimbus--title-01",
+    h2: "nimbus--title-02",
+    h3: "nimbus--title-03",
+    h4: "nimbus--title-04",
+    h5: "nimbus--title-05",
+    h6: "nimbus--title-06",
+  };
+  const props = Object.assign({}, share, { className: classesTypes[type] });
+  return <HeadTag {...props}>{children}</HeadTag>;
 };
 
 Title.defaultProps = {

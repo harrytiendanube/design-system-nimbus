@@ -1,10 +1,5 @@
-@import "../NimbusCore/nimbus-core";
+@import "core";
+
 // Title
 
-.#{$prefix}--title {
-  color: $text-gray;
-  display: inline-block;
-  font-family: $font-family;
-  font-weight: 500;
-  text-align: left;
-}
+@include nimbus--title-classes();

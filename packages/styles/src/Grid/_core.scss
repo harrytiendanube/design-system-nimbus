@@ -1,4 +1,4 @@
-@import '../NimbusCore/nimbus-core';
+@import "../NimbusCore/nimbus-core";
 
 // Mixins
 
@@ -36,7 +36,7 @@
 @mixin nimbus--set-largest-breakpoint($breakpoints: $nimbus--grid-breakpoints) {
   $largest-breakpoint: last-map-item($breakpoints);
 
-  max-width: map-get($largest-breakpoint, 'width');
+  max-width: map-get($largest-breakpoint, "width");
 }
 
 // Add in the max-widths for each breakpoint to the container
@@ -123,7 +123,7 @@
       }
 
       @for $i from 0 through ($columns - 1) {
-        @if not($index == '') {
+        @if not($index == "") {
           .#{$prefix}--offset#{$index}-#{$i} {
             @include nimbus--make-col-offset($i, $columns);
           }
