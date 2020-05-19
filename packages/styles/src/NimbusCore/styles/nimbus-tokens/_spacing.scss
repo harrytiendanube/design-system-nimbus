@@ -89,12 +89,12 @@ $nimbus--grid-breakpoints: (
 
 // This function gets the index of a given breakpoint in a list of breakpoints
 @function nimbus--breakpoint-index($name) {
-  @return '-#{$name}';
+  @return "-#{$name}";
 }
 
 // Generate a media query up to the width of the breakpoint name
 @mixin nimbus--breakpoint-up($name, $breakpoints: $nimbus--grid-breakpoints) {
-  @if type-of($name) == 'number' {
+  @if type-of($name) == "number" {
     @media (min-width: $name) {
       @content;
     }
@@ -113,7 +113,7 @@ $nimbus--grid-breakpoints: (
 
 // Generate a media query for the maximum width of the given styles
 @mixin nimbus--breakpoint-down($name, $breakpoints: $nimbus--grid-breakpoints) {
-  @if type-of($name) == 'number' {
+  @if type-of($name) == "number" {
     @media (max-width: $name) {
       @content;
     }
