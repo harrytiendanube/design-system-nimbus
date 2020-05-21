@@ -12,6 +12,7 @@ interface Props
   ctaPrimary?: string;
   ctaSecondary?: string;
   isDismissable?: boolean;
+  hasActions: boolean;
   icon: string;
 }
 
@@ -23,6 +24,7 @@ const Alert: React.FC<Props> = ({
   ctaPrimary,
   ctaSecondary,
   isDismissable,
+  hasActions,
   icon,
   ...share
 }: Props) => {
@@ -37,21 +39,20 @@ const Alert: React.FC<Props> = ({
       <div className="nimbus--alert__body">
         {title && <Title type="h5">{title}</Title>}
         <Text size="regular">{children}</Text>
-        {ctaPrimary ||
-          (ctaSecondary && (
-            <div className="nimbus--alert__actions">
-              {ctaPrimary && (
-                <Button onClick={alert} color="primary">
-                  {ctaPrimary}
-                </Button>
-              )}
-              {ctaSecondary && <Link>{ctaSecondary}</Link>}
-            </div>
-          ))}
+        {hasActions && (
+          <div className="nimbus--alert__actions">
+            {ctaPrimary && (
+              <Button onClick={alert} color="primary">
+                {ctaPrimary}
+              </Button>
+            )}
+            {ctaSecondary && <Link>{ctaSecondary}</Link>}
+          </div>
+        )}
       </div>
       {isDismissable && (
         <div className="nimbus--alert__close">
-          <Icon name="times" />
+          <Icon name="Times" />
         </div>
       )}
     </div>
@@ -63,6 +64,7 @@ Alert.defaultProps = {
   color: "primary",
   isDismissable: false,
   icon: "InfoCircle",
+  hasActions: false,
 };
 
 export default Alert;

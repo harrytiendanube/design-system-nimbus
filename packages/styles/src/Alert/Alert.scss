@@ -20,9 +20,12 @@ $nimbus-color-gray-text: #473c41;
 
   .#{$prefix}--alert__body {
     padding-left: $nimbus-grid-spacer-03;
+    width: 100%;
   }
 
   .#{$prefix}--alert__close {
+    margin-bottom: -$nimbus-grid-spacer-03;
+    margin-left: auto;
     margin-right: -$nimbus-grid-spacer-03;
     margin-top: -$nimbus-grid-spacer-03;
     padding: $nimbus-grid-spacer-03;
@@ -41,6 +44,10 @@ $nimbus-color-gray-text: #473c41;
     *:not(:last-child) {
       margin-right: $nimbus-grid-spacer-03;
     }
+  }
+
+  .#{$prefix}--alert__actions {
+    margin-left: auto;
   }
 }
 

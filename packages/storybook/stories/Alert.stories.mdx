@@ -1,5 +1,5 @@
 import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
-import { withKnobs, select, text } from "@storybook/addon-knobs";
+import { withKnobs, select, text, boolean } from "@storybook/addon-knobs";
 import { action } from '@storybook/addon-actions';
 import { withA11y } from "@storybook/addon-a11y";
 import { Alert } from '../../components/src';
@@ -16,9 +16,30 @@ Other description
 
 <Preview>
   <Story name="standard" parameters={{ decorators: [withKnobs, withA11y] }}>
-    <Alert> {text("Texto", "Texto inicial")} </Alert>
+    <Alert
+      type={select("Tipo", ["toast", "inline"])}
+      isDismissable={boolean("Dismissable", false)}
+      hasActions={boolean("Agregar acción", false)}
+      color={select("Color", ["primary", "danger", "warning", "success"])}
+      title={text("Título", "")}
+      ctaPrimary={text("Acción primaria", "")}
+      ctaSecondary={text("Acción secundaria", "")}
+    >
+    {text("Texto", "Texto inicial")} </Alert>
   </Story>
 </Preview>
 
 <Props of={Alert} />
-  
+
+## Colores
+
+<Preview withToolbar>
+  <Story name="Estados">
+    <div className="separate">
+      <Alert color="primary">Primary State</Alert>
+      <Alert color="danger">Danger State</Alert>
+      <Alert color="warning">Warning State</Alert>
+      <Alert color="success">Success State</Alert>
+    </div>
+  </Story>
+</Preview>
