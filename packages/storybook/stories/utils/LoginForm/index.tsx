@@ -2,19 +2,29 @@ import * as React from "react";
 import { Input } from "../../../../components/src";
 
 const LoginForm: React.FC = () => {
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    console.log(event);
-  };
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+
   return (
     <>
-      <Input label="nombre" name="nombre" value="n1" onChange={handleChange} />
       <Input
-        label="apellido"
-        name="apellido"
-        value="n1"
-        onChange={handleChange}
+        label="Email de tu Tiendanube"
+        placeholder="nombre@mail.com"
+        name="email"
+        value={email}
+        onChange={(event: React.ChangeEvent<HTMLInputElement>): void =>
+          setEmail(event.target.value)
+        }
       />
-      <Input label="edad" name="edad" value="n1" onChange={handleChange} />
+      <Input
+        label="Contraseña de tu Tiendanube"
+        placeholder="Contraseña"
+        name="password"
+        value={password}
+        onChange={(event: React.ChangeEvent<HTMLInputElement>): void =>
+          setPassword(event.target.value)
+        }
+      />
     </>
   );
 };

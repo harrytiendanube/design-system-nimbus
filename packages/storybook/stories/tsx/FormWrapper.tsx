@@ -2,15 +2,21 @@ import * as React from "react";
 import { Form, InterfaceForm } from "../../../components/src";
 
 const Wrapper: React.FC<InterfaceForm> = ({
-  mySlot,
+  titleText,
+  subtitleText,
   submitText,
+  linkText,
+  linkHref,
   submitCallback,
   optionalButtonText,
   optionalCallback,
   children,
 }: InterfaceForm) => (
   <Form
-    mySlot={mySlot}
+    titleText={titleText}
+    subtitleText={subtitleText}
+    linkText={linkText}
+    linkHref={linkHref}
     submitText={submitText}
     submitCallback={submitCallback}
     optionalButtonText={optionalButtonText}

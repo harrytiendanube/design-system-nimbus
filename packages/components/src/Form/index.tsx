@@ -1,16 +1,22 @@
 import * as React from "react";
 import "@tiendanube/styles/css/Form.css";
-import { Button } from "..";
+import { Button, Title, Text, Link } from "..";
 
 export interface InterfaceForm
   extends Omit<
     React.HTMLAttributes<HTMLElement>,
     "className" | "style" | "children"
   > {
+  /** Title text */
+  titleText?: string;
+  /** Subtitle text */
+  subtitleText?: string;
   /** Element inside tag component */
   children: React.ReactNode;
-  /** Dinamic content slot */
-  mySlot: React.ReactNode;
+  /** Link text  */
+  linkText?: string;
+  /** Link href */
+  linkHref?: string;
   /** Submit text */
   submitText: string;
   /** Submit callback */
@@ -26,19 +32,24 @@ export interface InterfaceForm
 }
 
 const Form: React.FC<InterfaceForm> = ({
+  titleText,
+  subtitleText,
   children,
-  mySlot,
+  linkText,
+  linkHref,
   submitText,
   submitCallback,
   optionalButtonText,
   optionalCallback,
   ...share
 }: InterfaceForm) => {
-  console.log(globalThis);
   return (
     <div {...share}>
+      {titleText && <Title>Form Title</Title>}
+      {subtitleText && <Text>Form Subtitle</Text>}
       <div>Mancheta</div>
-      <form action="">{mySlot}</form>
+      <form action="">{children}</form>
+      {linkText && <Link href={linkHref}>{linkText}</Link>}
       <div className="buttons">
         {optionalCallback && (
           <Button color="light" onClick={optionalCallback}>
@@ -49,7 +60,6 @@ const Form: React.FC<InterfaceForm> = ({
           {submitText}
         </Button>
       </div>
-      {children}
     </div>
   );
 };

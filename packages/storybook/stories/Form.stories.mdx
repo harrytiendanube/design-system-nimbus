@@ -18,11 +18,15 @@ Other description
 <Preview>
   <Story name="standard" parameters={{ decorators: [withKnobs, withA11y] }}>
     <Wrapper
-    submitText="Login"
+    titleText="Titulo"
+    subtitleText="Subtitulo"
+    submitText="Primary"
+    linkText="Primary text link"
+    linkHref="http://www.tiendanube.com"
+    submitText="Primary"
     submitCallback={() => alert("Login click")}
-    optionalButtonText="Cancelar"
+    optionalButtonText="Default"
     optionalCallback={() => alert("Cancel")} >
-    {text('Text','Texto Inicial')}
     </Wrapper>
   </Story>
 </Preview>
