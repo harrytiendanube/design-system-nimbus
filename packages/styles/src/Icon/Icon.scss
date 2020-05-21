@@ -1,9 +1,9 @@
 @import "../NimbusCore/nimbus-core";
 
 .icon__padding_start {
-  margin-right: $size-base * 0.5;
+  margin-right: $nimbus-grid-spacer-02;
 }
 
 .icon__padding_end {
-  margin-left: $size-base * 0.5;
+  margin-left: $nimbus-grid-spacer-02;
 }

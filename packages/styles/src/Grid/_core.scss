@@ -19,14 +19,14 @@
       $prev-margin: map-get($prev-breakpoint, margin);
       @if $prev-margin != $margin {
         @include nimbus--breakpoint($name) {
-          padding-left: #{($nimbus--grid-gutter / 2) + $margin};
-          padding-right: #{($nimbus--grid-gutter / 2) + $margin};
+          padding-left: #{($nimbus-grid-gutter / 2) + $margin};
+          padding-right: #{($nimbus-grid-gutter / 2) + $margin};
         }
       }
     } @else {
       @include nimbus--breakpoint($name) {
-        padding-left: #{($nimbus--grid-gutter / 2) + $margin};
-        padding-right: #{($nimbus--grid-gutter / 2) + $margin};
+        padding-left: #{($nimbus-grid-gutter / 2) + $margin};
+        padding-right: #{($nimbus-grid-gutter / 2) + $margin};
       }
     }
   }
@@ -50,14 +50,14 @@
   }
 }
 
-@mixin nimbus--make-row($gutter: $nimbus--grid-gutter) {
+@mixin nimbus--make-row($gutter: $nimbus-grid-gutter) {
   display: flex;
   flex-wrap: wrap;
   margin-left: -1 * $gutter / 2;
   margin-right: -1 * $gutter / 2;
 }
 
-@mixin nimbus--make-col-ready($gutter: $nimbus--grid-gutter) {
+@mixin nimbus--make-col-ready($gutter: $nimbus-grid-gutter) {
   padding-left: $gutter / 2;
   padding-right: $gutter / 2;
   position: relative;
@@ -91,7 +91,7 @@
 
 @mixin nimbus--make-grid-columns(
   $breakpoints: $nimbus--grid-breakpoints,
-  $gutter: $nimbus--grid-gutter
+  $gutter: $nimbus-grid-gutter
 ) {
   .#{$prefix}--col {
     @include nimbus--make-col-ready($gutter);
@@ -146,7 +146,7 @@
 
 @mixin nimbus--grid(
   $breakpoints: $nimbus--grid-breakpoints,
-  $grid-gutter: $nimbus--grid-gutter
+  $grid-gutter: $nimbus-grid-gutter
 ) {
   @include nimbus--make-grid-columns($breakpoints, $grid-gutter);
   .#{$prefix}--grid {
