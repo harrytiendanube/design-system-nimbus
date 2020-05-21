@@ -1,0 +1,63 @@
+@import "../NimbusCore/nimbus-core";
+
+// TODO: replace with tokens
+$nimbus-grid-spacer-01: 4px;
+$nimbus-grid-spacer-02: 8px;
+$nimbus-grid-spacer-03: 16px;
+$nimbus-color-gray-text: #473c41;
+
+// Alert
+
+%#{$prefix}--alert {
+  align-items: flex-start;
+  border-radius: 0 0 $nimbus-grid-spacer-02 $nimbus-grid-spacer-02;
+  display: flex;
+  padding-bottom: $nimbus-grid-spacer-03;
+  padding-left: $nimbus-grid-spacer-03;
+  padding-right: $nimbus-grid-spacer-03;
+  padding-top: $nimbus-grid-spacer-03 - $nimbus-grid-spacer-01;
+  text-align: left;
+
+  .#{$prefix}--alert__body {
+    padding-left: $nimbus-grid-spacer-03;
+  }
+
+  .#{$prefix}--alert__close {
+    margin-right: -$nimbus-grid-spacer-03;
+    margin-top: -$nimbus-grid-spacer-03;
+    padding: $nimbus-grid-spacer-03;
+    position: relative;
+  }
+}
+
+.#{$prefix}--alert--inline {
+  @extend %#{$prefix}--alert;
+  align-items: center;
+
+  .#{$prefix}--alert__body {
+    align-items: center;
+    display: flex;
+
+    *:not(:last-child) {
+      margin-right: $nimbus-grid-spacer-03;
+    }
+  }
+}
+
+.#{$prefix}--alert--toast {
+  @extend %#{$prefix}--alert;
+
+  .#{$prefix}--alert__body {
+    *:not(:last-child) {
+      margin-bottom: $nimbus-grid-spacer-02;
+    }
+  }
+}
+
+@each $color, $value in $theme-colors {
+  .#{$prefix}--alert--#{$color} {
+    background-color: scale-color($value, $lightness: 90%);
+    border-top: $nimbus-grid-spacer-01 solid $value;
+    color: $nimbus-color-gray-text;
+  }
+}
