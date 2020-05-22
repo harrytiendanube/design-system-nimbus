@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Title, Text, Link, Form, Button } from "../../components/src";
-import { LoginForm } from "./utils";
+import { Input } from "../../components";
 export default { title: "Login Form" };
 
 export const Login: React.FC = () => {
@@ -19,11 +19,25 @@ export const Login: React.FC = () => {
         linkText="¿Te olvidaste tu contraseña?"
         linkHref="http://www.tiendanube.com"
       >
-        <LoginForm
-          email={email}
-          setEmail={setEmail}
-          password={password}
-          setPassword={setPassword}
+        <Input
+          label="Email de tu Tiendanube"
+          placeholder="nombre@mail.com"
+          name="email"
+          type="email"
+          value={email}
+          onChange={(event: React.ChangeEvent<HTMLInputElement>): void =>
+            setEmail(event.target.value)
+          }
+        />
+        <Input
+          label="Contraseña de tu Tiendanube"
+          placeholder="Contraseña"
+          name="password"
+          type="password"
+          value={password}
+          onChange={(event: React.ChangeEvent<HTMLInputElement>): void =>
+            setPassword(event.target.value)
+          }
         />
       </Form>
       <Button
