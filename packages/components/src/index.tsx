@@ -6,6 +6,10 @@ import Text from "./Text";
 import Title from "./Title";
 export { Button, Icon, variantIcons, Input, Link, Text, Title };
 
+// Header reference added
+export { default as Header } from "./Header";
+export * from "./Header";
+
 // Alert reference added
 export { default as Alert } from "./Alert";
 export * from "./Alert";
