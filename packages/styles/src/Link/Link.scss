@@ -3,15 +3,15 @@
 // Links
 
 .#{$prefix}--link {
-  color: $primary-blue;
+  color: $color-secondary;
   cursor: pointer;
   display: inline-block;
-  font-family: $font-family;
-  font-size: $font-size-base;
+  font-family: $nimbus-font-family;
+  font-size: $nimbus-font-size-03;
   text-decoration: underline;
   transition: 0.15s ease;
 
   &:hover {
-    color: darken($primary-blue, 0.15);
+    color: darken($color-secondary, 0.15);
   }
 }

@@ -20,6 +20,7 @@ const Title: React.FC<InterfaceTitle> = ({
   const HeadTag = `${type}`;
 
   const classesTypes = {
+    // TODO: Reemplazar los valores 01, 02, 03 por los h1, h2, h3, etc.
     h1: "nimbus--title-01",
     h2: "nimbus--title-02",
     h3: "nimbus--title-03",
