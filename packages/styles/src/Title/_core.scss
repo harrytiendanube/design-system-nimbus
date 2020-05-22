@@ -15,7 +15,7 @@
     .#{$prefix}--title-#{$name} {
       @include nimbus--font-style();
 
-      color: $primary;
+      color: $color-primary;
       font-size: $value;
       font-weight: 500;
       line-height: $nimbus-font-line-height-02;
