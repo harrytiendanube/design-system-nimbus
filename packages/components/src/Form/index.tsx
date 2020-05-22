@@ -3,10 +3,7 @@ import "@tiendanube/styles/css/Form.css";
 import { Button, Title, Text, Link } from "..";
 
 export interface InterfaceForm
-  extends Omit<
-    React.HTMLAttributes<HTMLElement>,
-    "className" | "style" | "children"
-  > {
+  extends Omit<React.HTMLAttributes<HTMLElement>, "className" | "style"> {
   /** Title text */
   titleText?: string;
   /** Subtitle text */

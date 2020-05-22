@@ -4,7 +4,7 @@ import "@tiendanube/styles/css/Title.css";
 export interface InterfaceTitle
   extends Omit<
     React.HTMLAttributes<HTMLHeadingElement>,
-    "className" | "children" | "style"
+    "className" | "style"
   > {
   /** Element inside tag component */
   children: React.ReactNode;
