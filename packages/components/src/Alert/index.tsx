@@ -13,7 +13,6 @@ interface Props
   ctaSecondary?: string;
   isDismissable?: boolean;
   hasActions: boolean;
-  icon: string;
 }
 
 const Alert: React.FC<Props> = ({
@@ -25,9 +24,16 @@ const Alert: React.FC<Props> = ({
   ctaSecondary,
   isDismissable,
   hasActions,
-  icon,
   ...share
 }: Props) => {
+  const icon = {
+    primary: "InfoCircle",
+    secondary: "InfoCircle",
+    danger: "ExclamationTriangle",
+    success: "CheckCircle",
+    warning: "ExclamationCircle",
+  }[color];
+
   return (
     <div
       {...share}
@@ -63,7 +69,6 @@ Alert.defaultProps = {
   type: "inline",
   color: "primary",
   isDismissable: false,
-  icon: "InfoCircle",
   hasActions: false,
 };
 
