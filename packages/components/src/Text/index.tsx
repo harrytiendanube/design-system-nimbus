@@ -13,7 +13,7 @@ interface Props
   */
   children: React.ReactNode;
   /** Tamaño "regular" */
-  size: Size;
+  size?: Size;
 }
 
 const Text: React.FC<Props> = ({ children, size, ...share }: Props) => {
