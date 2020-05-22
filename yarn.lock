@@ -3438,10 +3438,10 @@
     react "16.13.1"
     react-is "16.13.1"
 
-"@tiendanube/design-tokens-nimbus@^1.0.7":
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/@tiendanube/design-tokens-nimbus/-/design-tokens-nimbus-1.0.7.tgz#9eba4ae1110f033cd38866dc0f7710cc0f9d3bc5"
-  integrity sha512-1dXPx7clcmpGhCU89dSzS9ldfTgPIE8TWf82bvJi7Fdi70E9GHs3+V/grzQyP8lqWny6FyqGJie6RzK2NerbMQ==
+"@tiendanube/design-tokens-nimbus@^1.0.8":
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/@tiendanube/design-tokens-nimbus/-/design-tokens-nimbus-1.0.8.tgz#b0e66b4e8e74bf657b2e0242ecf25c665bc4bc31"
+  integrity sha512-oWo26zW+pnlRaXOYlAsGd/4+rafYxmaal1s2bjF2y3jSWSBtrFT7ta4Ruffuk8LokLc/Zlkk2YHvfJLhQCj0Ow==
   dependencies:
     style-dictionary "2.10.0"
 

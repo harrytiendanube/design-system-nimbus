@@ -1,18 +1,19 @@
 @import "../../../../../node_modules/@tiendanube/design-tokens-nimbus/dist/scss/variables";
 
 $nimbus-colors: (
-  "primary-blue": $nimbus-color-blue-primary,
-  "sky-blue": $nimbus-color-blue-sky,
-  "dark-blue": $nimbus-color-blue-dark,
-  "deep-blue": $nimbus-color-blue-deep,
-  "nube-white": $nimbus-color-gray-nube,
-  "light-gray": $nimbus-color-gray-light,
-  "mid-gray": $nimbus-color-gray-mid,
-  "dark-gray": $nimbus-color-gray-dark,
-  "text-gray": $nimbus-color-gray-text,
-  "success": $nimbus-color-situation-green,
-  "warning": $nimbus-color-situation-yellow,
-  "danger": $nimbus-color-situation-red,
+  "blue-deep": $nimbus-color-blue-deep,
+  "blue-dark": $nimbus-color-blue-dark,
+  "blue-sky": $nimbus-color-blue-sky,
+  "blue-light": $nimbus-color-blue-light,
+  "gray-100": $nimbus-color-gray-100,
+  "gray-85": $nimbus-color-gray-85,
+  "gray-60": $nimbus-color-gray-60,
+  "gray-35": $nimbus-color-gray-35,
+  "white-nube": $nimbus-color-white-nube,
+  "white-pure": $nimbus-color-white-pure,
+  "green-success": $nimbus-color-situation-green,
+  "yellow-warning": $nimbus-color-situation-yellow,
+  "red-danger": $nimbus-color-situation-red,
 );
 
 // Theme Colors
@@ -21,9 +22,11 @@ $nimbus-colors: (
 
 $color-primary: $nimbus-color-blue-dark;
 $color-secondary: $nimbus-color-blue-sky;
-$color-light: $nimbus-color-gray-nube;
-$color-gray-light: $nimbus-color-gray-light;
-$color-text: $nimbus-color-gray-text;
+$color-text: $nimbus-color-gray-100;
+$color-dark: $nimbus-color-gray-85;
+$color-mid: $nimbus-color-gray-60;
+$color-light: $nimbus-color-gray-35;
+$color-white: $nimbus-color-white-nube;
 $color-danger: $nimbus-color-situation-red;
 $color-warning: $nimbus-color-situation-yellow;
 $color-success: $nimbus-color-situation-green;
@@ -31,8 +34,7 @@ $color-success: $nimbus-color-situation-green;
 $theme-colors: (
   "primary": $color-primary,
   "secondary": $color-secondary,
-  "light": $color-light,
-  "gray-light": $color-gray-light,
+  "light": $color-white,
   "text": $color-text,
   "danger": $color-danger,
   "warning": $color-warning,
@@ -44,7 +46,7 @@ $theme-colors: (
 // For the contrast function
 
 $contrast-dark: $color-primary;
-$contrast-light: $color-light;
+$contrast-light: $color-white;
 $contrast-threshold: 150;
 
 // Typography
