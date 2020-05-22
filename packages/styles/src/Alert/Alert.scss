@@ -5,6 +5,7 @@ $nimbus-grid-spacer-01: 4px;
 $nimbus-grid-spacer-02: 8px;
 $nimbus-grid-spacer-03: 16px;
 $nimbus-color-gray-text: #473c41;
+$nimbus-font-line-height-01: 1.25;
 
 // Alert
 
@@ -17,6 +18,7 @@ $nimbus-color-gray-text: #473c41;
   padding-right: $nimbus-grid-spacer-03;
   padding-top: $nimbus-grid-spacer-03 - $nimbus-grid-spacer-01;
   text-align: left;
+  width: 100%;
 
   .#{$prefix}--alert__body {
     padding-left: $nimbus-grid-spacer-03;
@@ -30,6 +32,12 @@ $nimbus-color-gray-text: #473c41;
     margin-top: -$nimbus-grid-spacer-03;
     padding: $nimbus-grid-spacer-03;
     position: relative;
+  }
+
+  .#{$prefix}--title-05,
+  .#{$prefix}--text {
+    color: $nimbus-color-gray-text;
+    line-height: $nimbus-font-line-height-01;
   }
 }
 
@@ -51,6 +59,7 @@ $nimbus-color-gray-text: #473c41;
   }
 }
 
+// TODO: @Juan Definir los usos del alert toast y ancho máximo (con breakpoints)
 .#{$prefix}--alert--toast {
   @extend %#{$prefix}--alert;
 
@@ -65,6 +74,5 @@ $nimbus-color-gray-text: #473c41;
   .#{$prefix}--alert--#{$color} {
     background-color: scale-color($value, $lightness: 90%);
     border-top: $nimbus-grid-spacer-01 solid $value;
-    color: $nimbus-color-gray-text;
   }
 }
