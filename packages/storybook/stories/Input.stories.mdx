@@ -3,6 +3,8 @@ import { withKnobs, color, select, text } from "@storybook/addon-knobs";
 import { withA11y } from "@storybook/addon-a11y";
 import { action } from "@storybook/addon-actions";
 import { Input } from '../../components/src';
+import Wrapper from './tsx/InputWrapper.tsx';
+
 import '../utils/style.css';
 
 <Meta title="Atoms/Input" component={Input} />
@@ -18,7 +20,7 @@ Other description
     name="standard"
     parameters={{ decorators: [withKnobs, withA11y] }}
   >
-    <Input
+    <Wrapper
       label={text("label","Email o URL de tu tienda")}
       placeholder={text("placehoder","placehoder")}
       value={text("value","")}

@@ -1,15 +1,22 @@
 import * as React from "react";
 import "@tiendanube/styles/css/Title.css";
 
-interface Props
-  extends Omit<React.HTMLAttributes<HTMLHeadingElement>, "children" | "style"> {
+export interface InterfaceTitle
+  extends Omit<
+    React.HTMLAttributes<HTMLHeadingElement>,
+    "className" | "style"
+  > {
   /** Element inside tag component */
   children: React.ReactNode;
   /** Heading type */
   type?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 }
 
-const Title: React.FC<Props> = ({ children, type = "h1", ...share }: Props) => {
+const Title: React.FC<InterfaceTitle> = ({
+  children,
+  type = "h1",
+  ...share
+}: InterfaceTitle) => {
   const HeadTag = `${type}`;
 
   const classesTypes = {

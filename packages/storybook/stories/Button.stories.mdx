@@ -9,26 +9,28 @@ import '../utils/style.css'
 
 # Button
 
-## detail component
-
-Other description
+The button tag defines a clickable button.
 
 <Preview>
-  <Story name="standard" parameters={{ decorators: [withKnobs, withA11y] }}>
+  <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
     <Button
       start="Facebook"
       end="LongArrowRight"
       color={select("Color", ["default", "secondary", "light"])}
-      onClick={ action('onClick') }
+      onClick={action('onClick')}
     >
       {text("Texto", "Texto")}
     </Button>
   </Story>
 </Preview>
 
+## Properties
+
 <Props of={Button} />
 
 ## Colores
+
+This is an specfic Area to explian uses cases of alternates
 
 <Preview withToolbar>
   <Story name="clases">
@@ -44,6 +46,8 @@ Other description
 
 ## Outline
 
+This is an specfic Area to explian uses cases of alternates
+
 <Preview withToolbar>
   <Story name="outline">
     <div className="separate">
@@ -53,3 +57,9 @@ Other description
     </div>
   </Story>
 </Preview>
+
+## Icons
+
+Incoming
+
+

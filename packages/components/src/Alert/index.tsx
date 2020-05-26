@@ -2,8 +2,8 @@ import * as React from "react";
 import "@tiendanube/styles/css/Alert.css";
 import { Icon, Title, Text, Button, Link } from "../";
 
-interface Props
-  extends Omit<React.HTMLAttributes<HTMLElement>, "className" | "children"> {
+interface InterfaceAlert
+  extends Omit<React.HTMLAttributes<HTMLElement>, "className" | "style"> {
   /** Element inside tag component */
   children: React.ReactNode;
   type: "toast" | "inline";
@@ -14,7 +14,7 @@ interface Props
   isDismissable?: boolean;
 }
 
-const Alert: React.FC<Props> = ({
+const Alert: React.FC<InterfaceAlert> = ({
   children,
   type,
   color,
@@ -23,7 +23,7 @@ const Alert: React.FC<Props> = ({
   ctaSecondary,
   isDismissable,
   ...share
-}: Props) => {
+}: InterfaceAlert) => {
   const icon = {
     primary: "InfoCircle",
     secondary: "InfoCircle",

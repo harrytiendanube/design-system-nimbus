@@ -3,6 +3,7 @@ import { withKnobs, select, text } from "@storybook/addon-knobs";
 import { action } from '@storybook/addon-actions';
 import { withA11y } from "@storybook/addon-a11y";
 import { Title } from '../../components/src';
+import Wrapper from './tsx/TitleWrapper.tsx';
 
 import '../utils/style.css';
 
@@ -16,7 +17,7 @@ You can use the titles in any component or section of the application.
 
 <Preview>
   <Story name="standard" parameters={{ decorators: [withKnobs, withA11y] }}>
-    <Title> {text("Texto", "Lorem ipsum dolor sit amet, consectetur adipiscing elit")} </Title>
+    <Wrapper> {text("Texto", "Lorem ipsum dolor sit amet, consectetur adipiscing elit")} </Wrapper>
   </Story>
 </Preview>
 

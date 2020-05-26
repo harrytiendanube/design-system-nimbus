@@ -30,6 +30,7 @@
 ## Styles ignoring
 /packages/styles/dist
 /packages/styles/css
+/packages/styles/css-tmp
 /packages/styles/scss
 
 ##root

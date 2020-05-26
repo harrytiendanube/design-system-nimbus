@@ -2,7 +2,7 @@ import * as React from "react";
 import Icon from "../Icon";
 import "@tiendanube/styles/css/Link.css";
 
-interface Props
+export interface InterfaceLink
   extends Omit<
     React.AnchorHTMLAttributes<HTMLAnchorElement>,
     "className" | "style"
@@ -21,7 +21,12 @@ interface Props
   end?: string;
 }
 
-const Link: React.FC<Props> = ({ start, children, end, ...share }: Props) => {
+const Link: React.FC<InterfaceLink> = ({
+  start,
+  children,
+  end,
+  ...share
+}: InterfaceLink) => {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   return (
     <a {...share} className="nimbus--link">
