@@ -1,6 +1,6 @@
 import * as React from "react";
 import "@tiendanube/styles/css/Form.css";
-import { Button, Title, Text, Link } from "..";
+import { Button, Title, Text, Link, Alert } from "..";
 
 export interface InterfaceForm
   extends Omit<React.HTMLAttributes<HTMLElement>, "className" | "style"> {
@@ -8,6 +8,8 @@ export interface InterfaceForm
   titleText?: string;
   /** Subtitle text */
   subtitleText?: string;
+  /** Validation alert text */
+  alertText?: string;
   /** Element inside tag component */
   children: React.ReactNode;
   /** Link text  */
@@ -31,6 +33,7 @@ export interface InterfaceForm
 const Form: React.FC<InterfaceForm> = ({
   titleText,
   subtitleText,
+  alertText,
   children,
   linkText,
   linkHref,
@@ -41,13 +44,17 @@ const Form: React.FC<InterfaceForm> = ({
   ...share
 }: InterfaceForm) => {
   return (
-    <div {...share}>
+    <div {...share} className="nimbus--form">
       {titleText && <Title>Form Title</Title>}
       {subtitleText && <Text>Form Subtitle</Text>}
-      <div>Mancheta</div>
+      {alertText && (
+        <Alert type="inline" color="danger">
+          {alertText}
+        </Alert>
+      )}
       <form action="">{children}</form>
       {linkText && <Link href={linkHref}>{linkText}</Link>}
-      <div className="buttons">
+      <div className="nimbus--form__actions">
         {optionalCallback && (
           <Button color="light" onClick={optionalCallback}>
             {optionalButtonText}

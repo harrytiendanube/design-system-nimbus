@@ -12,6 +12,7 @@ export const Login: React.FC = () => {
       <Text>¿Todavía no vendés por internet?</Text>
       <Link href="http://www.tiendanube.com.ar">Creá tu tienda</Link>
       <Form
+        alertText="Tu email o contraseña son incorrectos. Revisalos y volvé a intentar."
         submitText="Ingresar a tu tienda"
         submitCallback={(): void =>
           alert(`Login click: email: ${email} password: ${password}`)
