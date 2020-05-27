@@ -10,14 +10,14 @@ import '../utils/style.css'
 
 # Button
 
-The button tag defines a clickable button.
+TODO: complete
 
 <Preview>
   <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
     <Button
       start="Facebook"
       end="LongArrowRight"
-      color={select("Color", ["default", "secondary", "light"])}
+      apparence={select("Color", ["default", "secondary", "light"])}
       onClick={action('onClick')}
     >
       {text("Text", "Text")}
@@ -31,30 +31,30 @@ The button tag defines a clickable button.
 
 ## Colores
 
-This is an specfic Area to explian uses cases of alternates
+TODO: complete
 
 <Preview withToolbar>
   <Story name="clases">
     <div className="separate">
-      <Button color="primary"> Primary </Button>
-      <Button color="secondary"> Secondary </Button>
-      <Button color="light"> Light </Button>
-      <Button color="danger"> Danger </Button>
-      <Button color="transparent"> Transparent </Button>
+      <Button apparence="primary"> Primary </Button>
+      <Button apparence="secondary"> Secondary </Button>
+      <Button apparence="light"> Light </Button>
+      <Button apparence="danger"> Danger </Button>
+      <Button apparence="transparent"> Transparent </Button>
     </div>
   </Story>
 </Preview>
 
 ## Outline
 
-This is an specfic Area to explian uses cases of alternates
+TODO: complete
 
 <Preview withToolbar>
   <Story name="outline">
     <div className="separate">
-      <Button color="primary" outline={true}>Primary</Button>
-      <Button color="secondary" outline={true}>Secondary</Button>
-      <Button color="danger" outline={true}>Danger</Button>
+      <Button apparence="primary" outline={true}>Primary</Button>
+      <Button apparence="secondary" outline={true}>Secondary</Button>
+      <Button apparence="danger" outline={true}>Danger</Button>
     </div>
   </Story>
 </Preview>
