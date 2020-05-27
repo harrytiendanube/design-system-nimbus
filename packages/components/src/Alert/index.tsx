@@ -7,37 +7,37 @@ interface InterfaceAlert
   /** Element inside tag component */
   children: React.ReactNode;
   type: "toast" | "inline";
-  color: "primary" | "secondary" | "danger" | "success" | "warning";
+  appearance?: "primary" | "secondary" | "danger" | "success" | "warning";
   title?: string;
   ctaPrimary?: string;
   ctaSecondary?: string;
   isDismissable?: boolean;
 }
 
-const Alert: React.FC<InterfaceAlert> = ({
+function Alert({
   children,
-  type,
-  color,
+  type = "inline",
+  appearance = "primary",
   title,
   ctaPrimary,
   ctaSecondary,
-  isDismissable,
+  isDismissable = false,
   ...share
-}: InterfaceAlert) => {
+}: InterfaceAlert): JSX.Element {
   const icon = {
     primary: "InfoCircle",
     secondary: "InfoCircle",
     danger: "ExclamationTriangle",
     success: "CheckCircle",
     warning: "ExclamationCircle",
-  }[color];
+  }[appearance];
 
   const hasActions = ctaPrimary || ctaSecondary;
 
   return (
     <div
       {...share}
-      className={`nimbus--alert--${type} nimbus--alert--${color}`}
+      className={`nimbus--alert--${type} nimbus--alert--${appearance}`}
     >
       <div className="nimbus--alert__icon">
         <Icon name={icon} />
@@ -63,12 +63,12 @@ const Alert: React.FC<InterfaceAlert> = ({
       )}
     </div>
   );
-};
+}
 
-Alert.defaultProps = {
-  type: "inline",
-  color: "primary",
-  isDismissable: false,
-};
+// Alert.defaultProps = {
+//   type: "inline",
+//   appearance: "primary",
+//   isDismissable: false,
+// };
 
 export default Alert;

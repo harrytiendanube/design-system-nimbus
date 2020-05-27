@@ -10,6 +10,8 @@ export interface InterfaceForm
   subtitleText?: string;
   /** Validation alert text */
   alertText?: string;
+  /** Validation alert text */
+  alertAppearance?: "primary" | "secondary" | "danger" | "success" | "warning";
   /** Element inside tag component */
   children: React.ReactNode;
   /** Link text  */
@@ -34,6 +36,7 @@ const Form: React.FC<InterfaceForm> = ({
   titleText,
   subtitleText,
   alertText,
+  alertAppearance = "primary",
   children,
   linkText,
   linkHref,
@@ -48,7 +51,7 @@ const Form: React.FC<InterfaceForm> = ({
       {titleText && <Title>Form Title</Title>}
       {subtitleText && <Text>Form Subtitle</Text>}
       {alertText && (
-        <Alert type="inline" color="danger">
+        <Alert type="inline" appearance={alertAppearance}>
           {alertText}
         </Alert>
       )}
@@ -67,7 +70,5 @@ const Form: React.FC<InterfaceForm> = ({
     </div>
   );
 };
-
-Form.defaultProps = {};
 
 export default Form;
