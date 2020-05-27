@@ -1,4 +1,5 @@
 import * as React from "react";
+
 import "@tiendanube/styles/css/Button.css";
 import { Icon } from "../";
 
@@ -8,57 +9,65 @@ export interface InterfaceButton
     "onClick" | "className" | "style"
   > {
   /**
-    Escribe dentro de las las etiquetas para renderizar el contenido.
-  */
-  children: React.ReactNode;
+   * React node of type children.
+   */
+  children: React.ReactNode | Array<React.ReactNode>;
   /**
-   * Click event
+   * type of react mouse event onclick to manage event click and void return
    */
   onClick(event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void;
   /**
    * Color
    */
-  color: "primary" | "secondary" | "light" | "danger" | "transparent";
+  apparence: "primary" | "secondary" | "light" | "danger" | "transparent";
   /**
-   * Nombre del Icono que mostrará al comienzo del botón.
+   * Icons's name to start in position left.
    */
   start?: string;
   /**
-   * Nombre del Icono que mostrará al final del botón.
+   * Icons's name to start in position rigth.
    */
   end?: string;
   /**
-   * Fondo transparente con borde de color.
+   * Convet button to apparence with background color transparent and border color pf apparence.
    */
   outline?: boolean;
 }
 
 /**
-  Utiliza `Button` como componente de acción.
-*/
-const Button: React.FC<InterfaceButton> = ({
-  start,
+ * Button's Component as actionable component.
+ * @Param start Icons's name to start in position left
+ * @Param end Icons's name to start in position left.
+ * @Param children React node of type children.
+ * @Param color type of apparence "primary" | "secondary" | "light" | "danger" | "transparent"
+ * @Param outline Convet button to apparence background color transparent with border color dark.
+ */
+function Button({
   children,
-  color,
-  outline,
+  start,
   end,
-  ...share
-}: InterfaceButton) => {
+  apparence = "primary",
+  outline = false,
+}: InterfaceButton): JSX.Element {
+  const classname = React.useMemo(
+    () => `nimbus--button--${apparence}${outline ? "-outline" : ""}`,
+    [apparence, outline],
+  );
+  const iconStart = React.useMemo(
+    () => start && <Icon name={start} startPadding />,
+    [start],
+  );
+  const iconEnd = React.useMemo(() => end && <Icon name={end} endPadding />, [
+    end,
+  ]);
+
   return (
-    <button
-      {...share}
-      className={`nimbus--button--${color}${outline ? "-outline" : ""}`}
-    >
-      {start && <Icon name={start} startPadding />}
+    <button className={classname}>
+      {iconStart}
       {children}
-      {end && <Icon name={end} endPadding />}
+      {iconEnd}
     </button>
   );
-};
+}
 
-Button.defaultProps = {
-  color: "primary",
-  outline: false,
-};
-
-export default Button;
+export default React.memo(Button);
