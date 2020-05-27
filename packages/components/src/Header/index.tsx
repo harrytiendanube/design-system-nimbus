@@ -21,21 +21,19 @@ export interface InterfaceHeader {
   linkHref?: string;
 }
 
-const Header: React.FC<InterfaceHeader> = ({
+function Header({
   titleText,
   subtitleText,
   linkText,
   linkHref,
-}: InterfaceHeader) => {
+}: InterfaceHeader): JSX.Element {
   return (
-    <React.Fragment>
+    <div>
       <Title>{titleText}</Title>
       {subtitleText && <Text>{subtitleText}</Text>}
       {linkText && <Link href={linkHref}>{linkText}</Link>}
-    </React.Fragment>
+    </div>
   );
-};
-
-Header.defaultProps = {};
+}
 
 export default Header;
