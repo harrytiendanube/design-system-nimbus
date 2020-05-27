@@ -11,7 +11,7 @@ export interface InterfaceButton
   /**
    * React node of type children.
    */
-  children: React.ReactChildren | React.ReactChild[] | React.ReactText;
+  children: React.ReactText;
   /**
    * type of react mouse event onclick to manage event click and void return
    */
