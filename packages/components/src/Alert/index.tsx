@@ -65,10 +65,4 @@ function Alert({
   );
 }
 
-// Alert.defaultProps = {
-//   type: "inline",
-//   appearance: "primary",
-//   isDismissable: false,
-// };
-
 export default Alert;
