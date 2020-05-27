@@ -21,6 +21,12 @@ export interface InterfaceHeader {
   linkHref?: string;
 }
 
+/**
+ *  @param titleText is the title text
+ *  @param subtitleText is the subtitle text
+ *  @param linkText is the link text
+ *  @param linkHref is de link href
+ */
 function Header({
   titleText,
   subtitleText,
