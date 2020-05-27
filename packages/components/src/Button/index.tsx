@@ -11,7 +11,7 @@ export interface InterfaceButton
   /**
    * React node of type children.
    */
-  children: React.ReactNode | Array<React.ReactNode>;
+  children: React.ReactChildren | React.ReactChild[] | React.ReactText;
   /**
    * type of react mouse event onclick to manage event click and void return
    */
@@ -42,13 +42,17 @@ export interface InterfaceButton
  * @Param color type of apparence "primary" | "secondary" | "light" | "danger" | "transparent"
  * @Param outline Convet button to apparence background color transparent with border color dark.
  */
-function Button({
-  children,
-  start,
-  end,
-  apparence = "primary",
-  outline = false,
-}: InterfaceButton): JSX.Element {
+const Button = (props: InterfaceButton): JSX.Element => {
+  console.log(props);
+  const {
+    children,
+    start,
+    end,
+    apparence = "primary",
+    outline = false,
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    onClick,
+  } = props;
   const classname = React.useMemo(
     () => `nimbus--button--${apparence}${outline ? "-outline" : ""}`,
     [apparence, outline],
@@ -62,12 +66,12 @@ function Button({
   ]);
 
   return (
-    <button className={classname}>
+    <button className={classname} onClick={onClick}>
       {iconStart}
       {children}
       {iconEnd}
     </button>
   );
-}
+};
 
 export default React.memo(Button);
