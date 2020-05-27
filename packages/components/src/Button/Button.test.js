@@ -13,13 +13,13 @@ describe("Button", () => {
     const button = getByTestId("button");
     /** Validate than text is the same as the content tag */
     expect(button).toHaveTextContent("this is my button");
-    /** Validate default style without apparence attribute */
+    /** Validate default style without appearance attribute */
     expect(button).toHaveClass("nimbus--button--primary");
   });
 
   it("Render Primary Button", () => {
     const { getByTestId } = render(
-      <Button data-testid="button" apparence="primary">
+      <Button data-testid="button" appearance="primary">
         this is my Parimary button
       </Button>,
     );
@@ -30,7 +30,7 @@ describe("Button", () => {
 
   it("Render Secondary Button", () => {
     const { getByTestId } = render(
-      <Button data-testid="button" apparence="secondary">
+      <Button data-testid="button" appearance="secondary">
         this is my Secondary button
       </Button>,
     );
@@ -41,7 +41,7 @@ describe("Button", () => {
 
   it("Render Light Button", () => {
     const { getByTestId } = render(
-      <Button data-testid="button" apparence="light">
+      <Button data-testid="button" appearance="light">
         this is my Light button
       </Button>,
     );
@@ -52,7 +52,7 @@ describe("Button", () => {
 
   it("Render Danger Button", () => {
     const { getByTestId } = render(
-      <Button data-testid="button" apparence="danger">
+      <Button data-testid="button" appearance="danger">
         this is my Danger button
       </Button>,
     );
@@ -63,7 +63,7 @@ describe("Button", () => {
 
   it("Render Transparent Button", () => {
     const { getByTestId } = render(
-      <Button data-testid="button" apparence="transparent">
+      <Button data-testid="button" appearance="transparent">
         this is my Transparent button
       </Button>,
     );

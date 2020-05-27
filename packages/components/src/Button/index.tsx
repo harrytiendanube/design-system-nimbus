@@ -19,7 +19,7 @@ export interface InterfaceButton
   /**
    * Color
    */
-  apparence: "primary" | "secondary" | "light" | "danger" | "transparent";
+  appearance: "primary" | "secondary" | "light" | "danger" | "transparent";
   /**
    * Icons's name to start in position left.
    */
@@ -29,7 +29,7 @@ export interface InterfaceButton
    */
   end?: string;
   /**
-   * Convet button to apparence with background color transparent and border color pf apparence.
+   * Convet button to appearance with background color transparent and border color pf appearance.
    */
   outline?: boolean;
 }
@@ -39,21 +39,21 @@ export interface InterfaceButton
  * @Param start Icons's name to start in position left
  * @Param end Icons's name to start in position left.
  * @Param children React node of type children.
- * @Param color type of apparence "primary" | "secondary" | "light" | "danger" | "transparent"
- * @Param outline Convet button to apparence background color transparent with border color dark.
+ * @Param color type of appearance "primary" | "secondary" | "light" | "danger" | "transparent"
+ * @Param outline Convet button to appearance background color transparent with border color dark.
  */
 function Button({
   children,
   start,
   end,
-  apparence = "primary",
+  appearance = "primary",
   outline = false,
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   onClick,
 }: InterfaceButton): JSX.Element {
   const classname = React.useMemo(
-    () => `nimbus--button--${apparence}${outline ? "-outline" : ""}`,
-    [apparence, outline],
+    () => `nimbus--button--${appearance}${outline ? "-outline" : ""}`,
+    [appearance, outline],
   );
   const iconStart = React.useMemo(
     () => start && <Icon name={start} startPadding />,
