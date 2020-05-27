@@ -1,7 +1,9 @@
+import "@testing-library/jest-dom/extend-expect";
+
 import React from "react";
+
 import { render, fireEvent } from "@testing-library/react";
 import Button from ".";
-import "@testing-library/jest-dom/extend-expect";
 
 describe("Button", () => {
   it("Render Button", () => {
@@ -11,13 +13,13 @@ describe("Button", () => {
     const button = getByTestId("button");
     /** Validate than text is the same as the content tag */
     expect(button).toHaveTextContent("this is my button");
-    /** Validate default style without color attribute */
+    /** Validate default style without apparence attribute */
     expect(button).toHaveClass("nimbus--button--primary");
   });
 
   it("Render Primary Button", () => {
     const { getByTestId } = render(
-      <Button data-testid="button" color="primary">
+      <Button data-testid="button" apparence="primary">
         this is my Parimary button
       </Button>,
     );
@@ -25,9 +27,10 @@ describe("Button", () => {
     /** Validate primary style. */
     expect(button).toHaveClass("nimbus--button--primary");
   });
+
   it("Render Secondary Button", () => {
     const { getByTestId } = render(
-      <Button data-testid="button" color="secondary">
+      <Button data-testid="button" apparence="secondary">
         this is my Secondary button
       </Button>,
     );
@@ -35,9 +38,10 @@ describe("Button", () => {
     /** Validate secondary style. */
     expect(button).toHaveClass("nimbus--button--secondary");
   });
+
   it("Render Light Button", () => {
     const { getByTestId } = render(
-      <Button data-testid="button" color="light">
+      <Button data-testid="button" apparence="light">
         this is my Light button
       </Button>,
     );
@@ -45,9 +49,10 @@ describe("Button", () => {
     /** Validate light style. */
     expect(button).toHaveClass("nimbus--button--light");
   });
+
   it("Render Danger Button", () => {
     const { getByTestId } = render(
-      <Button data-testid="button" color="danger">
+      <Button data-testid="button" apparence="danger">
         this is my Danger button
       </Button>,
     );
@@ -55,9 +60,10 @@ describe("Button", () => {
     /** Validate danger style. */
     expect(button).toHaveClass("nimbus--button--danger");
   });
+
   it("Render Transparent Button", () => {
     const { getByTestId } = render(
-      <Button data-testid="button" color="transparent">
+      <Button data-testid="button" apparence="transparent">
         this is my Transparent button
       </Button>,
     );
@@ -65,6 +71,7 @@ describe("Button", () => {
     /** Validate transparent style. */
     expect(button).toHaveClass("nimbus--button--transparent");
   });
+
   it("Render button with a left icon", () => {
     const { getByTestId } = render(
       <Button data-testid="button" start="Facebook">
@@ -74,6 +81,7 @@ describe("Button", () => {
     const icon = getByTestId("icon-Facebook");
     expect(icon).toBeInTheDocument();
   });
+
   it("Render button with a right icon", () => {
     const { getByTestId } = render(
       <Button data-testid="button" end="LongArrowRight">
@@ -83,6 +91,7 @@ describe("Button", () => {
     const icon = getByTestId("icon-LongArrowRight");
     expect(icon).toBeInTheDocument();
   });
+
   it("Render button with a left and right icon", () => {
     const { getByTestId } = render(
       <Button data-testid="button" start="Facebook" end="LongArrowRight">
@@ -94,6 +103,7 @@ describe("Button", () => {
     expect(iconLeft).toBeInTheDocument();
     expect(iconRight).toBeInTheDocument();
   });
+
   it("Click on Button must run callback", () => {
     const callback = jest.fn();
     const { getByTestId } = render(
