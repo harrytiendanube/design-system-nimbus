@@ -42,7 +42,7 @@ export interface InterfaceButton
  * @Param color type of apparence "primary" | "secondary" | "light" | "danger" | "transparent"
  * @Param outline Convet button to apparence background color transparent with border color dark.
  */
-const Button = ({
+function Button({
   children,
   start,
   end,
@@ -50,7 +50,7 @@ const Button = ({
   outline = false,
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   onClick,
-}: InterfaceButton): JSX.Element => {
+}: InterfaceButton): JSX.Element {
   const classname = React.useMemo(
     () => `nimbus--button--${apparence}${outline ? "-outline" : ""}`,
     [apparence, outline],
@@ -70,6 +70,6 @@ const Button = ({
       {iconEnd}
     </button>
   );
-};
+}
 
 export default React.memo(Button);
