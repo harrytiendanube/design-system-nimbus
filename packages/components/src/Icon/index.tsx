@@ -1,32 +1,40 @@
-import * as React from "react";
 import "@tiendanube/styles/css/Icon.css";
 
-import {
-  FontAwesomeIcon,
-  Props as FAProps,
-} from "@fortawesome/react-fontawesome";
+import * as React from "react";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fal } from "@fortawesome/pro-light-svg-icons";
 import { fab } from "@fortawesome/free-brands-svg-icons";
+
 export const icons = { ...fal, ...fab };
-
 export const variantIcons = Object.keys(icons).map((icon) => icon.substring(2));
-
-const DEFAULT_SIZE = "sm";
-const DEFAULT_COLOR = "inherit";
 
 export interface InterfaceIcon {
   /**
-   * Nombre del icono (ver Galería valores permitidos)
+   * Icons's name  (Show avaliables names in gallery)
    */
   name: string;
   /**
-   * Tamaño: "sm" | "xs" | "lg" | "1x" | "2x" | "3x" | "4x" | "5x" | "6x" | "7x" | "8x" | "9x" | "10x"
+   * Avaliables Sizes: "sm" | "xs" | "lg" | "1x" | "2x" | "3x" | "4x" | "5x" | "6x" | "7x" | "8x" | "9x" | "10x"
    */
-  size?: FAProps["size"];
+  size?:
+    | "xs"
+    | "lg"
+    | "sm"
+    | "1x"
+    | "2x"
+    | "3x"
+    | "4x"
+    | "5x"
+    | "6x"
+    | "7x"
+    | "8x"
+    | "9x"
+    | "10x";
   /**
-   * Color
+   * Color type of string, defined color of hexadecimal or rbg
    */
-  color?: FAProps["color"];
+  color?: string;
   /**
    * Add start space to icon
    */
@@ -37,36 +45,41 @@ export interface InterfaceIcon {
   endPadding?: boolean;
 }
 
-/*
- *   example icon to use icons["fa" + "Accusoft"]
- *   ${param} name : string in Capitalized
+/**
+ *   Tiendanube's Icon
+ *   @Param name Icons's name  (Show avaliables names in gallery)
+ *   @Param color Color type of string, defined color of hexadecimal or rbg
+ *   @Param size Avaliables Sizes: "sm" | "xs" | "lg" | "1x" | "2x" | "3x" | "4x" | "5x" | "6x" | "7x" | "8x" | "9x" | "10x"
+ *   @Param startPadding used size in abreviatures "sm"
+ *   @Param endPadding used size in abreviatures "sm"
  */
 
-const Icon: React.FC<InterfaceIcon> = ({
+function Icon({
   name,
-  size,
-  color,
-  startPadding,
-  endPadding,
-}: InterfaceIcon) => {
+  size = "sm",
+  color = "inherit",
+  startPadding = false,
+  endPadding = false,
+}: InterfaceIcon): JSX.Element {
+  const className = React.useMemo(
+    () =>
+      `${startPadding ? "icon__padding_start" : ""} ${
+        endPadding ? "icon__padding_end" : ""
+      }`,
+    [startPadding, endPadding],
+  );
+
+  const iconName = React.useMemo(() => icons[`fa${name}`], [name]);
+
   return (
     <FontAwesomeIcon
-      className={`${startPadding ? "icon__padding_start" : ""} ${
-        endPadding ? "icon__padding_end" : ""
-      }`}
-      icon={icons[`fa${name}`]}
+      className={className}
+      icon={iconName}
       size={size}
       color={color}
       data-testid={`icon-${name}`}
     />
   );
-};
+}
 
-Icon.defaultProps = {
-  size: DEFAULT_SIZE,
-  color: DEFAULT_COLOR,
-  startPadding: false,
-  endPadding: false,
-};
-
-export default Icon;
+export default React.memo(Icon);
