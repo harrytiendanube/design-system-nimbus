@@ -5,9 +5,10 @@ import "@testing-library/jest-dom/extend-expect";
 
 describe("Text", () => {
   it("Render Text", () => {
-    const { getByTestId } = render(<Text data-testid="Text">children</Text>);
-    const component = getByTestId("Text");
-    /** Validate than text is the same as the content tag */
-    expect(component).toHaveTextContent("children");
+    const myText = "myText";
+    const { getByText } = render(<Text>{myText}</Text>);
+    const component = getByText(myText);
+    expect(component).toBeTruthy();
+    expect(component).toContainHTML("</p>");
   });
 });

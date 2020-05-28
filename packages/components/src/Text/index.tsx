@@ -1,32 +1,22 @@
 import * as React from "react";
 import "@tiendanube/styles/css/Text.css";
 
-export interface InterfaceText
-  extends Omit<
-    React.HTMLAttributes<HTMLParagraphElement>,
-    "className" | "style"
-  > {
+export interface InterfaceText {
   /**
-    Escribe dentro de las las etiquetas para renderizar el contenido.
-  */
+   *  React node of type children.
+   */
   children: React.ReactNode;
-  /** Tamaño */
+  /**
+   *  Size
+   */
   size?: "regular";
 }
 
 const Text: React.FC<InterfaceText> = ({
   children,
-  size,
-  ...share
+  size = "regular",
 }: InterfaceText) => {
-  return (
-    <p {...share} className={`nimbus--text nimbus--text_${size}`}>
-      {children}
-    </p>
-  );
+  return <p className={`nimbus--text nimbus--text_${size}`}>{children}</p>;
 };
 
-Text.defaultProps = {
-  size: "regular",
-};
 export default Text;
