@@ -1,51 +1,63 @@
 import * as React from "react";
+
+// import { InputTypes } from "../";
 import "@tiendanube/styles/css/Input.css";
 
-export interface InterfaceInput
-  extends Omit<
-    React.InputHTMLAttributes<HTMLInputElement>,
-    "className" | "style" | "onChange" | "id" | "name" | "value" | "type"
-  > {
+export interface InterfaceInput {
   /**
-   * Nombre
+   * Input name
    */
   name: string;
   /**
-   * Tipo
+   * Input type
    */
   type?: "text" | "password" | "email";
   /**
-   *  Valor
+   * Input value
    */
   value: string;
   /**
-   *  Etiqueta
+   * Input placeholder
+   */
+  placeholder: string;
+  /**
+   *  Label
    */
   label: string;
   /**
-   *  Callback de actualizacion
+   *  onChange callback function
    */
   onChange(event: React.ChangeEvent<HTMLInputElement>): void;
 }
 
+/**
+ *  @param name input name
+ *  @param type input type
+ *  @param value input value
+ *  @param placeholder input placeholder
+ *  @param label input label
+ *  @param onChange callback function
+ */
 const Input: React.FunctionComponent<InterfaceInput> = ({
   label,
-  type,
+  type = "text",
   name,
-  ...shared
+  value = "",
+  placeholder = "placeholder",
+  onChange,
 }: InterfaceInput) => {
   return (
     <div className="nimbus--input">
       <label htmlFor={`input_${name}`}>{label}</label>
-      <input {...shared} id={`input_${name}`} type={type} />
+      <input
+        id={`input_${name}`}
+        type={type}
+        value={value}
+        placeholder={placeholder}
+        onChange={onChange}
+      />
     </div>
   );
-};
-
-Input.defaultProps = {
-  type: "text",
-  placeholder: "placeholder",
-  value: "",
 };
 
 export default Input;

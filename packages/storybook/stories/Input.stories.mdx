@@ -3,7 +3,6 @@ import { withKnobs, color, select, text } from "@storybook/addon-knobs";
 import { withA11y } from "@storybook/addon-a11y";
 import { action } from "@storybook/addon-actions";
 import { Input } from '../../components/src';
-import Wrapper from './tsx/InputWrapper.tsx';
 
 import '../utils/style.css';
 
@@ -11,16 +10,14 @@ import '../utils/style.css';
 
 # Input
 
-## detail component
-
-Other description
+TODO: complete
 
 <Preview>
   <Story
-    name="standard"
+    name="default"
     parameters={{ decorators: [withKnobs, withA11y] }}
   >
-    <Wrapper
+    <Input
       label={text("label","Email o URL de tu tienda")}
       placeholder={text("placehoder","placehoder")}
       value={text("value","")}
@@ -30,13 +27,17 @@ Other description
   </Story>
 </Preview>
 
+## Properties
+
 <Props of={Input} />
 
-## Con valor
+## With value
+
+TODO: complete
 
 <Preview withToolbar>
   <Story
-    name="width value"
+    name="with value"
   >
     <Input
       label="Email o URL de tu tienda"
@@ -47,11 +48,13 @@ Other description
   </Story>
 </Preview>
 
-## Sin valor
+## Without value
+
+TODO: complete
 
 <Preview withToolbar>
   <Story
-    name="widthout value"
+    name="without value"
   >
     <Input
       label="Email o URL de tu tienda"
