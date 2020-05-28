@@ -10,30 +10,34 @@ import '../utils/style.css';
 
 # Alert
 
-## detail component
-
-Other description
+TODO: complete
 
 <Preview>
-  <Story name="standard" parameters={{ decorators: [withKnobs, withA11y] }}>
+  <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
     <Alert
-      type={select("Tipo", ["toast", "inline"])}
-      isDismissable={boolean("Dismissable", false)}
-      color={select("Color", ["primary", "danger", "warning", "success"])}
-      title={text("Título", "")}
-      ctaPrimary={text("Acción primaria", "")}
-      ctaSecondary={text("Acción secundaria", "")}
+      type={select("type", ["inline","toast"])}
+      isDismissable={boolean("isDismissable", true)}
+      appearance={select("appearance", ["primary", "secondary", "danger", "warning", "success"])}
+      title={text("title", "Title")}
+      primaryLabel={text("primaryLabel", "Primary label")}
+      onClickPrimary={action("onClickPrimary")}
+      secondaryLabel={text("secondaryLabel", "Secondary Label")}
+      secondaryTo={text("secondaryTo", "http://www.tiendanube.com")}
     >
-    {text("Texto", "Texto inicial")} </Alert>
+    {text("children", "Text")} </Alert>
   </Story>
 </Preview>
 
+## Properties
+
 <Props of={Alert} />
 
-## Colores
+## Appearances
+
+TODO: complete
 
 <Preview withToolbar>
-  <Story name="Estados">
+  <Story name="appearances">
     <div className="separate">
       <Alert>Default State</Alert>
       <Alert appearance="primary">Primary State</Alert>
