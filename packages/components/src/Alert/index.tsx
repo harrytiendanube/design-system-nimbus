@@ -6,11 +6,11 @@ import { Icon, Title, Text, Button, Link } from "../";
 
 interface InterfaceAlert {
   /**
-   * React node of type children
+   * Text to be displayed in the alert
    * */
-  children: React.ReactNode;
+  children: React.ReactText;
   /**
-   * Type
+   * Indicates the type of alert that can be in-line (on line) or toast (three lines)
    * */
   type: "toast" | "inline";
   /**
@@ -43,8 +43,8 @@ interface InterfaceAlert {
   isDismissable?: boolean;
 }
 /**
- *  @param children React node of type children
- *  @param type Type
+ *  @param children Text to be displayed in the alert
+ *  @param type Indicates the type of alert that can be in-line (on line) or toast (three lines)
  *  @param appearance Appearance
  *  @param title Title
  *  @param primaryLabel Label of primary action
