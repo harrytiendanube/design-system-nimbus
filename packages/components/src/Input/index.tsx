@@ -38,14 +38,14 @@ export interface InterfaceInput {
  *  @param label input label
  *  @param onChange callback function
  */
-const Input: React.FunctionComponent<InterfaceInput> = ({
+function Input({
   label,
   type = "text",
   name,
   value = "",
   placeholder = "placeholder",
   onChange,
-}: InterfaceInput) => {
+}: InterfaceInput): JSX.Element {
   return (
     <div className="nimbus--input">
       <label htmlFor={`input_${name}`}>{label}</label>
@@ -58,6 +58,6 @@ const Input: React.FunctionComponent<InterfaceInput> = ({
       />
     </div>
   );
-};
+}
 
 export default Input;
