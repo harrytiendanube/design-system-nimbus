@@ -58,7 +58,7 @@ export interface InterfaceForm {
  *  @param onClickButton Type of react mouse event onclick to manage event click and void return
  */
 
-const Form: React.FC<InterfaceForm> = ({
+function Form({
   alertText,
   alertAppearance = "danger",
   children,
@@ -68,7 +68,7 @@ const Form: React.FC<InterfaceForm> = ({
   onClickSubmit,
   buttonLabel,
   onClickButton,
-}: InterfaceForm) => {
+}: InterfaceForm): JSX.Element {
   return (
     <div className="nimbus--form">
       {alertText && (
@@ -90,6 +90,6 @@ const Form: React.FC<InterfaceForm> = ({
       </div>
     </div>
   );
-};
+}
 
 export default Form;
