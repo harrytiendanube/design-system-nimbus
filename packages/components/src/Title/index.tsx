@@ -6,17 +6,26 @@ export interface InterfaceTitle
     React.HTMLAttributes<HTMLHeadingElement>,
     "className" | "style"
   > {
-  /** Element inside tag component */
-  children: React.ReactNode;
-  /** Heading type */
+  /**
+   * Heading type of html heading
+   */
+  children: React.ReactChildren;
+  /**
+   * Element inside tag component
+   */
   type?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 }
 
-const Title: React.FC<InterfaceTitle> = ({
+/**
+ *
+ * @param children - Element inside tag component
+ * @param type - Heading type of html heading
+ */
+function Title({
   children,
   type = "h1",
   ...share
-}: InterfaceTitle) => {
+}: InterfaceTitle): JSX.Element {
   const HeadTag = `${type}`;
 
   const classesTypes = {
@@ -30,7 +39,7 @@ const Title: React.FC<InterfaceTitle> = ({
   };
   const props = Object.assign({}, share, { className: classesTypes[type] });
   return <HeadTag {...props}>{children}</HeadTag>;
-};
+}
 
 Title.defaultProps = {
   type: "h1",
