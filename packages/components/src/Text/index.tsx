@@ -16,11 +16,8 @@ export interface InterfaceText {
  *  @param children React node of type children
  *  @param size  Size
  */
-const Text: React.FC<InterfaceText> = ({
-  children,
-  size = "regular",
-}: InterfaceText) => {
+function Text({ children, size = "regular" }: InterfaceText): JSX.Element {
   return <p className={`nimbus--text nimbus--text_${size}`}>{children}</p>;
-};
+}
 
 export default Text;
