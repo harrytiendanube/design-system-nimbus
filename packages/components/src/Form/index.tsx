@@ -1,70 +1,91 @@
 import * as React from "react";
-import "@tiendanube/styles/css/Form.css";
-import { Button, Title, Text, Link, Alert } from "..";
 
-export interface InterfaceForm
-  extends Omit<React.HTMLAttributes<HTMLElement>, "className" | "style"> {
-  /** Title text */
-  titleText?: string;
-  /** Subtitle text */
-  subtitleText?: string;
-  /** Validation alert text */
+import "@tiendanube/styles/css/Form.css";
+import { Button, Link, Alert } from "..";
+
+export interface InterfaceForm {
+  /**
+   * Validation alert text
+   */
   alertText?: string;
-  /** Validation alert text */
+  /**
+   * Validation alert appearance
+   */
   alertAppearance?: "primary" | "secondary" | "danger" | "success" | "warning";
-  /** Element inside tag component */
+  /**
+   * React node of type children
+   */
   children: React.ReactNode;
-  /** Link text  */
-  linkText?: string;
-  /** Link href */
-  linkHref?: string;
-  /** Submit text */
-  submitText: string;
-  /** Submit callback */
-  submitCallback: (
+  /**
+   * Link text
+   */
+  link?: string;
+  /**
+   * Link href
+   */
+  linkTo?: string;
+  /**
+   * Submit button label
+   */
+  submitLabel: string;
+  /**
+   * Type of react mouse event onclick to manage event click and void return
+   */
+  onClickSubmit: (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => void;
-  /** Optional Button */
-  optionalButtonText?: string;
-  /** Optional button callback  */
-  optionalCallback?: (
+  /**
+   *  Optional button label
+   */
+  buttonLabel?: string;
+  /**
+   * Type of react mouse event onclick to manage event click and void return
+   */
+  onClickButton?: (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => void;
 }
 
+/**
+ *  @param alertText Validation alert text
+ *  @param alertAppearance  React node of type children
+ *  @param children React node of type children
+ *  @param link Link text
+ *  @param linkTo Link href
+ *  @param submitLabel Submit button text
+ *  @param onClickSubmit Submit button callback
+ *  @param buttonLabel Optional Button Text
+ *  @param onClickButton Type of react mouse event onclick to manage event click and void return
+ */
+
 const Form: React.FC<InterfaceForm> = ({
-  titleText,
-  subtitleText,
   alertText,
-  alertAppearance = "primary",
+  alertAppearance = "danger",
   children,
-  linkText,
-  linkHref,
-  submitText,
-  submitCallback,
-  optionalButtonText,
-  optionalCallback,
-  ...share
+  link,
+  linkTo,
+  submitLabel,
+  onClickSubmit,
+  buttonLabel,
+  onClickButton,
 }: InterfaceForm) => {
   return (
-    <div {...share} className="nimbus--form">
-      {titleText && <Title>Form Title</Title>}
-      {subtitleText && <Text>Form Subtitle</Text>}
+    <div className="nimbus--form">
       {alertText && (
         <Alert type="inline" appearance={alertAppearance}>
           {alertText}
         </Alert>
       )}
       <form action="">{children}</form>
-      {linkText && <Link href={linkHref}>{linkText}</Link>}
+      {link && <Link href={linkTo}>{link}</Link>}
       <div className="nimbus--form__actions">
-        {optionalCallback && (
-          <Button color="light" onClick={optionalCallback}>
-            {optionalButtonText}
+        {onClickButton && (
+          <Button color="light" onClick={onClickButton}>
+            {buttonLabel}
           </Button>
         )}
-        <Button color="primary" onClick={submitCallback}>
-          {submitText}
+        <Button color="primary" onClick={onClickSubmit}>
+          {submitLabel}
         </Button>
       </div>
     </div>

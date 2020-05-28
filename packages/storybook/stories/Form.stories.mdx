@@ -10,24 +10,19 @@ import '../utils/style.css';
 
 # Form
 
-## detail component
-
-Other description
+TODO: complete
 
 <Preview>
   <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
     <Form
-    titleText="Titulo"
-    subtitleText="Subtitulo"
-    submitText="Primary"
-    alertText="Validation submit mesesage"
-    alertAppearance="danger"
-    linkText="Primary text link"
-    linkHref="http://www.tiendanube.com"
-    submitText="Primary"
-    submitCallback={() => alert("Login click")}
-    optionalButtonText="Default"
-    optionalCallback={() => alert("Cancel")} >
+    alertText={text("alertText", "Validation submit mesesage")}
+    alertAppearance={select("alertAppearance", ["danger", "primary", "secondary", "warning", "success"])}
+    link={text("link", "Primary text link")}
+    linkTo={text("linkTo", "http://www.tiendanube.com")}
+    submitLabel={text("submitLabel", "Primary")}
+    onClickSubmit={action("onClickSubmit")}
+    buttonLabel={text("buttonLabel", "Default")}
+    onClickButton={action("onClickButton")} >
     <Input
       label="label input A"
       value="value input A"
@@ -44,20 +39,7 @@ Other description
   </Story>
 </Preview>
 
-## History X
-
-<Preview withToolbar>
-  <Story name="clases">
-  <Form
-    alertText="Alert de validación"
-    submitText="Login"
-    submitCallback={() => alert("Login click")}
-    optionalButtonText="Cancelar"
-    optionalCallback={() => alert("Cancel")}
-  >
-  </Form>
-  </Story>
-</Preview>
+## Properties
 
 <Props of={Form} />
   
