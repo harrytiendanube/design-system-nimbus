@@ -32,7 +32,7 @@ export interface InterfaceIcon {
     | "9x"
     | "10x";
   /**
-   * Color type of string, defined color of hexadecimal or rbg
+   * Color type of string, to be define color of hexadecimal or rbg properties
    */
   color?: string;
   /**
