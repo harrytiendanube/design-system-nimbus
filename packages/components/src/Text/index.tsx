@@ -4,16 +4,16 @@ import "@tiendanube/styles/css/Text.css";
 
 export interface InterfaceText {
   /**
-   * React node of type children
+   * Text to be displayed
    */
-  children: React.ReactNode;
+  children: React.ReactText;
   /**
    *  Size
    */
   size?: "regular";
 }
 /**
- *  @param children React node of type children
+ *  @param children Text to be displayed
  *  @param size  Size
  */
 function Text({ children, size = "regular" }: InterfaceText): JSX.Element {
