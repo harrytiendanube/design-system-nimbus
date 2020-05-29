@@ -87,7 +87,7 @@ function Alert({
   const memorizedPrimary = React.useMemo(
     () =>
       primaryLabel && (
-        <Button onClick={onClickPrimary} color="primary">
+        <Button onClick={onClickPrimary} appearance="primary">
           {primaryLabel}
         </Button>
       ),
