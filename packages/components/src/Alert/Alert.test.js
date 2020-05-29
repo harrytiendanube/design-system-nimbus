@@ -1,8 +1,8 @@
 import React from "react";
 
+import "@testing-library/jest-dom/extend-expect";
 import { render, fireEvent } from "@testing-library/react";
 import Alert from ".";
-import "@testing-library/jest-dom/extend-expect";
 
 describe("Alert", () => {
   it("Render Alert", () => {
