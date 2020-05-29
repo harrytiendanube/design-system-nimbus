@@ -79,12 +79,12 @@ function Form({
       <form action="">{children}</form>
       {link && <Link href={linkTo}>{link}</Link>}
       <div className="nimbus--form__actions">
-        {onClickButton && (
-          <Button color="light" onClick={onClickButton}>
+        {onClickButton && buttonLabel && (
+          <Button appearance="light" onClick={onClickButton}>
             {buttonLabel}
           </Button>
         )}
-        <Button color="primary" onClick={onClickSubmit}>
+        <Button appearance="primary" onClick={onClickSubmit}>
           {submitLabel}
         </Button>
       </div>
@@ -92,4 +92,4 @@ function Form({
   );
 }
 
-export default Form;
+export default React.memo(Form);

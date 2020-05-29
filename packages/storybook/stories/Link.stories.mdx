@@ -3,7 +3,7 @@ import { withKnobs, select, text } from "@storybook/addon-knobs";
 import { withA11y } from "@storybook/addon-a11y";
 import { action } from "@storybook/addon-actions";
 import { Link } from '../../components/src';
-import Wrapper from './tsx/LinkWrapper.tsx';
+
 
 import '../utils/style.css';
 
@@ -17,7 +17,7 @@ Other description
 
 <Preview>
   <Story name="standard" parameters={{ decorators: [withKnobs, withA11y] }}>
-    <Wrapper
+    <Link
       href={text("href", "http://www.tiendanube.com")}
       target = "_blank"
       onClick={action("onClick")}
@@ -26,7 +26,7 @@ Other description
       color={select("Color", ["default", "secondary", "light"])}
     >
       {text("Texto", "Texto")}
-    </Wrapper>
+    </Link>
   </Story>
 </Preview>
 
