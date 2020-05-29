@@ -14,11 +14,11 @@ interface InterfaceAlert {
    * */
   type: "toast" | "inline";
   /**
-   * Appearance
+   * Appearance of the alert
    * */
   appearance?: "primary" | "secondary" | "danger" | "success" | "warning";
   /**
-   * Title
+   * Title of the alert
    * */
   title?: string;
   /**
@@ -26,7 +26,7 @@ interface InterfaceAlert {
    * */
   primaryLabel?: string;
   /**
-   * Ttype of react mouse event onclick to manage event click and void return
+   * Type of react mouse event onclick to manage event click and void return
    */
   onClickPrimary?(event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void;
   /**
@@ -41,17 +41,27 @@ interface InterfaceAlert {
    * Is dismissable boolean flag
    * */
   isDismissable?: boolean;
+  /**
+   * Type of react mouse event onclick to manage event click and void return
+   */
+  onDismiss?(event: React.MouseEvent<HTMLDivElement, MouseEvent>): void;
+  /**
+   * Indicates whether the alert should be displayed
+   * */
+  show?: boolean;
 }
 /**
  *  @param children Text to be displayed in the alert
  *  @param type Indicates the type of alert that can be in-line (on line) or toast (three lines)
- *  @param appearance Appearance
- *  @param title Title
+ *  @param appearance Appearance of the alert
+ *  @param title Title of the alert
  *  @param primaryLabel Label of primary action
- *  @param onClickPrimary Ttype of react mouse event onclick to manage event click and void return
+ *  @param onClickPrimary Type of react mouse event onclick to manage event click and void return
  *  @param secondaryLabel Label of secundary action
  *  @param secondaryTo Destination link of secundary action
  *  @param isDismissable Is dismissable boolean flag
+ *  @param onDismiss Type of react mouse event onclick to manage event click and void return
+ *  @param show Indicates whether the alert should be displayed
  */
 function Alert({
   children,
@@ -63,6 +73,8 @@ function Alert({
   secondaryLabel,
   secondaryTo,
   isDismissable = false,
+  onDismiss = (): void => {},
+  show = false,
 }: InterfaceAlert): JSX.Element {
   const icon = {
     primary: "InfoCircle",
@@ -72,43 +84,51 @@ function Alert({
     warning: "ExclamationCircle",
   }[appearance];
 
-  const hasActions = primaryLabel || secondaryLabel;
+  const memorizedPrimary = React.useMemo(
+    () =>
+      primaryLabel && (
+        <Button onClick={onClickPrimary} color="primary">
+          {primaryLabel}
+        </Button>
+      ),
+    [primaryLabel, onClickPrimary],
+  );
+  const memorizedSecondary = React.useMemo(
+    () => secondaryLabel && <Link href={secondaryTo}>{secondaryLabel}</Link>,
+    [secondaryLabel, secondaryTo],
+  );
 
-  const [show, setShow] = React.useState(true);
+  const memorizedDismissable = React.useMemo(
+    () =>
+      isDismissable && (
+        <div className="nimbus--alert__close" onClick={onDismiss}>
+          <Icon name="Times" />
+        </div>
+      ),
+    [isDismissable, onDismiss],
+  );
 
-  if (show)
-    return (
-      <div className={`nimbus--alert--${type} nimbus--alert--${appearance}`}>
-        <div className="nimbus--alert__icon">
-          <Icon name={icon} />
-        </div>
-        <div className="nimbus--alert__body">
-          {title && <Title type="h5">{title}</Title>}
-          <Text size="regular">{children}</Text>
-          {hasActions && (
-            <div className="nimbus--alert__actions">
-              {primaryLabel && (
-                <Button onClick={onClickPrimary} color="primary">
-                  {primaryLabel}
-                </Button>
-              )}
-              {secondaryLabel && (
-                <Link href={secondaryTo}>{secondaryLabel}</Link>
-              )}
-            </div>
-          )}
-        </div>
-        {isDismissable && (
-          <div
-            className="nimbus--alert__close"
-            onClick={(): void => setShow(false)}
-          >
-            <Icon name="Times" />
-          </div>
-        )}
+  const withActions = (primaryLabel || secondaryLabel) && (
+    <div className="nimbus--alert__actions">
+      {memorizedPrimary}
+      {memorizedSecondary}
+    </div>
+  );
+
+  return show ? (
+    <div className={`nimbus--alert--${type} nimbus--alert--${appearance}`}>
+      <div className="nimbus--alert__icon">
+        <Icon name={icon} />
       </div>
-    );
-  else return <React.Fragment />;
+      <div className="nimbus--alert__body">
+        {title && <Title type="h5">{title}</Title>}
+        <Text size="regular">{children}</Text>
+        {withActions}
+      </div>
+      {memorizedDismissable}
+    </div>
+  ) : (
+    <React.Fragment />
+  );
 }
-
-export default Alert;
+export default React.memo(Alert);

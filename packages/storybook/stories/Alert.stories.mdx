@@ -17,6 +17,8 @@ TODO: complete
     <Alert
       type={select("type", ["inline","toast"])}
       isDismissable={boolean("isDismissable", true)}
+      onDismiss={action("onDismiss")}
+      show={boolean("show", true)}
       appearance={select("appearance", ["primary", "secondary", "danger", "warning", "success"])}
       title={text("title", "Title")}
       primaryLabel={text("primaryLabel", "Primary label")}
@@ -30,7 +32,7 @@ TODO: complete
 
 ## Properties
 
-<Props of={Alert} />
+<Props of={Alert.type} />
 
 ## Appearances
 
@@ -39,11 +41,11 @@ TODO: complete
 <Preview withToolbar>
   <Story name="appearances">
     <div className="separate">
-      <Alert>Default State</Alert>
-      <Alert appearance="primary">Primary State</Alert>
-      <Alert appearance="danger">Danger State</Alert>
-      <Alert appearance="warning">Warning State</Alert>
-      <Alert appearance="success">Success State</Alert>
+      <Alert show>Default State</Alert>
+      <Alert appearance="primary" show>Primary State</Alert>
+      <Alert appearance="danger" show>Danger State</Alert>
+      <Alert appearance="warning" show>Warning State</Alert>
+      <Alert appearance="success" show>Success State</Alert>
     </div>
   </Story>
 </Preview>

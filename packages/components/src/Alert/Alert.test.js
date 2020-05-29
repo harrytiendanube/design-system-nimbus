@@ -7,7 +7,7 @@ import Alert from ".";
 describe("Alert", () => {
   it("Render Alert", () => {
     const myText = "myText";
-    const { getByText } = render(<Alert>{myText}</Alert>);
+    const { getByText } = render(<Alert show>{myText}</Alert>);
     const component = getByText(myText);
     expect(component).toBeTruthy();
   });
@@ -23,6 +23,7 @@ describe("Alert", () => {
         secondaryLabel="Secondary Label"
         secondaryTo="http://www.tiendanube.com"
         isDismissable
+        show
       >
         {myText}
       </Alert>,
@@ -35,7 +36,7 @@ describe("Alert", () => {
     const callback = jest.fn();
     const myText = "myText";
     const { getByText } = render(
-      <Alert primaryLabel="Primary Label" onClickPrimary={callback}>
+      <Alert primaryLabel="Primary Label" onClickPrimary={callback} show>
         {myText}
       </Alert>,
     );
