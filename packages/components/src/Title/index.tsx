@@ -1,4 +1,5 @@
 import * as React from "react";
+
 import "@tiendanube/styles/css/Title.css";
 
 export interface InterfaceTitle
@@ -6,21 +7,29 @@ export interface InterfaceTitle
     React.HTMLAttributes<HTMLHeadingElement>,
     "className" | "style"
   > {
-  /** Element inside tag component */
-  children: React.ReactNode;
-  /** Heading type */
+  /**
+   * Heading type of html heading
+   */
+  children: React.ReactText;
+  /**
+   * Element inside tag component
+   */
   type?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 }
 
-const Title: React.FC<InterfaceTitle> = ({
+/**
+ * @param children - Element inside tag component
+ * @param type - Heading type of html heading
+ */
+function Title({
   children,
   type = "h1",
   ...share
-}: InterfaceTitle) => {
+}: InterfaceTitle): JSX.Element {
   const HeadTag = `${type}`;
 
   const classesTypes = {
-    // TODO: Reemplazar los valores 01, 02, 03 por los h1, h2, h3, etc.
+    // TODO: replace values 01, 02, 03 to  h1, h2, h3, etc.
     h1: "nimbus--title-01",
     h2: "nimbus--title-02",
     h3: "nimbus--title-03",
@@ -30,10 +39,6 @@ const Title: React.FC<InterfaceTitle> = ({
   };
   const props = Object.assign({}, share, { className: classesTypes[type] });
   return <HeadTag {...props}>{children}</HeadTag>;
-};
-
-Title.defaultProps = {
-  type: "h1",
-};
+}
 
 export default Title;
