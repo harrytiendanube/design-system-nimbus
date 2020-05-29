@@ -10,35 +10,42 @@ import '../utils/style.css';
 
 # Alert
 
-## detail component
-
-Other description
+TODO: complete
 
 <Preview>
-  <Story name="standard" parameters={{ decorators: [withKnobs, withA11y] }}>
+  <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
     <Alert
-      type={select("Tipo", ["toast", "inline"])}
-      isDismissable={boolean("Dismissable", false)}
-      color={select("Color", ["primary", "danger", "warning", "success"])}
-      title={text("Título", "")}
-      ctaPrimary={text("Acción primaria", "")}
-      ctaSecondary={text("Acción secundaria", "")}
+      type={select("type", ["inline","toast"])}
+      isDismissable={boolean("isDismissable", true)}
+      onDismiss={action("onDismiss")}
+      show={boolean("show", true)}
+      appearance={select("appearance", ["primary", "secondary", "danger", "warning", "success"])}
+      title={text("title", "Title")}
+      primaryLabel={text("primaryLabel", "Primary label")}
+      onClickPrimary={action("onClickPrimary")}
+      secondaryLabel={text("secondaryLabel", "Secondary Label")}
+      secondaryTo={text("secondaryTo", "http://www.tiendanube.com")}
     >
-    {text("Texto", "Texto inicial")} </Alert>
+    {text("children", "Text")} </Alert>
   </Story>
 </Preview>
 
-<Props of={Alert} />
+## Properties
 
-## Colores
+<Props of={Alert.type} />
+
+## Appearances
+
+TODO: complete
 
 <Preview withToolbar>
-  <Story name="Estados">
+  <Story name="appearances">
     <div className="separate">
-      <Alert color="primary">Primary State</Alert>
-      <Alert color="danger">Danger State</Alert>
-      <Alert color="warning">Warning State</Alert>
-      <Alert color="success">Success State</Alert>
+      <Alert show>Default State</Alert>
+      <Alert appearance="primary" show>Primary State</Alert>
+      <Alert appearance="danger" show>Danger State</Alert>
+      <Alert appearance="warning" show>Warning State</Alert>
+      <Alert appearance="success" show>Success State</Alert>
     </div>
   </Story>
 </Preview>

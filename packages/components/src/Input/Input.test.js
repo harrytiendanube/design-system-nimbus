@@ -1,7 +1,8 @@
 import React from "react";
+
+import "@testing-library/jest-dom/extend-expect";
 import { render, fireEvent } from "@testing-library/react";
 import Input from ".";
-import "@testing-library/jest-dom/extend-expect";
 
 const myLabel = "Email o URL de tu tienda";
 

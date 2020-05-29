@@ -3,7 +3,6 @@ import { withKnobs, select, text } from "@storybook/addon-knobs";
 import { action } from "@storybook/addon-actions";
 import { withA11y } from "@storybook/addon-a11y";
 import { Header } from "../../components/src";
-import Wrapper from "./tsx/HeaderWrapper.tsx";
 
 import "../utils/style.css";
 
@@ -11,50 +10,56 @@ import "../utils/style.css";
 
 # Header
 
-## detail component
-
-Other description
+TODO: complete
 
 <Preview>
-  <Story name="standard" parameters={{ decorators: [withKnobs, withA11y] }}>
-    <Wrapper  
-      titleText={text("titleText", "Title Text")}
-      subtitleText={text("subtitleText", "Subtitle Text")}
-      linkText={text("linkText","Link Text")}
+  <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
+    <Header  
+      titleText={text("titleText", "Title")}
+      subtitleText={text("subtitleText", "Subtitle")}
+      linkText={text("linkText","Link")}
       linkHref={text("linkHref","http://www.tiendanube.com")} /> 
   </Story>
 </Preview>
 
+## Properties
+
 <Props of={Header} />
 
-## with Subtitle
+## Subtitle
+
+TODO: complete
 
 <Preview withToolbar>
-  <Story name="with Subtitle">
-    <Header titleText="Title Text" subtitleText="Subtitle Text" />
+  <Story name="with subtitle">
+    <Header titleText="Title" subtitleText="Subtitle" />
   </Story>
 </Preview>
 
-## with Link
+## Link
+
+TODO: complete
 
 <Preview withToolbar>
-  <Story name="with Link">
+  <Story name="with link">
     <Header
-      titleText="Title Text"
-      linkText="Link Text"
+      titleText="Title"
+      linkText="Link"
       linkHref="http://www.tiendanube.com"
     />
   </Story>
 </Preview>
 
-## with Subtitle and Link
+## Subtitle and Link
+
+TODO: complete
 
 <Preview withToolbar>
-  <Story name="with Subtitle and Link">
+  <Story name="with subtitle and link">
     <Header
-      titleText="Title Text"
-      subtitleText="Subtitle Text"
-      linkText="Link Text"
+      titleText="Title"
+      subtitleText="Subtitle"
+      linkText="Link"
       linkHref="http://www.tiendanube.com"
     />
   </Story>

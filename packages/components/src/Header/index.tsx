@@ -1,4 +1,5 @@
 import * as React from "react";
+
 import { Title, Text, Link } from "../";
 import "@tiendanube/styles/css/Header.css";
 
@@ -21,21 +22,25 @@ export interface InterfaceHeader {
   linkHref?: string;
 }
 
-const Header: React.FC<InterfaceHeader> = ({
+/**
+ *  @param titleText is the title text
+ *  @param subtitleText is the subtitle text
+ *  @param linkText is the link text
+ *  @param linkHref is de link href
+ */
+function Header({
   titleText,
   subtitleText,
   linkText,
   linkHref,
-}: InterfaceHeader) => {
+}: InterfaceHeader): JSX.Element {
   return (
-    <React.Fragment>
+    <div>
       <Title>{titleText}</Title>
       {subtitleText && <Text>{subtitleText}</Text>}
       {linkText && <Link href={linkHref}>{linkText}</Link>}
-    </React.Fragment>
+    </div>
   );
-};
-
-Header.defaultProps = {};
+}
 
 export default Header;

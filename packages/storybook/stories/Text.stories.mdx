@@ -3,7 +3,6 @@ import { withKnobs, select, text } from "@storybook/addon-knobs";
 import { action } from '@storybook/addon-actions';
 import { withA11y } from "@storybook/addon-a11y";
 import { Text } from '../../components/src';
-import Wrapper from './tsx/TextWrapper.tsx';
 
 import '../utils/style.css';
 
@@ -11,15 +10,31 @@ import '../utils/style.css';
 
 # Text
 
-## detail component
-
-Other description
+TODO: complete
 
 <Preview>
-  <Story name="standard" parameters={{ decorators: [withKnobs, withA11y] }}>
-    <Wrapper> {text("Texto", "Texto inicial")} </Wrapper>
+  <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
+    <Text> {text("children", "Text")} </Text>
   </Story>
 </Preview>
 
+## Properties
+
 <Props of={Text} />
-  
+
+## Long content
+
+TODO: complete
+
+<Preview>
+  <Story name="long content" parameters={{ decorators: [withKnobs, withA11y] }}>
+    <Text>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
+      fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in 
+      culpa qui officia deserunt mollit anim id est laborum. 
+    </Text>
+  </Story>
+</Preview>
