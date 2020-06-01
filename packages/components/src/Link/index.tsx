@@ -2,39 +2,58 @@ import * as React from "react";
 import Icon from "../Icon";
 import "@tiendanube/styles/css/Link.css";
 
-export interface InterfaceLink
-  extends Omit<
-    React.AnchorHTMLAttributes<HTMLAnchorElement>,
-    "className" | "style"
-  > {
+export interface InterfaceLink {
   /**
-    Escribe dentro de las las etiquetas para renderizar el contenido.
-  */
+   *  React node of type children.
+   */
   children: React.ReactNode;
   /**
-   * Nombre del Icono que mostrará al comienzo del botón.
+   *  Specifies the URL of the page the link goes to
    */
-  start?: string;
+  href: string;
   /**
-   * Nombre del Icono que mostrará al final del botón.
+   *  Specifies where to open the linked document
    */
-  end?: string;
+  target?: "_blank" | "_parent" | "_self" | "_top";
+  /**
+   * Icons's name to start in position left.
+   */
+  startIcon?: string;
+  /**
+   * Icons's name to start in position right.
+   */
+  endIcon?: string;
 }
 
+/**
+ * @param start React node of type children.
+ * @param href Specifies the URL of the page the link goes to
+ * @param target Specifies where to open the linked document
+ * @param startIcon Icons's name to start in position left
+ * @param endIcon Icons's name to start in position left.
+ */
 const Link: React.FC<InterfaceLink> = ({
-  start,
   children,
-  end,
-  ...share
+  href,
+  target = "_blank",
+  startIcon,
+  endIcon,
 }: InterfaceLink) => {
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  const memorizedStartIcon = React.useMemo(
+    () => startIcon && <Icon name={startIcon} startPadding />,
+    [startIcon],
+  );
+  const memorizedEndIcon = React.useMemo(
+    () => endIcon && <Icon name={endIcon} endPadding />,
+    [startIcon],
+  );
   return (
-    <a {...share} className="nimbus--link">
-      {start && <Icon name={start} startPadding />}
+    <a className="nimbus--link" href={href} target={target}>
+      {memorizedStartIcon}
       {children}
-      {end && <Icon name={end} endPadding />}
+      {memorizedEndIcon}
     </a>
   );
 };
 
-export default Link;
+export default React.memo(Link);
