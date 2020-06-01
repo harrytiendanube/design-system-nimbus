@@ -20,4 +20,4 @@ function Text({ children, size = "regular" }: InterfaceText): JSX.Element {
   return <p className={`nimbus--text nimbus--text_${size}`}>{children}</p>;
 }
 
-export default Text;
+export default React.memo(Text);
