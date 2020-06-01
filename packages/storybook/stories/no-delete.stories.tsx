@@ -1,2 +1,5 @@
-/* **************** IMPORTANTE **************** * /
-/* Es necesaria para ejecutar todas las estorias de MDX escritas con componentes typescript. */
+/*
+ **************** IMPORTANT ****************
+ * /
+ * It's required to run all MDX stories written with typescript components , if you delete any stories with extension .TSX, you can fired
+ */

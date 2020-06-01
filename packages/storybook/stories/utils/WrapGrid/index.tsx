@@ -50,7 +50,7 @@ const WrapGrid: React.FC<Prop> = () => {
         type="text"
         className="filter"
         value={filter}
-        placeholder="Buscador"
+        placeholder="Search"
         onChange={handleOnChange}
         data-testid="icon-search"
       />
