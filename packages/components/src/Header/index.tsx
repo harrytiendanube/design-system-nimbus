@@ -22,6 +22,7 @@ export interface InterfaceHeader {
   linkHref?: string;
 }
 
+// TODO: Replace name 'Header' with 'PageHeader'
 /**
  *  @param titleText is the title text
  *  @param subtitleText is the subtitle text
@@ -35,7 +36,7 @@ function Header({
   linkHref,
 }: InterfaceHeader): JSX.Element {
   return (
-    <div>
+    <div className="nimbus--header">
       <Title>{titleText}</Title>
       {subtitleText && <Text>{subtitleText}</Text>}
       {linkText && <Link href={linkHref}>{linkText}</Link>}
