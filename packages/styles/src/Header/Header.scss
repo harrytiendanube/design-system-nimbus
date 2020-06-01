@@ -2,5 +2,19 @@
 // Header
 
 .#{$prefix}--header {
-  display: inline-block;
+  border-bottom: 1px solid $color-white;
+  display: block;
+  margin-bottom: $nimbus-grid-spacer-03;
+  padding-bottom: $nimbus-grid-spacer-03;
+  padding-left: $nimbus-grid-gutter / 2;
+  padding-right: $nimbus-grid-gutter / 2;
+  width: 100%;
+}
+
+.#{$prefix}--header .#{$prefix}--text {
+  margin-top: $nimbus-grid-spacer-02;
+}
+
+.#{$prefix}--header .#{$prefix}--text + .#{$prefix}--link {
+  margin-left: $nimbus-grid-spacer-02;
 }
