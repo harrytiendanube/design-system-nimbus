@@ -69,21 +69,28 @@ function Form({
   buttonLabel,
   onClickButton,
 }: InterfaceForm): JSX.Element {
+  const memorizedLink = React.useMemo(() => {
+    return link && linkTo && <Link href={linkTo}>{link}</Link>;
+  }, [link, linkTo]);
+  const memorizedButton = React.useMemo(() => {
+    return (
+      onClickButton &&
+      buttonLabel && (
+        <Button appearance="light" onClick={onClickButton}>
+          {buttonLabel}
+        </Button>
+      )
+    );
+  }, [onClickButton, buttonLabel]);
   return (
     <div className="nimbus--form">
-      {alertText && (
-        <Alert type="inline" appearance={alertAppearance}>
-          {alertText}
-        </Alert>
-      )}
+      <Alert type="inline" appearance={alertAppearance} show={!!alertText}>
+        {alertText || ""}
+      </Alert>
       <form action="">{children}</form>
-      {link && <Link href={linkTo}>{link}</Link>}
+      {memorizedLink}
       <div className="nimbus--form__actions">
-        {onClickButton && buttonLabel && (
-          <Button appearance="light" onClick={onClickButton}>
-            {buttonLabel}
-          </Button>
-        )}
+        {memorizedButton}
         <Button appearance="primary" onClick={onClickSubmit}>
           {submitLabel}
         </Button>
