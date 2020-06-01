@@ -7,46 +7,46 @@ export interface InterfaceHeader {
   /**
    * Title text
    */
-  titleText: string;
+  title: string;
   /**
    * Subtitle text
    */
-  subtitleText?: string;
+  subtitle?: string;
   /**
    * Link text
    */
-  linkText?: string;
+  link?: string;
   /**
    * Link href
    */
-  linkHref?: string;
+  linkTo?: string;
 }
 
 // TODO: Replace name 'Header' with 'PageHeader'
 /**
- *  @param titleText is the title text
- *  @param subtitleText is the subtitle text
- *  @param linkText is the link text
- *  @param linkHref is de link href
+ *  @param title is the title text
+ *  @param subtitle is the subtitle text
+ *  @param link is the link text
+ *  @param linkTo is the link href
  */
 function Header({
-  titleText,
-  subtitleText,
-  linkText,
-  linkHref,
+  title,
+  subtitle,
+  link,
+  linkTo,
 }: InterfaceHeader): JSX.Element {
   const memorizedSubtitle = React.useMemo(
-    () => subtitleText && <Text>{subtitleText}</Text>,
-    [subtitleText],
+    () => subtitle && <Text>{subtitle}</Text>,
+    [subtitle],
   );
   const memorizedLink = React.useMemo(
-    () => linkText && <Link href={linkHref}>{linkText}</Link>,
-    [linkHref, linkText],
+    () => link && linkTo && <Link href={linkTo}>{link}</Link>,
+    [linkTo, link],
   );
 
   return (
     <div className="nimbus--header">
-      <Title>{titleText}</Title>
+      <Title>{title}</Title>
       {memorizedSubtitle}
       {memorizedLink}
     </div>

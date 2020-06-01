@@ -15,10 +15,10 @@ TODO: complete
 <Preview>
   <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
     <Header  
-      titleText={text("titleText", "Title")}
-      subtitleText={text("subtitleText", "Subtitle")}
-      linkText={text("linkText","Link")}
-      linkHref={text("linkHref","http://www.tiendanube.com")} /> 
+      title={text("title", "Title")}
+      subtitle={text("subtitle", "Subtitle")}
+      link={text("link","Link")}
+      linkTo={text("linkTo","http://www.tiendanube.com")} /> 
   </Story>
 </Preview>
 
@@ -32,7 +32,7 @@ TODO: complete
 
 <Preview withToolbar>
   <Story name="with subtitle">
-    <Header titleText="Title" subtitleText="Subtitle" />
+    <Header title="Title" subtitle="Subtitle" />
   </Story>
 </Preview>
 
@@ -43,9 +43,9 @@ TODO: complete
 <Preview withToolbar>
   <Story name="with link">
     <Header
-      titleText="Title"
-      linkText="Link"
-      linkHref="http://www.tiendanube.com"
+      title="Title"
+      link="Link"
+      linkTo="http://www.tiendanube.com"
     />
   </Story>
 </Preview>
@@ -57,10 +57,10 @@ TODO: complete
 <Preview withToolbar>
   <Story name="with subtitle and link">
     <Header
-      titleText="Title"
-      subtitleText="Subtitle"
-      linkText="Link"
-      linkHref="http://www.tiendanube.com"
+      title="Title"
+      subtitle="Subtitle"
+      link="Link"
+      linkTo="http://www.tiendanube.com"
     />
   </Story>
 </Preview>
