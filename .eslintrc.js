@@ -18,6 +18,7 @@ module.exports = {
           "dict",
           "aff",
           "SvgrComponent",
+          "classname",
           "svg",
           "utils",
           "Svgr",

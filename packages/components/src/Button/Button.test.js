@@ -19,7 +19,7 @@ describe("Button", () => {
     /** Validate than text is the same as the content tag */
     expect(button).toHaveTextContent(myText);
     /** Validate default style without appearance attribute */
-    expect(button).toHaveClass(`${classNameBase}--primary`);
+    expect(button).toHaveClass(`${classNameBase}--light`);
   });
 
   it("Render Primary Button", () => {
@@ -66,14 +66,16 @@ describe("Button", () => {
   });
 
   it("Render button with a left icon", () => {
-    const { getByTestId } = render(<Button start="Facebook">{myText}</Button>);
+    const { getByTestId } = render(
+      <Button startIcon="Facebook">{myText}</Button>,
+    );
     const icon = getByTestId("icon-Facebook");
     expect(icon).toBeInTheDocument();
   });
 
   it("Render button with a right icon", () => {
     const { getByTestId } = render(
-      <Button end="LongArrowRight">{myText}</Button>,
+      <Button endIcon="LongArrowRight">{myText}</Button>,
     );
     const icon = getByTestId("icon-LongArrowRight");
     expect(icon).toBeInTheDocument();
@@ -81,7 +83,11 @@ describe("Button", () => {
 
   it("Render button with a left and right icon", () => {
     const { getByTestId } = render(
-      <Button data-testid="button" start="Facebook" end="LongArrowRight">
+      <Button
+        data-testid="button"
+        startIcon="Facebook"
+        endIcon="LongArrowRight"
+      >
         Button with left y right icon
       </Button>,
     );
