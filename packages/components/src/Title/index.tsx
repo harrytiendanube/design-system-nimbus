@@ -25,4 +25,4 @@ function Title({ children, type = "h1" }: InterfaceTitle): JSX.Element {
   );
 }
 
-export default Title;
+export default React.memo(Title);
