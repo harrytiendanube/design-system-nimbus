@@ -28,7 +28,7 @@ module.exports = {
           "^[-\\w]+/[-\\w\\.]+$", //For MIME Types
         ],
         skipWordIfMatch: [
-          "^nimbus.*$", // words that begin with foobar will not be checked
+          "^nimbus.*$", // words that begin with nimbus will not be checked
         ],
       },
     ],
