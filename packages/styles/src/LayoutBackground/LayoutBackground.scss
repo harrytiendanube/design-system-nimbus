@@ -1,0 +1,20 @@
+@import "../NimbusCore/nimbus-core";
+// LayoutBackground
+
+.#{$prefix}--layout-background {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+
+  aside {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    flex: 0 0 calc(100% / 3);
+    z-index: 1;
+  }
+
+  main {
+    background-size: cover;
+    flex: 1 1 auto;
+    height: 100vh;
+  }
+}
