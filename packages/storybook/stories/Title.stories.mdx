@@ -11,20 +11,22 @@ import '../utils/style.css';
 
 # Title
 
-## Titles available to use in any context
-
-You can use the titles in any component or section of the application.
+TODO: complete
 
 <Preview>
-  <Story name="standard" parameters={{ decorators: [withKnobs, withA11y] }}>
+  <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
     <Title> {text("Texto", "Lorem ipsum dolor sit amet, consectetur adipiscing elit")} </Title>
   </Story>
 </Preview>
 
+## Properties
+
+<Props of={Title} />
+
 ##  Headings
 
 <Preview>
-  <Story name="heading">
+  <Story name="headings">
     <div>
       <Title type="h1">Lorem ipsum dolor sit amet, consectetur adipiscing elit</Title>
       <Title type="h2">Lorem ipsum dolor sit amet, consectetur adipiscing elit</Title>
@@ -36,5 +38,5 @@ You can use the titles in any component or section of the application.
   </Story>
 </Preview>
 
-<Props of={Title} />
+
   
