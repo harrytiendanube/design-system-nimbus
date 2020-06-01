@@ -22,6 +22,7 @@ module.exports = {
           "utils",
           "Svgr",
           "wrapgrid",
+          "dismissable",
         ],
         skipIfMatch: [
           "http://[^s]*",
