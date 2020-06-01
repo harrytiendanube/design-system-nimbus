@@ -30,11 +30,11 @@ interface InterfaceAlert {
    */
   onClickPrimary?(event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void;
   /**
-   * Label of secundary action
+   * Label of secondary action
    * */
   secondaryLabel?: string;
   /**
-   * Destination link of secundary action
+   * Destination link of secondary action
    * */
   secondaryTo?: string;
   /**
@@ -57,8 +57,8 @@ interface InterfaceAlert {
  *  @param title Title of the alert
  *  @param primaryLabel Label of primary action
  *  @param onClickPrimary Type of react mouse event onclick to manage event click and void return
- *  @param secondaryLabel Label of secundary action
- *  @param secondaryTo Destination link of secundary action
+ *  @param secondaryLabel Label of secondary action
+ *  @param secondaryTo Destination link of secondary action
  *  @param isDismissable Is dismissable boolean flag
  *  @param onDismiss Type of react mouse event onclick to manage event click and void return
  *  @param show Indicates whether the alert should be displayed
@@ -71,7 +71,7 @@ function Alert({
   primaryLabel,
   onClickPrimary = (): void => {},
   secondaryLabel,
-  secondaryTo,
+  secondaryTo = "",
   isDismissable = false,
   onDismiss = (): void => {},
   show = false,

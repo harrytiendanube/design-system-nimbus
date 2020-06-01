@@ -18,11 +18,13 @@ module.exports = {
           "dict",
           "aff",
           "SvgrComponent",
+          "classname",
           "svg",
           "utils",
           "Svgr",
           "wrapgrid",
           "href",
+          "dismissable",
         ],
         skipIfMatch: [
           "http://[^s]*",
