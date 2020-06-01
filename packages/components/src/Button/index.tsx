@@ -3,52 +3,47 @@ import * as React from "react";
 import "@tiendanube/styles/css/Button.css";
 import { Icon } from "../";
 
-export interface InterfaceButton
-  extends Omit<
-    React.ButtonHTMLAttributes<HTMLButtonElement>,
-    "onClick" | "className" | "style"
-  > {
+export interface InterfaceButton {
   /**
    * React node of type children.
    */
   children: React.ReactText;
   /**
-   * type of react mouse event onclick to manage event click and void return
+   * type of react mouse event onclick to manage event click and void return.
    */
   onClick(event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void;
   /**
-   * Color
+   * Appearance
    */
-  appearance: "primary" | "secondary" | "light" | "danger" | "transparent";
+  appearance?: "primary" | "secondary" | "light" | "danger";
   /**
    * Icons's name to start in position left.
    */
-  start?: string;
+  startIcon?: string;
   /**
-   * Icons's name to start in position rigth.
+   * Icons's name to start in position right.
    */
-  end?: string;
+  endIcon?: string;
   /**
-   * Convet button to appearance with background color transparent and border color pf appearance.
+   * Transform button to outline version with a transparent background and border color determined by appearance prop.
    */
   outline?: boolean;
 }
 
 /**
  * Button's Component as actionable component.
- * @Param start Icons's name to start in position left
- * @Param end Icons's name to start in position left.
+ * @Param startIcon Icons's name to start in position left
+ * @Param endIcon Icons's name to start in position left.
  * @Param children React node of type children.
- * @Param color type of appearance "primary" | "secondary" | "light" | "danger" | "transparent"
- * @Param outline Convet button to appearance background color transparent with border color dark.
+ * @Param appearance type of appearance "primary" | "secondary" | "light" | "danger" | "transparent".
+ * @Param outline Transform button to outline version with a transparent background and border color determined by appearance prop.
  */
 function Button({
   children,
-  start,
-  end,
-  appearance = "primary",
+  startIcon,
+  endIcon,
+  appearance = "light",
   outline = false,
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
   onClick,
 }: InterfaceButton): JSX.Element {
   const classname = React.useMemo(
@@ -56,12 +51,13 @@ function Button({
     [appearance, outline],
   );
   const iconStart = React.useMemo(
-    () => start && <Icon name={start} startPadding />,
-    [start],
+    () => startIcon && <Icon name={startIcon} startPadding />,
+    [startIcon],
   );
-  const iconEnd = React.useMemo(() => end && <Icon name={end} endPadding />, [
-    end,
-  ]);
+  const iconEnd = React.useMemo(
+    () => endIcon && <Icon name={endIcon} endPadding />,
+    [endIcon],
+  );
 
   return (
     <button className={classname} onClick={onClick}>
