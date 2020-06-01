@@ -7,9 +7,31 @@ module.exports = {
   globals: {
     Promise: true,
   },
-  plugins: ["prettier"],
+  plugins: ["prettier", "spellcheck"],
   rules: {
     "prettier/prettier": "error",
+    "spellcheck/spell-checker": [
+      "error",
+      {
+        lang: "en_US",
+        skipWords: [
+          "dict",
+          "aff",
+          "SvgrComponent",
+          "svg",
+          "utils",
+          "Svgr",
+          "wrapgrid",
+        ],
+        skipIfMatch: [
+          "http://[^s]*",
+          "^[-\\w]+/[-\\w\\.]+$", //For MIME Types
+        ],
+        skipWordIfMatch: [
+          "^nimbus.*$", // words that begin with foobar will not be checked
+        ],
+      },
+    ],
   },
   extends: [
     "standard",
@@ -23,4 +45,4 @@ module.exports = {
     "prettier/@typescript-eslint",
     "plugin:react/recommended",
   ],
-}
+};
