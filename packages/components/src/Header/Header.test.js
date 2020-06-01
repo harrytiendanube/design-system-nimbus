@@ -5,26 +5,21 @@ import { render } from "@testing-library/react";
 import Header from ".";
 
 describe("Header", () => {
-  const titleText = "titleText";
-  const subtitleText = "Subtitle Text";
-  const linkText = "linkText";
-  const linkHref = "linkHref";
+  const title = "title";
+  const subtitle = "subtitle";
+  const link = "linkText";
+  const linkTo = "linkHref";
   it("Render Header", () => {
-    const { getByText } = render(<Header titleText={titleText} />);
-    const component = getByText(titleText);
+    const { getByText } = render(<Header title={title} />);
+    const component = getByText(title);
     expect(component).toBeTruthy();
   });
   it("Header implements title, text and link", () => {
     const { getByText } = render(
-      <Header
-        titleText={titleText}
-        subtitleText={subtitleText}
-        linkText={linkText}
-        linkHref={linkHref}
-      />,
+      <Header title={title} subtitle={subtitle} link={link} linkTo={linkTo} />,
     );
-    expect(getByText(titleText)).toContainHTML("</h1>");
-    expect(getByText(subtitleText)).toContainHTML("</p>");
-    expect(getByText(linkText)).toContainHTML("</a>");
+    expect(getByText(title)).toContainHTML("</h1>");
+    expect(getByText(subtitle)).toContainHTML("</p>");
+    expect(getByText(link)).toContainHTML("</a>");
   });
 });
