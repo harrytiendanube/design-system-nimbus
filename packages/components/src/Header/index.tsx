@@ -35,20 +35,20 @@ function Header({
   linkText,
   linkHref,
 }: InterfaceHeader): JSX.Element {
-  const subtitle = React.useMemo(
+  const memorizedSubtitle = React.useMemo(
     () => subtitleText && <Text>{subtitleText}</Text>,
     [subtitleText],
   );
-  const link = React.useMemo(
+  const memorizedLink = React.useMemo(
     () => linkText && <Link href={linkHref}>{linkText}</Link>,
-    [linkText],
+    [linkHref, linkText],
   );
 
   return (
     <div className="nimbus--header">
       <Title>{titleText}</Title>
-      {subtitle}
-      {link}
+      {memorizedSubtitle}
+      {memorizedLink}
     </div>
   );
 }
