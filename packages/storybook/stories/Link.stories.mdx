@@ -11,87 +11,85 @@ import '../utils/style.css';
 
 # Links
 
-## detail component
-
-Other description
+TODO: complete
 
 <Preview>
   <Story name="standard" parameters={{ decorators: [withKnobs, withA11y] }}>
     <Link
       href={text("href", "http://www.tiendanube.com")}
-      target = "_blank"
-      onClick={action("onClick")}
-      start="Facebook"
-      end="LongArrowRight"
-      color={select("Color", ["default", "secondary", "light"])}
+      target={select("target", ["_blank", "_parent", "_self","_top"])}
+      startIcon = "Facebook"
+      endIcon = "LongArrowRight"
     >
-      {text("Texto", "Texto")}
+      {text("text", "Text")}
     </Link>
   </Story>
 </Preview>
 
-<Props of={Link} />
+## Properties
 
-## widthout con
+<Props of={Link.type} />
+
+## Without icon
 
 <Preview withToolbar>
   <Story
-    name="widthout icon"
+    name="without icons"
   >
      <Link
       href={"http://www.tiendanube.com"}
       target = "_blank"
     >
-      Texto
+      Text
     </Link>
   </Story>
 </Preview>
 
-## width start icon
+## With start icon
 
 <Preview withToolbar>
   <Story
-    name="width start icon"
+    name="with start icon"
   >
      <Link
       href={"http://www.tiendanube.com"}
       target = "_blank"
-      start = "Facebook"
+      startIcon = "Facebook"
     >
-      Texto
+      Text
     </Link>
   </Story>
 </Preview>
 
-## width end icon
+## With end icon
 
 <Preview withToolbar>
   <Story
-    name="width end icon"
+    name="with end icon"
   >
      <Link
       href = {"http://www.tiendanube.com"}
       target = "_blank"
-      end = "LongArrowRight"
+      endIcon = "LongArrowRight"
     >
-      Texto
+      Text
     </Link>
   </Story>
 </Preview>
 
-## width start and end icon
+## With start and end icon
 
 <Preview withToolbar>
   <Story
-    name="width start and end icon"
+    name="with start and end icon"
   >
      <Link
       href = {"http://www.tiendanube.com"}
       target = "_blank"
-      start = "Facebook"
-      end = "LongArrowRight"
+      startIcon = "Facebook"
+      endIcon = "LongArrowRight"
     >
-      Texto
+      Text
     </Link>
   </Story>
 </Preview>

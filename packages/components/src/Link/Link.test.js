@@ -5,12 +5,14 @@ import "@testing-library/jest-dom/extend-expect";
 
 describe("Link", () => {
   it("Render Link", () => {
-    const { getByTestId } = render(
-      <Link data-testid="link" start="Facebook" end="LongArrowRight">
-        This is my Link
+    const myText = "myText";
+    const { getByText } = render(
+      <Link start="Facebook" end="LongArrowRight">
+        {myText}
       </Link>,
     );
-    const link = getByTestId("link");
-    expect(link).toHaveTextContent("This is my Link");
+    const component = getByText(myText);
+    expect(component).toBeTruthy();
+    expect(component).toContainHTML("</a>");
   });
 });

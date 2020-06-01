@@ -54,12 +54,12 @@ $contrast-threshold: 150;
 // Defining text maps to generate font styles
 
 $nimbus--title-sizes: (
-  "01": $nimbus-font-size-07,
-  "02": $nimbus-font-size-06,
-  "03": $nimbus-font-size-05,
-  "04": $nimbus-font-size-04,
-  "05": $nimbus-font-size-03,
-  "06": $nimbus-font-size-02,
+  "h1": $nimbus-font-size-07,
+  "h2": $nimbus-font-size-06,
+  "h3": $nimbus-font-size-05,
+  "h4": $nimbus-font-size-04,
+  "h5": $nimbus-font-size-03,
+  "h6": $nimbus-font-size-02,
 ) !default;
 
 // Sizing
