@@ -5,7 +5,7 @@ import { withA11y } from "@storybook/addon-a11y";
 
 import image from "./utils/login-background.jpg"
 
-import { LayoutBackground } from '../../components/src';
+import { LayoutBackground, Text } from '../../components/src';
 
 import '../utils/style.css';
 
@@ -19,7 +19,7 @@ TODO: complete
   <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
     <LayoutBackground 
       image={ image }> 
-      {text("Texto", "Texto inicial")}
+        <Text>{text("Texto", "Content")}</Text>
     </LayoutBackground>
   </Story>
 </Preview>
@@ -28,7 +28,7 @@ TODO: complete
 
 <Props of={LayoutBackground} />
 
-## LayoutBackground
+## Via UR
 
 TODO: complete
 
@@ -36,7 +36,7 @@ TODO: complete
   <Story name="url">
     <LayoutBackground 
       image={ "https://d26lpennugtm8s.cloudfront.net/assets/insti/img/login/login-background.jpg" }> 
-      Component
+      <Text>Content</Text>
     </LayoutBackground>
   </Story>
 </Preview>
