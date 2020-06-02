@@ -24,8 +24,11 @@ function LayoutBackground({
 }: InterfaceLayoutBackground): JSX.Element {
   return (
     <div data-testid="LayoutBackground" className="nimbus--layout-background">
-      <aside>{children}</aside>
-      <main style={{ backgroundImage: `url(${image})` }} />
+      <div className="nimbus--layout-background__content">{children}</div>
+      <div
+        className="nimbus--layout-background__image"
+        style={{ backgroundImage: `url(${image})` }}
+      />
     </div>
   );
 }
