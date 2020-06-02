@@ -2,7 +2,7 @@ import React from "react";
 
 import "@testing-library/jest-dom/extend-expect";
 import { render } from "@testing-library/react";
-import LayoutBackground from ".";
+import { LayoutBackground, Text } from "../";
 import image from "../../../storybook/stories/utils";
 
 describe("LayoutBackground", () => {
@@ -42,5 +42,24 @@ describe("LayoutBackground", () => {
     expect(component).toContainHTML(
       `<div class="${classNameBase}__image" style="background-image: url(${url});"`,
     );
+  });
+
+  it("Render with URL image and Text Component as children", () => {
+    const url =
+      "https://d26lpennugtm8s.cloudfront.net/assets/insti/img/login/login-background.jpg";
+    const { getByTestId, getByText } = render(
+      <LayoutBackground image={url}>
+        <Text>{myText}</Text>
+      </LayoutBackground>,
+    );
+    const component = getByTestId(myTestId);
+    expect(component).toBeTruthy();
+    expect(component).toHaveTextContent(myText);
+    expect(component).toHaveClass(`${classNameBase}`);
+    expect(component).toContainHTML(`<div class="${classNameBase}__content">`);
+    expect(component).toContainHTML(
+      `<div class="${classNameBase}__image" style="background-image: url(${url});"`,
+    );
+    expect(getByText(myText)).toContainHTML("</p>");
   });
 });
