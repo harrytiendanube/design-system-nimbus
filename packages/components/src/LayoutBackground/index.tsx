@@ -33,4 +33,4 @@ function LayoutBackground({
   );
 }
 
-export default LayoutBackground;
+export default React.memo(LayoutBackground);
