@@ -1,13 +1,10 @@
 {
   "name": "@tiendanube/styles",
-  "version": "1.0.3",
+  "version": "1.0.6",
   "description": "Shareable styles",
   "author": "tiendanube",
   "license": "MIT",
   "repository": "missing",
-  "main": "dist/index.js",
-  "style": "src/index.css",
-  "sass": "src/index.scss",
   "module": "dist/index.modern.js",
   "source": "src/index.tsx",
   "engines": {
@@ -32,7 +29,8 @@
     "postcss-cli": "7.1.1"
   },
   "files": [
-    "dist"
+    "src",
+    "css"
   ],
   "browserslist": [
     "> 1%",
