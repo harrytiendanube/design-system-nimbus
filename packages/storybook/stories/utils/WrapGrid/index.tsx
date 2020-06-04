@@ -22,23 +22,19 @@ const IconList: React.FC<Props> = ({ iconList }: Props) => {
   );
 };
 
-// IconList.propTypes = {
-//   iconList: PropTypes.arrayOf(PropTypes.string).isRequired
-// }
 type Prop = {};
 const WrapGrid: React.FC<Prop> = () => {
-  /*
-   * ${filter}params of value input
-   * ${setFilter}method change filter
-   */
   const [filter, setFilter] = React.useState("");
-
-  const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    setFilter(event.target.value);
-  };
 
   const iconsListFiltered = variantIcons.filter((icon) =>
     icon.toLowerCase().includes(filter.toLowerCase()),
+  );
+
+  const handleOnChange = React.useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>): void => {
+      setFilter(event.target.value);
+    },
+    [setFilter],
   );
 
   const arrayListIcons =

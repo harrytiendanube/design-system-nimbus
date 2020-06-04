@@ -1,6 +1,5 @@
 import * as React from "react";
 
-// import { InputTypes } from "../";
 import "@tiendanube/styles/css/Input.css";
 
 export interface InterfaceInput {

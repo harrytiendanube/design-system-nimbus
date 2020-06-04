@@ -8,7 +8,7 @@ import Button from ".";
 describe("Button", () => {
   let myText, classNameBase;
 
-  beforeEach(() => {
+  beforeAll(() => {
     myText = "this is my Danger button";
     classNameBase = "nimbus--button";
   });

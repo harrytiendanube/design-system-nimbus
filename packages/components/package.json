@@ -23,7 +23,7 @@
     "test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
     "test:watch": "react-scripts test --env=jsdom",
     "format": "prettier --write \"src/**/*.tsx\"",
-    "lint": "cd ../.. && eslint packages/components --quiet --ext .ts",
+    "lint": "cd ../.. && eslint packages/components/src/**/*.{ts,tsx}",
     "lint-staged": "cd ../.. && eslint --ext .ts,.tsx"
   },
   "peerDependencies": {

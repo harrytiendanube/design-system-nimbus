@@ -1,17 +1,20 @@
+import "@testing-library/jest-dom/extend-expect";
+
 import React from "react";
 
-import "@testing-library/jest-dom/extend-expect";
 import { render } from "@testing-library/react";
 import { LayoutBackground, Text } from "../";
 import image from "../../../storybook/stories/utils";
 
 describe("LayoutBackground", () => {
-  let myText, classNameBase;
-  const myTestId = "LayoutBackground";
+  let myText, classNameBase, myTestId, url;
 
-  beforeEach(() => {
+  beforeAll(() => {
     myText = "myText";
     classNameBase = "nimbus--layout-background";
+    myTestId = "LayoutBackground";
+    url =
+      "https://d26lpennugtm8s.cloudfront.net/assets/insti/img/login/login-background.jpg";
   });
 
   it("Render with import image", () => {
@@ -29,8 +32,6 @@ describe("LayoutBackground", () => {
   });
 
   it("Render with URL image", () => {
-    const url =
-      "https://d26lpennugtm8s.cloudfront.net/assets/insti/img/login/login-background.jpg";
     const { getByTestId } = render(
       <LayoutBackground image={url}>{myText}</LayoutBackground>,
     );
@@ -45,8 +46,6 @@ describe("LayoutBackground", () => {
   });
 
   it("Render with URL image and Text Component as children", () => {
-    const url =
-      "https://d26lpennugtm8s.cloudfront.net/assets/insti/img/login/login-background.jpg";
     const { getByTestId, getByText } = render(
       <LayoutBackground image={url}>
         <Text>{myText}</Text>

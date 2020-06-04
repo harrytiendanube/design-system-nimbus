@@ -1,12 +1,19 @@
+/* eslint-disable react-perf/jsx-no-new-function-as-prop */
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+import "@testing-library/jest-dom/extend-expect";
+
 import React from "react";
 
-import "@testing-library/jest-dom/extend-expect";
 import { render, fireEvent } from "@testing-library/react";
 import Input from ".";
 
-const myLabel = "Email o URL de tu tienda";
-
 describe("Input", () => {
+  let myLabel, callback, newValue;
+  beforeAll(() => {
+    myLabel = "Store's Email o URL";
+    newValue = "newValue";
+    callback = jest.fn();
+  });
   it("Render Input", () => {
     const { getByLabelText } = render(
       <Input
@@ -17,15 +24,12 @@ describe("Input", () => {
         onChange={jest.fn()}
       />,
     );
-    // Should be find a componente by label
+    // Should be find a component by label
     expect(getByLabelText(myLabel)).toBeInTheDocument();
   });
   it("Change on Input fire event", () => {
-    const newValue = "newValue";
-    const callback = jest.fn();
-    // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-    const handleChange = (event) => {
-      expect(event.target.value).toEqual(newValue);
+    const handleChange = ({ target: { value } }) => {
+      expect(value).toEqual(newValue);
       callback();
     };
 
@@ -41,7 +45,7 @@ describe("Input", () => {
     fireEvent.change(getByLabelText(myLabel), {
       target: { value: newValue },
     });
-    // onChange callback should be invoked when input change
+
     expect(callback).toHaveBeenCalled();
   });
 });

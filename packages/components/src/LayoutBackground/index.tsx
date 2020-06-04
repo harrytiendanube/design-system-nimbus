@@ -22,13 +22,16 @@ function LayoutBackground({
   children,
   image,
 }: InterfaceLayoutBackground): JSX.Element {
+  const styles = React.useMemo(() => {
+    return {
+      backgroundImage: `url(${image})`,
+    };
+  }, [image]);
+
   return (
     <div data-testid="LayoutBackground" className="nimbus--layout-background">
       <div className="nimbus--layout-background__content">{children}</div>
-      <div
-        className="nimbus--layout-background__image"
-        style={{ backgroundImage: `url(${image})` }}
-      />
+      <div className="nimbus--layout-background__image" style={styles} />
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import * as React from "react";
+
 import Icon from "../Icon";
 import "@tiendanube/styles/css/Link.css";
 
@@ -45,7 +46,7 @@ const Link: React.FC<InterfaceLink> = ({
   );
   const memorizedEndIcon = React.useMemo(
     () => endIcon && <Icon name={endIcon} endPadding />,
-    [startIcon],
+    [endIcon],
   );
   return (
     <a className="nimbus--link" href={href} target={target}>

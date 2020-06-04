@@ -9,7 +9,7 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook -c .storybook -o .build",
     "test": "jest",
-    "lint": "cd ../.. && eslint packages/storybook --quiet --ext .tsx",
+    "lint": "cd ../.. && eslint packages/storybook/stories/**/*.tsx --quiet",
     "lint-staged": "cd ../.. && eslint --ext .ts,.tsx"
   },
   "dependencies": {

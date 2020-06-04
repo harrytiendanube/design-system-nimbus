@@ -7,9 +7,11 @@ module.exports = {
   globals: {
     Promise: true,
   },
-  plugins: ["prettier", "spellcheck"],
+  plugins: ["prettier", "spellcheck", "react-hooks", "react-perf"],
   rules: {
     "prettier/prettier": "error",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "error",
     "spellcheck/spell-checker": [
       "error",
       {
@@ -25,6 +27,13 @@ module.exports = {
           "wrapgrid",
           "href",
           "dismissable",
+          "Alicorn",
+          "Tiendanube",
+          "Icons's",
+          "rbg",
+          "fal",
+          "perf",
+          "jsx",
         ],
         skipIfMatch: [
           "http://[^s]*",
@@ -40,6 +49,7 @@ module.exports = {
     "standard",
     "standard-react",
     "prettier",
+    "plugin:react-perf/all",
     "plugin:prettier/recommended",
     "prettier/standard",
     "prettier/react",

@@ -3513,20 +3513,6 @@
     "@testing-library/dom" "^7.1.0"
     "@types/testing-library__react" "^10.0.0"
 
-"@tiendanube/components@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@tiendanube/components/-/components-1.0.2.tgz#302eb70bcbb4aa269e635b33361a5810ab1e1246"
-  integrity sha512-fcamBr11NhpC4p6APe9u7rEhsWqqqgZwMpieiz712gCve6u7qXK0nd+5PKC50I0zOjDTpjQyIfv2OEmIQyVAKQ==
-  dependencies:
-    "@fortawesome/fontawesome-svg-core" "1.2.28"
-    "@fortawesome/free-brands-svg-icons" "5.13.0"
-    "@fortawesome/pro-light-svg-icons" "5.13.0"
-    "@fortawesome/react-fontawesome" "0.1.9"
-    "@tiendanube/styles" "^1.0.2"
-    babel-loader "8.1.0"
-    react "16.13.1"
-    react-is "16.13.1"
-
 "@tiendanube/design-tokens-nimbus@^1.0.8":
   version "1.0.8"
   resolved "https://registry.yarnpkg.com/@tiendanube/design-tokens-nimbus/-/design-tokens-nimbus-1.0.8.tgz#b0e66b4e8e74bf657b2e0242ecf25c665bc4bc31"
@@ -3538,16 +3524,6 @@
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/@tiendanube/eslint-config/-/eslint-config-0.2.0.tgz#6483eb9f20c6474a53d53d9fb5cbf06b8c715d9a"
   integrity sha512-8m/qWt0U7Uki//t7Jbz3SDeTAStfq6wORRmpfacTU11ulBbiUhbDs1P6tfq+3iPHftcssnGw24vU7A8pRaUQxg==
-
-"@tiendanube/styles@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@tiendanube/styles/-/styles-1.0.2.tgz#b04488ec05293bab7064f82aa3cbac7fb433f558"
-  integrity sha512-PpV5X98rGUKO5++cZDV6M2IWP+Eu8AAHxIlxOW5KtvZc69oeemILPPvDx016w0WZistNG2/6flowXP27eWi6CQ==
-  dependencies:
-    autoprefixer "^9.7.6"
-    node-sass "4.14.1"
-    nodemon "^2.0.3"
-    postcss-cli "7.1.1"
 
 "@types/anymatch@*":
   version "1.3.1"
@@ -8328,10 +8304,20 @@ eslint-plugin-promise@4.2.1:
   resolved "https://registry.yarnpkg.com/eslint-plugin-promise/-/eslint-plugin-promise-4.2.1.tgz#845fd8b2260ad8f82564c1222fce44ad71d9418a"
   integrity sha512-VoM09vT7bfA7D+upt+FjeBO5eHIJQBUWki1aPvB+vbNiHS3+oGIJGIeyBtKQTME6UPXXy3vV07OL1tHd3ANuDw==
 
+eslint-plugin-react-hooks@4.0.4:
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-4.0.4.tgz#aed33b4254a41b045818cacb047b81e6df27fa58"
+  integrity sha512-equAdEIsUETLFNCmmCkiCGq6rkSK5MoJhXFPFYeUebcjKgBmWWcgVOqZyQC8Bv1BwVCnTq9tBxgJFgAJTWoJtA==
+
 eslint-plugin-react-hooks@^1.6.0, eslint-plugin-react-hooks@^1.6.1:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-1.7.0.tgz#6210b6d5a37205f0b92858f895a4e827020a7d04"
   integrity sha512-iXTCFcOmlWvw4+TOE8CLWj6yX1GwzT0Y6cUfHHZqWnSk144VmVIRcVGtUAzrLES7C798lmvnt02C7rxaOX1HNA==
+
+eslint-plugin-react-perf@3.2.3:
+  version "3.2.3"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-react-perf/-/eslint-plugin-react-perf-3.2.3.tgz#e28d42d3a1f7ec3c8976a94735d8e17e7d652a45"
+  integrity sha512-bMiPt7uywwS1Ly25n752NE3Ei0XBZ3igplTkZ8GPJKyZVVUd3cHgzILGeQW2HIeAkzQ9zwk9HM6EcYDipdFk3Q==
 
 eslint-plugin-react@7.19.0:
   version "7.19.0"
