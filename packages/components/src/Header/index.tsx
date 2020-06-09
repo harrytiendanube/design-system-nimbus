@@ -1,7 +1,10 @@
 import * as React from "react";
 
-import { Title, Text, Link } from "../";
 import "@tiendanube/styles/css/Header.css";
+
+import Text from "../Text";
+import Link from "../Link";
+import Title from "../Title";
 
 export interface InterfaceHeader {
   /**

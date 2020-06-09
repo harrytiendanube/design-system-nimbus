@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import "@tiendanube/styles/css/Button.css";
-import { Icon } from "../";
+import Icon from "../Icon";
 
 export interface InterfaceButton {
   /**

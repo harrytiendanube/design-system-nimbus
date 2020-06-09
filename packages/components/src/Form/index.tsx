@@ -1,7 +1,9 @@
 import * as React from "react";
 
 import "@tiendanube/styles/css/Form.css";
-import { Button, Link, Alert } from "..";
+import Link from "../Link";
+import Button from "../Button";
+import Alert from "../Alert";
 
 export interface InterfaceForm {
   /**

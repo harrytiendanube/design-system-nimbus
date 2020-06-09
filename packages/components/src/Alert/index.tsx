@@ -2,7 +2,11 @@
 import * as React from "react";
 
 import "@tiendanube/styles/css/Alert.css";
-import { Icon, Title, Text, Button, Link } from "../";
+import Button from "../Button";
+import Link from "../Link";
+import Icon from "../Icon";
+import Title from "../Title";
+import Text from "../Text";
 
 interface InterfaceAlert {
   /**
