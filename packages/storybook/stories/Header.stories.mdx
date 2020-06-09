@@ -3,6 +3,7 @@ import { withKnobs, select, text } from "@storybook/addon-knobs";
 import { action } from "@storybook/addon-actions";
 import { withA11y } from "@storybook/addon-a11y";
 import { Header } from "../../components/src";
+import { LOREM_STRESS } from "./utils/constants";
 
 import "../utils/style.css";
 
@@ -64,3 +65,21 @@ TODO: complete
     />
   </Story>
 </Preview>
+
+## Stressed
+
+TODO: complete
+
+<Preview withToolbar>
+  <Story name="stressed">
+    <Header
+      title="Title"
+      subtitle={LOREM_STRESS}
+      link="Link"
+      linkTo="http://www.tiendanube.com"
+    />
+  </Story>
+</Preview>
+
+
+

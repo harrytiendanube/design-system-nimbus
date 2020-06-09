@@ -3,6 +3,7 @@ import { withKnobs, select, text, boolean } from "@storybook/addon-knobs";
 import { action } from '@storybook/addon-actions';
 import { withA11y } from "@storybook/addon-a11y";
 import { Alert } from '../../components/src';
+import { LOREM_STRESS } from "./utils/constants";
 
 import '../utils/style.css';
 
@@ -47,5 +48,21 @@ TODO: complete
       <Alert appearance="warning" show>Warning State</Alert>
       <Alert appearance="success" show>Success State</Alert>
     </div>
+  </Story>
+</Preview>
+
+## Stressed
+
+TODO: complete
+
+<Preview withToolbar>
+  <Story name="stressed">
+      <Alert 
+        title="Title"        
+        primaryLabel="Primary label"
+        secondaryLabel="Secondary Label"
+        isDismissable 
+        show>{LOREM_STRESS}
+        </Alert>
   </Story>
 </Preview>

@@ -2,9 +2,10 @@ import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
 import { withKnobs, select, text } from "@storybook/addon-knobs";
 import { action } from '@storybook/addon-actions';
 import { withA11y } from "@storybook/addon-a11y";
-
 import { Button } from '../../components/src';
-import '../utils/style.css'
+import { LOREM_STRESS } from "./utils/constants";
+
+import '../utils/style.css';
 
 <Meta title="Atoms/Button" component={Button} />
 
@@ -51,13 +52,22 @@ TODO: complete
 <Preview withToolbar>
   <Story name="outline">
     <div className="separate">
-      <Button appearance="primary" outline={true}>Primary</Button>
-      <Button appearance="secondary" outline={true}>Secondary</Button>
-      <Button appearance="danger" outline={true}>Danger</Button>
+      <Button appearance="primary" outline>Primary</Button>
+      <Button appearance="secondary" outline>Secondary</Button>
+      <Button appearance="danger" outline>Danger</Button>
     </div>
   </Story>
 </Preview>
 
+## Stressed
+
+TODO: complete
+
+<Preview withToolbar>
+  <Story name="stressed">
+      <Button>{LOREM_STRESS}</Button>
+  </Story>
+</Preview>
 
 
 
