@@ -1,6 +1,6 @@
 {
   "name": "@tiendanube/storybook",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "private": true,
   "main": "index.js",
   "license": "MIT",
@@ -13,7 +13,7 @@
     "lint-staged": "cd ../.. && eslint --ext .ts,.tsx"
   },
   "dependencies": {
-    "@tiendanube/components": "^1.0.2",
+    "@tiendanube/components": "^1.0.7",
     "react-docgen-typescript-loader": "3.7.2"
   },
   "devDependencies": {
