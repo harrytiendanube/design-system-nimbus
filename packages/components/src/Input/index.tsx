@@ -51,6 +51,7 @@ function Input({
       <input
         id={`input_${name}`}
         type={type}
+        name={name}
         value={value}
         placeholder={placeholder}
         onChange={onChange}

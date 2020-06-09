@@ -1,3 +1,4 @@
+/* eslint-disable spellcheck/spell-checker */
 /* eslint-disable react-perf/jsx-no-new-function-as-prop */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import "@testing-library/jest-dom/extend-expect";
@@ -26,6 +27,19 @@ describe("Input", () => {
     );
     // Should be find a component by label
     expect(getByLabelText(myLabel)).toBeInTheDocument();
+    expect(getByLabelText(myLabel)).toHaveAttribute("name");
+  });
+  it("Should be return an Input with atttribute name", () => {
+    const { getByLabelText } = render(
+      <Input
+        label={myLabel}
+        value="nimbus@tiendanube.com"
+        placeholder="example@mail.com"
+        name="email"
+        onChange={jest.fn()}
+      />,
+    );
+    expect(getByLabelText(myLabel)).toHaveAttribute("name");
   });
   it("Change on Input fire event", () => {
     const handleChange = ({ target: { value } }) => {
