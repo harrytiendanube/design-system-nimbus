@@ -26,9 +26,9 @@ export * from "./Button";
 export { default as Form } from "./Form";
 export * from "./Form";
 
-// Header reference added
-export { default as Header } from "./Header";
-export * from "./Header";
+// PageTitle reference added
+export { default as PageTitle } from "./PageTitle";
+export * from "./PageTitle";
 
 // Alert reference added
 export { default as Alert } from "./Alert";

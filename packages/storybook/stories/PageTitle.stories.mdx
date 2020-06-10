@@ -4,20 +4,20 @@ import { action } from "@storybook/addon-actions";
 import { withA11y } from "@storybook/addon-a11y";
 import centered from '@storybook/addon-centered/react';
 
-import { Header } from "../../components/src";
+import { PageTitle } from "../../components/src";
 import { LOREM_STRESS } from "./utils/constants";
 
 import "../utils/style.css";
 
-<Meta title="Atoms/Header" component={Header} />
+<Meta title="Atoms/PageTitle" component={PageTitle} />
 
-# Header
+# PageTitle
 
 TODO: complete
 
 <Preview>
   <Story name="default" parameters={{ decorators: [withKnobs, withA11y, centered] }}>
-    <Header  
+    <PageTitle  
       title={text("title", "Title")}
       subtitle={text("subtitle", "Subtitle")}
       link={text("link","Link")}
@@ -27,7 +27,7 @@ TODO: complete
 
 ## Properties
 
-<Props of={Header.type} />
+<Props of={PageTitle.type} />
 
 ## Subtitle
 
@@ -35,7 +35,7 @@ TODO: complete
 
 <Preview withToolbar>
   <Story name="with subtitle">
-    <Header title="Title" subtitle="Subtitle" />
+    <PageTitle title="Title" subtitle="Subtitle" />
   </Story>
 </Preview>
 
@@ -45,7 +45,7 @@ TODO: complete
 
 <Preview withToolbar>
   <Story name="with link">
-    <Header
+    <PageTitle
       title="Title"
       link="Link"
       linkTo="http://www.tiendanube.com"
@@ -59,7 +59,7 @@ TODO: complete
 
 <Preview withToolbar>
   <Story name="with subtitle and link">
-    <Header
+    <PageTitle
       title="Title"
       subtitle="Subtitle"
       link="Link"
@@ -74,7 +74,7 @@ TODO: complete
 
 <Preview withToolbar>
   <Story name="stressed">
-    <Header
+    <PageTitle
       title="Title"
       subtitle={LOREM_STRESS}
       link="Link"

@@ -3,9 +3,9 @@ import "@testing-library/jest-dom/extend-expect";
 import React from "react";
 
 import { render } from "@testing-library/react";
-import Header from ".";
+import PageTitle from ".";
 
-describe("Header", () => {
+describe("PageTitle", () => {
   let title, subtitle, link, linkTo;
   beforeAll(() => {
     title = "title";
@@ -14,14 +14,19 @@ describe("Header", () => {
     linkTo = "linkHref";
   });
 
-  it("Render Header", () => {
-    const { getByText } = render(<Header title={title} />);
+  it("Render PageTitle", () => {
+    const { getByText } = render(<PageTitle title={title} />);
     const component = getByText(title);
     expect(component).toBeTruthy();
   });
-  it("Header implements title, text and link", () => {
+  it("PageTitle implements title, text and link", () => {
     const { getByText } = render(
-      <Header title={title} subtitle={subtitle} link={link} linkTo={linkTo} />,
+      <PageTitle
+        title={title}
+        subtitle={subtitle}
+        link={link}
+        linkTo={linkTo}
+      />,
     );
     expect(getByText(title)).toContainHTML("</h1>");
     expect(getByText(subtitle)).toContainHTML("</p>");

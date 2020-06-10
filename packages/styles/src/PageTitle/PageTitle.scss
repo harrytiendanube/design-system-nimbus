@@ -1,7 +1,8 @@
 @import "../NimbusCore/nimbus-core";
-// Header
 
-.#{$prefix}--header {
+// Page Title
+
+.#{$prefix}--page-title {
   border-bottom: 1px solid $color-white;
   display: block;
   margin-bottom: $nimbus-grid-spacer-03;
@@ -11,10 +12,10 @@
   width: 100%;
 }
 
-.#{$prefix}--header .#{$prefix}--text {
+.#{$prefix}--page-title .#{$prefix}--text {
   margin-top: $nimbus-grid-spacer-02;
 }
 
-.#{$prefix}--header .#{$prefix}--text + .#{$prefix}--link {
+.#{$prefix}--page-title .#{$prefix}--text + .#{$prefix}--link {
   margin-left: $nimbus-grid-spacer-02;
 }

@@ -1,12 +1,12 @@
 import * as React from "react";
 
-import "@tiendanube/styles/css/Header.css";
+import "@tiendanube/styles/css/PageTitle.css";
 
 import Text from "../Text";
 import Link from "../Link";
 import Title from "../Title";
 
-export interface InterfaceHeader {
+export interface InterfacePageTitle {
   /**
    * Title text
    */
@@ -25,19 +25,19 @@ export interface InterfaceHeader {
   linkTo?: string;
 }
 
-// TODO: Replace name 'Header' with 'PageHeader'
+// TODO: Replace name 'PageTitle' with 'PagePageTitle'
 /**
  *  @param title is the title text
  *  @param subtitle is the subtitle text
  *  @param link is the link text
  *  @param linkTo is the link href
  */
-function Header({
+function PageTitle({
   title,
   subtitle,
   link,
   linkTo,
-}: InterfaceHeader): JSX.Element {
+}: InterfacePageTitle): JSX.Element {
   const memorizedSubtitle = React.useMemo(
     () => subtitle && <Text>{subtitle}</Text>,
     [subtitle],
@@ -48,7 +48,7 @@ function Header({
   );
 
   return (
-    <div className="nimbus--header">
+    <div className="nimbus--page-title">
       <Title>{title}</Title>
       {memorizedSubtitle}
       {memorizedLink}
@@ -56,4 +56,4 @@ function Header({
   );
 }
 
-export default React.memo(Header);
+export default React.memo(PageTitle);
