@@ -16,7 +16,6 @@ TODO: complete
 <Preview>
   <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
     <Alert
-      type={select("type", ["inline","toast"])}
       isDismissable={boolean("isDismissable", true)}
       onDismiss={action("onDismiss")}
       show={boolean("show", true)}

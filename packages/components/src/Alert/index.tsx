@@ -14,10 +14,6 @@ interface InterfaceAlert {
    * */
   children: React.ReactText;
   /**
-   * Indicates the type of alert that can be in-line (on line) or toast (three lines)
-   * */
-  type: "toast" | "inline";
-  /**
    * Appearance of the alert
    * */
   appearance?: "primary" | "secondary" | "danger" | "success" | "warning";
@@ -56,7 +52,6 @@ interface InterfaceAlert {
 }
 /**
  *  @param children Text to be displayed in the alert
- *  @param type Indicates the type of alert that can be in-line (on line) or toast (three lines)
  *  @param appearance Appearance of the alert
  *  @param title Title of the alert
  *  @param primaryLabel Label of primary action
@@ -69,7 +64,6 @@ interface InterfaceAlert {
  */
 function Alert({
   children,
-  type = "inline",
   appearance = "primary",
   title,
   primaryLabel,
@@ -120,13 +114,15 @@ function Alert({
   );
 
   return show ? (
-    <div className={`nimbus--alert--${type} nimbus--alert--${appearance}`}>
+    <div className={`nimbus--alert nimbus--alert--${appearance}`}>
       <div className="nimbus--alert__icon">
         <Icon name={icon} />
       </div>
-      <div className="nimbus--alert__body">
-        {title && <Title type="h5">{title}</Title>}
-        <Text size="regular">{children}</Text>
+      <div className="nimbus--alert__details">
+        <div className="nimbus--alert__body">
+          {title && <Title type="h5">{title}</Title>}
+          <Text size="regular">{children}</Text>
+        </div>
         {withActions}
       </div>
       {memorizedDismissable}

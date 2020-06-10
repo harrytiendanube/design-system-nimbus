@@ -86,7 +86,7 @@ function Form({
   }, [onClickButton, buttonLabel]);
   return (
     <div data-testid="Form" className="nimbus--form">
-      <Alert type="inline" appearance={alertAppearance} show={!!alertText}>
+      <Alert appearance={alertAppearance} show={!!alertText}>
         {alertText || ""}
       </Alert>
       <form action="">{children}</form>

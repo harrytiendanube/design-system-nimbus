@@ -1,78 +1,76 @@
 @import "../NimbusCore/nimbus-core";
 
-// TODO: replace with tokens
-$nimbus-grid-spacer-01: 4px;
-$nimbus-grid-spacer-02: 8px;
-$nimbus-grid-spacer-03: 16px;
-$nimbus-color-gray-text: #473c41;
-$nimbus-font-line-height-01: 1.25;
-
 // Alert
 
-%#{$prefix}--alert {
-  align-items: flex-start;
-  border-radius: 0 0 $nimbus-grid-spacer-02 $nimbus-grid-spacer-02;
+.#{$prefix}--alert {
+  border-radius: $nimbus-grid-spacer-02;
   display: flex;
-  padding-bottom: $nimbus-grid-spacer-03;
-  padding-left: $nimbus-grid-spacer-03;
-  padding-right: $nimbus-grid-spacer-03;
-  padding-top: $nimbus-grid-spacer-03 - $nimbus-grid-spacer-01;
+  flex-wrap: nowrap;
+  padding: $nimbus-grid-spacer-02 $nimbus-grid-spacer-03;
   text-align: left;
   width: 100%;
 
-  .#{$prefix}--alert__body {
-    padding-left: $nimbus-grid-spacer-03;
-    width: 100%;
+  .#{$prefix}--alert__icon {
+    flex: 0 0 auto;
+    padding: $nimbus-grid-spacer-03 - $nimbus-grid-spacer-01 0;
   }
 
-  .#{$prefix}--alert__close {
-    margin-bottom: -$nimbus-grid-spacer-03;
-    margin-left: auto;
-    margin-right: -$nimbus-grid-spacer-03;
-    margin-top: -$nimbus-grid-spacer-03;
-    padding: $nimbus-grid-spacer-03;
-    position: relative;
-  }
-
-  .#{$prefix}--title-05,
-  .#{$prefix}--text {
-    color: $nimbus-color-gray-text;
-    line-height: $nimbus-font-line-height-01;
-  }
-}
-
-.#{$prefix}--alert--inline {
-  @extend %#{$prefix}--alert;
-  align-items: center;
-
-  .#{$prefix}--alert__body {
-    align-items: center;
+  .#{$prefix}--alert__details {
     display: flex;
+    flex: 1 1 auto;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
 
-    *:not(:last-child) {
-      margin-right: $nimbus-grid-spacer-03;
-    }
+  .#{$prefix}--alert__body {
+    display: flex;
+    flex: 0 0 auto;
+    flex-wrap: wrap;
+    max-width: 100%;
+    padding: $nimbus-grid-spacer-02 0 $nimbus-grid-spacer-02
+      $nimbus-grid-spacer-03;
+    width: auto;
+  }
+
+  .#{$prefix}--title-h5 {
+    margin-right: $nimbus-grid-spacer-02;
+  }
+
+  .#{$prefix}--title-h5,
+  .#{$prefix}--text {
+    color: $color-text;
+    line-height: $nimbus-font-line-height-02;
   }
 
   .#{$prefix}--alert__actions {
-    margin-left: auto;
-  }
-}
+    flex: 0 0 auto;
+    margin: auto 0;
+    max-width: 100%;
+    padding: 0 0 0 $nimbus-grid-spacer-03;
+    width: auto;
 
-// TODO: @Juan Definir los usos del alert toast y ancho máximo (con breakpoints)
-.#{$prefix}--alert--toast {
-  @extend %#{$prefix}--alert;
-
-  .#{$prefix}--alert__body {
-    *:not(:last-child) {
-      margin-bottom: $nimbus-grid-spacer-02;
+    .#{$prefix}--button--primary {
+      + .#{$prefix}--link {
+        margin-left: $nimbus-grid-spacer-03;
+      }
     }
+  }
+
+  .#{$prefix}--alert__close {
+    cursor: pointer;
+    flex: 0 0 auto;
+    margin-right: -$nimbus-grid-spacer-03;
+    padding: $nimbus-grid-spacer-03 - $nimbus-grid-spacer-01
+      $nimbus-grid-spacer-03;
+  }
+
+  svg {
+    font-size: $nimbus-font-size-03;
   }
 }
 
 @each $color, $value in $theme-colors {
   .#{$prefix}--alert--#{$color} {
-    background-color: scale-color($value, $lightness: 90%);
-    border-top: $nimbus-grid-spacer-01 solid $value;
+    background-color: scale-color($value, $lightness: 80%);
   }
 }
