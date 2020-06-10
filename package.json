@@ -15,7 +15,8 @@
     "start:components": "yarn workspace @tiendanube/components run start",
     "start:storybook": "yarn workspace @tiendanube/storybook run storybook",
     "start:styles": "yarn workspace @tiendanube/styles run start",
-    "start:dev": "concurrently --kill-others \"yarn start:storybook\" \"yarn start:styles\" \"yarn start:components\""
+    "start:dev": "concurrently --kill-others \"yarn start:storybook\" \"yarn start:styles\" \"yarn start:components\"",
+    "publish": "lerna publish"
   },
   "npmClient": "yarn",
   "workspaces": [

@@ -5,9 +5,9 @@
   "author": "tiendanube",
   "license": "MIT",
   "repository": "@tiendanube/components",
-  "main": "dist/index.js",
-  "module": "dist/index.modern.js",
   "source": "src/index.tsx",
+  "main": "dist/index.js",
+  "module": "dist/index.d.ts",
   "types": "dist/index.d.ts",
   "engines": {
     "node": ">=10"
