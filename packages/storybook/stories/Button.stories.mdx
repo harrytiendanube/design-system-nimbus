@@ -20,7 +20,7 @@ TODO: complete
     <Button
       start="Facebook"
       end="LongArrowRight"
-      appearance={select("Color", ["default", "secondary", "light"])}
+      appearance={select("Color", ["light", "primary", "secondary", "danger", "success"])}
       onClick={action('onClick')}
     >
       {text("Text", "Text")}
@@ -39,10 +39,11 @@ TODO: complete
 <Preview withToolbar>
   <Story name="appearance">
     <div className="separate">
+      <Button appearance="light"> Light </Button>
       <Button appearance="primary"> Primary </Button>
       <Button appearance="secondary"> Secondary </Button>
-      <Button appearance="light"> Light </Button>
       <Button appearance="danger"> Danger </Button>
+      <Button appearance="success"> Success </Button>
     </div>
   </Story>
 </Preview>
