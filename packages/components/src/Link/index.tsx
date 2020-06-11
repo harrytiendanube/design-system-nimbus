@@ -57,4 +57,4 @@ const Link: React.FC<InterfaceLink> = ({
   );
 };
 
-export default React.memo(Link);
+export default React.memo(Link) as typeof Link;

@@ -25,7 +25,7 @@
 /packages/components/dist
 
 ## Storybook ignoring
-
+/packages/storybook/.build
 
 ## Styles ignoring
 /packages/styles/dist

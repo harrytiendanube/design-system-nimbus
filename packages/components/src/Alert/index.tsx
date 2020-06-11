@@ -131,4 +131,4 @@ function Alert({
     <React.Fragment />
   );
 }
-export default React.memo(Alert);
+export default React.memo(Alert) as typeof Alert;

@@ -7,9 +7,6 @@
   "repository": "missing",
   "module": "dist/index.modern.js",
   "source": "src/index.tsx",
-  "engines": {
-    "node": ">=10"
-  },
   "scripts": {
     "clean": "rm -rf css && rm -rf css-tmp",
     "start": "yarn clean && yarn watch-css",

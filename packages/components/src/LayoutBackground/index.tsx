@@ -36,4 +36,4 @@ function LayoutBackground({
   );
 }
 
-export default React.memo(LayoutBackground);
+export default React.memo(LayoutBackground) as typeof LayoutBackground;

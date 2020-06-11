@@ -82,4 +82,4 @@ function Icon({
   );
 }
 
-export default React.memo(Icon);
+export default React.memo(Icon) as typeof Icon;

@@ -68,4 +68,4 @@ function Button({
   );
 }
 
-export default React.memo(Button);
+export default React.memo(Button) as typeof Button;
