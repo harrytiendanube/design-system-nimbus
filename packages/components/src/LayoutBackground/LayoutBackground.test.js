@@ -4,7 +4,7 @@ import React from "react";
 
 import { render } from "@testing-library/react";
 import { LayoutBackground, Text } from "../";
-import image from "../../../storybook/stories/utils";
+import image from "../../utils/login-background.jpg";
 
 describe("LayoutBackground", () => {
   let myText, classNameBase, myTestId, url;

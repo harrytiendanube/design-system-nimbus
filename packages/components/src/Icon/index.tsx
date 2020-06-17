@@ -6,8 +6,7 @@ import { fab } from "@fortawesome/free-brands-svg-icons";
 
 import "@tiendanube/styles/css/Icon.css";
 
-export const icons = { ...fal, ...fab };
-export const variantIcons = Object.keys(icons).map((icon) => icon.substring(2));
+const icons = Object.assign({}, fal, fab);
 
 export interface InterfaceIcon {
   /**
