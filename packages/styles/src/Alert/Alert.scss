@@ -6,7 +6,7 @@
   border-radius: $nimbus-grid-spacer-02;
   display: flex;
   flex-wrap: nowrap;
-  padding: $nimbus-grid-spacer-02 $nimbus-grid-spacer-03;
+  padding: $nimbus-grid-spacer-03;
   text-align: left;
   width: 100%;
 
@@ -16,6 +16,7 @@
   }
 
   .#{$prefix}--alert__details {
+    align-items: center;
     display: flex;
     flex: 1 1 auto;
     flex-wrap: wrap;
