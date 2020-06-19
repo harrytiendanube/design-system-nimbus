@@ -25,7 +25,6 @@ export interface InterfacePageTitle {
   linkTo?: string;
 }
 
-// TODO: Replace name 'PageTitle' with 'PagePageTitle'
 /**
  *  @param title is the title text
  *  @param subtitle is the subtitle text
@@ -46,12 +45,17 @@ function PageTitle({
     () => link && linkTo && <Link href={linkTo}>{link}</Link>,
     [linkTo, link],
   );
+  const withSubtitle = (subtitle || link) && (
+    <div className="nimbus--page-subtitle">
+      {memorizedSubtitle}
+      {memorizedLink}
+    </div>
+  );
 
   return (
     <div className="nimbus--page-title">
       <Title>{title}</Title>
-      {memorizedSubtitle}
-      {memorizedLink}
+      {withSubtitle}
     </div>
   );
 }

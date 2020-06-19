@@ -3,19 +3,23 @@
 // Page Title
 
 .#{$prefix}--page-title {
-  border-bottom: 1px solid $color-white;
   display: block;
-  margin-bottom: $nimbus-grid-spacer-03;
-  padding-bottom: $nimbus-grid-spacer-03;
-  padding-left: $nimbus-grid-gutter / 2;
-  padding-right: $nimbus-grid-gutter / 2;
+  margin-bottom: $nimbus-grid-spacer-05;
   width: 100%;
+
+  .#{$prefix}--page-subtitle {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: $nimbus-grid-spacer-03;
+  }
+
+  .#{$prefix}--text + .#{$prefix}--link {
+    margin-left: $nimbus-grid-spacer-02;
+  }
 }
 
-.#{$prefix}--page-title .#{$prefix}--text {
-  margin-top: $nimbus-grid-spacer-02;
-}
-
-.#{$prefix}--page-title .#{$prefix}--text + .#{$prefix}--link {
-  margin-left: $nimbus-grid-spacer-02;
+@include nimbus--breakpoint(lg) {
+  .#{$prefix}--page-title {
+    margin-bottom: $nimbus-grid-spacer-07;
+  }
 }
