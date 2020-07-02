@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import * as React from "react";
 
-import "@tiendanube/styles/css/Alert.css";
+import "./Alert.css";
 import Button from "../Button";
 import Link from "../Link";
 import Icon from "../Icon";
@@ -89,11 +89,11 @@ function Alert({
           {primaryLabel}
         </Button>
       ),
-    [primaryLabel, onClickPrimary],
+    [primaryLabel, onClickPrimary]
   );
   const memorizedSecondary = React.useMemo(
     () => secondaryLabel && <Link href={secondaryTo}>{secondaryLabel}</Link>,
-    [secondaryLabel, secondaryTo],
+    [secondaryLabel, secondaryTo]
   );
 
   const memorizedDismissable = React.useMemo(
@@ -103,7 +103,7 @@ function Alert({
           <Icon name="Times" />
         </div>
       ),
-    [isDismissable, onDismiss],
+    [isDismissable, onDismiss]
   );
 
   const withActions = (primaryLabel || secondaryLabel) && (
@@ -131,4 +131,6 @@ function Alert({
     <React.Fragment />
   );
 }
+
+/** @type {React.FC<{message: string}>} */
 export default React.memo(Alert) as typeof Alert;

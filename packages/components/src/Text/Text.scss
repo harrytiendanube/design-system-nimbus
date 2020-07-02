@@ -1,0 +1,14 @@
+@import "../../assets/scss/NimbusCore/nimbus-core";
+
+// Links
+
+.#{$prefix}--text {
+  color: $color-text;
+  display: inline-block;
+  font-family: $nimbus-font-family;
+  font-size: $nimbus-font-size-03;
+
+  &_small {
+    font-size: $nimbus-font-size-01;
+  }
+}

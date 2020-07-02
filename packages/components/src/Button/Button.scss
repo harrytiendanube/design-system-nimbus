@@ -1,0 +1,33 @@
+@import "core";
+// Buttons
+
+%#{$prefix}--button {
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: $nimbus-grid-spacer-02;
+  cursor: pointer;
+  display: inline-block;
+  font-family: $nimbus-font-family;
+  font-size: $nimbus-font-size-03;
+  line-height: $nimbus-font-line-height-01;
+  padding: $nimbus-grid-spacer-02 $nimbus-grid-spacer-03;
+  text-align: center;
+  transition: 0.15s ease;
+  vertical-align: middle;
+}
+
+@each $color, $value in $theme-colors {
+  .#{$prefix}--button--#{$color} {
+    @extend %#{$prefix}--button;
+
+    @include button($value);
+  }
+}
+
+@each $color, $value in $theme-colors {
+  .#{$prefix}--button--#{$color}-outline {
+    @extend %#{$prefix}--button;
+
+    @include button-outline($value);
+  }
+}

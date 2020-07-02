@@ -23,6 +23,7 @@
 ## Components ignoring
 
 /packages/components/dist
+/packages/components/**/*.css
 
 ## Storybook ignoring
 /packages/storybook/.build
@@ -38,3 +39,4 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 yalc.lock
+.DS_Store

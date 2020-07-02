@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import "@tiendanube/styles/css/PageTitle.css";
+import "./PageTitle.css";
 
 import Text from "../Text";
 import Link from "../Link";

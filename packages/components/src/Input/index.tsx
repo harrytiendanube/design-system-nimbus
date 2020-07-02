@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import "@tiendanube/styles/css/Input.css";
+import "./Input.css";
 
 export interface InterfaceInput {
   /**

@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import "@tiendanube/styles/css/LayoutBackground.css";
+import "./LayoutBackground.css";
 
 export interface InterfaceLayoutBackground {
   /**

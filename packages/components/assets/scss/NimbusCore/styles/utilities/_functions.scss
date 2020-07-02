@@ -1,0 +1,35 @@
+// Functions
+
+// Color Contrast
+//
+// This function checks the color of a component against YIQ color contrast standard and returns a value
+
+@function color-contrast(
+  $color,
+  $dark: $contrast-dark,
+  $light: $contrast-light
+) {
+  $r: red($color);
+  $g: green($color);
+  $b: blue($color);
+
+  $contrast: (($r * 299) + ($g * 587) + ($b * 114)) / 1000;
+
+  @if ($contrast >= $contrast-threshold) {
+    @return $dark;
+  } @else {
+    @return $light;
+  }
+}
+
+// Provide a map and index, and get back de relevant key value
+@function nimbus--key-by-index($map, $index) {
+  $keys: map-keys($map);
+  @return nth($keys, $index);
+}
+
+// Pass in a map, and get the last one in the list back
+@function last-map-item($map) {
+  $total-length: length($map);
+  @return map-get($map, nimbus--key-by-index($map, $total-length));
+}

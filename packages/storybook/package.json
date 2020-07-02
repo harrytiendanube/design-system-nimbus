@@ -1,8 +1,7 @@
 {
   "name": "@tiendanube/storybook",
-  "version": "1.0.9",
+  "version": "0.0.1",
   "private": true,
-  "main": "index.js",
   "license": "MIT",
   "scripts": {
     "format": "prettier --write \"stories/**/*.tsx\"",
@@ -13,7 +12,6 @@
     "lint-staged": "cd ../.. && eslint --ext .ts,.tsx"
   },
   "dependencies": {
-    "@tiendanube/components": "^1.0.13",
     "react-docgen-typescript-loader": "3.7.2"
   },
   "devDependencies": {

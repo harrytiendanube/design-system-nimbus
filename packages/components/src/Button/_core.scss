@@ -1,0 +1,29 @@
+@import "../../assets/scss/NimbusCore/nimbus-core";
+
+// Mixins
+
+// Buttons
+//
+// Defining mixins to be used by buttons
+
+@mixin button($color, $hover-color: darken($color, 15%)) {
+  background-color: $color;
+  border-color: $color;
+  color: color-contrast($color);
+
+  &:hover {
+    background-color: $hover-color;
+    border-color: $hover-color;
+  }
+}
+
+@mixin button-outline($color, $hover-color: darken($color, 15%)) {
+  border-color: $color;
+  color: $color;
+
+  &:hover {
+    background-color: $hover-color;
+    border-color: $hover-color;
+    color: color-contrast($color);
+  }
+}

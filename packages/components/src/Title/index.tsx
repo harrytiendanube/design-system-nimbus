@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import "@tiendanube/styles/css/Title.css";
+import "./Title.css";
 
 export interface InterfaceTitle {
   /**

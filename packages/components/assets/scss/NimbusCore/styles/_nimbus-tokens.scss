@@ -1,0 +1,199 @@
+@import "../../../../../../node_modules/@tiendanube/design-tokens-nimbus/dist/scss/variables";
+
+$nimbus-colors: (
+  "blue-deep": $nimbus-color-blue-deep,
+  "blue-dark": $nimbus-color-blue-dark,
+  "blue-sky": $nimbus-color-blue-sky,
+  "blue-light": $nimbus-color-blue-light,
+  "gray-100": $nimbus-color-gray-100,
+  "gray-85": $nimbus-color-gray-85,
+  "gray-60": $nimbus-color-gray-60,
+  "gray-35": $nimbus-color-gray-35,
+  "white-nube": $nimbus-color-white-nube,
+  "white-pure": $nimbus-color-white-pure,
+  "green-success": $nimbus-color-situation-green,
+  "yellow-warning": $nimbus-color-situation-yellow,
+  "red-danger": $nimbus-color-situation-red,
+);
+
+// Theme Colors
+//
+// Translating Design System colors into theme colors for components
+
+$color-primary: $nimbus-color-blue-dark;
+$color-secondary: $nimbus-color-blue-sky;
+$color-text: $nimbus-color-gray-100;
+$color-dark: $nimbus-color-gray-85;
+$color-mid: $nimbus-color-gray-60;
+$color-light: $nimbus-color-gray-35;
+$color-white: $nimbus-color-white-nube;
+$color-danger: $nimbus-color-situation-red;
+$color-warning: $nimbus-color-situation-yellow;
+$color-success: $nimbus-color-situation-green;
+
+$theme-colors: (
+  "primary": $color-primary,
+  "secondary": $color-secondary,
+  "light": $color-white,
+  "text": $color-text,
+  "danger": $color-danger,
+  "warning": $color-warning,
+  "success": $color-success,
+) !default;
+
+// Contrast Colors
+//
+// For the contrast function
+
+$contrast-dark: $color-primary;
+$contrast-light: $color-white;
+$contrast-threshold: 150;
+
+// Typography
+//
+// Defining text maps to generate font styles
+
+$nimbus--title-sizes: (
+  "h1": $nimbus-font-size-07,
+  "h2": $nimbus-font-size-06,
+  "h3": $nimbus-font-size-05,
+  "h4": $nimbus-font-size-04,
+  "h5": $nimbus-font-size-03,
+  "h6": $nimbus-font-size-02,
+) !default;
+
+// Sizing
+//
+// Defining sizing for Nimbus' grid system
+
+$nimbus-grid-gutter: 32px;
+
+// Breakpoints
+
+$nimbus--grid-breakpoints: (
+  xs: (
+    columns: $nimbus-grid-breakpoint-xs-columns,
+    margin: $nimbus-grid-breakpoint-xs-margin,
+    width: $nimbus-grid-breakpoint-xs-width,
+  ),
+  sm: (
+    columns: $nimbus-grid-breakpoint-sm-columns,
+    margin: $nimbus-grid-breakpoint-sm-margin,
+    width: $nimbus-grid-breakpoint-sm-width,
+  ),
+  md: (
+    columns: $nimbus-grid-breakpoint-md-columns,
+    margin: $nimbus-grid-breakpoint-md-margin,
+    width: $nimbus-grid-breakpoint-md-width,
+  ),
+  lg: (
+    columns: $nimbus-grid-breakpoint-lg-columns,
+    margin: $nimbus-grid-breakpoint-lg-margin,
+    width: $nimbus-grid-breakpoint-lg-width,
+  ),
+  xl: (
+    columns: $nimbus-grid-breakpoint-xl-columns,
+    margin: $nimbus-grid-breakpoint-xl-margin,
+    width: $nimbus-grid-breakpoint-xl-width,
+  ),
+  xxl: (
+    columns: $nimbus-grid-breakpoint-xxl-columns,
+    margin: $nimbus-grid-breakpoint-xxl-margin,
+    width: $nimbus-grid-breakpoint-xxl-width,
+  ),
+) !default;
+
+// Get the value of the next breakpoint or null if last breakpoint
+@function nimbus--breakpoint-next(
+  $name,
+  $breakpoints: $nimbus--grid-breakpoints,
+  $breakpoint-names: map-keys($breakpoints)
+) {
+  $n: index($breakpoint-names, $name);
+  @if $n != null and $n < length($breakpoint-names) {
+    @return nth($breakpoint-names, $n + 1);
+  }
+  @return null;
+}
+
+// Get the value of the previous breakpoint or null if first breakpoint
+@function nimbus--breakpoint-prev(
+  $name,
+  $breakpoints: $nimbus--grid-breakpoints,
+  $breakpoint-names: map-keys($breakpoints)
+) {
+  $n: index($breakpoint-names, $name);
+  @if $n != null and $n > 1 {
+    @return nth($breakpoint-names, $n - 1);
+  }
+  @return null;
+}
+
+// Check if smallest breakpoint
+@function nimbus--is-smallest-breakpoint(
+  $name,
+  $breakpoints: $nimbus--grid-breakpoints
+) {
+  @return index(map-keys($breakpoints), $name) == 1;
+}
+
+// Returns largest breakpoint name
+@function nimbus--largest-breakpoint-name(
+  $breakpoints: $nimbus--grid-breakpoints
+) {
+  $total-breakpoints: length($breakpoints);
+  @return nimbus--key-by-index($breakpoints, $total-breakpoints);
+}
+
+// This function gets the index of a given breakpoint in a list of breakpoints
+@function nimbus--breakpoint-index($name) {
+  @return "-#{$name}";
+}
+
+// Generate a media query up to the width of the breakpoint name
+@mixin nimbus--breakpoint-up($name, $breakpoints: $nimbus--grid-breakpoints) {
+  @if type-of($name) == "number" {
+    @media (min-width: $name) {
+      @content;
+    }
+  } @else if map-has-key($breakpoints, $name) {
+    $breakpoint: map-get($breakpoints, $name);
+    $width: map-get($breakpoint, width);
+    @if nimbus--is-smallest-breakpoint($name, $breakpoints) {
+      @content;
+    } @else {
+      @media (min-width: $width) {
+        @content;
+      }
+    }
+  }
+}
+
+// Generate a media query for the maximum width of the given styles
+@mixin nimbus--breakpoint-down($name, $breakpoints: $nimbus--grid-breakpoints) {
+  @if type-of($name) == "number" {
+    @media (max-width: $name) {
+      @content;
+    }
+  } @else if map-has-key($breakpoints, $name) {
+    $breakpoint: map-get($breakpoints, $name);
+    $width: map-get($breakpoint, width) - 1;
+    @media (max-width: $width) {
+      @content;
+    }
+  }
+}
+
+// Generate a media query for the largest breakpoint
+@mixin nimbus--largest-breakpoint($breakpoints: $nimbus--grid-breakpoints) {
+  @include nimbus--breakpoint(nimbus--largest-breakpoint-name()) {
+    @content;
+  }
+}
+
+// Generate a media query for a given breakpoint
+@mixin nimbus--breakpoint($name, $breakpoints: $nimbus--grid-breakpoints) {
+  @include nimbus--breakpoint-up($name, $breakpoints) {
+    @content;
+  }
+}

@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { fal } from "@fortawesome/pro-light-svg-icons";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 
-import "@tiendanube/styles/css/Icon.css";
+import "./Icon.css";
 
 const icons = Object.assign({}, fal, fab);
 
@@ -65,7 +65,7 @@ function Icon({
       `${startPadding ? "icon__padding_start" : ""} ${
         endPadding ? "icon__padding_end" : ""
       }`,
-    [startPadding, endPadding],
+    [startPadding, endPadding]
   );
 
   const iconName = React.useMemo(() => icons[`fa${name}`], [name]);

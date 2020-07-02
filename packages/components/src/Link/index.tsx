@@ -1,7 +1,7 @@
 import * as React from "react";
+import "./Link.css";
 
 import Icon from "../Icon";
-import "@tiendanube/styles/css/Link.css";
 
 export interface InterfaceLink {
   /**

@@ -1,0 +1,77 @@
+@import "../../assets/scss/NimbusCore/nimbus-core";
+
+// Alert
+
+.#{$prefix}--alert {
+  border-radius: $nimbus-grid-spacer-02;
+  display: flex;
+  flex-wrap: nowrap;
+  padding: $nimbus-grid-spacer-03;
+  text-align: left;
+  width: 100%;
+
+  .#{$prefix}--alert__icon {
+    flex: 0 0 auto;
+    padding: $nimbus-grid-spacer-03 - $nimbus-grid-spacer-01 0;
+  }
+
+  .#{$prefix}--alert__details {
+    align-items: center;
+    display: flex;
+    flex: 1 1 auto;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .#{$prefix}--alert__body {
+    display: flex;
+    flex: 0 0 auto;
+    flex-wrap: wrap;
+    max-width: 100%;
+    padding: $nimbus-grid-spacer-02 0 $nimbus-grid-spacer-02
+      $nimbus-grid-spacer-03;
+    width: auto;
+  }
+
+  .#{$prefix}--title-h5 {
+    margin-right: $nimbus-grid-spacer-02;
+  }
+
+  .#{$prefix}--title-h5,
+  .#{$prefix}--text {
+    color: $color-text;
+    line-height: $nimbus-font-line-height-02;
+  }
+
+  .#{$prefix}--alert__actions {
+    flex: 0 0 auto;
+    margin: auto 0;
+    max-width: 100%;
+    padding: 0 0 0 $nimbus-grid-spacer-03;
+    width: auto;
+
+    .#{$prefix}--button--primary {
+      + .#{$prefix}--link {
+        margin-left: $nimbus-grid-spacer-03;
+      }
+    }
+  }
+
+  .#{$prefix}--alert__close {
+    cursor: pointer;
+    flex: 0 0 auto;
+    margin-right: -$nimbus-grid-spacer-03;
+    padding: $nimbus-grid-spacer-03 - $nimbus-grid-spacer-01
+      $nimbus-grid-spacer-03;
+  }
+
+  svg {
+    font-size: $nimbus-font-size-03;
+  }
+}
+
+@each $color, $value in $theme-colors {
+  .#{$prefix}--alert--#{$color} {
+    background-color: scale-color($value, $lightness: 80%);
+  }
+}

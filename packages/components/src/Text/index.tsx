@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import "@tiendanube/styles/css/Text.css";
+import "./Text.css";
 
 export interface InterfaceText {
   /**

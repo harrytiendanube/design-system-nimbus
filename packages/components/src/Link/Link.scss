@@ -1,0 +1,17 @@
+@import "../../assets/scss/NimbusCore/nimbus-core";
+
+// Links
+
+.#{$prefix}--link {
+  color: $color-secondary;
+  cursor: pointer;
+  display: inline-block;
+  font-family: $nimbus-font-family;
+  font-size: $nimbus-font-size-03;
+  text-decoration: underline;
+  transition: 0.15s ease;
+
+  &:hover {
+    color: darken($color-secondary, 0.15);
+  }
+}
