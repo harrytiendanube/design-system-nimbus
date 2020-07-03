@@ -53,7 +53,7 @@ describe("${variable}", () => {
 };
 
 const getScssData = (variable) => {
-  return `@import "../NimbusCore/nimbus-core";
+  return `@import "../StyleCore/style-core";
 // ${variable}
 
 .#{$prefix}--${getCssClassName(variable)} {}
