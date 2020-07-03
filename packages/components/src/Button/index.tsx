@@ -42,8 +42,8 @@ function Button({
   children,
   startIcon,
   endIcon,
-  appearance = "light",
-  outline = false,
+  appearance,
+  outline,
   onClick,
 }: InterfaceButton): JSX.Element {
   const classname = React.useMemo(
@@ -68,4 +68,9 @@ function Button({
   );
 }
 
-export default React.memo(Button) as typeof Button;
+Button.defaultProps = {
+  appearance: "light",
+  outline: false,
+};
+
+export default React.memo(Button);

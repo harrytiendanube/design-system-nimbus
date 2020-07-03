@@ -62,7 +62,7 @@ export interface InterfaceForm {
 
 function Form({
   alertText,
-  alertAppearance = "danger",
+  alertAppearance,
   children,
   link,
   linkTo,
@@ -101,4 +101,6 @@ function Form({
   );
 }
 
-export default React.memo(Form) as typeof Form;
+Form.defaultProps = { alertAppearance: "danger" };
+
+export default React.memo(Form);

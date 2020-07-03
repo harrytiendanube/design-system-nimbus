@@ -60,4 +60,4 @@ function PageTitle({
   );
 }
 
-export default React.memo(PageTitle) as typeof PageTitle;
+export default React.memo(PageTitle);

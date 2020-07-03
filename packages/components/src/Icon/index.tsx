@@ -55,10 +55,10 @@ export interface InterfaceIcon {
 
 function Icon({
   name,
-  size = "sm",
-  color = "inherit",
-  startPadding = false,
-  endPadding = false,
+  size,
+  color,
+  startPadding,
+  endPadding,
 }: InterfaceIcon): JSX.Element {
   const className = React.useMemo(
     () =>
@@ -81,4 +81,11 @@ function Icon({
   );
 }
 
-export default React.memo(Icon) as typeof Icon;
+Icon.defaultProps = {
+  size: "sm",
+  color: "inherit",
+  startPadding: false,
+  endPadding: false,
+};
+
+export default React.memo(Icon);

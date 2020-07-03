@@ -132,5 +132,8 @@ function Alert({
   );
 }
 
-/** @type {React.FC<{message: string}>} */
-export default React.memo(Alert) as typeof Alert;
+Alert.defaultProps = {
+  appearance: "primary",
+};
+
+export default React.memo(Alert);

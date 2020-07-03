@@ -39,10 +39,10 @@ export interface InterfaceInput {
  */
 function Input({
   label,
-  type = "text",
+  type,
   name,
-  value = "",
-  placeholder = "placeholder",
+  value,
+  placeholder,
   onChange,
 }: InterfaceInput): JSX.Element {
   return (
@@ -60,4 +60,8 @@ function Input({
   );
 }
 
-export default React.memo(Input) as typeof Input;
+Input.defaultProps = {
+  type: "text",
+};
+
+export default React.memo(Input);

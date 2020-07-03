@@ -36,7 +36,7 @@ export interface InterfaceLink {
 const Link: React.FC<InterfaceLink> = ({
   children,
   href,
-  target = "_blank",
+  target,
   startIcon,
   endIcon,
 }: InterfaceLink) => {
@@ -57,4 +57,6 @@ const Link: React.FC<InterfaceLink> = ({
   );
 };
 
-export default React.memo(Link) as typeof Link;
+Link.defaultProps = { target: "_blank" };
+
+export default React.memo(Link);
