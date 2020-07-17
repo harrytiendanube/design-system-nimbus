@@ -2,7 +2,6 @@ import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
 import { withKnobs, color, select, text } from "@storybook/addon-knobs";
 import { withA11y } from "@storybook/addon-a11y";
 import { action } from "@storybook/addon-actions";
-import centered from '@storybook/addon-centered/react';
 
 import { Input } from '@tiendanube/components/src';
 import { LOREM_STRESS } from "./utils/constants";
@@ -18,7 +17,7 @@ TODO: complete
 <Preview>
   <Story
     name="default"
-    parameters={{ decorators: [withKnobs, withA11y, centered] }}
+    parameters={{ decorators: [withKnobs, withA11y] }}
   >
     <Input
       label={text("label","Email o URL de tu tienda")}

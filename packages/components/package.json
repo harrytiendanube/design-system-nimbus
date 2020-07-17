@@ -5,10 +5,16 @@
   "module": "dist/index.ts",
   "types": "dist/index.d.ts",
   "license": "MIT",
+  "size-limit": [
+    {
+      "path": "dist/index.js"
+    }
+  ],
   "scripts": {
     "build-css": "node-sass -r src -o src --output-style compressed",
     "post-css": "postcss src/**/*.css --base src --use autoprefixer -d src",
     "start:dev": "nodemon -e scss -x 'yarn build-css && yarn post-css'",
+    "size": "yarn build && size-limit",
     "build": "rm -rf dist && tsc && node-sass src -o dist --output-style compressed && postcss dist/**/*.css --base dist --use autoprefixer -d dist",
     "prepublish": "yarn build"
   },
@@ -22,11 +28,13 @@
     "typescript": "3.9.5"
   },
   "devDependencies": {
+    "@size-limit/preset-big-lib": "4.5.4",
     "@types/react": "16.9.41",
     "@types/react-dom": "16.9.8",
-    "autoprefixer": "^9.7.6",
+    "autoprefixer": "9.7.6",
     "node-sass": "4.14.1",
-    "nodemon": "^2.0.4",
+    "nodemon": "2.0.4",
+    "size-limit": "4.5.4",
     "postcss-cli": "7.1.1"
   },
   "files": [

@@ -1,8 +1,6 @@
 import * as React from "react";
 import "./Link.css";
 
-import Icon from "../Icon";
-
 export interface InterfaceLink {
   /**
    *  React node of type children.
@@ -17,36 +15,35 @@ export interface InterfaceLink {
    */
   target?: "_blank" | "_parent" | "_self" | "_top";
   /**
-   * Icons's name to start in position left.
+   * Icon Component imported from @tiendanube/icons
    */
-  startIcon?: string;
+  icon?: any;
   /**
-   * Icons's name to start in position right.
+   * Position of the icon with respect to the alert
    */
-  endIcon?: string;
+  iconPosition?: "start" | "end";
 }
-
 /**
  * @param start React node of type children.
  * @param href Specifies the URL of the page the link goes to
  * @param target Specifies where to open the linked document
- * @param startIcon Icons's name to start in position left
- * @param endIcon Icons's name to start in position left.
+ * @param icon Icon Component imported from @tiendanube/icons
+ * @param iconPosition Position of the icon with respect to the alert
  */
 const Link: React.FC<InterfaceLink> = ({
   children,
   href,
   target,
-  startIcon,
-  endIcon,
+  icon: Icon,
+  iconPosition,
 }: InterfaceLink) => {
   const memorizedStartIcon = React.useMemo(
-    () => startIcon && <Icon name={startIcon} startPadding />,
-    [startIcon],
+    () => Icon && iconPosition == "start" && <Icon />,
+    [Icon, iconPosition]
   );
   const memorizedEndIcon = React.useMemo(
-    () => endIcon && <Icon name={endIcon} endPadding />,
-    [endIcon],
+    () => Icon && iconPosition == "end" && <Icon />,
+    [Icon, iconPosition]
   );
   return (
     <a className="nimbus--link" href={href} target={target}>
@@ -57,6 +54,9 @@ const Link: React.FC<InterfaceLink> = ({
   );
 };
 
-Link.defaultProps = { target: "_blank" };
+Link.defaultProps = {
+  target: "_blank",
+  iconPosition: "start",
+};
 
 export default React.memo(Link);

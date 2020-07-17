@@ -1,7 +1,6 @@
 import * as React from "react";
 
 import "./Button.css";
-import Icon from "../Icon";
 
 export interface InterfaceButton {
   /**
@@ -17,13 +16,13 @@ export interface InterfaceButton {
    */
   appearance?: "primary" | "secondary" | "light" | "danger";
   /**
-   * Icons's name to start in position left.
+   * Icon Component imported from @tiendanube/icons
    */
-  startIcon?: string;
+  icon?: any;
   /**
-   * Icons's name to start in position right.
+   * Position of the icon inside the button
    */
-  endIcon?: string;
+  iconPosition?: "start" | "end";
   /**
    * Transform button to outline version with a transparent background and border color determined by appearance prop.
    */
@@ -32,31 +31,31 @@ export interface InterfaceButton {
 
 /**
  * Button's Component as actionable component.
- * @Param startIcon Icons's name to start in position left
- * @Param endIcon Icons's name to start in position left.
- * @Param children React node of type children.
- * @Param appearance type of appearance "primary" | "secondary" | "light" | "danger" | "transparent".
- * @Param outline Transform button to outline version with a transparent background and border color determined by appearance prop.
+ * @param icon Icon Component imported from @tiendanube/icons
+ * @param iconPosition Position of the icon inside the button
+ * @param children React node of type children.
+ * @param appearance type of appearance "primary" | "secondary" | "light" | "danger" | "transparent".
+ * @param outline Transform button to outline version with a transparent background and border color determined by appearance prop.
  */
 function Button({
   children,
-  startIcon,
-  endIcon,
+  icon: Icon,
+  iconPosition,
   appearance,
   outline,
   onClick,
 }: InterfaceButton): JSX.Element {
   const classname = React.useMemo(
     () => `nimbus--button--${appearance}${outline ? "-outline" : ""}`,
-    [appearance, outline],
+    [appearance, outline]
   );
   const iconStart = React.useMemo(
-    () => startIcon && <Icon name={startIcon} startPadding />,
-    [startIcon],
+    () => Icon && iconPosition == "start" && <Icon />,
+    [Icon, iconPosition]
   );
   const iconEnd = React.useMemo(
-    () => endIcon && <Icon name={endIcon} endPadding />,
-    [endIcon],
+    () => Icon && iconPosition == "end" && <Icon />,
+    [Icon, iconPosition]
   );
 
   return (
@@ -70,6 +69,7 @@ function Button({
 
 Button.defaultProps = {
   appearance: "light",
+  iconPosition: "start",
   outline: false,
 };
 

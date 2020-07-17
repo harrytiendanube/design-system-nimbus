@@ -2,9 +2,9 @@ import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
 import { withKnobs, select, text } from "@storybook/addon-knobs";
 import { action } from '@storybook/addon-actions';
 import { withA11y } from "@storybook/addon-a11y";
-import centered from '@storybook/addon-centered/react';
 
 import { Button } from '@tiendanube/components/src';
+import { ArrowLeftIcon, ArrowRightIcon } from '@tiendanube/icons';
 import { LOREM_STRESS } from "./utils/constants";
 
 import '../utils/style.css';
@@ -16,10 +16,10 @@ import '../utils/style.css';
 TODO: complete
 
 <Preview>
-  <Story name="default" parameters={{ decorators: [withKnobs, withA11y, centered] }}>
+  <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
     <Button
-      start="Facebook"
-      end="LongArrowRight"
+      icon={ArrowRightIcon}
+      iconPosition={select("Icon Position", ["start", "end"])}
       appearance={select("Color", ["light", "primary", "secondary", "danger", "success"])}
       onClick={action('onClick')}
     >

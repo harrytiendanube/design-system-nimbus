@@ -1,7 +1,3 @@
-// Icon reference added
-export { default as Icon } from "./Icon";
-export * from "./Icon";
-
 // Title reference added
 export { default as Title } from "./Title";
 export * from "./Title";

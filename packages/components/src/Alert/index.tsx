@@ -2,9 +2,16 @@
 import * as React from "react";
 
 import "./Alert.css";
+import {
+  InfoCircleIcon,
+  ExclamationCircleIcon,
+  ExclamationTriangleIcon,
+  CheckCircleIcon,
+  CloseIcon,
+} from "@tiendanube/icons";
+
 import Button from "../Button";
 import Link from "../Link";
-import Icon from "../Icon";
 import Title from "../Title";
 import Text from "../Text";
 
@@ -74,13 +81,17 @@ function Alert({
   onDismiss = (): void => {},
   show = false,
 }: InterfaceAlert): JSX.Element {
-  const icon = {
-    primary: "InfoCircle",
-    secondary: "InfoCircle",
-    danger: "ExclamationTriangle",
-    success: "CheckCircle",
-    warning: "ExclamationCircle",
-  }[appearance];
+  const memorizedIcon = React.useMemo(() => {
+    const iconVariants = {
+      primary: InfoCircleIcon,
+      secondary: InfoCircleIcon,
+      danger: ExclamationTriangleIcon,
+      success: CheckCircleIcon,
+      warning: ExclamationCircleIcon,
+    };
+    const Icon = iconVariants[appearance];
+    return <Icon />;
+  }, [appearance]);
 
   const memorizedPrimary = React.useMemo(
     () =>
@@ -100,7 +111,7 @@ function Alert({
     () =>
       isDismissable && (
         <div className="nimbus--alert__close" onClick={onDismiss}>
-          <Icon name="Times" />
+          <CloseIcon />
         </div>
       ),
     [isDismissable, onDismiss]
@@ -115,9 +126,7 @@ function Alert({
 
   return show ? (
     <div className={`nimbus--alert nimbus--alert--${appearance}`}>
-      <div className="nimbus--alert__icon">
-        <Icon name={icon} />
-      </div>
+      <div className="nimbus--alert__icon">{memorizedIcon}</div>
       <div className="nimbus--alert__details">
         <div className="nimbus--alert__body">
           {title && <Title type="h5">{title}</Title>}
