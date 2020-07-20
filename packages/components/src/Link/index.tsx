@@ -36,14 +36,14 @@ const Link: React.FC<InterfaceLink> = ({
   target,
   icon: Icon,
   iconPosition,
-}: InterfaceLink) => {
+}: InterfaceLink): JSX.Element => {
   const memorizedStartIcon = React.useMemo(
-    () => Icon && iconPosition == "start" && <Icon />,
-    [Icon, iconPosition]
+    () => Icon && iconPosition === "start" && <Icon />,
+    [Icon, iconPosition],
   );
   const memorizedEndIcon = React.useMemo(
-    () => Icon && iconPosition == "end" && <Icon />,
-    [Icon, iconPosition]
+    () => Icon && iconPosition === "end" && <Icon />,
+    [Icon, iconPosition],
   );
   return (
     <a className="nimbus--link" href={href} target={target}>

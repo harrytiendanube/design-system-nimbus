@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-empty-function */
 import * as React from "react";
 
 import "./Alert.css";
@@ -35,7 +34,10 @@ interface InterfaceAlert {
   /**
    * Type of react mouse event onclick to manage event click and void return
    */
-  onClickPrimary?(event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void;
+  onClickPrimary?: (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ) => void;
+
   /**
    * Label of secondary action
    * */
@@ -51,7 +53,7 @@ interface InterfaceAlert {
   /**
    * Type of react mouse event onclick to manage event click and void return
    */
-  onDismiss?(event: React.MouseEvent<HTMLDivElement, MouseEvent>): void;
+  onDismiss?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
   /**
    * Indicates whether the alert should be displayed
    * */
@@ -100,21 +102,22 @@ function Alert({
           {primaryLabel}
         </Button>
       ),
-    [primaryLabel, onClickPrimary]
+    [primaryLabel, onClickPrimary],
   );
   const memorizedSecondary = React.useMemo(
     () => secondaryLabel && <Link href={secondaryTo}>{secondaryLabel}</Link>,
-    [secondaryLabel, secondaryTo]
+    [secondaryLabel, secondaryTo],
   );
 
   const memorizedDismissable = React.useMemo(
     () =>
       isDismissable && (
+        // eslint-disable-next-line jsx-a11y/no-static-element-interactions
         <div className="nimbus--alert__close" onClick={onDismiss}>
           <CloseIcon />
         </div>
       ),
-    [isDismissable, onDismiss]
+    [isDismissable, onDismiss],
   );
 
   const withActions = (primaryLabel || secondaryLabel) && (

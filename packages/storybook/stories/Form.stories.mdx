@@ -1,11 +1,11 @@
 import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
 import { withKnobs, select, text } from "@storybook/addon-knobs";
-import { action } from '@storybook/addon-actions';
+import { action } from "@storybook/addon-actions";
 import { withA11y } from "@storybook/addon-a11y";
 
-import { Form, Input } from '@tiendanube/components/src';
+import { Form, Input } from "@tiendanube/components/src";
 
-import '../utils/style.css';
+import "../utils/style.css";
 
 <Meta title="Atoms/Form" component={Form} />
 
@@ -16,26 +16,33 @@ TODO: complete
 <Preview>
   <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
     <Form
-    alertText={text("alertText", "Validation submit mesesage")}
-    alertAppearance={select("alertAppearance", ["danger", "primary", "secondary", "warning", "success"])}
-    link={text("link", "Primary text link")}
-    linkTo={text("linkTo", "http://www.tiendanube.com")}
-    submitLabel={text("submitLabel", "Primary")}
-    onClickSubmit={action("onClickSubmit")}
-    buttonLabel={text("buttonLabel", "Default")}
-    onClickButton={action("onClickButton")} >
-    <Input
-      label="label input A"
-      value="value input A"
-      placeholder="placeholder A"
-      name="name A"
-    />
-    <Input
-      label="label input B"
-      value="value input B"
-      placeholder="placeholder B"
-      name="name B"
-    />
+      alertText={text("alertText", "Validation submit mesesage")}
+      alertAppearance={select("alertAppearance", [
+        "danger",
+        "primary",
+        "secondary",
+        "warning",
+        "success",
+      ])}
+      link={text("link", "Primary text link")}
+      linkTo={text("linkTo", "http://www.tiendanube.com")}
+      submitLabel={text("submitLabel", "Primary")}
+      onClickSubmit={action("onClickSubmit")}
+      buttonLabel={text("buttonLabel", "Default")}
+      onClickButton={action("onClickButton")}
+    >
+      <Input
+        label="label input A"
+        value="value input A"
+        placeholder="placeholder A"
+        name="name A"
+      />
+      <Input
+        label="label input B"
+        value="value input B"
+        placeholder="placeholder B"
+        name="name B"
+      />
     </Form>
   </Story>
 </Preview>
@@ -43,4 +50,3 @@ TODO: complete
 ## Properties
 
 <Props of={Form.type} />
-  

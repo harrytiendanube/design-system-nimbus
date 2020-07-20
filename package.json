@@ -7,6 +7,9 @@
   "scripts": {
     "nimbus": "yarn node .cli",
     "clean": "find . -name node_modules -exec rm -rf '{}' + && rm -rf yarn.lock",
+    "refresh": "yarn clean && yarn install",
+    "format": "yarn workspace @tiendanube/components format && yarn workspace @tiendanube/storybook format",
+    "lint": "yarn workspace @tiendanube/components lint && yarn workspace @tiendanube/storybook lint",
     "start:components": "yarn workspace @tiendanube/components start:dev",
     "start:storybook": "yarn workspace @tiendanube/storybook storybook",
     "start:dev": "concurrently \"yarn start:components\" \"yarn start:storybook\"",

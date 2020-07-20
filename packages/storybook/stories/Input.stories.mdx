@@ -1,12 +1,12 @@
 import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
-import { withKnobs, color, select, text } from "@storybook/addon-knobs";
+import { withKnobs, text } from "@storybook/addon-knobs";
 import { withA11y } from "@storybook/addon-a11y";
 import { action } from "@storybook/addon-actions";
 
-import { Input } from '@tiendanube/components/src';
+import { Input } from "@tiendanube/components/src";
 import { LOREM_STRESS } from "./utils/constants";
 
-import '../utils/style.css';
+import "../utils/style.css";
 
 <Meta title="Atoms/Input" component={Input} />
 
@@ -15,14 +15,11 @@ import '../utils/style.css';
 TODO: complete
 
 <Preview>
-  <Story
-    name="default"
-    parameters={{ decorators: [withKnobs, withA11y] }}
-  >
+  <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
     <Input
-      label={text("label","Email o URL de tu tienda")}
-      placeholder={text("placehoder","placehoder")}
-      value={text("value","")}
+      label={text("label", "Email o URL de tu tienda")}
+      placeholder={text("placehoder", "placehoder")}
+      value={text("value", "")}
       name="email"
       onChange={action("onChange")}
     />
@@ -38,9 +35,7 @@ TODO: complete
 TODO: complete
 
 <Preview withToolbar>
-  <Story
-    name="with value"
-  >
+  <Story name="with value">
     <Input
       label="Email o URL de tu tienda"
       value="nimbus@tiendanube.com"
@@ -55,9 +50,7 @@ TODO: complete
 TODO: complete
 
 <Preview withToolbar>
-  <Story
-    name="without value"
-  >
+  <Story name="without value">
     <Input
       label="Email o URL de tu tienda"
       name="email"
@@ -71,13 +64,7 @@ TODO: complete
 TODO: complete
 
 <Preview withToolbar>
-  <Story
-    name="stressed"
-  >
-    <Input
-      label={LOREM_STRESS}
-      name="email"
-      placeholder="example@mail.com"
-    />
+  <Story name="stressed">
+    <Input label={LOREM_STRESS} name="email" placeholder="example@mail.com" />
   </Story>
 </Preview>

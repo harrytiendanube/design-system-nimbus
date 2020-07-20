@@ -1,13 +1,13 @@
 import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
 import { withKnobs, select, text } from "@storybook/addon-knobs";
-import { action } from '@storybook/addon-actions';
+import { action } from "@storybook/addon-actions";
 import { withA11y } from "@storybook/addon-a11y";
 
-import { Button } from '@tiendanube/components/src';
-import { ArrowLeftIcon, ArrowRightIcon } from '@tiendanube/icons';
+import { Button } from "@tiendanube/components/src";
+import { ArrowRightIcon } from "@tiendanube/icons";
 import { LOREM_STRESS } from "./utils/constants";
 
-import '../utils/style.css';
+import "../utils/style.css";
 
 <Meta title="Atoms/Button" component={Button} />
 
@@ -20,8 +20,14 @@ TODO: complete
     <Button
       icon={ArrowRightIcon}
       iconPosition={select("Icon Position", ["start", "end"])}
-      appearance={select("Color", ["light", "primary", "secondary", "danger", "success"])}
-      onClick={action('onClick')}
+      appearance={select("Color", [
+        "light",
+        "primary",
+        "secondary",
+        "danger",
+        "success",
+      ])}
+      onClick={action("onClick")}
     >
       {text("Text", "Text")}
     </Button>
@@ -55,9 +61,15 @@ TODO: complete
 <Preview withToolbar>
   <Story name="outline">
     <div className="separate">
-      <Button appearance="primary" outline>Primary</Button>
-      <Button appearance="secondary" outline>Secondary</Button>
-      <Button appearance="danger" outline>Danger</Button>
+      <Button appearance="primary" outline>
+        Primary
+      </Button>
+      <Button appearance="secondary" outline>
+        Secondary
+      </Button>
+      <Button appearance="danger" outline>
+        Danger
+      </Button>
     </div>
   </Story>
 </Preview>
@@ -68,10 +80,6 @@ TODO: complete
 
 <Preview withToolbar>
   <Story name="stressed">
-      <Button>{LOREM_STRESS}</Button>
+    <Button>{LOREM_STRESS}</Button>
   </Story>
 </Preview>
-
-
-
-

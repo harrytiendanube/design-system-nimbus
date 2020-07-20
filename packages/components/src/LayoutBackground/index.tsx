@@ -22,11 +22,12 @@ function LayoutBackground({
   children,
   image,
 }: InterfaceLayoutBackground): JSX.Element {
-  const styles = React.useMemo(() => {
-    return {
+  const styles = React.useMemo(
+    () => ({
       backgroundImage: `url(${image})`,
-    };
-  }, [image]);
+    }),
+    [image],
+  );
 
   return (
     <div data-testid="LayoutBackground" className="nimbus--layout-background">

@@ -1,0 +1,66 @@
+{
+  "settings": {
+    "import/resolver": {
+      "babel-module": {}
+    },
+    "react": {
+      "createClass": "createReactClass",
+      "pragma": "React",
+      "version": "detect"
+    }
+  },
+  "env": {
+    "jest": true,
+    "browser": true,
+    "node": true
+  },
+  "extends": [
+    "plugin:react/recommended",
+    "plugin:mdx/recommended",
+    "airbnb",
+    "@tiendanube/eslint-config",
+    "prettier" // Must be the lastone rule to overwrite anothers uncompatibles formatting rules
+  ],
+  "overrides": [
+    {
+      "files": ["*.md"],
+      "rules": {
+        "prettier/prettier": [
+          2,
+          {
+            "parser": "markdown"
+          }
+        ]
+      }
+    },
+    {
+      "files": ["*.mdx"],
+      "extends": ["plugin:mdx/overrides"]
+    }
+  ],
+  "globals": {
+    "sessionStorage": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 7,
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true,
+      "jsx": true
+    }
+  },
+  "parser": "babel-eslint",
+  "plugins": ["testing-library"],
+  "rules": {
+    "react/jsx-indent": "off", // TODO: review -> Prettier uncompatible
+    "import/no-unresolved": "off", // TODO: review
+    "no-undef": "warn", // TODO: review
+    "react/default-props-match-prop-types": "off", // We don't use prop-tpyes
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "testing-library/await-async-query": "error",
+    "testing-library/no-await-sync-query": "error",
+    "testing-library/no-debug": "error",
+    "testing-library/await-fire-event": "error",
+    "testing-library/prefer-wait-for": "error"
+  }
+}

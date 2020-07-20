@@ -1,13 +1,12 @@
 import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
 import { withKnobs, select, text } from "@storybook/addon-knobs";
 import { withA11y } from "@storybook/addon-a11y";
-import { action } from "@storybook/addon-actions";
 
-import { Link } from '@tiendanube/components/src';
-import { ArrowLeftIcon, ArrowRightIcon } from '@tiendanube/icons';
+import { Link } from "@tiendanube/components/src";
+import { ArrowLeftIcon, ArrowRightIcon } from "@tiendanube/icons";
 import { LOREM_STRESS } from "./utils/constants";
 
-import '../utils/style.css';
+import "../utils/style.css";
 
 <Meta title="Atoms/Link" component={Link} />
 
@@ -19,7 +18,7 @@ TODO: complete
   <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
     <Link
       href={text("href", "http://www.tiendanube.com")}
-      target={select("target", ["_blank", "_parent", "_self","_top"])}
+      target={select("target", ["_blank", "_parent", "_self", "_top"])}
       icon={ArrowRightIcon}
       iconPosition={select("Icon Position", ["start", "end"])}
     >
@@ -35,13 +34,8 @@ TODO: complete
 ## Without icon
 
 <Preview withToolbar>
-  <Story
-    name="without icons"
-  >
-     <Link
-      href={"http://www.tiendanube.com"}
-      target = "_blank"
-    >
+  <Story name="without icons">
+    <Link href="http://www.tiendanube.com" target="_blank">
       Text
     </Link>
   </Story>
@@ -50,14 +44,12 @@ TODO: complete
 ## With start icon
 
 <Preview withToolbar>
-  <Story
-    name="with start icon"
-  >
-     <Link
-      href={"http://www.tiendanube.com"}
-      target = "_blank"
-      icon = {ArrowLeftIcon}
-      iconPosition = "start"
+  <Story name="with start icon">
+    <Link
+      href="http://www.tiendanube.com"
+      target="_blank"
+      icon={ArrowLeftIcon}
+      iconPosition="start"
     >
       Text
     </Link>
@@ -67,14 +59,12 @@ TODO: complete
 ## With end icon
 
 <Preview withToolbar>
-  <Story
-    name="with end icon"
-  >
-     <Link
-      href = {"http://www.tiendanube.com"}
-      target = "_blank"
-      icon = {ArrowRightIcon}
-      iconPosition = "end"
+  <Story name="with end icon">
+    <Link
+      href="http://www.tiendanube.com"
+      target="_blank"
+      icon={ArrowRightIcon}
+      iconPosition="end"
     >
       Text
     </Link>
@@ -84,14 +74,12 @@ TODO: complete
 ## Stressed
 
 <Preview withToolbar>
-  <Story
-    name="stressed"
-  >
-     <Link
-      href = {"http://www.tiendanube.com"}
-      target = "_blank"
-      icon = {ArrowRightIcon}
-      iconPosition = "end"
+  <Story name="stressed">
+    <Link
+      href="http://www.tiendanube.com"
+      target="_blank"
+      icon={ArrowRightIcon}
+      iconPosition="end"
     >
       {LOREM_STRESS}
     </Link>

@@ -47,19 +47,19 @@ function Button({
 }: InterfaceButton): JSX.Element {
   const classname = React.useMemo(
     () => `nimbus--button--${appearance}${outline ? "-outline" : ""}`,
-    [appearance, outline]
+    [appearance, outline],
   );
   const iconStart = React.useMemo(
-    () => Icon && iconPosition == "start" && <Icon />,
-    [Icon, iconPosition]
+    () => Icon && iconPosition === "start" && <Icon />,
+    [Icon, iconPosition],
   );
   const iconEnd = React.useMemo(
-    () => Icon && iconPosition == "end" && <Icon />,
-    [Icon, iconPosition]
+    () => Icon && iconPosition === "end" && <Icon />,
+    [Icon, iconPosition],
   );
 
   return (
-    <button className={classname} onClick={onClick}>
+    <button type="button" className={classname} onClick={onClick}>
       {iconStart}
       {children}
       {iconEnd}

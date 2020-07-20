@@ -1,12 +1,11 @@
 import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
-import { withKnobs, select, text } from "@storybook/addon-knobs";
-import { action } from '@storybook/addon-actions';
+import { withKnobs, text } from "@storybook/addon-knobs";
 import { withA11y } from "@storybook/addon-a11y";
 
-import { Title } from '@tiendanube/components/src';
+import { Title } from "@tiendanube/components/src";
 import { LOREM, LOREM_STRESS } from "./utils/constants";
 
-import '../utils/style.css';
+import "../utils/style.css";
 
 <Meta title="Atoms/Title" component={Title} />
 
@@ -16,7 +15,7 @@ TODO: complete
 
 <Preview>
   <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
-    <Title> {text("Texto", {LOREM})} </Title>
+    <Title> {text("Texto", LOREM)} </Title>
   </Story>
 </Preview>
 
@@ -24,7 +23,7 @@ TODO: complete
 
 <Props of={Title.type} />
 
-##  Headings
+## Headings
 
 <Preview>
   <Story name="headings">
@@ -39,8 +38,7 @@ TODO: complete
   </Story>
 </Preview>
 
-
-##  Stressed
+## Stressed
 
 <Preview>
   <Story name="stressed">
@@ -49,4 +47,3 @@ TODO: complete
     </div>
   </Story>
 </Preview>
-  
