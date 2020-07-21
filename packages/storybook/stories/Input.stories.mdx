@@ -17,8 +17,8 @@ TODO: complete
 <Preview>
   <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
     <Input
-      label={text("label", "Email o URL de tu tienda")}
-      placeholder={text("placehoder", "placehoder")}
+      label={text("label", "Email")}
+      placeholder={text("placeholder", "placeholder")}
       value={text("value", "")}
       name="email"
       onChange={action("onChange")}
@@ -37,7 +37,7 @@ TODO: complete
 <Preview withToolbar>
   <Story name="with value">
     <Input
-      label="Email o URL de tu tienda"
+      label="Email"
       value="nimbus@tiendanube.com"
       placeholder="example@mail.com"
       name="email"
@@ -51,11 +51,7 @@ TODO: complete
 
 <Preview withToolbar>
   <Story name="without value">
-    <Input
-      label="Email o URL de tu tienda"
-      name="email"
-      placeholder="example@mail.com"
-    />
+    <Input label="Email" name="email" placeholder="example@mail.com" />
   </Story>
 </Preview>
 

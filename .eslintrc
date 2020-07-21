@@ -49,7 +49,7 @@
     }
   },
   "parser": "babel-eslint",
-  "plugins": ["testing-library"],
+  "plugins": ["testing-library", "spellcheck"],
   "rules": {
     "react/jsx-indent": "off", // TODO: review -> Prettier uncompatible
     "import/no-unresolved": "off", // TODO: review
@@ -61,6 +61,29 @@
     "testing-library/no-await-sync-query": "error",
     "testing-library/no-debug": "error",
     "testing-library/await-fire-event": "error",
-    "testing-library/prefer-wait-for": "error"
+    "testing-library/prefer-wait-for": "error",
+    "spellcheck/spell-checker": [
+      "error",
+      {
+        "lang": "en_US",
+        "skipWords": [
+          "dict",
+          "aff",
+          "SvgrComponent",
+          "classname",
+          "svg",
+          "utils",
+          "Svgr",
+          "wrapgrid",
+          "href",
+          "dismissable",
+          "Tiendanube",
+          "rbg",
+          "fal",
+          "perf",
+          "jsx"
+        ]
+      }
+    ]
   }
 }
