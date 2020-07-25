@@ -50,11 +50,23 @@ function Button({
     [appearance, outline],
   );
   const iconStart = React.useMemo(
-    () => Icon && iconPosition === "start" && <Icon />,
+    () =>
+      Icon &&
+      iconPosition === "start" && (
+        <i className="nimbus--button__icon--start">
+          <Icon />
+        </i>
+      ),
     [Icon, iconPosition],
   );
   const iconEnd = React.useMemo(
-    () => Icon && iconPosition === "end" && <Icon />,
+    () =>
+      Icon &&
+      iconPosition === "end" && (
+        <i className="nimbus--button__icon--end">
+          <Icon />
+        </i>
+      ),
     [Icon, iconPosition],
   );
 
