@@ -5,6 +5,13 @@ import Link from "../Link";
 import Button from "../Button";
 import Alert from "../Alert";
 
+import {
+  useForm,
+  ValidationsContextProvider,
+  FieldsContainer,
+  InterfaceOnSubmit,
+} from "../validator";
+
 export interface InterfaceForm {
   /**
    * Validation alert text
@@ -33,9 +40,7 @@ export interface InterfaceForm {
   /**
    * Type of react mouse event onclick to manage event click and void return
    */
-  onClickSubmit: (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-  ) => void;
+  onClickSubmit: (data: { [key: string]: string }) => void;
   /**
    *  Optional button label
    */
@@ -44,7 +49,7 @@ export interface InterfaceForm {
    * Type of react mouse event onclick to manage event click and void return
    */
   onClickButton?: (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => void;
 }
 
@@ -71,30 +76,46 @@ function Form({
   buttonLabel,
   onClickButton,
 }: InterfaceForm): JSX.Element {
-  const memorizedLink = React.useMemo(
-    () => link && linkTo && <Link href={linkTo}>{link}</Link>,
-    [link, linkTo],
-  );
-  const memorizedButton = React.useMemo(
-    () =>
+  const { isSubmit, setFields, handleSubmit } = useForm();
+
+  const memorizedLink = React.useMemo(() => {
+    return link && linkTo && <Link href={linkTo}>{link}</Link>;
+  }, [link, linkTo]);
+
+  const memorizedButton = React.useMemo(() => {
+    return (
       onClickButton &&
       buttonLabel && (
         <Button appearance="light" onClick={onClickButton}>
           {buttonLabel}
         </Button>
-      ),
-    [onClickButton, buttonLabel],
-  );
+      )
+    );
+  }, [onClickButton, buttonLabel]);
+
+  const onSubmit: InterfaceOnSubmit = ({ data, formIsValid }) => {
+    if (!formIsValid) {
+      return;
+    }
+    onClickSubmit(data);
+  };
+
   return (
     <div data-testid="Form" className="nimbus--form">
       <Alert appearance={alertAppearance} show={!!alertText}>
         {alertText || ""}
       </Alert>
-      <form action="">{children}</form>
+      <form action="">
+        <ValidationsContextProvider>
+          <FieldsContainer {...{ isSubmit, setFields }}>
+            {children}
+          </FieldsContainer>
+        </ValidationsContextProvider>
+      </form>
       {memorizedLink}
       <div className="nimbus--form__actions">
         {memorizedButton}
-        <Button appearance="primary" onClick={onClickSubmit}>
+        <Button appearance="primary" onClick={handleSubmit(onSubmit)}>
           {submitLabel}
         </Button>
       </div>
