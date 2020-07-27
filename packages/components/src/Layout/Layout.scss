@@ -1,0 +1,73 @@
+@import "../../styles/core";
+
+// Layout
+
+%#{$prefix}--layout {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  margin-left: -1 * $nimbus-grid-gutter / 2;
+  margin-right: -1 * $nimbus-grid-gutter / 2;
+  margin-top: -1 * $nimbus-grid-gutter / 2;
+
+  > section {
+    flex: 1 1 100%;
+    margin-top: $nimbus-grid-gutter / 2;
+    padding-left: $nimbus-grid-gutter / 2;
+    padding-right: $nimbus-grid-gutter / 2;
+  }
+}
+
+.#{$prefix}--layout-halves,
+.#{$prefix}--layout-aside,
+.#{$prefix}--layout-fluid,
+.#{$prefix}--layout-centered {
+  @extend %#{$prefix}--layout;
+}
+
+@include nimbus--breakpoint(md) {
+  %#{$prefix}--layout {
+    margin-top: -1 * $nimbus-grid-gutter;
+
+    > section {
+      margin-top: $nimbus-grid-gutter;
+    }
+  }
+}
+
+@include nimbus--breakpoint(lg) {
+  .#{$prefix}--layout-halves {
+    > section {
+      flex: 1 1 50%;
+      min-width: 0;
+    }
+  }
+
+  .#{$prefix}--layout-aside {
+    > section:nth-of-type(odd) {
+      flex: 1 1 percentage(2 / 3);
+      min-width: 0;
+    }
+    > section:nth-of-type(even) {
+      flex: 1 1 percentage(1 / 3);
+      min-width: 0;
+    }
+  }
+
+  .#{$prefix}--layout-fluid {
+    > section {
+      flex: 1 1 100%;
+      min-width: 0;
+    }
+  }
+
+  .#{$prefix}--layout-centered {
+    > section {
+      flex: 1 1 100%;
+      // TODO: TBD max width for the centered container
+      max-width: 800px;
+      min-width: 0;
+    }
+  }
+}

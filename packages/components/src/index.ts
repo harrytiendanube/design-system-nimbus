@@ -34,6 +34,11 @@ export * from "./Alert";
 export { default as LayoutBackground } from "./LayoutBackground";
 export * from "./LayoutBackground";
 
+// Layout reference added
+export { default as Layout } from "./Layout";
+export * from "./Layout";
+
 // Page reference added
 export { default as Page } from "./Page";
 export * from "./Page";
+
