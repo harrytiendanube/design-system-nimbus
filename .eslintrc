@@ -48,7 +48,7 @@
       "jsx": true
     }
   },
-  "parser": "babel-eslint",
+  "parser": "@typescript-eslint/parser",
   "plugins": ["testing-library", "spellcheck"],
   "rules": {
     "react/jsx-indent": "off", // TODO: review -> Prettier uncompatible
