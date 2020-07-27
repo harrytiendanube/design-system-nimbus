@@ -1,0 +1,15 @@
+@import "../../styles/core";
+
+// Page
+
+.#{$prefix}--page {
+  padding-left: $nimbus-grid-gutter / 2;
+  padding-right: $nimbus-grid-gutter / 2;
+}
+
+@include nimbus--breakpoint(md) {
+  .#{$prefix}--page {
+    padding-left: $nimbus-grid-gutter / 2 + $nimbus-grid-spacer-02;
+    padding-right: $nimbus-grid-gutter / 2 + $nimbus-grid-spacer-02;
+  }
+}

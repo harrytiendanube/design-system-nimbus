@@ -1,0 +1,27 @@
+import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
+import { withKnobs, select, text } from "@storybook/addon-knobs";
+import { action } from '@storybook/addon-actions';
+import { withA11y } from "@storybook/addon-a11y";
+
+import { Page, Text, Alert } from '@tiendanube/components/src';
+
+import '../utils/style.css';
+
+<Meta title="Components/Page" component={Page} />
+
+# Page
+
+TODO: complete
+
+<Preview>
+  <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
+    <Page title="Ventas">
+      <Alert show isDismissable appearance="warning" title="Algunos de tus productos no contienen peso y dimensiones" secondaryLabel="Ver productos">Esto puede afectar el cálculo de tus costos de envío.</Alert>
+      <Text>Page content</Text>
+    </Page>
+  </Story>
+</Preview>
+
+## Properties
+
+<Props of={Page.type} />
