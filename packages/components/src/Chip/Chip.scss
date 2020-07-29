@@ -1,0 +1,23 @@
+@import "../../styles/core";
+
+// Chip
+
+.#{$prefix}--chip {
+  background-color: $color-white;
+  border-radius: $nimbus-grid-spacer-01;
+  color: $color-primary;
+  cursor: pointer;
+  display: inline-block;
+  padding: $nimbus-grid-spacer-01 $nimbus-grid-spacer-02;
+  transition: 0.15s ease;
+
+  &:hover {
+    background-color: darken($color-white, 10%);
+  }
+
+  svg {
+    fill: $color-primary;
+    margin-left: $nimbus-grid-spacer-01;
+    margin-top: -1 * $nimbus-grid-spacer-01;
+  }
+}

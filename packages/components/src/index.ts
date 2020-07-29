@@ -42,3 +42,6 @@ export * from "./Layout";
 export { default as Page } from "./Page";
 export * from "./Page";
 
+// Chip reference added
+export { default as Chip } from "./Chip";
+export * from "./Chip";
