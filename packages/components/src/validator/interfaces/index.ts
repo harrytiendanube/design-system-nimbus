@@ -14,7 +14,13 @@ export interface InterfaceFieldsContainer {
   isSubmit: Boolean;
 }
 
-export type InputTypes = "text" | "tel" | "number" | "password" | "email";
+export type InputTypes =
+  | "text"
+  | "tel"
+  | "number"
+  | "password"
+  | "email"
+  | "search";
 
 export interface InterfaceValidation {
   type?: InputTypes;

@@ -3,6 +3,7 @@ import * as React from "react";
 import { ValidationsContext } from "./FormContext";
 import { InterfaceValidation } from "./interfaces";
 import { InterfaceInput } from "../Input";
+import { InterfaceNameValue } from "../common/interfaces";
 
 const INPUT_VALUE_DEFAULT = "";
 
@@ -30,30 +31,32 @@ const withValidation = (FieldComponent: React.FC<InterfaceInput>) =>
       maxLength,
       pattern,
     };
-    const setFormFields = (valueField: string) => {
-      validateField(name, {
-        value: valueField,
-        validation,
-      });
-    };
+    const setFormFields = React.useCallback(
+      (valueField: string) => {
+        validateField(name, {
+          value: valueField,
+          validation,
+        });
+      },
+      [name, validateField, validation],
+    );
 
     const handleChange = React.useCallback(
-      (event: React.ChangeEvent<HTMLInputElement>): void => {
+      (event: InterfaceNameValue): void => {
         onChange?.(event);
       },
-      [],
+      [onChange],
     );
 
     /**
      * @param event
      */
     const handleBlur = React.useCallback(
-      (event: React.ChangeEvent<HTMLInputElement>): void => {
-        setFormFields(event.target.value);
-
+      (event: InterfaceNameValue): void => {
+        setFormFields(event.value);
         onBlur?.(event);
       },
-      [],
+      [onBlur, setFormFields],
     );
 
     React.useEffect(() => {

@@ -2,18 +2,41 @@
 
 // Inputs
 
-.#{$prefix}--input {
+.#{$prefix}--input__label {
+  color: $color-text;
+  display: block;
   font-family: $nimbus-font-family;
+  font-size: $nimbus-font-size-02;
+  margin-bottom: $nimbus-grid-spacer-02;
+  width: 100%;
+}
 
-  label {
-    color: $color-text;
-    display: block;
-    font-size: $nimbus-font-size-02;
-    margin-bottom: $nimbus-grid-spacer-02;
-    width: 100%;
+.#{$prefix}--input {
+  position: relative;
+
+  .#{$prefix}--input__prepend,
+  .#{$prefix}--input__append {
+    appearance: none;
+    background: none;
+    padding: $nimbus-grid-spacer-02;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    svg {
+      fill: $color-light;
+    }
   }
 
-  input {
+  .#{$prefix}--input__prepend {
+    left: 0;
+  }
+
+  .#{$prefix}--input__append {
+    right: 0;
+  }
+
+  .#{$prefix}--input__field {
     background-color: transparent;
     border: 1px solid $color-light;
     border-radius: $nimbus-grid-spacer-02;
@@ -31,6 +54,20 @@
 
     &:focus {
       border-color: $color-primary;
+
+      ~ .#{$prefix}--input__prepend svg,
+      ~ .#{$prefix}--input__append svg {
+        fill: $color-primary;
+      }
     }
+
+    &::-webkit-search-cancel-button {
+      appearance: none;
+    }
+  }
+
+  .#{$prefix}--input__field[type="search"] {
+    padding-left: $nimbus-grid-spacer-05;
+    padding-right: $nimbus-grid-spacer-05;
   }
 }

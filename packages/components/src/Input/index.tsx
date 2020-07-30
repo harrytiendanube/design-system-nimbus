@@ -1,17 +1,19 @@
 import * as React from "react";
 
+import { SearchIcon, CloseIcon } from "@tiendanube/icons";
 import { withValidator } from "../validator";
 import { InputTypes } from "../validator/interfaces";
+import { InterfaceNameValue } from "../common/interfaces";
 
 import "./Input.css";
 
 export interface InterfaceInput {
   /**
-   * Input name
+   * Name of the input, also used for the ID
    */
   name: string;
   /**
-   * Input value
+   * Input placeholder
    */
   placeholder: string;
   /**
@@ -19,22 +21,18 @@ export interface InterfaceInput {
    */
   label: string;
   /**
-   *  onChange callback function
+   * Input value
    */
   value?: string;
   /**
-   * Input placeholder
-   */
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  /**
-   *  onChange callback function
-   */
-  onBlur?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  /**
    * Input type change keyboard, validations and insert type char.
-   * "number" | "text" | "tel" | "password" | "email"
+   * "number" | "text" | "tel" | "password" | "email" | "search"
    */
   type?: InputTypes;
+  /**
+   * Prepend a component to show at the start of the input
+   */
+  prepend?: any;
   /**
    * Minimum count of inserted chars
    */
@@ -51,66 +49,146 @@ export interface InterfaceInput {
    * Input is required
    * */
   required?: boolean;
+  /**
+   *  onChange callback function
+   */
+  onChange?: (event: InterfaceNameValue) => void;
+  /**
+   *  onSubmit callback function
+   */
+  onSubmit?: (event: InterfaceNameValue) => void;
+  /**
+   *  onBlur callback function
+   */
+  onBlur?: (event: InterfaceNameValue) => void;
 }
 
 /**
- *  @param name input name
- *  @param type input type
- *  @param value input value
- *  @param placeholder input placeholder
- *  @param label input label
- *  @param onChange callback function
+ *  @param name Name of the input, also used for the ID
+ *  @param placeholder Placeholder text to show when the input is empty
+ *  @param label Label
+ *  @param value Input value
+ *  @param type Input type
+ *  @param prepend Prepend a component to show at the start of the input
+ *  @param minLength Minimum count of inserted chars
+ *  @param maxLength Maximum count of inserted chars
+ *  @param pattern Custom Regex needed for validate inserted chars
+ *  @param required Input is required
+ *  @param onChange Callback function
+ *  @param onSubmit Callback function
+ *  @param onBlur Callback function
  */
-export const Input = ({
-  label,
-  type = "text",
+function Input({
   name,
-  value,
   placeholder,
-  onChange,
-  onBlur,
+  label,
+  value = "",
+  type = "text",
+  prepend: Prepend,
   minLength = "0",
   maxLength = "32",
   required = false,
-}: InterfaceInput): JSX.Element => {
+  onChange,
+  onSubmit,
+  onBlur,
+}: InterfaceInput): JSX.Element {
   const [inputValue, setInputValue] = React.useState(value);
 
   const handleChange = React.useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
-      setInputValue(event.target.value);
-      onChange?.(event);
+      const { target } = event;
+      setInputValue(target.value);
+      onChange?.({ name: target.name, value: target.value });
     },
-    [],
+    [onChange],
   );
 
   const handleBlur = React.useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
-      onBlur?.(event);
+      const { target } = event;
+      onBlur?.({ name: target.name, value: target.value });
     },
-    [],
+    [onBlur],
+  );
+
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      onSubmit?.({ name, value });
+      setInputValue("");
+    }
+  };
+
+  const handleClose = React.useCallback(() => {
+    onSubmit?.({ name, value: "" });
+    setInputValue("");
+  }, [name, onSubmit]);
+
+  const memorizedLabel = React.useMemo(
+    () =>
+      type !== "search" && (
+        <label className="nimbus--input__label" htmlFor={`input_${name}`}>
+          {label}
+        </label>
+      ),
+    [label, name, type],
+  );
+
+  const memorizedLeftIcon = React.useMemo(
+    () =>
+      (Prepend || type === "search") && (
+        <span className="nimbus--input__prepend">
+          {type === "search" ? <SearchIcon /> : <Prepend />}
+        </span>
+      ),
+    [type, Prepend],
+  );
+
+  const memorizedCloseIcon = React.useMemo(
+    () =>
+      type === "search" &&
+      value && (
+        <button
+          type="button"
+          className="nimbus--input__append"
+          onClick={handleClose}
+        >
+          <CloseIcon />
+        </button>
+      ),
+    [handleClose, type, value],
   );
 
   return (
-    <div className="nimbus--input">
-      <label htmlFor={`input_${name}`}>{label}</label>
-      <input
-        value={inputValue}
-        onChange={handleChange}
-        onBlur={handleBlur}
-        id={`input_${name}`}
-        type={type}
-        name={name}
-        placeholder={placeholder}
-        minLength={parseInt(minLength)}
-        maxLength={parseInt(maxLength)}
-        required={required}
-      />
+    <div className="nimbus--input-wrapper">
+      {memorizedLabel}
+      <div className="nimbus--input">
+        <input
+          className="nimbus--input__field"
+          id={`input_${name}`}
+          type={type}
+          name={name}
+          value={inputValue}
+          placeholder={placeholder}
+          onChange={handleChange}
+          onKeyPress={handleKeyPress}
+          onBlur={handleBlur}
+          minLength={parseInt(minLength, 10)}
+          maxLength={parseInt(maxLength, 10)}
+          required={required}
+        />
+        {memorizedLeftIcon}
+        {memorizedCloseIcon}
+      </div>
     </div>
   );
-};
+}
 
 Input.defaultProps = {
   type: "text",
+  minLength: "0",
+  maxLength: "32",
+  required: false,
 };
 
 export const InputValidator = withValidator(React.memo(Input));

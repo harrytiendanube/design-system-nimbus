@@ -1,9 +1,11 @@
+import { useState } from "react";
 import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
 import { withKnobs, text } from "@storybook/addon-knobs";
 import { withA11y } from "@storybook/addon-a11y";
 import { action } from "@storybook/addon-actions";
 
 import { Input } from "@tiendanube/components/src";
+import { ArrowRightIcon } from "@tiendanube/icons";
 import { LOREM_STRESS } from "./utils/constants";
 
 import "../utils/style.css";
@@ -17,10 +19,10 @@ TODO: complete
 <Preview>
   <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
     <Input
-      label={text("label", "Email")}
+      label={text("label", "Label")}
       placeholder={text("placeholder", "placeholder")}
       value={text("value", "")}
-      name="email"
+      name="name"
       onChange={action("onChange")}
     />
   </Story>
@@ -37,21 +39,52 @@ TODO: complete
 <Preview withToolbar>
   <Story name="with value">
     <Input
-      label="Email"
+      label="Label"
       value="nimbus@tiendanube.com"
-      placeholder="example@mail.com"
-      name="email"
+      placeholder="placeholder"
+      name="name"
     />
   </Story>
 </Preview>
 
-## Without value
+## Type search
 
 TODO: complete
 
 <Preview withToolbar>
-  <Story name="without value">
-    <Input label="Email" name="email" placeholder="example@mail.com" />
+  <Story name="type search" parameters={{ decorators: [withKnobs, withA11y] }}>
+    {() => {
+      const [value, setValue] = useState("");
+      const handleChange = (e) => setValue(e.value);
+      const handleSubmit = (e) => {
+        setValue(e.value);
+        alert(`Serach submitted with value: ${e.value}`);
+      };
+      return (
+        <Input
+          type="search"
+          placeholder="placeholder"
+          name="name"
+          value={value}
+          onChange={handleChange}
+          onSubmit={handleSubmit}
+        />
+      );
+    }}
+  </Story>
+</Preview>
+
+## With prepend
+
+<Preview withToolbar>
+  <Story name="with prepend">
+    <Input
+      label="Label"
+      prepend={ArrowRightIcon}
+      value=""
+      placeholder="placeholder"
+      name="name"
+    />
   </Story>
 </Preview>
 
@@ -61,6 +94,11 @@ TODO: complete
 
 <Preview withToolbar>
   <Story name="stressed">
-    <Input label={LOREM_STRESS} name="email" placeholder="example@mail.com" />
+    <Input
+      label={LOREM_STRESS}
+      value=""
+      name="name"
+      placeholder="placeholder"
+    />
   </Story>
 </Preview>
