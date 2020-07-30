@@ -19,6 +19,7 @@
     "plugin:mdx/recommended",
     "airbnb",
     "@tiendanube/eslint-config",
+    "plugin:@typescript-eslint/recommended",
     "prettier" // Must be the lastone rule to overwrite anothers uncompatibles formatting rules
   ],
   "overrides": [
@@ -49,11 +50,11 @@
     }
   },
   "parser": "@typescript-eslint/parser",
-  "plugins": ["testing-library", "spellcheck"],
+  "plugins": ["@typescript-eslint", "testing-library", "spellcheck"],
   "rules": {
-    "react/jsx-indent": "off", // TODO: review -> Prettier uncompatible
     "import/no-unresolved": "off", // TODO: review
-    "no-undef": "warn", // TODO: review
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": ["error"],
     "react/default-props-match-prop-types": "off", // We don't use prop-tpyes
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
