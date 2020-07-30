@@ -4,29 +4,38 @@
 
 .#{$prefix}--form {
   display: block;
-  margin-bottom: $nimbus-grid-spacer-03;
-}
 
-.#{$prefix}--form > .#{$prefix}--alert--inline,
-.#{$prefix}--form > .#{$prefix}--alert--toast {
-  margin-bottom: $nimbus-grid-spacer-04;
-}
+  .#{$prefix}--alert,
+  .#{$prefix}--input,
+  .#{$prefix}--link {
+    margin-bottom: $nimbus-grid-spacer-03;
+  }
 
-.#{$prefix}--form .#{$prefix}--input {
-  margin-bottom: $nimbus-grid-spacer-03;
-}
+  .#{$prefix}--link {
+    margin-top: -1 * $nimbus-grid-spacer-02;
+  }
 
-.#{$prefix}--form__actions {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  margin-left: -$nimbus-grid-spacer-02;
-  margin-right: -$nimbus-grid-spacer-02;
-  margin-top: $nimbus-grid-spacer-04;
+  .#{$prefix}--form__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-left: -$nimbus-grid-spacer-02;
+    margin-right: -$nimbus-grid-spacer-02;
+  }
 }
 
 // TODO: Crear una clase global para botones para este tipo de casos
 .#{$prefix}--form__actions button {
   margin-left: $nimbus-grid-spacer-02;
   margin-right: $nimbus-grid-spacer-02;
+}
+
+@include nimbus--breakpoint-up(md) {
+  .#{$prefix}--form {
+    .#{$prefix}--alert,
+    .#{$prefix}--input,
+    .#{$prefix}--link {
+      margin-bottom: $nimbus-grid-spacer-04;
+    }
+  }
 }
