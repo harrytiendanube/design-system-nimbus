@@ -19,7 +19,7 @@ export interface InterfaceInput {
   /**
    *  Label
    */
-  label: string;
+  label?: string;
   /**
    * Input value
    */
@@ -81,7 +81,7 @@ export interface InterfaceInput {
 function Input({
   name,
   placeholder,
-  label,
+  label = "",
   value = "",
   type = "text",
   prepend: Prepend,
@@ -186,6 +186,7 @@ function Input({
 
 Input.defaultProps = {
   type: "text",
+  label: "",
   minLength: "0",
   maxLength: "32",
   required: false,

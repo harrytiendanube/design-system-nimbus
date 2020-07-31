@@ -1,0 +1,92 @@
+import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
+import { withKnobs, select, text } from "@storybook/addon-knobs";
+import { withA11y } from "@storybook/addon-a11y";
+
+import { SearchFilter, Button } from "@tiendanube/components/src";
+import { LOREM_STRESS } from "./utils/constants";
+
+import "../utils/style.css";
+
+<Meta title="Components/SearchFilter" component={SearchFilter} />
+
+# SearchFilter
+
+TODO: complete
+
+<Preview>
+  <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
+    <SearchFilter
+      placeholder="Search an invoice"
+      resultCount="160 invoices"
+      label="Filtros"
+      appliedFilters={[
+        { id: "search", label: "pattern search" },
+        { id: "status", label: "actives" },
+        { id: "range", label: "last day" },
+        { id: "send", label: "motorcycle" },
+      ]}
+    />
+  </Story>
+</Preview>
+
+## Properties
+
+<Props of={SearchFilter.type} />
+
+## Test
+
+<Preview>
+  <Story name="test" parameters={{ decorators: [withKnobs, withA11y] }}>
+    {() => {
+      const [showFilters, setShowFilters] = React.useState(false);
+      const [filters, setFilters] = React.useState();
+      const addFilter = ({ id, value }) => {
+        setFilters((currentfilters) => {
+          const newFilters = currentfilters
+            ? currentfilters.filter((f) => f.id !== id)
+            : [];
+          if (value) newFilters.push({ id, label: value });
+          return newFilters;
+        });
+      };
+      const handleSumbit = (value) => addFilter({ id: "search", value });
+      const handleClick = () => {
+        setShowFilters(true);
+      };
+      const handleDismiss = (id) => {
+        setFilters((currentfilters) =>
+          currentfilters.filter((f) => f.id !== id),
+        );
+      };
+      const buttons = () => (
+        <>
+          <Button onClick={() => addFilter({ id: "status", value: "actives" })}>
+            Add actives
+          </Button>
+          <Button onClick={() => addFilter({ id: "range", value: "last day" })}>
+            Add last day
+          </Button>
+          <Button
+            onClick={() => addFilter({ id: "send", value: "motorcycle" })}
+          >
+            Add motorcycle
+          </Button>
+        </>
+      );
+      return (
+        <>
+          {showFilters && buttons()}
+          <SearchFilter
+            placeholder="Search an invoice"
+            resultCount="160 invoices"
+            label="Filters"
+            appliedFilters={filters}
+            onSubmit={handleSumbit}
+            onClick={handleClick}
+            onDismiss={handleDismiss}
+          />
+        </>
+      );
+    }}
+  </Story>
+</Preview>

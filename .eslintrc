@@ -56,6 +56,8 @@
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": ["error"],
     "react/default-props-match-prop-types": "off", // We don't use prop-tpyes
+    "react/prop-types": "off", // We don't use prop-tpyes
+    "react/display-name": ["off", { "ignoreTranspilerName": false }],
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "testing-library/await-async-query": "error",

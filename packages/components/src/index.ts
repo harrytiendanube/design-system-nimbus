@@ -45,3 +45,7 @@ export * from "./Page";
 // Chip reference added
 export { default as Chip } from "./Chip";
 export * from "./Chip";
+
+// Chip reference added
+export { default as SearchFilter } from "./SearchFilter";
+export * from "./SearchFilter";

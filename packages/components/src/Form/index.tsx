@@ -49,7 +49,7 @@ export interface InterfaceForm {
    * Type of react mouse event onclick to manage event click and void return
    */
   onClickButton?: (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => void;
 }
 
