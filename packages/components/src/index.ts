@@ -1,3 +1,6 @@
+// Common Interfaces added
+export * from "./common/interfaces";
+
 // Title reference added
 export { default as Title } from "./Title";
 export * from "./Title";
