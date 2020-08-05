@@ -37,6 +37,7 @@
   }
 
   .#{$prefix}--input__field {
+    appearance: none;
     background-color: transparent;
     border: 1px solid $color-light;
     border-radius: $nimbus-grid-spacer-02;
