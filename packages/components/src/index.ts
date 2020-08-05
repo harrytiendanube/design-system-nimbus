@@ -45,6 +45,10 @@ export * from "./Layout";
 export { default as Page } from "./Page";
 export * from "./Page";
 
+// Select reference added
+export { default as Select } from "./Select";
+export * from "./Select";
+
 // Chip reference added
 export { default as Chip } from "./Chip";
 export * from "./Chip";

@@ -1,0 +1,126 @@
+import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
+import { withKnobs, text } from "@storybook/addon-knobs";
+import { withA11y } from "@storybook/addon-a11y";
+import { action } from "@storybook/addon-actions";
+
+import { Select, SelectItem, SelectGroup } from "@tiendanube/components/src";
+import { LOREM_STRESS } from "./utils/constants";
+
+import "../utils/style.css";
+
+<Meta title="Atoms/Select" component={Select} />
+
+# Select
+
+TODO: complete
+
+<Preview>
+  <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
+    <Select
+      label={text("label", "Select Label")}
+      name={text("name", "Select name")}
+      placeholder="Select an Option"
+      options={[
+        { label: "Option 1", value: "Value 1" },
+        { label: "Option 2", value: "Value 2" },
+        { label: "Option 3", value: "Value 3" },
+        { label: "Option 4", value: "Value 4" },
+      ]}
+      onChange={action("onChange")}
+    ></Select>
+  </Story>
+</Preview>
+
+## Properties
+
+<Props of={Select.type} />
+
+# Select with Value selected
+
+TODO: complete
+
+<Preview>
+  <Story
+    name="with value selected"
+    parameters={{ decorators: [withKnobs, withA11y] }}
+  >
+    <Select
+      label="Select Label"
+      name="Select name"
+      placeholder="Select an Option"
+      options={[
+        { label: "Option 1", value: "Value 1" },
+        { label: "Option 2", value: "Value 2" },
+        { label: "Option 3", value: "Value 3" },
+        { label: "Option 4", value: "Value 4" },
+      ]}
+      value="Value 1"
+    ></Select>
+  </Story>
+</Preview>
+
+# Select with Option Group
+
+<Preview>
+  <Story name="with group" parameters={{ decorators: [withKnobs, withA11y] }}>
+    <Select
+      label="Select Label"
+      name="Select name"
+      placeholder="Select an Option"
+      options={[
+        {
+          group: "Group A",
+          options: [
+            { label: "Option 1", value: "Value 1" },
+            { label: "Option 2", value: "Value 2" },
+          ],
+        },
+        {
+          group: "Group B",
+          options: [
+            { label: "Option 3", value: "Value 3" },
+            { label: "Option 4", value: "Value 4" },
+          ],
+        },
+      ]}
+    ></Select>
+  </Story>
+</Preview>
+
+# Test
+
+<Preview>
+  <Story name="test" parameters={{ decorators: [withKnobs, withA11y] }}>
+    {() => {
+      const [value, setValue] = React.useState("");
+      const handleChange = (e) => {
+        setValue(e.value);
+      };
+      return (
+        <Select
+          label="Select Label"
+          name="Select name"
+          placeholder="Select an Option"
+          value={value}
+          onChange={handleChange}
+          options={[
+            {
+              group: "Group A",
+              options: [
+                { label: "Option 1", value: "Value 1" },
+                { label: "Option 2", value: "Value 2" },
+              ],
+            },
+            {
+              group: "Group B",
+              options: [
+                { label: "Option 3", value: "Value 3" },
+                { label: "Option 4", value: "Value 4" },
+              ],
+            },
+          ]}
+        ></Select>
+      );
+    }}
+  </Story>
+</Preview>

@@ -1,0 +1,60 @@
+@import "../../styles/core";
+
+// Select
+
+// TODO: @Juan Replace these classes with shared values from input component
+
+.#{$prefix}--input__label {
+  color: $color-text;
+  display: block;
+  font-family: $nimbus-font-family;
+  font-size: $nimbus-font-size-02;
+  margin-bottom: $nimbus-grid-spacer-02;
+  width: 100%;
+}
+
+.#{$prefix}--input {
+  position: relative;
+
+  .#{$prefix}--input__append {
+    padding: $nimbus-grid-spacer-02;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+
+    svg {
+      fill: $color-primary;
+    }
+  }
+
+  .#{$prefix}--select {
+    appearance: none;
+    background-color: transparent;
+    border: 1px solid $color-light;
+    border-radius: $nimbus-grid-spacer-02;
+    color: $color-primary;
+    font-size: $nimbus-font-size-03;
+    line-height: $nimbus-font-line-height-02;
+    padding-bottom: $nimbus-grid-spacer-02;
+    padding-left: $nimbus-grid-spacer-02;
+    padding-right: $nimbus-grid-spacer-05;
+    padding-top: $nimbus-grid-spacer-02;
+    text-align: left;
+    transition: 0.15s ease;
+    width: 100%;
+
+    &::placeholder {
+      color: $color-light;
+    }
+
+    &:focus {
+      border-color: $color-primary;
+
+      ~ .#{$prefix}--input__prepend svg,
+      ~ .#{$prefix}--input__append svg {
+        fill: $color-primary;
+      }
+    }
+  }
+}
