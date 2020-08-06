@@ -20,7 +20,8 @@
     "airbnb",
     "@tiendanube/eslint-config",
     "plugin:@typescript-eslint/recommended",
-    "prettier" // Must be the lastone rule to overwrite anothers uncompatibles formatting rules
+    "prettier",
+    "prettier/react" // this and before, must be the lastones rules to overwrite anothers uncompatibles formatting rules
   ],
   "overrides": [
     {
