@@ -1,0 +1,65 @@
+import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
+import { withKnobs, select, text } from "@storybook/addon-knobs";
+import { action } from "@storybook/addon-actions";
+import { withA11y } from "@storybook/addon-a11y";
+
+import { RadioButtonGroup, RadioButton } from "@tiendanube/components/src";
+import { LOREM_STRESS } from "./utils/constants";
+
+import "../utils/style.css";
+
+<Meta title="Atoms/RadioButtonGroup" component={RadioButtonGroup} />
+
+# RadioButtonGroup
+
+TODO: complete
+
+<Preview>
+  <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
+    <RadioButtonGroup
+      label={text("radio group label", "Radio Button Group Label")}
+      name="NameGroup1"
+      options={[
+        { label: "Label 1", value: "Value 1" },
+        { label: "Label 2", value: "Value 2" },
+        { label: "Label 3", value: "Value 3" },
+        { label: "Label 4 (disabled)", value: "Value 4", disabled: true },
+      ]}
+      onChange={action("onChange")}
+      value="Value 1"
+    ></RadioButtonGroup>
+  </Story>
+</Preview>
+
+## Properties
+
+<Props of={RadioButtonGroup.type} />
+
+# Test
+
+TODO: complete
+
+<Preview>
+  <Story name="test" parameters={{ decorators: [withKnobs, withA11y] }}>
+    {() => {
+      const [value, setValue] = React.useState("Value 1");
+      const handleChange = (e) => {
+        setValue(e.value);
+      };
+      return (
+        <RadioButtonGroup
+          label="Radio Button Group Label"
+          name="NameGroup2"
+          options={[
+            { label: "Label 1", value: "Value 1" },
+            { label: "Label 2", value: "Value 2" },
+            { label: "Label 3", value: "Value 3" },
+            { label: "Label 4 (disabled)", value: "Value 4", disabled: true },
+          ]}
+          onChange={handleChange}
+          value={value}
+        ></RadioButtonGroup>
+      );
+    }}
+  </Story>
+</Preview>

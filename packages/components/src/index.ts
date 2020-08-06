@@ -45,6 +45,10 @@ export * from "./Layout";
 export { default as Page } from "./Page";
 export * from "./Page";
 
+// RadioButton reference added
+
+export { default as RadioButtonGroup } from "./RadioButtonGroup";
+export * from "./RadioButtonGroup";
 // Select reference added
 export { default as Select } from "./Select";
 export * from "./Select";

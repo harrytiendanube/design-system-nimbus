@@ -7,6 +7,11 @@ export interface InterfaceIdLabel {
   id: string;
   label: string;
 }
+export interface InterfaceRadioButtonOption {
+  label: string;
+  value: string;
+  disabled?: boolean;
+}
 
 export interface InterfaceSelectOption {
   label: string;
@@ -19,7 +24,6 @@ export interface InterfaceSelectGroup {
   options: InterfaceSelectOption[];
 }
 
-export type InterfaceSelectOptionGroup = (
+export type InterfaceSelectOptionGroup =
   | InterfaceSelectOption
-  | InterfaceSelectGroup
-);
+  | InterfaceSelectGroup;
