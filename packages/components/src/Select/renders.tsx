@@ -5,29 +5,29 @@ import {
   InterfaceSelectGroup,
 } from "../common/interfaces";
 
-export const renderOption = ({
-  value,
-  label,
-  disabled = false,
-}: InterfaceSelectOption): JSX.Element => {
-  return (
-    <option key={`key_${value}`} value={value} disabled={disabled}>
-      {label}
-    </option>
-  );
-};
+const RenderOption = React.memo(
+  ({ value, label, disabled = false }: InterfaceSelectOption): JSX.Element => {
+    return (
+      <option value={value} disabled={disabled}>
+        {label}
+      </option>
+    );
+  },
+);
 
-const renderOptions = (
-  currentOptions: InterfaceSelectOption[],
-): JSX.Element[] =>
-  currentOptions.map((option: InterfaceSelectOption) => {
-    return renderOption(option);
-  }); 
+const RenderGroup = React.memo(
+  (group: InterfaceSelectGroup): JSX.Element => {
+    return (
+      <optgroup label={group.group}>
+        {group.options.map((option: InterfaceSelectOption) => (
+          <RenderOption
+            key={`grp_${group.group}_opt_${option.value}`}
+            {...(option as InterfaceSelectOption)}
+          />
+        ))}
+      </optgroup>
+    );
+  },
+);
 
-export const renderGroup = (group: InterfaceSelectGroup): JSX.Element => {
-  return (
-    <optgroup key={`key_${group.group}`} label={group.group}>
-      {renderOptions(group.options)}
-    </optgroup>
-  );
-};
+export { RenderOption, RenderGroup };

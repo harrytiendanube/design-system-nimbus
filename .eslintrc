@@ -89,7 +89,8 @@
           "fal",
           "perf",
           "jsx",
-          "Prepend"
+          "Prepend",
+          "grp"
         ]
       }
     ]

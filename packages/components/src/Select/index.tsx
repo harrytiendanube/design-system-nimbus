@@ -3,7 +3,7 @@ import * as React from "react";
 import "./Select.css";
 
 import { ChevronDownIcon } from "@tiendanube/icons";
-import { renderOption, renderGroup } from "./renders";
+import { RenderOption, RenderGroup } from "./renders";
 import {
   InterfaceNameValue,
   InterfaceSelectOption,
@@ -83,13 +83,19 @@ function Select({
 
   const memorizedOptions = React.useMemo(
     () =>
-      options.map((option: InterfaceSelectOptionGroup) => {
-        const optionGroup = option as InterfaceSelectGroup;
-        const optionSingle = option as InterfaceSelectOption;
-        return (optionGroup as InterfaceSelectGroup).group
-          ? renderGroup(optionGroup)
-          : renderOption(optionSingle);
-      }),
+      options.map((option: InterfaceSelectOptionGroup) =>
+        (option as InterfaceSelectGroup).group ? (
+          <RenderGroup
+            key={`grp_${(option as InterfaceSelectGroup).group}`}
+            {...(option as InterfaceSelectGroup)}
+          />
+        ) : (
+          <RenderOption
+            key={`opt_${(option as InterfaceSelectOption).value}`}
+            {...(option as InterfaceSelectOption)}
+          />
+        ),
+      ),
     [options],
   );
 
