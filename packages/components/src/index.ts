@@ -49,6 +49,7 @@ export * from "./Page";
 
 export { default as RadioButtonGroup } from "./RadioButtonGroup";
 export * from "./RadioButtonGroup";
+
 // Select reference added
 export { default as Select } from "./Select";
 export * from "./Select";
@@ -57,6 +58,10 @@ export * from "./Select";
 export { default as Chip } from "./Chip";
 export * from "./Chip";
 
-// Chip reference added
+// SearchFilter reference added
 export { default as SearchFilter } from "./SearchFilter";
 export * from "./SearchFilter";
+
+// Modal reference added
+export { default as Modal } from "./Modal";
+export * from "./Modal";
