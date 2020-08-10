@@ -6,24 +6,39 @@
 //
 // Defining mixins to be used by buttons
 
-@mixin button($color, $hover-color: darken($color, 15%)) {
-  background-color: $color;
-  border-color: $color;
-  color: color-contrast($color);
+@mixin button($font-color, $bg-color, $hover-bg-color, $focus-color) {
+  @include nimbus--type("text-button");
+  background-color: $bg-color;
+  border: $button-border-width solid $bg-color;
+  border-radius: $actions-border-radius;
+  color: $font-color;
+  cursor: pointer;
+  display: inline-block;
+  padding: $spacing-x-small $spacing-small;
+  text-align: center;
+  transition: $button-hover-delay ease;
+  vertical-align: middle;
 
-  &:hover {
-    background-color: $hover-color;
-    border-color: $hover-color;
+  &:disabled,
+  &:hover:disabled,
+  &:focus:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    pointer-events: none;
   }
-}
-
-@mixin button-outline($color, $hover-color: darken($color, 15%)) {
-  border-color: $color;
-  color: $color;
 
   &:hover {
-    background-color: $hover-color;
-    border-color: $hover-color;
-    color: color-contrast($color);
+    background-color: $hover-bg-color;
+    border-color: $hover-bg-color;
+  }
+
+  &:active {
+    background-color: $focus-color;
+    border-color: $focus-color;
+  }
+
+  &:focus {
+    border-color: $focus-color;
+    box-shadow: 0 0 0 $button-border-width $focus-color;
   }
 }

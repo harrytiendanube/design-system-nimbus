@@ -4,22 +4,22 @@
 
 .#{$prefix}--page-title {
   display: block;
-  margin-bottom: $nimbus-grid-spacer-05;
+  margin-bottom: $spacing-large;
   width: 100%;
 
   .#{$prefix}--page-subtitle {
     display: flex;
     flex-wrap: wrap;
-    margin-top: $nimbus-grid-spacer-03;
+    margin-top: $spacing-small;
   }
 
   .#{$prefix}--text + .#{$prefix}--link {
-    margin-left: $nimbus-grid-spacer-02;
+    margin-left: $spacing-x-small;
   }
 }
 
 @include nimbus--breakpoint(lg) {
   .#{$prefix}--page-title {
-    margin-bottom: $nimbus-grid-spacer-07;
+    margin-bottom: $spacing-xx-large;
   }
 }

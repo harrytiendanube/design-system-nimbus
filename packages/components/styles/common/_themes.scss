@@ -1,0 +1,78 @@
+// Themes
+//
+// Defining vars for Nimbus themes
+
+$nimbus--theme: (
+  color-primary: map-get($nimbus--colors, "blue-primary"),
+  color-primary-light: map-get($nimbus--colors, "blue-primary-light"),
+  color-primary-hover: darken(map-get($nimbus--colors, "blue-primary"), 10%),
+  color-primary-active: darken(map-get($nimbus--colors, "blue-primary"), 20%),
+  color-secondary: map-get($nimbus--colors, "blue-dark"),
+  color-secondary-light: map-get($nimbus--colors, "blue-dark-light"),
+  color-secondary-hover: darken(map-get($nimbus--colors, "blue-dark"), 10%),
+  color-secondary-active: darken(map-get($nimbus--colors, "blue-dark"), 20%),
+  color-danger: map-get($nimbus--colors, "red"),
+  color-danger-light: map-get($nimbus--colors, "red-light"),
+  color-danger-hover: darken(map-get($nimbus--colors, "red"), 10%),
+  color-danger-active: darken(map-get($nimbus--colors, "red"), 20%),
+  color-warning: map-get($nimbus--colors, "yellow"),
+  color-warning-light: map-get($nimbus--colors, "yellow-light"),
+  color-warning-hover: darken(map-get($nimbus--colors, "yellow"), 10%),
+  color-warning-active: darken(map-get($nimbus--colors, "yellow"), 20%),
+  color-success: map-get($nimbus--colors, "green"),
+  color-success-light: map-get($nimbus--colors, "green-light"),
+  color-success-hover: darken(map-get($nimbus--colors, "green"), 10%),
+  color-success-active: darken(map-get($nimbus--colors, "green"), 20%),
+  color-default: map-get($nimbus--colors, "grey-0"),
+  color-default-hover: darken(map-get($nimbus--colors, "grey-0"), 10%),
+  color-default-active: darken(map-get($nimbus--colors, "grey-0"), 20%),
+  color-background: map-get($nimbus--colors, "white"),
+  color-body-text: map-get($nimbus--colors, "grey-100"),
+  input-border-color: map-get($nimbus--colors, "grey-35"),
+  input-border-width: 1px,
+  input-disabled-background: map-get($nimbus--colors, "grey-0"),
+  input-disabled-text: map-get($nimbus--colors, "grey-60"),
+  button-border-width: 1px,
+  button-hover-delay: map-get($nimbus--motion, "fast"),
+  actions-border-radius: map-get($nimbus--spacers, "x-small"),
+);
+
+@mixin nimbus--theme($theme: $nimbus--theme) {
+  $color-primary: map-get($theme, "color-primary") !global;
+  $color-primary-light: map-get($theme, "color-primary-light") !global;
+  $color-primary-hover: map-get($theme, "color-primary-hover") !global;
+  $color-primary-active: map-get($theme, "color-primary-active") !global;
+  $color-secondary: map-get($theme, "color-secondary") !global;
+  $color-secondary-light: map-get($theme, "color-secondary-light") !global;
+  $color-secondary-hover: map-get($theme, "color-secondary-hover") !global;
+  $color-secondary-active: map-get($theme, "color-secondary-active") !global;
+  $color-danger: map-get($theme, "color-danger") !global;
+  $color-danger-light: map-get($theme, "color-danger-light") !global;
+  $color-danger-hover: map-get($theme, "color-danger-hover") !global;
+  $color-danger-active: map-get($theme, "color-danger-active") !global;
+  $color-warning: map-get($theme, "color-warning") !global;
+  $color-warning-light: map-get($theme, "color-warning-light") !global;
+  $color-warning-hover: map-get($theme, "color-warning-hover") !global;
+  $color-warning-active: map-get($theme, "color-warning-active") !global;
+  $color-success: map-get($theme, "color-success") !global;
+  $color-success-light: map-get($theme, "color-success-light") !global;
+  $color-success-hover: map-get($theme, "color-success-hover") !global;
+  $color-success-active: map-get($theme, "color-success-active") !global;
+  $color-default: map-get($theme, "color-default") !global;
+  $color-default-hover: map-get($theme, "color-default-hover") !global;
+  $color-default-active: map-get($theme, "color-default-active") !global;
+  $color-background: map-get($theme, "color-background") !global;
+  $color-body-text: map-get($theme, "color-body-text") !global;
+  $input-border-color: map-get($theme, "input-border-color") !global;
+  $input-border-width: map-get($theme, "input-border-width") !global;
+  $input-disabled-background: map-get(
+    $theme,
+    "input-disabled-background"
+  ) !global;
+  $input-disabled-text: map-get($theme, "input-disabled-text") !global;
+  $button-border-width: map-get($theme, "button-border-width") !global;
+  $button-hover-delay: map-get($theme, "button-hover-delay") !global;
+  $actions-border-radius: map-get($theme, "actions-border-radius") !global;
+}
+
+@include nimbus--theme();

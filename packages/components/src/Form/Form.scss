@@ -8,26 +8,26 @@
   .#{$prefix}--alert,
   .#{$prefix}--input,
   .#{$prefix}--link {
-    margin-bottom: $nimbus-grid-spacer-03;
+    margin-bottom: $spacing-small;
   }
 
   .#{$prefix}--link {
-    margin-top: -1 * $nimbus-grid-spacer-02;
+    margin-top: -1 * $spacing-x-small;
   }
 
   .#{$prefix}--form__actions {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
-    margin-left: -$nimbus-grid-spacer-02;
-    margin-right: -$nimbus-grid-spacer-02;
+    margin-left: -$spacing-x-small;
+    margin-right: -$spacing-x-small;
   }
 }
 
 // TODO: Crear una clase global para botones para este tipo de casos
 .#{$prefix}--form__actions button {
-  margin-left: $nimbus-grid-spacer-02;
-  margin-right: $nimbus-grid-spacer-02;
+  margin-left: $spacing-x-small;
+  margin-right: $spacing-x-small;
 }
 
 @include nimbus--breakpoint-up(md) {
@@ -35,7 +35,7 @@
     .#{$prefix}--alert,
     .#{$prefix}--input,
     .#{$prefix}--link {
-      margin-bottom: $nimbus-grid-spacer-04;
+      margin-bottom: $spacing-medium;
     }
   }
 }

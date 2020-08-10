@@ -33,3 +33,15 @@
   $total-length: length($map);
   @return map-get($map, nimbus--key-by-index($map, $total-length));
 }
+
+// Convert to REM
+//
+// This function takes an input value in px and converts it to rem
+
+@function nimbus--rem($px) {
+  @if unit($px) != "px" {
+    @warn "Expected argument $px to be 'px', instead received: `#{unit($px)}`";
+  }
+
+  @return ($px / $base-font-size) * 1rem;
+}

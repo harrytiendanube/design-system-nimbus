@@ -1,48 +1,52 @@
 @import "core";
 // Buttons
 
-%#{$prefix}--button {
-  background-color: transparent;
-  border: 1px solid transparent;
-  border-radius: $nimbus-grid-spacer-02;
-  cursor: pointer;
-  display: inline-block;
-  font-family: $nimbus-font-family;
-  font-size: $nimbus-font-size-03;
-  font-weight: $nimbus-font-weight-bold;
-  line-height: $nimbus-font-line-height-02;
-  padding: $nimbus-grid-spacer-02 $nimbus-grid-spacer-03;
-  text-align: center;
-  transition: 0.15s ease;
-  vertical-align: middle;
-}
-
 %#{$prefix}--button__icon svg {
-  margin-top: -1 * $nimbus-grid-spacer-01;
+  margin-top: -$spacing-xx-small;
 }
 
 .#{$prefix}--button__icon--start {
   @extend %#{$prefix}--button__icon;
-  margin-right: $nimbus-grid-spacer-02;
+  margin-right: $spacing-x-small;
 }
 
 .#{$prefix}--button__icon--end {
   @extend %#{$prefix}--button__icon;
-  margin-left: $nimbus-grid-spacer-02;
+  margin-left: $spacing-x-small;
 }
 
-@each $color, $value in $theme-colors {
-  .#{$prefix}--button--#{$color} {
-    @extend %#{$prefix}--button;
-
-    @include button($value);
-  }
+.#{$prefix}--button--default {
+  @include button(
+    $color-secondary,
+    $color-default,
+    $color-default-hover,
+    $color-default-active
+  );
 }
 
-@each $color, $value in $theme-colors {
-  .#{$prefix}--button--#{$color}-outline {
-    @extend %#{$prefix}--button;
+.#{$prefix}--button--primary {
+  @include button(
+    $color-white,
+    $color-primary,
+    $color-primary-hover,
+    $color-primary-active
+  );
+}
 
-    @include button-outline($value);
-  }
+.#{$prefix}--button--secondary {
+  @include button(
+    $color-white,
+    $color-secondary,
+    $color-secondary-hover,
+    $color-secondary-active
+  );
+}
+
+.#{$prefix}--button--danger {
+  @include button(
+    $color-white,
+    $color-danger,
+    $color-danger-hover,
+    $color-danger-active
+  );
 }

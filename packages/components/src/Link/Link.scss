@@ -3,15 +3,30 @@
 // Links
 
 .#{$prefix}--link {
-  color: $color-secondary;
+  @include nimbus--type("text-body");
+  color: $color-primary;
   cursor: pointer;
   display: inline-block;
-  font-family: $nimbus-font-family;
-  font-size: $nimbus-font-size-03;
   text-decoration: underline;
-  transition: 0.15s ease;
+  transition: $button-hover-delay ease;
+
+  &:disabled,
+  &:hover:disabled,
+  &:focus:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    pointer-events: none;
+  }
 
   &:hover {
-    color: darken($color-secondary, 0.15);
+    color: $color-primary-hover;
+  }
+
+  &:active {
+    color: $color-primary-active;
+  }
+
+  &:focus {
+    color: $color-primary-active;
   }
 }

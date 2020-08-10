@@ -3,11 +3,10 @@
 // Inputs
 
 .#{$prefix}--input__label {
-  color: $color-text;
+  @include nimbus--type("text-label");
+  color: $color-body-text;
   display: block;
-  font-family: $nimbus-font-family;
-  font-size: $nimbus-font-size-02;
-  margin-bottom: $nimbus-grid-spacer-02;
+  margin-bottom: $spacing-x-small;
   width: 100%;
 }
 
@@ -18,13 +17,13 @@
   .#{$prefix}--input__append {
     appearance: none;
     background: none;
-    padding: $nimbus-grid-spacer-02;
+    padding: $spacing-x-small;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
 
     svg {
-      fill: $color-light;
+      fill: $input-border-color;
     }
   }
 
@@ -37,28 +36,41 @@
   }
 
   .#{$prefix}--input__field {
+    @include nimbus--type("text-body");
     appearance: none;
     background-color: transparent;
-    border: 1px solid $color-light;
-    border-radius: $nimbus-grid-spacer-02;
-    color: $color-primary;
-    font-size: $nimbus-font-size-03;
-    line-height: $nimbus-font-line-height-02;
-    padding: $nimbus-grid-spacer-02;
+    border: $input-border-width solid $input-border-color;
+    border-radius: $actions-border-radius;
+    color: $color-secondary;
+    padding: $spacing-x-small;
     text-align: left;
-    transition: 0.15s ease;
+    transition: $motion-fast ease;
     width: 100%;
 
     &::placeholder {
-      color: $color-light;
+      color: $input-border-color;
+    }
+
+    &:disabled,
+    &:hover:disabled,
+    &:focus:disabled {
+      background-color: $input-disabled-background;
+      color: $input-disabled-text;
+      cursor: not-allowed;
+      pointer-events: none;
+
+      &::placeholder {
+        color: $input-disabled-text;
+      }
     }
 
     &:focus {
-      border-color: $color-primary;
+      border-color: $color-primary-active;
+      box-shadow: 0 0 0 $input-border-width $color-primary-active;
 
       ~ .#{$prefix}--input__prepend svg,
       ~ .#{$prefix}--input__append svg {
-        fill: $color-primary;
+        fill: $color-secondary;
       }
     }
 
@@ -68,7 +80,7 @@
   }
 
   .#{$prefix}--input__field[type="search"] {
-    padding-left: $nimbus-grid-spacer-05;
-    padding-right: $nimbus-grid-spacer-05;
+    padding-left: $spacing-large;
+    padding-right: $spacing-large;
   }
 }

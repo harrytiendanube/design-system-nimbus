@@ -3,12 +3,12 @@
 // Links
 
 .#{$prefix}--text {
-  color: $color-text;
+  @include nimbus--type("text-body");
+  color: $color-body-text;
   display: inline-block;
-  font-family: $nimbus-font-family;
-  font-size: $nimbus-font-size-03;
+}
 
-  &_small {
-    font-size: $nimbus-font-size-01;
-  }
+.#{$prefix}--text_small {
+  @include nimbus--type("text-label");
+  color: $color-body-text;
 }

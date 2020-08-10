@@ -1,0 +1,7 @@
+@import "../../styles/core";
+
+// Alert mixins
+
+@mixin alert($bg-color) {
+  background-color: $bg-color;
+}

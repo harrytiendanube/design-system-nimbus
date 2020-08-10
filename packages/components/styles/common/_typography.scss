@@ -1,0 +1,91 @@
+// Typography
+//
+// Font styles for Nimbus DS
+
+$heading-page: (
+  font-family: $font-family,
+  font-weight: map-get($nimbus--font-weights, "bold"),
+  font-size: nimbus--rem(map-get($nimbus--title-sizes, "h1")),
+  line-height:
+    nimbus--rem(
+      map-get($nimbus--title-sizes, "h1") *
+        map-get($nimbus--line-heights, "heading")
+    ),
+) !default;
+
+$heading-element: (
+  font-family: $font-family,
+  font-weight: map-get($nimbus--font-weights, "bold"),
+  font-size: nimbus--rem(map-get($nimbus--title-sizes, "h3")),
+  line-height:
+    nimbus--rem(
+      map-get($nimbus--title-sizes, "h3") *
+        map-get($nimbus--line-heights, "base")
+    ),
+) !default;
+
+$text-heading: (
+  font-family: $font-family,
+  font-weight: map-get($nimbus--font-weights, "bold"),
+  font-size: nimbus--rem(map-get($nimbus--body-sizes, "base")),
+  line-height:
+    nimbus--rem(
+      map-get($nimbus--body-sizes, "base") *
+        map-get($nimbus--line-heights, "body")
+    ),
+) !default;
+
+$text-body: (
+  font-family: $font-family,
+  font-weight: map-get($nimbus--font-weights, "regular"),
+  font-size: nimbus--rem(map-get($nimbus--body-sizes, "base")),
+  line-height:
+    nimbus--rem(
+      map-get($nimbus--body-sizes, "base") *
+        map-get($nimbus--line-heights, "body")
+    ),
+) !default;
+
+$text-label: (
+  font-family: $font-family,
+  font-weight: map-get($nimbus--font-weights, "regular"),
+  font-size: nimbus--rem(map-get($nimbus--body-sizes, "small")),
+  line-height:
+    nimbus--rem(
+      map-get($nimbus--body-sizes, "small") *
+        map-get($nimbus--line-heights, "body")
+    ),
+) !default;
+
+$text-button: (
+  font-family: $font-family,
+  font-weight: map-get($nimbus--font-weights, "bold"),
+  font-size: nimbus--rem(map-get($nimbus--body-sizes, "base")),
+  line-height:
+    nimbus--rem(
+      map-get($nimbus--body-sizes, "base") *
+        map-get($nimbus--line-heights, "body")
+    ),
+) !default;
+
+// Map with all font values
+
+$nimbus--type-tokens: (
+  heading-page: $heading-page,
+  heading-element: $heading-element,
+  text-heading: $text-heading,
+  text-body: $text-body,
+  text-label: $text-label,
+  text-button: $text-button,
+) !default;
+
+@mixin nimbus--type($name) {
+  @if not map-has-key($nimbus--type-tokens, $name) {
+    @error "Type token with the name '#{$name} was not found";
+  }
+  $token: map-get($nimbus--type-tokens, $name);
+
+  @each $property, $value in $token {
+    #{$property}: $value;
+  }
+}

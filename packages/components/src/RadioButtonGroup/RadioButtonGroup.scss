@@ -22,24 +22,38 @@
       }
     }
 
-    &:disabled + .#{$prefix}--radio-button-label {
-      opacity: 0.5;
+    &:disabled + .#{$prefix}--radio-button-label,
+    &:hover:disabled + .#{$prefix}--radio-button-label,
+    &:focus:disabled + .#{$prefix}--radio-button-label {
       cursor: not-allowed;
+      opacity: 0.5;
       pointer-events: none;
     }
   }
 
   .#{$prefix}--radio-button-label {
-    background-color: $color-white;
-    border-radius: $nimbus-grid-spacer-01;
-    color: $color-primary;
+    background-color: $color-default;
+    border: $button-border-width solid $color-default;
+    border-radius: $spacing-xx-small;
+    color: $color-secondary;
     cursor: pointer;
     display: inline-block;
-    padding: $nimbus-grid-spacer-01 $nimbus-grid-spacer-02;
-    transition: 0.15s ease;
+    padding: $spacing-xx-small $spacing-x-small;
+    transition: $button-hover-delay ease;
 
     &:hover {
-      background-color: darken($color-white, 10%);
+      background-color: $color-default-hover;
+      border-color: $color-default-hover;
+    }
+
+    &:active {
+      background-color: $color-default-active;
+      border-color: $color-default-active;
+    }
+
+    &:focus {
+      border-color: $color-default-active;
+      box-shadow: 0 0 0 $button-border-width $color-default-active;
     }
   }
 }
@@ -48,19 +62,21 @@
 
 .#{$prefix}--radio-button-group-wrapper {
   > .#{$prefix}--text {
-    margin-bottom: $nimbus-grid-spacer-02;
+    @include nimbus--type("text-label");
+    color: $color-body-text;
+    margin-bottom: $spacing-x-small;
   }
 
   .#{$prefix}--radio-button-group {
     display: flex;
     flex-wrap: wrap;
-    margin-left: -1 * $nimbus-grid-spacer-01;
-    margin-right: -1 * $nimbus-grid-spacer-01;
+    margin-left: -1 * $spacing-xx-small;
+    margin-right: -1 * $spacing-xx-small;
 
     .#{$prefix}--radio-button-wrapper {
-      margin-bottom: $nimbus-grid-spacer-02;
-      padding-left: $nimbus-grid-spacer-01;
-      padding-right: $nimbus-grid-spacer-01;
+      margin-bottom: $spacing-x-small;
+      padding-left: $spacing-xx-small;
+      padding-right: $spacing-xx-small;
     }
   }
 }

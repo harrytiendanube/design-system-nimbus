@@ -5,20 +5,20 @@
 .#{$prefix}--search-filters {
   display: flex;
   flex-wrap: nowrap;
-  margin-bottom: $nimbus-grid-spacer-03;
-  margin-left: -1 * $nimbus-grid-spacer-01;
-  margin-right: -1 * $nimbus-grid-spacer-01;
+  margin-bottom: $spacing-small;
+  margin-left: -1 * $spacing-xx-small;
+  margin-right: -1 * $spacing-xx-small;
 
   .#{$prefix}--search-filters__search {
     flex: 1 1 auto;
-    padding-left: $nimbus-grid-spacer-01;
-    padding-right: $nimbus-grid-spacer-01;
+    padding-left: $spacing-xx-small;
+    padding-right: $spacing-xx-small;
   }
 
   .#{$prefix}--search-filters__filters {
     flex: 0 0 auto;
-    padding-left: $nimbus-grid-spacer-01;
-    padding-right: $nimbus-grid-spacer-01;
+    padding-left: $spacing-xx-small;
+    padding-right: $spacing-xx-small;
   }
 }
 
@@ -28,7 +28,7 @@
   flex-wrap: wrap;
 
   > * {
-    margin-bottom: $nimbus-grid-spacer-02;
-    margin-right: $nimbus-grid-spacer-02;
+    margin-bottom: $spacing-x-small;
+    margin-right: $spacing-x-small;
   }
 }

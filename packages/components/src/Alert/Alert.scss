@@ -1,18 +1,22 @@
-@import "../../styles/core";
+@import "core";
 
 // Alert
 
 .#{$prefix}--alert {
-  border-radius: $nimbus-grid-spacer-02;
+  border-radius: $actions-border-radius;
   display: flex;
   flex-wrap: nowrap;
-  padding: $nimbus-grid-spacer-03;
+  padding: $spacing-small;
   text-align: left;
   width: 100%;
 
   .#{$prefix}--alert__icon {
     flex: 0 0 auto;
-    padding: $nimbus-grid-spacer-03 - $nimbus-grid-spacer-01 0;
+    padding: $spacing-small - $spacing-xx-small 0;
+
+    svg {
+      margin-top: -$spacing-xx-small;
+    }
   }
 
   .#{$prefix}--alert__details {
@@ -28,31 +32,26 @@
     flex: 0 0 auto;
     flex-wrap: wrap;
     max-width: 100%;
-    padding: $nimbus-grid-spacer-02 0 $nimbus-grid-spacer-02
-      $nimbus-grid-spacer-03;
+    padding: $spacing-x-small 0 $spacing-x-small $spacing-small;
     width: auto;
   }
 
   .#{$prefix}--title-h5 {
-    margin-right: $nimbus-grid-spacer-02;
-  }
-
-  .#{$prefix}--title-h5,
-  .#{$prefix}--text {
-    color: $color-text;
-    line-height: $nimbus-font-line-height-02;
+    color: $color-body-text;
+    line-height: $font-line-height-body;
+    margin-right: $spacing-x-small;
   }
 
   .#{$prefix}--alert__actions {
     flex: 0 0 auto;
     margin: auto 0;
     max-width: 100%;
-    padding: 0 0 0 $nimbus-grid-spacer-03;
+    padding: 0 0 0 $spacing-small;
     width: auto;
 
     .#{$prefix}--button--primary {
       + .#{$prefix}--link {
-        margin-left: $nimbus-grid-spacer-03;
+        margin-left: $spacing-small;
       }
     }
   }
@@ -60,18 +59,32 @@
   .#{$prefix}--alert__close {
     cursor: pointer;
     flex: 0 0 auto;
-    margin-right: -$nimbus-grid-spacer-03;
-    padding: $nimbus-grid-spacer-03 - $nimbus-grid-spacer-01
-      $nimbus-grid-spacer-03;
+    margin-right: -$spacing-small;
+    padding: $spacing-small - $spacing-xx-small $spacing-small;
   }
 
   svg {
-    font-size: $nimbus-font-size-03;
+    font-size: $font-size-medium;
+    margin-top: -$spacing-xx-small;
   }
 }
 
-@each $color, $value in $theme-colors {
-  .#{$prefix}--alert--#{$color} {
-    background-color: scale-color($value, $lightness: 80%);
-  }
+.#{$prefix}--alert--primary {
+  @include alert($color-primary-light);
+}
+
+.#{$prefix}--alert--secondary {
+  @include alert($color-secondary-light);
+}
+
+.#{$prefix}--alert--danger {
+  @include alert($color-danger-light);
+}
+
+.#{$prefix}--alert--warning {
+  @include alert($color-warning-light);
+}
+
+.#{$prefix}--alert--success {
+  @include alert($color-success-light);
 }

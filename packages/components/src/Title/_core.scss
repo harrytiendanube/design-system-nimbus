@@ -15,10 +15,10 @@
     .#{$prefix}--title-#{$name} {
       @include nimbus--font-style();
 
-      color: $color-primary;
-      font-size: $value;
-      font-weight: 500;
-      line-height: $nimbus-font-line-height-02;
+      color: $color-secondary;
+      font-size: nimbus--rem($value);
+      font-weight: 700;
+      line-height: nimbus--rem($value * $font-line-height-heading);
     }
   }
 }
