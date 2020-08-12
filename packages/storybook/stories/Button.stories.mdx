@@ -1,5 +1,5 @@
 import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
-import { withKnobs, select, text } from "@storybook/addon-knobs";
+import { withKnobs, select, text, boolean } from "@storybook/addon-knobs";
 import { action } from "@storybook/addon-actions";
 import { withA11y } from "@storybook/addon-a11y";
 
@@ -19,14 +19,14 @@ TODO: complete
   <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
     <Button
       icon={ArrowRightIcon}
-      iconPosition={select("Icon Position", ["start", "end"])}
-      appearance={select("Color", [
-        "light",
+      iconPosition={select("iconPosition", ["start", "end"])}
+      appearance={select("appearance", [
+        "default",
         "primary",
         "secondary",
         "danger",
-        "success",
       ])}
+      disabled={boolean("disabled", false)}
       onClick={action("onClick")}
     >
       {text("Text", "Text")}
@@ -44,32 +44,28 @@ TODO: complete
 
 <Preview withToolbar>
   <Story name="appearance">
-    <div className="separate">
-      <Button appearance="light"> Light </Button>
-      <Button appearance="primary"> Primary </Button>
-      <Button appearance="secondary"> Secondary </Button>
-      <Button appearance="danger"> Danger </Button>
-      <Button appearance="success"> Success </Button>
-    </div>
-  </Story>
-</Preview>
-
-## Outline
-
-TODO: complete
-
-<Preview withToolbar>
-  <Story name="outline">
-    <div className="separate">
-      <Button appearance="primary" outline>
-        Primary
-      </Button>
-      <Button appearance="secondary" outline>
-        Secondary
-      </Button>
-      <Button appearance="danger" outline>
-        Danger
-      </Button>
+    <div>
+      <div className="separate">
+        <Button appearance="default"> Default </Button>
+        <Button appearance="primary"> Primary </Button>
+        <Button appearance="secondary"> Secondary </Button>
+        <Button appearance="danger"> Danger </Button>
+      </div>
+      <br />
+      <div className="separate">
+        <Button appearance="default" disabled>
+          Default
+        </Button>
+        <Button appearance="primary" disabled>
+          Primary
+        </Button>
+        <Button appearance="secondary" disabled>
+          Secondary
+        </Button>
+        <Button appearance="danger" disabled>
+          Danger
+        </Button>
+      </div>
     </div>
   </Story>
 </Preview>

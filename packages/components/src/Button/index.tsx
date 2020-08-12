@@ -14,7 +14,7 @@ export interface InterfaceButton {
   /**
    * Appearance
    */
-  appearance?: "primary" | "secondary" | "light" | "danger";
+  appearance?: "primary" | "secondary" | "default" | "danger";
   /**
    * Icon Component imported from @tiendanube/icons
    */
@@ -24,9 +24,9 @@ export interface InterfaceButton {
    */
   iconPosition?: "start" | "end";
   /**
-   * Transform button to outline version with a transparent background and border color determined by appearance prop.
+   * Indicates if the button is disabled
    */
-  outline?: boolean;
+  disabled?: boolean;
 }
 
 /**
@@ -34,20 +34,20 @@ export interface InterfaceButton {
  * @param icon Icon Component imported from @tiendanube/icons
  * @param iconPosition Position of the icon inside the button
  * @param children React node of type children.
- * @param appearance type of appearance "primary" | "secondary" | "light" | "danger" | "transparent".
- * @param outline Transform button to outline version with a transparent background and border color determined by appearance prop.
+ * @param appearance type of appearance "primary" | "secondary" | "default" | "danger"
+ * @param disabled Indicates if the button is disabled
  */
 function Button({
   children,
   icon: Icon,
   iconPosition,
   appearance,
-  outline,
   onClick,
+  disabled,
 }: InterfaceButton): JSX.Element {
   const classname = React.useMemo(
-    () => `nimbus--button--${appearance}${outline ? "-outline" : ""}`,
-    [appearance, outline],
+    () => `nimbus--button nimbus--button--${appearance}`,
+    [appearance],
   );
   const iconStart = React.useMemo(
     () =>
@@ -71,7 +71,12 @@ function Button({
   );
 
   return (
-    <button type="button" className={classname} onClick={onClick}>
+    <button
+      type="button"
+      className={classname}
+      onClick={onClick}
+      disabled={disabled}
+    >
       {iconStart}
       {children}
       {iconEnd}
@@ -80,9 +85,9 @@ function Button({
 }
 
 Button.defaultProps = {
-  appearance: "light",
+  appearance: "default",
   iconPosition: "start",
-  outline: false,
+  disabled: false,
 };
 
 export default React.memo(Button);

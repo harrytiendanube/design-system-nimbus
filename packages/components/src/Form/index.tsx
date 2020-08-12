@@ -85,11 +85,7 @@ function Form({
   const memorizedButton = React.useMemo(() => {
     return (
       onClickButton &&
-      buttonLabel && (
-        <Button appearance="light" onClick={onClickButton}>
-          {buttonLabel}
-        </Button>
-      )
+      buttonLabel && <Button onClick={onClickButton}>{buttonLabel}</Button>
     );
   }, [onClickButton, buttonLabel]);
 

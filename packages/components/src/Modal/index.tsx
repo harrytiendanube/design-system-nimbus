@@ -111,9 +111,7 @@ function Modal({
       secondaryActionLabel &&
       handleClickSecondary && (
         <div className="nimbus--action-wrapper__item">
-          <Button onClick={handleClickSecondary} appearance="light">
-            {secondaryActionLabel}
-          </Button>
+          <Button onClick={handleClickSecondary}>{secondaryActionLabel}</Button>
         </div>
       ),
     [secondaryActionLabel, handleClickSecondary],
