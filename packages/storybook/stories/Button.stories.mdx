@@ -4,7 +4,7 @@ import { action } from "@storybook/addon-actions";
 import { withA11y } from "@storybook/addon-a11y";
 
 import { Button } from "@tiendanube/components/src";
-import { ArrowRightIcon } from "@tiendanube/icons";
+import { ArrowRightIcon, ExternalLinkIcon } from "@tiendanube/icons";
 import { LOREM_STRESS } from "./utils/constants";
 
 import "../utils/style.css";
@@ -77,5 +77,93 @@ TODO: complete
 <Preview withToolbar>
   <Story name="stressed">
     <Button>{LOREM_STRESS}</Button>
+  </Story>
+</Preview>
+
+## Link Styling
+
+TODO: complete
+
+<Preview withToolbar>
+  <Story name="link styling">
+    <div>
+      <div className="separate">
+        <Button
+          appearance="default"
+          icon={ExternalLinkIcon}
+          iconPosition="end"
+          link
+        >
+          {" "}
+          Default{" "}
+        </Button>
+        <Button
+          appearance="primary"
+          icon={ExternalLinkIcon}
+          iconPosition="end"
+          link
+        >
+          {" "}
+          Primary{" "}
+        </Button>
+        <Button
+          appearance="secondary"
+          icon={ExternalLinkIcon}
+          iconPosition="end"
+          link
+        >
+          {" "}
+          Secondary{" "}
+        </Button>
+        <Button
+          appearance="danger"
+          icon={ExternalLinkIcon}
+          iconPosition="end"
+          link
+        >
+          {" "}
+          Danger{" "}
+        </Button>
+      </div>
+      <br />
+      <div className="separate">
+        <Button
+          appearance="default"
+          icon={ExternalLinkIcon}
+          iconPosition="end"
+          link
+          disabled
+        >
+          Default
+        </Button>
+        <Button
+          appearance="primary"
+          icon={ExternalLinkIcon}
+          iconPosition="end"
+          link
+          disabled
+        >
+          Primary
+        </Button>
+        <Button
+          appearance="secondary"
+          icon={ExternalLinkIcon}
+          iconPosition="end"
+          link
+          disabled
+        >
+          Secondary
+        </Button>
+        <Button
+          appearance="danger"
+          icon={ExternalLinkIcon}
+          iconPosition="end"
+          link
+          disabled
+        >
+          Danger
+        </Button>
+      </div>
+    </div>
   </Story>
 </Preview>

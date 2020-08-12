@@ -50,3 +50,36 @@
     $color-danger-active
   );
 }
+
+.#{$prefix}--link--default {
+  @include button-link(
+    $color-body-text,
+    darken($color-body-text, 20%),
+    darken($color-body-text, 40%),
+    $underline: true
+  );
+}
+
+.#{$prefix}--link--primary {
+  @include button-link(
+    $color-primary,
+    $color-primary-hover,
+    $color-primary-active
+  );
+}
+
+.#{$prefix}--link--secondary {
+  @include button-link(
+    $color-secondary,
+    $color-secondary-hover,
+    $color-secondary-active
+  );
+}
+
+.#{$prefix}--link--danger {
+  @include button-link(
+    $color-danger,
+    $color-danger-hover,
+    $color-danger-active
+  );
+}

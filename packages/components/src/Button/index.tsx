@@ -27,6 +27,10 @@ export interface InterfaceButton {
    * Indicates if the button is disabled
    */
   disabled?: boolean;
+  /**
+   * Indicates if the button should be styled as a link
+   */
+  link?: boolean;
 }
 
 /**
@@ -36,6 +40,7 @@ export interface InterfaceButton {
  * @param children React node of type children.
  * @param appearance type of appearance "primary" | "secondary" | "default" | "danger"
  * @param disabled Indicates if the button is disabled
+ * @param link Indicates if the button should be styled as a link
  */
 function Button({
   children,
@@ -44,10 +49,14 @@ function Button({
   appearance,
   onClick,
   disabled,
+  link,
 }: InterfaceButton): JSX.Element {
   const classname = React.useMemo(
-    () => `nimbus--button nimbus--button--${appearance}`,
-    [appearance],
+    () =>
+      `nimbus--button ${
+        link ? "nimbus--link--" : "nimbus--button--"
+      }${appearance}`,
+    [appearance, link],
   );
   const iconStart = React.useMemo(
     () =>
@@ -88,6 +97,7 @@ Button.defaultProps = {
   appearance: "default",
   iconPosition: "start",
   disabled: false,
+  link: false,
 };
 
 export default React.memo(Button);
