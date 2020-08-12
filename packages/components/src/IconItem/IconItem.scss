@@ -1,0 +1,44 @@
+@import "core";
+
+// IconItem
+
+.#{$prefix}--icon-item {
+  display: flex;
+  flex-wrap: nowrap;
+
+  .#{$prefix}--icon-item__icon--default {
+    @include iconitem($color-default);
+  }
+
+  .#{$prefix}--icon-item__icon--primary {
+    @include iconitem($color-primary-light);
+  }
+
+  .#{$prefix}--icon-item__icon--secondary {
+    @include iconitem($color-secondary-light);
+  }
+
+  .#{$prefix}--icon-item__icon--danger {
+    @include iconitem($color-danger-light);
+  }
+
+  .#{$prefix}--icon-item__icon--warning {
+    @include iconitem($color-warning-light);
+  }
+
+  .#{$prefix}--icon-item__icon--success {
+    @include iconitem($color-success-light);
+  }
+
+  .#{$prefix}--icon-item__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .#{$prefix}--text,
+    .#{$prefix}--link {
+      @include nimbus--type("text-label");
+      color: $color-body-text;
+    }
+  }
+}

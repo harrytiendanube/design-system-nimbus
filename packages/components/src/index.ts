@@ -65,3 +65,7 @@ export * from "./SearchFilter";
 // Modal reference added
 export { default as Modal } from "./Modal";
 export * from "./Modal";
+
+// IconItem reference added
+export { default as IconItem } from "./IconItem";
+export * from "./IconItem";

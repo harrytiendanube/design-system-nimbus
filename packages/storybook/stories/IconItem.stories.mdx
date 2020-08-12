@@ -1,0 +1,83 @@
+import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
+import { withKnobs, select, text } from "@storybook/addon-knobs";
+import { withA11y } from "@storybook/addon-a11y";
+
+import { IconItem } from "@tiendanube/components/src";
+
+import {
+  ArchiveIcon,
+  BoxUnpackedIcon,
+  CreditCardIcon,
+  CheckCircleIcon,
+  ExclamationTriangleIcon,
+  TruckIcon,
+} from "@tiendanube/icons";
+
+<Meta title="Atoms/IconItem" component={IconItem} />
+
+# IconItem
+
+TODO: Complete
+
+<Preview>
+  <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
+    <IconItem
+      appearance={select("appearance", [
+        "default",
+        "primary",
+        "secondary",
+        "danger",
+        "warning",
+        "success",
+      ])}
+      icon={BoxUnpackedIcon}
+      title={text("title", "Ready to pack")}
+      subtitle={text("subtitle", "Shipping by motorcycle")}
+    />
+  </Story>
+</Preview>
+
+## Properties
+
+<Props of={IconItem.type} />
+
+## Appearance
+
+TODO: complete
+
+<Preview withToolbar>
+  <Story name="appearance">
+    <div className="separate">
+      <IconItem appearance="default" icon={ArchiveIcon} title="Archived" />
+      <IconItem
+        appearance="primary"
+        icon={TruckIcon}
+        title="Ready to send"
+        subtitle="Shipping method"
+      />
+      <IconItem
+        appearance="secondary"
+        icon={BoxUnpackedIcon}
+        title="Ready to pack"
+        subtitle="Shipping method"
+      />
+      <IconItem
+        appearance="danger"
+        icon={ExclamationTriangleIcon}
+        title="Payment declined"
+      />
+      <IconItem
+        appearance="warning"
+        icon={CreditCardIcon}
+        title="Waiting for payment confirmation"
+        link="Payment method"
+        linkTo="#"
+      />
+      <IconItem
+        appearance="success"
+        icon={CheckCircleIcon}
+        title="Paid and shipped"
+      />
+    </div>
+  </Story>
+</Preview>
