@@ -2,7 +2,10 @@ export interface InterfaceNameValue {
   name: string;
   value: string;
 }
-
+export interface InterfaceNameChecked {
+  name: string;
+  checked: boolean;
+}
 export interface InterfaceIdLabel {
   id: string;
   label: string;

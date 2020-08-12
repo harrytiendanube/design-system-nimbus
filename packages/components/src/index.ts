@@ -46,7 +46,6 @@ export { default as Page } from "./Page";
 export * from "./Page";
 
 // RadioButton reference added
-
 export { default as RadioButtonGroup } from "./RadioButtonGroup";
 export * from "./RadioButtonGroup";
 
@@ -66,6 +65,11 @@ export * from "./SearchFilter";
 export { default as Modal } from "./Modal";
 export * from "./Modal";
 
+// Checkbox reference added
+export { default as Checkbox } from "./Checkbox";
+export * from "./Checkbox";
+
 // IconItem reference added
 export { default as IconItem } from "./IconItem";
 export * from "./IconItem";
+

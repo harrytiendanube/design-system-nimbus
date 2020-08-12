@@ -1,0 +1,114 @@
+@import "../../styles/core";
+
+// Checkbox
+
+.#{$prefix}--checkbox-wrapper {
+  position: relative;
+
+  .#{$prefix}--checkbox {
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+
+    &:checked + .#{$prefix}--checkbox-label::before {
+      background-color: $color-primary;
+      border-color: $color-primary;
+    }
+
+    &:checked ~ .#{$prefix}--checkbox__check {
+      visibility: visible;
+    }
+
+    &:hover + .#{$prefix}--checkbox-label::before {
+      border-color: $color-primary;
+    }
+
+    &:disabled + .#{$prefix}--checkbox-label::before,
+    &:hover:disabled + .#{$prefix}--checkbox-label::before,
+    &:focus:disabled + .#{$prefix}--checkbox-label::before {
+      background-color: $input-disabled-background;
+      border-color: $input-disabled-background;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    &:disabled + .#{$prefix}--checkbox-label,
+    &:hover:disabled + .#{$prefix}--checkbox-label,
+    &:focus:disabled + .#{$prefix}--checkbox-label {
+      .#{$prefix}--text {
+        color: $input-disabled-text;
+      }
+    }
+
+    &:active + .#{$prefix}--checkbox-label::before {
+      background-color: $color-primary-active;
+      border-color: $color-primary-active;
+    }
+
+    &:focus + .#{$prefix}--checkbox-label::before {
+      border-color: $color-primary-active;
+      box-shadow: 0 0 0 $button-border-width $color-primary-active;
+    }
+  }
+
+  %#{$prefix}--checkbox-label {
+    cursor: pointer;
+    display: flex;
+    flex-wrap: nowrap;
+    min-height: $spacing-medium;
+    padding-left: $spacing-large;
+    position: relative;
+
+    &::before {
+      background-color: transparent;
+      border: $input-border-width solid $input-border-color;
+      border-radius: $spacing-xx-small;
+      content: "";
+      height: $spacing-medium - 2px;
+      left: 0;
+      position: absolute;
+      top: 0;
+      transition: $button-hover-delay ease;
+      width: $spacing-medium - 2px;
+    }
+
+    .#{$prefix}--text {
+      @include nimbus--type("text-body");
+      color: $color-body-text;
+    }
+  }
+
+  .#{$prefix}--checkbox-label,
+  .#{$prefix}--checkbox-label--hidden {
+    @extend %#{$prefix}--checkbox-label;
+  }
+
+  .#{$prefix}--checkbox-label--hidden {
+    span {
+      visibility: hidden;
+    }
+  }
+
+  .#{$prefix}--checkbox__check {
+    align-items: center;
+    display: flex;
+    height: 24px;
+    justify-content: center;
+    left: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    transition: $button-hover-delay ease;
+    visibility: hidden;
+    width: 24px;
+
+    svg {
+      fill: $color-background;
+    }
+  }
+}

@@ -3374,7 +3374,7 @@
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/@tiendanube/eslint-config/-/eslint-config-0.3.1.tgz#c83b3c31b4fe187eca64cbcb4114523ead8c1333"
   integrity sha512-5wr7Wy1xmlv6JKs2p+CGd7CVD13S7plqSDzJ2/ZBNwttMnxFJliI0gNGhlrSsEI+e7PQdkDnqr9gwPuI17BJ1w==
-
+  
 "@tiendanube/icons@0.1.5":
   version "0.1.5"
   resolved "https://registry.yarnpkg.com/@tiendanube/icons/-/icons-0.1.5.tgz#60073dd78d6f502dd8e56450b29207793fb01def"

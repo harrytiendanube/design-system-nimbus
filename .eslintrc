@@ -92,7 +92,8 @@
           "jsx",
           "Prepend",
           "grp",
-          "keydown"
+          "keydown",
+          "Checkbox"
         ]
       }
     ]
