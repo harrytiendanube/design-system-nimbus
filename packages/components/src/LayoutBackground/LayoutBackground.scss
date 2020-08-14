@@ -16,6 +16,28 @@
     padding-left: $spacing-gutter / 2;
     padding-right: $spacing-gutter / 2;
     padding-top: $spacing-gutter / 2;
+    @supports (padding-top: constant(safe-area-inset-top)) {
+      --safe-area-inset-left: constant(safe-area-inset-left);
+      --safe-area-inset-right: constant(safe-area-inset-right);
+      --safe-area-inset-top: constant(safe-area-inset-top);
+
+      padding-left: calc(var(--safe-area-inset-left) + #{$spacing-gutter / 2});
+      padding-right: calc(
+        var(--safe-area-inset-right) + #{$spacing-gutter / 2}
+      );
+      padding-top: calc(var(--safe-area-inset-top) + #{$spacing-gutter / 2});
+    }
+    @supports (padding-top: env(safe-area-inset-top)) {
+      --safe-area-inset-left: env(safe-area-inset-left);
+      --safe-area-inset-right: env(safe-area-inset-right);
+      --safe-area-inset-top: env(safe-area-inset-top);
+
+      padding-left: calc(var(--safe-area-inset-left) + #{$spacing-gutter / 2});
+      padding-right: calc(
+        var(--safe-area-inset-right) + #{$spacing-gutter / 2}
+      );
+      padding-top: calc(var(--safe-area-inset-top) + #{$spacing-gutter / 2});
+    }
     position: relative;
     z-index: 1;
   }
@@ -35,6 +57,27 @@
     .#{$prefix}--layout-background__image {
       flex: 0 0 50%;
       max-width: 50%;
+    }
+
+    .#{$prefix}--layout-background__content {
+      padding-left: $spacing-gutter / 2 + $spacing-x-small;
+      padding-right: $spacing-gutter / 2 + $spacing-x-small;
+      @supports (padding-top: constant(safe-area-inset-top)) {
+        padding-left: calc(
+          var(--safe-area-inset-left) + #{$spacing-gutter / 2} + #{$spacing-x-small}
+        );
+        padding-right: calc(
+          var(--safe-area-inset-right) + #{$spacing-gutter / 2} + #{$spacing-x-small}
+        );
+      }
+      @supports (padding-top: env(safe-area-inset-top)) {
+        padding-left: calc(
+          var(--safe-area-inset-left) + #{$spacing-gutter / 2} + #{$spacing-x-small}
+        );
+        padding-right: calc(
+          var(--safe-area-inset-right) + #{$spacing-gutter / 2} + #{$spacing-x-small}
+        );
+      }
     }
 
     .#{$prefix}--layout-background__image {
