@@ -1,4 +1,5 @@
 import * as React from "react";
+import * as ReactDOM from "react-dom";
 
 import "./Modal.css";
 
@@ -128,8 +129,17 @@ function Modal({
       ),
     [primaryActionLabel, handleClickPrimary],
   );
-
-  return (
+  const container: HTMLElement = React.useMemo(
+    () => document.createElement("div"),
+    [],
+  );
+  React.useEffect(() => {
+    document.body.appendChild(container);
+    return () => {
+      document.body.removeChild(container);
+    };
+  }, [container]);
+  const element: JSX.Element = (
     <div
       id="nimbus-modal"
       onClick={handleClickOutside}
@@ -153,6 +163,7 @@ function Modal({
       </div>
     </div>
   );
+  return ReactDOM.createPortal(element, container);
 }
 
 export default React.memo(Modal);
