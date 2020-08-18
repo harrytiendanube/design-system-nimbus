@@ -1,0 +1,40 @@
+import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
+import { withKnobs } from "@storybook/addon-knobs";
+import { withA11y } from "@storybook/addon-a11y";
+
+import { Popover, Text } from "@tiendanube/components/src";
+import { LOREM } from "./utils/constants";
+
+import "../utils/style.css";
+
+<Meta title="Components/Popover" component={Popover} />
+
+# Popover
+
+TODO: complete
+
+<Preview>
+  <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
+    <>
+      <Popover name="120" label="5 products" title="Order #120">
+        <Text>{LOREM}</Text>
+      </Popover>
+      <Popover name="121" label="2 products" title="Order #121">
+        <Text>{LOREM}</Text>
+      </Popover>
+      <Popover name="122" label="3 products" title="Order #122">
+        <Text>{LOREM}</Text>
+      </Popover>
+      <Popover name="123" label="2 products" title="Order #123">
+        <Text>{LOREM}</Text>
+      </Popover>
+      <Popover name="124" label="4 products" title="Order #124">
+        <Text>{LOREM}</Text>
+      </Popover>
+    </>
+  </Story>
+</Preview>
+
+## Properties
+
+<Props of={Popover.type} />

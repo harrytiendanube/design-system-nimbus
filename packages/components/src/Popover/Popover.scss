@@ -1,0 +1,39 @@
+@import "../../styles/core";
+
+// Popover
+
+.#{$prefix}--popover {
+  display: inline-block;
+  position: relative;
+
+  .#{$prefix}--popover-wrapper {
+    background-color: $color-background;
+    border: $input-border-width solid $color-default;
+    border-radius: $actions-border-radius;
+    box-shadow: 0 0 20px 0 $color-grey-0;
+    display: block;
+    left: 0;
+    margin-top: $spacing-x-small;
+    max-width: 280px;
+    opacity: 1;
+    overflow: hidden;
+    padding: $spacing-x-small;
+    position: absolute;
+    top: 100%;
+    transition: opacity $motion-base ease, visibility 0s linear;
+    visibility: visible;
+    width: 280px;
+    z-index: 500;
+
+    .#{$prefix}--popover-header,
+    .#{$prefix}--popover-body {
+      padding: $spacing-x-small;
+    }
+
+    .#{$prefix}--popover-body {
+      > *:not(:last-of-type) {
+        margin-bottom: $spacing-small;
+      }
+    }
+  }
+}
