@@ -93,6 +93,7 @@
           "Prepend",
           "grp",
           "keydown",
+          "listitem",
           "Checkbox"
         ]
       }

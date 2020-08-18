@@ -65,13 +65,18 @@ export * from "./SearchFilter";
 export { default as Modal } from "./Modal";
 export * from "./Modal";
 
-// Popover reference added
-export { default as Popover } from "./Popover";
-export * from "./Popover";
-// Checkbox reference added
-export { default as Checkbox } from "./Checkbox";
-export * from "./Checkbox";
-
 // IconItem reference added
 export { default as IconItem } from "./IconItem";
 export * from "./IconItem";
+
+// ImageItem reference added
+export { default as ImageItem } from "./ImageItem";
+export * from "./ImageItem";
+
+// Popover reference added
+export { default as Popover } from "./Popover";
+export * from "./Popover";
+
+// Checkbox reference added
+export { default as Checkbox } from "./Checkbox";
+export * from "./Checkbox";

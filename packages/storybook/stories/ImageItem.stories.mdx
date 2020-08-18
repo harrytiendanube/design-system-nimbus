@@ -1,0 +1,64 @@
+import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
+import { withKnobs, text } from "@storybook/addon-knobs";
+import { withA11y } from "@storybook/addon-a11y";
+
+import { ImageItem } from "@tiendanube/components/src";
+
+<Meta title="Atoms/ImageItem" component={ImageItem} />
+
+# ImageItem
+
+TODO: Complete
+
+<Preview>
+  <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
+    <div className="separate">
+      <ImageItem
+        thumbnail="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=943&q=80"
+        link={text("link", "Product")}
+        linkTo={text("linkTo", "https://www.tiendanube.com/")}
+        subtitle={text("subtitle", "Variant")}
+        description={text("description", "1 x $3.500")}
+      />
+    </div>
+  </Story>
+</Preview>
+
+## Properties
+
+<Props of={ImageItem.type} />
+
+## without thumbnail
+
+TODO: complete
+
+<Preview>
+  <Story name="without thumbnail">
+    <div className="separate">
+      <ImageItem
+        link="Product"
+        linkTo="https://www.tiendanube.com/"
+        subtitle="Variant"
+        description="1 x $3.500"
+      />
+    </div>
+  </Story>
+</Preview>
+
+## with non-existent thumbnail
+
+TODO: complete
+
+<Preview>
+  <Story name="non-existent thumbnail">
+    <div className="separate">
+      <ImageItem
+        thumbnail="http://thisURLsDoesNotExists.com"
+        link="Product"
+        linkTo="https://www.tiendanube.com/"
+        subtitle="Variant"
+        description="1 x $3.500"
+      />
+    </div>
+  </Story>
+</Preview>
