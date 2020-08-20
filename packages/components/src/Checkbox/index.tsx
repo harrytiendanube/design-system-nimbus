@@ -17,7 +17,7 @@ interface InterfaceCheckbox {
   /**
    * Whether the checkbox is checked by default or not
    * */
-  checked?: boolean;
+  checked?: boolean | "indeterminate";
   /**
    * Indicates if the checkbox is disabled
    */
@@ -46,10 +46,7 @@ function Checkbox({
     const target = event.target as HTMLInputElement;
     onChange?.({ name: target.name, checked: target.checked });
   };
-  const memorizedLabel = React.useMemo(
-    () => `nimbus--checkbox-label${label ? "" : "--hidden"}`,
-    [label],
-  );
+
   const memorizedChecked = React.useMemo(
     () =>
       checked && (
@@ -59,6 +56,10 @@ function Checkbox({
       ),
     [checked],
   );
+
+  const isIndeterminate = checked === "indeterminate";
+  const isChecked = !isIndeterminate && Boolean(checked);
+
   return (
     <div className="nimbus--checkbox-wrapper">
       <input
@@ -67,11 +68,16 @@ function Checkbox({
         name={name}
         onChange={handleChange}
         value={name}
-        className="nimbus--checkbox"
-        checked={checked}
+        className={`nimbus--checkbox ${isIndeterminate ? "indeterminate" : ""}`}
+        checked={isChecked}
         disabled={disabled}
       />
-      <label htmlFor={`check_${name}`} className={memorizedLabel}>
+      <label
+        htmlFor={`check_${name}`}
+        className={`nimbus--checkbox-label ${
+          !label ? "nimbus--label-hidden" : ""
+        }`}
+      >
         <span className="nimbus--text">{label}</span>
       </label>
       {memorizedChecked}

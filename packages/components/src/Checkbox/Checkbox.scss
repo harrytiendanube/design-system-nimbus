@@ -15,9 +15,14 @@
     position: absolute;
     width: 1px;
 
-    &:checked + .#{$prefix}--checkbox-label::before {
+    &:checked + .#{$prefix}--checkbox-label::before,
+    &.indeterminate + .#{$prefix}--checkbox-label::before {
       background-color: $color-primary;
       border-color: $color-primary;
+    }
+
+    &.indeterminate + .#{$prefix}--checkbox-label::after {
+      visibility: visible;
     }
 
     &:checked ~ .#{$prefix}--checkbox__check {
@@ -77,20 +82,42 @@
       width: $spacing-medium - 2px;
     }
 
+    &::after {
+      background-color: $color-background;
+      content: "";
+      height: 2px;
+      left: $spacing-xx-small;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      visibility: hidden;
+      width: 16px;
+    }
+
     .#{$prefix}--text {
       @include nimbus--type("text-body");
       color: $color-body-text;
     }
   }
 
-  .#{$prefix}--checkbox-label,
-  .#{$prefix}--checkbox-label--hidden {
+  .#{$prefix}--checkbox-label {
     @extend %#{$prefix}--checkbox-label;
   }
 
-  .#{$prefix}--checkbox-label--hidden {
+  .#{$prefix}--label-hidden {
+    padding-left: $spacing-medium;
+
     span {
-      visibility: hidden;
+      border: 0;
+      clip: rect(0, 0, 0, 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      visibility: inherit;
+      white-space: nowrap;
+      width: 1px;
     }
   }
 

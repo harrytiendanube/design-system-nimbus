@@ -17,15 +17,20 @@ TODO: complete
   <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
     <div className="separate">
       <Checkbox
-        label={text("label A", "Checked")}
+        label="Checked"
         name="checkboxA"
         onChange={action("onChange")}
         checked
       />
       <Checkbox
-        label={text("label B", "Unchecked")}
+        label="Unchecked"
         name="checkboxB"
         onChange={action("onChange")}
+      />
+      <Checkbox
+        label="Indeterminate"
+        name="checkboxB"
+        checked="indeterminate"
       />
     </div>
   </Story>
