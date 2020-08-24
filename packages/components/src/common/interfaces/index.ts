@@ -30,3 +30,22 @@ export interface InterfaceSelectGroup {
 export type InterfaceSelectOptionGroup =
   | InterfaceSelectOption
   | InterfaceSelectGroup;
+
+export type idRowTableType = string | number;
+
+export interface InterfaceTableRow {
+  id: idRowTableType;
+  columns: JSX.Element[];
+}
+
+export interface InterfaceMassActionSelected {
+  value: string;
+  rowsId: idRowTableType[];
+}
+
+export interface InterfaceMassAction {
+  placeholder: string;
+  options: InterfaceSelectOption[];
+  getLabel(quantity: number): string;
+  onChange(selected: InterfaceMassActionSelected): void;
+}

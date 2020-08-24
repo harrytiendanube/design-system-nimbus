@@ -1,0 +1,108 @@
+import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
+import { withKnobs } from "@storybook/addon-knobs";
+import { withA11y } from "@storybook/addon-a11y";
+import { BoxUnpackedIcon } from "@tiendanube/icons";
+import {
+  Alert,
+  Table,
+  Link,
+  Text,
+  IconItem,
+  Popover,
+  ImageItem,
+} from "@tiendanube/components/src";
+
+import "../utils/style.css";
+
+<Meta title="Components/Table" component={Table} />
+
+# Table
+
+TODO: complete
+
+<Preview>
+  <Story name="default" decorators={[withKnobs, withA11y]}>
+    {() => {
+      const [result, setResult] = React.useState("none");
+      const headers = ["Order", "Date", "Buyer", "Total", "Products", "Status"];
+      const columnClass = [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "nimbus--table-row__item--full-width",
+      ];
+      const rows = [];
+      for (let i = 120; i < 122; i++) {
+        rows.push({
+          id: i,
+          columns: [
+            <Link key="1" href="https://www.tiendanube.com/" target="_self">
+              Order #{i}
+            </Link>,
+            <Text key="2">20 jun</Text>,
+            <Text key="3">Name Last name</Text>,
+            <Text key="4">$3.500</Text>,
+            <Popover key="5" name={i} label="6 products" title={`Order #${i}`}>
+              <ImageItem
+                thumbnail="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=943&q=80"
+                link="Product"
+                linkTo="https://www.tiendanube.com/"
+                subtitle="Variant"
+                description="1 x $3.500"
+              />
+              <ImageItem
+                thumbnail="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=943&q=80"
+                link="Product"
+                linkTo="https://www.tiendanube.com/"
+                subtitle="Variant"
+                description="2 x $3.500"
+              />
+              <ImageItem
+                thumbnail="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=943&q=80"
+                link="Product"
+                linkTo="https://www.tiendanube.com/"
+                subtitle="Variant"
+                description="3 x $3.500"
+              />
+            </Popover>,
+            <IconItem
+              key="6"
+              icon={BoxUnpackedIcon}
+              title="Ready to pack"
+              appearance="secondary"
+            />,
+          ],
+        });
+      }
+      const massAction = {
+        placeholder: "Select an Option",
+        options: [
+          { label: "Option 1", value: "1" },
+          { label: "Option 2", value: "2" },
+          { label: "Option 3", value: "3" },
+          { label: "Option 4", value: "4" },
+        ],
+        getLabel: (n) => `${n} selected`,
+        onChange: (selected) => setResult(JSON.stringify(selected)),
+      };
+      return (
+        <>
+          <Table
+            headers={headers}
+            rows={rows}
+            columnClass={columnClass}
+            massAction={massAction}
+          />
+          <br />
+          <Alert show>Last option selected: {result}</Alert>
+        </>
+      );
+    }}
+  </Story>
+</Preview>
+
+## Properties
+
+<Props of={Table.type} />

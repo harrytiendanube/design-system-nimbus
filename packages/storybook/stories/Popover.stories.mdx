@@ -2,7 +2,7 @@ import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
 import { withKnobs } from "@storybook/addon-knobs";
 import { withA11y } from "@storybook/addon-a11y";
 
-import { Popover, Text } from "@tiendanube/components/src";
+import { Popover, Text, ImageItem } from "@tiendanube/components/src";
 import { LOREM } from "./utils/constants";
 
 import "../utils/style.css";
@@ -17,19 +17,56 @@ TODO: complete
   <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
     <>
       <Popover name="120" label="5 products" title="Order #120">
-        <Text>{LOREM}</Text>
+        <ImageItem
+          thumbnail="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=943&q=80"
+          link="Product"
+          linkTo="https://www.tiendanube.com/"
+          subtitle="Variant"
+          description="1 x $3.500"
+        />
       </Popover>
       <Popover name="121" label="2 products" title="Order #121">
-        <Text>{LOREM}</Text>
+        <ImageItem
+          thumbnail="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=943&q=80"
+          link="Product"
+          linkTo="https://www.tiendanube.com/"
+          subtitle="Variant"
+          description="2 x $3.500"
+        />
       </Popover>
       <Popover name="122" label="3 products" title="Order #122">
-        <Text>{LOREM}</Text>
+        <ImageItem
+          thumbnail="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=943&q=80"
+          link="Product"
+          linkTo="https://www.tiendanube.com/"
+          subtitle="Variant"
+          description="3 x $3.500"
+        />
       </Popover>
       <Popover name="123" label="2 products" title="Order #123">
-        <Text>{LOREM}</Text>
+        <ImageItem
+          thumbnail="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=943&q=80"
+          link="Product"
+          linkTo="https://www.tiendanube.com/"
+          subtitle="Variant"
+          description="2 x $3.500"
+        />
       </Popover>
       <Popover name="124" label="4 products" title="Order #124">
-        <Text>{LOREM}</Text>
+        <ImageItem
+          thumbnail="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=943&q=80"
+          link="Product"
+          linkTo="https://www.tiendanube.com/"
+          subtitle="Variant"
+          description="1 x $3.500"
+        />
+        <ImageItem
+          thumbnail="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=943&q=80"
+          link="Product"
+          linkTo="https://www.tiendanube.com/"
+          subtitle="Variant"
+          description="3 x $3.500"
+        />
       </Popover>
     </>
   </Story>

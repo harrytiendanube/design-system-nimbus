@@ -1,0 +1,127 @@
+@import "../../styles/core";
+
+// Table
+
+.#{$prefix}--table-wrapper {
+  @include nimbus--breakpoint-down(md) {
+    margin-left: -$spacing-small;
+    margin-right: -$spacing-small;
+  }
+
+  @include nimbus--breakpoint(md) {
+    border: $input-border-width solid $color-default;
+    border-radius: $actions-border-radius;
+  }
+
+  .#{$prefix}--table__mass-actions {
+    align-items: center;
+    background-color: $color-default;
+    display: flex;
+    flex-wrap: nowrap;
+    padding: $spacing-x-small;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 499;
+
+    > * {
+      padding-left: $spacing-x-small;
+      padding-right: $spacing-x-small;
+    }
+
+    .#{$prefix}--table__mass-select {
+      flex: 1 1 auto;
+      max-width: 360px;
+    }
+  }
+}
+
+.#{$prefix}--table {
+  border: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
+  padding-left: $spacing-small;
+  padding-right: $spacing-small;
+  width: 100%;
+
+  .#{$prefix}--table__header {
+    @include nimbus--breakpoint-down(md) {
+      border: 0;
+      clip: rect(0, 0, 0, 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      visibility: inherit;
+      white-space: nowrap;
+      width: 1px;
+    }
+
+    .#{$prefix}--text {
+      @include nimbus--type("text-heading");
+      color: $color-body-text;
+    }
+  }
+
+  .#{$prefix}--table__body {
+    margin-left: -$spacing-small;
+    margin-right: -$spacing-small;
+  }
+}
+
+// TableRow
+
+.#{$prefix}--table-row {
+  border-bottom: 1px solid $color-grey-0;
+  border-top: 1px solid $color-grey-0;
+
+  @include nimbus--breakpoint-down(md) {
+    display: flex;
+    flex-wrap: wrap;
+    padding: $spacing-small $spacing-x-small $spacing-small $spacing-x-large;
+    position: relative;
+  }
+
+  .#{$prefix}--table-row__check {
+    padding-left: $spacing-small;
+    padding-right: $spacing-x-small;
+    width: $spacing-xx-large;
+
+    @include nimbus--breakpoint-down(md) {
+      height: 100%;
+      left: 0;
+      padding: $spacing-small $spacing-x-small 0 $spacing-small;
+      position: absolute;
+      top: 0;
+    }
+  }
+
+  .#{$prefix}--table-row__column {
+    padding-left: $spacing-x-small;
+    padding-right: $spacing-x-small;
+  }
+
+  .#{$prefix}--table-row__item {
+    padding: $spacing-small $spacing-x-small;
+    text-align: left;
+
+    @include nimbus--breakpoint-down(md) {
+      flex: 1 1 50%;
+      padding: 0 $spacing-x-small;
+    }
+  }
+
+  .#{$prefix}--table-row__item:nth-of-type(odd) {
+    @include nimbus--breakpoint-down(md) {
+      text-align: right;
+    }
+  }
+
+  .#{$prefix}--table-row__item--full-width {
+    @include nimbus--breakpoint-down(md) {
+      flex: 1 1 100%;
+      padding-top: $spacing-small;
+    }
+  }
+}

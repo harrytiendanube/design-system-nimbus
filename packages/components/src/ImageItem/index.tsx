@@ -52,7 +52,7 @@ function ImageItem({
         <CameraIcon size="large" />
       </div>
     );
-  }, [thumbnail, link, handleError, errorLoad]);
+  }, [thumbnail, errorLoad, link, handleError]);
   const memorizedSubtitle = React.useMemo(
     () => subtitle && <Text>{subtitle}</Text>,
     [subtitle],

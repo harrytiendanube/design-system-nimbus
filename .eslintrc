@@ -94,7 +94,9 @@
           "grp",
           "keydown",
           "listitem",
-          "Checkbox"
+          "Checkbox",
+          "un",
+          "columnheader"
         ]
       }
     ]

@@ -78,7 +78,6 @@
       left: 0;
       position: absolute;
       top: 0;
-      transition: $button-hover-delay ease;
       width: $spacing-medium - 2px;
     }
 
@@ -130,7 +129,6 @@
     pointer-events: none;
     position: absolute;
     top: 0;
-    transition: $button-hover-delay ease;
     visibility: hidden;
     width: 24px;
 

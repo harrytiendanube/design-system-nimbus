@@ -80,3 +80,7 @@ export * from "./Popover";
 // Checkbox reference added
 export { default as Checkbox } from "./Checkbox";
 export * from "./Checkbox";
+
+// Table reference added
+export { default as Table } from "./Table";
+export * from "./Table";
