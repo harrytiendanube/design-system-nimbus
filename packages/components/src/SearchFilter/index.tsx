@@ -94,7 +94,7 @@ function SearchFilter({
           />
         </div>
         <div className="nimbus--search-filters__filters">
-          <Button appearance="primary" icon={SlidersIcon} onClick={handleClick}>
+          <Button appearance="default" icon={SlidersIcon} onClick={handleClick}>
             {labelButton}
           </Button>
         </div>
