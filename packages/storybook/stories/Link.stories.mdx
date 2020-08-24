@@ -3,7 +3,7 @@ import { withKnobs, select, text } from "@storybook/addon-knobs";
 import { withA11y } from "@storybook/addon-a11y";
 
 import { Link } from "@tiendanube/components/src";
-import { ArrowLeftIcon, ArrowRightIcon } from "@tiendanube/icons";
+import { ExternalLinkIcon } from "@tiendanube/icons";
 import { LOREM_STRESS } from "./utils/constants";
 
 import "../utils/style.css";
@@ -19,7 +19,7 @@ TODO: complete
     <Link
       href={text("href", "http://www.tiendanube.com")}
       target={select("target", ["_blank", "_parent", "_self", "_top"])}
-      icon={ArrowRightIcon}
+      icon={ExternalLinkIcon}
       iconPosition={select("Icon Position", ["start", "end"])}
     >
       {text("text", "Text")}
@@ -48,7 +48,7 @@ TODO: complete
     <Link
       href="http://www.tiendanube.com"
       target="_blank"
-      icon={ArrowLeftIcon}
+      icon={ExternalLinkIcon}
       iconPosition="start"
     >
       Text
@@ -63,7 +63,7 @@ TODO: complete
     <Link
       href="http://www.tiendanube.com"
       target="_blank"
-      icon={ArrowRightIcon}
+      icon={ExternalLinkIcon}
       iconPosition="end"
     >
       Text
@@ -78,10 +78,88 @@ TODO: complete
     <Link
       href="http://www.tiendanube.com"
       target="_blank"
-      icon={ArrowRightIcon}
+      icon={ExternalLinkIcon}
       iconPosition="end"
     >
       {LOREM_STRESS}
     </Link>
+  </Story>
+</Preview>
+
+## Appearance
+
+TODO: complete
+
+<Preview withToolbar>
+  <Story name="appearance">
+    <div>
+      <div className="separate">
+        <Link appearance="default" icon={ExternalLinkIcon} iconPosition="end">
+          {" "}
+          Default{" "}
+        </Link>
+        <Link appearance="primary" icon={ExternalLinkIcon} iconPosition="end">
+          {" "}
+          Primary{" "}
+        </Link>
+        <Link appearance="secondary" icon={ExternalLinkIcon} iconPosition="end">
+          {" "}
+          Secondary{" "}
+        </Link>
+        <Link appearance="danger" icon={ExternalLinkIcon} iconPosition="end">
+          {" "}
+          Danger{" "}
+        </Link>
+      </div>
+    </div>
+  </Story>
+</Preview>
+
+## Underline
+
+TODO: complete
+
+<Preview withToolbar>
+  <Story name="underline">
+    <div>
+      <div className="separate">
+        <Link
+          appearance="default"
+          underline
+          icon={ExternalLinkIcon}
+          iconPosition="end"
+        >
+          {" "}
+          Default{" "}
+        </Link>
+        <Link
+          appearance="primary"
+          underline
+          icon={ExternalLinkIcon}
+          iconPosition="end"
+        >
+          {" "}
+          Primary{" "}
+        </Link>
+        <Link
+          appearance="secondary"
+          underline
+          icon={ExternalLinkIcon}
+          iconPosition="end"
+        >
+          {" "}
+          Secondary{" "}
+        </Link>
+        <Link
+          appearance="danger"
+          underline
+          icon={ExternalLinkIcon}
+          iconPosition="end"
+        >
+          {" "}
+          Danger{" "}
+        </Link>
+      </div>
+    </div>
   </Story>
 </Preview>

@@ -1,17 +1,12 @@
-@import "core";
+@import "../../styles/core";
+
 // Buttons
 
-%#{$prefix}--button__icon svg {
-  margin-top: -$spacing-xx-small;
-}
-
 .#{$prefix}--button__icon--start {
-  @extend %#{$prefix}--button__icon;
   margin-right: $spacing-x-small;
 }
 
 .#{$prefix}--button__icon--end {
-  @extend %#{$prefix}--button__icon;
   margin-left: $spacing-x-small;
 }
 
@@ -52,24 +47,19 @@
 }
 
 .#{$prefix}--link--default {
-  @include button-link(
+  @include link(
     $color-body-text,
     darken($color-body-text, 20%),
-    darken($color-body-text, 40%),
-    $underline: true
+    darken($color-body-text, 40%)
   );
 }
 
 .#{$prefix}--link--primary {
-  @include button-link(
-    $color-primary,
-    $color-primary-hover,
-    $color-primary-active
-  );
+  @include link($color-primary, $color-primary-hover, $color-primary-active);
 }
 
 .#{$prefix}--link--secondary {
-  @include button-link(
+  @include link(
     $color-secondary,
     $color-secondary-hover,
     $color-secondary-active
@@ -77,9 +67,5 @@
 }
 
 .#{$prefix}--link--danger {
-  @include button-link(
-    $color-danger,
-    $color-danger-hover,
-    $color-danger-active
-  );
+  @include link($color-danger, $color-danger-hover, $color-danger-active);
 }

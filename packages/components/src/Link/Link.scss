@@ -2,31 +2,34 @@
 
 // Links
 
-.#{$prefix}--link {
-  @include nimbus--type("text-body");
-  color: $color-primary;
-  cursor: pointer;
-  display: inline-block;
-  text-decoration: underline;
-  transition: $button-hover-delay ease;
+.#{$prefix}--link__icon--start {
+  margin-right: $spacing-x-small;
+}
 
-  &:disabled,
-  &:hover:disabled,
-  &:focus:disabled {
-    cursor: not-allowed;
-    opacity: 0.5;
-    pointer-events: none;
-  }
+.#{$prefix}--link__icon--end {
+  margin-left: $spacing-x-small;
+}
 
-  &:hover {
-    color: $color-primary-hover;
-  }
+.#{$prefix}--link--default {
+  @include link(
+    $color-body-text,
+    darken($color-body-text, 20%),
+    darken($color-body-text, 40%)
+  );
+}
 
-  &:active {
-    color: $color-primary-active;
-  }
+.#{$prefix}--link--primary {
+  @include link($color-primary, $color-primary-hover, $color-primary-active);
+}
 
-  &:focus {
-    color: $color-primary-active;
-  }
+.#{$prefix}--link--secondary {
+  @include link(
+    $color-secondary,
+    $color-secondary-hover,
+    $color-secondary-active
+  );
+}
+
+.#{$prefix}--link--danger {
+  @include link($color-danger, $color-danger-hover, $color-danger-active);
 }

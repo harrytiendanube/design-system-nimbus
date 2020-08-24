@@ -15,6 +15,14 @@ export interface InterfaceLink {
    */
   target?: "_blank" | "_parent" | "_self" | "_top";
   /**
+   * Appearance
+   */
+  appearance?: "primary" | "secondary" | "default" | "danger";
+  /**
+   * Defines whether the link should be underlined
+   */
+  underline?: boolean;
+  /**
    * Icon Component imported from @tiendanube/icons
    */
   icon?: any;
@@ -27,6 +35,8 @@ export interface InterfaceLink {
  * @param start React node of type children.
  * @param href Specifies the URL of the page the link goes to
  * @param target Specifies where to open the linked document
+ * @param appearance Appearance
+ * @param underline Defines whether the link should be underlined
  * @param icon Icon Component imported from @tiendanube/icons
  * @param iconPosition Position of the icon with respect to the alert
  */
@@ -34,19 +44,40 @@ const Link: React.FC<InterfaceLink> = ({
   children,
   href,
   target,
+  appearance,
+  underline,
   icon: Icon,
   iconPosition,
 }: InterfaceLink): JSX.Element => {
+  const classname = React.useMemo(
+    () =>
+      `nimbus--link nimbus--link--${appearance} ${
+        underline ? "nimbus--link--underlined" : ""
+      }`,
+    [appearance, underline],
+  );
   const memorizedStartIcon = React.useMemo(
-    () => Icon && iconPosition === "start" && <Icon />,
+    () =>
+      Icon &&
+      iconPosition === "start" && (
+        <i className="nimbus--link__icon--start">
+          <Icon />
+        </i>
+      ),
     [Icon, iconPosition],
   );
   const memorizedEndIcon = React.useMemo(
-    () => Icon && iconPosition === "end" && <Icon />,
+    () =>
+      Icon &&
+      iconPosition === "end" && (
+        <i className="nimbus--link__icon--end">
+          <Icon />
+        </i>
+      ),
     [Icon, iconPosition],
   );
   return (
-    <a className="nimbus--link" href={href} target={target}>
+    <a className={classname} href={href} target={target}>
       {memorizedStartIcon}
       {children}
       {memorizedEndIcon}
@@ -56,6 +87,8 @@ const Link: React.FC<InterfaceLink> = ({
 
 Link.defaultProps = {
   target: "_blank",
+  appearance: "default",
+  underline: false,
   iconPosition: "start",
 };
 

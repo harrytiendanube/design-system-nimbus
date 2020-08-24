@@ -1,7 +1,3 @@
-@import "../../styles/core";
-
-// Mixins
-
 // Buttons
 //
 // Defining mixins to be used by buttons
@@ -22,6 +18,10 @@
     opacity: 0.5;
     pointer-events: none;
   }
+
+  svg {
+    margin-top: -$spacing-xx-small;
+  }
 }
 
 @mixin button($font-color, $bg-color, $hover-bg-color, $focus-color) {
@@ -41,36 +41,6 @@
   &:active {
     background-color: $focus-color;
     border-color: $focus-color;
-  }
-
-  &:focus {
-    border-color: $focus-color;
-    box-shadow: 0 0 0 $button-border-width $focus-color;
-  }
-}
-
-@mixin button-link(
-  $font-color,
-  $hover-font-color,
-  $focus-color,
-  $underline: false
-) {
-  @include button-base;
-  @include nimbus--type("text-body");
-  border: $button-border-width solid transparent;
-  color: $font-color;
-  margin: -$spacing-xx-small;
-  padding: $spacing-xx-small $spacing-x-small;
-  @if $underline {
-    text-decoration: underline;
-  }
-
-  &:hover {
-    color: $hover-font-color;
-  }
-
-  &:active {
-    color: $hover-font-color;
   }
 
   &:focus {
