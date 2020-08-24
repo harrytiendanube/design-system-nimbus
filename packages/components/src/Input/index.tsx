@@ -112,7 +112,7 @@ function Input({
   );
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
+    if (e.key === "Enter" && type === "search") {
       e.preventDefault();
       onSubmit?.({ name, value });
       setInputValue("");
