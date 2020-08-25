@@ -85,6 +85,10 @@ export * from "./Checkbox";
 export { default as Table } from "./Table";
 export * from "./Table";
 
+export { default as Tooltip } from "./Tooltip";
+export * from "./Tooltip";
+
 // EmptyState reference added
 export { default as EmptyState } from "./EmptyState";
 export * from "./EmptyState";
+

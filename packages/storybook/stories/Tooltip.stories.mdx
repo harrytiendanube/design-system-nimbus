@@ -1,0 +1,93 @@
+import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
+import { withKnobs } from "@storybook/addon-knobs";
+import { withA11y } from "@storybook/addon-a11y";
+
+import { InfoCircleIcon } from "@tiendanube/icons";
+import { Tooltip, Text } from "@tiendanube/components/src";
+
+<Meta title="Components/Tooltip" component={Tooltip} />
+
+# Tooltip
+
+TODO: complete
+
+<Preview>
+  <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
+    <>
+      <div className="separate">
+        <Tooltip
+          name="tooltip-component"
+          labelIcon={InfoCircleIcon}
+          labelText="Tooltip label"
+        >
+          <Text>Tooltip text</Text>
+        </Tooltip>
+      </div>
+    </>
+  </Story>
+</Preview>
+
+## Properties
+
+<Props of={Tooltip.type} />
+
+# Positions
+
+TODO: complete
+
+<Preview>
+  <Story name="positions" parameters={{ decorators: [withKnobs, withA11y] }}>
+    <>
+      <div className="separate">
+        <Tooltip
+          name="tooltip-top"
+          labelIcon={InfoCircleIcon}
+          labelText="Tooltip label"
+          position="top"
+        >
+          <Text>Tooltip top</Text>
+        </Tooltip>
+        <Tooltip
+          name="tooltip-bottom"
+          labelIcon={InfoCircleIcon}
+          labelText="Tooltip label"
+          position="bottom"
+        >
+          <Text>Tooltip bottom</Text>
+        </Tooltip>
+        <Tooltip
+          name="tooltip-left"
+          labelIcon={InfoCircleIcon}
+          labelText="Tooltip label"
+          position="left"
+        >
+          <Text>Tooltip left</Text>
+        </Tooltip>
+        <Tooltip
+          name="tooltip-right"
+          labelIcon={InfoCircleIcon}
+          labelText="Tooltip label"
+          position="right"
+        >
+          <Text>Tooltip right</Text>
+        </Tooltip>
+      </div>
+    </>
+  </Story>
+</Preview>
+
+# Text label
+
+TODO: complete
+
+<Preview>
+  <Story name="text label" parameters={{ decorators: [withKnobs, withA11y] }}>
+    <>
+      <div className="separate">
+        <Tooltip name="tooltip-text-label" labelText="Tooltip label">
+          <Text>Tooltip top</Text>
+        </Tooltip>
+      </div>
+    </>
+  </Story>
+</Preview>
