@@ -1,0 +1,81 @@
+@import "../../styles/core";
+
+// EmptyState
+
+.#{$prefix}--empty-state {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+
+  &.is-full-width {
+    flex-direction: column;
+
+    .#{$prefix}--empty-state__image,
+    .#{$prefix}--empty-state__content {
+      flex: 1 1 100%;
+      max-width: 500px;
+      text-align: center;
+    }
+
+    .#{$prefix}--empty-state__image {
+      margin-bottom: $spacing-small;
+
+      img {
+        max-width: 480px;
+      }
+    }
+
+    .#{$prefix}--empty-state__content {
+      @include nimbus--action-wrapper(
+        center,
+        center,
+        $spacing-xx-small,
+        $column: true
+      );
+
+      align-items: center;
+    }
+  }
+
+  .#{$prefix}--empty-state__image,
+  .#{$prefix}--empty-state__content {
+    flex: 1 1 100%;
+    padding-left: $spacing-x-small;
+    padding-right: $spacing-x-small;
+    width: 100%;
+
+    @include nimbus--breakpoint-up(md) {
+      flex: 1 1 50%;
+    }
+  }
+
+  .#{$prefix}--empty-state__image {
+    img {
+      margin: auto;
+      object-fit: cover;
+      text-align: center;
+      vertical-align: middle;
+      width: 100%;
+    }
+  }
+
+  .#{$prefix}--empty-state__content {
+    @include nimbus--action-wrapper(
+      flex-start,
+      center,
+      $spacing-xx-small,
+      $column: false
+    );
+
+    display: flex;
+    flex-direction: column;
+
+    .#{$prefix}--text {
+      color: $color-body-text;
+    }
+
+    > *:not(:last-of-type) {
+      margin-bottom: $spacing-small;
+    }
+  }
+}

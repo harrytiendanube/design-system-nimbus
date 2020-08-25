@@ -1,0 +1,36 @@
+// Groups
+//
+// Groups of actions
+
+@mixin nimbus--action-wrapper(
+  $horizontal-align: flex-start,
+  $vertical-align: center,
+  $spacing: $spacing-xx-small,
+  $column: false
+) {
+  .#{$prefix}--action-wrapper {
+    align-items: $vertical-align;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: $horizontal-align;
+    margin-left: -$spacing;
+    margin-right: -$spacing;
+    width: 100%;
+
+    @if $column {
+      flex-direction: column;
+    }
+
+    .#{$prefix}--action-wrapper__item {
+      flex: 0 0 auto;
+      padding-left: $spacing;
+      padding-right: $spacing;
+
+      @if $column {
+        &:first-of-type {
+          margin-bottom: $spacing-x-small;
+        }
+      }
+    }
+  }
+}

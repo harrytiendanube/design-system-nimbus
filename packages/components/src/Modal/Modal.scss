@@ -102,19 +102,10 @@
     }
 
     .#{$prefix}--modal-footer {
+      @include nimbus--action-wrapper(flex-end);
+
       display: flex;
       justify-content: flex-end;
     }
-  }
-}
-
-.#{$prefix}--action-wrapper {
-  display: flex;
-  margin-left: -$spacing-xx-small;
-  margin-right: -$spacing-xx-small;
-
-  .#{$prefix}--action-wrapper__item {
-    padding-left: $spacing-xx-small;
-    padding-right: $spacing-xx-small;
   }
 }

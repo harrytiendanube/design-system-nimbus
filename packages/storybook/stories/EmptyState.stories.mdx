@@ -1,0 +1,58 @@
+import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
+import { withKnobs, text, boolean } from "@storybook/addon-knobs";
+import { action } from "@storybook/addon-actions";
+import { withA11y } from "@storybook/addon-a11y";
+
+import { EmptyState, Text } from "@tiendanube/components/src";
+
+import "../utils/style.css";
+
+<Meta title="Components/EmptyState" component={EmptyState} />
+
+# EmptyState
+
+TODO: complete
+
+<Preview>
+  <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
+    <EmptyState
+      fullWidth={boolean("full width", false)}
+      image={text(
+        "Image",
+        "https://d26lpennugtm8s.cloudfront.net/assets/common/img/empty-screens/empty-orders.png",
+      )}
+      title={text("Title", "Title text")}
+      primaryActionLabel={text("Primary action", "Primary action")}
+      onClickPrimary={action("onClickPrimary")}
+      secondaryActionLabel={text("Secondary action", "Secondary action")}
+      onClickSecondary={action("onClickSecondary")}
+    >
+      <Text>{text("Text", "Empty state text")}</Text>
+    </EmptyState>
+  </Story>
+</Preview>
+
+## Properties
+
+<Props of={EmptyState.type} />
+
+# Full width
+
+<Preview>
+  <Story name="full width" parameters={{ decorators: [withKnobs, withA11y] }}>
+    <EmptyState
+      fullWidth
+      image={text(
+        "Image",
+        "https://d26lpennugtm8s.cloudfront.net/assets/common/img/empty-screens/empty-products.png",
+      )}
+      title={text("Title", "Title text")}
+      primaryActionLabel={text("Primary action", "Primary action")}
+      onClickPrimary={action("onClickPrimary")}
+      secondaryActionLabel={text("Secondary action", "Secondary action")}
+      onClickSecondary={action("onClickSecondary")}
+    >
+      <Text>{text("Text", "Empty state text")}</Text>
+    </EmptyState>
+  </Story>
+</Preview>

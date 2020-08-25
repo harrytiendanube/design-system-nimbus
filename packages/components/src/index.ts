@@ -84,3 +84,7 @@ export * from "./Checkbox";
 // Table reference added
 export { default as Table } from "./Table";
 export * from "./Table";
+
+// EmptyState reference added
+export { default as EmptyState } from "./EmptyState";
+export * from "./EmptyState";
