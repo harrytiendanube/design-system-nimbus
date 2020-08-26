@@ -109,7 +109,7 @@ function Popover({
           link
           icon={active ? ChevronUpIcon : ChevronDownIcon}
           iconPosition="end"
-          appearance="primary"
+          appearance="default"
           onClick={handleClick}
         >
           {label}

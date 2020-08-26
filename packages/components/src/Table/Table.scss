@@ -14,11 +14,15 @@
   }
 
   .#{$prefix}--table__mass-actions {
+    @include nimbus--safe-area($spacing-x-small);
+
     align-items: center;
     background-color: $color-default;
     display: flex;
     flex-wrap: nowrap;
-    padding: $spacing-x-small;
+    padding-bottom: $spacing-x-small;
+    padding-left: $spacing-x-small;
+    padding-right: $spacing-x-small;
     position: sticky;
     top: 0;
     width: 100%;
@@ -59,7 +63,6 @@
     }
 
     .#{$prefix}--text {
-      @include nimbus--type("text-heading");
       color: $color-body-text;
     }
   }
@@ -67,6 +70,12 @@
   .#{$prefix}--table__body {
     margin-left: -$spacing-small;
     margin-right: -$spacing-small;
+  }
+
+  th {
+    > * {
+      @include nimbus--type("text-heading");
+    }
   }
 }
 
@@ -112,7 +121,7 @@
     }
   }
 
-  .#{$prefix}--table-row__item:nth-of-type(odd) {
+  .#{$prefix}--table-row__item:nth-of-type(even) {
     @include nimbus--breakpoint-down(md) {
       text-align: right;
     }
@@ -121,7 +130,7 @@
   .#{$prefix}--table-row__item--full-width {
     @include nimbus--breakpoint-down(md) {
       flex: 1 1 100%;
-      padding-top: $spacing-small;
+      padding-top: $spacing-x-small;
     }
   }
 }

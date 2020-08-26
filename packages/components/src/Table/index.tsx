@@ -62,7 +62,7 @@ function Table({
   const [rowsChecked, setRowsChecked] = React.useState(
     createSelectedValues(rows, false),
   );
-  const [massActionSelectValue, setMassActionSelectValue] = React.useState("");
+  const [massActionSelectValue] = React.useState("");
   const [massActionCheckValue, setMassActionCheckValue] = React.useState(false);
 
   const handleChangeRow = React.useCallback(
@@ -79,13 +79,14 @@ function Table({
 
   const handleOnChangeSelectMassAction = React.useCallback(
     (event: InterfaceNameValue) => {
-      setMassActionSelectValue(event.value);
       massAction?.onChange({
         value: event.value,
         rowsId: getRowsId(rowsChecked, typeof rows[0].id),
       });
+      setMassActionCheckValue(false);
+      setRowsChecked(allChecksUnSelected);
     },
-    [massAction, rows, rowsChecked],
+    [allChecksUnSelected, massAction, rows, rowsChecked],
   );
   const handleOnChangeCheckMassAction = React.useCallback(
     (event: InterfaceNameChecked) => {
@@ -169,13 +170,21 @@ function Table({
                   />
                 </td>
                 {row.columns.map((column, index) => {
-                  let className = "nimbus--table-row__item ";
-                  if (columnClass && columnClass[index])
-                    className += columnClass[index];
+                  const className = `nimbus--table-row__item ${
+                    columnClass && columnClass[index]
+                  }`;
                   return (
-                    <td key={index} className={className}>
-                      {column}
-                    </td>
+                    <>
+                      {index === 0 ? (
+                        <th key={index} scope="row" className={className}>
+                          {column}
+                        </th>
+                      ) : (
+                        <td key={index} className={className}>
+                          {column}
+                        </td>
+                      )}
+                    </>
                   );
                 })}
               </tr>
