@@ -47,6 +47,14 @@
     transition: $motion-fast ease;
     width: 100%;
 
+    &.with-prepend {
+      padding-left: $spacing-large;
+    }
+
+    &.with-append {
+      padding-right: $spacing-large;
+    }
+
     &::placeholder {
       color: $input-border-color;
     }
@@ -77,10 +85,5 @@
     &::-webkit-search-cancel-button {
       appearance: none;
     }
-  }
-
-  .#{$prefix}--input__field[type="search"] {
-    padding-left: $spacing-large;
-    padding-right: $spacing-large;
   }
 }

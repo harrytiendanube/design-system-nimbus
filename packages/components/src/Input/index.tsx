@@ -159,12 +159,20 @@ function Input({
     [handleClose, type, value],
   );
 
+  const classname = React.useMemo(
+    () =>
+      `nimbus--input__field ${memorizedLeftIcon ? "with-prepend" : ""} ${
+        type === "search" || (type === "password" && "with-append")
+      }`,
+    [memorizedLeftIcon, type],
+  );
+
   return (
     <div className="nimbus--input-wrapper">
       {memorizedLabel}
       <div className="nimbus--input">
         <input
-          className="nimbus--input__field"
+          className={classname}
           id={`input_${name}`}
           type={type}
           name={name}
