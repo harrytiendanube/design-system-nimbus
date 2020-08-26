@@ -15,7 +15,6 @@
     justify-content: $horizontal-align;
     margin-left: -$spacing;
     margin-right: -$spacing;
-    width: 100%;
 
     @if $column {
       flex-direction: column;

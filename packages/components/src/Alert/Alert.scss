@@ -4,19 +4,26 @@
 
 .#{$prefix}--alert {
   border-radius: $actions-border-radius;
-  display: flex;
-  flex-wrap: nowrap;
   padding: $spacing-small;
+  position: relative;
   text-align: left;
   width: 100%;
 
-  .#{$prefix}--alert__icon {
-    flex: 0 0 auto;
-    padding: $spacing-small - $spacing-xx-small 0;
-
-    svg {
-      margin-top: -$spacing-xx-small;
+  &.is-dismissable {
+    .#{$prefix}--alert__details {
+      padding-right: $spacing-large;
     }
+  }
+
+  .#{$prefix}--alert__icon {
+    align-items: center;
+    display: flex;
+    flex: 0 0 auto;
+    height: $spacing-medium;
+    left: 0;
+    margin: $spacing-small 0 0 $spacing-small;
+    position: absolute;
+    top: 0;
   }
 
   .#{$prefix}--alert__details {
@@ -25,6 +32,9 @@
     flex: 1 1 auto;
     flex-wrap: wrap;
     justify-content: space-between;
+    margin-bottom: -$spacing-x-small;
+    margin-top: -$spacing-x-small;
+    padding-left: $spacing-large;
   }
 
   .#{$prefix}--alert__body {
@@ -32,59 +42,110 @@
     flex: 0 0 auto;
     flex-wrap: wrap;
     max-width: 100%;
-    padding: $spacing-x-small 0 $spacing-x-small $spacing-small;
+    padding: $spacing-x-small 0;
     width: auto;
   }
 
-  .#{$prefix}--title-h5 {
-    color: $color-body-text;
-    line-height: $font-line-height-body;
+  .#{$prefix}--title-h5,
+  .#{$prefix}--text {
     margin-right: $spacing-x-small;
   }
 
-  .#{$prefix}--alert__actions {
-    flex: 0 0 auto;
-    margin: auto 0;
-    max-width: 100%;
-    padding: 0 0 0 $spacing-small;
-    width: auto;
+  .#{$prefix}--title-h5 {
+    @include nimbus--type("text-heading");
+    color: $color-body-text;
+  }
 
-    .#{$prefix}--button--primary {
-      + .#{$prefix}--link {
-        margin-left: $spacing-small;
-      }
-    }
+  .#{$prefix}--alert__actions {
+    @include nimbus--action-wrapper();
+
+    flex: 0 0 auto;
+    margin-bottom: -$spacing-x-small;
+    margin-top: -$spacing-x-small;
+    max-width: 100%;
+    padding: $spacing-x-small 0;
+    width: auto;
   }
 
   .#{$prefix}--alert__close {
-    cursor: pointer;
     flex: 0 0 auto;
-    margin-right: -$spacing-small;
-    padding: $spacing-small - $spacing-xx-small $spacing-small;
-  }
-
-  svg {
-    font-size: $font-size-medium;
-    margin-top: -$spacing-xx-small;
+    position: absolute;
+    right: 0;
+    top: 0;
   }
 }
 
 .#{$prefix}--alert--primary {
   @include alert($color-primary-light);
+
+  .#{$prefix}--alert__close {
+    @include button(
+      $color-body-text,
+      transparent,
+      darken($color-primary-light, 5%),
+      darken($color-primary-light, 10%)
+    );
+
+    padding: $spacing-small;
+  }
 }
 
 .#{$prefix}--alert--secondary {
   @include alert($color-secondary-light);
+
+  .#{$prefix}--alert__close {
+    @include button(
+      $color-body-text,
+      transparent,
+      darken($color-secondary-light, 5%),
+      darken($color-secondary-light, 10%)
+    );
+
+    padding: $spacing-small;
+  }
 }
 
 .#{$prefix}--alert--danger {
   @include alert($color-danger-light);
+
+  .#{$prefix}--alert__close {
+    @include button(
+      $color-body-text,
+      transparent,
+      darken($color-danger-light, 5%),
+      darken($color-danger-light, 10%)
+    );
+
+    padding: $spacing-small;
+  }
 }
 
 .#{$prefix}--alert--warning {
   @include alert($color-warning-light);
+
+  .#{$prefix}--alert__close {
+    @include button(
+      $color-body-text,
+      transparent,
+      darken($color-warning-light, 5%),
+      darken($color-warning-light, 10%)
+    );
+
+    padding: $spacing-small;
+  }
 }
 
 .#{$prefix}--alert--success {
   @include alert($color-success-light);
+
+  .#{$prefix}--alert__close {
+    @include button(
+      $color-body-text,
+      transparent,
+      darken($color-success-light, 5%),
+      darken($color-success-light, 10%)
+    );
+
+    padding: $spacing-small;
+  }
 }

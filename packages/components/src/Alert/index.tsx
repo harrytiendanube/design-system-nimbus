@@ -34,10 +34,7 @@ interface InterfaceAlert {
   /**
    * Type of react mouse event onclick to manage event click and void return
    */
-  onClickPrimary?: (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-  ) => void;
-
+  onClickPrimary?: () => void;
   /**
    * Label of secondary action
    * */
@@ -47,13 +44,9 @@ interface InterfaceAlert {
    * */
   secondaryTo?: string;
   /**
-   * Is dismissable boolean flag
-   * */
-  isDismissable?: boolean;
-  /**
    * Type of react mouse event onclick to manage event click and void return
    */
-  onDismiss?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
+  onDismiss?: () => void;
   /**
    * Indicates whether the alert should be displayed
    * */
@@ -67,7 +60,6 @@ interface InterfaceAlert {
  *  @param onClickPrimary Type of react mouse event onclick to manage event click and void return
  *  @param secondaryLabel Label of secondary action
  *  @param secondaryTo Destination link of secondary action
- *  @param isDismissable Is dismissable boolean flag
  *  @param onDismiss Type of react mouse event onclick to manage event click and void return
  *  @param show Indicates whether the alert should be displayed
  */
@@ -76,11 +68,10 @@ function Alert({
   appearance = "primary",
   title,
   primaryLabel,
-  onClickPrimary = (): void => {},
+  onClickPrimary,
   secondaryLabel,
   secondaryTo = "",
-  isDismissable = false,
-  onDismiss = (): void => {},
+  onDismiss,
   show = false,
 }: InterfaceAlert): JSX.Element {
   const memorizedIcon = React.useMemo(() => {
@@ -94,41 +85,63 @@ function Alert({
     const Icon = iconVariants[appearance];
     return <Icon />;
   }, [appearance]);
-
+  const handleClickPrimary = React.useCallback((): void => {
+    onClickPrimary?.();
+  }, [onClickPrimary]);
   const memorizedPrimary = React.useMemo(
     () =>
       primaryLabel && (
-        <Button onClick={onClickPrimary} appearance="primary">
-          {primaryLabel}
-        </Button>
-      ),
-    [primaryLabel, onClickPrimary],
-  );
-  const memorizedSecondary = React.useMemo(
-    () => secondaryLabel && <Link href={secondaryTo}>{secondaryLabel}</Link>,
-    [secondaryLabel, secondaryTo],
-  );
-
-  const memorizedDismissable = React.useMemo(
-    () =>
-      isDismissable && (
-        // eslint-disable-next-line jsx-a11y/no-static-element-interactions
-        <div className="nimbus--alert__close" onClick={onDismiss}>
-          <CloseIcon />
+        <div className="nimbus--action-wrapper__item">
+          <Button onClick={handleClickPrimary} appearance="secondary">
+            {primaryLabel}
+          </Button>
         </div>
       ),
-    [isDismissable, onDismiss],
+    [primaryLabel, handleClickPrimary],
   );
-
+  const memorizedSecondary = React.useMemo(
+    () =>
+      secondaryLabel && (
+        <div className="nimbus--action-wrapper__item">
+          <Link href={secondaryTo}>{secondaryLabel}</Link>
+        </div>
+      ),
+    [secondaryLabel, secondaryTo],
+  );
+  const handleDismiss = React.useCallback((): void => {
+    onDismiss?.();
+  }, [onDismiss]);
+  const memorizedDismissable = React.useMemo(
+    () =>
+      onDismiss && (
+        <button
+          type="button"
+          aria-label="Close"
+          className="nimbus--alert__close"
+          onClick={handleDismiss}
+        >
+          <CloseIcon />
+        </button>
+      ),
+    [onDismiss, handleDismiss],
+  );
   const withActions = (primaryLabel || secondaryLabel) && (
     <div className="nimbus--alert__actions">
-      {memorizedPrimary}
-      {memorizedSecondary}
+      <div className="nimbus--action-wrapper">
+        {memorizedPrimary}
+        {memorizedSecondary}
+      </div>
     </div>
   );
-
+  const classname = React.useMemo(
+    () =>
+      `nimbus--alert nimbus--alert--${appearance} ${
+        onDismiss ? "is-dismissable" : ""
+      }`,
+    [appearance, onDismiss],
+  );
   return show ? (
-    <div className={`nimbus--alert nimbus--alert--${appearance}`}>
+    <div className={classname} role="alert">
       <div className="nimbus--alert__icon">{memorizedIcon}</div>
       <div className="nimbus--alert__details">
         <div className="nimbus--alert__body">
