@@ -2,9 +2,7 @@
 
 // Select
 
-// TODO: @Juan Replace these classes with shared values from input component
-
-.#{$prefix}--input__label {
+.#{$prefix}--select__label {
   @include nimbus--type("text-label");
   color: $color-body-text;
   display: block;
@@ -12,10 +10,10 @@
   width: 100%;
 }
 
-.#{$prefix}--input {
+.#{$prefix}--select {
   position: relative;
 
-  .#{$prefix}--input__append {
+  .#{$prefix}--select__append {
     padding: $spacing-x-small;
     pointer-events: none;
     position: absolute;
@@ -28,7 +26,7 @@
     }
   }
 
-  .#{$prefix}--select {
+  .#{$prefix}--select__field {
     @include nimbus--type("text-body");
     appearance: none;
     background-color: transparent;
@@ -61,8 +59,8 @@
       border-color: $color-primary-active;
       box-shadow: 0 0 0 $input-border-width $color-primary-active;
 
-      ~ .#{$prefix}--input__prepend svg,
-      ~ .#{$prefix}--input__append svg {
+      ~ .#{$prefix}--select__prepend svg,
+      ~ .#{$prefix}--select__append svg {
         fill: $color-secondary;
       }
     }

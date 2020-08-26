@@ -13,7 +13,7 @@ import {
 
 interface InterfaceSelect {
   /**
-   * Name of the input
+   * Name of the select
    * */
   name: string;
   /**
@@ -40,7 +40,7 @@ interface InterfaceSelect {
 
 /**
  *  @param label Text to be displayed in the label
- *  @param name Name of the input
+ *  @param name Name of the select
  *  @param options Array of options to be displayed
  *  @param value Current value
  *  @param placeholder Text to be used as placeholder. It is the first option and is disabled
@@ -65,7 +65,7 @@ function Select({
   const memorizedLabel = React.useMemo(
     () =>
       selectLabel && (
-        <label className="nimbus--input__label" htmlFor={`select_${name}`}>
+        <label className="nimbus--select__label" htmlFor={`select_${name}`}>
           {selectLabel}
         </label>
       ),
@@ -100,11 +100,11 @@ function Select({
   );
 
   return (
-    <div className="nimbus--input-wrapper">
+    <div className="nimbus--select-wrapper">
       {memorizedLabel}
-      <div className="nimbus--input">
+      <div className="nimbus--select">
         <select
-          className="nimbus--select"
+          className="nimbus--select__field"
           id={`select_${name}`}
           name={name}
           value={selectValue}
@@ -113,7 +113,7 @@ function Select({
           {memorizedPlaceholder}
           {memorizedOptions}
         </select>
-        <div className="nimbus--input__append">
+        <div className="nimbus--select__append">
           <ChevronDownIcon />
         </div>
       </div>
