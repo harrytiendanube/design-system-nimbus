@@ -1,9 +1,9 @@
 ---
 name: Bug report
 about: Create a report to help us improve
-title: "[ISSUE]"
-labels: ''
-assignees: ''
+title: "[NIMBUS]"
+labels: bug
+assignees: DamianHorn, ivankljenak, juanchigallego, NicoCroce, radomskip
 
 ---
 
