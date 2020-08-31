@@ -75,7 +75,7 @@ function IconItem({
   return (
     <div className="nimbus--icon-item" role="status">
       <div className={classname} aria-label={title}>
-        <Icon size="medium" />
+        <Icon />
       </div>
       <div className="nimbus--icon-item__info">
         <Text>{title}</Text>

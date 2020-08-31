@@ -37,7 +37,7 @@
 
     .#{$prefix}--text,
     .#{$prefix}--link {
-      @include nimbus--type("text-label");
+      @include nimbus--type("text-label-tight");
       color: $color-body-text;
     }
   }
