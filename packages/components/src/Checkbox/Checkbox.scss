@@ -68,6 +68,7 @@
     min-height: $spacing-medium;
     padding-left: $spacing-large;
     position: relative;
+    white-space: nowrap;
 
     &::before {
       background-color: transparent;
