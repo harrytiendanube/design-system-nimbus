@@ -23,10 +23,15 @@
     padding-bottom: $spacing-x-small;
     padding-left: $spacing-x-small;
     padding-right: $spacing-x-small;
-    position: sticky;
+    position: fixed;
     top: 0;
     width: 100%;
     z-index: 499;
+
+    @include nimbus--breakpoint(md) {
+      padding-top: $spacing-x-small;
+      position: sticky;
+    }
 
     > * {
       padding-left: $spacing-x-small;
