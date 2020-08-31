@@ -23,8 +23,9 @@
     visibility: visible;
 
     .#{$prefix}--modal-wrapper {
+      opacity: 1;
       transform: translate3d(0, 0, 0);
-      transition: transform $motion-fast ease;
+      transition: opacity $motion-fast ease, transform $motion-fast ease;
     }
   }
 
@@ -35,9 +36,10 @@
     height: auto;
     max-height: 100%;
     max-width: calc(100% - #{$spacing-large});
+    opacity: 0;
     overflow: hidden;
     transform: translate3d(0, 100px, 0);
-    transition: transform $motion-fast ease;
+    transition: opacity $motion-fast ease, transform $motion-fast ease;
     width: 100%;
 
     @include nimbus--breakpoint(md) {
