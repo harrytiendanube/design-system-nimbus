@@ -10,6 +10,7 @@ import {
   ValidationsContextProvider,
   FieldsContainer,
   InterfaceOnSubmit,
+  InterfaceTextValidation,
 } from "../validator";
 
 export interface InterfaceForm {
@@ -51,6 +52,10 @@ export interface InterfaceForm {
   onClickButton?: (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => void;
+  /**
+   * Structure with text for validation: {required: "this field is required", email:" this field is not email" ... }
+   */
+  textValidation?: InterfaceTextValidation;
 }
 
 /**
@@ -75,6 +80,7 @@ function Form({
   onClickSubmit,
   buttonLabel,
   onClickButton,
+  textValidation = {},
 }: InterfaceForm): JSX.Element {
   const { isSubmit, setFields, handleSubmit } = useForm();
 
@@ -103,7 +109,7 @@ function Form({
       </Alert>
       <form action="">
         <ValidationsContextProvider>
-          <FieldsContainer {...{ isSubmit, setFields }}>
+          <FieldsContainer {...{ isSubmit, setFields, textValidation }}>
             {children}
           </FieldsContainer>
         </ValidationsContextProvider>

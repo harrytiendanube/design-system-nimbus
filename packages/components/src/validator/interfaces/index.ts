@@ -1,4 +1,4 @@
-interface GenericObject {
+export interface InterfaceGenericObject {
   [key: string]: string;
 }
 
@@ -7,11 +7,16 @@ export interface InterfaceValidationsContext {
   setSubmitted: (state: Boolean) => void;
   formFields: InterfaceFormFields;
   validateField: (name: string, fieldValidate: InterfaceFieldValidate) => void;
+  textValidation: InterfaceTextValidation;
+  setTextValidation: React.Dispatch<
+    React.SetStateAction<InterfaceTextValidation>
+  >;
 }
 export interface InterfaceFieldsContainer {
   children: React.ReactNode;
   setFields: (dataForm: InterfaceFormFields) => void;
   isSubmit: Boolean;
+  textValidation: InterfaceTextValidation;
 }
 
 export type InputTypes =
@@ -40,7 +45,8 @@ export interface InterfaceFormFields {
   [name: string]: InterfaceFieldValidate;
 }
 
-export interface InterfaceDataFields extends GenericObject {}
+export interface InterfaceDataFields extends InterfaceGenericObject {}
+export interface InterfaceTextValidation extends InterfaceGenericObject {}
 
 export interface InterfaceSubmitForm {
   data: InterfaceDataFields;

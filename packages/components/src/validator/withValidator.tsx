@@ -9,9 +9,12 @@ const INPUT_VALUE_DEFAULT = "";
 
 const withValidation = (FieldComponent: React.FC<InterfaceInput>) =>
   React.memo((props: InterfaceInput) => {
-    const { formFields, validateField, submitted } = React.useContext(
-      ValidationsContext,
-    );
+    const {
+      formFields,
+      validateField,
+      submitted,
+      textValidation,
+    } = React.useContext(ValidationsContext);
     const {
       name,
       value = INPUT_VALUE_DEFAULT,
@@ -63,6 +66,18 @@ const withValidation = (FieldComponent: React.FC<InterfaceInput>) =>
       setFormFields(value);
     }, []);
 
+    const showError = React.useCallback(
+      (nameField: string, error: string | undefined): string | null => {
+        if (error && textValidation) {
+          return {}.hasOwnProperty.call(textValidation, nameField)
+            ? textValidation[nameField]
+            : error;
+        }
+        return null;
+      },
+      [textValidation],
+    );
+
     return (
       <React.Fragment>
         <FieldComponent
@@ -72,7 +87,9 @@ const withValidation = (FieldComponent: React.FC<InterfaceInput>) =>
           value={value}
         />
         <p style={{ color: "red" }}>
-          {submitted && formFields[name] && formFields[name].error}
+          {submitted &&
+            formFields[name] &&
+            showError(name, formFields[name].error)}
         </p>
       </React.Fragment>
     );

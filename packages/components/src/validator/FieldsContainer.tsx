@@ -9,8 +9,11 @@ const FieldsContainer = ({
   children,
   setFields,
   isSubmit,
+  textValidation,
 }: InterfaceFieldsContainer): JSX.Element => {
-  const { setSubmitted, formFields } = React.useContext(ValidationsContext);
+  const { setSubmitted, formFields, setTextValidation } = React.useContext(
+    ValidationsContext,
+  );
 
   React.useEffect(() => {
     setFields(formFields);
@@ -19,6 +22,10 @@ const FieldsContainer = ({
   React.useEffect(() => {
     setSubmitted(isSubmit);
   }, [isSubmit]);
+
+  React.useEffect(() => {
+    setTextValidation(textValidation);
+  }, [setTextValidation, textValidation]);
 
   return <React.Fragment>{children}</React.Fragment>;
 };

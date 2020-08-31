@@ -2,7 +2,7 @@ import withValidator from "./withValidator";
 import ValidationsContextProvider from "./FormContext";
 import FieldsContainer from "./FieldsContainer";
 import useForm from "./useForm";
-import { InterfaceOnSubmit } from "./interfaces";
+import { InterfaceOnSubmit, InterfaceTextValidation } from "./interfaces";
 
 export {
   withValidator,
@@ -10,4 +10,5 @@ export {
   ValidationsContextProvider,
   FieldsContainer,
   InterfaceOnSubmit,
+  InterfaceTextValidation,
 };

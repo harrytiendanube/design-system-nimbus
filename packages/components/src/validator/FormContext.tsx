@@ -5,6 +5,7 @@ import {
   InterfaceValidationsContext,
   InterfaceFormFields,
   InterfaceValidateField,
+  InterfaceTextValidation,
 } from "./interfaces";
 
 export const ValidationsContext = React.createContext<
@@ -21,6 +22,9 @@ const ValidationsContextProvider = ({
   );
 
   const [submitted, setSubmitted] = React.useState<Boolean>(false);
+  const [textValidation, setTextValidation] = React.useState<
+    InterfaceTextValidation
+  >({} as InterfaceTextValidation);
 
   const validateField: InterfaceValidateField = (name, fieldValidate) => {
     const error = validator(fieldValidate.validation, fieldValidate.value);
@@ -38,7 +42,14 @@ const ValidationsContextProvider = ({
     });
   };
 
-  const value = { submitted, setSubmitted, formFields, validateField };
+  const value = {
+    submitted,
+    setSubmitted,
+    formFields,
+    validateField,
+    textValidation,
+    setTextValidation,
+  };
 
   return (
     <ValidationsContext.Provider value={value}>
