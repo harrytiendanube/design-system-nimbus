@@ -28,7 +28,7 @@
   ],
   "npmClient": "yarn",
   "devDependencies": {
-    "concurrently": "5.2.0",
+    "concurrently": "5.3.0",
     "lerna": "3.22.1"
   }
 }
