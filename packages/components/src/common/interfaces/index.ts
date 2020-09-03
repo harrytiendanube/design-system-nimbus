@@ -31,16 +31,14 @@ export type InterfaceSelectOptionGroup =
   | InterfaceSelectOption
   | InterfaceSelectGroup;
 
-export type idRowTableType = string | number;
-
-export interface InterfaceTableRow {
-  id: idRowTableType;
-  columns: JSX.Element[];
-}
-
 export interface InterfaceMassActionSelected {
   value: string;
-  rowsId: idRowTableType[];
+  indexRows: number[];
+}
+
+export interface InterfaceHeaderTable {
+  value: string;
+  class?: string;
 }
 
 export interface InterfaceMassAction {

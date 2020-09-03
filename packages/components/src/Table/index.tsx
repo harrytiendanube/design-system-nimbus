@@ -7,10 +7,10 @@ import Checkbox from "../Checkbox";
 import Select from "../Select";
 
 import {
-  InterfaceTableRow,
   InterfaceNameChecked,
   InterfaceMassAction,
   InterfaceNameValue,
+  InterfaceHeaderTable,
 } from "../common/interfaces";
 
 import {
@@ -24,15 +24,11 @@ interface InterfaceTable {
   /**
    * Headers of the table
    */
-  headers: string[];
+  headers: InterfaceHeaderTable[];
   /**
    * Rows of the table
    * */
-  rows: InterfaceTableRow[];
-  /**
-   * Column extra class
-   */
-  columnClass?: string[];
+  rows: JSX.Element[][];
   /**
    * Mass Action data
    * */
@@ -42,56 +38,51 @@ interface InterfaceTable {
 /**
  * @param headers  Headers of the table
  * @param rows Text to be displayed in the alert
- * @param columnClass Text to be displayed in the alert
  * @param massAction Mass Action data
  */
-function Table({
-  headers,
-  rows,
-  columnClass,
-  massAction,
-}: InterfaceTable): JSX.Element {
+function Table({ headers, rows, massAction }: InterfaceTable): JSX.Element {
   const allChecksUnSelected = React.useMemo(
-    () => createSelectedValues(rows, false),
+    () => createSelectedValues(rows.length, false),
     [rows],
   );
   const allChecksSelected = React.useMemo(
-    () => createSelectedValues(rows, true),
+    () => createSelectedValues(rows.length, true),
     [rows],
   );
-  const [rowsChecked, setRowsChecked] = React.useState(
-    createSelectedValues(rows, false),
+  const [rowsState, setRowsState] = React.useState(
+    createSelectedValues(rows.length, false),
   );
   const [massActionSelectValue] = React.useState("");
   const [massActionCheckValue, setMassActionCheckValue] = React.useState(false);
 
   const handleChangeRow = React.useCallback(
     (event: InterfaceNameChecked) => {
-      const newSelected = { ...rowsChecked, [event.name]: event.checked };
-      setRowsChecked(newSelected);
+      const newSelected = [...rowsState];
+      newSelected[parseInt(event.name, 10)] = event.checked;
+      setRowsState(newSelected);
       const setState = setMassActionCheckValue as React.Dispatch<
         React.SetStateAction<boolean | "indeterminate">
       >;
       setState(getNewMassActionCheckValue(newSelected));
     },
-    [rowsChecked],
+    [rowsState],
   );
 
   const handleOnChangeSelectMassAction = React.useCallback(
     (event: InterfaceNameValue) => {
       massAction?.onChange({
         value: event.value,
-        rowsId: getRowsId(rowsChecked, typeof rows[0].id),
+        indexRows: getRowsId(rowsState),
       });
       setMassActionCheckValue(false);
-      setRowsChecked(allChecksUnSelected);
+      setRowsState(allChecksUnSelected);
     },
-    [allChecksUnSelected, massAction, rows, rowsChecked],
+    [allChecksUnSelected, massAction, rowsState],
   );
   const handleOnChangeCheckMassAction = React.useCallback(
     (event: InterfaceNameChecked) => {
       setMassActionCheckValue(event.checked);
-      setRowsChecked(event.checked ? allChecksSelected : allChecksUnSelected);
+      setRowsState(event.checked ? allChecksSelected : allChecksUnSelected);
     },
     [allChecksSelected, allChecksUnSelected],
   );
@@ -106,7 +97,7 @@ function Table({
               name="check-all-mass-action"
               checked={massActionCheckValue}
               onChange={handleOnChangeCheckMassAction}
-              label={massAction?.getLabel(quantitySelected(rowsChecked))}
+              label={massAction?.getLabel(quantitySelected(rowsState))}
             />
           </div>
           <div className="nimbus--table__mass-select">
@@ -126,7 +117,7 @@ function Table({
       massAction,
       massActionCheckValue,
       massActionSelectValue,
-      rowsChecked,
+      rowsState,
     ],
   );
 
@@ -143,8 +134,12 @@ function Table({
               />
             </th>
             {headers.map((header) => (
-              <th scope="col" key={header} className="nimbus--table-row__item">
-                <Text>{header}</Text>
+              <th
+                scope="col"
+                key={header.value}
+                className="nimbus--table-row__item"
+              >
+                <Text>{header.value}</Text>
               </th>
             ))}
           </tr>
@@ -160,31 +155,27 @@ function Table({
         <table className="nimbus--table">
           {memorizedHeader}
           <tbody className="nimbus--table__body">
-            {rows.map((row) => (
-              <tr key={row.id} className="nimbus--table-row">
+            {rows.map((row, index) => (
+              <tr key={index} className="nimbus--table-row">
                 <td className="nimbus--table-row__check">
                   <Checkbox
-                    name={`${row.id}`}
-                    checked={rowsChecked[row.id]}
+                    name={`${index}`}
+                    checked={rowsState[index]}
                     onChange={handleChangeRow}
                   />
                 </td>
-                {row.columns.map((column, index) => {
+                {row.map((column, indexCol) => {
                   const className = `nimbus--table-row__item ${
-                    columnClass && columnClass[index]
+                    headers[indexCol].class ?? ""
                   }`;
-                  return (
-                    <>
-                      {index === 0 ? (
-                        <th key={index} scope="row" className={className}>
-                          {column}
-                        </th>
-                      ) : (
-                        <td key={index} className={className}>
-                          {column}
-                        </td>
-                      )}
-                    </>
+                  return indexCol === 0 ? (
+                    <th key={indexCol} scope="row" className={className}>
+                      {column}
+                    </th>
+                  ) : (
+                    <td key={indexCol} className={className}>
+                      {column}
+                    </td>
                   );
                 })}
               </tr>

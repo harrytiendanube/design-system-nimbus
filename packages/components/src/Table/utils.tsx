@@ -1,53 +1,44 @@
-import { InterfaceTableRow, idRowTableType } from "../common/interfaces";
-
-const createSelectedValues = (
-  rows: InterfaceTableRow[],
-  value: boolean,
-): { [k: string]: boolean } => {
-  const values: { [k: string]: boolean } = {};
-  rows.forEach((row: InterfaceTableRow) => {
-    values[row.id] = value;
-  });
+const createSelectedValues = (length: number, value: boolean): boolean[] => {
+  const values: boolean[] = [];
+  for (let i = 0; i < length; i++) {
+    values[i] = value;
+  }
   return values;
 };
 
-const quantitySelected = (selected: { [k: string]: boolean }): number => {
+const quantitySelected = (rows: boolean[]): number => {
   let rowsSelected = 0;
-  Object.keys(selected).forEach((key) => {
-    if (selected[key]) rowsSelected++;
-  });
+  for (let i = 0; i < rows.length; i++) {
+    if (rows[i]) rowsSelected++;
+  }
   return rowsSelected;
 };
 
-const isNoneSelected = (selected: { [k: string]: boolean }): boolean => {
-  return quantitySelected(selected) === 0;
+const isNoneSelected = (rows: boolean[]): boolean => {
+  return quantitySelected(rows) === 0;
 };
 
-const isAllSelected = (selected: { [k: string]: boolean }): boolean => {
-  return quantitySelected(selected) === Object.keys(selected).length;
+const isAllSelected = (rows: boolean[]): boolean => {
+  return quantitySelected(rows) === rows.length;
 };
 
-const getNewMassActionCheckValue = (selected: {
-  [k: string]: boolean;
-}): boolean | "indeterminate" => {
-  if (isAllSelected(selected)) {
+const getNewMassActionCheckValue = (
+  rows: boolean[],
+): boolean | "indeterminate" => {
+  if (isAllSelected(rows)) {
     return true;
   }
-  if (isNoneSelected(selected)) {
+  if (isNoneSelected(rows)) {
     return false;
   }
   return "indeterminate";
 };
 
-const getRowsId = (
-  selected: { [k: string]: boolean },
-  typeOfId: string,
-): idRowTableType[] => {
-  const rowsId: idRowTableType[] = [];
-  Object.keys(selected).forEach((key) => {
-    if (selected[key])
-      rowsId.push(typeOfId === "number" ? parseInt(key, 10) : key);
-  });
+const getRowsId = (rows: boolean[]): number[] => {
+  const rowsId = [];
+  for (let i = 0; i < rows.length; i++) {
+    if (rows[i]) rowsId.push(i);
+  }
   return rowsId;
 };
 

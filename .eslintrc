@@ -97,7 +97,8 @@
           "Checkbox",
           "un",
           "columnheader",
-          "Tooltip"
+          "Tooltip",
+          "rowheader"
         ]
       }
     ]
