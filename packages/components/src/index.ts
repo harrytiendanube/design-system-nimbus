@@ -92,3 +92,6 @@ export * from "./Tooltip";
 export { default as EmptyState } from "./EmptyState";
 export * from "./EmptyState";
 
+// Label reference added
+export { default as Label } from "./Label";
+export * from "./Label";

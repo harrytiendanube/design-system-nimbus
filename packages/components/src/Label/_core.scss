@@ -1,0 +1,57 @@
+@import "../../styles/core.scss";
+
+// Label Mixins
+
+@mixin label-base {
+  @include nimbus--type("text-label-tight");
+  background-color: transparent;
+  border-radius: $spacing-small;
+  color: $color-body-text;
+  display: inline-block;
+  padding: $spacing-xx-small $spacing-x-small;
+
+  svg {
+    fill: inherit;
+    margin-right: $spacing-xx-small;
+    margin-top: -$spacing-xx-small;
+  }
+
+  &[type="button"] {
+    appearance: none;
+    cursor: pointer;
+    transition: $button-hover-delay ease;
+
+    &:disabled,
+    &:hover:disabled,
+    &:focus:disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+      pointer-events: none;
+    }
+  }
+}
+
+@mixin label($bg-color, $hover-bg-color, $focus-color) {
+  @include label-base;
+  background-color: $bg-color;
+  border: $button-border-width solid $bg-color;
+
+  &[type="button"] {
+    border-color: $color-body-text;
+
+    &:hover {
+      background-color: $hover-bg-color;
+      border-color: $hover-bg-color;
+    }
+
+    &:active {
+      background-color: $focus-color;
+      border-color: $focus-color;
+    }
+
+    &:focus {
+      border-color: $focus-color;
+      box-shadow: 0 0 0 $button-border-width $focus-color;
+    }
+  }
+}

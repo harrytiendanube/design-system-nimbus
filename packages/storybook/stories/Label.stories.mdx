@@ -1,0 +1,185 @@
+import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
+import { withKnobs, text } from "@storybook/addon-knobs";
+import { action } from "@storybook/addon-actions";
+import { withA11y } from "@storybook/addon-a11y";
+
+import { Label } from "@tiendanube/components/src";
+
+import {
+  CreditCardIcon,
+  CheckIcon,
+  ExclamationTriangleIcon,
+  ArchiveIcon,
+  BoxUnpackedIcon,
+  BoxPackedIcon,
+} from "@tiendanube/icons";
+
+import "../utils/style.css";
+
+<Meta title="Atoms/Label" component={Label} />
+
+# Label
+
+TODO: complete
+
+<Preview>
+  <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
+    <Label id="id-1" icon={CreditCardIcon} label={text("label", "Text")} />
+  </Story>
+</Preview>
+
+## Properties
+
+<Props of={Label.type} />
+
+# Appearance
+
+TODO: complete
+
+<Preview withToolbar>
+  <Story name="appearance">
+    <div>
+      <div className="separate">
+        <Label id="id-1" appearance="default" label="Default" />
+        <Label id="id-2" appearance="primary" label="Primary" />
+        <Label id="id-3" appearance="secondary" label="Secondary" />
+        <Label id="id-4" appearance="danger" label="Danger" />
+        <Label id="id-5" appearance="warning" label="Warning" />
+        <Label id="id-6" appearance="success" label="Success" />
+      </div>
+      <br />
+      <div className="separate">
+        <Label
+          id="id-7"
+          onClick={action("onClick")}
+          appearance="default"
+          label="Default"
+        />
+        <Label
+          id="id-8"
+          onClick={action("onClick")}
+          appearance="primary"
+          label="Primary"
+        />
+        <Label
+          id="id-9"
+          onClick={action("onClick")}
+          appearance="secondary"
+          label="Secondary"
+        />
+        <Label
+          id="id-10"
+          onClick={action("onClick")}
+          appearance="danger"
+          label="Danger"
+        />
+        <Label
+          id="id-11"
+          onClick={action("onClick")}
+          appearance="warning"
+          label="Warning"
+        />
+        <Label
+          id="id-12"
+          onClick={action("onClick")}
+          appearance="success"
+          label="Success"
+        />
+      </div>
+    </div>
+  </Story>
+</Preview>
+
+# Appearance and icon
+
+TODO: complete
+
+<Preview withToolbar>
+  <Story name="appearance and icon">
+    <div>
+      <div className="separate">
+        <Label
+          id="id-1"
+          appearance="default"
+          icon={ArchiveIcon}
+          label="Default"
+        />
+        <Label
+          id="id-2"
+          appearance="primary"
+          icon={BoxUnpackedIcon}
+          label="Primary"
+        />
+        <Label
+          id="id-3"
+          appearance="secondary"
+          icon={BoxPackedIcon}
+          label="Secondary"
+        />
+        <Label
+          id="id-4"
+          appearance="danger"
+          icon={ExclamationTriangleIcon}
+          label="Danger"
+        />
+        <Label
+          id="id-5"
+          appearance="warning"
+          icon={CreditCardIcon}
+          label="Warning"
+        />
+        <Label
+          id="id-6"
+          appearance="success"
+          icon={CheckIcon}
+          label="Success"
+        />
+      </div>
+      <br />
+      <div className="separate">
+        <Label
+          id="id-7"
+          onClick={action("onClick")}
+          appearance="default"
+          icon={ArchiveIcon}
+          label="Default"
+        />
+        <Label
+          id="id-8"
+          onClick={action("onClick")}
+          appearance="primary"
+          icon={BoxUnpackedIcon}
+          label="Primary"
+        />
+        <Label
+          id="id-9"
+          onClick={action("onClick")}
+          appearance="secondary"
+          icon={BoxPackedIcon}
+          label="Secondary"
+        />
+        <Label
+          id="id-10"
+          onClick={action("onClick")}
+          appearance="danger"
+          icon={ExclamationTriangleIcon}
+          label="Danger"
+        />
+        <Label
+          id="id-11"
+          onClick={action("onClick")}
+          appearance="warning"
+          icon={CreditCardIcon}
+          label="Warning"
+        />
+        <Label
+          id="id-12"
+          onClick={action("onClick")}
+          appearance="success"
+          icon={CheckIcon}
+          label="Success"
+        />
+      </div>
+    </div>
+  </Story>
+</Preview>
