@@ -1,0 +1,13 @@
+@import "../../styles/core";
+
+// Pagination
+
+.#{$prefix}--button-group {
+  border-radius: $spacing-x-small;
+  display: inline-flex;
+  overflow: hidden;
+
+  .#{$prefix}--button {
+    border-radius: 0;
+  }
+}

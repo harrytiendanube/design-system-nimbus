@@ -92,6 +92,10 @@ export * from "./Tooltip";
 export { default as EmptyState } from "./EmptyState";
 export * from "./EmptyState";
 
+// EmptyState reference added
+export { default as Pagination } from "./Pagination";
+export * from "./Pagination";
+
 // Label reference added
 export { default as Label } from "./Label";
 export * from "./Label";

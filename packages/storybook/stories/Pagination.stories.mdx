@@ -1,0 +1,79 @@
+import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
+import { withKnobs, number, boolean } from "@storybook/addon-knobs";
+import { withA11y } from "@storybook/addon-a11y";
+import { action } from "@storybook/addon-actions";
+
+import { Pagination, Button, Text } from "@tiendanube/components/src";
+
+import "../utils/style.css";
+
+<Meta title="Components/Pagination" component={Pagination} />
+
+# Pagination
+
+TODO: complete
+
+<Preview>
+  <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
+    <Pagination
+      pageTotal={number("pageTotal", 12)}
+      pageSelected={number("pageSelected", 1)}
+      hasMorePages={boolean("hasMorePages", 1)}
+      onPageSelect={action("onPageSelect")}
+      labelPrevious={"Previous"}
+      labelNext={"Next"}
+    />
+  </Story>
+</Preview>
+
+## Properties
+
+<Props of={Pagination.type} />
+
+## Stressed
+
+TODO: complete
+
+<Preview withToolbar>
+  <Story name="stressed">
+    {() => {
+      const pages = [];
+      for (let i = 1; i <= 12; i++) {
+        pages.push(i);
+      }
+      return pages.map((page, index) => (
+        <p key={index}>
+          <Pagination
+            pageTotal={pages.length}
+            pageSelected={page}
+            onPageSelect={action("onPageSelect")}
+            labelPrevious={"Previous"}
+            labelNext={"Next"}
+          />
+        </p>
+      ));
+    }}
+  </Story>
+</Preview>
+
+# Test
+
+TODO: complete
+
+<Preview>
+  <Story name="test" parameters={{ decorators: [withKnobs, withA11y] }}>
+    {() => {
+      const [page, setPage] = React.useState(1);
+      return (
+        <Pagination
+          pageTotal={number("pageTotal", 12)}
+          pageSelected={page}
+          hasMorePages={boolean("hasMorePages", 1)}
+          onPageSelect={(currentPage) => setPage(currentPage)}
+          labelPrevious={"Previous"}
+          labelNext={"Next"}
+        />
+      );
+    }}
+  </Story>
+</Preview>
