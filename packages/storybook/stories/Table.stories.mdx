@@ -1,13 +1,18 @@
 import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
 import { withKnobs } from "@storybook/addon-knobs";
 import { withA11y } from "@storybook/addon-a11y";
-import { BoxUnpackedIcon, FileIcon, ChatDotsIcon } from "@tiendanube/icons";
+import {
+  BoxUnpackedIcon,
+  CreditCardIcon,
+  FileIcon,
+  ChatDotsIcon,
+} from "@tiendanube/icons";
 import {
   Alert,
   Table,
   Link,
   Text,
-  IconItem,
+  Label,
   Popover,
   ImageItem,
   Tooltip,
@@ -30,8 +35,15 @@ TODO: complete
         { value: "Date" },
         { value: "Buyer" },
         { value: "Total" },
-        { value: "Products" },
-        { value: "Status", class: "nimbus--table-row__item--full-width" },
+        { value: "Products", class: "nimbus--table-row__item--full-width" },
+        {
+          value: "Payment status",
+          class: "nimbus--table-row__item--auto-width",
+        },
+        {
+          value: "Shipping status",
+          class: "nimbus--table-row__item--auto-width",
+        },
       ];
       const rows = [];
       for (let i = 120; i < 123; i++) {
@@ -88,10 +100,16 @@ TODO: complete
               description="3 x $3.500"
             />
           </Popover>,
-          <IconItem
-            key="6"
+          <Label
+            id="payment-status"
+            icon={CreditCardIcon}
+            label="Awaiting payment"
+            appearance="warning"
+          />,
+          <Label
+            id="shipping-status"
             icon={BoxUnpackedIcon}
-            title="Ready to pack"
+            label="Unpacked"
             appearance="secondary"
           />,
         ]);

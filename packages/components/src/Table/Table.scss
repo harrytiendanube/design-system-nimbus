@@ -135,7 +135,13 @@
   .#{$prefix}--table-row__item--full-width {
     @include nimbus--breakpoint-down(md) {
       flex: 1 1 100%;
-      padding-top: $spacing-x-small;
+    }
+  }
+
+  .#{$prefix}--table-row__item--auto-width {
+    @include nimbus--breakpoint-down(md) {
+      flex: 0 0 auto;
+      padding: $spacing-x-small 0 0 $spacing-x-small;
     }
   }
 }
