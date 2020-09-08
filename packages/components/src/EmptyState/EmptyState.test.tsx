@@ -1,28 +1,28 @@
 import * as React from "react";
 import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
 
 import { EmptyState, Text } from "..";
 
-const myTitle = "myTitle";
-const myText = "myText";
-const myImage = "https://www.myImage.com/";
-const myFullWidth = true;
-const myPAL = "myPAL";
-const mySAL = "mySAL";
+const title = "Title text";
 
-describe("<EmptyState />", () => {
-  it("render", () => {
+describe("Render EmptyState", () => {
+  it("shows single EmptyState", () => {
     render(
       <EmptyState
-        fullWidth={myFullWidth}
-        image={myImage}
-        title={myTitle}
-        primaryActionLabel={myPAL}
-        secondaryActionLabel={mySAL}
+        fullWidth
+        image="https://d26lpennugtm8s.cloudfront.net/assets/common/img/empty-screens/empty-products.png"
+        title={title}
       >
-        <Text>{myText}</Text>
+        <Text>Empty state text</Text>
       </EmptyState>,
+    );
+
+    const element: HTMLElement = screen.getByRole("heading", {
+      name: title,
+    });
+    expect(element).toBeTruthy();
+  });
+});
     );
 
     expect(screen.getByRole("heading", { name: myTitle })).toBeTruthy();
