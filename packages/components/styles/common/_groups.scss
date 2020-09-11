@@ -6,15 +6,21 @@
   $horizontal-align: flex-start,
   $vertical-align: center,
   $spacing: $spacing-xx-small,
+  $wrap: true,
   $column: false
 ) {
   .#{$prefix}--action-wrapper {
     align-items: $vertical-align;
     display: flex;
-    flex-wrap: wrap;
     justify-content: $horizontal-align;
     margin-left: -$spacing;
     margin-right: -$spacing;
+
+    @if $wrap {
+      flex-wrap: wrap;
+    } @else {
+      flex-wrap: nowrap;
+    }
 
     @if $column {
       flex-direction: column;

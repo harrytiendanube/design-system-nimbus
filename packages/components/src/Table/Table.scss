@@ -78,7 +78,8 @@
   }
 
   th {
-    > * {
+    .#{$prefix}--text,
+    .#{$prefix}--link {
       @include nimbus--type("text-heading");
     }
   }
@@ -121,27 +122,53 @@
     text-align: left;
 
     @include nimbus--breakpoint-down(md) {
-      flex: 1 1 50%;
+      flex: 1 1 60%;
+      max-width: 60%;
       padding: 0 $spacing-x-small;
     }
-  }
 
-  .#{$prefix}--table-row__item:nth-of-type(even) {
-    @include nimbus--breakpoint-down(md) {
-      text-align: right;
+    .#{$prefix}--text {
+      max-width: 120px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
+      @include nimbus--breakpoint(lg) {
+        max-width: 150px;
+      }
     }
-  }
 
-  .#{$prefix}--table-row__item--full-width {
-    @include nimbus--breakpoint-down(md) {
-      flex: 1 1 100%;
+    &:nth-of-type(even) {
+      @include nimbus--breakpoint-down(md) {
+        flex: 1 1 40%;
+        max-width: 40%;
+        text-align: right;
+
+        > * {
+          text-align: right;
+        }
+      }
     }
-  }
 
-  .#{$prefix}--table-row__item--auto-width {
-    @include nimbus--breakpoint-down(md) {
-      flex: 0 0 auto;
-      padding: $spacing-x-small 0 0 $spacing-x-small;
+    &.#{$prefix}--table-row__item--full-width {
+      @include nimbus--breakpoint-down(md) {
+        flex: 1 1 100%;
+        max-width: 100%;
+      }
+
+      > * {
+        width: 100%;
+      }
+    }
+
+    &.#{$prefix}--table-row__item--auto-width {
+      @include nimbus--breakpoint-down(md) {
+        flex: 0 0 auto;
+        max-width: initial;
+        padding: $spacing-x-small 0 0 $spacing-x-small;
+      }
     }
   }
 }
+
+@include nimbus--action-wrapper($wrap: false);

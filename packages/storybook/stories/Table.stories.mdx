@@ -18,6 +18,8 @@ import {
   Tooltip,
 } from "@tiendanube/components/src";
 
+import { LOREM_STRESS } from "./utils/constants";
+
 import "../utils/style.css";
 
 <Meta title="Components/Table" component={Table} />
@@ -48,34 +50,16 @@ TODO: complete
       const rows = [];
       for (let i = 120; i < 123; i++) {
         rows.push([
-          <>
-            <Link
-              key="1"
-              href="https://www.tiendanube.com/"
-              target="_self"
-              appearance="primary"
-            >
-              #{i}
-            </Link>
-            <Tooltip
-              name="merchant-notes"
-              labelIcon={FileIcon}
-              labelText="Merchant notes"
-            >
-              <Text>Merchant notes</Text>
-            </Tooltip>
-          </>,
+          <Link
+            key="1"
+            href="https://www.tiendanube.com/"
+            target="_self"
+            appearance="primary"
+          >
+            #{i}
+          </Link>,
           <Text key="2">20 jun</Text>,
-          <>
-            <Text key="3">Name Last name</Text>
-            <Tooltip
-              name="customer-notes"
-              labelIcon={ChatDotsIcon}
-              labelText="Customer notes"
-            >
-              <Text>Customer notes</Text>
-            </Tooltip>
-          </>,
+          <Text key="3">Name Last name</Text>,
           <Text key="4">$3.500</Text>,
           <Popover key="5" name={i} label="6 products" title={`Order #${i}`}>
             <ImageItem
@@ -139,3 +123,123 @@ TODO: complete
 ## Properties
 
 <Props of={Table.type} />
+
+# Stressed
+
+TODO: complete
+
+<Preview>
+  <Story name="stressed" decorators={[withKnobs, withA11y]}>
+    {() => {
+      const [result, setResult] = React.useState("none");
+      const headers = [
+        { value: "Order" },
+        { value: "Date" },
+        { value: "Buyer" },
+        { value: "Total" },
+        { value: "Products", class: "nimbus--table-row__item--full-width" },
+        {
+          value: "Payment status",
+          class: "nimbus--table-row__item--auto-width",
+        },
+        {
+          value: "Shipping status",
+          class: "nimbus--table-row__item--auto-width",
+        },
+      ];
+      const rows = [];
+      for (let i = 12000; i < 12005; i++) {
+        rows.push([
+          <div className="nimbus--action-wrapper">
+            <div className="nimbus--action-wrapper__item">
+              <Link
+                key="1"
+                href="https://www.tiendanube.com/"
+                target="_self"
+                appearance="primary"
+              >
+                #{i}
+              </Link>
+            </div>
+            <Tooltip
+              name="merchant-notes"
+              labelIcon={FileIcon}
+              labelText="Merchant notes"
+            >
+              <Text>Merchant notes</Text>
+            </Tooltip>
+          </div>,
+          <Text key="2">31 dec</Text>,
+          <div className="nimbus--action-wrapper">
+            <div className="nimbus--action-wrapper__item">
+              <Text key="3">{LOREM_STRESS}</Text>
+            </div>
+            <div className="nimbus--action-wrapper__item">
+              <Tooltip
+                name="customer-notes"
+                labelIcon={ChatDotsIcon}
+                labelText="Customer notes"
+              >
+                <Text>Customer notes</Text>
+              </Tooltip>
+            </div>
+          </div>,
+          <Text key="4">$999.999,99</Text>,
+          <Popover key="5" name={i} label="20 products" title={`Order #${i}`}>
+            <ImageItem
+              thumbnail="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=943&q=80"
+              link={LOREM_STRESS}
+              linkTo="https://www.tiendanube.com/"
+              subtitle={LOREM_STRESS}
+              description="1 x $3.500"
+            />
+            <ImageItem
+              thumbnail="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=943&q=80"
+              link={LOREM_STRESS}
+              linkTo="https://www.tiendanube.com/"
+              subtitle={LOREM_STRESS}
+              description="2 x $3.500"
+            />
+            <ImageItem
+              thumbnail="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=943&q=80"
+              link={LOREM_STRESS}
+              linkTo="https://www.tiendanube.com/"
+              subtitle={LOREM_STRESS}
+              description="3 x $3.500"
+            />
+          </Popover>,
+          <Label
+            id="payment-status"
+            icon={CreditCardIcon}
+            label="Awaiting payment"
+            appearance="warning"
+          />,
+          <Label
+            id="shipping-status"
+            icon={BoxUnpackedIcon}
+            label="Unpacked"
+            appearance="secondary"
+          />,
+        ]);
+      }
+      const massAction = {
+        placeholder: "Select an Option",
+        options: [
+          { label: "Option 1", value: "1" },
+          { label: "Option 2", value: "2" },
+          { label: "Option 3", value: "3" },
+          { label: "Option 4", value: "4" },
+        ],
+        getLabel: (n) => `${n} selected`,
+        onChange: (selected) => setResult(JSON.stringify(selected)),
+      };
+      return (
+        <>
+          <Table headers={headers} rows={rows} massAction={massAction} />
+          <br />
+          <Alert show>Last option selected: {result}</Alert>
+        </>
+      );
+    }}
+  </Story>
+</Preview>

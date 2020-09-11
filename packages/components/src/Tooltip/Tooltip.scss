@@ -3,7 +3,9 @@
 // Tooltip
 
 .#{$prefix}--tooltip {
-  display: inline-block;
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
   position: relative;
 }
 

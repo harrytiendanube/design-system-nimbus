@@ -6,6 +6,7 @@
   @include button-base;
   @include nimbus--type("text-body");
   border: $button-border-width solid transparent;
+  border-radius: $actions-border-radius;
   color: $font-color;
   margin-bottom: -$spacing-xx-small;
   margin-left: -$spacing-x-small;

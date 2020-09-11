@@ -3,7 +3,7 @@
 // Popover
 
 .#{$prefix}--popover {
-  display: inline-block;
+  display: block;
   position: relative;
 
   .#{$prefix}--popover-wrapper {
