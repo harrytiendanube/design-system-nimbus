@@ -6,7 +6,7 @@ export interface InterfaceLayout {
   /**
    * Type of layout
    */
-  appearance: "aside" | "halves" | "fluid" | "centered";
+  appearance?: "aside" | "halves" | "fluid" | "centered";
   /**
    * Component to render in page content.
    */
@@ -18,10 +18,7 @@ export interface InterfaceLayout {
  * @param appearance Type of layout.
  * @param children Components to render inside layout.
  */
-function Layout({
-  appearance = "fluid",
-  children,
-}: InterfaceLayout): JSX.Element {
+function Layout({ appearance, children }: InterfaceLayout): JSX.Element {
   return <main className={`nimbus--layout-${appearance}`}>{children}</main>;
 }
 
