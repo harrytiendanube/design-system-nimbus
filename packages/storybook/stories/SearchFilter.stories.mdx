@@ -1,5 +1,6 @@
 import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
 import { withKnobs, select, text } from "@storybook/addon-knobs";
+import { action } from "@storybook/addon-actions";
 import { withA11y } from "@storybook/addon-a11y";
 
 import { SearchFilter, Button } from "@tiendanube/components/src";
@@ -19,6 +20,9 @@ TODO: complete
       placeholder="Search an invoice"
       resultCount="160 invoices"
       label="Filtros"
+      onSubmit={action("onSubmit")}
+      onClick={action("onClick")}
+      onDismiss={action("onDismiss")}
       appliedFilters={[
         { id: "search", label: "pattern search" },
         { id: "status", label: "actives" },

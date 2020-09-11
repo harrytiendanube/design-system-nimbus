@@ -80,6 +80,14 @@ function SearchFilter({
     onClick();
   }, [onClick]);
 
+  const memorizedFilters = React.useMemo(
+    () =>
+      appliedFilters?.map(({ id, label }) => (
+        <Chip key={id} id={id} label={label} onDismiss={handleDismiss} />
+      )),
+    [appliedFilters, handleDismiss],
+  );
+
   return (
     <div className="nimbus--search-filters__wrapper">
       <div className="nimbus--search-filters">
@@ -101,9 +109,7 @@ function SearchFilter({
       </div>
       <div className="nimbus--search-filters__results">
         <Text>{resultCount}</Text>
-        {appliedFilters?.map(({ id, label }) => (
-          <Chip key={id} id={id} label={label} onDismiss={handleDismiss} />
-        ))}
+        {memorizedFilters}
       </div>
     </div>
   );
