@@ -69,7 +69,7 @@
     "testing-library/await-async-query": "error",
     "testing-library/no-await-sync-query": "error",
     "testing-library/no-debug": "error",
-    "testing-library/await-fire-event": "error",
+    "testing-library/await-fire-event": "off",
     "testing-library/prefer-wait-for": "error",
     "spellcheck/spell-checker": [
       "error",
@@ -100,6 +100,7 @@
           "columnheader",
           "Tooltip",
           "rowheader",
+          "unhover",
           "esc",
           "rowgroup",
           "combobox"

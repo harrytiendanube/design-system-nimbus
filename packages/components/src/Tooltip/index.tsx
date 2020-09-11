@@ -81,9 +81,8 @@ function Tooltip({
   }, [isMouse]);
 
   const handleMouseLeave = React.useCallback(() => {
-    if (!isMouse) setIsMouse(true);
     setActive(false);
-  }, [isMouse]);
+  }, []);
 
   return (
     <>
