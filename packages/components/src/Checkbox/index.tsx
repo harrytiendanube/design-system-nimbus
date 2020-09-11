@@ -42,10 +42,13 @@ function Checkbox({
   disabled,
   onChange,
 }: InterfaceCheckbox): JSX.Element {
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const target = event.target as HTMLInputElement;
-    onChange?.({ name: target.name, checked: target.checked });
-  };
+  const handleChange = React.useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      const target = event.target as HTMLInputElement;
+      onChange?.({ name: target.name, checked: target.checked });
+    },
+    [onChange],
+  );
 
   const memorizedChecked = React.useMemo(
     () =>
