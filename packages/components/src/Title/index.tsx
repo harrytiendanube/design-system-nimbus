@@ -25,6 +25,4 @@ function Title({ children, type = "h1" }: InterfaceTitle): JSX.Element {
   );
 }
 
-Title.defaultProps = { type: "h1" };
-
 export default React.memo(Title);
