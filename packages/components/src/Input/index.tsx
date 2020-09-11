@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { SearchIcon, CloseIcon } from "@tiendanube/icons";
+import { SearchIcon, CloseIcon, Icon as IconType } from "@tiendanube/icons";
 import { withValidator } from "../validator";
 import { InputTypes } from "../validator/interfaces";
 import { InterfaceNameValue } from "../common/interfaces";
@@ -25,14 +25,13 @@ export interface InterfaceInput {
    */
   value?: string;
   /**
-   * Input type change keyboard, validations and insert type char.
-   * "number" | "text" | "tel" | "password" | "email" | "search"
+   * Input type
    */
   type?: InputTypes;
   /**
-   * Prepend a component to show at the start of the input
+   * Prepend a component to show at the start of the input. Icon Component imported from @tiendanube/icons.
    */
-  prepend?: any;
+  prepend?: IconType;
   /**
    * Minimum count of inserted chars
    */
@@ -69,7 +68,7 @@ export interface InterfaceInput {
  *  @param label Label
  *  @param value Input value
  *  @param type Input type
- *  @param prepend Prepend a component to show at the start of the input
+ *  @param prepend Prepend a component to show at the start of the input. Icon Component imported from @tiendanube/icons
  *  @param minLength Minimum count of inserted chars
  *  @param maxLength Maximum count of inserted chars
  *  @param pattern Custom Regex needed for validate inserted chars
@@ -138,7 +137,8 @@ function Input({
     () =>
       (Prepend || type === "search") && (
         <span className="nimbus--input__prepend">
-          {type === "search" ? <SearchIcon /> : <Prepend />}
+          {type === "search" && <SearchIcon />}
+          {type !== "search" && Prepend && <Prepend />}
         </span>
       ),
     [type, Prepend],
