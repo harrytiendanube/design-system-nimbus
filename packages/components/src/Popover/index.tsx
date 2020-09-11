@@ -2,8 +2,8 @@ import * as React from "react";
 
 import "./Popover.css";
 
-import { Title, Button } from "..";
 import { ChevronDownIcon, ChevronUpIcon } from "@tiendanube/icons";
+import { Title, Button } from "..";
 
 interface InterfacePopover {
   /**
