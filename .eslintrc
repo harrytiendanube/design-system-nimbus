@@ -61,6 +61,7 @@
     "react/display-name": ["off", { "ignoreTranspilerName": false }],
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
+    "import/extensions": "off",
     "import/no-extraneous-dependencies": [
       "error",
       { "devDependencies": ["**/*.test.tsx"] }
