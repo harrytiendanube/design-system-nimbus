@@ -28,7 +28,7 @@ interface InterfaceModal {
   /**
    * Label of primary action
    * */
-  primaryActionLabel: string;
+  primaryActionLabel?: string;
   /**
    * Label of secondary action
    * */
@@ -64,18 +64,11 @@ function Modal({
   onClickPrimary,
   onClickSecondary,
 }: InterfaceModal): JSX.Element {
-  const handleClickPrimary = React.useCallback((): void => {
-    onClickPrimary?.();
-  }, [onClickPrimary]);
-  const handleClickSecondary = React.useCallback((): void => {
-    onClickSecondary?.();
-  }, [onClickSecondary]);
-  const handleDismiss = React.useCallback((): void => {
-    onDismiss?.();
-  }, [onDismiss]);
   const handleClickOutside = React.useCallback(
     (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-      if ((event.target as HTMLElement).id === "nimbus-modal") onDismiss?.();
+      if ((event.target as HTMLElement).id === "nimbus-modal") {
+        onDismiss?.();
+      }
     },
     [onDismiss],
   );
@@ -100,34 +93,34 @@ function Modal({
           type="button"
           aria-label="Close"
           className="nimbus--modal-header__close"
-          onClick={handleDismiss}
+          onClick={onDismiss}
         >
           <CloseIcon />
         </button>
       ),
-    [onDismiss, handleDismiss],
+    [onDismiss],
   );
   const memorizedSecondary = React.useMemo(
     () =>
       secondaryActionLabel &&
-      handleClickSecondary && (
+      onClickSecondary && (
         <div className="nimbus--action-wrapper__item">
-          <Button onClick={handleClickSecondary}>{secondaryActionLabel}</Button>
+          <Button onClick={onClickSecondary}>{secondaryActionLabel}</Button>
         </div>
       ),
-    [secondaryActionLabel, handleClickSecondary],
+    [secondaryActionLabel, onClickSecondary],
   );
   const memorizedPrimary = React.useMemo(
     () =>
       primaryActionLabel &&
-      handleClickPrimary && (
+      onClickPrimary && (
         <div className="nimbus--action-wrapper__item">
-          <Button onClick={handleClickPrimary} appearance="primary">
+          <Button onClick={onClickPrimary} appearance="primary">
             {primaryActionLabel}
           </Button>
         </div>
       ),
-    [primaryActionLabel, handleClickPrimary],
+    [primaryActionLabel, onClickPrimary],
   );
   const container: HTMLElement = React.useMemo(
     () => document.createElement("div"),

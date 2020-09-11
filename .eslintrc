@@ -99,6 +99,7 @@
           "columnheader",
           "Tooltip",
           "rowheader",
+          "esc",
           "rowgroup",
           "combobox"
         ]
