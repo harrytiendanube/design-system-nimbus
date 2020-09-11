@@ -98,7 +98,9 @@
           "un",
           "columnheader",
           "Tooltip",
-          "rowheader"
+          "rowheader",
+          "rowgroup",
+          "combobox"
         ]
       }
     ]
