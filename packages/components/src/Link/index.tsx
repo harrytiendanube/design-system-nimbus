@@ -43,11 +43,11 @@ export interface InterfaceLink {
 const Link: React.FC<InterfaceLink> = ({
   children,
   href,
-  target,
-  appearance,
-  underline,
+  target = "_blank",
+  appearance = "default",
+  underline = false,
   icon: Icon,
-  iconPosition,
+  iconPosition = "start",
 }: InterfaceLink): JSX.Element => {
   const classname = React.useMemo(
     () =>
@@ -83,13 +83,6 @@ const Link: React.FC<InterfaceLink> = ({
       {memorizedEndIcon}
     </a>
   );
-};
-
-Link.defaultProps = {
-  target: "_blank",
-  appearance: "default",
-  underline: false,
-  iconPosition: "start",
 };
 
 export default React.memo(Link);
