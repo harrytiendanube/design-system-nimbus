@@ -50,7 +50,7 @@ function Select({
   name,
   label: selectLabel,
   options,
-  value: selectValue,
+  value: selectValue = "",
   placeholder,
   onChange,
 }: InterfaceSelect): JSX.Element {
@@ -120,9 +120,5 @@ function Select({
     </div>
   );
 }
-
-Select.defaultProps = {
-  value: "",
-};
 
 export default React.memo(Select);
