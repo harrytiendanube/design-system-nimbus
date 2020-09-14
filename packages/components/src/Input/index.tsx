@@ -1,6 +1,12 @@
 import * as React from "react";
 
-import { SearchIcon, CloseIcon, Icon as IconType } from "@tiendanube/icons";
+import {
+  SearchIcon,
+  CloseIcon,
+  ExclamationCircleIcon,
+  Icon as IconType,
+} from "@tiendanube/icons";
+
 import { withValidator } from "../validator";
 import { InputTypes } from "../validator/interfaces";
 import { InterfaceNameValue } from "../common/interfaces";
@@ -32,6 +38,10 @@ export interface InterfaceInput {
    * Prepend a component to show at the start of the input. Icon Component imported from @tiendanube/icons.
    */
   prepend?: IconType;
+  /**
+   * Indicates if input is valid
+   */
+  isValid?: boolean;
   /**
    * Minimum count of inserted chars
    */
@@ -68,7 +78,8 @@ export interface InterfaceInput {
  *  @param label Label
  *  @param value Input value
  *  @param type Input type
- *  @param prepend Prepend a component to show at the start of the input. Icon Component imported from @tiendanube/icons
+ *  @param prepend Prepend a component to show at the start of the input
+ *  @param isValid Indicates if input is valid
  *  @param minLength Minimum count of inserted chars
  *  @param maxLength Maximum count of inserted chars
  *  @param pattern Custom Regex needed for validate inserted chars
@@ -84,6 +95,7 @@ function Input({
   value = "",
   type = "text",
   prepend: Prepend,
+  isValid = true,
   minLength = "0",
   maxLength = "32",
   required = false,
@@ -144,19 +156,26 @@ function Input({
     [type, Prepend],
   );
 
-  const memorizedCloseIcon = React.useMemo(
-    () =>
-      type === "search" &&
-      value && (
-        <button
-          type="button"
-          className="nimbus--input__append"
-          onClick={handleClose}
-        >
-          <CloseIcon />
-        </button>
-      ),
-    [handleClose, type, value],
+  const memorizedRightIcon = React.useMemo(
+    () => (
+      <>
+        {type === "search" && value && (
+          <button
+            type="button"
+            className="nimbus--input__append"
+            onClick={handleClose}
+          >
+            <CloseIcon />
+          </button>
+        )}
+        {type !== "search" && !isValid && (
+          <span className="nimbus--input__append">
+            <ExclamationCircleIcon />
+          </span>
+        )}
+      </>
+    ),
+    [handleClose, isValid, type, value],
   );
 
   const classname = React.useMemo(
@@ -186,19 +205,11 @@ function Input({
           required={required}
         />
         {memorizedLeftIcon}
-        {memorizedCloseIcon}
+        {memorizedRightIcon}
       </div>
     </div>
   );
 }
-
-Input.defaultProps = {
-  type: "text",
-  label: "",
-  minLength: "0",
-  maxLength: "32",
-  required: false,
-};
 
 export const InputValidator = withValidator(React.memo(Input));
 export default React.memo(Input);

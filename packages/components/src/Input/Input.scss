@@ -2,6 +2,43 @@
 
 // Inputs
 
+.#{$prefix}--input-validation--error {
+  margin-bottom: $spacing-small;
+
+  @include nimbus--breakpoint(md) {
+    margin-bottom: $spacing-medium;
+  }
+
+  .#{$prefix}--input {
+    .#{$prefix}--input__append svg {
+      fill: $color-danger;
+    }
+
+    .#{$prefix}--input__field {
+      border-color: $color-danger;
+
+      &:focus {
+        border-color: $color-danger-active;
+        box-shadow: 0 0 0 $input-border-width $color-danger-active;
+
+        ~ .#{$prefix}--input__append svg {
+          fill: $color-danger;
+        }
+      }
+    }
+  }
+
+  .#{$prefix}--text {
+    color: $color-danger;
+    display: block;
+    margin-top: -$spacing-x-small;
+
+    @include nimbus--breakpoint(md) {
+      margin-top: -$spacing-small;
+    }
+  }
+}
+
 .#{$prefix}--input__label {
   @include nimbus--type("text-label");
   color: $color-body-text;

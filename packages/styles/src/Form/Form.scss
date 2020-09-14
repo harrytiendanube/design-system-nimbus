@@ -5,28 +5,17 @@
 .#{$prefix}--form {
   display: block;
   margin-bottom: $nimbus-grid-spacer-03;
+
+  > .#{$prefix}--alert--inline,
+  > .#{$prefix}--alert--toast {
+    margin-bottom: $nimbus-grid-spacer-04;
+  }
+
+  .#{$prefix}--input-wrapper {
+    margin-bottom: $nimbus-grid-spacer-03;
+  }
 }
 
-.#{$prefix}--form > .#{$prefix}--alert--inline,
-.#{$prefix}--form > .#{$prefix}--alert--toast {
-  margin-bottom: $nimbus-grid-spacer-04;
-}
-
-.#{$prefix}--form .#{$prefix}--input {
-  margin-bottom: $nimbus-grid-spacer-03;
-}
-
-.#{$prefix}--form__actions {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  margin-left: -$nimbus-grid-spacer-02;
-  margin-right: -$nimbus-grid-spacer-02;
-  margin-top: $nimbus-grid-spacer-04;
-}
-
-// TODO: Crear una clase global para botones para este tipo de casos
-.#{$prefix}--form__actions button {
-  margin-left: $nimbus-grid-spacer-02;
-  margin-right: $nimbus-grid-spacer-02;
+.#{$prefix}--action-wrapper {
+  @include nimbus--action-wrapper(flex-start);
 }

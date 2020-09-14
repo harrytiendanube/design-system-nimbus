@@ -10,7 +10,7 @@ export interface InterfaceText {
   /**
    *  Size
    */
-  size?: "regular";
+  size?: "regular" | "small";
 }
 /**
  *  @param children Text to be displayed

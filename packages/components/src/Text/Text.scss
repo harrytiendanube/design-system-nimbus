@@ -3,9 +3,12 @@
 // Links
 
 .#{$prefix}--text {
+  display: inline-block;
+}
+
+.#{$prefix}--text_regular {
   @include nimbus--type("text-body");
   color: $color-body-text;
-  display: inline-block;
 }
 
 .#{$prefix}--text_small {
