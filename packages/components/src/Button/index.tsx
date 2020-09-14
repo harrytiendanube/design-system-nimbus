@@ -2,6 +2,8 @@ import * as React from "react";
 
 import "./Button.css";
 
+import { Icon as IconType } from "@tiendanube/icons";
+
 export interface InterfaceButton {
   /**
    * React node of type children.
@@ -14,11 +16,11 @@ export interface InterfaceButton {
   /**
    * Appearance
    */
-  appearance?: "primary" | "secondary" | "default" | "danger";
+  appearance?: "default" | "primary" | "secondary" | "default" | "danger";
   /**
    * Icon Component imported from @tiendanube/icons
    */
-  icon?: any;
+  icon?: IconType;
   /**
    * Position of the icon inside the button
    */
@@ -45,11 +47,11 @@ export interface InterfaceButton {
 function Button({
   children,
   icon: Icon,
-  iconPosition,
-  appearance,
+  iconPosition = "start",
+  appearance = "default",
   onClick,
-  disabled,
-  link,
+  disabled = false,
+  link = false,
 }: InterfaceButton): JSX.Element {
   const classname = React.useMemo(
     () =>
@@ -92,12 +94,5 @@ function Button({
     </button>
   );
 }
-
-Button.defaultProps = {
-  appearance: "default",
-  iconPosition: "start",
-  disabled: false,
-  link: false,
-};
 
 export default React.memo(Button);
