@@ -30,7 +30,7 @@ function LayoutBackground({
   );
 
   return (
-    <div data-testid="LayoutBackground" className="nimbus--layout-background">
+    <div className="nimbus--layout-background">
       <div className="nimbus--layout-background__content">{children}</div>
       <div className="nimbus--layout-background__image" style={styles} />
     </div>
