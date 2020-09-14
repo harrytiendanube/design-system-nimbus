@@ -70,7 +70,7 @@ function Alert({
   primaryLabel,
   onClickPrimary,
   secondaryLabel,
-  secondaryTo = "",
+  secondaryTo,
   onDismiss,
   show = false,
 }: InterfaceAlert): JSX.Element {
@@ -85,32 +85,30 @@ function Alert({
     const Icon = iconVariants[appearance];
     return <Icon />;
   }, [appearance]);
-  const handleClickPrimary = React.useCallback((): void => {
-    onClickPrimary?.();
-  }, [onClickPrimary]);
+
   const memorizedPrimary = React.useMemo(
     () =>
-      primaryLabel && (
+      primaryLabel &&
+      onClickPrimary && (
         <div className="nimbus--action-wrapper__item">
-          <Button onClick={handleClickPrimary} appearance="secondary">
+          <Button onClick={onClickPrimary} appearance="secondary">
             {primaryLabel}
           </Button>
         </div>
       ),
-    [primaryLabel, handleClickPrimary],
+    [primaryLabel, onClickPrimary],
   );
   const memorizedSecondary = React.useMemo(
     () =>
-      secondaryLabel && (
+      secondaryLabel &&
+      secondaryTo && (
         <div className="nimbus--action-wrapper__item">
           <Link href={secondaryTo}>{secondaryLabel}</Link>
         </div>
       ),
     [secondaryLabel, secondaryTo],
   );
-  const handleDismiss = React.useCallback((): void => {
-    onDismiss?.();
-  }, [onDismiss]);
+
   const memorizedDismissable = React.useMemo(
     () =>
       onDismiss && (
@@ -118,12 +116,12 @@ function Alert({
           type="button"
           aria-label="Close"
           className="nimbus--alert__close"
-          onClick={handleDismiss}
+          onClick={onDismiss}
         >
           <CloseIcon />
         </button>
       ),
-    [onDismiss, handleDismiss],
+    [onDismiss],
   );
   const withActions = (primaryLabel || secondaryLabel) && (
     <div className="nimbus--alert__actions">
@@ -140,25 +138,23 @@ function Alert({
       }`,
     [appearance, onDismiss],
   );
-  return show ? (
-    <div className={classname} role="alert">
-      <div className="nimbus--alert__icon">{memorizedIcon}</div>
-      <div className="nimbus--alert__details">
-        <div className="nimbus--alert__body">
-          {title && <Title type="h5">{title}</Title>}
-          <Text size="regular">{children}</Text>
+  return (
+    <>
+      {show && (
+        <div className={classname} role="alert">
+          <div className="nimbus--alert__icon">{memorizedIcon}</div>
+          <div className="nimbus--alert__details">
+            <div className="nimbus--alert__body">
+              {title && <Title type="h5">{title}</Title>}
+              <Text size="regular">{children}</Text>
+            </div>
+            {withActions}
+          </div>
+          {memorizedDismissable}
         </div>
-        {withActions}
-      </div>
-      {memorizedDismissable}
-    </div>
-  ) : (
-    <React.Fragment />
+      )}
+    </>
   );
 }
-
-Alert.defaultProps = {
-  appearance: "primary",
-};
 
 export default React.memo(Alert);
