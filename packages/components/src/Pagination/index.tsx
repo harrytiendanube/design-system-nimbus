@@ -62,8 +62,6 @@ function Pagination({
     [margin, padding, pageSelected, pageTotal],
   );
 
-  const EMPTY_LABEL = "";
-
   return (
     <nav
       role="navigation"
@@ -75,9 +73,7 @@ function Pagination({
         disabled={pageSelected === 1}
         icon={ChevronLeftIcon}
         iconPosition="start"
-      >
-        {EMPTY_LABEL}
-      </Button>
+      />
       {pages.map((page, index) => {
         let label;
         let disabled;
@@ -108,9 +104,7 @@ function Pagination({
         disabled={pageSelected === pageTotal || !hasMorePages}
         icon={ChevronRightIcon}
         iconPosition="end"
-      >
-        {EMPTY_LABEL}
-      </Button>
+      />
     </nav>
   );
 }
