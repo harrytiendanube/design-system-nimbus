@@ -48,7 +48,7 @@ export interface InterfaceIconItem {
  */
 function IconItem({
   icon: Icon,
-  appearance = "primary",
+  appearance,
   title,
   subtitle,
   link,
