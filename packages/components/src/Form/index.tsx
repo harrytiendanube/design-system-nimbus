@@ -68,11 +68,12 @@ export interface InterfaceForm {
  *  @param onClickSubmit Submit button callback
  *  @param buttonLabel Optional Button Text
  *  @param onClickButton Type of react mouse event onclick to manage event click and void return
+ *  @param textValidation Structure with text for validation: {required: "this field is required", email:" this field is not email" ... }
  */
 
 function Form({
   alertText,
-  alertAppearance,
+  alertAppearance = "danger",
   children,
   link,
   linkTo,
@@ -130,7 +131,5 @@ function Form({
     </div>
   );
 }
-
-Form.defaultProps = { alertAppearance: "danger" };
 
 export default React.memo(Form);
