@@ -99,3 +99,7 @@ export * from "./Pagination";
 // Label reference added
 export { default as Label } from "./Label";
 export * from "./Label";
+
+// Card reference added
+export { default as Card } from "./Card";
+export * from "./Card";

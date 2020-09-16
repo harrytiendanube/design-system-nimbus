@@ -1,0 +1,131 @@
+@import "../../styles/core";
+
+// Card
+
+.#{$prefix}--card-wrapper {
+  background-color: $color-background;
+  border: $input-border-width solid $color-default;
+  border-radius: $actions-border-radius;
+  display: block;
+  width: 100%;
+
+  @include nimbus--breakpoint(md) {
+    padding: $spacing-x-small;
+  }
+
+  .#{$prefix}--card-header,
+  .#{$prefix}--card-body,
+  .#{$prefix}--card-footer {
+    padding: $spacing-small;
+  }
+
+  .#{$prefix}--card-header {
+    align-items: center;
+    display: flex;
+    flex-wrap: nowrap;
+    position: relative;
+
+    &.is-collapsible {
+      padding-right: $spacing-xxx-large;
+    }
+
+    .#{$prefix}--card-header__title {
+      flex: 1 1 auto;
+      overflow: hidden;
+
+      .#{$prefix}--title-h3 {
+        @include nimbus--type("heading-element");
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+
+    .#{$prefix}--card-header__action {
+      appearance: none;
+      background-color: $color-default;
+      border: $button-border-width solid $color-default;
+      border-radius: 100%;
+      color: $color-primary;
+      cursor: pointer;
+      flex: 0 0 auto;
+      margin-bottom: -$spacing-x-small;
+      margin-top: -$spacing-x-small;
+      padding: $spacing-x-small;
+      transition: $button-hover-delay ease;
+
+      &:hover {
+        background-color: $color-default-hover;
+      }
+
+      &:active {
+        background-color: $color-default-active;
+      }
+
+      &:focus {
+        border-color: $color-default-active;
+        box-shadow: 0 0 0 $button-border-width $color-default-active;
+      }
+    }
+  }
+
+  .#{$prefix}--card-header__collapse {
+    appearance: none;
+    background-color: transparent;
+    border: $button-border-width solid transparent;
+    border-radius: $actions-border-radius;
+    cursor: pointer;
+    padding: $spacing-small;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: $button-hover-delay ease;
+
+    svg {
+      transition: $motion-fast;
+    }
+
+    &:hover {
+      background-color: $color-default;
+    }
+
+    &:active {
+      background-color: $color-default-hover;
+    }
+
+    &:focus {
+      border-color: $color-default-hover;
+      box-shadow: 0 0 0 $button-border-width $color-default-hover;
+    }
+
+    &.is-open {
+      svg {
+        transform: rotateZ(180deg);
+      }
+    }
+  }
+
+  .#{$prefix}--card-collapse {
+    max-height: 0;
+    overflow: hidden;
+    transition: $button-hover-delay ease;
+    will-change: max-height;
+
+    &.is-open {
+      max-height: 100%;
+      transition: $button-hover-delay ease;
+    }
+  }
+
+  .#{$prefix}--card-body {
+    > *:not(:last-of-type) {
+      margin-bottom: $spacing-small;
+    }
+  }
+
+  .#{$prefix}--card-footer {
+    @include nimbus--action-wrapper;
+  }
+}

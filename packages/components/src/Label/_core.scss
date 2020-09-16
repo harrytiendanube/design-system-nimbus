@@ -9,6 +9,7 @@
   color: $color-body-text;
   display: inline-block;
   padding: $spacing-xx-small $spacing-x-small;
+  white-space: nowrap;
 
   svg {
     fill: inherit;
