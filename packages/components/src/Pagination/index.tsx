@@ -44,7 +44,7 @@ export interface InterfacePagination {
 function Pagination({
   pageTotal,
   pageSelected,
-  hasMorePages,
+  hasMorePages = true,
   margin = 1,
   padding = 2,
   onPageSelect,
@@ -101,18 +101,12 @@ function Pagination({
         onClick={(e) => {
           handleClick(e, pageSelected + 1);
         }}
-        disabled={pageSelected === pageTotal || !hasMorePages}
+        disabled={pageSelected === pageTotal || (!pageTotal && !hasMorePages)}
         icon={ChevronRightIcon}
         iconPosition="end"
       />
     </nav>
   );
 }
-
-Pagination.defaultProps = {
-  margin: 1,
-  padding: 2,
-  hasMorePages: true,
-};
 
 export default React.memo(Pagination);
