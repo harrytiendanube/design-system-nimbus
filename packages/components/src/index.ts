@@ -103,3 +103,6 @@ export * from "./Label";
 // Card reference added
 export { default as Card } from "./Card";
 export * from "./Card";
+// Label reference added
+export { default as Stack } from "./Stack";
+export * from "./Stack";

@@ -1,0 +1,35 @@
+import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
+import { withKnobs, text, select, boolean } from "@storybook/addon-knobs";
+import { withA11y } from "@storybook/addon-a11y";
+
+import { Stack, Label, Title } from "@tiendanube/components/src";
+import "../utils/style.css";
+
+<Meta title="Components/Stack" component={Stack} />
+
+# Stack
+
+TODO: complete
+
+<Preview>
+  <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
+    <Stack
+      hAlignment={select("hAlignment", ["start", "end", "center", "between"])}
+      vAlignment={select("vAlignment", ["start", "end", "center", "between"])}
+      spacing={select("spacing", ["base", "tight"])}
+      vertical={boolean("vertical", false)}
+      wrap={boolean("wrap", false)}
+    >
+      <Stack.Item fill={boolean("fill", false)}>
+        <Title>Title</Title>
+      </Stack.Item>
+      <Stack.Item>
+        <Label id="label" label={text("label", "Label")} />
+      </Stack.Item>
+    </Stack>
+  </Story>
+</Preview>
+
+## Properties
+
+<Props of={Stack.Item.type} />
