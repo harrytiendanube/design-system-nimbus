@@ -10,44 +10,30 @@ import Text from "../Text";
 import Chip from "../Chip";
 
 export interface InterfaceSearchFilter {
-  /**
-   * Placeholder text for the search input
-   */
+  /** Placeholder text for the search input */
   placeholder: string;
-  /**
-   * Label text for the button
-   */
+  /** Label text for the button */
   label: string;
-  /**
-   * Number of results to show
-   */
+  /** Number of results to show */
   resultCount: string;
-  /**
-   * Applied filters visible
-   */
+  /** Applied filters visible */
   appliedFilters?: InterfaceIdLabel[];
-  /**
-   * Callback on submitting search
-   */
+  /** Callback on submitting search */
   onSubmit(value: string): void;
-  /**
-   * Callback on dismissing chip
-   */
+  /** Callback on dismissing chip */
   onDismiss(id: string): void;
-  /**
-   * Callback for the filter button
-   */
+  /** Callback for the filter button */
   onClick(): void;
 }
 
 /**
- *  @param placeholder Placeholder text for the search input
- *  @param label Label text for the button
- *  @param resultCount Number of results to show
- *  @param appliedFilters Applied filters visible
- *  @param onSubmit Callback on submitting search
- *  @param onDismiss Callback on dismissing chip
- *  @param onClick Callback for the filter button
+ * @param placeholder Placeholder text for the search input
+ * @param label Label text for the button
+ * @param resultCount Number of results to show
+ * @param appliedFilters Applied filters visible
+ * @param onSubmit Callback on submitting search
+ * @param onDismiss Callback on dismissing chip
+ * @param onClick Callback for the filter button
  */
 function SearchFilter({
   placeholder,

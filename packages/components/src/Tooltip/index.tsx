@@ -5,34 +5,24 @@ import "./Tooltip.css";
 import { Icon as IconType } from "@tiendanube/icons";
 
 interface InterfaceTooltip {
-  /**
-   * Name of the Tooltip
-   * */
+  /** Name of the Tooltip */
   name: string;
-  /**
-   * Icon label for the tooltip
-   * */
+  /** Icon label for the tooltip */
   labelIcon?: IconType;
-  /**
-   * Text Label for the Tooltip
-   * */
+  /** Text Label for the Tooltip */
   labelText: string;
-  /**
-   * Position of the tooltip
-   */
+  /** Position of the tooltip */
   position?: "top" | "bottom" | "left" | "right";
-  /**
-   * React node of type children
-   */
+  /** React node of type children */
   children: React.ReactNode;
 }
 
 /**
- *  @param name Name of the Tooltip
- *  @param labelIcon Icon label for the tooltip
- *  @param labelText Text Label for the Tooltip
- *  @param position Position of the tooltip
- *  @param children React node of type children
+ * @param name Name of the Tooltip
+ * @param labelIcon Icon label for the tooltip
+ * @param labelText Text Label for the Tooltip
+ * @param position Position of the tooltip
+ * @param children React node of type children
  */
 
 function Tooltip({

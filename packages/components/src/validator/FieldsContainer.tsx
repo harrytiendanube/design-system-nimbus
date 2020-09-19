@@ -2,9 +2,7 @@ import * as React from "react";
 import { ValidationsContext } from "./FormContext";
 import { InterfaceFieldsContainer } from "./interfaces";
 
-/**
- *  @param children Children
- */
+/** @param children Children */
 const FieldsContainer = ({
   children,
   setFields,

@@ -5,13 +5,9 @@ import "./Label.css";
 import { Icon as IconType } from "@tiendanube/icons";
 
 export interface InterfaceLabel {
-  /**
-   * ID
-   */
+  /** ID */
   id: string;
-  /**
-   * Appearance
-   */
+  /** Appearance */
   appearance?:
     | "primary"
     | "secondary"
@@ -19,25 +15,19 @@ export interface InterfaceLabel {
     | "warning"
     | "danger"
     | "success";
-  /**
-   * Icon Component imported from @tiendanube/icons
-   */
+  /** Icon Component imported from @tiendanube/icons */
   icon?: IconType;
-  /**
-   * Text for the label
-   */
+  /** Text for the label */
   label: React.ReactText;
-  /**
-   *  Event to be fired upon clicking the Label
-   */
+  /** Event to be fired upon clicking the Label */
   onClick?: (id: string) => void;
 }
 /**
- *  @param id ID
- *  @param appearance Appearance
- *  @param icon Icon Component imported from @tiendanube/icons
- *  @param label Text for the label
- *  @param onClick Event to be fired upon clicking the Label
+ * @param id ID
+ * @param appearance Appearance
+ * @param icon Icon Component imported from @tiendanube/icons
+ * @param label Text for the label
+ * @param onClick Event to be fired upon clicking the Label
  */
 function Label({
   id,

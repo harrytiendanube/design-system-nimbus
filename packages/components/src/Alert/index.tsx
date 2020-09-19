@@ -15,53 +15,37 @@ import Title from "../Title";
 import Text from "../Text";
 
 interface InterfaceAlert {
-  /**
-   * Text to be displayed in the alert
-   * */
+  /** Text to be displayed in the alert */
   children: React.ReactText;
-  /**
-   * Appearance of the alert
-   * */
+  /** Appearance of the alert */
   appearance?: "primary" | "secondary" | "danger" | "success" | "warning";
-  /**
-   * Title of the alert
-   * */
+  /** Title of the alert */
   title?: string;
-  /**
-   * Label of primary action
-   * */
+  /** Label of primary action */
   primaryLabel?: string;
-  /**
-   * Type of react mouse event onclick to manage event click and void return
-   */
+  /** Type of react mouse event onclick to manage event click and void return */
   onClickPrimary?: () => void;
-  /**
-   * Label of secondary action
-   * */
+  /** Label of secondary action */
   secondaryLabel?: string;
-  /**
-   * Destination link of secondary action
-   * */
+  /** Destination link of secondary action */
   secondaryTo?: string;
-  /**
-   * Type of react mouse event onclick to manage event click and void return
-   */
+  /** Type of react mouse event onclick to manage event click and void return */
   onDismiss?: () => void;
-  /**
-   * Indicates whether the alert should be displayed
-   * */
+  /** Indicates whether the alert should be displayed */
   show?: boolean;
 }
 /**
- *  @param children Text to be displayed in the alert
- *  @param appearance Appearance of the alert
- *  @param title Title of the alert
- *  @param primaryLabel Label of primary action
- *  @param onClickPrimary Type of react mouse event onclick to manage event click and void return
- *  @param secondaryLabel Label of secondary action
- *  @param secondaryTo Destination link of secondary action
- *  @param onDismiss Type of react mouse event onclick to manage event click and void return
- *  @param show Indicates whether the alert should be displayed
+ * @param children Text to be displayed in the alert
+ * @param appearance Appearance of the alert
+ * @param title Title of the alert
+ * @param primaryLabel Label of primary action
+ * @param onClickPrimary Type of react mouse event onclick to manage event click
+ *     and void return
+ * @param secondaryLabel Label of secondary action
+ * @param secondaryTo Destination link of secondary action
+ * @param onDismiss Type of react mouse event onclick to manage event click and
+ *     void return
+ * @param show Indicates whether the alert should be displayed
  */
 function Alert({
   children,

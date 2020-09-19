@@ -7,48 +7,33 @@ import { Icon as IconType, ChevronDownIcon } from "@tiendanube/icons";
 import { Title, Button, Label, InterfaceButton, InterfaceLabel } from "..";
 
 interface InterfaceCard {
-  /**
-   * Text to be displayed in the label
-   * */
+  /** Text to be displayed in the label */
   title: string;
-  /**
-   * React node of type children
-   * */
+  /** React node of type children */
   children: React.ReactNode;
-  /**
-   * Primary action button
-   * */
+  /** Primary action button */
   primaryButton?: InterfaceButton;
-  /**
-   * Secondary action button
-   * */
+  /** Secondary action button */
   secondaryButton?: InterfaceButton;
-  /**
-   * Indicates if Card is collapsible or not
-   */
+  /** Indicates if Card is collapsible or not */
   isCollapsible?: boolean;
-  /**
-   * Label to show on the header of the Card
-   */
+  /** Label to show on the header of the Card */
   headerLabel?: InterfaceLabel;
-  /**
-   * Icon (imported from @tiendanube/icons) to show on the header of the Card
-   */
+  /** Icon (imported from @tiendanube/icons) to show on the header of the Card */
   headerIcon?: IconType;
-  /**
-   * Callback to be called when Icon header is clicked
-   */
+  /** Callback to be called when Icon header is clicked */
   onClickHeaderIcon?: () => void;
 }
 
 /**
- *  @param title Text to be displayed in the label
- *  @param children React node of type children
- *  @param primaryButton Primary action button
- *  @param secondaryButton Secondary action button
- *  @param isCollapsible Indicates if Card is collapsible or not
- *  @param headerIcon Icon (imported from @tiendanube/icons) to show on the header of the Card
- *  @param label Label to show on the header of the Card
+ * @param title Text to be displayed in the label
+ * @param children React node of type children
+ * @param primaryButton Primary action button
+ * @param secondaryButton Secondary action button
+ * @param isCollapsible Indicates if Card is collapsible or not
+ * @param headerIcon Icon (imported from @tiendanube/icons) to show on the
+ *     header of the Card
+ * @param label Label to show on the header of the Card
  */
 
 function Card({

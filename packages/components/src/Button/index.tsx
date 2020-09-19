@@ -5,42 +5,30 @@ import "./Button.css";
 import { Icon as IconType } from "@tiendanube/icons";
 
 export interface InterfaceButton {
-  /**
-   * React node of type children.
-   */
+  /** React node of type children. */
   children?: React.ReactText;
-  /**
-   * type of react mouse event onclick to manage event click and void return.
-   */
+  /** Type of react mouse event onclick to manage event click and void return. */
   onClick(event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void;
-  /**
-   * Appearance
-   */
+  /** Appearance */
   appearance?: "default" | "primary" | "secondary" | "default" | "danger";
-  /**
-   * Icon Component imported from @tiendanube/icons
-   */
+  /** Icon Component imported from @tiendanube/icons */
   icon?: IconType;
-  /**
-   * Position of the icon inside the button
-   */
+  /** Position of the icon inside the button */
   iconPosition?: "start" | "end";
-  /**
-   * Indicates if the button is disabled
-   */
+  /** Indicates if the button is disabled */
   disabled?: boolean;
-  /**
-   * Indicates if the button should be styled as a link
-   */
+  /** Indicates if the button should be styled as a link */
   link?: boolean;
 }
 
 /**
  * Button's Component as actionable component.
+ *
  * @param icon Icon Component imported from @tiendanube/icons
  * @param iconPosition Position of the icon inside the button
  * @param children React node of type children.
- * @param appearance type of appearance "primary" | "secondary" | "default" | "danger"
+ * @param appearance Type of appearance "primary" | "secondary" | "default" |
+ *     "danger"
  * @param disabled Indicates if the button is disabled
  * @param link Indicates if the button should be styled as a link
  */

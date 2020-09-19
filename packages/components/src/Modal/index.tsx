@@ -9,49 +9,33 @@ import Title from "../Title";
 import Button from "../Button";
 
 interface InterfaceModal {
-  /**
-   * Text to be displayed in the label
-   * */
+  /** Text to be displayed in the label */
   title: string;
-  /**
-   * Indicates if the modal has to be shown
-   */
+  /** Indicates if the modal has to be shown */
   show: boolean;
-  /**
-   * onDismiss callback function
-   */
+  /** OnDismiss callback function */
   onDismiss?: () => void;
-  /**
-   * React node of type children
-   * */
+  /** React node of type children */
   children: React.ReactNode;
-  /**
-   * Label of primary action
-   * */
+  /** Label of primary action */
   primaryActionLabel?: string;
-  /**
-   * Label of secondary action
-   * */
+  /** Label of secondary action */
   secondaryActionLabel?: string;
-  /**
-   * onClickPrimary callback function
-   */
+  /** OnClickPrimary callback function */
   onClickPrimary?: () => void;
-  /**
-   * onClickSecondary callback function
-   */
+  /** OnClickSecondary callback function */
   onClickSecondary?: () => void;
 }
 
 /**
- *  @param title Text to be displayed in the label
- *  @param show Indicates if the modal has to be shown
- *  @param onDismiss callback function
- *  @param children React node of type children
- *  @param primaryActionLabel Label of primary action
- *  @param secondaryActionLabel Label of secondary action
- *  @param onClickPrimary callback function
- *  @param onClickSecondary callback function
+ * @param title Text to be displayed in the label
+ * @param show Indicates if the modal has to be shown
+ * @param onDismiss Callback function
+ * @param children React node of type children
+ * @param primaryActionLabel Label of primary action
+ * @param secondaryActionLabel Label of secondary action
+ * @param onClickPrimary Callback function
+ * @param onClickSecondary Callback function
  */
 
 function Modal({

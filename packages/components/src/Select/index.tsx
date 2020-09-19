@@ -12,38 +12,27 @@ import {
 } from "../common/interfaces";
 
 interface InterfaceSelect {
-  /**
-   * Name of the select
-   * */
+  /** Name of the select */
   name: string;
-  /**
-   * Text to be displayed in the label
-   * */
+  /** Text to be displayed in the label */
   label?: string;
-  /**
-   * Array of options to be displayed
-   */
+  /** Array of options to be displayed */
   options: InterfaceSelectOptionGroup[];
-  /**
-   * Current value
-   */
+  /** Current value */
   value?: string;
-  /**
-   * Text to be used as placeholder. It is the first option and is disabled
-   */
+  /** Text to be used as placeholder. It is the first option and is disabled */
   placeholder?: string;
-  /**
-   *  onChange callback function
-   */
+  /** OnChange callback function */
   onChange?: (event: InterfaceNameValue) => void;
 }
 
 /**
- *  @param label Text to be displayed in the label
- *  @param name Name of the select
- *  @param options Array of options to be displayed
- *  @param value Current value
- *  @param placeholder Text to be used as placeholder. It is the first option and is disabled
+ * @param label Text to be displayed in the label
+ * @param name Name of the select
+ * @param options Array of options to be displayed
+ * @param value Current value
+ * @param placeholder Text to be used as placeholder. It is the first option and
+ *     is disabled
  */
 
 function Select({

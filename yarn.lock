@@ -5821,6 +5821,11 @@ commander@^5.0.0:
   resolved "https://registry.yarnpkg.com/commander/-/commander-5.1.0.tgz#46abbd1652f8e059bddaef99bbdcb2ad9cf179ae"
   integrity sha512-P0CysNDQ7rtVw4QIQtm+MRxV66vKFSvlsQvGYXZWR3qFU0jlMKHZZZgw8e+8DSah4UDKMqnknRDQz+xuQXQ/Zg==
 
+comment-parser@^0.7.5:
+  version "0.7.6"
+  resolved "https://registry.yarnpkg.com/comment-parser/-/comment-parser-0.7.6.tgz#0e743a53c8e646c899a1323db31f6cd337b10f12"
+  integrity sha512-GKNxVA7/iuTnAqGADlTWX4tkhzxZKXp5fLJqKTlQLHkE65XDUKutZ3BHaJC5IGcper2tT3QRD1xr4o3jNpgXXg==
+
 commondir@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/commondir/-/commondir-1.0.1.tgz#ddd800da0c66127393cca5950ea968a3aaf1253b"
@@ -10667,6 +10672,11 @@ lines-and-columns@^1.1.6:
   resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-1.1.6.tgz#1c00c743b433cd0a4e80758f7b64a57440d9ff00"
   integrity sha1-HADHQ7QzzQpOgHWPe2SldEDZ/wA=
 
+linguist-languages@^7.11.0:
+  version "7.11.0"
+  resolved "https://registry.yarnpkg.com/linguist-languages/-/linguist-languages-7.11.0.tgz#c28bbbbcc620cf612ff96154402a80be027832a2"
+  integrity sha512-UJD5XvS+6oMIy2WiaDRJiHOFSozbKM+nzFxCbADU6qLjZqZHbOFZ7ELN+KsYmtDo66SYGz7rCfvj/oloxtcfdA==
+
 load-json-file@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/load-json-file/-/load-json-file-1.1.0.tgz#956905708d58b4bab4c2261b04f59f31c99374c0"
@@ -13077,6 +13087,14 @@ prepend-http@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/prepend-http/-/prepend-http-2.0.0.tgz#e92434bfa5ea8c19f41cdfd401d741a3c819d897"
   integrity sha1-6SQ0v6XqjBn0HN/UAddBo8gZ2Jc=
+
+prettier-plugin-jsdoc@0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/prettier-plugin-jsdoc/-/prettier-plugin-jsdoc-0.2.0.tgz#9a5b247ed6b6060eecb8129b19daf3c0dd07e00d"
+  integrity sha512-uZ3VUQumXtmDEaoio18slFAhz+Lp5FMn7r+X6xEZwCMKh4/jK4k61scPKEn8gAoftOon966Cx8wDapE/Jk61HA==
+  dependencies:
+    comment-parser "^0.7.5"
+    linguist-languages "^7.11.0"
 
 prettier@2.1.1:
   version "2.1.1"

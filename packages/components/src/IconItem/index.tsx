@@ -7,13 +7,9 @@ import Link from "../Link";
 import Text from "../Text";
 
 export interface InterfaceIconItem {
-  /**
-   * Icon Component imported from @tiendanube/icons
-   */
+  /** Icon Component imported from @tiendanube/icons */
   icon: IconType;
-  /**
-   * Appearance of the IconItem determines the background color
-   */
+  /** Appearance of the IconItem determines the background color */
   appearance?:
     | "default"
     | "primary"
@@ -21,21 +17,13 @@ export interface InterfaceIconItem {
     | "danger"
     | "warning"
     | "success";
-  /**
-   * Title for the IconItem
-   */
+  /** Title for the IconItem */
   title: string;
-  /**
-   * Subtitle for the IconItem
-   */
+  /** Subtitle for the IconItem */
   subtitle?: string;
-  /**
-   * Link to display in the IconItem
-   */
+  /** Link to display in the IconItem */
   link?: string;
-  /**
-   * Link Href
-   */
+  /** Link Href */
   linkTo?: string;
 }
 /**

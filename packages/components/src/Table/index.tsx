@@ -21,22 +21,16 @@ import {
 } from "./utils";
 
 interface InterfaceTable {
-  /**
-   * Headers of the table
-   */
+  /** Headers of the table */
   headers: InterfaceHeaderTable[];
-  /**
-   * Rows of the table
-   * */
+  /** Rows of the table */
   rows: JSX.Element[][];
-  /**
-   * Mass Action data
-   * */
+  /** Mass Action data */
   massAction?: InterfaceMassAction;
 }
 
 /**
- * @param headers  Headers of the table
+ * @param headers Headers of the table
  * @param rows Text to be displayed in the alert
  * @param massAction Mass Action data
  */

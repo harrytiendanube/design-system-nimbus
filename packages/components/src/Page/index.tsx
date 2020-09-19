@@ -5,30 +5,21 @@ import "./Page.css";
 import PageTitle from "../PageTitle";
 
 export interface InterfacePage {
-  /**
-   * Component to render in page content.
-   */
+  /** Component to render in page content. */
   children: React.ReactNode;
-  /**
-   * Title
-   */
+  /** Title */
   title: string;
-  /**
-   * Title
-   */
+  /** Title */
   subtitle?: string;
-  /**
-   * Link
-   */
+  /** Link */
   link?: string;
-  /**
-   * Link href
-   */
+  /** Link href */
   linkTo?: string;
 }
 
 /**
  * Page component used to render pages for the application
+ *
  * @param children Component to render in page content.
  * @param pageTitle Name of the page and content of the page title.
  * @param pageSubtitle Page subtitle.

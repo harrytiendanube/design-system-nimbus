@@ -7,25 +7,15 @@ import Link from "../Link";
 import Text from "../Text";
 
 export interface InterfaceImageItem {
-  /**
-   * Image thumbnail
-   */
+  /** Image thumbnail */
   thumbnail?: string;
-  /**
-   * Link to display in the ImageItem
-   */
+  /** Link to display in the ImageItem */
   link: string;
-  /**
-   * Link Href
-   */
+  /** Link Href */
   linkTo: string;
-  /**
-   * Subtitle for the ImageItem
-   */
+  /** Subtitle for the ImageItem */
   subtitle?: string;
-  /**
-   * Description for the ImageItem
-   */
+  /** Description for the ImageItem */
   description?: string;
 }
 /**

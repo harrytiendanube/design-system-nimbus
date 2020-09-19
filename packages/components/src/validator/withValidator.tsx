@@ -52,9 +52,7 @@ const withValidation = (FieldComponent: React.FC<InterfaceInput>) =>
       [onChange],
     );
 
-    /**
-     * @param event
-     */
+    /** @param event */
     const handleBlur = React.useCallback(
       (event: InterfaceNameValue): void => {
         setFormFields(event.value);

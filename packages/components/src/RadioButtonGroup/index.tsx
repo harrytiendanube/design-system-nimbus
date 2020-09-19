@@ -9,34 +9,24 @@ import {
 import Text from "../Text";
 
 interface InterfaceRadioButtonGroup {
-  /**
-   * Name of the radio button to group various radio buttons together
-   * */
+  /** Name of the radio button to group various radio buttons together */
   name: string;
-  /**
-   * Text to be displayed in the label
-   * */
+  /** Text to be displayed in the label */
   label?: string;
-  /**
-   * Current value
-   */
+  /** Current value */
   value?: string;
-  /**
-   * Array of options to be displayed
-   */
+  /** Array of options to be displayed */
   options: InterfaceRadioButtonOption[];
-  /**
-   *  onChange callback function
-   */
+  /** OnChange callback function */
   onChange?: (event: InterfaceNameValue) => void;
 }
 
 /**
- *  @param name Name of the radio button to group various radio buttons together
- *  @param label Text to be displayed in the label
- *  @param value Current value
- *  @param options Array of options to be displayed
- *  @param onChange onChange callback function
+ * @param name Name of the radio button to group various radio buttons together
+ * @param label Text to be displayed in the label
+ * @param value Current value
+ * @param options Array of options to be displayed
+ * @param onChange OnChange callback function
  */
 
 function RadioButtonGroup({

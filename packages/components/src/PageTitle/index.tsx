@@ -7,29 +7,21 @@ import Link from "../Link";
 import Title from "../Title";
 
 export interface InterfacePageTitle {
-  /**
-   * Title text
-   */
+  /** Title text */
   title: string;
-  /**
-   * Subtitle text
-   */
+  /** Subtitle text */
   subtitle?: string;
-  /**
-   * Link text
-   */
+  /** Link text */
   link?: string;
-  /**
-   * Link href
-   */
+  /** Link href */
   linkTo?: string;
 }
 
 /**
- *  @param title is the title text
- *  @param subtitle is the subtitle text
- *  @param link is the link text
- *  @param linkTo is the link href
+ * @param title Is the title text
+ * @param subtitle Is the subtitle text
+ * @param link Is the link text
+ * @param linkTo Is the link href
  */
 function PageTitle({
   title,

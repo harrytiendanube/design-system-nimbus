@@ -6,48 +6,33 @@ import Title from "../Title";
 import Button from "../Button";
 
 export interface InterfaceEmptyState {
-  /**
-   * Image URL for the empty state.
-   */
+  /** Image URL for the empty state. */
   image: string;
-  /**
-   * Title of the EmptyState
-   */
+  /** Title of the EmptyState */
   title?: string;
-  /**
-   * Label of primary action
-   * */
+  /** Label of primary action */
   primaryActionLabel?: string;
-  /**
-   * Label of secondary action
-   * */
+  /** Label of secondary action */
   secondaryActionLabel?: string;
-  /**
-   * onClickPrimary callback function
-   */
+  /** OnClickPrimary callback function */
   onClickPrimary?: () => void;
-  /**
-   * onClickSecondary callback function
-   */
+  /** OnClickSecondary callback function */
   onClickSecondary?: () => void;
-  /**
-   * Defines whether the component should be full width or not.
-   */
+  /** Defines whether the component should be full width or not. */
   fullWidth?: boolean;
-  /**
-   * Component to render in empty state body.
-   */
+  /** Component to render in empty state body. */
   children: React.ReactNode;
 }
 
 /**
  * Layout used for aside component and background image.
+ *
  * @param image Image URL for the empty state.
  * @param title Title of the EmptyState
  * @param primaryActionLabel Label of primary action
  * @param secondaryActionLabel Label of secondary action
- * @param onClickPrimary onClickPrimary callback function
- * @param onClickSecondary onClickSecondary callback function
+ * @param onClickPrimary OnClickPrimary callback function
+ * @param onClickSecondary OnClickSecondary callback function
  * @param fullWidth Defines whether the component should be full width or not.
  * @param children Component to render in empty state body.
  */

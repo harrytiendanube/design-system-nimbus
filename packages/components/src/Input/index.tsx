@@ -14,79 +14,54 @@ import { InterfaceNameValue } from "../common/interfaces";
 import "./Input.css";
 
 export interface InterfaceInput {
-  /**
-   * Name of the input, also used for the ID
-   */
+  /** Name of the input, also used for the ID */
   name: string;
-  /**
-   * Input placeholder
-   */
+  /** Input placeholder */
   placeholder: string;
-  /**
-   *  Label
-   */
+  /** Label */
   label?: string;
-  /**
-   * Input value
-   */
+  /** Input value */
   value?: string;
-  /**
-   * Input type
-   */
+  /** Input type */
   type?: InputTypes;
   /**
-   * Prepend a component to show at the start of the input. Icon Component imported from @tiendanube/icons.
+   * Prepend a component to show at the start of the input. Icon Component
+   * imported from @tiendanube/icons.
    */
   prepend?: IconType;
-  /**
-   * Indicates if input is valid
-   */
+  /** Indicates if input is valid */
   isValid?: boolean;
-  /**
-   * Minimum count of inserted chars
-   */
+  /** Minimum count of inserted chars */
   minLength?: string;
-  /**
-   * Maximum count of inserted chars
-   */
+  /** Maximum count of inserted chars */
   maxLength?: string;
-  /**
-   * Custom Regex needed for validate inserted chars
-   */
+  /** Custom Regex needed for validate inserted chars */
   pattern?: string;
-  /**
-   * Input is required
-   * */
+  /** Input is required */
   required?: boolean;
-  /**
-   *  onChange callback function
-   */
+  /** OnChange callback function */
   onChange?: (event: InterfaceNameValue) => void;
-  /**
-   *  onSubmit callback function
-   */
+  /** OnSubmit callback function */
   onSubmit?: (event: InterfaceNameValue) => void;
-  /**
-   *  onBlur callback function
-   */
+  /** OnBlur callback function */
   onBlur?: (event: InterfaceNameValue) => void;
 }
 
 /**
- *  @param name Name of the input, also used for the ID
- *  @param placeholder Placeholder text to show when the input is empty
- *  @param label Label
- *  @param value Input value
- *  @param type Input type
- *  @param prepend Prepend a component to show at the start of the input
- *  @param isValid Indicates if input is valid
- *  @param minLength Minimum count of inserted chars
- *  @param maxLength Maximum count of inserted chars
- *  @param pattern Custom Regex needed for validate inserted chars
- *  @param required Input is required
- *  @param onChange Callback function
- *  @param onSubmit Callback function
- *  @param onBlur Callback function
+ * @param name Name of the input, also used for the ID
+ * @param placeholder Placeholder text to show when the input is empty
+ * @param label Label
+ * @param value Input value
+ * @param type Input type
+ * @param prepend Prepend a component to show at the start of the input
+ * @param isValid Indicates if input is valid
+ * @param minLength Minimum count of inserted chars
+ * @param maxLength Maximum count of inserted chars
+ * @param pattern Custom Regex needed for validate inserted chars
+ * @param required Input is required
+ * @param onChange Callback function
+ * @param onSubmit Callback function
+ * @param onBlur Callback function
  */
 function Input({
   name,

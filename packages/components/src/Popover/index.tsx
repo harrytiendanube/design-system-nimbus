@@ -6,29 +6,21 @@ import { ChevronDownIcon, ChevronUpIcon } from "@tiendanube/icons";
 import { Title, Button } from "..";
 
 interface InterfacePopover {
-  /**
-   * Name of the Popover
-   * */
+  /** Name of the Popover */
   name: string;
-  /**
-   * Label of the Popover
-   * */
+  /** Label of the Popover */
   label: string;
-  /**
-   * Text of the Popover
-   * */
+  /** Text of the Popover */
   title?: string;
-  /**
-   * React node of type children
-   */
+  /** React node of type children */
   children: React.ReactNode;
 }
 
 /**
- *  @param name of the Popover
- *  @param label of the Popover
- *  @param title Text of the Popover
- *  @param children React node of type children
+ * @param name Of the Popover
+ * @param label Of the Popover
+ * @param title Text of the Popover
+ * @param children React node of type children
  */
 
 function Popover({

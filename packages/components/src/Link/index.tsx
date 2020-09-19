@@ -2,33 +2,19 @@ import * as React from "react";
 import "./Link.css";
 
 export interface InterfaceLink {
-  /**
-   *  React node of type children.
-   */
+  /** React node of type children. */
   children: React.ReactNode;
-  /**
-   *  Specifies the URL of the page the link goes to
-   */
+  /** Specifies the URL of the page the link goes to */
   href: string;
-  /**
-   *  Specifies where to open the linked document
-   */
+  /** Specifies where to open the linked document */
   target?: "_blank" | "_parent" | "_self" | "_top";
-  /**
-   * Appearance
-   */
+  /** Appearance */
   appearance?: "primary" | "secondary" | "default" | "danger";
-  /**
-   * Defines whether the link should be underlined
-   */
+  /** Defines whether the link should be underlined */
   underline?: boolean;
-  /**
-   * Icon Component imported from @tiendanube/icons
-   */
+  /** Icon Component imported from @tiendanube/icons */
   icon?: any;
-  /**
-   * Position of the icon with respect to the alert
-   */
+  /** Position of the icon with respect to the alert */
   iconPosition?: "start" | "end";
 }
 /**

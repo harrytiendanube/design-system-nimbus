@@ -3,18 +3,15 @@ import * as React from "react";
 import "./Layout.css";
 
 export interface InterfaceLayout {
-  /**
-   * Type of layout
-   */
+  /** Type of layout */
   appearance?: "aside" | "halves" | "fluid" | "centered";
-  /**
-   * Component to render in page content.
-   */
+  /** Component to render in page content. */
   children: React.ReactNode;
 }
 
 /**
  * Layout component used to render content in one or more columns
+ *
  * @param appearance Type of layout.
  * @param children Components to render inside layout.
  */

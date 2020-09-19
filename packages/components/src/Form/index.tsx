@@ -14,61 +14,46 @@ import {
 } from "../validator";
 
 export interface InterfaceForm {
-  /**
-   * Validation alert text
-   */
+  /** Validation alert text */
   alertText?: string;
-  /**
-   * Validation alert appearance
-   */
+  /** Validation alert appearance */
   alertAppearance?: "primary" | "secondary" | "danger" | "success" | "warning";
-  /**
-   * React node of type children
-   */
+  /** React node of type children */
   children: React.ReactNode;
-  /**
-   * Link text
-   */
+  /** Link text */
   link?: string;
-  /**
-   * Link href
-   */
+  /** Link href */
   linkTo?: string;
-  /**
-   * Submit button label
-   */
+  /** Submit button label */
   submitLabel: string;
-  /**
-   * Type of react mouse event onclick to manage event click and void return
-   */
+  /** Type of react mouse event onclick to manage event click and void return */
   onClickSubmit: (data: { [key: string]: string }) => void;
-  /**
-   *  Optional button label
-   */
+  /** Optional button label */
   buttonLabel?: string;
-  /**
-   * Type of react mouse event onclick to manage event click and void return
-   */
+  /** Type of react mouse event onclick to manage event click and void return */
   onClickButton?: (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => void;
   /**
-   * Structure with text for validation: {required: "this field is required", email:" this field is not email" ... }
+   * Structure with text for validation: {required: "this field is required",
+   * email:" this field is not email" ... }
    */
   textValidation?: InterfaceTextValidation;
 }
 
 /**
- *  @param alertText Validation alert text
- *  @param alertAppearance  React node of type children
- *  @param children React node of type children
- *  @param link Link text
- *  @param linkTo Link href
- *  @param submitLabel Submit button text
- *  @param onClickSubmit Submit button callback
- *  @param buttonLabel Optional Button Text
- *  @param onClickButton Type of react mouse event onclick to manage event click and void return
- *  @param textValidation Structure with text for validation: {required: "this field is required", email:" this field is not email" ... }
+ * @param alertText Validation alert text
+ * @param alertAppearance React node of type children
+ * @param children React node of type children
+ * @param link Link text
+ * @param linkTo Link href
+ * @param submitLabel Submit button text
+ * @param onClickSubmit Submit button callback
+ * @param buttonLabel Optional Button Text
+ * @param onClickButton Type of react mouse event onclick to manage event click
+ *     and void return
+ * @param textValidation Structure with text for validation: {required: "this
+ *     field is required", email:" this field is not email" ... }
  */
 
 function Form({

@@ -6,34 +6,24 @@ import { CheckIcon } from "@tiendanube/icons";
 import { InterfaceNameChecked } from "../common/interfaces";
 
 interface InterfaceCheckbox {
-  /**
-   * Name of the checkbox
-   * */
+  /** Name of the checkbox */
   name: string;
-  /**
-   * Text to be displayed in the label
-   * */
+  /** Text to be displayed in the label */
   label?: string;
-  /**
-   * Whether the checkbox is checked by default or not
-   * */
+  /** Whether the checkbox is checked by default or not */
   checked?: boolean | "indeterminate";
-  /**
-   * Indicates if the checkbox is disabled
-   */
+  /** Indicates if the checkbox is disabled */
   disabled?: boolean;
-  /**
-   * Event to be fired upon checking the checkbox
-   * */
+  /** Event to be fired upon checking the checkbox */
   onChange?(event: InterfaceNameChecked): void;
 }
 
 /**
- *  @param name Name of the checkbox
- *  @param label Text to be displayed in the label
- *  @param checked Whether the checkbox is checked by default or not
- *  @param disabled Indicates if the checkbox is disabled
- *  @param onChange Event to be fired upon checking the checkbox
+ * @param name Name of the checkbox
+ * @param label Text to be displayed in the label
+ * @param checked Whether the checkbox is checked by default or not
+ * @param disabled Indicates if the checkbox is disabled
+ * @param onChange Event to be fired upon checking the checkbox
  */
 function Checkbox({
   name,

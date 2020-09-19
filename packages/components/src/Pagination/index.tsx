@@ -8,25 +8,18 @@ import { Button } from "..";
 import { getPages, InterfacePage } from "./model";
 
 export interface InterfacePagination {
-  /**
-   *  Total of pages
-   */
+  /** Total of pages */
   pageTotal?: number;
-  /**
-   *  Page selected
-   */
+  /** Page selected */
   pageSelected: number;
   /**
-   * Indicates whether or not there are more pages. Only makes sense when pageTotal is not supplied.
+   * Indicates whether or not there are more pages. Only makes sense when
+   * pageTotal is not supplied.
    */
   hasMorePages?: boolean;
-  /**
-   *  Number of pages to always show at the left and right of the component.
-   */
+  /** Number of pages to always show at the left and right of the component. */
   margin?: number;
-  /**
-   *  Number pages to display on each side of the currently selected page.
-   */
+  /** Number pages to display on each side of the currently selected page. */
   padding?: number;
   /*
    * Callback to be called when a page is selected
@@ -34,12 +27,15 @@ export interface InterfacePagination {
   onPageSelect: (page: number) => void;
 }
 /**
- *  @param pageTotal Total of pages
- *  @param pageSelected  Page selected
- *  @param hasMorePages Indicates whether or not there are more pages. Only makes sense when pageTotal is not supplied.
- *  @param margin Number of pages to always show at the left and right of the component.
- *  @param padding Number pages to display on each side of the currently selected page.
- *  @param onPageSelect Callback to be called when a page is selected
+ * @param pageTotal Total of pages
+ * @param pageSelected Page selected
+ * @param hasMorePages Indicates whether or not there are more pages. Only makes
+ *     sense when pageTotal is not supplied.
+ * @param margin Number of pages to always show at the left and right of the
+ *     component.
+ * @param padding Number pages to display on each side of the currently selected
+ *     page.
+ * @param onPageSelect Callback to be called when a page is selected
  */
 function Pagination({
   pageTotal,
