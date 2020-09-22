@@ -14,10 +14,15 @@ TODO: complete
 <Preview>
   <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
     <Stack
-      hAlignment={select("hAlignment", ["start", "end", "center", "between"])}
-      vAlignment={select("vAlignment", ["start", "end", "center", "between"])}
+      justify={select("justify", [
+        "flex-start",
+        "center",
+        "flex-end",
+        "space-between",
+      ])}
+      align={select("align", ["flex-start", "center", "flex-end", "stretch"])}
       spacing={select("spacing", ["base", "tight"])}
-      vertical={boolean("vertical", false)}
+      column={boolean("column", false)}
       wrap={boolean("wrap", false)}
     >
       <Stack.Item fill={boolean("fill", false)}>
@@ -30,6 +35,10 @@ TODO: complete
   </Story>
 </Preview>
 
-## Properties
+## Properties Stack
+
+<Props of={Stack} />
+
+## Properties Stack.Item
 
 <Props of={Stack.Item.type} />
