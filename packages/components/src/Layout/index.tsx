@@ -1,6 +1,9 @@
 import * as React from "react";
 
+import Section from "./Layout.Section";
 import "./Layout.css";
+
+export { InterfaceLayoutSection } from "./Layout.Section";
 
 export interface InterfaceLayout {
   /** Type of layout */
@@ -15,12 +18,15 @@ export interface InterfaceLayout {
  * @param appearance Type of layout.
  * @param children Components to render inside layout.
  */
-function Layout({ appearance, children }: InterfaceLayout): JSX.Element {
+const Layout = React.memo(function Layout({
+  appearance = "fluid",
+  children,
+}: InterfaceLayout): JSX.Element {
   return <main className={`nimbus--layout-${appearance}`}>{children}</main>;
-}
-
-Layout.defaultProps = {
-  appearance: "fluid",
+}) as React.NamedExoticComponent<InterfaceLayout> & {
+  Section: typeof Section;
 };
 
-export default React.memo(Layout);
+Layout.Section = Section;
+
+export default Layout;
