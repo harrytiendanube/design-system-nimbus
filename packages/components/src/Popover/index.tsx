@@ -2,18 +2,27 @@ import * as React from "react";
 
 import "./Popover.css";
 
-import { ChevronDownIcon, ChevronUpIcon } from "@tiendanube/icons";
+import classNames from "classnames";
+import {
+  ChevronDownIcon,
+  ChevronUpIcon,
+  EllipsisIcon,
+} from "@tiendanube/icons";
 import { Title, Button } from "..";
 
 interface InterfacePopover {
   /** Name of the Popover */
   name: string;
   /** Label of the Popover */
-  label: string;
+  label?: string;
   /** Text of the Popover */
   title?: string;
   /** React node of type children */
   children: React.ReactNode;
+  /** Determines whether the initiator is a button or an icon */
+  isMenu?: boolean;
+  /** Determines the position of the popover menu */
+  position?: "left" | "right";
 }
 
 /**
@@ -21,6 +30,8 @@ interface InterfacePopover {
  * @param label Of the Popover
  * @param title Text of the Popover
  * @param children React node of type children
+ * @param isMenu Determines whether the initiator is a button or an icon
+ * @param position Determines the position of the popover menu
  */
 
 function Popover({
@@ -28,8 +39,18 @@ function Popover({
   label,
   title,
   children,
+  isMenu,
+  position = "left",
 }: InterfacePopover): JSX.Element {
   const [active, setActive] = React.useState(false);
+
+  const className = React.useMemo(
+    () =>
+      classNames("nimbus--popover-wrapper", {
+        "position--right": position === "right",
+      }),
+    [position],
+  );
 
   const memorizedTitle = React.useMemo(
     () =>
@@ -46,14 +67,14 @@ function Popover({
       active && (
         <div
           id={`nimbus-popover-wrapper-${name}`}
-          className="nimbus--popover-wrapper"
+          className={className}
           role="dialog"
         >
           {memorizedTitle}
           <div className="nimbus--popover-body">{children}</div>
         </div>
       ),
-    [active, children, memorizedTitle, name],
+    [active, children, className, memorizedTitle, name],
   );
 
   const handleClick = React.useCallback(
@@ -97,15 +118,25 @@ function Popover({
       role="presentation"
     >
       <div id={`nimbus-popover-initiator-${name}`}>
-        <Button
-          link
-          icon={active ? ChevronUpIcon : ChevronDownIcon}
-          iconPosition="end"
-          appearance="default"
-          onClick={handleClick}
-        >
-          {label}
-        </Button>
+        {isMenu ? (
+          <Button
+            link
+            icon={EllipsisIcon}
+            iconSize="medium"
+            appearance="secondary"
+            onClick={handleClick}
+          />
+        ) : (
+          <Button
+            link
+            icon={active ? ChevronUpIcon : ChevronDownIcon}
+            iconPosition="end"
+            appearance="default"
+            onClick={handleClick}
+          >
+            {label}
+          </Button>
+        )}
       </div>
       {memorizedActive}
     </div>

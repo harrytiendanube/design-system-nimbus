@@ -106,7 +106,8 @@
           "searchbox",
           "unhover",
           "esc",
-          "rowgroup"
+          "rowgroup",
+          "Dropdown"
         ]
       }
     ]

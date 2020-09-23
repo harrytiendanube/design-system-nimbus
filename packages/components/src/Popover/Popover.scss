@@ -19,11 +19,17 @@
     overflow: hidden;
     padding: $spacing-x-small;
     position: absolute;
+    right: initial;
     top: 100%;
     transition: opacity $motion-base ease, visibility 0s linear;
     visibility: visible;
     width: 280px;
     z-index: 500;
+
+    &.position--right {
+      left: initial;
+      right: 0;
+    }
 
     .#{$prefix}--popover-header,
     .#{$prefix}--popover-body {

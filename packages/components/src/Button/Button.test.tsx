@@ -8,6 +8,7 @@ import { ArrowRightIcon } from "@tiendanube/icons";
 import Button from ".";
 
 const myIconPosition = "start";
+const myIconSize = "small";
 const myAppearance = "default";
 const myText = "myText";
 
@@ -18,6 +19,7 @@ describe("<Button/>", () => {
         appearance={myAppearance}
         icon={ArrowRightIcon}
         iconPosition={myIconPosition}
+        iconSize={myIconSize}
         onClick={jest.fn()}
       >
         {myText}

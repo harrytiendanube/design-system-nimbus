@@ -7,11 +7,19 @@ const myName = "myName";
 const myLabel = "myLabel";
 const myTitle = "myTitle";
 const myText = "myText";
+const myIsMenu = false;
+const myPosition = "right";
 
 describe("<Popover />", () => {
   it("render", () => {
     const { container } = render(
-      <Popover name={myName} label={myLabel} title={myTitle}>
+      <Popover
+        name={myName}
+        label={myLabel}
+        title={myTitle}
+        isMenu={myIsMenu}
+        position={myPosition}
+      >
         <Text>{myText}</Text>
       </Popover>,
     );
@@ -25,7 +33,7 @@ describe("<Popover />", () => {
 
   it("render children when click button and hides when click again", () => {
     render(
-      <Popover name={myName} label={myLabel} title={myTitle}>
+      <Popover name={myName} label={myLabel} title={myTitle} position="right">
         <Text>{myText}</Text>
       </Popover>,
     );
@@ -97,5 +105,18 @@ describe("<Popover />", () => {
     userEvent.click(element2);
     expect(screen.queryByText(myText)).toBeFalsy();
     expect(screen.getByText(myText2)).toBeTruthy();
+  });
+
+  it("render as a menu and position right", () => {
+    render(
+      <Popover name={myName} title={myTitle} position="right" isMenu>
+        <Text>{myText}</Text>
+      </Popover>,
+    );
+    const element: HTMLElement = screen.getByRole("button");
+    userEvent.click(element);
+    expect(screen.getByRole("dialog")).toHaveClass(
+      "nimbus--popover-wrapper position--right",
+    );
   });
 });

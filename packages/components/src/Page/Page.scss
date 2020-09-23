@@ -1,49 +1,36 @@
-@import "../../styles/core";
+@import "core";
 
 // Page
 
 .#{$prefix}--page {
-  padding-left: $spacing-gutter / 2;
-  padding-right: $spacing-gutter / 2;
-  @supports (padding-top: constant(safe-area-inset-top)) {
-    --safe-area-inset-left: constant(safe-area-inset-left);
-    --safe-area-inset-right: constant(safe-area-inset-right);
-    --safe-area-inset-top: constant(safe-area-inset-top);
+  @include safe-area;
+}
 
-    padding-left: calc(var(--safe-area-inset-left) + #{$spacing-gutter / 2});
-    padding-right: calc(var(--safe-area-inset-right) + #{$spacing-gutter / 2});
-    padding-top: var(--safe-area-inset-top);
-  }
-  @supports (padding-top: env(safe-area-inset-top)) {
-    --safe-area-inset-left: env(safe-area-inset-left);
-    --safe-area-inset-right: env(safe-area-inset-right);
-    --safe-area-inset-top: env(safe-area-inset-top);
+.#{$prefix}--page-menubar,
+.#{$prefix}--page-navbar,
+.#{$prefix}--page-heading {
+  padding-bottom: $spacing-x-small;
+  padding-left: $spacing-small;
+  padding-right: $spacing-small;
+  padding-top: $spacing-x-small;
 
-    padding-left: calc(var(--safe-area-inset-left) + #{$spacing-gutter / 2});
-    padding-right: calc(var(--safe-area-inset-right) + #{$spacing-gutter / 2});
-    padding-top: var(--safe-area-inset-top);
+  @include nimbus--breakpoint(md) {
+    padding-left: $spacing-medium;
+    padding-right: $spacing-medium;
   }
 }
 
-@include nimbus--breakpoint(md) {
-  .#{$prefix}--page {
-    padding-left: $spacing-gutter / 2 + $spacing-x-small;
-    padding-right: $spacing-gutter / 2 + $spacing-x-small;
-    @supports (padding-top: constant(safe-area-inset-top)) {
-      padding-left: calc(
-        var(--safe-area-inset-left) + #{$spacing-gutter / 2} + #{$spacing-x-small}
-      );
-      padding-right: calc(
-        var(--safe-area-inset-right) + #{$spacing-gutter / 2} + #{$spacing-x-small}
-      );
-    }
-    @supports (padding-top: env(safe-area-inset-top)) {
-      padding-left: calc(
-        var(--safe-area-inset-left) + #{$spacing-gutter / 2} + #{$spacing-x-small}
-      );
-      padding-right: calc(
-        var(--safe-area-inset-right) + #{$spacing-gutter / 2} + #{$spacing-x-small}
-      );
-    }
+.#{$prefix}--page-header__labels {
+  margin-top: $spacing-x-small;
+}
+
+.#{$prefix}--page-content {
+  margin-top: $spacing-large;
+  padding-left: $spacing-small;
+  padding-right: $spacing-small;
+
+  @include nimbus--breakpoint(md) {
+    padding-left: $spacing-medium;
+    padding-right: $spacing-medium;
   }
 }

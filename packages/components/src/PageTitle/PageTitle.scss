@@ -4,7 +4,6 @@
 
 .#{$prefix}--page-title {
   display: block;
-  margin-bottom: $spacing-large;
   width: 100%;
 
   .#{$prefix}--page-subtitle {
@@ -15,11 +14,5 @@
 
   .#{$prefix}--text + .#{$prefix}--link {
     margin-left: $spacing-x-small;
-  }
-}
-
-@include nimbus--breakpoint(lg) {
-  .#{$prefix}--page-title {
-    margin-bottom: $spacing-xx-large;
   }
 }

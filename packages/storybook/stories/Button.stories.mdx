@@ -20,6 +20,7 @@ TODO: complete
     <Button
       icon={ArrowRightIcon}
       iconPosition={select("iconPosition", ["start", "end"])}
+      iconSize={select("iconSize", ["small", "medium", "large"])}
       appearance={select("appearance", [
         "default",
         "primary",
@@ -30,7 +31,7 @@ TODO: complete
       link={boolean("link", false)}
       onClick={action("onClick")}
     >
-      {text("Text", "Text")}
+      {text("children", "Text")}
     </Button>
   </Story>
 </Preview>
@@ -97,8 +98,7 @@ TODO: complete
           iconPosition="end"
           link
         >
-          {" "}
-          Default{" "}
+          Default
         </Button>
         <Button
           appearance="primary"
@@ -106,8 +106,7 @@ TODO: complete
           iconPosition="end"
           link
         >
-          {" "}
-          Primary{" "}
+          Primary
         </Button>
         <Button
           appearance="secondary"
@@ -115,8 +114,7 @@ TODO: complete
           iconPosition="end"
           link
         >
-          {" "}
-          Secondary{" "}
+          Secondary
         </Button>
         <Button
           appearance="danger"
@@ -124,8 +122,7 @@ TODO: complete
           iconPosition="end"
           link
         >
-          {" "}
-          Danger{" "}
+          Danger
         </Button>
       </div>
       <br />
