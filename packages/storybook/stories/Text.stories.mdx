@@ -1,5 +1,5 @@
 import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
-import { withKnobs, text } from "@storybook/addon-knobs";
+import { withKnobs, text, select, boolean } from "@storybook/addon-knobs";
 import { withA11y } from "@storybook/addon-a11y";
 
 import { Text } from "@tiendanube/components/src";
@@ -15,7 +15,23 @@ TODO: complete
 
 <Preview>
   <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
-    <Text> {text("children", "Text")} </Text>
+    <Text
+      appearance={select("appearance", [
+        "default",
+        "primary",
+        "secondary",
+        "success",
+        "warning",
+        "danger",
+      ])}
+      bold={boolean("bold", false)}
+      block={boolean("block", false)}
+      size={select("size", ["base", "small"])}
+      background={boolean("background", false)}
+    >
+      {text("children", "Text")}
+    </Text>
+    <Text>Another Text</Text>
   </Story>
 </Preview>
 

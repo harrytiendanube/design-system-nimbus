@@ -130,7 +130,7 @@ function Alert({
           <div className="nimbus--alert__details">
             <div className="nimbus--alert__body">
               {title && <Title type="h5">{title}</Title>}
-              <Text size="regular">{children}</Text>
+              <Text>{children}</Text>
             </div>
             {withActions}
           </div>

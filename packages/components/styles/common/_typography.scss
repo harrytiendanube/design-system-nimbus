@@ -11,7 +11,6 @@ $heading-page: (
       map-get($nimbus--title-sizes, "h1") *
         map-get($nimbus--line-heights, "heading")
     ),
-  text-align: left,
 ) !default;
 
 $heading-element: (
@@ -23,7 +22,6 @@ $heading-element: (
       map-get($nimbus--title-sizes, "h3") *
         map-get($nimbus--line-heights, "base")
     ),
-  text-align: left,
 ) !default;
 
 $text-heading: (
@@ -35,7 +33,6 @@ $text-heading: (
       map-get($nimbus--body-sizes, "base") *
         map-get($nimbus--line-heights, "body")
     ),
-  text-align: left,
 ) !default;
 
 $text-body: (
@@ -47,7 +44,6 @@ $text-body: (
       map-get($nimbus--body-sizes, "base") *
         map-get($nimbus--line-heights, "body")
     ),
-  text-align: left,
 ) !default;
 
 $text-label: (
@@ -59,7 +55,6 @@ $text-label: (
       map-get($nimbus--body-sizes, "small") *
         map-get($nimbus--line-heights, "body")
     ),
-  text-align: left,
 ) !default;
 
 $text-label-tight: (
@@ -71,7 +66,6 @@ $text-label-tight: (
       map-get($nimbus--body-sizes, "small") *
         map-get($nimbus--line-heights, "base")
     ),
-  text-align: left,
 ) !default;
 
 $text-button: (
