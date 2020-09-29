@@ -44,16 +44,20 @@ $thumbnail-dimensions: 72px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    max-width: calc(100% - #{$thumbnail-dimensions} - #{$spacing-small});
     width: 100%;
 
     .#{$prefix}--text,
     .#{$prefix}--link {
       @include nimbus--type("text-body");
+      /* stylelint-disable-next-line property-no-vendor-prefix */
+      -webkit-box-orient: vertical;
+      /* stylelint-disable-next-line value-no-vendor-prefix */
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
       max-width: 100%;
       overflow: hidden;
+      text-align: inherit;
       text-overflow: ellipsis;
-      white-space: nowrap;
     }
 
     .#{$prefix}--text {
