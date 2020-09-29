@@ -17,7 +17,8 @@ export interface InterfaceText {
     | "secondary"
     | "success"
     | "warning"
-    | "danger";
+    | "danger"
+    | "light";
   /** Text background */
   background?: boolean;
   /** Bold font for the text component */

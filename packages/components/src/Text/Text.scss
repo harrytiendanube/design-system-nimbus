@@ -8,7 +8,7 @@
   &.#{$prefix}--text-size--base {
     @include nimbus--type("text-body");
   }
-  
+
   &.#{$prefix}--text-size--small {
     @include nimbus--type("text-label");
   }
@@ -45,6 +45,10 @@
     color: $color-danger;
   }
 
+  &.#{$prefix}--text-color--light {
+    color: $color-grey-60;
+  }
+
   @mixin text-background($color) {
     background-color: $color;
     border-radius: $actions-border-radius;
@@ -75,5 +79,9 @@
 
   &.#{$prefix}--text-background--danger {
     @include text-background($color-danger-light);
+  }
+
+  &.#{$prefix}--text-background--light {
+    @include text-background($color-default);
   }
 }
