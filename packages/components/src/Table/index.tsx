@@ -1,5 +1,12 @@
 import * as React from "react";
 
+import classNames from "classnames";
+
+import Row from "./Table.Row";
+import Item from "./Table.Item";
+import RenderRow from "./RenderRow";
+import RowContextProvider from "./RowContext";
+
 import "./Table.css";
 
 import Text from "../Text";
@@ -10,7 +17,6 @@ import {
   InterfaceNameChecked,
   InterfaceMassAction,
   InterfaceNameValue,
-  InterfaceHeaderTable,
 } from "../common/interfaces";
 
 import {
@@ -22,29 +28,44 @@ import {
 
 interface InterfaceTable {
   /** Headers of the table */
-  headers: InterfaceHeaderTable[];
-  /** Rows of the table */
-  rows: JSX.Element[][];
+  headers?: string[];
   /** Mass Action data */
   massAction?: InterfaceMassAction;
+  /** Rows separated by lines */
+  ruled?: boolean;
+  /** Defines spacing between rows */
+  spacing?: "base" | "tight";
+  /** React node of type children */
+  children?: React.ReactNode;
 }
 
 /**
  * @param headers Headers of the table
  * @param rows Text to be displayed in the alert
  * @param massAction Mass Action data
+ * @param ruled Rows separated by lines
+ * @param spacing Defines spacing between rows
  */
-function Table({ headers, rows, massAction }: InterfaceTable): JSX.Element {
+const Table = React.memo(function Table({
+  headers,
+  children,
+  massAction,
+  ruled = true,
+  spacing = "base",
+}: InterfaceTable): JSX.Element {
+  const rowsCount = React.useMemo(() => React.Children.count(children), [
+    children,
+  ]);
   const allChecksUnSelected = React.useMemo(
-    () => createSelectedValues(rows.length, false),
-    [rows],
+    () => createSelectedValues(rowsCount, false),
+    [rowsCount],
   );
   const allChecksSelected = React.useMemo(
-    () => createSelectedValues(rows.length, true),
-    [rows],
+    () => createSelectedValues(rowsCount, true),
+    [rowsCount],
   );
   const [rowsState, setRowsState] = React.useState(
-    createSelectedValues(rows.length, false),
+    createSelectedValues(rowsCount, false),
   );
   const [massActionSelectValue] = React.useState("");
   const [massActionCheckValue, setMassActionCheckValue] = React.useState(false);
@@ -117,23 +138,22 @@ function Table({ headers, rows, massAction }: InterfaceTable): JSX.Element {
 
   const memorizedHeader = React.useMemo(
     () =>
-      !(massAction && massActionCheckValue) && (
+      !(massAction && massActionCheckValue) &&
+      headers && (
         <thead className="nimbus--table__header">
           <tr className="nimbus--table-row">
-            <th className="nimbus--table-row__check">
-              <Checkbox
-                name="check-all"
-                checked={massActionCheckValue}
-                onChange={handleOnChangeCheckMassAction}
-              />
-            </th>
-            {headers.map((header) => (
-              <th
-                scope="col"
-                key={header.value}
-                className="nimbus--table-row__item"
-              >
-                <Text>{header.value}</Text>
+            {massAction && (
+              <th className="nimbus--table-row__check">
+                <Checkbox
+                  name="check-all"
+                  checked={massActionCheckValue}
+                  onChange={handleOnChangeCheckMassAction}
+                />
+              </th>
+            )}
+            {headers?.map((header) => (
+              <th scope="col" key={header} className="nimbus--table-row__item">
+                <Text>{header}</Text>
               </th>
             ))}
           </tr>
@@ -142,43 +162,54 @@ function Table({ headers, rows, massAction }: InterfaceTable): JSX.Element {
     [handleOnChangeCheckMassAction, headers, massAction, massActionCheckValue],
   );
 
+  const className = React.useMemo(
+    () =>
+      classNames(
+        "nimbus--table-wrapper",
+        { "nimbus--table-wrapper--ruled": ruled },
+        { "nimbus--table-wrapper--actions": massAction },
+        `nimbus--table-wrapper--spacing-${spacing}`,
+      ),
+    [massAction, ruled, spacing],
+  );
+
   return (
     <>
-      <div className="nimbus--table-wrapper">
+      <div className={className}>
         {memorizedMassAction}
         <table className="nimbus--table">
           {memorizedHeader}
           <tbody className="nimbus--table__body">
-            {rows.map((row, index) => (
-              <tr key={index} className="nimbus--table-row">
-                <td className="nimbus--table-row__check">
-                  <Checkbox
-                    name={`${index}`}
-                    checked={rowsState[index]}
-                    onChange={handleChangeRow}
-                  />
-                </td>
-                {row.map((column, indexCol) => {
-                  const className = `nimbus--table-row__item ${
-                    headers[indexCol].class ?? ""
-                  }`;
-                  return indexCol === 0 ? (
-                    <th key={indexCol} scope="row" className={className}>
-                      {column}
-                    </th>
-                  ) : (
-                    <td key={indexCol} className={className}>
-                      {column}
-                    </td>
-                  );
-                })}
-              </tr>
-            ))}
+            {React.Children.map(children, (row, index) => {
+              return (
+                <>
+                  {row && (
+                    <RowContextProvider key={index}>
+                      <RenderRow
+                        massAction={massAction}
+                        index={index}
+                        rowsState={rowsState}
+                        handleChangeRow={handleChangeRow}
+                      >
+                        {row}
+                      </RenderRow>
+                    </RowContextProvider>
+                  )}
+                </>
+              );
+            })}
           </tbody>
         </table>
       </div>
     </>
   );
-}
+}) as React.NamedExoticComponent<InterfaceTable> & {
+  Item: typeof Item;
+} & {
+  Row: typeof Row;
+};
 
-export default React.memo(Table);
+Table.Row = Row;
+Table.Item = Item;
+
+export default Table;

@@ -1,5 +1,5 @@
 import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
-import { withKnobs } from "@storybook/addon-knobs";
+import { withKnobs, boolean, text, select } from "@storybook/addon-knobs";
 import { withA11y } from "@storybook/addon-a11y";
 import {
   BoxUnpackedIcon,
@@ -16,6 +16,7 @@ import {
   Popover,
   ImageItem,
   Tooltip,
+  Stack,
 } from "@tiendanube/components/src";
 
 import { LOREM_STRESS } from "./utils/constants";
@@ -33,70 +34,86 @@ TODO: complete
     {() => {
       const [result, setResult] = React.useState("none");
       const headers = [
-        { value: "Order" },
-        { value: "Date" },
-        { value: "Buyer" },
-        { value: "Total" },
-        { value: "Products", class: "nimbus--table-row__item--full-width" },
-        {
-          value: "Payment status",
-          class: "nimbus--table-row__item--auto-width",
-        },
-        {
-          value: "Shipping status",
-          class: "nimbus--table-row__item--auto-width",
-        },
+        "Order",
+        "Date",
+        "Buyer",
+        "Total",
+        "Products",
+        "Payment status",
+        "Shipping status",
       ];
       const rows = [];
       for (let i = 120; i < 123; i++) {
-        rows.push([
-          <Link
-            key="1"
-            href="https://www.tiendanube.com/"
-            target="_self"
-            appearance="primary"
-          >
-            #{i}
-          </Link>,
-          <Text key="2">20 jun</Text>,
-          <Text key="3">Name Last name</Text>,
-          <Text key="4">$3.500</Text>,
-          <Popover key="5" name={i} label="6 products" title={`Order #${i}`}>
-            <ImageItem
-              thumbnail="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=943&q=80"
-              link="Product"
-              linkTo="https://www.tiendanube.com/"
-              subtitle="Variant"
-              description="1 x $3.500"
-            />
-            <ImageItem
-              thumbnail="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=943&q=80"
-              link="Product"
-              linkTo="https://www.tiendanube.com/"
-              subtitle="Variant"
-              description="2 x $3.500"
-            />
-            <ImageItem
-              thumbnail="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=943&q=80"
-              link="Product"
-              linkTo="https://www.tiendanube.com/"
-              subtitle="Variant"
-              description="3 x $3.500"
-            />
-          </Popover>,
-          <Label
-            id="payment-status"
-            icon={CreditCardIcon}
-            label="Awaiting payment"
-            appearance="warning"
-          />,
-          <Label
-            id="shipping-status"
-            icon={BoxUnpackedIcon}
-            label="Unpacked"
-            appearance="secondary"
-          />,
-        ]);
+        rows.push(
+          <Table.Row key={i} grayed={boolean("grayed rows", false)}>
+            <Table.Item rowTitle width={60}>
+              <Link
+                key="1"
+                href="https://www.tiendanube.com/"
+                target="_self"
+                appearance="primary"
+              >
+                #{i}
+              </Link>
+            </Table.Item>
+            <Table.Item alignRight width={40}>
+              <Text key="2">20 jun</Text>
+            </Table.Item>
+            <Table.Item width={60} trimText>
+              <Text key="3">Name Last name</Text>
+            </Table.Item>
+            <Table.Item width={40} alignRight>
+              <Text key="4">$3.500</Text>
+            </Table.Item>
+            <Table.Item width={100}>
+              {" "}
+              <Popover
+                key="5"
+                name={i}
+                label="6 products"
+                title={`Order #${i}`}
+              >
+                <ImageItem
+                  thumbnail="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=943&q=80"
+                  link="Product"
+                  linkTo="https://www.tiendanube.com/"
+                  subtitle="Variant"
+                  description="1 x $3.500"
+                />
+                <ImageItem
+                  thumbnail="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=943&q=80"
+                  link="Product"
+                  linkTo="https://www.tiendanube.com/"
+                  subtitle="Variant"
+                  description="2 x $3.500"
+                />
+                <ImageItem
+                  thumbnail="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=943&q=80"
+                  link="Product"
+                  linkTo="https://www.tiendanube.com/"
+                  subtitle="Variant"
+                  description="3 x $3.500"
+                />
+              </Popover>
+            </Table.Item>
+            <Table.Item width="auto" extraPadding>
+              <Label
+                id="payment-status"
+                icon={CreditCardIcon}
+                label="Awaiting payment"
+                appearance="warning"
+              />
+            </Table.Item>
+            <Table.Item width="auto" extraPadding>
+              <Label
+                id="shipping-status"
+                icon={BoxUnpackedIcon}
+                label="Unpacked"
+                appearance="secondary"
+              />
+            </Table.Item>
+          </Table.Row>,
+        );
       }
       const massAction = {
         placeholder: "Select an Option",
@@ -111,7 +128,14 @@ TODO: complete
       };
       return (
         <>
-          <Table headers={headers} rows={rows} massAction={massAction} />
+          <Table
+            headers={boolean("headers", true) ? headers : null}
+            massAction={boolean("massAction", true) ? massAction : null}
+            ruled={boolean("ruled", true)}
+            spacing={select("spacing", ["base", "tight"])}
+          >
+            {rows}
+          </Table>
           <br />
           <Alert show>Last option selected: {result}</Alert>
         </>
@@ -120,9 +144,17 @@ TODO: complete
   </Story>
 </Preview>
 
-## Properties
+## Properties Table
 
-<Props of={Table.type} />
+<Props of={Table} />
+
+## Properties Table.Row
+
+<Props of={Table.Row.type} />
+
+## Properties Table.Item
+
+<Props of={Table.Item.type} />
 
 # Stressed
 
@@ -133,94 +165,111 @@ TODO: complete
     {() => {
       const [result, setResult] = React.useState("none");
       const headers = [
-        { value: "Order" },
-        { value: "Date" },
-        { value: "Buyer" },
-        { value: "Total" },
-        { value: "Products", class: "nimbus--table-row__item--full-width" },
-        {
-          value: "Payment status",
-          class: "nimbus--table-row__item--auto-width",
-        },
-        {
-          value: "Shipping status",
-          class: "nimbus--table-row__item--auto-width",
-        },
+        "Order",
+        "Date",
+        "Buyer",
+        "Total",
+        "Products",
+        "Payment status",
+        "Shipping status",
       ];
       const rows = [];
       for (let i = 12000; i < 12005; i++) {
-        rows.push([
-          <div className="nimbus--action-wrapper">
-            <div className="nimbus--action-wrapper__item">
-              <Link
-                key="1"
-                href="https://www.tiendanube.com/"
-                target="_self"
-                appearance="primary"
+        rows.push(
+          <Table.Row key={i}>
+            <Table.Item width={60} rowTitle>
+              <Stack spacing="tight">
+                <Stack.Item>
+                  <Link
+                    key="1"
+                    href="https://www.tiendanube.com/"
+                    target="_self"
+                    appearance="primary"
+                  >
+                    #{i}
+                  </Link>
+                </Stack.Item>
+                <Stack.Item>
+                  <Tooltip
+                    name="merchant-notes"
+                    labelIcon={FileIcon}
+                    labelText="Merchant notes"
+                  >
+                    <Text>Merchant notes</Text>
+                  </Tooltip>
+                </Stack.Item>
+              </Stack>
+            </Table.Item>
+            <Table.Item width={40} alignRight>
+              <Text key="2">31 dec</Text>
+            </Table.Item>
+            <Table.Item width={60} trimText>
+              <Stack spacing="tight" align="flex-start">
+                <Stack.Item fill>
+                  <Text key="3">{LOREM_STRESS}</Text>
+                </Stack.Item>
+                <Stack.Item>
+                  <Tooltip
+                    name="customer-notes"
+                    labelIcon={ChatDotsIcon}
+                    labelText="Customer notes"
+                  >
+                    <Text>Customer notes</Text>
+                  </Tooltip>
+                </Stack.Item>
+              </Stack>
+            </Table.Item>
+            <Table.Item width={40} alignRight>
+              <Text key="4">$99.999,99</Text>
+            </Table.Item>
+            <Table.Item width={100}>
+              <Popover
+                key="5"
+                name={i}
+                label="20 products"
+                title={`Order #${i}`}
               >
-                #{i}
-              </Link>
-            </div>
-            <Tooltip
-              name="merchant-notes"
-              labelIcon={FileIcon}
-              labelText="Merchant notes"
-            >
-              <Text>Merchant notes</Text>
-            </Tooltip>
-          </div>,
-          <Text key="2">31 dec</Text>,
-          <div className="nimbus--action-wrapper">
-            <div className="nimbus--action-wrapper__item">
-              <Text key="3">{LOREM_STRESS}</Text>
-            </div>
-            <div className="nimbus--action-wrapper__item">
-              <Tooltip
-                name="customer-notes"
-                labelIcon={ChatDotsIcon}
-                labelText="Customer notes"
-              >
-                <Text>Customer notes</Text>
-              </Tooltip>
-            </div>
-          </div>,
-          <Text key="4">$999.999,99</Text>,
-          <Popover key="5" name={i} label="20 products" title={`Order #${i}`}>
-            <ImageItem
-              thumbnail="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=943&q=80"
-              link={LOREM_STRESS}
-              linkTo="https://www.tiendanube.com/"
-              subtitle={LOREM_STRESS}
-              description="1 x $3.500"
-            />
-            <ImageItem
-              thumbnail="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=943&q=80"
-              link={LOREM_STRESS}
-              linkTo="https://www.tiendanube.com/"
-              subtitle={LOREM_STRESS}
-              description="2 x $3.500"
-            />
-            <ImageItem
-              thumbnail="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=943&q=80"
-              link={LOREM_STRESS}
-              linkTo="https://www.tiendanube.com/"
-              subtitle={LOREM_STRESS}
-              description="3 x $3.500"
-            />
-          </Popover>,
-          <Label
-            id="payment-status"
-            icon={CreditCardIcon}
-            label="Awaiting payment"
-            appearance="warning"
-          />,
-          <Label
-            id="shipping-status"
-            icon={BoxUnpackedIcon}
-            label="Unpacked"
-            appearance="secondary"
-          />,
-        ]);
+                <ImageItem
+                  thumbnail="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=943&q=80"
+                  link={LOREM_STRESS}
+                  linkTo="https://www.tiendanube.com/"
+                  subtitle={LOREM_STRESS}
+                  description="1 x $3.500"
+                />
+                <ImageItem
+                  thumbnail="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=943&q=80"
+                  link={LOREM_STRESS}
+                  linkTo="https://www.tiendanube.com/"
+                  subtitle={LOREM_STRESS}
+                  description="2 x $3.500"
+                />
+                <ImageItem
+                  thumbnail="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=943&q=80"
+                  link={LOREM_STRESS}
+                  linkTo="https://www.tiendanube.com/"
+                  subtitle={LOREM_STRESS}
+                  description="3 x $3.500"
+                />
+              </Popover>
+            </Table.Item>
+            <Table.Item width="auto" extraPadding>
+              <Label
+                id="payment-status"
+                icon={CreditCardIcon}
+                label="Awaiting payment"
+                appearance="warning"
+              />
+            </Table.Item>
+            <Table.Item width="auto" extraPadding>
+              <Label
+                id="shipping-status"
+                icon={BoxUnpackedIcon}
+                label="Unpacked"
+                appearance="secondary"
+              />
+            </Table.Item>
+          </Table.Row>,
+        );
       }
       const massAction = {
         placeholder: "Select an Option",
@@ -235,10 +284,99 @@ TODO: complete
       };
       return (
         <>
-          <Table headers={headers} rows={rows} massAction={massAction} />
+          <Table headers={headers} massAction={massAction}>
+            {rows}
+          </Table>
           <br />
           <Alert show>Last option selected: {result}</Alert>
         </>
+      );
+    }}
+  </Story>
+</Preview>
+
+# Order detail
+
+TODO: complete
+
+<Preview>
+  <Story name="order detail" decorators={[withKnobs, withA11y]}>
+    {() => {
+      return (
+        <Table ruled={false} spacing="tight">
+          <Table.Row>
+            <Table.Item width={70}>
+              <ImageItem
+                thumbnail="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=943&q=80"
+                link={text("link", "Product with a very long name")}
+                linkTo={text("linkTo", "https://www.tiendanube.com/")}
+                subtitle={text("subtitle", "Variant")}
+                description={text("description", "1 x $3.500")}
+              />
+            </Table.Item>
+            <Table.Item width={30}>
+              <Text block textAlign="right">
+                R$3.500,50
+              </Text>
+            </Table.Item>
+          </Table.Row>
+          <Table.Row>
+            <Table.Item width={70}>
+              <ImageItem
+                thumbnail="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=943&q=80"
+                link={text("link", "Product with a very long name")}
+                linkTo={text("linkTo", "https://www.tiendanube.com/")}
+                subtitle={text("subtitle", "Variant")}
+                description={text("description", "1 x $3.500")}
+              />
+            </Table.Item>
+            <Table.Item width={30}>
+              <Text block textAlign="right">
+                R$3.500,50
+              </Text>
+            </Table.Item>
+          </Table.Row>
+          <Table.Row grayed>
+            <Table.Item width={70}>
+              <Text>Subtotal:</Text>
+            </Table.Item>
+            <Table.Item width={30}>
+              <Text block textAlign="right">
+                R$7.000,50
+              </Text>
+            </Table.Item>
+          </Table.Row>
+          <Table.Row>
+            <Table.Item width={70}>
+              <Text>OCA Estándar - Retirar por una sucursal de OCA:</Text>
+            </Table.Item>
+            <Table.Item width={30}>
+              <Text block textAlign="right">
+                R$250
+              </Text>
+            </Table.Item>
+          </Table.Row>
+          <Table.Row>
+            <Table.Item width={70}>
+              <Text>Descuento por tener productos con envío sin cargo:</Text>
+            </Table.Item>
+            <Table.Item width={30}>
+              <Text appearance="danger" block textAlign="right">
+                -R$250
+              </Text>
+            </Table.Item>
+          </Table.Row>
+          <Table.Row grayed>
+            <Table.Item width={70}>
+              <Text bold>Total:</Text>
+            </Table.Item>
+            <Table.Item width={30}>
+              <Text bold block textAlign="right">
+                R$7.000,50
+              </Text>
+            </Table.Item>
+          </Table.Row>
+        </Table>
       );
     }}
   </Story>

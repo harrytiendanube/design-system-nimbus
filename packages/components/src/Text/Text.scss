@@ -21,6 +21,14 @@
     font-weight: map-get($nimbus--font-weights, "bold");
   }
 
+  &.#{$prefix}--text-align--left {
+    text-align: left;
+  }
+
+  &.#{$prefix}--text-align--right {
+    text-align: right;
+  }
+
   &.#{$prefix}--text-color--default {
     color: $color-body-text;
   }

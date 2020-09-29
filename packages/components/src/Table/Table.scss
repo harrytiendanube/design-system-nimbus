@@ -8,9 +8,11 @@
     margin-right: -$spacing-small;
   }
 
-  @include nimbus--breakpoint(md) {
-    border: $input-border-width solid $color-default;
-    border-radius: $actions-border-radius;
+  &.#{$prefix}--table-wrapper--ruled {
+    @include nimbus--breakpoint(md) {
+      border: $input-border-width solid $color-default;
+      border-radius: $actions-border-radius;
+    }
   }
 
   .#{$prefix}--table__mass-actions {
@@ -49,8 +51,6 @@
   border: 0;
   border-collapse: collapse;
   border-spacing: 0;
-  padding-left: $spacing-small;
-  padding-right: $spacing-small;
   width: 100%;
 
   .#{$prefix}--table__header {
@@ -79,7 +79,8 @@
 
   th {
     .#{$prefix}--text,
-    .#{$prefix}--link {
+    .#{$prefix}--link,
+    .#{$prefix}--button {
       @include nimbus--type("text-heading");
     }
   }
@@ -87,88 +88,153 @@
 
 // TableRow
 
-.#{$prefix}--table-row {
-  border-bottom: 1px solid $color-grey-0;
-  border-top: 1px solid $color-grey-0;
+.#{$prefix}--table-wrapper--ruled {
+  .#{$prefix}--table-row {
+    border-bottom: 1px solid $color-default;
+    border-top: 1px solid $color-default;
+  }
+}
 
+.#{$prefix}--table-wrapper--spacing-base {
+  &.#{$prefix}--table-wrapper--actions {
+    .#{$prefix}--table-row {
+      @include nimbus--breakpoint-down(md) {
+        padding: $spacing-small $spacing-x-small $spacing-small $spacing-x-large;
+      }
+
+      .#{$prefix}--table-row__check {
+        width: $spacing-xx-large;
+
+        @include nimbus--breakpoint-down(md) {
+          padding: $spacing-small $spacing-x-small 0 $spacing-small;
+        }
+      }
+    }
+  }
+
+  .#{$prefix}--table-row {
+    @include nimbus--breakpoint-down(md) {
+      padding: $spacing-small $spacing-x-small;
+    }
+
+    .#{$prefix}--table-row__item {
+      padding: $spacing-small $spacing-x-small;
+
+      @include nimbus--breakpoint-down(md) {
+        padding: 0 $spacing-x-small;
+      }
+    }
+  }
+}
+
+.#{$prefix}--table-wrapper--spacing-tight {
+  &.#{$prefix}--table-wrapper--actions {
+    .#{$prefix}--table-row {
+      @include nimbus--breakpoint-down(md) {
+        padding: $spacing-x-small $spacing-x-small $spacing-x-small
+          $spacing-large;
+      }
+
+      .#{$prefix}--table-row__check {
+        width: $spacing-x-large;
+
+        @include nimbus--breakpoint-down(md) {
+          padding: $spacing-x-small $spacing-xx-small 0 $spacing-x-small;
+        }
+      }
+    }
+  }
+
+  .#{$prefix}--table-row {
+    @include nimbus--breakpoint-down(md) {
+      padding: $spacing-x-small;
+    }
+
+    .#{$prefix}--table-row__item {
+      padding: $spacing-x-small;
+
+      @include nimbus--breakpoint-down(md) {
+        padding: 0 $spacing-x-small;
+      }
+    }
+  }
+}
+
+.#{$prefix}--table-row {
   @include nimbus--breakpoint-down(md) {
     display: flex;
     flex-wrap: wrap;
-    padding: $spacing-small $spacing-x-small $spacing-small $spacing-x-large;
     position: relative;
   }
 
   .#{$prefix}--table-row__check {
     padding-left: $spacing-small;
     padding-right: $spacing-x-small;
-    width: $spacing-xx-large;
 
     @include nimbus--breakpoint-down(md) {
       height: 100%;
       left: 0;
-      padding: $spacing-small $spacing-x-small 0 $spacing-small;
       position: absolute;
       top: 0;
     }
   }
 
-  .#{$prefix}--table-row__column {
-    padding-left: $spacing-x-small;
-    padding-right: $spacing-x-small;
+  &.#{$prefix}--table-row--grayed {
+    background-color: #fafafa;
   }
 
   .#{$prefix}--table-row__item {
-    padding: $spacing-small $spacing-x-small;
     text-align: left;
 
-    @include nimbus--breakpoint-down(md) {
-      flex: 1 1 60%;
-      max-width: 60%;
-      padding: 0 $spacing-x-small;
-    }
+    &.#{$prefix}--table-row__item--trim-text {
+      .#{$prefix}--text {
+        /* stylelint-disable-next-line property-no-vendor-prefix */
+        -webkit-box-orient: vertical;
+        /* stylelint-disable-next-line value-no-vendor-prefix */
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+        text-align: inherit;
+        text-overflow: ellipsis;
 
-    .#{$prefix}--text {
-      max-width: 120px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-
-      @include nimbus--breakpoint(lg) {
-        max-width: 150px;
-      }
-    }
-
-    &:nth-of-type(even) {
-      @include nimbus--breakpoint-down(md) {
-        flex: 1 1 40%;
-        max-width: 40%;
-        text-align: right;
-
-        > * {
-          text-align: right;
+        @include nimbus--breakpoint(md) {
+          max-width: 160px;
+          white-space: nowrap;
         }
       }
     }
 
-    &.#{$prefix}--table-row__item--full-width {
+    &.#{$prefix}--table-row__item--fill-width {
       @include nimbus--breakpoint-down(md) {
-        flex: 1 1 100%;
-        max-width: 100%;
-      }
-
-      > * {
-        width: 100%;
+        flex: 1 1 auto;
       }
     }
 
     &.#{$prefix}--table-row__item--auto-width {
       @include nimbus--breakpoint-down(md) {
         flex: 0 0 auto;
-        max-width: initial;
+      }
+    }
+
+    @for $n from 0 through 100 {
+      &.#{$prefix}--table-row__item--#{$n}-width {
+        @include nimbus--breakpoint-down(md) {
+          flex: 1 1 percentage($n / 100);
+          max-width: percentage($n / 100);
+        }
+      }
+    }
+
+    &.#{$prefix}--table-row__item--align-right {
+      @include nimbus--breakpoint-down(md) {
+        text-align: right;
+      }
+    }
+
+    &.#{$prefix}--table-row__item--extra-padding {
+      @include nimbus--breakpoint-down(md) {
         padding: $spacing-x-small 0 0 $spacing-x-small;
       }
     }
   }
 }
-
-@include nimbus--action-wrapper($wrap: false);

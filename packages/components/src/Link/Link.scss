@@ -14,22 +14,22 @@
   @include link(
     $color-body-text,
     darken($color-body-text, 20%),
-    darken($color-body-text, 40%)
+    lighten($color-body-text, 40%)
   );
 }
 
 .#{$prefix}--link--primary {
-  @include link($color-primary, $color-primary-hover, $color-primary-active);
+  @include link($color-primary, $color-primary-hover, $color-primary-light);
 }
 
 .#{$prefix}--link--secondary {
   @include link(
     $color-secondary,
     $color-secondary-hover,
-    $color-secondary-active
+    $color-secondary-light
   );
 }
 
 .#{$prefix}--link--danger {
-  @include link($color-danger, $color-danger-hover, $color-danger-active);
+  @include link($color-danger, $color-danger-hover, $color-danger-light);
 }

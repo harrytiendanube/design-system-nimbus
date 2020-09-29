@@ -9,13 +9,28 @@ const handleChange = jest.fn(
   (selected: InterfaceMassActionSelected) => selected,
 );
 
-const myHeaders = [
-  { value: "Order" },
-  { value: "Date", class: "nimbus--table-row__item--full-width" },
-];
-const rows: JSX.Element[][] = [
-  [<Text key="1">Text 00</Text>, <Text key="2">Text 01</Text>],
-  [<Text key="1">Text 01</Text>, <Text key="2">Text 11</Text>],
+const myHeaders = ["Order", "Date"];
+const rows: React.ReactNode = [
+  [
+    <Table.Row key="0">
+      <Table.Item rowTitle>
+        <Text>Text 00</Text>
+      </Table.Item>
+      <Table.Item>
+        <Text>Text 01</Text>
+      </Table.Item>
+    </Table.Row>,
+  ],
+  [
+    <Table.Row key="1">
+      <Table.Item rowTitle>
+        <Text>Text 10</Text>
+      </Table.Item>
+      <Table.Item>
+        <Text>Text 11</Text>
+      </Table.Item>
+    </Table.Row>,
+  ],
 ];
 
 const myMA = {
@@ -32,21 +47,30 @@ const myMA = {
 
 describe("<Table />", () => {
   it("renders", () => {
-    render(<Table headers={myHeaders} rows={rows} massAction={myMA} />);
+    render(
+      <Table headers={myHeaders} massAction={myMA}>
+        {rows}
+      </Table>,
+    );
+    const rowsCount = React.Children.count(rows);
     expect(screen.getByRole("table")).toBeTruthy();
-    expect(screen.getAllByRole("rowheader").length).toBe(rows.length);
+    expect(screen.getAllByRole("rowheader").length).toBe(rowsCount);
     expect(screen.getAllByRole("columnheader").length).toBe(
       myHeaders.length + 1,
     );
     expect(screen.getAllByRole("rowgroup").length).toBe(2);
-    expect(screen.getAllByRole("row").length).toBe(rows.length + 1);
-    expect(screen.getAllByRole("cell").length).toBe(rows.length * 2);
-    expect(screen.getAllByRole("checkbox").length).toBe(rows.length + 1);
+    expect(screen.getAllByRole("row").length).toBe(rowsCount + 1);
+    expect(screen.getAllByRole("cell").length).toBe(rowsCount * 2);
+    expect(screen.getAllByRole("checkbox").length).toBe(rowsCount + 1);
     expect(screen.queryByRole("combobox")).toBeFalsy();
   });
 
   it("renders Massive Select Area (indeterminate) when any row is checked", () => {
-    render(<Table headers={myHeaders} rows={rows} massAction={myMA} />);
+    render(
+      <Table headers={myHeaders} massAction={myMA}>
+        {rows}
+      </Table>,
+    );
     userEvent.click(screen.getAllByRole("checkbox")[1]);
     expect(screen.queryByRole("columnheader")).toBeFalsy();
     const checkbox: HTMLElement = screen.getByRole("checkbox", {
@@ -65,7 +89,11 @@ describe("<Table />", () => {
   });
 
   it("renders Massive Select Area (checked) when all row is checked", () => {
-    render(<Table headers={myHeaders} rows={rows} massAction={myMA} />);
+    render(
+      <Table headers={myHeaders} massAction={myMA}>
+        {rows}
+      </Table>,
+    );
     userEvent.click(screen.getAllByRole("checkbox")[1]);
     userEvent.click(screen.getAllByRole("checkbox")[2]);
     const checkbox: HTMLElement = screen.getByRole("checkbox", {
@@ -76,10 +104,15 @@ describe("<Table />", () => {
   });
 
   it("renders Massive Select Area (checked) when click on check-all", () => {
-    render(<Table headers={myHeaders} rows={rows} massAction={myMA} />);
+    render(
+      <Table headers={myHeaders} massAction={myMA}>
+        {rows}
+      </Table>,
+    );
+    const rowsCount = React.Children.count(rows);
     userEvent.click(screen.getAllByRole("checkbox")[0]);
     const checkbox: HTMLElement = screen.getByRole("checkbox", {
-      name: myMA.getLabel(rows.length),
+      name: myMA.getLabel(rowsCount),
     });
     expect(checkbox).not.toHaveClass("nimbus--checkbox indeterminate");
     expect(checkbox).toBeChecked();
@@ -89,7 +122,11 @@ describe("<Table />", () => {
   });
 
   it("calls onChange from Massive Select Area", () => {
-    render(<Table headers={myHeaders} rows={rows} massAction={myMA} />);
+    render(
+      <Table headers={myHeaders} massAction={myMA}>
+        {rows}
+      </Table>,
+    );
     userEvent.click(screen.getAllByRole("checkbox")[1]);
     const select: HTMLElement = screen.getByRole("combobox");
     const option: HTMLElement = screen.getByRole("option", {
@@ -103,7 +140,11 @@ describe("<Table />", () => {
   });
 
   it("unChecks all rows", () => {
-    render(<Table headers={myHeaders} rows={rows} massAction={myMA} />);
+    render(
+      <Table headers={myHeaders} massAction={myMA}>
+        {rows}
+      </Table>,
+    );
     userEvent.click(screen.getAllByRole("checkbox")[0]);
     userEvent.click(screen.getAllByRole("checkbox")[0]);
     expect(screen.getAllByRole("checkbox")[1]).not.toBeChecked();
@@ -111,7 +152,11 @@ describe("<Table />", () => {
   });
 
   it("hides Massive Select Area when no rows are selected", () => {
-    render(<Table headers={myHeaders} rows={rows} massAction={myMA} />);
+    render(
+      <Table headers={myHeaders} massAction={myMA}>
+        {rows}
+      </Table>,
+    );
     userEvent.click(screen.getAllByRole("checkbox")[1]);
     userEvent.click(screen.getAllByRole("checkbox")[1]);
     expect(screen.queryByRole("combobox")).toBeFalsy();

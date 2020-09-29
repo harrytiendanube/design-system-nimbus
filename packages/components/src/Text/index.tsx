@@ -23,6 +23,8 @@ export interface InterfaceText {
   background?: boolean;
   /** Bold font for the text component */
   bold?: boolean;
+  /** Text alignment */
+  textAlign?: "left" | "right";
 }
 /**
  * @param children Text to be displayed
@@ -31,6 +33,7 @@ export interface InterfaceText {
  * @param appearance Text color
  * @param background Text background
  * @param bold Bold font for the text component
+ * @param textAlign Text alignment
  */
 function Text({
   children,
@@ -39,6 +42,7 @@ function Text({
   appearance = "default",
   background = false,
   bold = false,
+  textAlign = "left",
 }: InterfaceText): JSX.Element {
   const className = React.useMemo(
     () =>
@@ -46,11 +50,12 @@ function Text({
         "nimbus--text",
         `nimbus--text-size--${size}`,
         `nimbus--text-color--${appearance}`,
+        `nimbus--text-align--${textAlign}`,
         { [`nimbus--text-background--${appearance}`]: background },
         { "nimbus--text--block": block },
         { "nimbus--text--bold": bold },
       ),
-    [appearance, background, bold, block, size],
+    [size, appearance, textAlign, background, block, bold],
   );
   return <p className={className}>{children}</p>;
 }

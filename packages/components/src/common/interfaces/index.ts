@@ -36,11 +36,6 @@ export interface InterfaceMassActionSelected {
   indexRows: number[];
 }
 
-export interface InterfaceHeaderTable {
-  value: string;
-  class?: string;
-}
-
 export interface InterfaceMassAction {
   placeholder: string;
   options: InterfaceSelectOption[];
