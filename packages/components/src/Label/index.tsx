@@ -14,7 +14,8 @@ export interface InterfaceLabel {
     | "default"
     | "warning"
     | "danger"
-    | "success";
+    | "success"
+    | "transparent";
   /** Icon Component imported from @tiendanube/icons */
   icon?: IconType;
   /** Text for the label */

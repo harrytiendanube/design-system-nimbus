@@ -2,17 +2,19 @@
 
 // Label Mixins
 
+$label-padding: (
+  "base": $spacing-xx-small $spacing-x-small,
+  "tight": $spacing-xx-small,
+) !default;
+
 @mixin label-base {
   @include nimbus--type("text-label-tight");
   background-color: transparent;
   border-radius: $spacing-small;
-  color: $color-body-text;
   display: inline-block;
-  padding: $spacing-xx-small $spacing-x-small;
   white-space: nowrap;
 
   svg {
-    fill: inherit;
     margin-right: $spacing-xx-small;
     margin-top: -$spacing-xx-small;
   }
@@ -32,13 +34,19 @@
   }
 }
 
-@mixin label($bg-color, $hover-bg-color, $focus-color) {
+@mixin label($font-color, $bg-color, $hover-bg-color, $focus-color, $padding) {
   @include label-base;
   background-color: $bg-color;
   border: $button-border-width solid $bg-color;
+  color: $font-color;
+  padding: map-get($label-padding, $padding);
+
+  svg {
+    fill: $font-color;
+  }
 
   &[type="button"] {
-    border-color: $color-body-text;
+    border-color: $font-color;
 
     &:hover {
       background-color: $hover-bg-color;

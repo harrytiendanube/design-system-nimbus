@@ -3,45 +3,71 @@
 // Label
 
 .#{$prefix}--label--default {
-  @include label($color-default, $color-default-hover, $color-default-active);
+  @include label(
+    $color-body-text,
+    $color-default,
+    $color-default-hover,
+    $color-default-active,
+    "base"
+  );
 }
 
 .#{$prefix}--label--primary {
   @include label(
+    $color-body-text,
     $color-primary-light,
     darken($color-primary-light, 5%),
-    darken($color-primary-light, 10%)
+    darken($color-primary-light, 10%),
+    "base"
   );
 }
 
 .#{$prefix}--label--secondary {
   @include label(
+    $color-body-text,
     $color-secondary-light,
     darken($color-secondary-light, 5%),
-    darken($color-secondary-light, 10%)
+    darken($color-secondary-light, 10%),
+    "base"
   );
 }
 
 .#{$prefix}--label--danger {
   @include label(
+    $color-body-text,
     $color-danger-light,
     darken($color-danger-light, 5%),
-    darken($color-danger-light, 10%)
+    darken($color-danger-light, 10%),
+    "base"
   );
 }
 
 .#{$prefix}--label--warning {
   @include label(
+    $color-body-text,
     $color-warning-light,
     darken($color-warning-light, 5%),
-    darken($color-warning-light, 10%)
+    darken($color-warning-light, 10%),
+    "base"
   );
 }
 
 .#{$prefix}--label--success {
   @include label(
+    $color-body-text,
     $color-success-light,
     darken($color-success-light, 5%),
-    darken($color-success-light, 10%)
+    darken($color-success-light, 10%),
+    "base"
+  );
+}
+
+.#{$prefix}--label--transparent {
+  @include label(
+    $color-grey-60,
+    transparent,
+    $color-default,
+    $color-default,
+    "tight"
   );
 }
