@@ -4,7 +4,14 @@ import "./Card.css";
 
 import { Icon as IconType, ChevronDownIcon } from "@tiendanube/icons";
 
-import { Title, Button, Label, InterfaceButton, InterfaceLabel } from "..";
+import {
+  Title,
+  Button,
+  Label,
+  InterfaceButton,
+  InterfaceLabel,
+  Stack,
+} from "..";
 
 interface InterfaceCard {
   /** Text to be displayed in the label */
@@ -59,11 +66,11 @@ function Card({
   const memorizedPrimary = React.useMemo(
     () =>
       primaryButton?.onClick && (
-        <div className="nimbus--action-wrapper__item">
+        <Stack.Item>
           <Button onClick={primaryButton.onClick} appearance="primary">
             {primaryButton.children}
           </Button>
-        </div>
+        </Stack.Item>
       ),
     [primaryButton],
   );
@@ -71,11 +78,11 @@ function Card({
   const memorizedSecondary = React.useMemo(
     () =>
       secondaryButton?.onClick && (
-        <div className="nimbus--action-wrapper__item">
+        <Stack.Item>
           <Button onClick={secondaryButton.onClick}>
             {secondaryButton.children}
           </Button>
-        </div>
+        </Stack.Item>
       ),
     [secondaryButton],
   );
@@ -128,16 +135,24 @@ function Card({
   const memorizedChildren = React.useMemo(
     () => (
       <>
-        <div className="nimbus--card-body">{children}</div>
-        <div className="nimbus--card-footer">
-          <div className="nimbus--action-wrapper">
-            {memorizedSecondary}
-            {memorizedPrimary}
+        {children && <div className="nimbus--card-body">{children}</div>}
+        {(secondaryButton || primaryButton) && (
+          <div className="nimbus--card-footer">
+            <Stack spacing="tight">
+              {memorizedSecondary}
+              {memorizedPrimary}
+            </Stack>
           </div>
-        </div>
+        )}
       </>
     ),
-    [children, memorizedPrimary, memorizedSecondary],
+    [
+      children,
+      memorizedPrimary,
+      memorizedSecondary,
+      primaryButton,
+      secondaryButton,
+    ],
   );
 
   const memorizedCollapsibleChildren = React.useMemo(

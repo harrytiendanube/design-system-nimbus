@@ -7,16 +7,17 @@
   border: $input-border-width solid $color-default;
   border-radius: $actions-border-radius;
   display: block;
+  padding: $spacing-x-small;
   width: 100%;
 
   @include nimbus--breakpoint(md) {
-    padding: $spacing-x-small;
+    padding: $spacing-small;
   }
 
   .#{$prefix}--card-header,
   .#{$prefix}--card-body,
   .#{$prefix}--card-footer {
-    padding: $spacing-small;
+    padding: $spacing-x-small;
   }
 
   .#{$prefix}--card-header {
@@ -119,13 +120,11 @@
     }
   }
 
-  .#{$prefix}--card-body {
-    > *:not(:last-of-type) {
-      margin-bottom: $spacing-small;
-    }
-  }
+  + .#{$prefix}--card-wrapper {
+    margin-top: $spacing-small;
 
-  .#{$prefix}--card-footer {
-    @include nimbus--action-wrapper;
+    @include nimbus--breakpoint(md) {
+      margin-top: $spacing-medium;
+    }
   }
 }
