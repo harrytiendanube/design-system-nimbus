@@ -107,3 +107,7 @@ export * from "./Card";
 // Stack reference added
 export { default as Stack } from "./Stack";
 export * from "./Stack";
+
+// Stack reference added
+export { default as Responsive } from "./Responsive";
+export * from "./Responsive";

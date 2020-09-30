@@ -107,7 +107,8 @@
           "unhover",
           "esc",
           "rowgroup",
-          "Dropdown"
+          "Dropdown",
+          "resize"
         ]
       }
     ]

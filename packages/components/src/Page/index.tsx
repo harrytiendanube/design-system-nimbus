@@ -1,5 +1,4 @@
 import * as React from "react";
-import { Responsive } from "typed-responsive-react";
 
 import "./Page.css";
 
@@ -8,6 +7,7 @@ import {
   ArrowRightIcon,
   ChevronLeftIcon,
 } from "@tiendanube/icons";
+import Responsive from "../Responsive";
 import PageTitle from "../PageTitle";
 import {
   Button,
@@ -158,7 +158,7 @@ function Page({
     <div className="nimbus--page">
       <div className="nimbus--page-header">
         {(primaryAction || secondaryActions) && (
-          <Responsive displayIn={["mobile"]}>
+          <Responsive display="mobile">
             <div className="nimbus--page-menubar">
               <Stack justify="space-between">
                 <Stack.Item>{/* TODO: add menu */}</Stack.Item>
@@ -180,7 +180,7 @@ function Page({
             <Stack.Item fill>
               <PageTitle title={title} />
             </Stack.Item>
-            <Responsive displayIn={["laptop", "tablet"]}>
+            <Responsive display="desktop">
               {memorizedSecondaryActions}
               {memorizedPrimaryAction}
             </Responsive>
