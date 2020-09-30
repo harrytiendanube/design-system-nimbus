@@ -157,3 +157,24 @@ describe("<Input prepend={ArrowRightIcon} />", () => {
     expect(container.querySelectorAll("svg")).toHaveLength(1);
   });
 });
+
+describe("<Input multiRows rows={3} focused />", () => {
+  it("render", () => {
+    const myRows = 3;
+    render(
+      <Input
+        multiRows
+        focused
+        rows={myRows}
+        label={myLabel}
+        placeholder={myPlaceholder}
+        value={myValue}
+        name={myName}
+      />,
+    );
+    expect(screen.getByRole("textbox")).toHaveProperty("rows", myRows);
+    expect(screen.getByLabelText(myLabel)).toBeTruthy();
+    expect(screen.getByPlaceholderText(myPlaceholder)).toBeTruthy();
+    expect(screen.getByDisplayValue(myValue)).toBeTruthy();
+  });
+});

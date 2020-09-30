@@ -24,6 +24,12 @@ export interface InterfaceInput {
   value?: string;
   /** Input type */
   type?: InputTypes;
+  /** Set multiple rows format */
+  multiRows?: boolean;
+  /** Set the number of rows (Applies only when multiRows is true) */
+  rows?: number;
+  /** Force the focus state on the input */
+  focused?: boolean;
   /**
    * Prepend a component to show at the start of the input. Icon Component
    * imported from @tiendanube/icons.
@@ -53,6 +59,9 @@ export interface InterfaceInput {
  * @param label Label
  * @param value Input value
  * @param type Input type
+ * @param multiRows Set multiple rows format
+ * @param rows Set the number of rows (Applies only when multiRows is true)
+ * @param focused Force the focus state on the input
  * @param prepend Prepend a component to show at the start of the input
  * @param isValid Indicates if input is valid
  * @param minLength Minimum count of inserted chars
@@ -69,6 +78,9 @@ function Input({
   label = "",
   value = "",
   type = "text",
+  multiRows = false,
+  rows = 1,
+  focused = false,
   prepend: Prepend,
   isValid = true,
   minLength = "0",
@@ -81,7 +93,7 @@ function Input({
   const [inputValue, setInputValue] = React.useState(value);
 
   const handleChange = React.useCallback(
-    (event: React.ChangeEvent<HTMLInputElement>) => {
+    (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       const { target } = event;
       setInputValue(target.value);
       onChange?.({ name: target.name, value: target.value });
@@ -90,7 +102,7 @@ function Input({
   );
 
   const handleBlur = React.useCallback(
-    (event: React.ChangeEvent<HTMLInputElement>) => {
+    (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       const { target } = event;
       onBlur?.({ name: target.name, value: target.value });
     },
@@ -161,26 +173,56 @@ function Input({
     [memorizedLeftIcon, type],
   );
 
+  const inputRef = React.useRef<HTMLInputElement>(null);
+  const inputTextAreaRef = React.useRef<HTMLTextAreaElement>(null);
+
+  React.useEffect(() => {
+    const input = multiRows ? inputTextAreaRef.current : inputRef.current;
+    if (!input || focused === undefined) return;
+    if (focused) input.focus();
+    else input.blur();
+  }, [focused, multiRows]);
+
   return (
     <div className="nimbus--input-wrapper">
       {memorizedLabel}
       <div className="nimbus--input">
-        <input
-          className={classname}
-          id={`input_${name}`}
-          type={type}
-          name={name}
-          value={inputValue}
-          placeholder={placeholder}
-          onChange={handleChange}
-          onKeyPress={handleKeyPress}
-          onBlur={handleBlur}
-          minLength={parseInt(minLength, 10)}
-          maxLength={parseInt(maxLength, 10)}
-          required={required}
-        />
-        {memorizedLeftIcon}
-        {memorizedRightIcon}
+        {multiRows ? (
+          <textarea
+            className="nimbus--input__field"
+            id={`input_${name}`}
+            ref={inputTextAreaRef}
+            name={name}
+            value={inputValue}
+            placeholder={placeholder}
+            rows={rows}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            minLength={parseInt(minLength, 10)}
+            maxLength={parseInt(maxLength, 10)}
+            required={required}
+          />
+        ) : (
+          <>
+            <input
+              className={classname}
+              id={`input_${name}`}
+              name={name}
+              type={type}
+              ref={inputRef}
+              value={inputValue}
+              placeholder={placeholder}
+              onChange={handleChange}
+              onKeyPress={handleKeyPress}
+              onBlur={handleBlur}
+              minLength={parseInt(minLength, 10)}
+              maxLength={parseInt(maxLength, 10)}
+              required={required}
+            />
+            {memorizedLeftIcon}
+            {memorizedRightIcon}
+          </>
+        )}
       </div>
     </div>
   );

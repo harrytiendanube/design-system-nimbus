@@ -107,6 +107,9 @@
           "unhover",
           "esc",
           "rowgroup",
+          "multiline",
+          "textarea",
+          "autofocus",
           "Dropdown",
           "resize"
         ]

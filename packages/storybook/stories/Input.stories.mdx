@@ -1,6 +1,12 @@
 import { useState } from "react";
 import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
-import { withKnobs, text, boolean } from "@storybook/addon-knobs";
+import {
+  withKnobs,
+  text,
+  select,
+  number,
+  boolean,
+} from "@storybook/addon-knobs";
 import { withA11y } from "@storybook/addon-a11y";
 import { action } from "@storybook/addon-actions";
 
@@ -19,9 +25,19 @@ TODO: complete
 <Preview>
   <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
     <Input
+      type={select("type", [
+        "text",
+        "tel",
+        "number",
+        "password",
+        "email",
+        "search",
+      ])}
       label={text("label", "Label")}
       placeholder={text("placeholder", "placeholder")}
-      value={text("value", "")}
+      multiRows={boolean("multiRows", false)}
+      rows={number("rows", 1)}
+      focused={boolean("focused", false)}
       isValid={boolean("isValid", true)}
       name="name"
       onChange={action("onChange")}
@@ -32,21 +48,6 @@ TODO: complete
 ## Properties
 
 <Props of={Input.type} />
-
-## With value
-
-TODO: complete
-
-<Preview withToolbar>
-  <Story name="with value">
-    <Input
-      label="Label"
-      value="nimbus@tiendanube.com"
-      placeholder="placeholder"
-      name="name"
-    />
-  </Story>
-</Preview>
 
 ## Type search
 
