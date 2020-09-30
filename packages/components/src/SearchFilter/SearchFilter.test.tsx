@@ -3,7 +3,6 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 import { SearchFilter } from "..";
-import { scryRenderedComponentsWithType } from "react-dom/test-utils";
 
 const myPlaceholder = "myPlaceholder";
 const myResultCount = "myResultCount";
@@ -38,7 +37,7 @@ describe("<SearchFilter />", () => {
     expect(screen.getByText(myResultCount)).toBeTruthy();
   });
 
-  it("render wihtout appliedFilters", () => {
+  it("render without appliedFilters", () => {
     render(
       <SearchFilter
         placeholder={myPlaceholder}

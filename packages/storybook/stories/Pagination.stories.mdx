@@ -3,7 +3,7 @@ import { withKnobs, number, boolean } from "@storybook/addon-knobs";
 import { withA11y } from "@storybook/addon-a11y";
 import { action } from "@storybook/addon-actions";
 
-import { Pagination, Button, Text } from "@tiendanube/components/src";
+import { Pagination } from "@tiendanube/components/src";
 
 import "../utils/style.css";
 
@@ -20,8 +20,8 @@ TODO: complete
       pageSelected={number("pageSelected", 1)}
       hasMorePages={boolean("hasMorePages", 1)}
       onPageSelect={action("onPageSelect")}
-      labelPrevious={"Previous"}
-      labelNext={"Next"}
+      labelPrevious="Previous"
+      labelNext="Next"
     />
   </Story>
 </Preview>
@@ -47,8 +47,8 @@ TODO: complete
             pageTotal={pages.length}
             pageSelected={page}
             onPageSelect={action("onPageSelect")}
-            labelPrevious={"Previous"}
-            labelNext={"Next"}
+            labelPrevious="Previous"
+            labelNext="Next"
           />
         </p>
       ));
@@ -70,8 +70,8 @@ TODO: complete
           pageSelected={page}
           hasMorePages={boolean("hasMorePages", 1)}
           onPageSelect={(currentPage) => setPage(currentPage)}
-          labelPrevious={"Previous"}
-          labelNext={"Next"}
+          labelPrevious="Previous"
+          labelNext="Next"
         />
       );
     }}

@@ -28,86 +28,86 @@
       transition: opacity $motion-fast ease, transform $motion-fast ease;
     }
   }
+}
 
-  .#{$prefix}--modal-wrapper {
-    background-color: $color-background;
-    border: $input-border-width solid $input-border-color;
-    border-radius: $actions-border-radius;
-    height: auto;
-    max-height: 100%;
-    max-width: calc(100% - #{$spacing-large});
-    opacity: 0;
-    overflow: hidden;
-    transform: translate3d(0, 100px, 0);
-    transition: opacity $motion-fast ease, transform $motion-fast ease;
-    width: 100%;
+.#{$prefix}--modal-wrapper {
+  background-color: $color-background;
+  border: $input-border-width solid $input-border-color;
+  border-radius: $actions-border-radius;
+  height: auto;
+  max-height: 100%;
+  max-width: calc(100% - #{$spacing-large});
+  opacity: 0;
+  overflow: hidden;
+  transform: translate3d(0, 100px, 0);
+  transition: opacity $motion-fast ease, transform $motion-fast ease;
+  width: 100%;
 
-    @include nimbus--breakpoint(md) {
-      max-width: 500px;
-      padding: $spacing-x-small;
+  @include nimbus--breakpoint(md) {
+    max-width: 500px;
+    padding: $spacing-x-small;
+  }
+
+  .#{$prefix}--modal-header,
+  .#{$prefix}--modal-body,
+  .#{$prefix}--modal-footer {
+    padding: $spacing-small;
+  }
+
+  .#{$prefix}--modal-header {
+    position: relative;
+
+    .#{$prefix}--modal-header__title {
+      padding-right: $spacing-large;
+
+      @include nimbus--breakpoint(md) {
+        padding-right: $spacing-x-large;
+      }
+
+      .#{$prefix}--title-h3 {
+        @include nimbus--type("heading-element");
+      }
     }
 
-    .#{$prefix}--modal-header,
-    .#{$prefix}--modal-body,
-    .#{$prefix}--modal-footer {
+    .#{$prefix}--modal-header__close {
+      appearance: none;
+      background-color: transparent;
+      border: $button-border-width solid transparent;
+      border-radius: $actions-border-radius;
+      cursor: pointer;
       padding: $spacing-small;
-    }
+      position: absolute;
+      right: 0;
+      top: 0;
+      transition: $button-hover-delay ease;
 
-    .#{$prefix}--modal-header {
-      position: relative;
-
-      .#{$prefix}--modal-header__title {
-        padding-right: $spacing-large;
-
-        @include nimbus--breakpoint(md) {
-          padding-right: $spacing-x-large;
-        }
-
-        .#{$prefix}--title-h3 {
-          @include nimbus--type("heading-element");
-        }
+      &:hover {
+        background-color: $color-default;
       }
 
-      .#{$prefix}--modal-header__close {
-        appearance: none;
-        background-color: transparent;
-        border: $button-border-width solid transparent;
-        border-radius: $actions-border-radius;
-        cursor: pointer;
-        padding: $spacing-small;
-        position: absolute;
-        right: 0;
-        top: 0;
-        transition: $button-hover-delay ease;
+      &:active {
+        background-color: $color-default-hover;
+      }
 
-        &:hover {
-          background-color: $color-default;
-        }
-
-        &:active {
-          background-color: $color-default-hover;
-        }
-
-        &:focus {
-          border-color: $color-default-hover;
-          box-shadow: 0 0 0 $button-border-width $color-default-hover;
-        }
+      &:focus {
+        border-color: $color-default-hover;
+        box-shadow: 0 0 0 $button-border-width $color-default-hover;
       }
     }
+  }
 
-    .#{$prefix}--modal-body {
-      overflow-y: auto;
+  .#{$prefix}--modal-body {
+    overflow-y: auto;
 
-      > *:not(:last-of-type) {
-        margin-bottom: $spacing-small;
-      }
+    > *:not(:last-of-type) {
+      margin-bottom: $spacing-small;
     }
+  }
 
-    .#{$prefix}--modal-footer {
-      @include nimbus--action-wrapper(flex-end);
+  .#{$prefix}--modal-footer {
+    @include nimbus--action-wrapper(flex-end);
 
-      display: flex;
-      justify-content: flex-end;
-    }
+    display: flex;
+    justify-content: flex-end;
   }
 }

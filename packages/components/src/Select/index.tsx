@@ -72,19 +72,27 @@ function Select({
 
   const memorizedOptions = React.useMemo(
     () =>
-      options.map((option: InterfaceSelectOptionGroup) =>
-        (option as InterfaceSelectGroup).group ? (
-          <RenderGroup
-            key={`grp_${(option as InterfaceSelectGroup).group}`}
-            {...(option as InterfaceSelectGroup)}
-          />
-        ) : (
+      options.map((opt: InterfaceSelectOptionGroup) => {
+        const group = opt as InterfaceSelectGroup;
+        const option = opt as InterfaceSelectOption;
+        if (group.group) {
+          return (
+            <RenderGroup
+              key={`grp_${group.group}`}
+              group={group.group}
+              options={group.options}
+            />
+          );
+        }
+        return (
           <RenderOption
-            key={`opt_${(option as InterfaceSelectOption).value}`}
-            {...(option as InterfaceSelectOption)}
+            key={`opt_${option.value}`}
+            label={option.label}
+            value={option.value}
+            disabled={option.disabled}
           />
-        ),
-      ),
+        );
+      }),
     [options],
   );
 

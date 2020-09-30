@@ -10,7 +10,7 @@ import {
 const SUBMIT_OFF = false;
 const SUBMIT_ON = true;
 
-const existErrorInDataForm = (data: InterfaceFormFields): Boolean => {
+const existErrorInDataForm = (data: InterfaceFormFields): boolean => {
   const fieldWithError = Object.entries(data).find(
     ([, field]) => !!field.error,
   );
@@ -26,9 +26,9 @@ const dataFormat: InterfaceDataFormat = (data) => {
 };
 
 const useForm: InterfaceUseForm = () => {
-  const [isSubmit, setSubmit] = useState<Boolean>(SUBMIT_OFF);
+  const [isSubmit, setSubmit] = useState<boolean>(SUBMIT_OFF);
 
-  const isValid = useRef<Boolean>();
+  const isValid = useRef<boolean>();
   const dataFormFields = useRef<InterfaceFormFields>({});
 
   return {

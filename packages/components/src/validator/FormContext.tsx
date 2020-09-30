@@ -21,7 +21,7 @@ const ValidationsContextProvider = ({
     {} as InterfaceFormFields,
   );
 
-  const [submitted, setSubmitted] = React.useState<Boolean>(false);
+  const [submitted, setSubmitted] = React.useState<boolean>(false);
   const [textValidation, setTextValidation] = React.useState<
     InterfaceTextValidation
   >({} as InterfaceTextValidation);
@@ -29,7 +29,7 @@ const ValidationsContextProvider = ({
   const validateField: InterfaceValidateField = (name, fieldValidate) => {
     const error = validator(fieldValidate.validation, fieldValidate.value);
 
-    setFormFields((prevState: {}) => {
+    setFormFields((prevState) => {
       return {
         ...prevState,
         ...{

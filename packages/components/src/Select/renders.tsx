@@ -22,7 +22,9 @@ const RenderGroup = React.memo(
         {group.options.map((option: InterfaceSelectOption) => (
           <RenderOption
             key={`grp_${group.group}_opt_${option.value}`}
-            {...(option as InterfaceSelectOption)}
+            label={option.label}
+            value={option.value}
+            disabled={option.disabled}
           />
         ))}
       </optgroup>

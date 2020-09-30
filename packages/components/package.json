@@ -62,6 +62,7 @@
     "eslint-plugin-spellcheck": "0.0.17",
     "eslint-plugin-testing-library": "3.8.0",
     "jest": "26.4.2",
+    "lint-staged": "10.4.0",
     "node-sass": "4.14.1",
     "nodemon": "2.0.4",
     "postcss-cli": "7.1.2",
@@ -81,5 +82,12 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ]
+  ],
+  "lint-staged": {
+    "*.scss": "stylelint",
+    "*.tsx": [
+      "prettier --write",
+      "eslint --cache"
+    ]
+  }
 }

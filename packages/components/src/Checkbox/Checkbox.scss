@@ -61,7 +61,7 @@
     }
   }
 
-  %#{$prefix}--checkbox-label {
+  %checkbox-label {
     cursor: pointer;
     display: flex;
     flex-wrap: nowrap;
@@ -101,7 +101,7 @@
   }
 
   .#{$prefix}--checkbox-label {
-    @extend %#{$prefix}--checkbox-label;
+    @extend %checkbox-label;
   }
 
   .#{$prefix}--label-hidden {

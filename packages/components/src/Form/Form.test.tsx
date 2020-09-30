@@ -11,7 +11,7 @@ const myAlertAppearance = "danger";
 const myLink = "myLink";
 const myLinkTo = "https://www.myLink.com";
 const mySubmitLabel = "mySubmitLabel";
-const myButtonLabel = "mnyButtonLabel";
+const myButtonLabel = "myButtonLabel";
 const myTextValidation = {
   required: "this field is required",
   email: " this field is not email",

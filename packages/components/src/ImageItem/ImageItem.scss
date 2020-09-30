@@ -32,11 +32,11 @@ $thumbnail-dimensions: 72px;
       height: 100%;
       justify-content: center;
       width: 100%;
+    }
 
-      svg {
-        fill: $color-grey-35;
-        margin-top: -$spacing-xx-small;
-      }
+    .#{$prefix}--image-item__placeholder svg {
+      fill: $color-grey-35;
+      margin-top: -$spacing-xx-small;
     }
   }
 

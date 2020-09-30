@@ -195,7 +195,7 @@ describe("<Pagination /> (without pageTotal nor hasMorePages)", () => {
   });
 });
 
-describe("<Pagination /> (pageTotal < magin)", () => {
+describe("<Pagination /> (pageTotal < margin)", () => {
   beforeEach(() => {
     handlePageSelected = jest.fn((page: number) => page);
     render(

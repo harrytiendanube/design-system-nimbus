@@ -17,22 +17,22 @@ TODO: complete
 <Preview>
   <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
     <Modal
-      title="Filtrar por"
+      title="Filter by"
       show={boolean("show", false)}
       onDismiss={action("onDismiss")}
-      primaryActionLabel="Filtrar órdenes"
+      primaryActionLabel="Filter Orders"
       onClickPrimary={action("onClickPrimary")}
-      secondaryActionLabel="Borrar filtros"
+      secondaryActionLabel="Clear filters"
       onClickSecondary={action("onClickSecondary")}
     >
       <Select
-        label={text("label", "Estado de la orden")}
+        label={text("label", "Order Status")}
         name={text("name", "status")}
         options={STATUS_ORDER}
         onChange={action("onChange")}
       />
       <Select
-        label={text("label 2", "Medio de envío")}
+        label={text("label 2", "Shipping method")}
         name={text("name", "shipping")}
         options={SHIPPING_METHOD}
         onChange={action("onChange")}
@@ -64,7 +64,7 @@ TODO: complete
         setFilter(true);
         setShow(false);
       };
-      const handleDismmiss = () => {
+      const handleDismiss = () => {
         setFilter(false);
         setShow(false);
       };
@@ -76,34 +76,33 @@ TODO: complete
             iconPosition="end"
             onClick={() => setShow(true)}
           >
-            Ver filtros
+            Filters
           </Button>
           {!show && (
             <div>
               <Alert show={filter}>
-                Filtrar ordenes de estado: {value.status} envío:{" "}
-                {value.shipping}
+                Filter order: {value.status} shipping: {value.shipping}
               </Alert>
             </div>
           )}
           <Modal
-            title="Filtrar por"
+            title="Filter by"
             show={show}
-            onDismiss={handleDismmiss}
-            primaryActionLabel="Filtrar órdenes"
+            onDismiss={handleDismiss}
+            primaryActionLabel="Filter Orders"
             onClickPrimary={handlePrimary}
-            secondaryActionLabel="Borrar filtros"
+            secondaryActionLabel="Clear filters"
             onClickSecondary={handleSecondary}
           >
             <Select
-              label="Estado de la orden"
+              label="Order Status"
               name="status"
               value={value.status}
               options={STATUS_ORDER}
               onChange={handleChange}
             />
             <Select
-              label="Medio de envío"
+              label="Shipping method"
               name="shipping"
               value={value.shipping}
               options={SHIPPING_METHOD}

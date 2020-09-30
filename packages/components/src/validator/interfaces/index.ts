@@ -3,8 +3,8 @@ export interface InterfaceGenericObject {
 }
 
 export interface InterfaceValidationsContext {
-  submitted: Boolean;
-  setSubmitted: (state: Boolean) => void;
+  submitted: boolean;
+  setSubmitted: (state: boolean) => void;
   formFields: InterfaceFormFields;
   validateField: (name: string, fieldValidate: InterfaceFieldValidate) => void;
   textValidation: InterfaceTextValidation;
@@ -15,7 +15,7 @@ export interface InterfaceValidationsContext {
 export interface InterfaceFieldsContainer {
   children: React.ReactNode;
   setFields: (dataForm: InterfaceFormFields) => void;
-  isSubmit: Boolean;
+  isSubmit: boolean;
   textValidation: InterfaceTextValidation;
 }
 
@@ -59,8 +59,8 @@ export interface InterfaceOnSubmit {
 
 export interface InterfaceUseForm {
   (): {
-    isSubmit: Boolean;
-    isValid(): Boolean;
+    isSubmit: boolean;
+    isValid(): boolean;
     setFields(dataForm: InterfaceFormFields): void;
     handleSubmit(onSubmit: InterfaceOnSubmit): () => void;
   };

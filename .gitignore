@@ -24,9 +24,14 @@
 
 /packages/components/dist
 /packages/components/**/*.css
+/packages/components/.eslintcache
+/packages/components/coverage
+
 
 ## Storybook ignoring
 /packages/storybook/.build
+/packages/storybook/.eslintcache
+
 
 ## Styles ignoring
 /packages/styles/dist

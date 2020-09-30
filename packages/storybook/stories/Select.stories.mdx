@@ -3,8 +3,7 @@ import { withKnobs, text } from "@storybook/addon-knobs";
 import { withA11y } from "@storybook/addon-a11y";
 import { action } from "@storybook/addon-actions";
 
-import { Select, SelectItem, SelectGroup } from "@tiendanube/components/src";
-import { LOREM_STRESS } from "./utils/constants";
+import { Select } from "@tiendanube/components/src";
 
 import "../utils/style.css";
 
@@ -27,7 +26,7 @@ TODO: complete
         { label: "Option 4", value: "4" },
       ]}
       onChange={action("onChange")}
-    ></Select>
+    />
   </Story>
 </Preview>
 
@@ -55,7 +54,7 @@ TODO: complete
         { label: "Option 4", value: "4" },
       ]}
       value="1"
-    ></Select>
+    />
   </Story>
 </Preview>
 
@@ -83,7 +82,7 @@ TODO: complete
           ],
         },
       ]}
-    ></Select>
+    />
   </Story>
 </Preview>
 
@@ -119,7 +118,7 @@ TODO: complete
               ],
             },
           ]}
-        ></Select>
+        />
       );
     }}
   </Story>

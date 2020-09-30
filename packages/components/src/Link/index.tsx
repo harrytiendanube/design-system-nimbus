@@ -1,4 +1,6 @@
 import * as React from "react";
+import { Icon as IconType } from "@tiendanube/icons";
+
 import "./Link.css";
 
 export interface InterfaceLink {
@@ -13,7 +15,7 @@ export interface InterfaceLink {
   /** Defines whether the link should be underlined */
   underline?: boolean;
   /** Icon Component imported from @tiendanube/icons */
-  icon?: any;
+  icon?: IconType;
   /** Position of the icon with respect to the alert */
   iconPosition?: "start" | "end";
 }

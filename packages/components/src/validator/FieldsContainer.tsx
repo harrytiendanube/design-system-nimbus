@@ -25,7 +25,7 @@ const FieldsContainer = ({
     setTextValidation(textValidation);
   }, [setTextValidation, textValidation]);
 
-  return <React.Fragment>{children}</React.Fragment>;
+  return <>{children}</>;
 };
 
 export default React.memo(FieldsContainer);
