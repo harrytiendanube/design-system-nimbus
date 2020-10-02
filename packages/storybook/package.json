@@ -1,6 +1,6 @@
 {
   "name": "@tiendanube/storybook",
-  "version": "1.0.16",
+  "version": "1.0.15",
   "private": true,
   "license": "MIT",
   "scripts": {
