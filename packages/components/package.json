@@ -24,7 +24,7 @@
     "prepublish": "yarn build"
   },
   "dependencies": {
-    "@tiendanube/icons": "0.1.5",
+    "@tiendanube/icons": "0.1.6",
     "@types/classnames": "2.2.10",
     "classnames": "2.2.6",
     "react": "16.13.1",
