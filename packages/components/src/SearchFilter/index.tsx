@@ -45,14 +45,25 @@ function SearchFilter({
   onClick,
 }: InterfaceSearchFilter): JSX.Element {
   const [searchValue, setSearchValue] = React.useState("");
+  const [isFocused, setFocused] = React.useState(false);
+
+  const handleBlur = React.useCallback(() => {
+    if (isFocused) setFocused(false);
+  }, [isFocused]);
+
+  const handleFocus = React.useCallback(() => {
+    if (!isFocused) setFocused(true);
+  }, [isFocused]);
 
   const handleChange = React.useCallback(({ value }: InterfaceNameValue) => {
     setSearchValue(value);
   }, []);
+
   const handleSubmit = React.useCallback(
     ({ value }: InterfaceNameValue) => {
       if (value) onSubmit(value);
       setSearchValue("");
+      setFocused(false);
     },
     [onSubmit],
   );
@@ -82,8 +93,11 @@ function SearchFilter({
             name="search"
             type="search"
             value={searchValue}
+            focused={isFocused}
             onChange={handleChange}
             onSubmit={handleSubmit}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
             placeholder={placeholder}
           />
         </div>

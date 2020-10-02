@@ -51,6 +51,8 @@ export interface InterfaceInput {
   onSubmit?: (event: InterfaceNameValue) => void;
   /** OnBlur callback function */
   onBlur?: (event: InterfaceNameValue) => void;
+  /** OnFocus callback function */
+  onFocus?: (event: InterfaceNameValue) => void;
 }
 
 /**
@@ -71,6 +73,7 @@ export interface InterfaceInput {
  * @param onChange Callback function
  * @param onSubmit Callback function
  * @param onBlur Callback function
+ * @param onFocus Callback function
  */
 function Input({
   name,
@@ -89,6 +92,7 @@ function Input({
   onChange,
   onSubmit,
   onBlur,
+  onFocus,
 }: InterfaceInput): JSX.Element {
   const [inputValue, setInputValue] = React.useState(value);
 
@@ -99,6 +103,14 @@ function Input({
       onChange?.({ name: target.name, value: target.value });
     },
     [onChange],
+  );
+
+  const handleFocus = React.useCallback(
+    (event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      const { target } = event;
+      onFocus?.({ name: target.name, value: target.value });
+    },
+    [onFocus],
   );
 
   const handleBlur = React.useCallback(
@@ -198,6 +210,7 @@ function Input({
             rows={rows}
             onChange={handleChange}
             onBlur={handleBlur}
+            onFocus={handleFocus}
             minLength={parseInt(minLength, 10)}
             maxLength={parseInt(maxLength, 10)}
             required={required}
@@ -215,6 +228,7 @@ function Input({
               onChange={handleChange}
               onKeyPress={handleKeyPress}
               onBlur={handleBlur}
+              onFocus={handleFocus}
               minLength={parseInt(minLength, 10)}
               maxLength={parseInt(maxLength, 10)}
               required={required}
