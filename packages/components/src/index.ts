@@ -111,3 +111,7 @@ export * from "./Stack";
 // Stack reference added
 export { default as Responsive } from "./Responsive";
 export * from "./Responsive";
+
+// Timeline reference added
+export { default as Timeline } from "./Timeline";
+export * from "./Timeline";

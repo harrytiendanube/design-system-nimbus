@@ -1,0 +1,112 @@
+@import "../../styles/core";
+
+// Timeline
+
+.#{$prefix}--timeline-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: -$spacing-x-small;
+  margin-top: -$spacing-x-small;
+}
+
+.#{$prefix}--timeline-item {
+  align-items: center;
+  display: flex;
+  overflow: hidden;
+  padding-bottom: $spacing-x-small;
+  padding-top: $spacing-x-small;
+  position: relative;
+
+  &::before,
+  &::after {
+    background-color: $color-default;
+    height: 50%;
+    left: 11px;
+    position: absolute;
+    width: 2px;
+    z-index: 300;
+  }
+
+  &:not(:first-of-type) {
+    &::before {
+      content: "";
+      top: 0;
+    }
+  }
+
+  &:not(:last-of-type) {
+    &::after {
+      bottom: 0;
+      content: "";
+    }
+  }
+}
+
+.#{$prefix}--timeline-icon {
+  align-items: center;
+  border-radius: 100%;
+  display: flex;
+  height: $spacing-medium;
+  justify-content: center;
+  margin-right: $spacing-x-small;
+  min-height: $spacing-medium;
+  min-width: $spacing-medium;
+  width: $spacing-medium;
+  z-index: 301;
+
+  &.#{$prefix}--timeline-icon--default {
+    background-color: $color-default;
+  }
+
+  &.#{$prefix}--timeline-icon--primary {
+    background-color: $color-primary-light;
+  }
+
+  &.#{$prefix}--timeline-icon--secondary {
+    background-color: $color-secondary-light;
+  }
+
+  &.#{$prefix}--timeline-icon--danger {
+    background-color: $color-danger-light;
+  }
+
+  &.#{$prefix}--timeline-icon--warning {
+    background-color: $color-warning-light;
+  }
+
+  &.#{$prefix}--timeline-icon--success {
+    background-color: $color-success-light;
+  }
+}
+
+.#{$prefix}--timeline-no-icon {
+  background-color: $color-default;
+  border-radius: 100%;
+  height: $spacing-x-small;
+  margin-left: $spacing-x-small;
+  margin-right: $spacing-small;
+  min-height: $spacing-x-small;
+  min-width: $spacing-x-small;
+  width: $spacing-x-small;
+}
+
+.#{$prefix}--timeline-item__details {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+.#{$prefix}--timeline-item__info,
+.#{$prefix}--timeline-item__timestamp {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.#{$prefix}--timeline-item__info {
+  flex: 1 1 auto;
+}
+
+.#{$prefix}--timeline-item__timestamp {
+  flex: 0 0 auto;
+}

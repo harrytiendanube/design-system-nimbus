@@ -1,0 +1,58 @@
+import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
+import { withKnobs } from "@storybook/addon-knobs";
+import { withA11y } from "@storybook/addon-a11y";
+
+import { ArchiveIcon, TruckIcon, BoxPackedIcon } from "@tiendanube/icons";
+import { Timeline } from "@tiendanube/components/src";
+import "../utils/style.css";
+
+<Meta title="Components/Timeline" component={Timeline} />
+
+# Timeline
+
+TODO: complete
+
+<Preview>
+  <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
+    <Timeline>
+      <Timeline.Item
+        icon={ArchiveIcon}
+        title="Order archived"
+        description="by Iván from company"
+        date="31 ago"
+        time="16:59"
+      />
+      <Timeline.Item
+        appearance="success"
+        icon={TruckIcon}
+        title="Order sent"
+        description="by Juan"
+        date="30 ago"
+        time="16:59"
+      />
+      <Timeline.Item
+        title="Added note"
+        description="by Juan"
+        date="29 ago"
+        time="23:59"
+      />
+      <Timeline.Item
+        appearance="primary"
+        icon={BoxPackedIcon}
+        title="Packed order"
+        description="by Juan"
+        date="28 ago"
+        time="14:00"
+      />
+      <Timeline.Item title="Payment received" date="27 ago" time="06:13" />
+    </Timeline>
+  </Story>
+</Preview>
+
+## Properties Timeline
+
+<Props of={Timeline} />
+
+## Properties Timeline.Item
+
+<Props of={Timeline.Item.type} />

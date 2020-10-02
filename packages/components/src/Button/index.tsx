@@ -8,9 +8,7 @@ import { Icon as IconType } from "@tiendanube/icons";
 export interface InterfaceButton {
   /** React node of type children. */
   children?: React.ReactText;
-  /** Type of react mouse event onclick to manage event click and void return. */
-  onClick(event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void;
-  /** Appearance */
+  /** Type of appearance */
   appearance?: "default" | "primary" | "secondary" | "default" | "danger";
   /** Icon Component imported from @tiendanube/icons */
   icon?: IconType;
@@ -22,18 +20,21 @@ export interface InterfaceButton {
   disabled?: boolean;
   /** Indicates if the button should be styled as a link */
   link?: boolean;
+  /** Type of react mouse event onclick to manage event click and void return. */
+  onClick(event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void;
 }
 
 /**
  * Button's Component as actionable component.
  *
+ * @param children React node of type children
+ * @param appearance Type of appearance
  * @param icon Icon Component imported from @tiendanube/icons
- * @param children React node of type children.
  * @param iconPosition Position of the icon inside the button
- * @param appearance Type of appearance "primary" | "secondary" | "default" |
- *     "danger"
+ * @param iconSize The size of the button icon
  * @param disabled Indicates if the button is disabled
  * @param link Indicates if the button should be styled as a link
+ * @param onClick Type of react mouse event onclick to manage event click and
  */
 function Button({
   children,
