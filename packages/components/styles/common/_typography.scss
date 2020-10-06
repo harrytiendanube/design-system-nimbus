@@ -1,3 +1,4 @@
+/* stylelint-disable indentation, function-parentheses-space-inside */
 // Typography
 //
 // Font styles for Nimbus DS
@@ -20,7 +21,7 @@ $heading-element: (
   line-height:
     nimbus--rem(
       map-get($nimbus--title-sizes, "h3") *
-        map-get($nimbus--line-heights, "base")
+        map-get($nimbus--line-heights, "heading")
     ),
 ) !default;
 
@@ -100,4 +101,16 @@ $nimbus--type-tokens: (
   @each $property, $value in $token {
     #{$property}: $value;
   }
+}
+
+// Text related mixins
+
+@mixin nimbus--text-trim($lines) {
+  /* stylelint-disable-next-line property-no-vendor-prefix */
+  -webkit-box-orient: vertical;
+  /* stylelint-disable-next-line value-no-vendor-prefix */
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

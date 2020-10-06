@@ -49,15 +49,8 @@ $thumbnail-dimensions: 72px;
     .#{$prefix}--text,
     .#{$prefix}--link {
       @include nimbus--type("text-body");
-      /* stylelint-disable-next-line property-no-vendor-prefix */
-      -webkit-box-orient: vertical;
-      /* stylelint-disable-next-line value-no-vendor-prefix */
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      max-width: 100%;
-      overflow: hidden;
+      @include nimbus--text-trim(2);
       text-align: inherit;
-      text-overflow: ellipsis;
     }
 
     .#{$prefix}--text {
