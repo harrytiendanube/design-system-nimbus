@@ -27,7 +27,17 @@ TODO: Complete
 
 ## Properties
 
-<Props of={ImageItem.type} />
+<Props of={ImageItem} />
+
+# Skeleton
+
+<Preview>
+  <Story name="skeleton" parameters={{ decorators: [withKnobs, withA11y] }}>
+    <div className="separate">
+      <ImageItem.Skeleton />
+    </div>
+  </Story>
+</Preview>
 
 ## without thumbnail
 

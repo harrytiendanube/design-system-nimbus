@@ -93,3 +93,19 @@
     @include text-background($color-default);
   }
 }
+
+.#{$prefix}--text-skeleton--small {
+  @include nimbus--skeleton($spacing-small, 40px, $spacing-xx-small, 0);
+}
+
+.#{$prefix}--text-skeleton--medium {
+  @include nimbus--skeleton($spacing-small, 80px, $spacing-xx-small, 0);
+}
+
+.#{$prefix}--text-skeleton--large {
+  @include nimbus--skeleton($spacing-small, 120px, $spacing-xx-small, 0);
+}
+
+.#{$prefix}--text-skeleton--fill {
+  @include nimbus--skeleton($spacing-small, 100%, $spacing-xx-small, 0);
+}

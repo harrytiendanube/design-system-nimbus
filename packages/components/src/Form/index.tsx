@@ -24,6 +24,10 @@ export interface InterfaceForm {
   link?: string;
   /** Link href */
   linkTo?: string;
+  /** It renders submit button as disabled with spinner */
+  submitting?: boolean;
+  /** Submit button label when submitting */
+  submittingLabel?: string;
   /** Submit button label */
   submitLabel: string;
   /** Type of react mouse event onclick to manage event click and void return */
@@ -47,6 +51,7 @@ export interface InterfaceForm {
  * @param children React node of type children
  * @param link Link text
  * @param linkTo Link href
+ * @param submitting It renders submit button as disabled with spinner
  * @param submitLabel Submit button text
  * @param onClickSubmit Submit button callback
  * @param buttonLabel Optional Button Text
@@ -62,6 +67,7 @@ function Form({
   children,
   link,
   linkTo,
+  submitting,
   submitLabel,
   onClickSubmit,
   buttonLabel,
@@ -108,7 +114,12 @@ function Form({
       <div className="nimbus--form__actions">
         {memorizedButton}
         <div className="nimbus--action-wrapper__item">
-          <Button appearance="primary" onClick={handleSubmit(onSubmit)}>
+          <Button
+            appearance="primary"
+            onClick={handleSubmit(onSubmit)}
+            spinner={submitting}
+            disabled={submitting}
+          >
             {submitLabel}
           </Button>
         </div>

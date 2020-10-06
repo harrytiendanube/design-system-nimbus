@@ -9,6 +9,7 @@ import {
 } from "../common/interfaces";
 
 interface interfaceRenderRow {
+  skeleton: boolean;
   massAction?: InterfaceMassAction;
   index: number;
   rowsState: boolean[];
@@ -17,6 +18,7 @@ interface interfaceRenderRow {
 }
 
 const RenderRow = ({
+  skeleton,
   massAction,
   index,
   rowsState,
@@ -32,11 +34,15 @@ const RenderRow = ({
     >
       {massAction && (
         <td className="nimbus--table-row__check">
-          <Checkbox
-            name={`${index}`}
-            checked={rowsState[index]}
-            onChange={handleChangeRow}
-          />
+          {skeleton ? (
+            <Checkbox.Skeleton />
+          ) : (
+            <Checkbox
+              name={`${index}`}
+              checked={rowsState[index]}
+              onChange={handleChangeRow}
+            />
+          )}
         </td>
       )}
       {children}

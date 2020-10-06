@@ -71,3 +71,8 @@
     "tight"
   );
 }
+
+.#{$prefix}--label-skeleton {
+  @include label(transparent, transparent, transparent, transparent, "base");
+  @include nimbus--skeleton($spacing-medium, 120px, 0, 0);
+}

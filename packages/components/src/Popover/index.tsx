@@ -33,8 +33,7 @@ interface InterfacePopover {
  * @param isMenu Determines whether the initiator is a button or an icon
  * @param position Determines the position of the popover menu
  */
-
-function Popover({
+const Popover = React.memo(function Popover({
   name,
   label,
   title,
@@ -141,6 +140,12 @@ function Popover({
       {memorizedActive}
     </div>
   );
-}
+}) as React.NamedExoticComponent<InterfacePopover> & {
+  Skeleton: typeof Skeleton;
+};
 
-export default React.memo(Popover);
+const Skeleton = () => <div className="nimbus--popover-skeleton" />;
+
+Popover.Skeleton = Skeleton;
+
+export default Popover;

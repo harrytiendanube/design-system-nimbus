@@ -77,6 +77,25 @@ describe("<Button/>", () => {
     );
   });
 
+  it("renders with spinner", () => {
+    const { container } = render(
+      <Button
+        icon={ArrowRightIcon}
+        iconPosition="end"
+        spinner
+        onClick={jest.fn()}
+      >
+        {myText}
+      </Button>,
+    );
+    expect(screen.getByRole("button", { name: myText }));
+    expect(container.querySelector("span")).toHaveClass(
+      "nimbus--button-spinner",
+    );
+    expect(container.querySelector("i")).toBeNull();
+    expect(container.querySelector("svg")).toBeNull();
+  });
+
   it("calls onClick", () => {
     const handleClick = jest.fn();
     render(<Button onClick={handleClick}>{myText}</Button>);

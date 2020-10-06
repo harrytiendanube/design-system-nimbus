@@ -20,6 +20,8 @@ export interface InterfaceButton {
   disabled?: boolean;
   /** Indicates if the button should be styled as a link */
   link?: boolean;
+  /** If true, will render a spinner at start position */
+  spinner?: boolean;
   /** Type of react mouse event onclick to manage event click and void return. */
   onClick(event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void;
 }
@@ -34,9 +36,10 @@ export interface InterfaceButton {
  * @param iconSize The size of the button icon
  * @param disabled Indicates if the button is disabled
  * @param link Indicates if the button should be styled as a link
+ * @param spinner If true, will render a spinner at start position
  * @param onClick Type of react mouse event onclick to manage event click and
  */
-function Button({
+const Button = React.memo(function Button({
   children,
   icon: Icon,
   iconPosition = "start",
@@ -45,6 +48,7 @@ function Button({
   disabled = false,
   link = false,
   iconSize = "small",
+  spinner,
 }: InterfaceButton): JSX.Element {
   const buttonClass = React.useMemo(
     () =>
@@ -52,8 +56,9 @@ function Button({
         "nimbus--button",
         { [`nimbus--link--${appearance}`]: link },
         { [`nimbus--button--${appearance}`]: !link },
+        { "nimbus--button-loading": spinner },
       ),
-    [appearance, link],
+    [appearance, link, spinner],
   );
   const iconStartClass = React.useMemo(
     () =>
@@ -69,25 +74,33 @@ function Button({
       }),
     [children, iconPosition],
   );
+
+  const iconSpinner = React.useMemo(
+    () => spinner && <span className="nimbus--button-spinner" />,
+    [spinner],
+  );
+
   const iconStart = React.useMemo(
     () =>
+      !spinner &&
       Icon &&
       iconPosition === "start" && (
         <i className={iconStartClass}>
           <Icon size={iconSize} />
         </i>
       ),
-    [Icon, iconPosition, iconSize, iconStartClass],
+    [spinner, Icon, iconPosition, iconSize, iconStartClass],
   );
   const iconEnd = React.useMemo(
     () =>
+      !spinner &&
       Icon &&
       iconPosition === "end" && (
         <i className={iconEndClass}>
           <Icon size={iconSize} />
         </i>
       ),
-    [Icon, iconEndClass, iconPosition, iconSize],
+    [spinner, Icon, iconEndClass, iconPosition, iconSize],
   );
 
   return (
@@ -97,11 +110,18 @@ function Button({
       onClick={onClick}
       disabled={disabled}
     >
+      {iconSpinner}
       {iconStart}
       {children}
       {iconEnd}
     </button>
   );
-}
+}) as React.NamedExoticComponent<InterfaceButton> & {
+  Skeleton: typeof Skeleton;
+};
 
-export default React.memo(Button);
+const Skeleton = () => <div className="nimbus--button-skeleton" />;
+
+Button.Skeleton = Skeleton;
+
+export default Button;

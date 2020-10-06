@@ -19,13 +19,13 @@ interface InterfaceCard {
   /** React node of type children */
   children: React.ReactNode;
   /** Primary action button */
-  primaryButton?: InterfaceButton;
+  primaryButton?: InterfaceButton | "skeleton";
   /** Secondary action button */
-  secondaryButton?: InterfaceButton;
+  secondaryButton?: InterfaceButton | "skeleton";
   /** Indicates if Card is collapsible or not */
   isCollapsible?: boolean;
   /** Label to show on the header of the Card */
-  headerLabel?: InterfaceLabel;
+  headerLabel?: InterfaceLabel | "skeleton";
   /** Icon (imported from @tiendanube/icons) to show on the header of the Card */
   headerIcon?: IconType;
   /** Callback to be called when Icon header is clicked */
@@ -65,24 +65,45 @@ function Card({
 
   const memorizedPrimary = React.useMemo(
     () =>
-      primaryButton?.onClick && (
+      primaryButton === "skeleton" ? (
         <Stack.Item>
-          <Button onClick={primaryButton.onClick} appearance="primary">
-            {primaryButton.children}
-          </Button>
+          <Button.Skeleton />
         </Stack.Item>
+      ) : (
+        primaryButton?.onClick && (
+          <Stack.Item>
+            <Button
+              onClick={primaryButton.onClick}
+              appearance="primary"
+              spinner={primaryButton.spinner}
+              disabled={primaryButton.disabled}
+            >
+              {primaryButton.children}
+            </Button>
+          </Stack.Item>
+        )
       ),
     [primaryButton],
   );
 
   const memorizedSecondary = React.useMemo(
     () =>
-      secondaryButton?.onClick && (
+      secondaryButton === "skeleton" ? (
         <Stack.Item>
-          <Button onClick={secondaryButton.onClick}>
-            {secondaryButton.children}
-          </Button>
+          <Button.Skeleton />
         </Stack.Item>
+      ) : (
+        secondaryButton?.onClick && (
+          <Stack.Item>
+            <Button
+              onClick={secondaryButton.onClick}
+              spinner={secondaryButton.spinner}
+              disabled={secondaryButton.disabled}
+            >
+              {secondaryButton.children}
+            </Button>
+          </Stack.Item>
+        )
       ),
     [secondaryButton],
   );
@@ -105,14 +126,20 @@ function Card({
 
   const memorizedHeaderLabel = React.useMemo(
     () =>
-      headerLabel?.id && (
-        <Label
-          id={headerLabel.id}
-          icon={headerLabel.icon}
-          label={headerLabel.label}
-          appearance={headerLabel.appearance}
-          onClick={headerLabel.onClick}
-        />
+      headerLabel === "skeleton" ? (
+        <Stack.Item>
+          <Label.Skeleton />
+        </Stack.Item>
+      ) : (
+        headerLabel?.id && (
+          <Label
+            id={headerLabel.id}
+            icon={headerLabel.icon}
+            label={headerLabel.label}
+            appearance={headerLabel.appearance}
+            onClick={headerLabel.onClick}
+          />
+        )
       ),
     [headerLabel],
   );

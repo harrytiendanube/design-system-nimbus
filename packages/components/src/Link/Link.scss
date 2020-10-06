@@ -33,3 +33,7 @@
 .#{$prefix}--link--danger {
   @include link($color-danger, $color-danger-hover, $color-danger-light);
 }
+
+.#{$prefix}--link-skeleton {
+  @include nimbus--skeleton($spacing-small, 80px, $spacing-xx-small, 0);
+}

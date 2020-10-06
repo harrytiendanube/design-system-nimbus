@@ -25,7 +25,7 @@ export interface InterfaceImageItem {
  * @param subtitle Subtitle for the ImageItem
  * @param description Description for the ImageItem
  */
-function ImageItem({
+const ImageItem = React.memo(function ImageItem({
   thumbnail,
   link,
   linkTo,
@@ -65,6 +65,21 @@ function ImageItem({
       </div>
     </div>
   );
-}
+}) as React.NamedExoticComponent<InterfaceImageItem> & {
+  Skeleton: typeof Skeleton;
+};
 
-export default React.memo(ImageItem);
+const Skeleton = () => (
+  <div className="nimbus--image-item-skeleton">
+    <div className="nimbus--image-item-skeleton__thumbnail" />
+    <div className="nimbus--image-item-skeleton__info">
+      <div className="nimbus--image-item-skeleton__info-item" />
+      <div className="nimbus--image-item-skeleton__info-item" />
+      <div className="nimbus--image-item-skeleton__info-item" />
+    </div>
+  </div>
+);
+
+ImageItem.Skeleton = Skeleton;
+
+export default ImageItem;

@@ -138,3 +138,8 @@
     }
   }
 }
+
+.#{$prefix}--checkbox-skeleton {
+  @include nimbus--skeleton($spacing-medium, $spacing-medium, 0, 0);
+  border-radius: $spacing-xx-small;
+}

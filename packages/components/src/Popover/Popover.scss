@@ -43,3 +43,7 @@
     }
   }
 }
+
+.#{$prefix}--popover-skeleton {
+  @include nimbus--skeleton($spacing-small, 80px, $spacing-xx-small, 0);
+}

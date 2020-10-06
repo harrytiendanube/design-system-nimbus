@@ -2,6 +2,7 @@ import * as React from "react";
 
 import "./Label.css";
 
+import classNames from "classnames";
 import { Icon as IconType } from "@tiendanube/icons";
 
 export interface InterfaceLabel {
@@ -30,64 +31,39 @@ export interface InterfaceLabel {
  * @param label Text for the label
  * @param onClick Event to be fired upon clicking the Label
  */
-function Label({
+const Label = React.memo(function Label({
   id,
-  appearance,
+  appearance = "default",
   icon: Icon,
   label,
   onClick,
-}: InterfaceLabel): JSX.Element {
-  const handleClick = React.useCallback(
-    (event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
-      event.stopPropagation();
-      onClick?.(id);
-    },
-    [id, onClick],
-  );
+}: InterfaceLabel) {
+  const handleClick = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ): void => {
+    event.stopPropagation();
+    onClick?.(id);
+  };
 
-  const className = React.useMemo(
-    () => `nimbus--label nimbus--label--${appearance}`,
-    [appearance],
-  );
-  const memorizedIcon = React.useMemo(() => Icon && <Icon />, [Icon]);
+  const className = classNames("nimbus--label", `nimbus--label--${appearance}`);
 
-  const memorizedButton = React.useMemo(
-    () =>
-      onClick && (
-        <button
-          type="button"
-          id={id}
-          className={className}
-          onClick={handleClick}
-        >
-          {memorizedIcon}
-          {label}
-        </button>
-      ),
-    [className, handleClick, id, label, memorizedIcon, onClick],
+  return onClick ? (
+    <button type="button" id={id} className={className} onClick={handleClick}>
+      {Icon && <Icon />}
+      {label}
+    </button>
+  ) : (
+    <span id={id} className={className} role="status">
+      {Icon && <Icon />}
+      {label}
+    </span>
   );
-
-  const memorizedSpan = React.useMemo(
-    () =>
-      !onClick && (
-        <span id={id} className={className} role="status">
-          {memorizedIcon}
-          {label}
-        </span>
-      ),
-    [className, id, label, memorizedIcon, onClick],
-  );
-
-  return (
-    <>
-      {memorizedButton}
-      {memorizedSpan}
-    </>
-  );
-}
-
-Label.defaultProps = {
-  appearance: "default",
+}) as React.NamedExoticComponent<InterfaceLabel> & {
+  Skeleton: typeof Skeleton;
 };
 
-export default React.memo(Label);
+const Skeleton = () => <span className="nimbus--label-skeleton" />;
+
+Label.Skeleton = Skeleton;
+
+export default Label;

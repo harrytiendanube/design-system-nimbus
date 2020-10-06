@@ -33,6 +33,7 @@ TODO: complete
   <Story name="default" decorators={[withKnobs, withA11y]}>
     {() => {
       const [result, setResult] = React.useState("none");
+      const skeleton = boolean("skeleton", false);
       const headers = [
         "Order",
         "Date",
@@ -47,70 +48,92 @@ TODO: complete
         rows.push(
           <Table.Row key={i} grayed={boolean("grayed rows", false)}>
             <Table.Item rowTitle width={60}>
-              <Link
-                key="1"
-                href="https://www.tiendanube.com/"
-                target="_self"
-                appearance="primary"
-              >
-                #{i}
-              </Link>
+              {skeleton ? (
+                <Link.Skeleton />
+              ) : (
+                <Link
+                  key="1"
+                  href="https://www.tiendanube.com/"
+                  target="_self"
+                  appearance="primary"
+                  skeleton={skeleton}
+                >
+                  #{i}
+                </Link>
+              )}
             </Table.Item>
             <Table.Item alignRight width={40}>
-              <Text key="2">20 jun</Text>
+              {skeleton ? <Text.Skeleton /> : <Text key="2">20 jun</Text>}
             </Table.Item>
             <Table.Item width={60} trimText>
-              <Text key="3">Name Last name</Text>
+              {skeleton ? (
+                <Text.Skeleton />
+              ) : (
+                <Text key="3">Name Last name</Text>
+              )}
             </Table.Item>
             <Table.Item width={40} alignRight>
-              <Text key="4">$3.500</Text>
+              {skeleton ? <Text.Skeleton /> : <Text key="4">$3.500</Text>}
             </Table.Item>
             <Table.Item width={100}>
-              {" "}
-              <Popover
-                key="5"
-                name={i}
-                label="6 products"
-                title={`Order #${i}`}
-              >
-                <ImageItem
-                  thumbnail="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=943&q=80"
-                  link="Product"
-                  linkTo="https://www.tiendanube.com/"
-                  subtitle="Variant"
-                  description="1 x $3.500"
-                />
-                <ImageItem
-                  thumbnail="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=943&q=80"
-                  link="Product"
-                  linkTo="https://www.tiendanube.com/"
-                  subtitle="Variant"
-                  description="2 x $3.500"
-                />
-                <ImageItem
-                  thumbnail="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=943&q=80"
-                  link="Product"
-                  linkTo="https://www.tiendanube.com/"
-                  subtitle="Variant"
-                  description="3 x $3.500"
-                />
-              </Popover>
+              {skeleton ? (
+                <Text.Skeleton />
+              ) : (
+                <Popover
+                  key="5"
+                  name={i}
+                  label="6 products"
+                  title={`Order #${i}`}
+                >
+                  <ImageItem
+                    thumbnail="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=943&q=80"
+                    link="Product"
+                    linkTo="https://www.tiendanube.com/"
+                    subtitle="Variant"
+                    description="1 x $3.500"
+                  />
+                  <ImageItem
+                    thumbnail="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=943&q=80"
+                    link="Product"
+                    linkTo="https://www.tiendanube.com/"
+                    subtitle="Variant"
+                    description="2 x $3.500"
+                  />
+                  <ImageItem
+                    thumbnail="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=943&q=80"
+                    link="Product"
+                    linkTo="https://www.tiendanube.com/"
+                    subtitle="Variant"
+                    description="3 x $3.500"
+                  />
+                </Popover>
+              )}
             </Table.Item>
             <Table.Item width="auto" extraPadding>
-              <Label
-                id="payment-status"
-                icon={CreditCardIcon}
-                label="Awaiting payment"
-                appearance="warning"
-              />
+              {skeleton ? (
+                <Label.Skeleton />
+              ) : (
+                <Label
+                  id="payment-status"
+                  icon={CreditCardIcon}
+                  label="Awaiting payment"
+                  appearance="warning"
+                  skeleton={skeleton}
+                />
+              )}
             </Table.Item>
             <Table.Item width="auto" extraPadding>
-              <Label
-                id="shipping-status"
-                icon={BoxUnpackedIcon}
-                label="Unpacked"
-                appearance="secondary"
-              />
+              {skeleton ? (
+                <Label.Skeleton />
+              ) : (
+                <Label
+                  id="shipping-status"
+                  icon={BoxUnpackedIcon}
+                  label="Unpacked"
+                  appearance="secondary"
+                  skeleton={skeleton}
+                />
+              )}
             </Table.Item>
           </Table.Row>,
         );
@@ -133,6 +156,7 @@ TODO: complete
             massAction={boolean("massAction", true) ? massAction : null}
             ruled={boolean("ruled", true)}
             spacing={select("spacing", ["base", "tight"])}
+            skeleton={skeleton}
           >
             {rows}
           </Table>
@@ -201,7 +225,7 @@ TODO: complete
               </Stack>
             </Table.Item>
             <Table.Item width={40} alignRight>
-              <Text key="2">31 dec</Text>
+              <Text key="2">30 jun</Text>
             </Table.Item>
             <Table.Item width={60} trimText>
               <Stack spacing="tight" align="flex-start">
@@ -348,7 +372,7 @@ TODO: complete
           </Table.Row>
           <Table.Row>
             <Table.Item width={70}>
-              <Text>OCA Estándar - Retirar por una sucursal de OCA:</Text>
+              <Text>Shipping Method</Text>
             </Table.Item>
             <Table.Item width={30}>
               <Text block textAlign="right">
@@ -358,7 +382,7 @@ TODO: complete
           </Table.Row>
           <Table.Row>
             <Table.Item width={70}>
-              <Text>Descuento por tener productos con envío sin cargo:</Text>
+              <Text>Free shipping discount:</Text>
             </Table.Item>
             <Table.Item width={30}>
               <Text appearance="danger" block textAlign="right">

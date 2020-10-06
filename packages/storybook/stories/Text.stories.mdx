@@ -32,13 +32,27 @@ TODO: complete
     >
       {text("children", "Text")}
     </Text>
-    <Text>Text content</Text>
+    <Text>Another Text</Text>
   </Story>
 </Preview>
 
 ## Properties
 
-<Props of={Text.type} />
+<Props of={Text} />
+
+## Properties Text.Skeleton
+
+<Props of={Text.Skeleton.type} />
+
+# Skeleton
+
+<Preview>
+  <Story name="skeleton" parameters={{ decorators: [withKnobs, withA11y] }}>
+    <Text.Skeleton
+      width={select("width", ["small", "medium", "large", "fill"])}
+    />
+  </Story>
+</Preview>
 
 ## Stressed
 

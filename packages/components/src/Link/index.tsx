@@ -28,7 +28,7 @@ export interface InterfaceLink {
  * @param icon Icon Component imported from @tiendanube/icons
  * @param iconPosition Position of the icon with respect to the alert
  */
-const Link: React.FC<InterfaceLink> = ({
+const Link = React.memo(function Link({
   children,
   href,
   target = "_blank",
@@ -36,7 +36,7 @@ const Link: React.FC<InterfaceLink> = ({
   underline = false,
   icon: Icon,
   iconPosition = "start",
-}: InterfaceLink): JSX.Element => {
+}: InterfaceLink): JSX.Element {
   const classname = React.useMemo(
     () =>
       `nimbus--link nimbus--link--${appearance} ${
@@ -64,6 +64,7 @@ const Link: React.FC<InterfaceLink> = ({
       ),
     [Icon, iconPosition],
   );
+
   return (
     <a className={classname} href={href} target={target}>
       {memorizedStartIcon}
@@ -71,6 +72,12 @@ const Link: React.FC<InterfaceLink> = ({
       {memorizedEndIcon}
     </a>
   );
+}) as React.NamedExoticComponent<InterfaceLink> & {
+  Skeleton: typeof Skeleton;
 };
 
-export default React.memo(Link);
+const Skeleton = () => <div className="nimbus--link-skeleton" />;
+
+Link.Skeleton = Skeleton;
+
+export default Link;

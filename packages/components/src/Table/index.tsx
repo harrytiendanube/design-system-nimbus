@@ -37,6 +37,8 @@ interface InterfaceTable {
   spacing?: "base" | "tight";
   /** React node of type children */
   children?: React.ReactNode;
+  /** It renders checkbox's as skeletons */
+  skeleton?: boolean;
 }
 
 /**
@@ -45,6 +47,7 @@ interface InterfaceTable {
  * @param massAction Mass Action data
  * @param ruled Rows separated by lines
  * @param spacing Defines spacing between rows
+ * @param skeleton It renders checkbox's as skeletons
  */
 const Table = React.memo(function Table({
   headers,
@@ -52,6 +55,7 @@ const Table = React.memo(function Table({
   massAction,
   ruled = true,
   spacing = "base",
+  skeleton = false,
 }: InterfaceTable): JSX.Element {
   const rowsCount = React.useMemo(() => React.Children.count(children), [
     children,
@@ -144,11 +148,15 @@ const Table = React.memo(function Table({
           <tr className="nimbus--table-row">
             {massAction && (
               <th className="nimbus--table-row__check">
-                <Checkbox
-                  name="check-all"
-                  checked={massActionCheckValue}
-                  onChange={handleOnChangeCheckMassAction}
-                />
+                {skeleton ? (
+                  <Checkbox.Skeleton />
+                ) : (
+                  <Checkbox
+                    name="check-all"
+                    checked={massActionCheckValue}
+                    onChange={handleOnChangeCheckMassAction}
+                  />
+                )}
               </th>
             )}
             {headers?.map((header) => (
@@ -159,7 +167,13 @@ const Table = React.memo(function Table({
           </tr>
         </thead>
       ),
-    [handleOnChangeCheckMassAction, headers, massAction, massActionCheckValue],
+    [
+      handleOnChangeCheckMassAction,
+      headers,
+      massAction,
+      massActionCheckValue,
+      skeleton,
+    ],
   );
 
   const className = React.useMemo(
@@ -186,6 +200,7 @@ const Table = React.memo(function Table({
                   {row && (
                     <RowContextProvider key={index}>
                       <RenderRow
+                        skeleton={skeleton}
                         massAction={massAction}
                         index={index}
                         rowsState={rowsState}

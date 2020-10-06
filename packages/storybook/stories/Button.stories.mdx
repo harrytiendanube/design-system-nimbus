@@ -30,6 +30,7 @@ TODO: complete
       disabled={boolean("disabled", false)}
       link={boolean("link", false)}
       onClick={action("onClick")}
+      spinner={boolean("spinner", false)}
     >
       {text("children", "Text")}
     </Button>
@@ -38,7 +39,15 @@ TODO: complete
 
 ## Properties
 
-<Props of={Button.type} />
+<Props of={Button} />
+
+# Skeleton
+
+<Preview>
+  <Story name="skeleton" parameters={{ decorators: [withKnobs, withA11y] }}>
+    <Button.Skeleton />
+  </Story>
+</Preview>
 
 ## Appearance
 

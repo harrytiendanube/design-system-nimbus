@@ -30,17 +30,16 @@ export interface InterfacePage {
   /** Defines whether the page has pagination to next */
   paginationNext?: () => void;
   /** Primary action for the title section */
-  primaryAction?: Pick<
-    InterfaceButton,
-    "children" | "onClick" | "icon" | "iconPosition"
-  >;
+  primaryAction?:
+    | Pick<InterfaceButton, "children" | "onClick" | "icon" | "iconPosition">
+    | "skeleton";
   /** Secondary actions for the title section */
-  secondaryActions?: Pick<
-    InterfaceButton,
-    "children" | "onClick" | "icon" | "iconPosition"
-  >[];
+  secondaryActions?: (
+    | Pick<InterfaceButton, "children" | "onClick" | "icon" | "iconPosition">
+    | "skeleton"
+  )[];
   /** Labels for the title section */
-  headerLabels?: InterfaceLabel[];
+  headerLabels?: (InterfaceLabel | "skeleton")[];
 }
 
 /**
@@ -103,14 +102,18 @@ function Page({
     () =>
       primaryAction && (
         <Stack.Item>
-          <Button
-            onClick={primaryAction.onClick}
-            appearance="primary"
-            icon={primaryAction.icon}
-            iconPosition={primaryAction.iconPosition}
-          >
-            {primaryAction.children}
-          </Button>
+          {primaryAction === "skeleton" ? (
+            <Button.Skeleton />
+          ) : (
+            <Button
+              onClick={primaryAction.onClick}
+              appearance="primary"
+              icon={primaryAction.icon}
+              iconPosition={primaryAction.iconPosition}
+            >
+              {primaryAction.children}
+            </Button>
+          )}
         </Stack.Item>
       ),
     [primaryAction],
@@ -120,15 +123,19 @@ function Page({
     () =>
       secondaryActions?.map((action, index) => (
         <Stack.Item key={index}>
-          <Button
-            onClick={action.onClick}
-            link
-            appearance="secondary"
-            icon={action.icon}
-            iconPosition={action.iconPosition}
-          >
-            {action.children}
-          </Button>
+          {action === "skeleton" ? (
+            <Button.Skeleton />
+          ) : (
+            <Button
+              onClick={action.onClick}
+              link
+              appearance="secondary"
+              icon={action.icon}
+              iconPosition={action.iconPosition}
+            >
+              {action.children}
+            </Button>
+          )}
         </Stack.Item>
       )),
     [secondaryActions],
@@ -140,12 +147,16 @@ function Page({
         <Stack spacing="tight">
           {headerLabels?.map((label, index) => (
             <Stack.Item key={index}>
-              <Label
-                id={label.id}
-                appearance={label.appearance}
-                icon={label.icon}
-                label={label.label}
-              />
+              {label === "skeleton" ? (
+                <Label.Skeleton />
+              ) : (
+                <Label
+                  id={label.id}
+                  appearance={label.appearance}
+                  icon={label.icon}
+                  label={label.label}
+                />
+              )}
             </Stack.Item>
           ))}
         </Stack>
@@ -178,7 +189,11 @@ function Page({
         <div className="nimbus--page-heading">
           <Stack>
             <Stack.Item fill>
-              <PageTitle title={title} />
+              {title === "skeleton" ? (
+                <PageTitle.Skeleton />
+              ) : (
+                <PageTitle title={title} />
+              )}
             </Stack.Item>
             <Responsive display="desktop">
               {memorizedSecondaryActions}

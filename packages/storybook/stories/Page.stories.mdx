@@ -73,6 +73,27 @@ TODO: complete
 
 <Props of={Page.type} />
 
+# Skeleton
+
+<Preview>
+  <Story name="skeleton" parameters={{ decorators: [withKnobs, withA11y] }}>
+    <Page
+      title="skeleton"
+      backNavigation={{
+        onClick: action("onClickBackNavigation"),
+        children: text("back", "Back"),
+      }}
+      paginationPrevious={action("paginationPrevious")}
+      paginationNext={action("paginationNext")}
+      primaryAction="skeleton"
+      secondaryActions={["skeleton", "skeleton"]}
+      headerLabels={["skeleton", "skeleton"]}
+    >
+      <Text.Skeleton />
+    </Page>
+  </Story>
+</Preview>
+
 ## Basic Page
 
 TODO: complete

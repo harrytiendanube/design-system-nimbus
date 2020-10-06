@@ -64,3 +64,26 @@ $thumbnail-dimensions: 72px;
     }
   }
 }
+
+.#{$prefix}--image-item-skeleton {
+  display: flex;
+  flex-wrap: nowrap;
+  max-width: 100%;
+}
+
+.#{$prefix}--image-item-skeleton__thumbnail {
+  @include nimbus--skeleton($thumbnail-dimensions, $thumbnail-dimensions, 0, 0);
+  border-radius: $actions-border-radius;
+  margin-right: $spacing-small;
+  min-width: $thumbnail-dimensions;
+}
+
+.#{$prefix}--image-item-skeleton__info {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.#{$prefix}--image-item-skeleton__info-item {
+  @include nimbus--skeleton($spacing-small, 80px, $spacing-xx-small, 0);
+}

@@ -1,6 +1,8 @@
 import * as React from "react";
 
 import classNames from "classnames";
+
+import Skeleton from "./Text.Skeleton";
 import "./Text.css";
 
 export interface InterfaceText {
@@ -35,7 +37,7 @@ export interface InterfaceText {
  * @param bold Bold font for the text component
  * @param textAlign Text alignment
  */
-function Text({
+const Text = React.memo(function Text({
   children,
   size = "base",
   block = false,
@@ -57,7 +59,12 @@ function Text({
       ),
     [size, appearance, textAlign, background, block, bold],
   );
-  return <p className={className}>{children}</p>;
-}
 
-export default React.memo(Text);
+  return <p className={className}>{children}</p>;
+}) as React.NamedExoticComponent<InterfaceText> & {
+  Skeleton: typeof Skeleton;
+};
+
+Text.Skeleton = Skeleton;
+
+export default Text;

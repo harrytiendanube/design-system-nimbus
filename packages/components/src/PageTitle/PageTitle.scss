@@ -16,3 +16,7 @@
     margin-left: $spacing-x-small;
   }
 }
+
+.#{$prefix}--page-title-skeleton {
+  @include nimbus--skeleton($spacing-large, 120px, $spacing-xx-small, 0);
+}

@@ -25,11 +25,11 @@ interface InterfaceCheckbox {
  * @param disabled Indicates if the checkbox is disabled
  * @param onChange Event to be fired upon checking the checkbox
  */
-function Checkbox({
+const Checkbox = React.memo(function Checkbox({
   name,
   label,
-  checked,
-  disabled,
+  checked = false,
+  disabled = false,
   onChange,
 }: InterfaceCheckbox): JSX.Element {
   const handleChange = React.useCallback(
@@ -76,11 +76,12 @@ function Checkbox({
       {memorizedChecked}
     </div>
   );
-}
-
-Checkbox.defaultProps = {
-  checked: false,
-  disabled: false,
+}) as React.NamedExoticComponent<InterfaceCheckbox> & {
+  Skeleton: typeof Skeleton;
 };
 
-export default React.memo(Checkbox);
+const Skeleton = () => <div className="nimbus--checkbox-skeleton" />;
+
+Checkbox.Skeleton = Skeleton;
+
+export default Checkbox;

@@ -23,7 +23,7 @@ export interface InterfacePageTitle {
  * @param link Is the link text
  * @param linkTo Is the link href
  */
-function PageTitle({
+const PageTitle = React.memo(function PageTitle({
   title,
   subtitle,
   link,
@@ -50,6 +50,12 @@ function PageTitle({
       {withSubtitle}
     </div>
   );
-}
+}) as React.NamedExoticComponent<InterfacePageTitle> & {
+  Skeleton: typeof Skeleton;
+};
 
-export default React.memo(PageTitle);
+const Skeleton = () => <div className="nimbus--page-title-skeleton" />;
+
+PageTitle.Skeleton = Skeleton;
+
+export default PageTitle;
