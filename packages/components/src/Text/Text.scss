@@ -29,6 +29,10 @@
     text-align: right;
   }
 
+  &.#{$prefix}--text-align--center {
+    text-align: center;
+  }
+
   &.#{$prefix}--text-color--default {
     color: $color-body-text;
   }

@@ -23,6 +23,10 @@ TODO: complete
       }}
       paginationPrevious={action("paginationPrevious")}
       paginationNext={action("paginationNext")}
+      editAction={{
+        onClick: action("onClickEditAction"),
+        children: text("edit", "Edit"),
+      }}
       primaryAction={{
         onClick: action("onClickPrimaryAction"),
         children: text("primary action", "Primary action"),
@@ -64,7 +68,45 @@ TODO: complete
         },
       ]}
     >
-      <Text>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
     </Page>
   </Story>
 </Preview>
@@ -101,6 +143,62 @@ TODO: complete
 <Preview>
   <Story name="basic page" parameters={{ decorators: [withKnobs, withA11y] }}>
     <Page title={text("title", "Title")}>
+      <Text>Page content</Text>
+    </Page>
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="fixed header" parameters={{ decorators: [withKnobs, withA11y] }}>
+    <Page
+      title={text("title", "Title")}
+      backNavigation={{
+        onClick: action("onClickBackNavigation"),
+        children: text("back", "Back"),
+      }}
+      paginationPrevious={action("paginationPrevious")}
+      paginationNext={action("paginationNext")}
+      primaryAction={{
+        onClick: action("onClickPrimaryAction"),
+        children: text("primary action", "Primary action"),
+      }}
+      secondaryActions={[
+        {
+          children: text("secondary action 1", "Secondary action 1"),
+          onClick: action("onClickSecondaryAction1"),
+        },
+        {
+          children: text("secondary action 2", "Secondary action 2"),
+          onClick: action("onClickSecondaryAction2"),
+        },
+      ]}
+      headerLabels={[
+        {
+          id: text("label id 1", "label-id-1"),
+          appearance: select("label 1 appearance", [
+            "default",
+            "primary",
+            "secondary",
+            "success",
+            "warning",
+            "danger",
+          ]),
+          label: text("label 1", "label 1"),
+        },
+        {
+          id: text("label id 2", "label-id-2"),
+          appearance: select("label 2 appearance", [
+            "default",
+            "primary",
+            "secondary",
+            "success",
+            "warning",
+            "danger",
+          ]),
+          label: text("label 2", "label 2"),
+        },
+      ]}
+    >
       <Text>Page content</Text>
     </Page>
   </Story>

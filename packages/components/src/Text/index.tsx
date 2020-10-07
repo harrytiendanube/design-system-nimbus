@@ -26,7 +26,7 @@ export interface InterfaceText {
   /** Bold font for the text component */
   bold?: boolean;
   /** Text alignment */
-  textAlign?: "left" | "right";
+  textAlign?: "left" | "right" | "center";
 }
 /**
  * @param children Text to be displayed

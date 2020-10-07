@@ -111,7 +111,8 @@
           "textarea",
           "autofocus",
           "Dropdown",
-          "resize"
+          "resize",
+          "unobserve"
         ]
       }
     ]

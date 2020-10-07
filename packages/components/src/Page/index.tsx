@@ -3,9 +3,9 @@ import * as React from "react";
 import "./Page.css";
 
 import {
+  ChevronLeftIcon,
   ArrowLeftIcon,
   ArrowRightIcon,
-  ChevronLeftIcon,
 } from "@tiendanube/icons";
 import Responsive from "../Responsive";
 import PageTitle from "../PageTitle";
@@ -16,6 +16,7 @@ import {
   Popover,
   InterfaceLabel,
   Label,
+  Text,
 } from "..";
 
 export interface InterfacePage {
@@ -29,6 +30,8 @@ export interface InterfacePage {
   paginationPrevious?: () => void;
   /** Defines whether the page has pagination to next */
   paginationNext?: () => void;
+  /**  */
+  editAction?: Pick<InterfaceButton, "children" | "onClick">;
   /** Primary action for the title section */
   primaryAction?:
     | Pick<InterfaceButton, "children" | "onClick" | "icon" | "iconPosition">
@@ -50,6 +53,7 @@ export interface InterfacePage {
  * @param backNavigation Navigation to previous screen
  * @param paginationPrevious Defines whether the page has pagination to previous
  * @param paginationNext Defines whether the page has pagination to next
+ * @param editAction
  * @param primaryAction Primary action for the title section
  * @param secondaryActions Secondary actions for the title section
  * @param headerLabels Labels for the title section
@@ -60,43 +64,12 @@ function Page({
   backNavigation,
   paginationPrevious,
   paginationNext,
+  editAction,
   primaryAction,
   secondaryActions,
   headerLabels,
 }: InterfacePage): JSX.Element {
-  const memorizedNavigation = React.useMemo(
-    () =>
-      backNavigation && (
-        <div className="nimbus--page-navbar">
-          <Stack>
-            <Stack.Item fill>
-              <Button
-                onClick={backNavigation.onClick}
-                icon={ChevronLeftIcon}
-                link
-              >
-                {backNavigation.children}
-              </Button>
-            </Stack.Item>
-            {paginationPrevious && paginationNext && (
-              <>
-                <Stack.Item>
-                  <Button
-                    link
-                    onClick={paginationPrevious}
-                    icon={ArrowLeftIcon}
-                  />
-                </Stack.Item>
-                <Stack.Item>
-                  <Button link onClick={paginationNext} icon={ArrowRightIcon} />
-                </Stack.Item>
-              </>
-            )}
-          </Stack>
-        </div>
-      ),
-    [backNavigation, paginationPrevious, paginationNext],
-  );
+  const [showTitle, setShowTitle] = React.useState(false);
 
   const memorizedPrimaryAction = React.useMemo(
     () =>
@@ -141,6 +114,72 @@ function Page({
     [secondaryActions],
   );
 
+  const memorizedNavigation = React.useMemo(
+    () => (
+      <div className={`nimbus--page-navbar ${showTitle ? "is-scrolled" : ""}`}>
+        <div className="nimbus--page-navbar__back">
+          {backNavigation && (
+            <Button
+              onClick={backNavigation.onClick}
+              icon={ChevronLeftIcon}
+              appearance="secondary"
+            >
+              {backNavigation.children}
+            </Button>
+          )}
+        </div>
+        <Responsive display="mobile">
+          <div
+            className={`nimbus--page-navbar__title ${
+              showTitle ? "is-visible" : ""
+            }`}
+          >
+            <Text appearance="secondary" textAlign="center" bold>
+              {title}
+            </Text>
+          </div>
+        </Responsive>
+        <div className="nimbus--page-navbar__toolbar">
+          <Responsive display="mobile">
+            <Stack justify="flex-end" spacing="tight">
+              {editAction && (
+                <Stack.Item>
+                  <Button link onClick={editAction.onClick}>
+                    {editAction.children}
+                  </Button>
+                </Stack.Item>
+              )}
+              <Stack.Item>
+                <Popover isMenu name="dropdownMenu" position="right">
+                  <Stack column align="flex-start">
+                    {memorizedSecondaryActions}
+                    {memorizedPrimaryAction}
+                  </Stack>
+                </Popover>
+              </Stack.Item>
+            </Stack>
+          </Responsive>
+          {paginationPrevious && paginationNext && (
+            <Responsive display="desktop">
+              <Button link onClick={paginationPrevious} icon={ArrowLeftIcon} />
+              <Button link onClick={paginationNext} icon={ArrowRightIcon} />
+            </Responsive>
+          )}
+        </div>
+      </div>
+    ),
+    [
+      showTitle,
+      backNavigation,
+      title,
+      memorizedSecondaryActions,
+      memorizedPrimaryAction,
+      paginationPrevious,
+      paginationNext,
+      editAction,
+    ],
+  );
+
   const memorizedHeaderLabels = React.useMemo(
     () => (
       <div className="nimbus--page-header__labels">
@@ -165,28 +204,28 @@ function Page({
     [headerLabels],
   );
 
+  React.useEffect(() => {
+    const options = {
+      threshold: 0.75,
+    };
+    const callback = (entries: IntersectionObserverEntry[]) => {
+      if (entries[0].isIntersecting) {
+        setShowTitle(false);
+      } else setShowTitle(true);
+    };
+    const observer = new IntersectionObserver(callback, options);
+    const target = document.querySelector("#header");
+    if (target) observer.observe(target);
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   return (
     <div className="nimbus--page">
       <div className="nimbus--page-header">
-        {(primaryAction || secondaryActions) && (
-          <Responsive display="mobile">
-            <div className="nimbus--page-menubar">
-              <Stack justify="space-between">
-                <Stack.Item>{/* TODO: add menu */}</Stack.Item>
-                <Stack.Item>
-                  <Popover isMenu name="dropdownMenu" position="right">
-                    <Stack column align="flex-start">
-                      {memorizedSecondaryActions}
-                      {memorizedPrimaryAction}
-                    </Stack>
-                  </Popover>
-                </Stack.Item>
-              </Stack>
-            </div>
-          </Responsive>
-        )}
         {memorizedNavigation}
-        <div className="nimbus--page-heading">
+        <div className="nimbus--page-heading" id="header">
           <Stack>
             <Stack.Item fill>
               {title === "skeleton" ? (
@@ -195,6 +234,20 @@ function Page({
                 <PageTitle title={title} />
               )}
             </Stack.Item>
+            {paginationPrevious && paginationNext && (
+              <Responsive display="mobile">
+                <Stack.Item>
+                  <Button
+                    link
+                    onClick={paginationPrevious}
+                    icon={ArrowLeftIcon}
+                  />
+                </Stack.Item>
+                <Stack.Item>
+                  <Button link onClick={paginationNext} icon={ArrowRightIcon} />
+                </Stack.Item>
+              </Responsive>
+            )}
             <Responsive display="desktop">
               {memorizedSecondaryActions}
               {memorizedPrimaryAction}

@@ -6,17 +6,42 @@
   @include safe-area;
 }
 
-.#{$prefix}--page-menubar,
-.#{$prefix}--page-navbar,
+.#{$prefix}--page-navbar {
+  @include nimbus--safe-area($spacing-x-small);
+
+  align-items: center;
+  background-color: $color-background;
+  display: flex;
+  padding-bottom: $spacing-x-small;
+  position: fixed;
+  top: 0;
+  transition: box-shadow $motion-base cubic-bezier(0.4, 0, 0.4, 1);
+  width: 100%;
+  z-index: 700;
+
+  @include nimbus--breakpoint(md) {
+    padding-left: $spacing-small;
+    padding-right: $spacing-small;
+    position: static;
+  }
+
+  @include nimbus--breakpoint-down(md) {
+    &.is-scrolled {
+      box-shadow: 0 0 10px $color-default;
+    }
+  }
+}
+
 .#{$prefix}--page-heading {
   padding-bottom: $spacing-x-small;
   padding-left: $spacing-small;
   padding-right: $spacing-small;
-  padding-top: $spacing-x-small;
+  padding-top: 58px;
 
   @include nimbus--breakpoint(md) {
     padding-left: $spacing-medium;
     padding-right: $spacing-medium;
+    padding-top: $spacing-x-small;
   }
 }
 
@@ -32,5 +57,60 @@
   @include nimbus--breakpoint(md) {
     padding-left: $spacing-medium;
     padding-right: $spacing-medium;
+  }
+}
+
+.#{$prefix}--page-navbar__back,
+.#{$prefix}--page-navbar__title,
+.#{$prefix}--page-navbar__toolbar {
+  flex: 1 1 33.3333334%;
+}
+
+.#{$prefix}--page-navbar__title {
+  overflow: hidden;
+
+  > * {
+    @include nimbus--text-trim(1);
+    opacity: 0;
+    transform: translateY(100%);
+    transition: transform $motion-base cubic-bezier(0.4, 0, 0.4, 1),
+      opacity $motion-fast cubic-bezier(0.4, 0, 0.4, 1);
+  }
+
+  &.is-visible {
+    > * {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+.#{$prefix}--page-navbar__toolbar {
+  text-align: right;
+}
+
+// TODO: Overriding buttons, need to create new appearance transparent to achieve this result
+/* stylelint-disable indentation, selector-max-compound-selectors, selector-max-id */
+.#{$prefix}--page-navbar__back > .#{$prefix}--button,
+.#{$prefix}--page-navbar__toolbar
+  > .#{$prefix}--stack-wrapper
+  > .#{$prefix}--stack-item
+  > .#{$prefix}--button,
+.#{$prefix}--page-navbar__toolbar > .#{$prefix}--button,
+#nimbus-popover-initiator-dropdownMenu .#{$prefix}--button {
+  background-color: transparent;
+  border-color: transparent;
+  color: $color-secondary;
+  padding: $spacing-x-small;
+
+  &:focus {
+    box-shadow: 0 0 0 $button-border-width $color-secondary-light;
+  }
+
+  &:focus,
+  &:active,
+  &:hover {
+    background-color: transparent;
+    border-color: $color-secondary-light;
   }
 }
