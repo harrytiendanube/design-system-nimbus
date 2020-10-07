@@ -149,14 +149,16 @@ function Page({
                   </Button>
                 </Stack.Item>
               )}
-              <Stack.Item>
-                <Popover isMenu name="dropdownMenu" position="right">
-                  <Stack column align="flex-start">
-                    {memorizedSecondaryActions}
-                    {memorizedPrimaryAction}
-                  </Stack>
-                </Popover>
-              </Stack.Item>
+              {(primaryAction || secondaryActions) && (
+                <Stack.Item>
+                  <Popover isMenu name="dropdownMenu" position="right">
+                    <Stack column align="flex-start">
+                      {memorizedSecondaryActions}
+                      {memorizedPrimaryAction}
+                    </Stack>
+                  </Popover>
+                </Stack.Item>
+              )}
             </Stack>
           </Responsive>
           {paginationPrevious && paginationNext && (
@@ -172,11 +174,13 @@ function Page({
       showTitle,
       backNavigation,
       title,
+      editAction,
+      primaryAction,
+      secondaryActions,
       memorizedSecondaryActions,
       memorizedPrimaryAction,
       paginationPrevious,
       paginationNext,
-      editAction,
     ],
   );
 
