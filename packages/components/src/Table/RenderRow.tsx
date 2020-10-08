@@ -40,23 +40,27 @@ const RenderRow = ({
     "nimbus--table-row--touching": isTouching,
   });
 
+  const handleTouchStart = () => {
+    if (massAction) {
+      setTouching(true);
+      time.current = window.setTimeout(() => {
+        setTouched(true);
+        onEditMode?.({ name: `${index}`, checked: true });
+      }, 1000);
+    }
+  };
+
+  const handleCancelTouch = () => {
+    clearTimeout(time.current);
+    setTouching(false);
+  };
+
   return (
     <tr
-      onTouchStart={() => {
-        setTouching(true);
-        time.current = window.setTimeout(() => {
-          setTouched(true);
-          onEditMode?.({ name: `${index}`, checked: true });
-        }, 1000);
-      }}
-      onTouchEnd={() => {
-        clearTimeout(time.current);
-        setTouching(false);
-      }}
-      onTouchCancel={() => {
-        clearTimeout(time.current);
-        setTouching(false);
-      }}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleCancelTouch}
+      onTouchMove={handleCancelTouch}
+      onTouchCancel={handleCancelTouch}
       className={className}
     >
       {massAction && editMode && (
