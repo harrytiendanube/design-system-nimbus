@@ -3,7 +3,18 @@ import { withKnobs, text, select } from "@storybook/addon-knobs";
 import { action } from "@storybook/addon-actions";
 import { withA11y } from "@storybook/addon-a11y";
 
-import { Page, Text } from "@tiendanube/components/src";
+import { CreditCardIcon, BoxUnpackedIcon } from "@tiendanube/icons";
+
+import {
+  Page,
+  Text,
+  Table,
+  Layout,
+  Link,
+  Label,
+  Popover,
+  ImageItem,
+} from "@tiendanube/components/src";
 
 import "../utils/style.css";
 
@@ -201,5 +212,122 @@ TODO: complete
     >
       <Text>Page content</Text>
     </Page>
+  </Story>
+</Preview>
+
+## With Table
+
+TODO: complete
+
+<Preview>
+  <Story name="with table" decorators={[withKnobs, withA11y]}>
+    {() => {
+      const headers = [
+        "Order",
+        "Date",
+        "Buyer",
+        "Total",
+        "Products",
+        "Payment status",
+        "Shipping status",
+      ];
+      const rows = [];
+      for (let i = 120; i < 123; i++) {
+        rows.push(
+          <Table.Row key={i}>
+            <Table.Item rowTitle width={60}>
+              <Link
+                key="1"
+                href="https://www.tiendanube.com/"
+                target="_self"
+                appearance="primary"
+              >
+                #{i}
+              </Link>
+            </Table.Item>
+            <Table.Item alignRight width={40}>
+              <Text key="2">20 jun</Text>
+            </Table.Item>
+            <Table.Item width={60} trimText>
+              <Text key="3">Name Last name</Text>
+            </Table.Item>
+            <Table.Item width={40} alignRight>
+              <Text key="4">$3.500</Text>
+            </Table.Item>
+            <Table.Item width={100}>
+              <Popover
+                key="5"
+                name={i}
+                label="6 products"
+                title={`Order #${i}`}
+              >
+                <ImageItem
+                  thumbnail="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=943&q=80"
+                  link="Product"
+                  linkTo="https://www.tiendanube.com/"
+                  subtitle="Variant"
+                  description="1 x $3.500"
+                />
+              </Popover>
+            </Table.Item>
+            <Table.Item width="auto" extraPadding>
+              <Label
+                id="payment-status"
+                icon={CreditCardIcon}
+                label="Awaiting payment"
+                appearance="warning"
+              />
+            </Table.Item>
+            <Table.Item width="auto" extraPadding>
+              <Label
+                id="shipping-status"
+                icon={BoxUnpackedIcon}
+                label="Unpacked"
+                appearance="secondary"
+              />
+            </Table.Item>
+          </Table.Row>,
+        );
+      }
+      const massAction = {
+        placeholder: "Select an Option",
+        options: [
+          { label: "Option 1", value: "1" },
+          { label: "Option 2", value: "2" },
+          { label: "Option 3", value: "3" },
+          { label: "Option 4", value: "4" },
+        ],
+        getLabel: (n) => `${n} selected`,
+      };
+      const [editMode, setEditMode] = React.useState(false);
+      return (
+        <Page
+          title="Title Page"
+          editAction={{
+            children: editMode ? "Ok" : "Edit",
+            onClick: () => {
+              setEditMode(!editMode);
+            },
+          }}
+        >
+          <Layout>
+            <Layout.Section isMain>
+              <Table
+                headers={headers}
+                massAction={massAction}
+                ruled
+                editMode={editMode}
+                onEditMode={() => {
+                  setEditMode(!editMode);
+                }}
+              >
+                {rows}
+              </Table>
+              <br />
+            </Layout.Section>
+          </Layout>
+        </Page>
+      );
+    }}
   </Story>
 </Preview>

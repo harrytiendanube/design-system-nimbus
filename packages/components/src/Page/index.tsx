@@ -134,9 +134,13 @@ function Page({
               showTitle ? "is-visible" : ""
             }`}
           >
-            <Text appearance="secondary" textAlign="center" bold>
-              {title}
-            </Text>
+            {title === "skeleton" ? (
+              <Text.Skeleton />
+            ) : (
+              <Text appearance="secondary" textAlign="center" bold>
+                {title}
+              </Text>
+            )}
           </div>
         </Responsive>
         <div className="nimbus--page-navbar__toolbar">

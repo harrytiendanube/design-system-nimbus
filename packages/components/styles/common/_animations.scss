@@ -1,0 +1,15 @@
+// Animations
+//
+// Defining mixins to be used by animations
+
+@keyframes pulse {
+  0% {
+    opacity: 0.75;
+    transform: scale(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(100);
+  }
+}

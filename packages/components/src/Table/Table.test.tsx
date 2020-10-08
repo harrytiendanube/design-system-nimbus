@@ -45,10 +45,12 @@ const myMA = {
   onChange: handleChange,
 };
 
+const myEditMode = true;
+
 describe("<Table />", () => {
   it("renders", () => {
     render(
-      <Table headers={myHeaders} massAction={myMA}>
+      <Table headers={myHeaders} massAction={myMA} editMode={myEditMode}>
         {rows}
       </Table>,
     );
@@ -67,7 +69,7 @@ describe("<Table />", () => {
 
   it("renders Massive Select Area (indeterminate) when any row is checked", () => {
     render(
-      <Table headers={myHeaders} massAction={myMA}>
+      <Table headers={myHeaders} massAction={myMA} editMode={myEditMode}>
         {rows}
       </Table>,
     );
@@ -90,7 +92,7 @@ describe("<Table />", () => {
 
   it("renders Massive Select Area (checked) when all row is checked", () => {
     render(
-      <Table headers={myHeaders} massAction={myMA}>
+      <Table headers={myHeaders} massAction={myMA} editMode={myEditMode}>
         {rows}
       </Table>,
     );
@@ -105,7 +107,7 @@ describe("<Table />", () => {
 
   it("renders Massive Select Area (checked) when click on check-all", () => {
     render(
-      <Table headers={myHeaders} massAction={myMA}>
+      <Table headers={myHeaders} massAction={myMA} editMode={myEditMode}>
         {rows}
       </Table>,
     );
@@ -123,7 +125,7 @@ describe("<Table />", () => {
 
   it("calls onChange from Massive Select Area", () => {
     render(
-      <Table headers={myHeaders} massAction={myMA}>
+      <Table headers={myHeaders} massAction={myMA} editMode={myEditMode}>
         {rows}
       </Table>,
     );
@@ -141,7 +143,7 @@ describe("<Table />", () => {
 
   it("unChecks all rows", () => {
     render(
-      <Table headers={myHeaders} massAction={myMA}>
+      <Table headers={myHeaders} massAction={myMA} editMode={myEditMode}>
         {rows}
       </Table>,
     );
@@ -153,7 +155,7 @@ describe("<Table />", () => {
 
   it("hides Massive Select Area when no rows are selected", () => {
     render(
-      <Table headers={myHeaders} massAction={myMA}>
+      <Table headers={myHeaders} massAction={myMA} editMode={myEditMode}>
         {rows}
       </Table>,
     );

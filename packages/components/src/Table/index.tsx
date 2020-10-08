@@ -33,12 +33,16 @@ interface InterfaceTable {
   massAction?: InterfaceMassAction;
   /** Rows separated by lines */
   ruled?: boolean;
+  /** Renders checkbox's for each row */
+  editMode?: boolean;
   /** Defines spacing between rows */
   spacing?: "base" | "tight";
   /** React node of type children */
   children?: React.ReactNode;
   /** It renders checkbox's as skeletons */
   skeleton?: boolean;
+  /** Event that will be triggered when a row is long pressed */
+  onEditMode?: () => void;
 }
 
 /**
@@ -46,16 +50,20 @@ interface InterfaceTable {
  * @param rows Text to be displayed in the alert
  * @param massAction Mass Action data
  * @param ruled Rows separated by lines
+ * @param editMode Renders checkbox's for each row
  * @param spacing Defines spacing between rows
  * @param skeleton It renders checkbox's as skeletons
+ * @param onEditMode Event that will be triggered when a row is long pressed
  */
 const Table = React.memo(function Table({
   headers,
   children,
   massAction,
   ruled = true,
+  editMode,
   spacing = "base",
   skeleton = false,
+  onEditMode,
 }: InterfaceTable): JSX.Element {
   const rowsCount = React.useMemo(() => React.Children.count(children), [
     children,
@@ -108,6 +116,7 @@ const Table = React.memo(function Table({
 
   const memorizedMassAction = React.useMemo(
     () =>
+      editMode &&
       massAction &&
       massActionCheckValue && (
         <div className="nimbus--table__mass-actions">
@@ -131,6 +140,7 @@ const Table = React.memo(function Table({
         </div>
       ),
     [
+      editMode,
       handleOnChangeCheckMassAction,
       handleOnChangeSelectMassAction,
       massAction,
@@ -146,7 +156,7 @@ const Table = React.memo(function Table({
       headers && (
         <thead className="nimbus--table__header">
           <tr className="nimbus--table-row">
-            {massAction && (
+            {massAction && editMode && (
               <th className="nimbus--table-row__check">
                 {skeleton ? (
                   <Checkbox.Skeleton />
@@ -168,6 +178,7 @@ const Table = React.memo(function Table({
         </thead>
       ),
     [
+      editMode,
       handleOnChangeCheckMassAction,
       headers,
       massAction,
@@ -181,11 +192,19 @@ const Table = React.memo(function Table({
       classNames(
         "nimbus--table-wrapper",
         { "nimbus--table-wrapper--ruled": ruled },
-        { "nimbus--table-wrapper--actions": massAction },
+        { "nimbus--table-wrapper--actions": massAction && editMode },
         `nimbus--table-wrapper--spacing-${spacing}`,
       ),
-    [massAction, ruled, spacing],
+    [editMode, massAction, ruled, spacing],
   );
+
+  React.useEffect(() => {
+    // Reset check's state when user turn off editMode
+    if (!editMode) {
+      setMassActionCheckValue(false);
+      setRowsState(allChecksUnSelected);
+    }
+  }, [allChecksUnSelected, editMode]);
 
   return (
     <>
@@ -201,10 +220,15 @@ const Table = React.memo(function Table({
                     <RowContextProvider key={index}>
                       <RenderRow
                         skeleton={skeleton}
+                        editMode={editMode}
                         massAction={massAction}
                         index={index}
                         rowsState={rowsState}
-                        handleChangeRow={handleChangeRow}
+                        onChangeRow={handleChangeRow}
+                        onEditMode={(event) => {
+                          handleChangeRow(event);
+                          onEditMode?.();
+                        }}
                       >
                         {row}
                       </RenderRow>

@@ -1,5 +1,7 @@
 import * as React from "react";
 
+import classNames from "classnames";
+
 import { RowContext } from "./RowContext";
 import Checkbox from "../Checkbox";
 
@@ -10,29 +12,54 @@ import {
 
 interface interfaceRenderRow {
   skeleton: boolean;
+  editMode?: boolean;
   massAction?: InterfaceMassAction;
   index: number;
   rowsState: boolean[];
-  handleChangeRow: (event: InterfaceNameChecked) => void;
   children: React.ReactNode;
+  onChangeRow: (event: InterfaceNameChecked) => void;
+  onEditMode?: (event: InterfaceNameChecked) => void;
 }
 
 const RenderRow = ({
   skeleton,
+  editMode,
   massAction,
   index,
   rowsState,
-  handleChangeRow,
   children,
+  onChangeRow,
+  onEditMode,
 }: interfaceRenderRow): JSX.Element => {
   const { rowProps } = React.useContext(RowContext);
+  const setTouched = React.useState(false)[1];
+  const [isTouching, setTouching] = React.useState(false);
+  const time = React.useRef<number>();
+  const className = classNames("nimbus--table-row", {
+    "nimbus--table-row--grayed": rowProps?.grayed,
+    "nimbus--table-row--touching": isTouching,
+  });
+
   return (
     <tr
-      className={`nimbus--table-row ${
-        rowProps?.grayed ? "nimbus--table-row--grayed" : ""
-      }`}
+      onTouchStart={() => {
+        setTouching(true);
+        time.current = window.setTimeout(() => {
+          setTouched(true);
+          onEditMode?.({ name: `${index}`, checked: true });
+        }, 1000);
+      }}
+      onTouchEnd={() => {
+        clearTimeout(time.current);
+        setTouching(false);
+      }}
+      onTouchCancel={() => {
+        clearTimeout(time.current);
+        setTouching(false);
+      }}
+      className={className}
     >
-      {massAction && (
+      {massAction && editMode && (
         <td className="nimbus--table-row__check">
           {skeleton ? (
             <Checkbox.Skeleton />
@@ -40,7 +67,7 @@ const RenderRow = ({
             <Checkbox
               name={`${index}`}
               checked={rowsState[index]}
-              onChange={handleChangeRow}
+              onChange={onChangeRow}
             />
           )}
         </td>

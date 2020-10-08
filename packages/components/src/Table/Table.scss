@@ -6,6 +6,10 @@
   @include nimbus--breakpoint-down(md) {
     margin-left: -$spacing-small;
     margin-right: -$spacing-small;
+
+    * {
+      user-select: none !important;
+    }
   }
 
   &.#{$prefix}--table-wrapper--ruled {
@@ -28,7 +32,7 @@
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 499;
+    z-index: 800;
 
     @include nimbus--breakpoint(md) {
       padding-top: $spacing-x-small;
@@ -119,6 +123,7 @@
 
     .#{$prefix}--table-row__item {
       padding: $spacing-small $spacing-x-small;
+      position: relative;
 
       @include nimbus--breakpoint-down(md) {
         padding: 0 $spacing-x-small;
@@ -230,5 +235,27 @@
         padding: $spacing-x-small 0 0 $spacing-x-small;
       }
     }
+  }
+}
+
+.#{$prefix}--table-row--touching {
+  background-color: #fafafa;
+  overflow: hidden;
+  transition: $motion-fast ease;
+  user-select: none !important;
+
+  &::before {
+    animation: pulse 2.5s 1 0.85s ease;
+    background-color: $color-default;
+    border-radius: 100%;
+    content: "";
+    display: block;
+    height: 24px;
+    left: 50%;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 24px;
   }
 }
