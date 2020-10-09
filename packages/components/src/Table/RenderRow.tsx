@@ -44,9 +44,12 @@ const RenderRow = ({
     if (massAction) {
       setTouching(true);
       time.current = window.setTimeout(() => {
+        if ("vibrate" in navigator) {
+          navigator.vibrate(10);
+        }
         setTouched(true);
-        onEditMode?.({ name: `${index}`, checked: true });
-      }, 1000);
+        onEditMode?.({ name: `${index}`, checked: !rowsState[index] });
+      }, 500);
     }
   };
 

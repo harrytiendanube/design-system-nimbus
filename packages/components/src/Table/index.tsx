@@ -227,7 +227,7 @@ const Table = React.memo(function Table({
                         onChangeRow={handleChangeRow}
                         onEditMode={(event) => {
                           handleChangeRow(event);
-                          onEditMode?.();
+                          if (!editMode) onEditMode?.();
                         }}
                       >
                         {row}

@@ -2,6 +2,12 @@
 
 // Page
 
+body {
+  @include nimbus--breakpoint-down(md) {
+    user-select: none;
+  }
+}
+
 .#{$prefix}--page {
   @include safe-area;
 }
