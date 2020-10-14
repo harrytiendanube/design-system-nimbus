@@ -70,11 +70,6 @@
   @include link($color-danger, $color-danger-hover, $color-danger-light);
 }
 
-.#{$prefix}--button-loading {
-  padding-left: 40px;
-  position: relative;
-}
-
 .#{$prefix}--button-skeleton {
   @include button(transparent, transparent, transparent, transparent);
   @include nimbus--skeleton(42px, 120px, 0, 0);

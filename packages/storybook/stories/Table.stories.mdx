@@ -33,7 +33,6 @@ TODO: complete
   <Story name="default" decorators={[withKnobs, withA11y]}>
     {() => {
       const [result, setResult] = React.useState("none");
-      const skeleton = boolean("skeleton", false);
       const headers = [
         "Order",
         "Date",
@@ -43,42 +42,31 @@ TODO: complete
         "Payment status",
         "Shipping status",
       ];
-      const rows = [];
-      for (let i = 120; i < 123; i++) {
-        rows.push(
-          <Table.Row key={i} grayed={boolean("grayed rows", false)}>
-            <Table.Item rowTitle width={60}>
-              {skeleton ? (
-                <Link.Skeleton />
-              ) : (
+      const createRows = (init, cant) => {
+        const rows = [];
+        for (let i = init; i < init + cant; i++) {
+          rows.push(
+            <Table.Row key={i} grayed={boolean("grayed rows", false)}>
+              <Table.Item rowTitle width={60}>
                 <Link
                   key="1"
                   href="https://www.tiendanube.com/"
                   target="_self"
                   appearance="primary"
-                  skeleton={skeleton}
                 >
                   #{i}
                 </Link>
-              )}
-            </Table.Item>
-            <Table.Item alignRight width={40}>
-              {skeleton ? <Text.Skeleton /> : <Text key="2">20 jun</Text>}
-            </Table.Item>
-            <Table.Item width={60} trimText>
-              {skeleton ? (
-                <Text.Skeleton />
-              ) : (
+              </Table.Item>
+              <Table.Item alignRight width={40}>
+                <Text key="2">20 jun</Text>
+              </Table.Item>
+              <Table.Item width={60} trimText>
                 <Text key="3">Name Last name</Text>
-              )}
-            </Table.Item>
-            <Table.Item width={40} alignRight>
-              {skeleton ? <Text.Skeleton /> : <Text key="4">$3.500</Text>}
-            </Table.Item>
-            <Table.Item width={100}>
-              {skeleton ? (
-                <Text.Skeleton />
-              ) : (
+              </Table.Item>
+              <Table.Item width={40} alignRight>
+                <Text key="4">$3.500</Text>
+              </Table.Item>
+              <Table.Item width={100}>
                 <Popover
                   key="5"
                   name={i}
@@ -107,37 +95,28 @@ TODO: complete
                     description="3 x $3.500"
                   />
                 </Popover>
-              )}
-            </Table.Item>
-            <Table.Item width="auto" extraPadding>
-              {skeleton ? (
-                <Label.Skeleton />
-              ) : (
+              </Table.Item>
+              <Table.Item width="auto" extraPadding>
                 <Label
                   id="payment-status"
                   icon={CreditCardIcon}
                   label="Awaiting payment"
                   appearance="warning"
-                  skeleton={skeleton}
                 />
-              )}
-            </Table.Item>
-            <Table.Item width="auto" extraPadding>
-              {skeleton ? (
-                <Label.Skeleton />
-              ) : (
+              </Table.Item>
+              <Table.Item width="auto" extraPadding>
                 <Label
                   id="shipping-status"
                   icon={BoxUnpackedIcon}
                   label="Unpacked"
                   appearance="secondary"
-                  skeleton={skeleton}
                 />
-              )}
-            </Table.Item>
-          </Table.Row>,
-        );
-      }
+              </Table.Item>
+            </Table.Row>,
+          );
+        }
+        return rows;
+      };
       const massAction = {
         placeholder: "Select an Option",
         options: [
@@ -149,6 +128,25 @@ TODO: complete
         getLabel: (n) => `${n} selected`,
         onChange: (selected) => setResult(JSON.stringify(selected)),
       };
+      const [loading, setLoading] = React.useState(false);
+      const total = 100;
+      const handleEndScroll = () => {
+        if (total !== allRows.length) {
+          setLoading(true);
+          setTimeout(() => {
+            setLoading(false);
+            set((rows) => [
+              ...rows,
+              ...createRows(
+                rows.length + 1,
+                total - rows.length > 20 ? 20 : total - rows.length,
+              ),
+            ]);
+          }, 1500);
+        }
+      };
+      const initRows = createRows(1, 20);
+      const [allRows, set] = React.useState(initRows);
       return (
         <>
           <Table
@@ -157,9 +155,11 @@ TODO: complete
             ruled={boolean("ruled", true)}
             editMode={boolean("editMode", false)}
             spacing={select("spacing", ["base", "tight"])}
-            skeleton={skeleton}
+            marginEndScroll={2}
+            onEndScroll={handleEndScroll}
+            loading={loading}
           >
-            {rows}
+            {allRows}
           </Table>
           <br />
           <Alert show>Last option selected: {result}</Alert>
@@ -180,6 +180,85 @@ TODO: complete
 ## Properties Table.Item
 
 <Props of={Table.Item.type} />
+
+# Skeleton
+
+TODO: complete
+
+<Preview>
+  <Story name="skeleton" decorators={[withKnobs, withA11y]}>
+    {() => {
+      const [result, setResult] = React.useState("none");
+      const headers = [
+        "Order",
+        "Date",
+        "Buyer",
+        "Total",
+        "Products",
+        "Payment status",
+        "Shipping status",
+      ];
+      const massAction = {
+        placeholder: "Select an Option",
+        options: [
+          { label: "Option 1", value: "1" },
+          { label: "Option 2", value: "2" },
+          { label: "Option 3", value: "3" },
+          { label: "Option 4", value: "4" },
+        ],
+        getLabel: (n) => `${n} selected`,
+        onChange: (selected) => setResult(JSON.stringify(selected)),
+      };
+      const createRows = (init, cant) => {
+        const rows = [];
+        for (let i = init; i < init + cant; i++) {
+          rows.push(
+            <Table.Row key={i}>
+              <Table.Item rowTitle width={60}>
+                <Link.Skeleton />
+              </Table.Item>
+              <Table.Item alignRight width={40}>
+                <Text.Skeleton />
+              </Table.Item>
+              <Table.Item width={60} trimText>
+                <Text.Skeleton />
+              </Table.Item>
+              <Table.Item width={40} alignRight>
+                <Text.Skeleton />
+              </Table.Item>
+              <Table.Item width={100}>
+                <Popover.Skeleton />
+              </Table.Item>
+              <Table.Item width="auto" extraPadding>
+                <Label.Skeleton />
+              </Table.Item>
+              <Table.Item width="auto" extraPadding>
+                <Label.Skeleton />
+              </Table.Item>
+            </Table.Row>,
+          );
+        }
+        return rows;
+      };
+      const rows = createRows(1, 5);
+      return (
+        <>
+          <Table
+            headers={headers}
+            ruled
+            skeleton
+            editMode
+            massAction={massAction}
+          >
+            {rows}
+          </Table>
+          <br />
+          <Alert show>Last option selected: {result}</Alert>
+        </>
+      );
+    }}
+  </Story>
+</Preview>
 
 # Stressed
 

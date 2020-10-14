@@ -256,3 +256,14 @@
     }
   }
 }
+
+.#{$prefix}--spinner-wrapper {
+  padding: $spacing-medium 0;
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+
+.#{$prefix}--spinner {
+  @include nimbus--spinner($spinner-color: $color-secondary, $size: "large");
+}

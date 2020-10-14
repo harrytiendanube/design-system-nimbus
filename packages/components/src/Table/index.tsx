@@ -41,8 +41,17 @@ interface InterfaceTable {
   children?: React.ReactNode;
   /** It renders checkbox's as skeletons */
   skeleton?: boolean;
+  /** It shows a loading spinner at the end of the table */
+  loading?: boolean;
+  /**
+   * Bottom margin to consider when calling onEndScroll. It is expressed in
+   * relative units to window.innerHeight
+   */
+  marginEndScroll?: number;
   /** Event that will be triggered when a row is long pressed */
   onEditMode?: () => void;
+  /** Event that will be triggered when scroll view intersect to end to the table */
+  onEndScroll?: () => void;
 }
 
 /**
@@ -53,7 +62,12 @@ interface InterfaceTable {
  * @param editMode Renders checkbox's for each row
  * @param spacing Defines spacing between rows
  * @param skeleton It renders checkbox's as skeletons
+ * @param loading It shows a loading spinner at the end of the table
+ * @param marginEndScroll Bottom margin to consider when calling onEndScroll. It
+ *     is expressed in relative units to window.innerHeight
  * @param onEditMode Event that will be triggered when a row is long pressed
+ * @param onEndScroll Event that will be triggered when scroll view intersect to
+ *     end to the table
  */
 const Table = React.memo(function Table({
   headers,
@@ -63,7 +77,10 @@ const Table = React.memo(function Table({
   editMode,
   spacing = "base",
   skeleton = false,
+  loading = false,
+  marginEndScroll = 1,
   onEditMode,
+  onEndScroll,
 }: InterfaceTable): JSX.Element {
   const rowsCount = React.useMemo(() => React.Children.count(children), [
     children,
@@ -80,17 +97,17 @@ const Table = React.memo(function Table({
     createSelectedValues(rowsCount, false),
   );
   const [massActionSelectValue] = React.useState("");
-  const [massActionCheckValue, setMassActionCheckValue] = React.useState(false);
+
+  const [massActionCheckValue, setMassActionCheckValue] = React.useState<
+    boolean | "indeterminate"
+  >(false);
 
   const handleChangeRow = React.useCallback(
     (event: InterfaceNameChecked) => {
       const newSelected = [...rowsState];
       newSelected[parseInt(event.name, 10)] = event.checked;
       setRowsState(newSelected);
-      const setState = setMassActionCheckValue as React.Dispatch<
-        React.SetStateAction<boolean | "indeterminate">
-      >;
-      setState(getNewMassActionCheckValue(newSelected));
+      setMassActionCheckValue(getNewMassActionCheckValue(newSelected));
     },
     [rowsState],
   );
@@ -187,6 +204,39 @@ const Table = React.memo(function Table({
     ],
   );
 
+  React.useEffect(() => {
+    const margin = Math.trunc(window.innerHeight * marginEndScroll);
+    const options = {
+      rootMargin: `0px 0px ${margin}px 0px`,
+    };
+
+    const callback = (entries: IntersectionObserverEntry[]) => {
+      if (entries[0].isIntersecting) {
+        onEndScroll?.();
+        observer.disconnect();
+      }
+    };
+    const observer = new IntersectionObserver(callback, options);
+    const target = document.querySelector("#end");
+    if (target) observer.observe(target);
+
+    const newRowState = [
+      ...rowsState,
+      ...createSelectedValues(
+        React.Children.count(children) - rowsState.length,
+        false,
+      ),
+    ];
+
+    setRowsState(newRowState);
+    setMassActionCheckValue(getNewMassActionCheckValue(newRowState));
+
+    return () => {
+      observer.disconnect();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [children]);
+
   const className = React.useMemo(
     () =>
       classNames(
@@ -239,6 +289,13 @@ const Table = React.memo(function Table({
             })}
           </tbody>
         </table>
+
+        <div id="end" />
+        {loading && (
+          <div className="nimbus--spinner-wrapper">
+            <div className="nimbus--spinner" />
+          </div>
+        )}
       </div>
     </>
   );

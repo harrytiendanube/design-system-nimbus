@@ -3,10 +3,11 @@
 // Defining mixins to be used by buttons
 
 @mixin button-base {
+  align-items: center;
   appearance: none;
   background-color: transparent;
   cursor: pointer;
-  display: inline-block;
+  display: inline-flex;
   text-align: center;
   transition: $button-hover-delay ease;
   vertical-align: middle;
@@ -58,6 +59,7 @@
   }
 
   .#{$prefix}--button-spinner {
-    @include nimbus--spinner($bg-color);
+    @include nimbus--spinner($bg-color: $bg-color);
+    margin-right: $spacing-x-small;
   }
 }
