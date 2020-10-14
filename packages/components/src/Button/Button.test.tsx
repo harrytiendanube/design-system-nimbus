@@ -11,6 +11,7 @@ const myIconPosition = "start";
 const myIconSize = "small";
 const myAppearance = "default";
 const myText = "myText";
+const myAriaLabel = "myAriaLabel";
 
 describe("<Button/>", () => {
   it("renders", () => {
@@ -20,12 +21,13 @@ describe("<Button/>", () => {
         icon={ArrowRightIcon}
         iconPosition={myIconPosition}
         iconSize={myIconSize}
+        ariaLabel={myAriaLabel}
         onClick={jest.fn()}
       >
         {myText}
       </Button>,
     );
-    expect(screen.getByRole("button", { name: myText })).toHaveClass(
+    expect(screen.getByRole("button", { name: myAriaLabel })).toHaveClass(
       `nimbus--button nimbus--button--${myAppearance}`,
     );
     expect(container.querySelector("i")).toHaveClass(

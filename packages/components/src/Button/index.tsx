@@ -8,6 +8,8 @@ import { Icon as IconType } from "@tiendanube/icons";
 export interface InterfaceButton {
   /** React node of type children. */
   children?: React.ReactText;
+  /** Label used for accessibility. */
+  ariaLabel?: string;
   /** Type of appearance */
   appearance?: "default" | "primary" | "secondary" | "default" | "danger";
   /** Icon Component imported from @tiendanube/icons */
@@ -30,6 +32,7 @@ export interface InterfaceButton {
  * Button's Component as actionable component.
  *
  * @param children React node of type children
+ * @param ariaLabel Label used for accessibility.
  * @param appearance Type of appearance
  * @param icon Icon Component imported from @tiendanube/icons
  * @param iconPosition Position of the icon inside the button
@@ -41,6 +44,7 @@ export interface InterfaceButton {
  */
 const Button = React.memo(function Button({
   children,
+  ariaLabel,
   icon: Icon,
   iconPosition = "start",
   appearance = "default",
@@ -105,6 +109,7 @@ const Button = React.memo(function Button({
 
   return (
     <button
+      aria-label={ariaLabel}
       type="button"
       className={buttonClass}
       onClick={onClick}

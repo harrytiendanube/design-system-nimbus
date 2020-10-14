@@ -18,6 +18,7 @@ TODO: complete
 <Preview>
   <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
     <Button
+      ariaLabel={text("aria-label", "aria-label")}
       icon={ArrowRightIcon}
       iconPosition={select("iconPosition", ["start", "end"])}
       iconSize={select("iconSize", ["small", "medium", "large"])}
