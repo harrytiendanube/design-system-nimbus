@@ -1,0 +1,26 @@
+@import "../../styles/core";
+
+// EmptyState
+
+.#{$prefix}--empty-search {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: $spacing-medium 0;
+
+  svg {
+    fill: $color-secondary;
+  }
+}
+
+.#{$prefix}--empty-search__icon {
+  margin-bottom: $spacing-x-small;
+}
+
+.#{$prefix}--empty-search__content {
+  margin-top: -$spacing-xx-small;
+
+  > * {
+    margin-top: $spacing-x-small;
+  }
+}

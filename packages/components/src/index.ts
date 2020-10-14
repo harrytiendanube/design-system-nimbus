@@ -115,3 +115,7 @@ export * from "./Responsive";
 // Timeline reference added
 export { default as Timeline } from "./Timeline";
 export * from "./Timeline";
+
+// EmptySearch reference added
+export { default as EmptySearch } from "./EmptySearch";
+export * from "./EmptySearch";

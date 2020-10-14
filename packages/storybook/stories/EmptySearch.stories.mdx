@@ -1,0 +1,26 @@
+import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
+import { withKnobs, text } from "@storybook/addon-knobs";
+import { withA11y } from "@storybook/addon-a11y";
+
+import { EmptySearch } from "@tiendanube/components/src";
+
+import "../utils/style.css";
+
+<Meta title="Components/EmptySearch" component={EmptySearch} />
+
+# EmptySearch
+
+TODO: complete
+
+<Preview>
+  <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
+    <EmptySearch
+      title={text("Title", "Title text")}
+      text={text("Text", "Body text")}
+    />
+  </Story>
+</Preview>
+
+## Properties
+
+<Props of={EmptySearch.type} />
