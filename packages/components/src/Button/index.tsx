@@ -107,12 +107,17 @@ const Button = React.memo(function Button({
     [spinner, Icon, iconEndClass, iconPosition, iconSize],
   );
 
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.stopPropagation();
+    onClick(e);
+  };
+
   return (
     <button
       aria-label={ariaLabel}
       type="button"
       className={buttonClass}
-      onClick={onClick}
+      onClick={handleClick}
       disabled={disabled}
     >
       {iconSpinner}

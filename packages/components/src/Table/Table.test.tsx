@@ -8,11 +8,11 @@ import { InterfaceMassActionSelected } from "../common/interfaces";
 const handleChange = jest.fn(
   (selected: InterfaceMassActionSelected) => selected,
 );
-
+const handleClick = jest.fn();
 const myHeaders = ["Order", "Date"];
 const rows: React.ReactNode = [
   [
-    <Table.Row key="0">
+    <Table.Row key="0" onClick={handleClick}>
       <Table.Item rowTitle>
         <Text>Text 00</Text>
       </Table.Item>
@@ -65,6 +65,12 @@ describe("<Table />", () => {
     expect(screen.getAllByRole("cell").length).toBe(rowsCount * 2);
     expect(screen.getAllByRole("checkbox").length).toBe(rowsCount + 1);
     expect(screen.queryByRole("combobox")).toBeFalsy();
+  });
+
+  it("calls onClick when user click on first data row", () => {
+    render(<Table headers={myHeaders}>{rows}</Table>);
+    userEvent.click(screen.getAllByRole("row")[1]);
+    expect(handleClick).toHaveBeenCalled();
   });
 
   it("renders Massive Select Area (indeterminate) when any row is checked", () => {

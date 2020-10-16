@@ -32,11 +32,10 @@ const RenderRow = ({
   onEditMode,
 }: interfaceRenderRow): JSX.Element => {
   const { rowProps } = React.useContext(RowContext);
-  const setTouched = React.useState(false)[1];
   const [isTouching, setTouching] = React.useState(false);
   const time = React.useRef<number>();
   const className = classNames("nimbus--table-row", {
-    "nimbus--table-row--grayed": rowProps?.grayed,
+    "nimbus--table-row--grayed": rowProps.grayed,
     "nimbus--table-row--touching": isTouching,
   });
 
@@ -47,7 +46,6 @@ const RenderRow = ({
         if ("vibrate" in navigator) {
           navigator.vibrate(10);
         }
-        setTouched(true);
         onEditMode?.({ name: `${index}`, checked: !rowsState[index] });
       }, 500);
     }
@@ -58,12 +56,20 @@ const RenderRow = ({
     setTouching(false);
   };
 
+  const handleClick = (
+    event: React.MouseEvent<HTMLTableRowElement, MouseEvent>,
+  ) => {
+    event.stopPropagation();
+    rowProps.onClick?.();
+  };
+
   return (
     <tr
       onTouchStart={handleTouchStart}
       onTouchEnd={handleCancelTouch}
       onTouchMove={handleCancelTouch}
       onTouchCancel={handleCancelTouch}
+      onClick={handleClick}
       className={className}
     >
       {massAction && editMode && (
