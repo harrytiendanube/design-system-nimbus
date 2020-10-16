@@ -265,5 +265,5 @@
 }
 
 .#{$prefix}--spinner {
-  @include nimbus--spinner($spinner-color: $color-secondary, $size: "large");
+  @include nimbus--spinner($spinner-color: $color-primary, $size: "large");
 }

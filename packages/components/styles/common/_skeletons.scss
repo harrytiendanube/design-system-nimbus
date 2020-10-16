@@ -80,14 +80,14 @@ $nimbus--spinner-size: (
   }
 
   &::before {
-    animation: spinner 2s infinite ease 1.5s;
+    animation: spinner 1.25s infinite ease 1s;
     border-radius: 100% 0 0 100%;
     left: -1px;
     transform-origin: #{$spinner-size / 2 + 1px} #{$spinner-size / 2 + 1px};
   }
 
   &::after {
-    animation: spinner 2s infinite ease;
+    animation: spinner 1.25s infinite ease;
     border-radius: 0 100% 100% 0;
     left: #{$spinner-size / 2 + 1px};
     transform-origin: 0 #{$spinner-size / 2 + 1px};
