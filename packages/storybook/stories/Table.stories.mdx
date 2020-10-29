@@ -34,7 +34,6 @@ TODO: complete
 <Preview>
   <Story name="default" decorators={[withKnobs, withA11y]}>
     {() => {
-      const [result, setResult] = React.useState("none");
       const headers = [
         "Order",
         "Date",
@@ -133,7 +132,6 @@ TODO: complete
         getLabel: (n) => `${n} selected`,
         onChange: (selected) => setResult(JSON.stringify(selected)),
       };
-      const [loading, setLoading] = React.useState(false);
       const total = 100;
       const handleEndScroll = () => {
         if (total !== allRows.length) {
@@ -152,17 +150,23 @@ TODO: complete
       };
       const initRows = createRows(1, 20);
       const [allRows, set] = React.useState(initRows);
+      const [editMode, setEditMode] = React.useState(false);
+      const [loading, setLoading] = React.useState(false);
+      const [result, setResult] = React.useState("none");
       return (
         <>
           <Table
             headers={boolean("headers", true) ? headers : null}
             massAction={boolean("massAction", true) ? massAction : null}
             ruled={boolean("ruled", true)}
-            editMode={boolean("editMode", false)}
             spacing={select("spacing", ["base", "tight"])}
             marginEndScroll={2}
             onEndScroll={handleEndScroll}
             loading={loading}
+            editMode={editMode}
+            onEditMode={() => {
+              setEditMode(!editMode);
+            }}
           >
             {allRows}
           </Table>
@@ -193,7 +197,6 @@ TODO: complete
 <Preview>
   <Story name="skeleton" decorators={[withKnobs, withA11y]}>
     {() => {
-      const [result, setResult] = React.useState("none");
       const headers = [
         "Order",
         "Date",
@@ -203,17 +206,6 @@ TODO: complete
         "Payment status",
         "Shipping status",
       ];
-      const massAction = {
-        placeholder: "Select an Option",
-        options: [
-          { label: "Option 1", value: "1" },
-          { label: "Option 2", value: "2" },
-          { label: "Option 3", value: "3" },
-          { label: "Option 4", value: "4" },
-        ],
-        getLabel: (n) => `${n} selected`,
-        onChange: (selected) => setResult(JSON.stringify(selected)),
-      };
       const createRows = (init, cant) => {
         const rows = [];
         for (let i = init; i < init + cant; i++) {
@@ -248,17 +240,9 @@ TODO: complete
       const rows = createRows(1, 5);
       return (
         <>
-          <Table
-            headers={headers}
-            ruled
-            skeleton
-            editMode
-            massAction={massAction}
-          >
+          <Table headers={headers} ruled skeleton>
             {rows}
           </Table>
-          <br />
-          <Alert show>Last option selected: {result}</Alert>
         </>
       );
     }}

@@ -9,6 +9,7 @@ const myBold = false;
 const myBlock = false;
 const mySize = "base";
 const myBackground = false;
+const myTextAlign = "left";
 
 describe("<Text />", () => {
   it("render", () => {
@@ -18,6 +19,7 @@ describe("<Text />", () => {
         bold={myBold}
         block={myBlock}
         size={mySize}
+        textAlign={myTextAlign}
         background={myBackground}
       >
         {myText}
@@ -34,5 +36,11 @@ describe("<Text />", () => {
     expect(element).toHaveClass(
       "nimbus--text nimbus--text-size--base nimbus--text-color--default",
     );
+  });
+  it("render skeleton", () => {
+    const { container } = render(<Text.Skeleton width="medium" />);
+    expect(
+      container.querySelector(".nimbus--text-skeleton--medium"),
+    ).toBeTruthy();
   });
 });

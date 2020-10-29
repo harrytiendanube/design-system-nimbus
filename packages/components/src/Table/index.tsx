@@ -50,7 +50,10 @@ interface InterfaceTable {
   marginEndScroll?: number;
   /** Event that will be triggered when a row is long pressed */
   onEditMode?: () => void;
-  /** Event that will be triggered when scroll view intersect to end to the table */
+  /**
+   * Event that will be triggered when scroll view intersect with end to the
+   * table
+   */
   onEndScroll?: () => void;
 }
 
@@ -66,8 +69,8 @@ interface InterfaceTable {
  * @param marginEndScroll Bottom margin to consider when calling onEndScroll. It
  *     is expressed in relative units to window.innerHeight
  * @param onEditMode Event that will be triggered when a row is long pressed
- * @param onEndScroll Event that will be triggered when scroll view intersect to
- *     end to the table
+ * @param onEndScroll Event that will be triggered when scroll view intersect
+ *     with end to the table
  */
 const Table = React.memo(function Table({
   headers,
@@ -114,7 +117,7 @@ const Table = React.memo(function Table({
 
   const handleOnChangeSelectMassAction = React.useCallback(
     (event: InterfaceNameValue) => {
-      massAction?.onChange({
+      (massAction as InterfaceMassAction).onChange({
         value: event.value,
         indexRows: getRowsId(rowsState),
       });
@@ -142,7 +145,9 @@ const Table = React.memo(function Table({
               name="check-all-mass-action"
               checked={massActionCheckValue}
               onChange={handleOnChangeCheckMassAction}
-              label={massAction?.getLabel(quantitySelected(rowsState))}
+              label={(massAction as InterfaceMassAction).getLabel(
+                quantitySelected(rowsState),
+              )}
             />
           </div>
           <div className="nimbus--table__mass-select">
@@ -186,7 +191,7 @@ const Table = React.memo(function Table({
                 )}
               </th>
             )}
-            {headers?.map((header) => (
+            {(headers as string[]).map((header) => (
               <th scope="col" key={header} className="nimbus--table-row__item">
                 <Text>{header}</Text>
               </th>
@@ -217,8 +222,7 @@ const Table = React.memo(function Table({
       }
     };
     const observer = new IntersectionObserver(callback, options);
-    const target = document.querySelector("#end");
-    if (target) observer.observe(target);
+    observer.observe(document.querySelector("#end") as Element);
 
     const newRowState = [
       ...rowsState,

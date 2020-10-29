@@ -30,7 +30,7 @@ export interface InterfacePage {
   paginationPrevious?: () => void;
   /** Defines whether the page has pagination to next */
   paginationNext?: () => void;
-  /**  */
+  /** Edit action for the title section */
   editAction?: Pick<InterfaceButton, "children" | "onClick">;
   /** Primary action for the title section */
   primaryAction?:
@@ -53,7 +53,7 @@ export interface InterfacePage {
  * @param backNavigation Navigation to previous screen
  * @param paginationPrevious Defines whether the page has pagination to previous
  * @param paginationNext Defines whether the page has pagination to next
- * @param editAction
+ * @param editAction Edit action for the title section
  * @param primaryAction Primary action for the title section
  * @param secondaryActions Secondary actions for the title section
  * @param headerLabels Labels for the title section
@@ -223,7 +223,7 @@ function Page({
     };
     const observer = new IntersectionObserver(callback, options);
     const target = document.querySelector("#header");
-    if (target) observer.observe(target);
+    observer.observe(target as Element);
     return () => {
       observer.disconnect();
     };

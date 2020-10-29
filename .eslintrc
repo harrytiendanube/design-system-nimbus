@@ -112,7 +112,8 @@
           "autofocus",
           "Dropdown",
           "resize",
-          "unobserve"
+          "unobserve",
+          "Rect"
         ]
       }
     ]

@@ -66,6 +66,10 @@ describe("<Checkbox />", () => {
     expect(element).toHaveAttribute("checked");
     expect(element).not.toHaveAttribute("disabled");
   });
+  it("render skeleton", () => {
+    const { container } = render(<Checkbox.Skeleton />);
+    expect(container.querySelector(".nimbus--checkbox-skeleton")).toBeTruthy();
+  });
   it("calls onChange", () => {
     const handleChange = (event: InterfaceNameChecked) => {
       expect(event.checked).toBe(!myChecked);
@@ -82,5 +86,14 @@ describe("<Checkbox />", () => {
       name: myLabel,
     });
     userEvent.click(element);
+  });
+  it("does not call onChange if not provided", () => {
+    const handleChange = jest.fn();
+    render(<Checkbox label={myLabel} name={myName} checked={myChecked} />);
+    const element: HTMLElement = screen.getByRole("checkbox", {
+      name: myLabel,
+    });
+    userEvent.click(element);
+    expect(handleChange).not.toHaveBeenCalled();
   });
 });
