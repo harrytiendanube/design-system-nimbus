@@ -11,6 +11,8 @@ const myPlaceholder = "myPlaceholder";
 const myValue = "myValue";
 const myNewValue = "myNewValue";
 const myName = "myName";
+const myMinLength = 5;
+const myMaxLength = 10;
 
 describe("<Input />", () => {
   it("render", () => {
@@ -20,15 +22,25 @@ describe("<Input />", () => {
         placeholder={myPlaceholder}
         value={myValue}
         name={myName}
+        isValid
+        minLength={myMinLength}
+        maxLength={myMaxLength}
+        required
       />,
     );
-    expect(screen.getByRole("textbox", { name: myLabel })).toBeTruthy();
-    // Textbox does not render any button to clear input
-    expect(screen.queryByRole("button")).toBeNull();
+    const input = screen.getByRole("textbox", { name: myLabel });
+    expect(input).toHaveProperty("minLength", myMinLength);
+    expect(input).toHaveProperty("maxLength", myMaxLength);
+    expect(input).toHaveProperty("required");
     expect(screen.getByLabelText(myLabel)).toBeTruthy();
     expect(screen.getByPlaceholderText(myPlaceholder)).toBeTruthy();
     expect(screen.getByDisplayValue(myValue)).toBeTruthy();
-    // Textbox does not render any icon
+    // Textbox does not render any button to clear input
+    expect(screen.queryByRole("button")).toBeNull();
+    // Textbox does not render ExclamationCircleIcon when isValid
+    expect(
+      container.querySelector("span.nimbus--input__append"),
+    ).not.toBeTruthy();
     expect(container.querySelector("svg")).toBeNull();
   });
 
@@ -57,6 +69,20 @@ describe("<Input />", () => {
     const element: HTMLElement = screen.getByRole("textbox");
     userEvent.type(element, myNewValue);
     fireEvent.blur(element);
+  });
+
+  it("calls onFocus", () => {
+    const handleFocus = jest.fn();
+    const handleBlur = jest.fn();
+    render(
+      <Input placeholder={myPlaceholder} name={myName} onFocus={handleFocus} />,
+    );
+    const element: HTMLElement = screen.getByRole("textbox");
+    userEvent.type(element, myNewValue);
+    expect(handleFocus).toHaveBeenCalled();
+    /* Textbox does not call handleBlur if it not provided */
+    fireEvent.blur(element);
+    expect(handleBlur).not.toHaveBeenCalled();
   });
 });
 
@@ -118,6 +144,21 @@ describe('<Input type="search" />', () => {
     userEvent.type(element, `{enter}`);
   });
 
+  it("does not call onSubmit on Enter if it not provided", () => {
+    const handleSubmit = jest.fn();
+    render(
+      <Input
+        type="search"
+        placeholder={myPlaceholder}
+        name={myName}
+        value={myValue}
+      />,
+    );
+    const element: HTMLElement = screen.getByRole("searchbox");
+    userEvent.type(element, `{enter}`);
+    expect(handleSubmit).not.toHaveBeenCalled();
+  });
+
   it("calls onSubmit on Close", () => {
     const handleSubmit = (event: InterfaceNameValue) => {
       expect(event.value).toBe("");
@@ -133,6 +174,21 @@ describe('<Input type="search" />', () => {
     );
     const element: HTMLElement = screen.getByRole("button");
     userEvent.click(element);
+  });
+
+  it("does not call onSubmit on Close if it not provided", () => {
+    const handleSubmit = jest.fn();
+    render(
+      <Input
+        type="search"
+        placeholder={myPlaceholder}
+        name={myName}
+        value={myValue}
+      />,
+    );
+    const element: HTMLElement = screen.getByRole("button");
+    userEvent.click(element);
+    expect(handleSubmit).not.toHaveBeenCalled();
   });
 });
 
@@ -176,5 +232,18 @@ describe("<Input multiRows rows={3} focused />", () => {
     expect(screen.getByLabelText(myLabel)).toBeTruthy();
     expect(screen.getByPlaceholderText(myPlaceholder)).toBeTruthy();
     expect(screen.getByDisplayValue(myValue)).toBeTruthy();
+  });
+});
+
+describe("<Input isValid={false} />", () => {
+  it("render", () => {
+    const { container } = render(
+      <Input placeholder={myPlaceholder} name={myName} isValid={false} />,
+    );
+    expect(screen.getByRole("textbox")).toBeTruthy();
+    expect(screen.getByPlaceholderText(myPlaceholder)).toBeTruthy();
+    // Render ExclamationCircleIcon when not isValid
+    expect(container.querySelector("span.nimbus--input__append")).toBeTruthy();
+    expect(container.querySelector("svg")).toBeTruthy();
   });
 });

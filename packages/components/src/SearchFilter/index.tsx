@@ -48,12 +48,12 @@ function SearchFilter({
   const [isFocused, setFocused] = React.useState(false);
 
   const handleBlur = React.useCallback(() => {
-    if (isFocused) setFocused(false);
-  }, [isFocused]);
+    setFocused(false);
+  }, []);
 
   const handleFocus = React.useCallback(() => {
-    if (!isFocused) setFocused(true);
-  }, [isFocused]);
+    setFocused(true);
+  }, []);
 
   const handleChange = React.useCallback(({ value }: InterfaceNameValue) => {
     setSearchValue(value);

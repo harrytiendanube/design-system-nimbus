@@ -47,6 +47,13 @@ describe("<Label />", () => {
     expect(container.querySelector("svg")).toBeTruthy();
   });
 
+  it("render skeleton", () => {
+    const { container } = render(<Label.Skeleton />);
+    expect(container.querySelector("span")).toHaveClass(
+      "nimbus--label-skeleton",
+    );
+  });
+
   it("calls onClick", () => {
     const handleClick = jest.fn();
     render(<Label id={myId} label={myLabel} onClick={handleClick} />);

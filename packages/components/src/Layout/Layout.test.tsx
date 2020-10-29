@@ -15,7 +15,11 @@ describe("<Layout />", () => {
         </Layout.Section>
       </Layout>,
     );
-    expect(container.querySelector("main")).toBeTruthy();
+    expect(container.querySelector("main")).toHaveClass("nimbus--layout-aside");
+    expect(container.querySelector("section")).toHaveClass(
+      "nimbus--layout-section--main",
+    );
+    // screen.debug();
   });
   it("render without appearance", () => {
     const { container } = render(
@@ -28,6 +32,9 @@ describe("<Layout />", () => {
         </Layout.Section>
       </Layout>,
     );
-    expect(container.querySelector("main")).toBeTruthy();
+    expect(container.querySelector("main")).toHaveClass("nimbus--layout-fluid");
+    expect(container.querySelector("section")).not.toHaveClass(
+      "nimbus--layout-section--main",
+    );
   });
 });

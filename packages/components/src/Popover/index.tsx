@@ -88,7 +88,7 @@ const Popover = React.memo(function Popover({
     (event) => {
       let clickOnInside = false;
       let clickOnInitiator = false;
-      event.composedPath()?.forEach((el: HTMLElement) => {
+      event.composedPath().forEach((el: HTMLElement) => {
         if (el.className === "nimbus--popover-wrapper") {
           clickOnInside = true;
         }

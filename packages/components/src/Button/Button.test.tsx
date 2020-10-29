@@ -98,6 +98,11 @@ describe("<Button/>", () => {
     expect(container.querySelector("svg")).toBeNull();
   });
 
+  it("render skeleton", () => {
+    const { container } = render(<Button.Skeleton />);
+    expect(container.querySelector(".nimbus--button-skeleton")).toBeTruthy();
+  });
+
   it("calls onClick", () => {
     const handleClick = jest.fn();
     render(<Button onClick={handleClick}>{myText}</Button>);

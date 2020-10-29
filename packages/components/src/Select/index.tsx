@@ -23,7 +23,7 @@ interface InterfaceSelect {
   /** Text to be used as placeholder. It is the first option and is disabled */
   placeholder?: string;
   /** OnChange callback function */
-  onChange?: (event: InterfaceNameValue) => void;
+  onChange: (event: InterfaceNameValue) => void;
 }
 
 /**
@@ -33,6 +33,7 @@ interface InterfaceSelect {
  * @param value Current value
  * @param placeholder Text to be used as placeholder. It is the first option and
  *     is disabled
+ * @param onChange Callback function
  */
 
 function Select({
@@ -46,7 +47,7 @@ function Select({
   const handleChange = React.useCallback(
     (event: React.ChangeEvent<HTMLSelectElement>) => {
       const { target } = event;
-      onChange?.({ name: target.name, value: target.value });
+      onChange({ name: target.name, value: target.value });
     },
     [onChange],
   );

@@ -83,4 +83,20 @@ describe("<ImageItem />", () => {
       myLinkTo,
     );
   });
+
+  it("render skeleton", () => {
+    const { container } = render(<ImageItem.Skeleton />);
+    expect(
+      container.querySelector(".nimbus--image-item-skeleton"),
+    ).toBeTruthy();
+    expect(
+      container.querySelector(".nimbus--image-item-skeleton__thumbnail"),
+    ).toBeTruthy();
+    expect(
+      container.querySelector(".nimbus--image-item-skeleton__info"),
+    ).toBeTruthy();
+    expect(
+      container.querySelector(".nimbus--image-item-skeleton__info-item"),
+    ).toBeTruthy();
+  });
 });

@@ -29,8 +29,8 @@ export type InputTypes =
 
 export interface InterfaceValidation {
   type?: InputTypes;
-  minLength?: string;
-  maxLength?: string;
+  minLength?: number;
+  maxLength?: number;
   required?: boolean;
   pattern?: string;
 }

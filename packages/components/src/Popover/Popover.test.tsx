@@ -119,4 +119,9 @@ describe("<Popover />", () => {
       "nimbus--popover-wrapper position--right",
     );
   });
+
+  it("render skeleton", () => {
+    const { container } = render(<Popover.Skeleton />);
+    expect(container.querySelector(".nimbus--popover-skeleton")).toBeTruthy();
+  });
 });

@@ -1,4 +1,5 @@
 import * as React from "react";
+import classNames from "classnames";
 
 import {
   SearchIcon,
@@ -38,9 +39,9 @@ export interface InterfaceInput {
   /** Indicates if input is valid */
   isValid?: boolean;
   /** Minimum count of inserted chars */
-  minLength?: string;
+  minLength?: number;
   /** Maximum count of inserted chars */
-  maxLength?: string;
+  maxLength?: number;
   /** Custom Regex needed for validate inserted chars */
   pattern?: string;
   /** Input is required */
@@ -86,8 +87,8 @@ function Input({
   focused = false,
   prepend: Prepend,
   isValid = true,
-  minLength = "0",
-  maxLength = "32",
+  minLength = 0,
+  maxLength = 50,
   required = false,
   onChange,
   onSubmit,
@@ -177,13 +178,10 @@ function Input({
     [handleClose, isValid, type, value],
   );
 
-  const classname = React.useMemo(
-    () =>
-      `nimbus--input__field ${memorizedLeftIcon ? "with-prepend" : ""} ${
-        type === "search" || (type === "password" && "with-append")
-      }`,
-    [memorizedLeftIcon, type],
-  );
+  const classname = classNames("nimbus--input__field", {
+    "with-prepend": memorizedLeftIcon,
+    "with-append": type === "search" || type === "password",
+  });
 
   const inputRef = React.useRef<HTMLInputElement>(null);
   const inputTextAreaRef = React.useRef<HTMLTextAreaElement>(null);
@@ -211,8 +209,8 @@ function Input({
             onChange={handleChange}
             onBlur={handleBlur}
             onFocus={handleFocus}
-            minLength={parseInt(minLength, 10)}
-            maxLength={parseInt(maxLength, 10)}
+            minLength={minLength}
+            maxLength={maxLength}
             required={required}
           />
         ) : (
@@ -229,8 +227,8 @@ function Input({
               onKeyPress={handleKeyPress}
               onBlur={handleBlur}
               onFocus={handleFocus}
-              minLength={parseInt(minLength, 10)}
-              maxLength={parseInt(maxLength, 10)}
+              minLength={minLength}
+              maxLength={maxLength}
               required={required}
             />
             {memorizedLeftIcon}

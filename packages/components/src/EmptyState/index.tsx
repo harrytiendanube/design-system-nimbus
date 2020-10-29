@@ -60,35 +60,29 @@ function EmptyState({
       ),
     [title],
   );
-  const handleClickPrimary = React.useCallback((): void => {
-    onClickPrimary?.();
-  }, [onClickPrimary]);
-  const handleClickSecondary = React.useCallback((): void => {
-    onClickSecondary?.();
-  }, [onClickSecondary]);
   const memorizedPrimary = React.useMemo(
     () =>
       primaryActionLabel &&
-      handleClickPrimary && (
+      onClickPrimary && (
         <div className="nimbus--action-wrapper__item">
-          <Button onClick={handleClickPrimary} appearance="primary">
+          <Button onClick={onClickPrimary} appearance="primary">
             {primaryActionLabel}
           </Button>
         </div>
       ),
-    [primaryActionLabel, handleClickPrimary],
+    [primaryActionLabel, onClickPrimary],
   );
   const memorizedSecondary = React.useMemo(
     () =>
       secondaryActionLabel &&
-      handleClickSecondary && (
+      onClickSecondary && (
         <div className="nimbus--action-wrapper__item">
-          <Button onClick={handleClickSecondary} link appearance="primary">
+          <Button onClick={onClickSecondary} link appearance="primary">
             {secondaryActionLabel}
           </Button>
         </div>
       ),
-    [secondaryActionLabel, handleClickSecondary],
+    [secondaryActionLabel, onClickSecondary],
   );
   return (
     <div className={classname}>

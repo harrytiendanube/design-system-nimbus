@@ -59,7 +59,7 @@ describe("<Select />", () => {
   });
 
   it("renders without optional parameters", () => {
-    render(<Select name={myName} options={myOptions} />);
+    render(<Select name={myName} options={myOptions} onChange={jest.fn()} />);
     expect(screen.getByRole("combobox", { name: "" }));
     expect(screen.queryByRole("option", { name: myPlaceholder })).toBeFalsy();
     myOptions.map((option) =>

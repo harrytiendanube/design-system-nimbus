@@ -14,8 +14,8 @@ function Wrapper(): JSX.Element {
   return (
     <Form
       textValidation={{
-        admin: "esto es obligatorio",
-        email: "ingresar email",
+        admin: "This field is required (custom)",
+        email: "input email (custom)",
       }}
       alertText="Error"
       alertAppearance="danger"
@@ -40,8 +40,8 @@ function Wrapper(): JSX.Element {
         label="Admin"
         placeholder="Insert Admin"
         name="admin"
-        maxLength="15"
-        minLength="5"
+        maxLength={15}
+        minLength={5}
       />
       <InputValidator
         label="Email"
@@ -51,7 +51,7 @@ function Wrapper(): JSX.Element {
       />
 
       <InputValidator
-        label="Only contein 1"
+        label="Only contain 1"
         placeholder="Type something that contains 1"
         name="only"
         type="text"
