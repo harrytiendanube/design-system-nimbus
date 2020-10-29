@@ -5,11 +5,6 @@
   "module": "dist/index.ts",
   "types": "dist/index.d.ts",
   "license": "MIT",
-  "size-limit": [
-    {
-      "path": "dist/index.js"
-    }
-  ],
   "scripts": {
     "build-css": "node-sass -r src -o src --output-style compressed",
     "post-css": "postcss src/**/*.css --base src --use autoprefixer -d src",
@@ -21,7 +16,8 @@
     "lint": "yarn lint:tsx && yarn lint:scss",
     "test": "jest --config jest.config.js",
     "build": "rm -rf dist && tsc && node-sass src -o dist --output-style compressed && postcss dist/**/*.css --base dist --use autoprefixer -d dist",
-    "prepublish": "yarn build"
+    "prepublish": "yarn build",
+    "check:size": "yarn build && size-limit"
   },
   "dependencies": {
     "@tiendanube/icons": "0.1.6",
@@ -68,7 +64,7 @@
     "postcss-cli": "7.1.2",
     "prettier": "2.1.1",
     "prettier-plugin-jsdoc": "0.2.0",
-    "size-limit": "4.5.7",
+    "size-limit": "4.6.2",
     "stylelint": "13.7.0",
     "stylelint-config-standard": "20.0.0",
     "stylelint-order": "4.1.0",
@@ -89,5 +85,11 @@
       "prettier --write",
       "eslint --cache"
     ]
-  }
+  },
+  "size-limit": [
+    {
+      "limit": "170 KB",
+      "path": "dist/index.js"
+    }
+  ]
 }

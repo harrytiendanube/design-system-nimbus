@@ -15,7 +15,7 @@
     "lint:sb": "yarn workspace @tiendanube/storybook lint",
     "lint": "yarn lint:cmp && yarn lint:sb",
     "lint-staged": "yarn workspace @tiendanube/components lint-staged && yarn workspace @tiendanube/storybook lint-staged",
-    "test": "yarn workspace @tiendanube/components test",
+    "test": "yarn workspace @tiendanube/components test && yarn workspace @tiendanube/components check:size",
     "start:components": "yarn workspace @tiendanube/components start:dev",
     "start:sb": "yarn workspace @tiendanube/storybook storybook",
     "start:dev": "concurrently \"yarn start:components\" \"yarn start:sb\"",
