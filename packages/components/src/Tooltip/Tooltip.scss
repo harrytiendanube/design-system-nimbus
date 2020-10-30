@@ -2,101 +2,25 @@
 
 // Tooltip
 
-.#{$prefix}--tooltip {
-  align-items: center;
-  display: inline-flex;
-  justify-content: center;
-  position: relative;
-}
-
 .#{$prefix}--tooltip-trigger {
   @include link($color-primary, $color-primary-hover, $color-primary-active);
 }
 
-.#{$prefix}--tooltip-wrapper {
+.#{$prefix}--tooltip {
+  background-color: $color-body-text;
+  border-radius: $spacing-x-small;
   display: block;
-  position: absolute;
+  margin: $spacing-x-small;
+  padding: $spacing-x-small;
+  transition: opacity $motion-base ease;
 
-  &.#{$prefix}--tooltip-wrapper--top,
-  &.#{$prefix}--tooltip-wrapper--bottom {
-    left: 50%;
-    transform: translateX(-50%);
-
-    .#{$prefix}--tooltip__caret {
-      border-left: $spacing-x-small solid transparent;
-      border-right: $spacing-x-small solid transparent;
-      left: 0;
-      margin: 0 auto;
-      right: 0;
-    }
-  }
-
-  &.#{$prefix}--tooltip-wrapper--left,
-  &.#{$prefix}--tooltip-wrapper--right {
-    top: 50%;
-    transform: translateY(-50%);
-
-    .#{$prefix}--tooltip__caret {
-      border-bottom: $spacing-x-small solid transparent;
-      border-top: $spacing-x-small solid transparent;
-      bottom: 0;
-      margin: auto 0;
-      top: 0;
-    }
-  }
-
-  &.#{$prefix}--tooltip-wrapper--top {
-    bottom: calc(100% + #{$spacing-x-small} + 1px);
-
-    .#{$prefix}--tooltip__caret {
-      border-top: $spacing-x-small solid $color-body-text;
-      bottom: -$spacing-x-small + 1px;
-    }
-  }
-
-  &.#{$prefix}--tooltip-wrapper--bottom {
-    top: calc(100% + #{$spacing-x-small} + 1px);
-
-    .#{$prefix}--tooltip__caret {
-      border-bottom: $spacing-x-small solid $color-body-text;
-      top: -$spacing-x-small + 1px;
-    }
-  }
-
-  &.#{$prefix}--tooltip-wrapper--left {
-    right: calc(100% + #{$spacing-x-small} + 1px);
-
-    .#{$prefix}--tooltip__caret {
-      border-left: $spacing-x-small solid $color-body-text;
-      right: -$spacing-x-small + 1px;
-    }
-  }
-
-  &.#{$prefix}--tooltip-wrapper--right {
-    left: calc(100% + #{$spacing-x-small} + 1px);
-
-    .#{$prefix}--tooltip__caret {
-      border-right: $spacing-x-small solid $color-body-text;
-      left: -$spacing-x-small + 1px;
-    }
+  .#{$prefix}--text {
+    @include nimbus--type("text-label");
+    color: $color-background;
+    width: 160px;
   }
 
   .#{$prefix}--tooltip__caret {
-    content: "";
-    height: 0;
-    position: absolute;
-    width: 0;
-  }
-
-  .#{$prefix}--tooltip__content {
-    background-color: $color-body-text;
-    border-radius: $spacing-x-small;
-    padding: $spacing-x-small;
-
-    .#{$prefix}--text {
-      @include nimbus--type("text-label");
-      color: $color-background;
-      width: 160px;
-    }
+    display: none;
   }
 }

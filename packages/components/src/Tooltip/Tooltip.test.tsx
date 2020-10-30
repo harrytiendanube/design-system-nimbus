@@ -1,74 +1,56 @@
 import * as React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
 
 import { InfoCircleIcon } from "@tiendanube/icons";
 import { Tooltip, Text } from "..";
 
-const myName = "myName";
 const myLabelText = "myLabelText";
 const myPosition = "top";
 const myTooltipText = "myTooltipText";
 
 describe("<Tooltip />", () => {
-  it("render", () => {
-    const { container } = render(
-      <Tooltip
-        name={myName}
-        labelIcon={InfoCircleIcon}
-        labelText={myLabelText}
-        position={myPosition}
-      >
-        <Text>{myTooltipText}</Text>
-      </Tooltip>,
-    );
-
-    expect(screen.getByRole("tooltip")).toBeTruthy();
-    expect(screen.getByRole("button", { name: myLabelText })).toBeTruthy();
-    expect(container.querySelector("svg")).toBeTruthy();
-  });
-  it("render without labelIcon nor position", () => {
-    const { container } = render(
-      <Tooltip name={myName} labelText={myLabelText}>
-        <Text>{myTooltipText}</Text>
-      </Tooltip>,
-    );
-    expect(screen.getByRole("tooltip")).toBeTruthy();
-    expect(screen.getByRole("button", { name: myLabelText })).toBeTruthy();
-    expect(container.querySelector("svg")).toBeFalsy();
-  });
-
-  it("render label on click (mobile) button", () => {
+  it("render with Icon on click", async () => {
     render(
-      <Tooltip name={myName} labelIcon={InfoCircleIcon} labelText={myLabelText}>
+      <Tooltip labelIcon={InfoCircleIcon} position={myPosition}>
         <Text>{myTooltipText}</Text>
       </Tooltip>,
     );
-    fireEvent.click(screen.getByRole("button", { name: myLabelText }));
-    expect(screen.getByText(myTooltipText)).toBeTruthy();
+    const tooltipElement = screen.getByRole("tooltip");
+    expect(tooltipElement).toBeTruthy();
+    fireEvent.click(tooltipElement);
+    await screen.findByRole("dialog");
   });
-
-  it("render label on click (desktop) button", () => {
+  it("render with Icon on mouse enter", async () => {
     render(
-      <Tooltip name={myName} labelIcon={InfoCircleIcon} labelText={myLabelText}>
+      <Tooltip labelIcon={InfoCircleIcon} position={myPosition}>
         <Text>{myTooltipText}</Text>
       </Tooltip>,
     );
-    userEvent.click(screen.getByRole("button", { name: myLabelText }));
-    expect(screen.getByText(myTooltipText)).toBeTruthy();
+    const tooltipElement = screen.getByRole("tooltip");
+    expect(tooltipElement).toBeTruthy();
+    fireEvent.mouseEnter(tooltipElement);
+    await screen.findByRole("dialog");
   });
-
-  it("render label on hover and remove on unhover", () => {
+  it("render with Label on click", async () => {
     render(
-      <Tooltip name={myName} labelIcon={InfoCircleIcon} labelText={myLabelText}>
+      <Tooltip labelText={myLabelText}>
         <Text>{myTooltipText}</Text>
       </Tooltip>,
     );
-    userEvent.hover(screen.getByRole("tooltip"));
-    expect(screen.getByText(myTooltipText)).toBeTruthy();
-    userEvent.click(screen.getByRole("tooltip"));
-    expect(screen.getByText(myTooltipText)).toBeTruthy();
-    userEvent.unhover(screen.getByRole("tooltip"));
-    expect(screen.queryByText(myTooltipText)).toBeFalsy();
+    const tooltipElement = screen.getByRole("tooltip");
+    expect(tooltipElement).toBeTruthy();
+    fireEvent.click(tooltipElement);
+    await screen.findByRole("dialog");
+  });
+  it("render with Label on mouse enter", async () => {
+    render(
+      <Tooltip labelText={myLabelText}>
+        <Text>{myTooltipText}</Text>
+      </Tooltip>,
+    );
+    const tooltipElement = screen.getByRole("tooltip");
+    expect(tooltipElement).toBeTruthy();
+    fireEvent.mouseEnter(tooltipElement);
+    await screen.findByRole("dialog");
   });
 });
