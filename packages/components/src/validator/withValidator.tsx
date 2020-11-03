@@ -8,6 +8,7 @@ import { Text } from "..";
 
 const INPUT_VALUE_DEFAULT = "";
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 const withValidation = (FieldComponent: React.FC<InterfaceInput>) =>
   React.memo((props: InterfaceInput) => {
     const {
@@ -18,23 +19,32 @@ const withValidation = (FieldComponent: React.FC<InterfaceInput>) =>
     } = React.useContext(ValidationsContext);
     const {
       name,
+      placeholder,
+      label,
       value = INPUT_VALUE_DEFAULT,
-      onChange,
-      onBlur,
-      required,
       type,
+      multiRows,
+      rows,
+      focused,
+      prepend,
       minLength,
       maxLength,
       pattern,
+      required,
+      onChange,
+      onSubmit,
+      onBlur,
+      onFocus,
     } = props;
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const validation: InterfaceValidation = {
       required,
       type,
       minLength,
-      maxLength,
       pattern,
     };
+
     const setFormFields = React.useCallback(
       (valueField: string) => {
         validateField(name, {
@@ -63,6 +73,7 @@ const withValidation = (FieldComponent: React.FC<InterfaceInput>) =>
 
     React.useEffect(() => {
       setFormFields(value);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const showError = React.useCallback(
@@ -88,17 +99,29 @@ const withValidation = (FieldComponent: React.FC<InterfaceInput>) =>
         }`}
       >
         <FieldComponent
-          {...props}
+          name={name}
+          placeholder={placeholder}
+          label={label}
+          value={value}
+          type={type}
+          multiRows={multiRows}
+          rows={rows}
+          focused={focused}
+          prepend={prepend}
+          minLength={minLength}
+          maxLength={maxLength}
+          pattern={pattern}
+          required={required}
+          onSubmit={onSubmit}
+          onFocus={onFocus}
           onChange={handleChange}
           onBlur={handleBlur}
-          value={value}
           isValid={
             !submitted ||
             !formFields[name] ||
             !showError(name, formFields[name].error)
           }
         />
-
         {submitted &&
           formFields[name] &&
           showError(name, formFields[name].error) && (

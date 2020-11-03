@@ -15,10 +15,12 @@ const FieldsContainer = ({
 
   React.useEffect(() => {
     setFields(formFields);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [formFields]);
 
   React.useEffect(() => {
     setSubmitted(isSubmit);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isSubmit]);
 
   React.useEffect(() => {

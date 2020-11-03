@@ -45,22 +45,6 @@ export interface InterfaceForm {
   textValidation?: InterfaceTextValidation;
 }
 
-/**
- * @param alertText Validation alert text
- * @param alertAppearance React node of type children
- * @param children React node of type children
- * @param link Link text
- * @param linkTo Link href
- * @param submitting It renders submit button as disabled with spinner
- * @param submitLabel Submit button text
- * @param onClickSubmit Submit button callback
- * @param buttonLabel Optional Button Text
- * @param onClickButton Type of react mouse event onclick to manage event click
- *     and void return
- * @param textValidation Structure with text for validation: {required: "this
- *     field is required", email:" this field is not email" ... }
- */
-
 function Form({
   alertText,
   alertAppearance = "danger",
@@ -76,20 +60,13 @@ function Form({
 }: InterfaceForm): JSX.Element {
   const { isSubmit, setFields, handleSubmit } = useForm();
 
-  const memorizedLink = React.useMemo(() => {
-    return link && linkTo && <Link href={linkTo}>{link}</Link>;
-  }, [link, linkTo]);
+  const renderLink = link && linkTo && <Link href={linkTo}>{link}</Link>;
 
-  const memorizedButton = React.useMemo(() => {
-    return (
-      onClickButton &&
-      buttonLabel && (
-        <div className="nimbus--action-wrapper__item">
-          <Button onClick={onClickButton}>{buttonLabel}</Button>
-        </div>
-      )
-    );
-  }, [onClickButton, buttonLabel]);
+  const renderButton = onClickButton && buttonLabel && (
+    <div className="nimbus--action-wrapper__item">
+      <Button onClick={onClickButton}>{buttonLabel}</Button>
+    </div>
+  );
 
   const onSubmit: InterfaceOnSubmit = ({ data, formIsValid }) => {
     if (!formIsValid) {
@@ -100,9 +77,11 @@ function Form({
 
   return (
     <div data-testid="Form" className="nimbus--form">
-      <Alert appearance={alertAppearance} show={!!alertText}>
-        {alertText || ""}
-      </Alert>
+      {alertText && (
+        <Alert appearance={alertAppearance} show>
+          {alertText}
+        </Alert>
+      )}
       <form action="">
         <ValidationsContextProvider>
           <FieldsContainer {...{ isSubmit, setFields, textValidation }}>
@@ -110,9 +89,9 @@ function Form({
           </FieldsContainer>
         </ValidationsContextProvider>
       </form>
-      {memorizedLink}
+      {renderLink}
       <div className="nimbus--form__actions">
-        {memorizedButton}
+        {renderButton}
         <div className="nimbus--action-wrapper__item">
           <Button
             appearance="primary"
@@ -128,4 +107,4 @@ function Form({
   );
 }
 
-export default React.memo(Form);
+export default Form;

@@ -113,7 +113,8 @@
           "Dropdown",
           "resize",
           "unobserve",
-          "Rect"
+          "Rect",
+          "spinbutton"
         ]
       }
     ]

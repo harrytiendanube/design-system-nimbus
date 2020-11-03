@@ -37,15 +37,21 @@ function Wrapper(): JSX.Element {
         name="password"
       />
       <InputValidator
+        label="Age"
+        placeholder="Insert age"
+        name="age"
+        type="number"
+      />
+      <InputValidator
         label="Admin"
-        placeholder="Insert Admin"
+        placeholder="Insert admin"
         name="admin"
         maxLength={15}
         minLength={5}
       />
       <InputValidator
         label="Email"
-        placeholder="Insert Email"
+        placeholder="Insert email"
         name="email"
         type="email"
       />

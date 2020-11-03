@@ -19,7 +19,9 @@ const existErrorInDataForm = (data: InterfaceFormFields): boolean => {
 
 const dataFormat: InterfaceDataFormat = (data) => {
   const dataFields: InterfaceDataFields = {};
-  for (const [key, value] of Object.entries(data)) {
+  const objectEntries = Object.entries(data);
+  for (let i=0;i<objectEntries.length; i++) {
+    const [key, value] = objectEntries[i];
     dataFields[key] = value.value;
   }
   return dataFields;

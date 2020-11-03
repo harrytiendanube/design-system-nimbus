@@ -18,18 +18,20 @@ const EMPTY_ERROR = "";
  */
 
 const validator: InterfaceValidator = (validation, value) => {
-  for (const [validationKey, validationValue] of Object.entries(validation)) {
+  const objectEntries = Object.entries(validation);
+  for (let i=0;i<objectEntries.length; i++) {
+    const  [validationKey, validationValue] = objectEntries[i];
     const typeValidation: ValidationType =
-      validationKey === "type" ? validationValue : validationKey;
-
+    validationKey === "type" ? validationValue : validationKey;
     if (
+      // validations.
       typeValidation in validations &&
-      !(validations[typeValidation] as any)(value, validationValue)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      !(validations[typeValidation] as any)?.(value, validationValue)
     ) {
       return messages[typeValidation].replace("%1", validationValue);
     }
   }
-
   return EMPTY_ERROR;
 };
 
