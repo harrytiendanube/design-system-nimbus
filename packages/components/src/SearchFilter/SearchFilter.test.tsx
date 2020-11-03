@@ -55,6 +55,21 @@ describe("<SearchFilter />", () => {
     expect(screen.getByText(myResultCount)).toBeTruthy();
   });
 
+  it("render without Filters Button", () => {
+    render(
+      <SearchFilter
+        placeholder={myPlaceholder}
+        resultCount={myResultCount}
+        onSubmit={jest.fn()}
+        onDismiss={jest.fn()}
+      />,
+    );
+    expect(screen.getByRole("searchbox")).toBeTruthy();
+    expect(screen.getByPlaceholderText(myPlaceholder)).toBeTruthy();
+    expect(screen.queryByRole("button")).toBeFalsy();
+    expect(screen.getByText(myResultCount)).toBeTruthy();
+  });
+
   it("calls onClick when main button is pressed", () => {
     const handleClick = jest.fn();
     render(

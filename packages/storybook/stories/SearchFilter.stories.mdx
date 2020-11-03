@@ -36,6 +36,25 @@ TODO: complete
 
 <Props of={SearchFilter.type} />
 
+## Without Filters Button
+
+TODO: complete
+
+<Preview>
+  <Story
+    name="without filters button"
+    parameters={{ decorators: [withKnobs, withA11y] }}
+  >
+    <SearchFilter
+      placeholder="Search an invoice"
+      resultCount="160 invoices"
+      onSubmit={action("onSubmit")}
+      onDismiss={action("onDismiss")}
+      appliedFilters={[{ id: "search", label: "pattern search" }]}
+    />
+  </Story>
+</Preview>
+
 ## Test
 
 <Preview>

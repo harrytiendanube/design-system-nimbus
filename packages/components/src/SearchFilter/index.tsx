@@ -12,8 +12,8 @@ import Chip from "../Chip";
 export interface InterfaceSearchFilter {
   /** Placeholder text for the search input */
   placeholder: string;
-  /** Label text for the button */
-  label: string;
+  /** Label text for filter button */
+  label?: string;
   /** Number of results to show */
   resultCount: string;
   /** Applied filters visible */
@@ -22,19 +22,10 @@ export interface InterfaceSearchFilter {
   onSubmit(value: string): void;
   /** Callback on dismissing chip */
   onDismiss(id: string): void;
-  /** Callback for the filter button */
-  onClick(): void;
+  /** Callback on filter button. If not provided, button will not be rendered */
+  onClick?(): void;
 }
 
-/**
- * @param placeholder Placeholder text for the search input
- * @param label Label text for the button
- * @param resultCount Number of results to show
- * @param appliedFilters Applied filters visible
- * @param onSubmit Callback on submitting search
- * @param onDismiss Callback on dismissing chip
- * @param onClick Callback for the filter button
- */
 function SearchFilter({
   placeholder,
   label: labelButton,
@@ -47,43 +38,39 @@ function SearchFilter({
   const [searchValue, setSearchValue] = React.useState("");
   const [isFocused, setFocused] = React.useState(false);
 
-  const handleBlur = React.useCallback(() => {
+  const handleBlur = () => {
     setFocused(false);
-  }, []);
+  };
 
-  const handleFocus = React.useCallback(() => {
+  const handleFocus = () => {
     setFocused(true);
-  }, []);
+  };
 
-  const handleChange = React.useCallback(({ value }: InterfaceNameValue) => {
+  const handleChange = ({ value }: InterfaceNameValue) => {
     setSearchValue(value);
-  }, []);
+  };
 
-  const handleSubmit = React.useCallback(
-    ({ value }: InterfaceNameValue) => {
-      if (value) onSubmit(value);
-      setSearchValue("");
-      setFocused(false);
-    },
-    [onSubmit],
-  );
-  const handleDismiss = React.useCallback(
-    (id: string) => {
-      onDismiss(id);
-    },
-    [onDismiss],
-  );
-  const handleClick = React.useCallback(() => {
-    onClick();
-  }, [onClick]);
+  const handleSubmit = ({ value }: InterfaceNameValue) => {
+    if (value) onSubmit(value);
+    setSearchValue("");
+    setFocused(false);
+  };
 
-  const memorizedFilters = React.useMemo(
-    () =>
-      appliedFilters?.map(({ id, label }) => (
-        <Chip key={id} id={id} label={label} onDismiss={handleDismiss} />
-      )),
-    [appliedFilters, handleDismiss],
+  const handleDismiss = (id: string) => {
+    onDismiss(id);
+  };
+
+  const renderFiltersButton = onClick && (
+    <div className="nimbus--search-filters__filters">
+      <Button appearance="default" icon={SlidersIcon} onClick={onClick}>
+        {labelButton}
+      </Button>
+    </div>
   );
+
+  const renderFilters = appliedFilters?.map(({ id, label }) => (
+    <Chip key={id} id={id} label={label} onDismiss={handleDismiss} />
+  ));
 
   return (
     <div className="nimbus--search-filters__wrapper">
@@ -101,18 +88,14 @@ function SearchFilter({
             placeholder={placeholder}
           />
         </div>
-        <div className="nimbus--search-filters__filters">
-          <Button appearance="default" icon={SlidersIcon} onClick={handleClick}>
-            {labelButton}
-          </Button>
-        </div>
+        {renderFiltersButton}
       </div>
       <div className="nimbus--search-filters__results">
         <Text>{resultCount}</Text>
-        {memorizedFilters}
+        {renderFilters}
       </div>
     </div>
   );
 }
 
-export default React.memo(SearchFilter);
+export default SearchFilter;
