@@ -22,6 +22,8 @@ describe("<Input />", () => {
         placeholder={myPlaceholder}
         value={myValue}
         name={myName}
+        autoCapitalize
+        autoCorrect
         isValid
         minLength={myMinLength}
         maxLength={myMaxLength}
@@ -226,6 +228,28 @@ describe("<Input multiRows rows={3} focused />", () => {
         placeholder={myPlaceholder}
         value={myValue}
         name={myName}
+      />,
+    );
+    expect(screen.getByRole("textbox")).toHaveProperty("rows", myRows);
+    expect(screen.getByLabelText(myLabel)).toBeTruthy();
+    expect(screen.getByPlaceholderText(myPlaceholder)).toBeTruthy();
+    expect(screen.getByDisplayValue(myValue)).toBeTruthy();
+  });
+});
+
+describe("<Input multiRows rows={3} autoCapitalize autoCorrect />", () => {
+  it("render", () => {
+    const myRows = 3;
+    render(
+      <Input
+        multiRows
+        rows={myRows}
+        label={myLabel}
+        placeholder={myPlaceholder}
+        value={myValue}
+        name={myName}
+        autoCapitalize
+        autoCorrect
       />,
     );
     expect(screen.getByRole("textbox")).toHaveProperty("rows", myRows);

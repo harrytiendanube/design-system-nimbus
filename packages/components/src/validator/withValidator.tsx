@@ -31,6 +31,8 @@ const withValidation = (FieldComponent: React.FC<InterfaceInput>) =>
       maxLength,
       pattern,
       required,
+      autoCapitalize,
+      autoCorrect,
       onChange,
       onSubmit,
       onBlur,
@@ -112,6 +114,8 @@ const withValidation = (FieldComponent: React.FC<InterfaceInput>) =>
           maxLength={maxLength}
           pattern={pattern}
           required={required}
+          autoCapitalize={autoCapitalize}
+          autoCorrect={autoCorrect}
           onSubmit={onSubmit}
           onFocus={onFocus}
           onChange={handleChange}

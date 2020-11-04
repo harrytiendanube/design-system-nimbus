@@ -46,6 +46,10 @@ export interface InterfaceInput {
   pattern?: string;
   /** Input is required */
   required?: boolean;
+  /** Controls if text input is automatically capitalized */
+  autoCapitalize?: boolean;
+  /** Controls if text input is automatically corrected */
+  autoCorrect?: boolean;
   /** OnChange callback function */
   onChange?: (event: InterfaceNameValue) => void;
   /** OnSubmit callback function */
@@ -56,26 +60,6 @@ export interface InterfaceInput {
   onFocus?: (event: InterfaceNameValue) => void;
 }
 
-/**
- * @param name Name of the input, also used for the ID
- * @param placeholder Placeholder text to show when the input is empty
- * @param label Label
- * @param value Input value
- * @param type Input type
- * @param multiRows Set multiple rows format
- * @param rows Set the number of rows (Applies only when multiRows is true)
- * @param focused Force the focus state on the input
- * @param prepend Prepend a component to show at the start of the input
- * @param isValid Indicates if input is valid
- * @param minLength Minimum count of inserted chars
- * @param maxLength Maximum count of inserted chars
- * @param pattern Custom Regex needed for validate inserted chars
- * @param required Input is required
- * @param onChange Callback function
- * @param onSubmit Callback function
- * @param onBlur Callback function
- * @param onFocus Callback function
- */
 function Input({
   name,
   placeholder,
@@ -90,6 +74,8 @@ function Input({
   minLength = 0,
   maxLength = 50,
   required = false,
+  autoCapitalize = false,
+  autoCorrect = false,
   onChange,
   onSubmit,
   onBlur,
@@ -97,30 +83,27 @@ function Input({
 }: InterfaceInput): JSX.Element {
   const [inputValue, setInputValue] = React.useState(value);
 
-  const handleChange = React.useCallback(
-    (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-      const { target } = event;
-      setInputValue(target.value);
-      onChange?.({ name: target.name, value: target.value });
-    },
-    [onChange],
-  );
+  const handleChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    const { target } = event;
+    setInputValue(target.value);
+    onChange?.({ name: target.name, value: target.value });
+  };
 
-  const handleFocus = React.useCallback(
-    (event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-      const { target } = event;
-      onFocus?.({ name: target.name, value: target.value });
-    },
-    [onFocus],
-  );
+  const handleFocus = (
+    event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    const { target } = event;
+    onFocus?.({ name: target.name, value: target.value });
+  };
 
-  const handleBlur = React.useCallback(
-    (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-      const { target } = event;
-      onBlur?.({ name: target.name, value: target.value });
-    },
-    [onBlur],
-  );
+  const handleBlur = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    const { target } = event;
+    onBlur?.({ name: target.name, value: target.value });
+  };
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" && type === "search") {
@@ -130,56 +113,45 @@ function Input({
     }
   };
 
-  const handleClose = React.useCallback(() => {
+  const handleClose = () => {
     onSubmit?.({ name, value: "" });
     setInputValue("");
-  }, [name, onSubmit]);
+  };
 
-  const memorizedLabel = React.useMemo(
-    () =>
-      type !== "search" && (
-        <label className="nimbus--input__label" htmlFor={`input_${name}`}>
-          {label}
-        </label>
-      ),
-    [label, name, type],
+  const renderLabel = type !== "search" && (
+    <label className="nimbus--input__label" htmlFor={`input_${name}`}>
+      {label}
+    </label>
   );
 
-  const memorizedLeftIcon = React.useMemo(
-    () =>
-      (Prepend || type === "search") && (
-        <span className="nimbus--input__prepend">
-          {type === "search" && <SearchIcon />}
-          {type !== "search" && Prepend && <Prepend />}
+  const renderLeftIcon = (Prepend || type === "search") && (
+    <span className="nimbus--input__prepend">
+      {type === "search" && <SearchIcon />}
+      {type !== "search" && Prepend && <Prepend />}
+    </span>
+  );
+
+  const renderRightIcon = (
+    <>
+      {type === "search" && value && (
+        <button
+          type="button"
+          className="nimbus--input__append"
+          onClick={handleClose}
+        >
+          <CloseIcon />
+        </button>
+      )}
+      {type !== "search" && !isValid && (
+        <span className="nimbus--input__append">
+          <ExclamationCircleIcon />
         </span>
-      ),
-    [type, Prepend],
-  );
-
-  const memorizedRightIcon = React.useMemo(
-    () => (
-      <>
-        {type === "search" && value && (
-          <button
-            type="button"
-            className="nimbus--input__append"
-            onClick={handleClose}
-          >
-            <CloseIcon />
-          </button>
-        )}
-        {type !== "search" && !isValid && (
-          <span className="nimbus--input__append">
-            <ExclamationCircleIcon />
-          </span>
-        )}
-      </>
-    ),
-    [handleClose, isValid, type, value],
+      )}
+    </>
   );
 
   const classname = classNames("nimbus--input__field", {
-    "with-prepend": memorizedLeftIcon,
+    "with-prepend": renderLeftIcon,
     "with-append": type === "search" || type === "password",
   });
 
@@ -195,7 +167,7 @@ function Input({
 
   return (
     <div className="nimbus--input-wrapper">
-      {memorizedLabel}
+      {renderLabel}
       <div className="nimbus--input">
         {multiRows ? (
           <textarea
@@ -206,6 +178,8 @@ function Input({
             value={inputValue}
             placeholder={placeholder}
             rows={rows}
+            autoCapitalize={autoCapitalize ? "on" : "off"}
+            autoCorrect={autoCorrect ? "on" : "off"}
             onChange={handleChange}
             onBlur={handleBlur}
             onFocus={handleFocus}
@@ -223,6 +197,8 @@ function Input({
               ref={inputRef}
               value={inputValue}
               placeholder={placeholder}
+              autoCapitalize={autoCapitalize ? "on" : "off"}
+              autoCorrect={autoCorrect ? "on" : "off"}
               onChange={handleChange}
               onKeyPress={handleKeyPress}
               onBlur={handleBlur}
@@ -231,8 +207,8 @@ function Input({
               maxLength={maxLength}
               required={required}
             />
-            {memorizedLeftIcon}
-            {memorizedRightIcon}
+            {renderLeftIcon}
+            {renderRightIcon}
           </>
         )}
       </div>
@@ -240,5 +216,5 @@ function Input({
   );
 }
 
-export const InputValidator = withValidator(React.memo(Input));
-export default React.memo(Input);
+export const InputValidator = withValidator(Input);
+export default Input;
