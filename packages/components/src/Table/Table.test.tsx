@@ -230,6 +230,16 @@ describe("<Table />", () => {
     });
   });
 
+  it("does not call onClick when user click on first data row when editMode is true", () => {
+    render(
+      <Table headers={myHeaders} editMode>
+        {rows}
+      </Table>,
+    );
+    userEvent.click(screen.getAllByRole("row")[1]);
+    expect(handleClick).not.toHaveBeenCalled();
+  });
+
   it("calls onClick when user click on first data row", () => {
     render(<Table headers={myHeaders}>{rows}</Table>);
     userEvent.click(screen.getAllByRole("row")[1]);

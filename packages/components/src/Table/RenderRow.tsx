@@ -60,7 +60,7 @@ const RenderRow = ({
     event: React.MouseEvent<HTMLTableRowElement, MouseEvent>,
   ) => {
     event.stopPropagation();
-    rowProps.onClick?.();
+    if (!editMode) rowProps.onClick?.();
   };
 
   return (

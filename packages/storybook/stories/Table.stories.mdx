@@ -52,14 +52,27 @@ TODO: complete
               grayed={boolean("grayed rows", false)}
               onClick={action("clicked Row")}
             >
-              <Table.Item rowTitle width={60}>
-                <Button
-                  appearance="primary"
-                  link
-                  onClick={action("clicked Link")}
-                >
-                  #{i}
-                </Button>
+              <Table.Item width={60} rowTitle>
+                <Stack spacing="tight">
+                  <Stack.Item>
+                    <Button
+                      appearance="primary"
+                      link
+                      onClick={action("clicked Link")}
+                    >
+                      #{i}
+                    </Button>
+                  </Stack.Item>
+                  <Stack.Item>
+                    <Tooltip
+                      name="merchant-notes"
+                      labelIcon={FileIcon}
+                      labelText="Merchant notes"
+                    >
+                      <Text>Merchant notes</Text>
+                    </Tooltip>
+                  </Stack.Item>
+                </Stack>
               </Table.Item>
               <Table.Item alignRight width={40}>
                 <Text key="2">20 jun</Text>
@@ -273,14 +286,13 @@ TODO: complete
             <Table.Item width={60} rowTitle>
               <Stack spacing="tight">
                 <Stack.Item>
-                  <Link
-                    key="1"
-                    href="https://www.tiendanube.com/"
-                    target="_self"
+                  <Button
                     appearance="primary"
+                    link
+                    onClick={action("clicked Link")}
                   >
                     #{i}
-                  </Link>
+                  </Button>
                 </Stack.Item>
                 <Stack.Item>
                   <Tooltip
