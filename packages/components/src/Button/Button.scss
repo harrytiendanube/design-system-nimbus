@@ -46,30 +46,6 @@
   );
 }
 
-.#{$prefix}--link--default {
-  @include link(
-    $color-body-text,
-    darken($color-body-text, 20%),
-    lighten($color-body-text, 40%)
-  );
-}
-
-.#{$prefix}--link--primary {
-  @include link($color-primary, $color-primary-hover, $color-primary-light);
-}
-
-.#{$prefix}--link--secondary {
-  @include link(
-    $color-secondary,
-    $color-secondary-hover,
-    $color-secondary-light
-  );
-}
-
-.#{$prefix}--link--danger {
-  @include link($color-danger, $color-danger-hover, $color-danger-light);
-}
-
 .#{$prefix}--button-skeleton {
   @include button(transparent, transparent, transparent, transparent);
   @include nimbus--skeleton(42px, 120px, 0, 0);

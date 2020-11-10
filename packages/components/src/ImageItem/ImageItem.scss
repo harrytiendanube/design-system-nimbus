@@ -53,11 +53,7 @@ $thumbnail-dimensions: 72px;
       text-align: inherit;
     }
 
-    .#{$prefix}--text {
-      color: $color-body-text;
-    }
-
-    .#{$prefix}--link {
+    .#{$prefix}--link--primary {
       color: $color-primary;
       font-weight: $font-weight-bold;
       text-decoration: none;

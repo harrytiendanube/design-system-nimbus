@@ -7,11 +7,14 @@ import {
   ArrowLeftIcon,
   ArrowRightIcon,
 } from "@tiendanube/icons";
+import classNames from "classnames";
 import Responsive from "../Responsive";
 import PageTitle from "../PageTitle";
 import {
   Button,
   InterfaceButton,
+  Link,
+  InterfaceLink,
   Stack,
   Popover,
   InterfaceLabel,
@@ -31,33 +34,20 @@ export interface InterfacePage {
   /** Defines whether the page has pagination to next */
   paginationNext?: () => void;
   /** Edit action for the title section */
-  editAction?: Pick<InterfaceButton, "children" | "onClick">;
+  editAction?: Pick<InterfaceLink, "children" | "onClick">;
   /** Primary action for the title section */
   primaryAction?:
     | Pick<InterfaceButton, "children" | "onClick" | "icon" | "iconPosition">
     | "skeleton";
   /** Secondary actions for the title section */
   secondaryActions?: (
-    | Pick<InterfaceButton, "children" | "onClick" | "icon" | "iconPosition">
+    | Pick<InterfaceLink, "children" | "onClick" | "icon" | "iconPosition">
     | "skeleton"
   )[];
   /** Labels for the title section */
   headerLabels?: (InterfaceLabel | "skeleton")[];
 }
 
-/**
- * Page component used to render pages for the application
- *
- * @param children Component to render in page content.
- * @param title Name of the page and content of the page title.
- * @param backNavigation Navigation to previous screen
- * @param paginationPrevious Defines whether the page has pagination to previous
- * @param paginationNext Defines whether the page has pagination to next
- * @param editAction Edit action for the title section
- * @param primaryAction Primary action for the title section
- * @param secondaryActions Secondary actions for the title section
- * @param headerLabels Labels for the title section
- */
 function Page({
   children,
   title,
@@ -71,145 +61,121 @@ function Page({
 }: InterfacePage): JSX.Element {
   const [showTitle, setShowTitle] = React.useState(false);
 
-  const memorizedPrimaryAction = React.useMemo(
-    () =>
-      primaryAction && (
-        <Stack.Item>
-          {primaryAction === "skeleton" ? (
-            <Button.Skeleton />
-          ) : (
-            <Button
-              onClick={primaryAction.onClick}
-              appearance="primary"
-              icon={primaryAction.icon}
-              iconPosition={primaryAction.iconPosition}
-            >
-              {primaryAction.children}
-            </Button>
-          )}
-        </Stack.Item>
-      ),
-    [primaryAction],
+  const renderPrimaryAction = primaryAction && (
+    <Stack.Item>
+      {primaryAction === "skeleton" ? (
+        <Button.Skeleton />
+      ) : (
+        <Button
+          onClick={primaryAction.onClick}
+          appearance="primary"
+          icon={primaryAction.icon}
+          iconPosition={primaryAction.iconPosition}
+        >
+          {primaryAction.children}
+        </Button>
+      )}
+    </Stack.Item>
   );
 
-  const memorizedSecondaryActions = React.useMemo(
-    () =>
-      secondaryActions?.map((action, index) => (
-        <Stack.Item key={index}>
-          {action === "skeleton" ? (
-            <Button.Skeleton />
-          ) : (
-            <Button
-              onClick={action.onClick}
-              link
-              appearance="secondary"
-              icon={action.icon}
-              iconPosition={action.iconPosition}
-            >
-              {action.children}
-            </Button>
-          )}
-        </Stack.Item>
-      )),
-    [secondaryActions],
-  );
+  const renderSecondaryActions = secondaryActions?.map((action, index) => (
+    <Stack.Item key={index}>
+      {action === "skeleton" ? (
+        <Link.Skeleton />
+      ) : (
+        <Link
+          onClick={action.onClick}
+          appearance="secondary"
+          icon={action.icon}
+          iconPosition={action.iconPosition}
+        >
+          {action.children}
+        </Link>
+      )}
+    </Stack.Item>
+  ));
 
-  const memorizedNavigation = React.useMemo(
-    () => (
-      <div className={`nimbus--page-navbar ${showTitle ? "is-scrolled" : ""}`}>
-        <div className="nimbus--page-navbar__back">
-          {backNavigation && (
-            <Button
-              onClick={backNavigation.onClick}
-              icon={ChevronLeftIcon}
-              appearance="secondary"
-            >
-              {backNavigation.children}
-            </Button>
-          )}
-        </div>
-        <Responsive display="mobile">
-          <div
-            className={`nimbus--page-navbar__title ${
-              showTitle ? "is-visible" : ""
-            }`}
+  const renderNavigation = (
+    <div
+      className={classNames("nimbus--page-navbar", {
+        "is-scrolled": showTitle,
+      })}
+    >
+      <div className="nimbus--page-navbar__back">
+        {backNavigation && (
+          <Button
+            onClick={backNavigation.onClick}
+            icon={ChevronLeftIcon}
+            appearance="secondary"
           >
-            {title === "skeleton" ? (
-              <Text.Skeleton />
-            ) : (
-              <Text appearance="secondary" textAlign="center" bold>
-                {title}
-              </Text>
-            )}
-          </div>
-        </Responsive>
-        <div className="nimbus--page-navbar__toolbar">
-          <Responsive display="mobile">
-            <Stack justify="flex-end" spacing="tight">
-              {editAction && (
-                <Stack.Item>
-                  <Button link onClick={editAction.onClick}>
-                    {editAction.children}
-                  </Button>
-                </Stack.Item>
-              )}
-              {(primaryAction || secondaryActions) && (
-                <Stack.Item>
-                  <Popover isMenu name="dropdownMenu" position="right">
-                    <Stack column align="flex-start">
-                      {memorizedSecondaryActions}
-                      {memorizedPrimaryAction}
-                    </Stack>
-                  </Popover>
-                </Stack.Item>
-              )}
-            </Stack>
-          </Responsive>
-          {paginationPrevious && paginationNext && (
-            <Responsive display="desktop">
-              <Button link onClick={paginationPrevious} icon={ArrowLeftIcon} />
-              <Button link onClick={paginationNext} icon={ArrowRightIcon} />
-            </Responsive>
+            {backNavigation.children}
+          </Button>
+        )}
+      </div>
+      <Responsive display="mobile">
+        <div
+          className={`nimbus--page-navbar__title ${
+            showTitle ? "is-visible" : ""
+          }`}
+        >
+          {title === "skeleton" ? (
+            <Text.Skeleton />
+          ) : (
+            <Text appearance="secondary" textAlign="center" bold>
+              {title}
+            </Text>
           )}
         </div>
+      </Responsive>
+      <div className="nimbus--page-navbar__toolbar">
+        <Responsive display="mobile">
+          <Stack justify="flex-end" spacing="tight">
+            {editAction && (
+              <Stack.Item>
+                <Link onClick={editAction.onClick}>{editAction.children}</Link>
+              </Stack.Item>
+            )}
+            {(primaryAction || secondaryActions) && (
+              <Stack.Item>
+                <Popover isMenu name="dropdownMenu" position="right">
+                  <Stack column align="flex-start">
+                    {renderSecondaryActions}
+                    {renderPrimaryAction}
+                  </Stack>
+                </Popover>
+              </Stack.Item>
+            )}
+          </Stack>
+        </Responsive>
+        {paginationPrevious && paginationNext && (
+          <Responsive display="desktop">
+            <Link onClick={paginationPrevious} icon={ArrowLeftIcon} />
+            <Link onClick={paginationNext} icon={ArrowRightIcon} />
+          </Responsive>
+        )}
       </div>
-    ),
-    [
-      showTitle,
-      backNavigation,
-      title,
-      editAction,
-      primaryAction,
-      secondaryActions,
-      memorizedSecondaryActions,
-      memorizedPrimaryAction,
-      paginationPrevious,
-      paginationNext,
-    ],
+    </div>
   );
 
-  const memorizedHeaderLabels = React.useMemo(
-    () => (
-      <div className="nimbus--page-header__labels">
-        <Stack spacing="tight">
-          {headerLabels?.map((label, index) => (
-            <Stack.Item key={index}>
-              {label === "skeleton" ? (
-                <Label.Skeleton />
-              ) : (
-                <Label
-                  id={label.id}
-                  appearance={label.appearance}
-                  icon={label.icon}
-                  label={label.label}
-                />
-              )}
-            </Stack.Item>
-          ))}
-        </Stack>
-      </div>
-    ),
-    [headerLabels],
+  const renderHeaderLabels = (
+    <div className="nimbus--page-header__labels">
+      <Stack spacing="tight">
+        {headerLabels?.map((label, index) => (
+          <Stack.Item key={index}>
+            {label === "skeleton" ? (
+              <Label.Skeleton />
+            ) : (
+              <Label
+                id={label.id}
+                appearance={label.appearance}
+                icon={label.icon}
+                label={label.label}
+              />
+            )}
+          </Stack.Item>
+        ))}
+      </Stack>
+    </div>
   );
 
   React.useEffect(() => {
@@ -232,7 +198,7 @@ function Page({
   return (
     <div className="nimbus--page">
       <div className="nimbus--page-header">
-        {memorizedNavigation}
+        {renderNavigation}
         <div className="nimbus--page-heading" id="header">
           <Stack>
             <Stack.Item fill>
@@ -245,23 +211,19 @@ function Page({
             {paginationPrevious && paginationNext && (
               <Responsive display="mobile">
                 <Stack.Item>
-                  <Button
-                    link
-                    onClick={paginationPrevious}
-                    icon={ArrowLeftIcon}
-                  />
+                  <Link onClick={paginationPrevious} icon={ArrowLeftIcon} />
                 </Stack.Item>
                 <Stack.Item>
-                  <Button link onClick={paginationNext} icon={ArrowRightIcon} />
+                  <Link onClick={paginationNext} icon={ArrowRightIcon} />
                 </Stack.Item>
               </Responsive>
             )}
             <Responsive display="desktop">
-              {memorizedSecondaryActions}
-              {memorizedPrimaryAction}
+              {renderSecondaryActions}
+              {renderPrimaryAction}
             </Responsive>
           </Stack>
-          {memorizedHeaderLabels}
+          {renderHeaderLabels}
         </div>
       </div>
       <div className="nimbus--page-content">{children}</div>
@@ -269,4 +231,4 @@ function Page({
   );
 }
 
-export default React.memo(Page);
+export default Page;

@@ -44,7 +44,7 @@ const myHeaderLabels = [
 
 describe("<Page /> on Desktop", () => {
   it("renders", () => {
-    render(
+    const { container } = render(
       <Page
         title={myTitle}
         backNavigation={myBackNavigation}
@@ -60,13 +60,12 @@ describe("<Page /> on Desktop", () => {
     );
 
     expect(screen.getByRole("button", { name: myBackNavigation.children }));
-    expect(screen.queryAllByRole("button", { name: "" })).toHaveLength(2);
     expect(
       screen.queryByRole("button", { name: myEditAction.children }),
     ).toBeFalsy();
     expect(screen.getByRole("button", { name: myPrimaryAction.children }));
-    mySecondaryActions.forEach((action) =>
-      expect(screen.getByRole("button", { name: action.children })),
+    expect(container.querySelectorAll("a").length).toEqual(
+      mySecondaryActions.length + 2, // 1 Previous Action + 1 Next Action
     );
     expect(screen.getByRole("heading", { name: myTitle }));
     myHeaderLabels.forEach((label, index) =>
@@ -121,7 +120,7 @@ describe("<Page /> on Desktop", () => {
       container.querySelector(".nimbus--page-title-skeleton"),
     ).toBeTruthy();
     expect(container.querySelectorAll(".nimbus--button-skeleton")).toHaveLength(
-      3,
+      1,
     );
     expect(container.querySelectorAll(".nimbus--label-skeleton")).toHaveLength(
       2,
@@ -155,7 +154,6 @@ describe("<Page/> on Mobile", () => {
     );
 
     expect(screen.getByRole("button", { name: myBackNavigation.children }));
-    expect(screen.queryAllByRole("button", { name: "" })).toHaveLength(3);
     expect(screen.getByRole("heading", { name: myTitle }));
     myHeaderLabels.forEach((label, index) => {
       return expect(screen.queryAllByRole("status")[index].innerHTML).toEqual(
@@ -164,7 +162,7 @@ describe("<Page/> on Mobile", () => {
     });
 
     // No actions renders before button pressed
-    expect(screen.getByRole("button", { name: myEditAction.children }));
+    expect(screen.getByText(myEditAction.children));
     expect(
       screen.queryByRole("button", { name: myPrimaryAction.children }),
     ).toBeFalsy();
@@ -175,10 +173,10 @@ describe("<Page/> on Mobile", () => {
     );
 
     // Renders actions after button pressed
-    userEvent.click(screen.queryAllByRole("button", { name: "" })[0]);
+    userEvent.click(container.querySelectorAll("a")[1]);
     expect(screen.getByRole("button", { name: myPrimaryAction.children }));
-    mySecondaryActions.forEach((action) =>
-      expect(screen.getByRole("button", { name: action.children })),
+    expect(container.querySelectorAll("a").length).toEqual(
+      mySecondaryActions.length + 4, // 1 Previous Action + 1 Next Action + 1 Edit Action + 1 Menu Top right
     );
 
     const header = container.querySelector("#header");

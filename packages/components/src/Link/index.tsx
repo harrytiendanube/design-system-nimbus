@@ -5,9 +5,9 @@ import "./Link.css";
 
 export interface InterfaceLink {
   /** React node of type children. */
-  children: React.ReactNode;
+  children?: React.ReactNode;
   /** Specifies the URL of the page the link goes to */
-  href: string;
+  href?: string;
   /** Specifies where to open the linked document */
   target?: "_blank" | "_parent" | "_self" | "_top";
   /** Appearance */
@@ -18,17 +18,13 @@ export interface InterfaceLink {
   icon?: IconType;
   /** Position of the icon with respect to the alert */
   iconPosition?: "start" | "end";
+  /** The size of the button icon */
+  iconSize?: "small" | "medium" | "large";
+  /** OnClick callback function */
+  onClick?: () => void;
 }
-/**
- * @param start React node of type children.
- * @param href Specifies the URL of the page the link goes to
- * @param target Specifies where to open the linked document
- * @param appearance Appearance
- * @param underline Defines whether the link should be underlined
- * @param icon Icon Component imported from @tiendanube/icons
- * @param iconPosition Position of the icon with respect to the alert
- */
-const Link = React.memo(function Link({
+
+function Link({
   children,
   href,
   target = "_blank",
@@ -36,45 +32,48 @@ const Link = React.memo(function Link({
   underline = false,
   icon: Icon,
   iconPosition = "start",
+  iconSize = "small",
+  onClick,
 }: InterfaceLink): JSX.Element {
-  const classname = React.useMemo(
-    () =>
-      `nimbus--link nimbus--link--${appearance} ${
-        underline ? "nimbus--link--underlined" : ""
-      }`,
-    [appearance, underline],
-  );
-  const memorizedStartIcon = React.useMemo(
-    () =>
-      Icon &&
-      iconPosition === "start" && (
-        <i className="nimbus--link__icon--start">
-          <Icon />
-        </i>
-      ),
-    [Icon, iconPosition],
-  );
-  const memorizedEndIcon = React.useMemo(
-    () =>
-      Icon &&
-      iconPosition === "end" && (
-        <i className="nimbus--link__icon--end">
-          <Icon />
-        </i>
-      ),
-    [Icon, iconPosition],
+  const classname = `nimbus--link nimbus--link--${appearance} ${
+    underline ? "nimbus--link--underlined" : ""
+  }`;
+
+  const renderStartIcon = Icon && iconPosition === "start" && (
+    <i className="nimbus--link__icon--start">
+      <Icon size={iconSize} />
+    </i>
   );
 
+  const renderEndIcon = Icon && iconPosition === "end" && (
+    <i className="nimbus--link__icon--end">
+      <Icon size={iconSize} />
+    </i>
+  );
+
+  const handleOnClick = (
+    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+  ) => {
+    if (!href) {
+      event.preventDefault();
+    }
+    event.stopPropagation();
+    onClick?.();
+  };
+
   return (
-    <a className={classname} href={href} target={target}>
-      {memorizedStartIcon}
+    <a
+      className={classname}
+      href={href}
+      onClick={handleOnClick}
+      target={target}
+    >
+      {renderStartIcon}
       {children}
-      {memorizedEndIcon}
+      {renderEndIcon}
     </a>
   );
-}) as React.NamedExoticComponent<InterfaceLink> & {
-  Skeleton: typeof Skeleton;
-};
+}
 
 const Skeleton = () => <div className="nimbus--link-skeleton" />;
 

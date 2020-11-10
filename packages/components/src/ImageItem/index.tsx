@@ -3,71 +3,66 @@ import * as React from "react";
 import "./ImageItem.css";
 
 import { CameraIcon } from "@tiendanube/icons";
-import Link from "../Link";
-import Text from "../Text";
+import Link, { InterfaceLink } from "../Link";
+import Text, { InterfaceText } from "../Text";
 
 export interface InterfaceImageItem {
   /** Image thumbnail */
   thumbnail?: string;
   /** Link to display in the ImageItem */
-  link: string;
-  /** Link Href */
-  linkTo: string;
+  link: Pick<InterfaceLink, "children" | "onClick">;
   /** Subtitle for the ImageItem */
-  subtitle?: string;
+  subtitle?: Pick<InterfaceText, "children" | "appearance">;
   /** Description for the ImageItem */
-  description?: string;
+  description?: Pick<InterfaceText, "children" | "appearance">;
 }
-/**
- * @param thumbnail Image thumbnail
- * @param link Link to display in the ImageItem
- * @param linkTo Link Href
- * @param subtitle Subtitle for the ImageItem
- * @param description Description for the ImageItem
- */
-const ImageItem = React.memo(function ImageItem({
+function ImageItem({
   thumbnail,
   link,
-  linkTo,
   subtitle,
   description,
 }: InterfaceImageItem): JSX.Element {
   const [errorLoad, setErrorLoad] = React.useState(false);
   const handleError = React.useCallback(() => setErrorLoad(true), []);
-  const memorizedThumbnail = React.useMemo(() => {
-    return thumbnail && !errorLoad ? (
-      <img src={thumbnail} alt={link} onError={handleError} />
+  const renderThumbnail =
+    thumbnail && !errorLoad ? (
+      <img
+        src={thumbnail}
+        alt={link.children as string}
+        onError={handleError}
+      />
     ) : (
       <div className="nimbus--image-item__placeholder">
         <CameraIcon size="large" />
       </div>
     );
-  }, [thumbnail, errorLoad, link, handleError]);
-  const memorizedSubtitle = React.useMemo(
-    () => subtitle && <Text>{subtitle}</Text>,
-    [subtitle],
+
+  const renderSubtitle = subtitle && (
+    <Text appearance={subtitle.appearance}>{subtitle.children}</Text>
   );
-  const memorizedDescription = React.useMemo(
-    () => description && <Text>{description}</Text>,
-    [description],
+
+  const renderDescription = description && (
+    <Text appearance={description.appearance}>{description.children}</Text>
   );
+
   return (
     <div className="nimbus--image-item" role="listitem">
-      <div className="nimbus--image-item__thumbnail" aria-label={link}>
-        {memorizedThumbnail}
+      <div
+        className="nimbus--image-item__thumbnail"
+        aria-label={link.children as string}
+      >
+        {renderThumbnail}
       </div>
       <div className="nimbus--image-item__info">
-        <Link href={linkTo} target="_self">
-          {link}
+        <Link appearance="primary" onClick={link.onClick}>
+          {link.children}
         </Link>
-        {memorizedSubtitle}
-        {memorizedDescription}
+        {renderSubtitle}
+        {renderDescription}
       </div>
     </div>
   );
-}) as React.NamedExoticComponent<InterfaceImageItem> & {
-  Skeleton: typeof Skeleton;
-};
+}
 
 const Skeleton = () => (
   <div className="nimbus--image-item-skeleton">

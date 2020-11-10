@@ -3,7 +3,7 @@ import * as React from "react";
 import "./PageTitle.css";
 
 import Text from "../Text";
-import Link from "../Link";
+import Link, { InterfaceLink } from "../Link";
 import Title from "../Title";
 
 export interface InterfacePageTitle {
@@ -11,48 +11,33 @@ export interface InterfacePageTitle {
   title: string;
   /** Subtitle text */
   subtitle?: string;
-  /** Link text */
-  link?: string;
-  /** Link href */
-  linkTo?: string;
+  /** Link */
+  link?: Pick<InterfaceLink, "children" | "href" | "onClick">;
 }
 
-/**
- * @param title Is the title text
- * @param subtitle Is the subtitle text
- * @param link Is the link text
- * @param linkTo Is the link href
- */
-const PageTitle = React.memo(function PageTitle({
-  title,
-  subtitle,
-  link,
-  linkTo,
-}: InterfacePageTitle): JSX.Element {
-  const memorizedSubtitle = React.useMemo(
-    () => subtitle && <Text>{subtitle}</Text>,
-    [subtitle],
+function PageTitle({ title, subtitle, link }: InterfacePageTitle): JSX.Element {
+  const renderSubtitle = subtitle && <Text>{subtitle}</Text>;
+
+  const renderLink = link && (
+    <Link href={link.href} onClick={link.onClick}>
+      {link.children}
+    </Link>
   );
-  const memorizedLink = React.useMemo(
-    () => link && linkTo && <Link href={linkTo}>{link}</Link>,
-    [linkTo, link],
-  );
-  const withSubtitle = (subtitle || link) && (
+
+  const renderSubtitleLink = (subtitle || link) && (
     <div className="nimbus--page-subtitle">
-      {memorizedSubtitle}
-      {memorizedLink}
+      {renderSubtitle}
+      {renderLink}
     </div>
   );
 
   return (
     <div className="nimbus--page-title">
       <Title>{title}</Title>
-      {withSubtitle}
+      {renderSubtitleLink}
     </div>
   );
-}) as React.NamedExoticComponent<InterfacePageTitle> & {
-  Skeleton: typeof Skeleton;
-};
+}
 
 const Skeleton = () => <div className="nimbus--page-title-skeleton" />;
 

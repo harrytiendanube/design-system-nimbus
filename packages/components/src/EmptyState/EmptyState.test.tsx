@@ -15,7 +15,7 @@ describe("<EmptyState />", () => {
   it("render", () => {
     const handleClickPrimary = jest.fn();
     const handleClickSecondary = jest.fn();
-    render(
+    const { container } = render(
       <EmptyState
         fullWidth={myFullWidth}
         image={myImage}
@@ -38,9 +38,7 @@ describe("<EmptyState />", () => {
     expect(
       screen.getByRole("button", { name: myPrimaryActionLabel }),
     ).toBeTruthy();
-    expect(
-      screen.getByRole("button", { name: mySecondaryActionLabel }),
-    ).toBeTruthy();
+    expect(container.querySelector("a")).toBeTruthy();
   });
   it("render without optional parameters", () => {
     render(
@@ -61,7 +59,7 @@ describe("<EmptyState />", () => {
   it("calls onClickPrimary and onClickSecondary", () => {
     const handleClickPrimary = jest.fn();
     const handleClickSecondary = jest.fn();
-    render(
+    const { container } = render(
       <EmptyState
         fullWidth={myFullWidth}
         image={myImage}
@@ -75,9 +73,7 @@ describe("<EmptyState />", () => {
       </EmptyState>,
     );
     userEvent.click(screen.getByRole("button", { name: myPrimaryActionLabel }));
-    userEvent.click(
-      screen.getByRole("button", { name: mySecondaryActionLabel }),
-    );
+    userEvent.click(container.querySelector("a") as HTMLAnchorElement);
     expect(handleClickPrimary).toHaveBeenCalled();
     expect(handleClickSecondary).toHaveBeenCalled();
   });

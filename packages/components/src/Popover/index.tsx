@@ -8,7 +8,7 @@ import {
   ChevronUpIcon,
   EllipsisIcon,
 } from "@tiendanube/icons";
-import { Title, Button } from "..";
+import { Title, Link } from "..";
 
 interface InterfacePopover {
   /** Name of the Popover */
@@ -25,15 +25,7 @@ interface InterfacePopover {
   position?: "left" | "right";
 }
 
-/**
- * @param name Of the Popover
- * @param label Of the Popover
- * @param title Text of the Popover
- * @param children React node of type children
- * @param isMenu Determines whether the initiator is a button or an icon
- * @param position Determines the position of the popover menu
- */
-const Popover = React.memo(function Popover({
+function Popover({
   name,
   label,
   title,
@@ -43,46 +35,30 @@ const Popover = React.memo(function Popover({
 }: InterfacePopover): JSX.Element {
   const [active, setActive] = React.useState(false);
 
-  const className = React.useMemo(
-    () =>
-      classNames("nimbus--popover-wrapper", {
-        "position--right": position === "right",
-      }),
-    [position],
+  const className = classNames("nimbus--popover-wrapper", {
+    "position--right": position === "right",
+  });
+
+  const renderTitle = title && (
+    <div className="nimbus--popover-header">
+      <Title type="h5">{title}</Title>
+    </div>
   );
 
-  const memorizedTitle = React.useMemo(
-    () =>
-      title && (
-        <div className="nimbus--popover-header">
-          <Title type="h5">{title}</Title>
-        </div>
-      ),
-    [title],
+  const renderActive = active && (
+    <div
+      id={`nimbus-popover-wrapper-${name}`}
+      className={className}
+      role="dialog"
+    >
+      {renderTitle}
+      <div className="nimbus--popover-body">{children}</div>
+    </div>
   );
 
-  const memorizedActive = React.useMemo(
-    () =>
-      active && (
-        <div
-          id={`nimbus-popover-wrapper-${name}`}
-          className={className}
-          role="dialog"
-        >
-          {memorizedTitle}
-          <div className="nimbus--popover-body">{children}</div>
-        </div>
-      ),
-    [active, children, className, memorizedTitle, name],
-  );
-
-  const handleClick = React.useCallback(
-    (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-      e.stopPropagation();
-      setActive((currentActive) => !currentActive);
-    },
-    [],
-  );
+  const handleClick = () => {
+    setActive((currentActive) => !currentActive);
+  };
 
   const handleClickGlobal = React.useCallback(
     (event) => {
@@ -118,31 +94,27 @@ const Popover = React.memo(function Popover({
     >
       <div id={`nimbus-popover-initiator-${name}`}>
         {isMenu ? (
-          <Button
-            link
+          <Link
             icon={EllipsisIcon}
             iconSize="medium"
             appearance="secondary"
             onClick={handleClick}
           />
         ) : (
-          <Button
-            link
+          <Link
             icon={active ? ChevronUpIcon : ChevronDownIcon}
             iconPosition="end"
             appearance="default"
             onClick={handleClick}
           >
             {label}
-          </Button>
+          </Link>
         )}
       </div>
-      {memorizedActive}
+      {renderActive}
     </div>
   );
-}) as React.NamedExoticComponent<InterfacePopover> & {
-  Skeleton: typeof Skeleton;
-};
+}
 
 const Skeleton = () => <div className="nimbus--popover-skeleton" />;
 

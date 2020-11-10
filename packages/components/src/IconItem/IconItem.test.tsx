@@ -5,8 +5,7 @@ import { ArchiveIcon } from "@tiendanube/icons";
 import IconItem from ".";
 
 const myAppearance = "default";
-const myLink = "myLink";
-const myLinkTo = "https://www.myLinkTo.com/";
+const myLink = { children: "myLink", href: "https://www.myLink.com" };
 const myTitle = "myTitle";
 const mySubtitle = "mySubtitle";
 
@@ -19,15 +18,14 @@ describe("<IconItem />", () => {
         title={myTitle}
         subtitle={mySubtitle}
         link={myLink}
-        linkTo={myLinkTo}
       />,
     );
     expect(screen.getByRole("status")).toBeTruthy();
     expect(screen.getByText(myTitle)).toBeTruthy();
     expect(screen.getByText(mySubtitle)).toBeTruthy();
-    expect(screen.getByRole("link", { name: myLink })).toHaveAttribute(
+    expect(screen.getByRole("link", { name: myLink.children })).toHaveAttribute(
       "href",
-      myLinkTo,
+      myLink.href,
     );
     expect(container.querySelectorAll("svg")).toHaveLength(2);
   });
@@ -38,15 +36,14 @@ describe("<IconItem />", () => {
         icon={ArchiveIcon}
         title={myTitle}
         link={myLink}
-        linkTo={myLinkTo}
       />,
     );
     expect(screen.getByRole("status")).toBeTruthy();
     expect(screen.getByText(myTitle)).toBeTruthy();
     expect(screen.queryByText(mySubtitle)).toBeFalsy();
-    expect(screen.getByRole("link", { name: myLink })).toHaveAttribute(
+    expect(screen.getByRole("link", { name: myLink.children })).toHaveAttribute(
       "href",
-      myLinkTo,
+      myLink.href,
     );
     expect(container.querySelectorAll("svg")).toHaveLength(2);
   });
@@ -62,7 +59,7 @@ describe("<IconItem />", () => {
     expect(screen.getByRole("status")).toBeTruthy();
     expect(screen.getByText(myTitle)).toBeTruthy();
     expect(screen.getByText(mySubtitle)).toBeTruthy();
-    expect(screen.queryByRole("link", { name: myLink })).toBeFalsy();
+    expect(screen.queryByRole("link", { name: myLink.children })).toBeFalsy();
     expect(container.querySelectorAll("svg")).toHaveLength(1);
   });
 });

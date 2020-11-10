@@ -4,6 +4,7 @@ import "./EmptyState.css";
 
 import Title from "../Title";
 import Button from "../Button";
+import Link from "../Link";
 
 export interface InterfaceEmptyState {
   /** Image URL for the empty state. */
@@ -24,18 +25,6 @@ export interface InterfaceEmptyState {
   children: React.ReactNode;
 }
 
-/**
- * Layout used for aside component and background image.
- *
- * @param image Image URL for the empty state.
- * @param title Title of the EmptyState
- * @param primaryActionLabel Label of primary action
- * @param secondaryActionLabel Label of secondary action
- * @param onClickPrimary OnClickPrimary callback function
- * @param onClickSecondary OnClickSecondary callback function
- * @param fullWidth Defines whether the component should be full width or not.
- * @param children Component to render in empty state body.
- */
 function EmptyState({
   image,
   title,
@@ -43,66 +32,50 @@ function EmptyState({
   secondaryActionLabel,
   onClickPrimary,
   onClickSecondary,
-  fullWidth,
+  fullWidth = false,
   children,
 }: InterfaceEmptyState): JSX.Element {
-  const classname = React.useMemo(
-    () =>
-      fullWidth ? `nimbus--empty-state is-full-width` : `nimbus--empty-state`,
-    [fullWidth],
+  const classname = fullWidth
+    ? `nimbus--empty-state is-full-width`
+    : `nimbus--empty-state`;
+
+  const renderTitle = title && (
+    <div className="nimbus--empty-state__heading">
+      <Title type="h2">{title}</Title>
+    </div>
   );
-  const memorizedTitle = React.useMemo(
-    () =>
-      title && (
-        <div className="nimbus--empty-state__heading">
-          <Title type="h2">{title}</Title>
-        </div>
-      ),
-    [title],
+
+  const renderPrimary = primaryActionLabel && onClickPrimary && (
+    <div className="nimbus--action-wrapper__item">
+      <Button onClick={onClickPrimary} appearance="primary">
+        {primaryActionLabel}
+      </Button>
+    </div>
   );
-  const memorizedPrimary = React.useMemo(
-    () =>
-      primaryActionLabel &&
-      onClickPrimary && (
-        <div className="nimbus--action-wrapper__item">
-          <Button onClick={onClickPrimary} appearance="primary">
-            {primaryActionLabel}
-          </Button>
-        </div>
-      ),
-    [primaryActionLabel, onClickPrimary],
+
+  const renderSecondary = secondaryActionLabel && onClickSecondary && (
+    <div className="nimbus--action-wrapper__item">
+      <Link onClick={onClickSecondary} appearance="primary">
+        {secondaryActionLabel}
+      </Link>
+    </div>
   );
-  const memorizedSecondary = React.useMemo(
-    () =>
-      secondaryActionLabel &&
-      onClickSecondary && (
-        <div className="nimbus--action-wrapper__item">
-          <Button onClick={onClickSecondary} link appearance="primary">
-            {secondaryActionLabel}
-          </Button>
-        </div>
-      ),
-    [secondaryActionLabel, onClickSecondary],
-  );
+
   return (
     <div className={classname}>
       <div className="nimbus--empty-state__image">
         <img src={image} alt={title} />
       </div>
       <div className="nimbus--empty-state__content">
-        {memorizedTitle}
+        {renderTitle}
         <div className="nimbus--empty-state__body">{children}</div>
         <div className="nimbus--action-wrapper">
-          {memorizedPrimary}
-          {memorizedSecondary}
+          {renderPrimary}
+          {renderSecondary}
         </div>
       </div>
     </div>
   );
 }
 
-EmptyState.defaultProps = {
-  fullWidth: false,
-};
-
-export default React.memo(EmptyState);
+export default EmptyState;

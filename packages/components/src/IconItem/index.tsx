@@ -3,7 +3,7 @@ import * as React from "react";
 import "./IconItem.css";
 
 import { ExternalLinkIcon, Icon as IconType } from "@tiendanube/icons";
-import Link from "../Link";
+import Link, { InterfaceLink } from "../Link";
 import Text from "../Text";
 
 export interface InterfaceIconItem {
@@ -22,44 +22,31 @@ export interface InterfaceIconItem {
   /** Subtitle for the IconItem */
   subtitle?: string;
   /** Link to display in the IconItem */
-  link?: string;
-  /** Link Href */
-  linkTo?: string;
+  link?: Pick<InterfaceLink, "children" | "href" | "onClick">;
 }
-/**
- * @param icon Icon Component imported from @tiendanube/icons
- * @param appearance Appearance of the IconItem determines the background color
- * @param title Title for the IconItem
- * @param subtitle Subtitle for the IconItem
- * @param link Link to display in the IconItem
- * @param linkTo Link Href
- */
+
 function IconItem({
   icon: Icon,
-  appearance,
+  appearance = "default",
   title,
   subtitle,
   link,
-  linkTo,
 }: InterfaceIconItem): JSX.Element {
-  const classname = React.useMemo(
-    () => `nimbus--icon-item__icon--${appearance}`,
-    [appearance],
+  const classname = `nimbus--icon-item__icon--${appearance}`;
+
+  const renderSubtitle = subtitle && <Text>{subtitle}</Text>;
+
+  const renderLink = link && (
+    <Link
+      icon={ExternalLinkIcon}
+      iconPosition="end"
+      href={link.href}
+      onClick={link.onClick}
+    >
+      {link.children}
+    </Link>
   );
-  const memorizedSubtitle = React.useMemo(
-    () => subtitle && <Text>{subtitle}</Text>,
-    [subtitle],
-  );
-  const memorizedLink = React.useMemo(
-    () =>
-      link &&
-      linkTo && (
-        <Link icon={ExternalLinkIcon} iconPosition="end" href={linkTo}>
-          {link}
-        </Link>
-      ),
-    [link, linkTo],
-  );
+
   return (
     <div className="nimbus--icon-item" role="status">
       <div className={classname} aria-label={title}>
@@ -67,15 +54,11 @@ function IconItem({
       </div>
       <div className="nimbus--icon-item__info">
         <Text>{title}</Text>
-        {memorizedSubtitle}
-        {memorizedLink}
+        {renderSubtitle}
+        {renderLink}
       </div>
     </div>
   );
 }
 
-IconItem.defaultProps = {
-  appearance: "default",
-};
-
-export default React.memo(IconItem);
+export default IconItem;

@@ -29,7 +29,6 @@ TODO: complete
         "danger",
       ])}
       disabled={boolean("disabled", false)}
-      link={boolean("link", false)}
       onClick={action("onClick")}
       spinner={boolean("spinner", false)}
     >
@@ -91,89 +90,5 @@ TODO: complete
     <Button icon={ExternalLinkIcon} iconPosition="end">
       {LOREM_STRESS}
     </Button>
-  </Story>
-</Preview>
-
-## Link Styling
-
-TODO: complete
-
-<Preview withToolbar>
-  <Story name="link styling">
-    <div>
-      <div className="separate">
-        <Button
-          appearance="default"
-          icon={ExternalLinkIcon}
-          iconPosition="end"
-          link
-        >
-          Default
-        </Button>
-        <Button
-          appearance="primary"
-          icon={ExternalLinkIcon}
-          iconPosition="end"
-          link
-        >
-          Primary
-        </Button>
-        <Button
-          appearance="secondary"
-          icon={ExternalLinkIcon}
-          iconPosition="end"
-          link
-        >
-          Secondary
-        </Button>
-        <Button
-          appearance="danger"
-          icon={ExternalLinkIcon}
-          iconPosition="end"
-          link
-        >
-          Danger
-        </Button>
-      </div>
-      <br />
-      <div className="separate">
-        <Button
-          appearance="default"
-          icon={ExternalLinkIcon}
-          iconPosition="end"
-          link
-          disabled
-        >
-          Default
-        </Button>
-        <Button
-          appearance="primary"
-          icon={ExternalLinkIcon}
-          iconPosition="end"
-          link
-          disabled
-        >
-          Primary
-        </Button>
-        <Button
-          appearance="secondary"
-          icon={ExternalLinkIcon}
-          iconPosition="end"
-          link
-          disabled
-        >
-          Secondary
-        </Button>
-        <Button
-          appearance="danger"
-          icon={ExternalLinkIcon}
-          iconPosition="end"
-          link
-          disabled
-        >
-          Danger
-        </Button>
-      </div>
-    </div>
   </Story>
 </Preview>

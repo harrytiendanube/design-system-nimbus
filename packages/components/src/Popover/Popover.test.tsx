@@ -24,7 +24,7 @@ describe("<Popover />", () => {
       </Popover>,
     );
     expect(screen.getByRole("presentation")).toBeTruthy();
-    expect(screen.getByRole("button", { name: myLabel })).toBeTruthy();
+    expect(container.querySelector("a")).toBeTruthy();
     expect(container.querySelector("svg")).toBeTruthy();
     expect(screen.queryByRole("dialog")).toBeFalsy();
     expect(screen.queryByRole("heading", { name: myTitle })).toBeFalsy();
@@ -32,12 +32,12 @@ describe("<Popover />", () => {
   });
 
   it("render children when click button and hides when click again", () => {
-    render(
+    const { container } = render(
       <Popover name={myName} label={myLabel} title={myTitle} position="right">
         <Text>{myText}</Text>
       </Popover>,
     );
-    const element: HTMLElement = screen.getByRole("button", { name: myLabel });
+    const element: HTMLElement = container.querySelector("a") as HTMLElement;
     userEvent.click(element);
     expect(screen.getByRole("dialog")).toBeTruthy();
     expect(screen.getByRole("heading", { name: myTitle })).toBeTruthy();
@@ -49,12 +49,12 @@ describe("<Popover />", () => {
   });
 
   it("render children when click button and keep showing when click on children", () => {
-    render(
+    const { container } = render(
       <Popover name={myName} label={myLabel} title={myTitle}>
         <Text>{myText}</Text>
       </Popover>,
     );
-    const element: HTMLElement = screen.getByRole("button", { name: myLabel });
+    const element: HTMLElement = container.querySelector("a") as HTMLElement;
     userEvent.click(element);
     userEvent.click(screen.getByText(myText));
     expect(screen.getByRole("dialog")).toBeTruthy();
@@ -63,12 +63,12 @@ describe("<Popover />", () => {
   });
 
   it("render children without title when click button", () => {
-    render(
+    const { container } = render(
       <Popover name={myName} label={myLabel}>
         <Text>{myText}</Text>
       </Popover>,
     );
-    const element: HTMLElement = screen.getByRole("button", { name: myLabel });
+    const element: HTMLElement = container.querySelector("a") as HTMLElement;
     userEvent.click(element);
     expect(screen.getByRole("dialog")).toBeTruthy();
     expect(screen.queryByRole("heading", { name: myTitle })).toBeFalsy();
@@ -80,7 +80,7 @@ describe("<Popover />", () => {
     const myLabel2 = "myLabel2";
     const myTitle2 = "myTitle2";
     const myText2 = "myText2";
-    render(
+    const { container } = render(
       <>
         <Popover name={myName} label={myLabel} title={myTitle}>
           <Text>{myText}</Text>
@@ -94,26 +94,28 @@ describe("<Popover />", () => {
     expect(screen.queryByText(myText)).toBeFalsy();
     expect(screen.queryByText(myText2)).toBeFalsy();
     // click on first shows first and keep hide second
-    const element1: HTMLElement = screen.getByRole("button", { name: myLabel });
+    const element1: HTMLElement = container.querySelectorAll(
+      "a",
+    )[0] as HTMLElement;
     userEvent.click(element1);
     expect(screen.getByText(myText)).toBeTruthy();
     expect(screen.queryByText(myText2)).toBeFalsy();
     // click on second shows second and hides first
-    const element2: HTMLElement = screen.getByRole("button", {
-      name: myLabel2,
-    });
+    const element2: HTMLElement = container.querySelectorAll(
+      "a",
+    )[1] as HTMLElement;
     userEvent.click(element2);
     expect(screen.queryByText(myText)).toBeFalsy();
     expect(screen.getByText(myText2)).toBeTruthy();
   });
 
   it("render as a menu and position right", () => {
-    render(
+    const { container } = render(
       <Popover name={myName} title={myTitle} position="right" isMenu>
         <Text>{myText}</Text>
       </Popover>,
     );
-    const element: HTMLElement = screen.getByRole("button");
+    const element = container.querySelector("a") as HTMLElement;
     userEvent.click(element);
     expect(screen.getByRole("dialog")).toHaveClass(
       "nimbus--popover-wrapper position--right",

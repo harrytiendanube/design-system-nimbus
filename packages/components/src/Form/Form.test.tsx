@@ -8,8 +8,7 @@ import { Form, InputValidator } from "..";
 const myTextValidation = {
   email: "custom email validation message",
 };
-const myLink = "myLink";
-const myLinkTo = "https://www.myLink.com";
+const myLink = { children: "myLink", href: "https://www.myLink.com" };
 const myLabelUser = "myLabelUser";
 const myLabelAdmin = "myLabelAdmin";
 const myLabelEmail = "myLabelEmail";
@@ -30,7 +29,6 @@ describe("Form", () => {
         alertText="Error"
         alertAppearance="danger"
         link={myLink}
-        linkTo={myLinkTo}
         submitLabel={mySubmitLabel}
         onClickSubmit={handleSubmit}
         buttonLabel={myButtonLabel}
@@ -70,7 +68,7 @@ describe("Form", () => {
 
   it("Render Form", () => {
     expect(screen.getByRole("alert")).toBeTruthy();
-    expect(screen.getByRole("link", { name: myLink })).toBeTruthy();
+    expect(screen.getByRole("link", { name: myLink.children })).toBeTruthy();
     expect(screen.getByRole("button", { name: mySubmitLabel })).toBeTruthy();
     expect(screen.getByRole("button", { name: myButtonLabel })).toBeTruthy();
   });

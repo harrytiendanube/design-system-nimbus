@@ -92,24 +92,30 @@ TODO: complete
                 >
                   <ImageItem
                     thumbnail="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=943&q=80"
-                    link="Product"
-                    linkTo="https://www.tiendanube.com/"
-                    subtitle="Variant"
-                    description="1 x $3.500"
+                    link={{
+                      children: "Product",
+                      onClick: action("link.OnClick"),
+                    }}
+                    subtitle={{ children: "Variant" }}
+                    description={{ children: "1 x $3.500" }}
                   />
                   <ImageItem
                     thumbnail="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=943&q=80"
-                    link="Product"
-                    linkTo="https://www.tiendanube.com/"
-                    subtitle="Variant"
-                    description="2 x $3.500"
+                    link={{
+                      children: "Product",
+                      onClick: action("link.OnClick"),
+                    }}
+                    subtitle={{ children: "Variant" }}
+                    description={{ children: "1 x $3.500" }}
                   />
                   <ImageItem
                     thumbnail="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=943&q=80"
-                    link="Product"
-                    linkTo="https://www.tiendanube.com/"
-                    subtitle="Variant"
-                    description="3 x $3.500"
+                    link={{
+                      children: "Product",
+                      onClick: action("link.OnClick"),
+                    }}
+                    subtitle={{ children: "Variant" }}
+                    description={{ children: "1 x $3.500" }}
                   />
                 </Popover>
               </Table.Item>
@@ -336,24 +342,30 @@ TODO: complete
               >
                 <ImageItem
                   thumbnail="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=943&q=80"
-                  link={LOREM_STRESS}
-                  linkTo="https://www.tiendanube.com/"
-                  subtitle={LOREM_STRESS}
-                  description="1 x $3.500"
+                  link={{
+                    children: LOREM_STRESS,
+                    onClick: action("link.OnClick"),
+                  }}
+                  subtitle={{ children: LOREM_STRESS }}
+                  description={{ children: "1 x $3.500" }}
                 />
                 <ImageItem
                   thumbnail="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=943&q=80"
-                  link={LOREM_STRESS}
-                  linkTo="https://www.tiendanube.com/"
-                  subtitle={LOREM_STRESS}
-                  description="2 x $3.500"
+                  link={{
+                    children: LOREM_STRESS,
+                    onClick: action("link.OnClick"),
+                  }}
+                  subtitle={{ children: LOREM_STRESS }}
+                  description={{ children: "1 x $3.500" }}
                 />
                 <ImageItem
                   thumbnail="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=943&q=80"
-                  link={LOREM_STRESS}
-                  linkTo="https://www.tiendanube.com/"
-                  subtitle={LOREM_STRESS}
-                  description="3 x $3.500"
+                  link={{
+                    children: LOREM_STRESS,
+                    onClick: action("link.OnClick"),
+                  }}
+                  subtitle={{ children: LOREM_STRESS }}
+                  description={{ children: "1 x $3.500" }}
                 />
               </Popover>
             </Table.Item>
@@ -413,10 +425,12 @@ TODO: complete
             <Table.Item width={70}>
               <ImageItem
                 thumbnail="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=943&q=80"
-                link={text("link", "Product with a very long name")}
-                linkTo={text("linkTo", "https://www.tiendanube.com/")}
-                subtitle={text("subtitle", "Variant")}
-                description={text("description", "1 x $3.500")}
+                link={{
+                  children: text("link", "Product with a very long name"),
+                  onClick: action("link.OnClick"),
+                }}
+                subtitle={{ children: text("subtitle", "Variant") }}
+                description={{ children: text("description", "1 x $3.500") }}
               />
             </Table.Item>
             <Table.Item width={30}>
@@ -429,10 +443,12 @@ TODO: complete
             <Table.Item width={70}>
               <ImageItem
                 thumbnail="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=943&q=80"
-                link={text("link", "Product with a very long name")}
-                linkTo={text("linkTo", "https://www.tiendanube.com/")}
-                subtitle={text("subtitle", "Variant")}
-                description={text("description", "1 x $3.500")}
+                link={{
+                  children: text("link", "Product with a very long name"),
+                  onClick: action("link.OnClick"),
+                }}
+                subtitle={{ children: text("subtitle", "Variant") }}
+                description={{ children: text("description", "1 x $3.500") }}
               />
             </Table.Item>
             <Table.Item width={30}>

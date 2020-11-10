@@ -1,6 +1,7 @@
 import React from "react";
 
 import { screen, render } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { ExternalLinkIcon } from "@tiendanube/icons";
 import { Link } from "..";
 
@@ -9,6 +10,7 @@ const myTarget = "_blank";
 const myAppearance = "default";
 const myUnderline = false;
 const myIconPosition = "start";
+const myIconSize = "small";
 const myText = "myText";
 
 describe("<Link />", () => {
@@ -18,6 +20,7 @@ describe("<Link />", () => {
         href={myHref}
         icon={ExternalLinkIcon}
         iconPosition={myIconPosition}
+        iconSize={myIconSize}
         target={myTarget}
         appearance={myAppearance}
         underline={myUnderline}
@@ -67,5 +70,24 @@ describe("<Link />", () => {
     );
     expect(container.querySelector("i")).toHaveClass(`nimbus--link__icon--end`);
     expect(container.querySelector("svg")).toBeTruthy();
+  });
+
+  it("renders skeleton", () => {
+    const { container } = render(<Link.Skeleton />);
+    expect(container.querySelector(".nimbus--link-skeleton")).toBeTruthy();
+  });
+
+  it("calls onClick", () => {
+    const handleClick = jest.fn();
+    render(
+      <Link href={myHref} onClick={handleClick}>
+        {myText}
+      </Link>,
+    );
+    const element: HTMLElement = screen.getByRole("link", {
+      name: myText,
+    });
+    userEvent.click(element);
+    expect(handleClick).toHaveBeenCalled();
   });
 });

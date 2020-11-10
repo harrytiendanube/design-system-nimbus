@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import "./Form.css";
-import Link from "../Link";
+import Link, { InterfaceLink } from "../Link";
 import Button from "../Button";
 import Alert from "../Alert";
 
@@ -20,10 +20,8 @@ export interface InterfaceForm {
   alertAppearance?: "primary" | "secondary" | "danger" | "success" | "warning";
   /** React node of type children */
   children: React.ReactNode;
-  /** Link text */
-  link?: string;
-  /** Link href */
-  linkTo?: string;
+  /** Link */
+  link?: Pick<InterfaceLink, "children" | "href" | "onClick">;
   /** It renders submit button as disabled with spinner */
   submitting?: boolean;
   /** Submit button label when submitting */
@@ -50,7 +48,6 @@ function Form({
   alertAppearance = "danger",
   children,
   link,
-  linkTo,
   submitting,
   submitLabel,
   onClickSubmit,
@@ -60,7 +57,11 @@ function Form({
 }: InterfaceForm): JSX.Element {
   const { isSubmit, setFields, handleSubmit } = useForm();
 
-  const renderLink = link && linkTo && <Link href={linkTo}>{link}</Link>;
+  const renderLink = link && (
+    <Link href={link.href} onClick={link.onClick}>
+      {link.children}
+    </Link>
+  );
 
   const renderButton = onClickButton && buttonLabel && (
     <div className="nimbus--action-wrapper__item">

@@ -57,17 +57,6 @@ describe("<Button/>", () => {
     );
   });
 
-  it("renders as a link", () => {
-    render(
-      <Button link onClick={jest.fn()}>
-        {myText}
-      </Button>,
-    );
-    expect(screen.getByRole("button", { name: myText })).toHaveClass(
-      `nimbus--button nimbus--link--${myAppearance}`,
-    );
-  });
-
   it("renders with end position icon", () => {
     const { container } = render(
       <Button icon={ArrowRightIcon} iconPosition="end" onClick={jest.fn()}>
