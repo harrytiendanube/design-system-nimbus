@@ -42,6 +42,27 @@
       margin-bottom: $spacing-small;
     }
   }
+
+  .#{$prefix}--popover-menu {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    margin: -$spacing-x-small;
+
+    .#{$prefix}--link {
+      border-radius: $spacing-xx-small;
+      padding: $spacing-x-small;
+      width: 100%;
+
+      &.#{$prefix}--link--primary {
+        background-color: #edf5fe;
+
+        &:hover {
+          background-color: darken(#edf5fe, 1);
+        }
+      }
+    }
+  }
 }
 
 .#{$prefix}--popover-skeleton {

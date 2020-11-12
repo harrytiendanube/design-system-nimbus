@@ -115,7 +115,10 @@
           "resize",
           "unobserve",
           "Rect",
-          "spinbutton"
+          "spinbutton",
+          "instanceof",
+          "touchstart",
+          "toggler"
         ]
       }
     ]

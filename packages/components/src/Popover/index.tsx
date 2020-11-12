@@ -8,7 +8,7 @@ import {
   ChevronUpIcon,
   EllipsisIcon,
 } from "@tiendanube/icons";
-import { Title, Link } from "..";
+import { Title, Link, InterfaceLink } from "..";
 
 interface InterfacePopover {
   /** Name of the Popover */
@@ -18,9 +18,12 @@ interface InterfacePopover {
   /** Text of the Popover */
   title?: string;
   /** React node of type children */
-  children: React.ReactNode;
+  children?: React.ReactNode;
   /** Determines whether the initiator is a button or an icon */
-  isMenu?: boolean;
+  menu?: (
+    | Pick<InterfaceLink, "children" | "appearance" | "onClick" | "icon">
+    | "skeleton"
+  )[];
   /** Determines the position of the popover menu */
   position?: "left" | "right";
 }
@@ -30,7 +33,7 @@ function Popover({
   label,
   title,
   children,
-  isMenu,
+  menu,
   position = "left",
 }: InterfacePopover): JSX.Element {
   const [active, setActive] = React.useState(false);
@@ -50,9 +53,40 @@ function Popover({
       id={`nimbus-popover-wrapper-${name}`}
       className={className}
       role="dialog"
+      onTouchStart={(event) => {
+        event.stopPropagation();
+      }}
+      onClick={(event) => {
+        event.stopPropagation();
+      }}
     >
       {renderTitle}
-      <div className="nimbus--popover-body">{children}</div>
+      <div className="nimbus--popover-body">
+        {menu ? (
+          <ul className="nimbus--popover-menu">
+            {menu.map((option, index) =>
+              option !== "skeleton" ? (
+                <li key={index} className="nimbus--popover-menu__item">
+                  <Link
+                    onClick={() => {
+                      option.onClick?.();
+                      setActive(false);
+                    }}
+                    icon={option.icon}
+                    appearance={option.appearance}
+                  >
+                    {option.children}
+                  </Link>
+                </li>
+              ) : (
+                <Link.Skeleton key={index} />
+              ),
+            )}
+          </ul>
+        ) : (
+          children
+        )}
+      </div>
     </div>
   );
 
@@ -60,12 +94,40 @@ function Popover({
     setActive((currentActive) => !currentActive);
   };
 
+  const getTagFromEvent = (target: HTMLElement) =>
+    target.tagName.toLocaleLowerCase();
+
+  const handleClickOnDiv = (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+  ) => {
+    const tag = getTagFromEvent(event.target as HTMLElement);
+    if (tag === "div") setActive(() => false);
+  };
+
+  const handleTouchOnDiv = (event: React.TouchEvent<HTMLDivElement>) => {
+    switch (getTagFromEvent(event.target as HTMLElement)) {
+      case "div":
+        setActive(() => false);
+        break;
+      case "a":
+        event.stopPropagation();
+        break;
+      case "svg":
+        event.stopPropagation();
+        break;
+      default:
+    }
+  };
+
   const handleClickGlobal = React.useCallback(
     (event) => {
       let clickOnInside = false;
       let clickOnInitiator = false;
       event.composedPath().forEach((el: HTMLElement) => {
-        if (el.className === "nimbus--popover-wrapper") {
+        const currentClassName = el.className || "";
+        if (
+          currentClassName.toString().indexOf("nimbus--popover-wrapper") >= 0
+        ) {
           clickOnInside = true;
         }
         if (el.id === `nimbus-popover-initiator-${name}`) {
@@ -80,20 +142,29 @@ function Popover({
   );
 
   React.useEffect(() => {
-    document.addEventListener("click", handleClickGlobal, false);
+    if (active) {
+      document.addEventListener("click", handleClickGlobal, false);
+      document.addEventListener("touchstart", handleClickGlobal, false);
+    } else {
+      document.removeEventListener("click", handleClickGlobal, false);
+      document.removeEventListener("touchstart", handleClickGlobal, false);
+    }
     return () => {
       document.removeEventListener("click", handleClickGlobal, false);
+      document.removeEventListener("touchstart", handleClickGlobal, false);
     };
-  }, [handleClickGlobal]);
+  }, [active, handleClickGlobal]);
 
   return (
     <div
       id={`nimbus-popover-${name}`}
       className="nimbus--popover"
       role="presentation"
+      onClick={handleClickOnDiv}
+      onTouchStart={handleTouchOnDiv}
     >
       <div id={`nimbus-popover-initiator-${name}`}>
-        {isMenu ? (
+        {menu ? (
           <Link
             icon={EllipsisIcon}
             iconSize="medium"

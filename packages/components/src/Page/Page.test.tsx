@@ -174,9 +174,8 @@ describe("<Page/> on Mobile", () => {
 
     // Renders actions after button pressed
     userEvent.click(container.querySelectorAll("a")[1]);
-    expect(screen.getByRole("button", { name: myPrimaryAction.children }));
     expect(container.querySelectorAll("a").length).toEqual(
-      mySecondaryActions.length + 4, // 1 Previous Action + 1 Next Action + 1 Edit Action + 1 Menu Top right
+      mySecondaryActions.length + 5, // 1 PrimaryAction + 1 Previous Action + 1 Next Action + 1 Edit Action + 1 Menu Top right
     );
 
     const header = container.querySelector("#header");

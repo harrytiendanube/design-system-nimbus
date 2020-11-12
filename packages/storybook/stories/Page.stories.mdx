@@ -3,6 +3,8 @@ import { withKnobs, text, select } from "@storybook/addon-knobs";
 import { action } from "@storybook/addon-actions";
 import { withA11y } from "@storybook/addon-a11y";
 
+import { DownloadIcon, ListIcon, PlusCircleIcon } from "@tiendanube/icons";
+
 import { Page, Text } from "@tiendanube/components/src";
 
 import "../utils/style.css";
@@ -28,17 +30,20 @@ TODO: complete
         children: text("edit", "Edit"),
       }}
       primaryAction={{
-        onClick: action("onClickPrimaryAction"),
-        children: text("primary action", "Primary action"),
+        children: "Add a product",
+        icon: PlusCircleIcon,
+        onClick: action("primaryAction.OnClick"),
       }}
       secondaryActions={[
         {
-          children: text("secondary action 1", "Secondary action 1"),
-          onClick: action("onClickSecondaryAction1"),
+          children: "Organize products",
+          icon: DownloadIcon,
+          onClick: action("secondaryActions[0].OnClick"),
         },
         {
-          children: text("secondary action 2", "Secondary action 2"),
-          onClick: action("onClickSecondaryAction2"),
+          children: "Import and export from CSV",
+          icon: ListIcon,
+          onClick: action("secondaryActions[1].OnClick"),
         },
       ]}
       headerLabels={[
@@ -68,7 +73,6 @@ TODO: complete
         },
       ]}
     >
-      <Text block>Page content</Text>
       <Text block>Page content</Text>
       <Text block>Page content</Text>
       <Text block>Page content</Text>

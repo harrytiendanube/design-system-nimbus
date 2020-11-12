@@ -1,7 +1,9 @@
 import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
-import { withKnobs, select, text, boolean } from "@storybook/addon-knobs";
+import { withKnobs, select, text } from "@storybook/addon-knobs";
 import { action } from "@storybook/addon-actions";
 import { withA11y } from "@storybook/addon-a11y";
+
+import { DownloadIcon, ListIcon, PlusCircleIcon } from "@tiendanube/icons";
 
 import { Popover, ImageItem } from "@tiendanube/components/src";
 
@@ -19,7 +21,6 @@ TODO: complete
       name="120"
       label={text("label", "5 products")}
       title={text("title", "Order #120")}
-      isMenu={boolean("isMenu", false)}
       position={select("position", ["left", "right"])}
     >
       <ImageItem
@@ -41,6 +42,51 @@ TODO: complete
 ## Properties
 
 <Props of={Popover} />
+
+# Menu
+
+TODO: complete
+
+<Preview>
+  <Story name="menu" parameters={{ decorators: [withKnobs, withA11y] }}>
+    <Popover
+      name="120"
+      label={text("label", "5 products")}
+      menu={[
+        {
+          children: "Organize products",
+          icon: DownloadIcon,
+          onClick: action("menu[0].OnClick"),
+        },
+        {
+          children: "Import and export from CSV",
+          icon: ListIcon,
+          onClick: action("menu[1].OnClick"),
+        },
+        {
+          children: "Add a product",
+          icon: PlusCircleIcon,
+          onClick: action("menu[2].OnClick"),
+          appearance: "primary",
+        },
+      ]}
+      position={select("position", ["left", "right"])}
+    >
+      <ImageItem
+        thumbnail="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=943&q=80"
+        link={{ children: "Product", onClick: action("link.OnClick") }}
+        subtitle={{ children: "Variant" }}
+        description={{ children: "1 x $3.500" }}
+      />
+      <ImageItem
+        thumbnail="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=943&q=80"
+        link={{ children: "Product", onClick: action("link.OnClick") }}
+        subtitle={{ children: "Variant" }}
+        description={{ children: "1 x $3.500" }}
+      />
+    </Popover>
+  </Story>
+</Preview>
 
 # Skeleton
 

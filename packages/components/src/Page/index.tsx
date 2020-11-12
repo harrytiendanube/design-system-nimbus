@@ -95,6 +95,23 @@ function Page({
     </Stack.Item>
   ));
 
+  const menuSecondaryActions = (secondaryActions || []) as (
+    | Pick<InterfaceLink, "children" | "appearance" | "onClick" | "icon">
+    | "skeleton"
+  )[];
+
+  const menuPrimaryAction = primaryAction as
+    | Pick<InterfaceLink, "children" | "appearance" | "onClick" | "icon">
+    | "skeleton";
+
+  const menuPopover = [...menuSecondaryActions];
+
+  if (menuPrimaryAction) {
+    menuPopover.push(menuPrimaryAction);
+    if (menuPrimaryAction !== "skeleton")
+      menuPrimaryAction.appearance = "primary";
+  }
+
   const renderNavigation = (
     <div
       className={classNames("nimbus--page-navbar", {
@@ -135,14 +152,13 @@ function Page({
                 <Link onClick={editAction.onClick}>{editAction.children}</Link>
               </Stack.Item>
             )}
-            {(primaryAction || secondaryActions) && (
+            {menuPopover.length > 0 && (
               <Stack.Item>
-                <Popover isMenu name="dropdownMenu" position="right">
-                  <Stack column align="flex-start">
-                    {renderSecondaryActions}
-                    {renderPrimaryAction}
-                  </Stack>
-                </Popover>
+                <Popover
+                  menu={menuPopover}
+                  name="dropdownMenu"
+                  position="right"
+                />
               </Stack.Item>
             )}
           </Stack>

@@ -10,7 +10,6 @@ import {
 } from "@tiendanube/icons";
 import {
   Alert,
-  Button,
   Table,
   Link,
   Text,
@@ -55,13 +54,9 @@ TODO: complete
               <Table.Item width={60} rowTitle>
                 <Stack spacing="tight">
                   <Stack.Item>
-                    <Button
-                      appearance="primary"
-                      link
-                      onClick={action("clicked Link")}
-                    >
+                    <Link appearance="primary" onClick={action("clicked Link")}>
                       #{i}
-                    </Button>
+                    </Link>
                   </Stack.Item>
                   <Stack.Item>
                     <Tooltip
@@ -292,13 +287,9 @@ TODO: complete
             <Table.Item width={60} rowTitle>
               <Stack spacing="tight">
                 <Stack.Item>
-                  <Button
-                    appearance="primary"
-                    link
-                    onClick={action("clicked Link")}
-                  >
+                  <Link appearance="primary" onClick={action("clicked Link")}>
                     #{i}
-                  </Button>
+                  </Link>
                 </Stack.Item>
                 <Stack.Item>
                   <Tooltip
