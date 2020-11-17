@@ -10,7 +10,7 @@ import {
 } from "@tiendanube/icons";
 import { Title, Link, InterfaceLink } from "..";
 
-interface InterfacePopover {
+export interface InterfacePopover {
   /** Name of the Popover */
   name: string;
   /** Label of the Popover */
