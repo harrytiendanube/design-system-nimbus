@@ -9,14 +9,14 @@ $label-padding: (
 
 @mixin label-base {
   @include nimbus--type("text-label-tight");
+  align-items: center;
   background-color: transparent;
   border-radius: $spacing-small;
-  display: inline-block;
+  display: inline-flex;
   white-space: nowrap;
 
   svg {
     margin-right: $spacing-xx-small;
-    margin-top: -$spacing-xx-small;
   }
 
   &[type="button"] {

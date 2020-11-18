@@ -72,6 +72,13 @@
   );
 }
 
+.#{$prefix}--label__color-tag {
+  border-radius: $spacing-x-small;
+  height: $spacing-small;
+  margin-right: $spacing-xx-small;
+  width: $spacing-small;
+}
+
 .#{$prefix}--label-skeleton {
   @include label(transparent, transparent, transparent, transparent, "base");
   @include nimbus--skeleton($spacing-medium, 120px, 0, 0);

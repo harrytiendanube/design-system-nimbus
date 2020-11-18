@@ -1,3 +1,12 @@
+import {
+  CreditCardIcon,
+  CheckIcon,
+  ExclamationTriangleIcon,
+  ArchiveIcon,
+  BoxUnpackedIcon,
+  BoxPackedIcon,
+} from "@tiendanube/icons";
+
 export const LOREM_STRESS =
   // eslint-disable-next-line spellcheck/spell-checker
   "Lorem ipsum dolor sit amet, mei eu lobortis mnesarchum mediocritatem. Sea dictas legimus ad, quidam alterum conceptam eos et. Utroque pertinacia incorrupte vim in. Ius aeterno persius sapientem at, sit eu singulis signiferumque. Ut vis platonem assentior conclusionemque, melius deleniti interpretaris sea in. Case salutandi eu eam, diam imperdiet laboramus ad eos.";
@@ -16,6 +25,16 @@ export const IMAGE_APPEARANCES = [
   "warning",
   "danger",
   "light",
+];
+
+export const LABEL_APPEARANCES_ICONS = [
+  { appearance: "default", icon: ArchiveIcon },
+  { appearance: "primary", icon: BoxUnpackedIcon },
+  { appearance: "secondary", icon: BoxPackedIcon },
+  { appearance: "success", icon: ExclamationTriangleIcon },
+  { appearance: "warning", icon: CreditCardIcon },
+  { appearance: "danger", icon: CheckIcon },
+  { appearance: "transparent", icon: CheckIcon },
 ];
 
 export const STATUS_ORDER = [
