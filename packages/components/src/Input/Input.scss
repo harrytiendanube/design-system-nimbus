@@ -47,6 +47,52 @@
   width: 100%;
 }
 
+.#{$prefix}--input__container {
+  display: flex;
+  width: 100%;
+
+  .#{$prefix}--input__prepend,
+  .#{$prefix}--input__append {
+    @include nimbus--type("text-body");
+    background-color: $color-default;
+    border-color: $input-border-color;
+    border-style: solid;
+    color: $color-body-text;
+    flex: 0 0 auto;
+    padding: $spacing-x-small;
+  }
+
+  .#{$prefix}--input__prepend {
+    border-bottom-left-radius: $actions-border-radius;
+    border-top-left-radius: $actions-border-radius;
+    border-width: $input-border-width 0 $input-border-width $input-border-width;
+  }
+
+  .#{$prefix}--input__append {
+    border-bottom-right-radius: $actions-border-radius;
+    border-top-right-radius: $actions-border-radius;
+    border-width: $input-border-width $input-border-width $input-border-width 0;
+  }
+
+  .#{$prefix}--input {
+    flex: 1 1 auto;
+
+    &:not(:first-child) {
+      > .#{$prefix}--input__field {
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 0;
+      }
+    }
+
+    &:not(:last-child) {
+      > .#{$prefix}--input__field {
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+      }
+    }
+  }
+}
+
 .#{$prefix}--input {
   position: relative;
 

@@ -9,7 +9,7 @@ import {
 import { withA11y } from "@storybook/addon-a11y";
 import { action } from "@storybook/addon-actions";
 
-import { Input } from "@tiendanube/components/src";
+import { Input, Text } from "@tiendanube/components/src";
 import { ArrowRightIcon } from "@tiendanube/icons";
 import { LOREM_STRESS } from "./utils/constants";
 
@@ -49,6 +49,17 @@ TODO: complete
 ## Properties
 
 <Props of={Input.type} />
+<Text>
+  - Parameters <Text appearance="primary">prependIcon </Text> and{" "}
+  <Text appearance="primary"> prependLabel </Text> parameters are mutually
+  exclusive
+</Text>
+<Text>
+  - Parameters can not be used <Text appearance="primary">prependLabel</Text>,{" "}
+  <Text appearance="primary">appendLabel</Text>,{" "}
+  <Text appearance="primary">prependIcon</Text> with{" "}
+  <Text appearance="primary">type=&apos;search&apos;</Text>
+</Text>
 
 ## Type search
 
@@ -76,13 +87,44 @@ TODO: complete
   </Story>
 </Preview>
 
-## With prepend
+## With prepend icon
 
 <Preview withToolbar>
-  <Story name="with prepend">
+  <Story name="with prepend icon">
     <Input
       label="Label"
-      prepend={ArrowRightIcon}
+      prependIcon={ArrowRightIcon}
+      value=""
+      placeholder="placeholder"
+      name="name"
+    />
+  </Story>
+</Preview>
+
+## With prepend / append label
+
+<Preview withToolbar>
+  <Story name="with prepend / append label">
+    <Input
+      label="Label"
+      prependLabel={select("prependLabel", ["$", "R$", "U$S"], "$")}
+      appendLabel={select("appendLabel", ["cm", "kg"], "cm")}
+      value=""
+      placeholder="placeholder"
+      name="name"
+    />
+    <br />
+    <Input
+      label="Label"
+      prependLabel={select("prependLabel2", ["$", "R$", "U$S"], "U$S")}
+      value=""
+      placeholder="placeholder"
+      name="name"
+    />
+    <br />
+    <Input
+      label="Label"
+      appendLabel={select("appendLabel2", ["cm", "kg"], "kg")}
       value=""
       placeholder="placeholder"
       name="name"

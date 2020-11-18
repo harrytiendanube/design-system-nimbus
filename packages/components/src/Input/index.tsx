@@ -11,6 +11,7 @@ import {
 import { withValidator } from "../validator";
 import { InputTypes } from "../validator/interfaces";
 import { InterfaceNameValue } from "../common/interfaces";
+// import Text from "../Text";
 
 import "./Input.css";
 
@@ -35,7 +36,11 @@ export interface InterfaceInput {
    * Prepend a component to show at the start of the input. Icon Component
    * imported from @tiendanube/icons.
    */
-  prepend?: IconType;
+  prependIcon?: IconType;
+  /** Prepend label */
+  prependLabel?: string;
+  /** Append label */
+  appendLabel?: string;
   /** Indicates if input is valid */
   isValid?: boolean;
   /** Minimum count of inserted chars */
@@ -69,7 +74,9 @@ function Input({
   multiRows = false,
   rows = 1,
   focused = false,
-  prepend: Prepend,
+  prependIcon: PrependIcon,
+  prependLabel,
+  appendLabel,
   isValid = true,
   minLength = 0,
   maxLength = 50,
@@ -81,6 +88,17 @@ function Input({
   onBlur,
   onFocus,
 }: InterfaceInput): JSX.Element {
+  if (prependLabel && PrependIcon) {
+    throw new Error(
+      "You can not use parameters 'prependLabel' and 'prependIcon' simultaneously",
+    );
+  }
+  if ((prependLabel || appendLabel || PrependIcon) && type === "search") {
+    throw new Error(
+      "You can not use parameters 'prependLabel' or 'appendLabel' or 'prependIcon' with type='search'",
+    );
+  }
+
   const [inputValue, setInputValue] = React.useState(value);
 
   const handleChange = (
@@ -124,10 +142,17 @@ function Input({
     </label>
   );
 
-  const renderLeftIcon = (Prepend || type === "search") && (
+  const renderPrependLabel = prependLabel && (
+    <span className="nimbus--input__prepend">{prependLabel}</span>
+  );
+  const renderAppendLabel = appendLabel && (
+    <span className="nimbus--input__append">{appendLabel}</span>
+  );
+
+  const renderLeftIcon = (PrependIcon || type === "search") && (
     <span className="nimbus--input__prepend">
       {type === "search" && <SearchIcon />}
-      {type !== "search" && Prepend && <Prepend />}
+      {PrependIcon && <PrependIcon />}
     </span>
   );
 
@@ -165,9 +190,8 @@ function Input({
     else input.blur();
   }, [focused, multiRows]);
 
-  return (
-    <div className="nimbus--input-wrapper">
-      {renderLabel}
+  const inputField = (
+    <>
       <div className="nimbus--input">
         {multiRows ? (
           <textarea
@@ -212,6 +236,21 @@ function Input({
           </>
         )}
       </div>
+    </>
+  );
+
+  return (
+    <div className="nimbus--input-wrapper">
+      {renderLabel}
+      {renderPrependLabel || renderAppendLabel ? (
+        <div className="nimbus--input__container">
+          {renderPrependLabel}
+          {inputField}
+          {renderAppendLabel}
+        </div>
+      ) : (
+        inputField
+      )}
     </div>
   );
 }

@@ -26,7 +26,9 @@ const withValidation = (FieldComponent: React.FC<InterfaceInput>) =>
       multiRows,
       rows,
       focused,
-      prepend,
+      prependIcon,
+      prependLabel,
+      appendLabel,
       minLength,
       maxLength,
       pattern,
@@ -109,7 +111,9 @@ const withValidation = (FieldComponent: React.FC<InterfaceInput>) =>
           multiRows={multiRows}
           rows={rows}
           focused={focused}
-          prepend={prepend}
+          prependIcon={prependIcon}
+          prependLabel={prependLabel}
+          appendLabel={appendLabel}
           minLength={minLength}
           maxLength={maxLength}
           pattern={pattern}
