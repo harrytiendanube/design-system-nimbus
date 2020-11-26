@@ -123,3 +123,7 @@ export * from "./EmptySearch";
 // ImageGallery reference added
 export { default as ImageGallery } from "./ImageGallery";
 export * from "./ImageGallery";
+
+// Toast reference added
+export { default as Toast } from "./Toast";
+export * from "./Toast";

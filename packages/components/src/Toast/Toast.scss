@@ -1,0 +1,56 @@
+@import "../../styles/core";
+
+// Toast
+
+$situation-colors: (
+  primary: $color-primary,
+  secondary: $color-secondary,
+  success: $color-success,
+  warning: $color-warning,
+  danger: $color-danger,
+);
+
+@mixin nimbus--toast {
+  @each $name, $color in $situation-colors {
+    &--#{$name} {
+      background-color: $color;
+    }
+  }
+}
+
+.#{$prefix}--toast-wrapper {
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  padding: $spacing-medium;
+  position: absolute;
+  width: 100%;
+  z-index: 800;
+
+  &.is--visible {
+    .#{$prefix}--toast {
+      transform: translateY(0);
+    }
+  }
+}
+
+.#{$prefix}--toast {
+  @include nimbus--toast;
+  align-items: center;
+  border-radius: $spacing-x-small;
+  display: inline-flex;
+  padding: $spacing-x-small;
+  transform: translateY(200%);
+  transition: $motion-fast ease;
+
+  svg {
+    fill: $color-white;
+    margin-right: $spacing-x-small;
+  }
+
+  .#{$prefix}--text {
+    @include nimbus--text-trim(1);
+    color: $color-white;
+  }
+}
