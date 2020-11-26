@@ -120,6 +120,14 @@ export * from "./Timeline";
 export { default as EmptySearch } from "./EmptySearch";
 export * from "./EmptySearch";
 
+// InteractiveListPriv reference added
+export { default as InteractiveListPriv } from "./InteractiveListPriv";
+export * from "./InteractiveListPriv";
+
+// InteractiveList reference added
+export { default as InteractiveList } from "./InteractiveList";
+export * from "./InteractiveList";
+
 // ImageGallery reference added
 export { default as ImageGallery } from "./ImageGallery";
 export * from "./ImageGallery";

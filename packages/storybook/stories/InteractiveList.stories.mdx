@@ -1,0 +1,122 @@
+import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
+import { withKnobs, boolean } from "@storybook/addon-knobs";
+import { withA11y } from "@storybook/addon-a11y";
+import { action } from "@storybook/addon-actions";
+
+import { InteractiveList } from "@tiendanube/components/src";
+import "../utils/style.css";
+
+<Meta title="Components/InteractiveList" component={InteractiveList} />
+
+# InteractiveList
+
+TODO: complete
+
+<Preview>
+  <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
+    {() => {
+      const skeleton = boolean("skeleton", false);
+      return (
+        <InteractiveList
+          addItemLabel="Add a variant"
+          onClickAddItem={action("onClickAddItem")}
+          onChange={action("onChange")}
+          mode="action"
+          skeleton={skeleton}
+          options={[
+            {
+              title: "Color",
+              name: "color",
+              labels: [
+                { id: "1", label: "pink", colorTag: "#E68CFA" },
+                { id: "2", label: "black", colorTag: "#000000" },
+                { id: "3", label: "red", colorTag: "#ff0000" },
+                { id: "4", label: "blue", colorTag: "#027cdc" },
+                { id: "5", label: "gray", colorTag: "#f9f9f9" },
+                { id: "6", label: "light gray", colorTag: "#fafafa" },
+                { id: "7", label: "dark blue", colorTag: "#2c3357" },
+              ],
+            },
+            {
+              title: "Size",
+              name: "size",
+              labels: [
+                { id: "1", label: "S" },
+                { id: "2", label: "XS" },
+              ],
+            },
+            {
+              title: "Variant",
+              name: "variant",
+              description: "description",
+            },
+          ]}
+        />
+      );
+    }}
+  </Story>
+</Preview>
+
+## Properties InteractiveList
+
+<Props of={InteractiveList} />
+
+## Checkbox
+
+<Preview>
+  <Story name="checkbox" parameters={{ decorators: [withKnobs, withA11y] }}>
+    {() => {
+      const skeleton = boolean("skeleton", false);
+      return (
+        <InteractiveList
+          onChange={action("onChange")}
+          mode="multi"
+          skeleton={skeleton}
+          options={[
+            {
+              title: "Shirts",
+              name: "shirts",
+              active: true,
+            },
+            {
+              title: "Pants",
+              name: "pants",
+            },
+            {
+              title: "Shoes",
+              name: "shoes",
+            },
+          ]}
+        />
+      );
+    }}
+  </Story>
+</Preview>
+
+## Radio
+
+<Preview>
+  <Story name="radio" parameters={{ decorators: [withKnobs, withA11y] }}>
+    {() => {
+      const skeleton = boolean("skeleton", false);
+      return (
+        <InteractiveList
+          onChange={action("onChange")}
+          mode="single"
+          skeleton={skeleton}
+          options={[
+            {
+              title: "Limited",
+              name: "limited",
+              active: true,
+            },
+            {
+              title: "Unlimited",
+              name: "unlimited",
+            },
+          ]}
+        />
+      );
+    }}
+  </Story>
+</Preview>

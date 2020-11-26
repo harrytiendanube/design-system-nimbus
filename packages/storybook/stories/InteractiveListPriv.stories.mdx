@@ -1,0 +1,164 @@
+import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
+import { withKnobs, boolean } from "@storybook/addon-knobs";
+import { withA11y } from "@storybook/addon-a11y";
+import { action } from "@storybook/addon-actions";
+
+import { InteractiveListPriv, Text } from "@tiendanube/components/src";
+import "../utils/style.css";
+
+<Meta title="Components/InteractiveListPriv" component={InteractiveListPriv} />
+
+# InteractiveListPriv
+
+TODO: complete
+
+<Preview>
+  <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
+    {() => {
+      const skeleton = boolean("skeleton", false);
+      return (
+        <InteractiveListPriv
+          addItemLabel="Add a variant"
+          onClickAddItem={action("onClickAddItem")}
+          skeleton={skeleton}
+        >
+          <InteractiveListPriv.ActionItem
+            title="Color"
+            name="color"
+            labels={[
+              { id: "1", label: "pink", colorTag: "#E68CFA" },
+              { id: "2", label: "black", colorTag: "#000000" },
+              { id: "3", label: "red", colorTag: "#ff0000" },
+              { id: "4", label: "blue", colorTag: "#027cdc" },
+              { id: "5", label: "gray", colorTag: "#f9f9f9" },
+              { id: "6", label: "light gray", colorTag: "#fafafa" },
+              { id: "7", label: "dark blue", colorTag: "#2c3357" },
+            ]}
+            skeleton={skeleton}
+            onChange={action("onChange")}
+          />
+          <InteractiveListPriv.ActionItem
+            title="Size"
+            name="size"
+            labels={[
+              { id: "1", label: "S" },
+              { id: "2", label: "XS" },
+            ]}
+            onChange={action("onChange")}
+            skeleton={skeleton}
+          />
+          <InteractiveListPriv.ActionItem
+            title="Variant"
+            name="variant"
+            description="description"
+            onChange={action("onChange")}
+            skeleton={skeleton}
+          />
+        </InteractiveListPriv>
+      );
+    }}
+  </Story>
+</Preview>
+
+## Properties InteractiveListPriv
+
+<Props of={InteractiveListPriv} />
+
+## Properties InteractiveListPriv.ActionItem
+
+<Props of={InteractiveListPriv.ActionItem} />
+<Text>
+  - Parameters <Text appearance="primary">description </Text> and{" "}
+  <Text appearance="primary"> labels </Text> parameters are mutually exclusive
+</Text>
+
+## Checkbox
+
+<Preview withToolbar>
+  <Story name="checkbox" parameters={{ decorators: [withKnobs, withA11y] }}>
+    {() => {
+      const [checked, setChecked] = React.useState({
+        shirts: true,
+        pants: false,
+        shoes: false,
+      });
+      const handleChange = (event) => {
+        setChecked({ ...checked, [event.name]: event.checked });
+      };
+      const skeleton = boolean("skeleton", false);
+      return (
+        <InteractiveListPriv skeleton={skeleton}>
+          <InteractiveListPriv.CheckItem
+            title="Shirts"
+            name="shirts"
+            checked={checked.shirts}
+            skeleton={skeleton}
+            onChange={handleChange}
+          />
+          <InteractiveListPriv.CheckItem
+            title="Pants"
+            name="pants"
+            checked={checked.pants}
+            skeleton={skeleton}
+            onChange={handleChange}
+          />
+          <InteractiveListPriv.CheckItem
+            title="Shoes"
+            name="shoes"
+            checked={checked.shoes}
+            skeleton={skeleton}
+            onChange={handleChange}
+          />
+        </InteractiveListPriv>
+      );
+    }}
+  </Story>
+</Preview>
+
+## Properties InteractiveListPriv.CheckItem
+
+<Props of={InteractiveListPriv.CheckItem} />
+<Text>
+  - Parameters <Text appearance="primary">description </Text> and{" "}
+  <Text appearance="primary"> labels </Text> parameters are mutually exclusive
+</Text>
+
+## Radio
+
+<Preview withToolbar>
+  <Story name="radio" parameters={{ decorators: [withKnobs, withA11y] }}>
+    {() => {
+      const [value, setValue] = React.useState("limited");
+      const handleChange = (newValue) => {
+        setValue(newValue.name);
+      };
+      const skeleton = boolean("skeleton", false);
+      return (
+        <InteractiveListPriv>
+          <InteractiveListPriv.RadioItem
+            title="Limited"
+            value="limited"
+            checked={value === "limited"}
+            onChange={handleChange}
+            skeleton={skeleton}
+          />
+          <InteractiveListPriv.RadioItem
+            title="Unlimited"
+            value="unlimited"
+            checked={value === "unlimited"}
+            onChange={handleChange}
+            skeleton={skeleton}
+          />
+        </InteractiveListPriv>
+      );
+    }}
+  </Story>
+</Preview>
+
+## Properties InteractiveListPriv.RadioItem
+
+<Props of={InteractiveListPriv.RadioItem} />
+<Text>
+  - Parameters <Text appearance="primary">description </Text> and{" "}
+  <Text appearance="primary"> labels </Text> parameters are mutually exclusive
+</Text>
