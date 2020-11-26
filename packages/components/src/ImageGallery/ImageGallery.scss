@@ -1,0 +1,130 @@
+@import "../../styles/core";
+
+// Image Gallery
+
+$gallery-size: 88px;
+$gallery-border-width: 2px;
+
+.#{$prefix}--image-gallery__slider {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+
+  .#{$prefix}--image-gallery-skeleton {
+    @include nimbus--skeleton(
+      $height: $gallery-size,
+      $width: $gallery-size,
+      $vertical-margin: 0,
+      $horizontal-margin: 0
+    );
+    border-radius: $actions-border-radius;
+  }
+}
+
+.#{$prefix}--image-gallery__empty {
+  > .#{$prefix}--image-gallery__file-button {
+    background-color: transparent;
+    border: $gallery-border-width dashed $input-border-color;
+    border-radius: $actions-border-radius;
+    height: $gallery-size;
+    width: 100%;
+
+    svg {
+      fill: $color-secondary;
+    }
+
+    &.is--loading {
+      border-color: $color-default;
+    }
+  }
+}
+
+.#{$prefix}--image-gallery__spinner {
+  @include nimbus--spinner(
+    $spinner-color: $color-secondary,
+    $bg-color: #fafafa,
+    $size: "medium"
+  );
+}
+
+.#{$prefix}--image-gallery-item__wrapper {
+  border-radius: $actions-border-radius;
+  display: inline-block;
+  height: $gallery-size;
+  min-height: $gallery-size;
+  min-width: $gallery-size;
+  overflow: hidden;
+  position: relative;
+  width: $gallery-size;
+
+  &:not(:last-of-type) {
+    margin-right: $spacing-small;
+  }
+
+  > .#{$prefix}--image-gallery__file-button {
+    background-color: $color-default;
+    border: 0;
+    height: 100%;
+    width: 100%;
+
+    svg {
+      fill: $color-grey-35;
+    }
+  }
+}
+
+.#{$prefix}--image-gallery-item {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.#{$prefix}--image-gallery-item__delete {
+  appearance: none;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  padding: $spacing-x-small;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.#{$prefix}--image-gallery-item__delete-button {
+  background-color: $color-default;
+  border-radius: 100%;
+  display: block;
+  padding: $spacing-x-small;
+
+  svg {
+    fill: $color-primary;
+  }
+}
+
+.#{$prefix}--image-gallery__file-button {
+  align-items: center;
+  appearance: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  input[type="file"] {
+    display: none;
+  }
+
+  &.is--loading {
+    background-color: #fafafa;
+    cursor: not-allowed;
+  }
+}
+
+.#{$prefix}--image-gallery-skeleton {
+  @include nimbus--skeleton(
+    $height: $gallery-size,
+    $width: 100%,
+    $vertical-margin: 0,
+    $horizontal-margin: 0
+  );
+  border-radius: $actions-border-radius;
+}

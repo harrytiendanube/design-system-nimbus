@@ -17,6 +17,15 @@ export const LOREM =
 export const IMAGE_PRODUCT =
   "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=943&q=80";
 
+export const IMAGE_PRODUCT_2 =
+  "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3300&q=80";
+
+export const IMAGE_PRODUCT_3 =
+  "https://images.unsplash.com/photo-1491553895911-0055eca6402d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1400&q=80";
+
+export const IMAGE_PRODUCT_4 =
+  "https://images.unsplash.com/photo-1503602642458-232111445657?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80";
+
 export const IMAGE_APPEARANCES = [
   "default",
   "primary",

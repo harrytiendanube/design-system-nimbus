@@ -1,0 +1,119 @@
+import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
+import { withKnobs, text, boolean } from "@storybook/addon-knobs";
+import { action } from "@storybook/addon-actions";
+import { withA11y } from "@storybook/addon-a11y";
+
+import { ImageGallery } from "@tiendanube/components/src";
+import {
+  IMAGE_PRODUCT,
+  IMAGE_PRODUCT_2,
+  IMAGE_PRODUCT_3,
+} from "./utils/constants";
+
+import "../utils/style.css";
+
+<Meta title="Components/ImageGallery" component={ImageGallery} />
+
+# ImageGallery
+
+TODO: complete
+
+<Preview>
+  <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
+    {() => {
+      const skeleton = boolean("skeleton", false);
+      return (
+        <ImageGallery
+          name="image-gallery"
+          onAddImage={action("onAddImage")}
+          emptyLabel="Load your first picture"
+          loading={boolean("loading", false)}
+          skeleton={skeleton}
+        >
+          <ImageGallery.Item
+            onDelete={action("onDelete")}
+            src={IMAGE_PRODUCT}
+            skeleton={skeleton}
+          />
+          <ImageGallery.Item
+            onDelete={action("onDelete")}
+            src={IMAGE_PRODUCT_2}
+            skeleton={skeleton}
+          />
+          <ImageGallery.Item
+            onDelete={action("onDelete")}
+            src={IMAGE_PRODUCT_3}
+            skeleton={skeleton}
+          />
+        </ImageGallery>
+      );
+    }}
+  </Story>
+</Preview>
+
+## Properties
+
+<Props of={ImageGallery} />
+
+## Properties ImageGallery.Item
+
+<Props of={ImageGallery.Item} />
+
+## Empty State
+
+TODO: complete
+
+<Preview>
+  <Story name="empty state" parameters={{ decorators: [withKnobs, withA11y] }}>
+    <ImageGallery
+      name="image-gallery"
+      onAddImage={action("onAddImage")}
+      emptyLabel={text("emptyLabel", "Load your first picture")}
+      loading={boolean("loading", false)}
+      skeleton={boolean("skeleton", false)}
+    />
+  </Story>
+</Preview>
+
+## Test
+
+<Preview>
+  <Story name="test" parameters={{ decorators: [withKnobs, withA11y] }}>
+    {() => {
+      const [images, setImages] = React.useState([
+        IMAGE_PRODUCT,
+        IMAGE_PRODUCT_2,
+        IMAGE_PRODUCT_3,
+      ]);
+      const handleAddImage = (file) => {
+        setImages((currentImages) => [...currentImages, file.base64]);
+      };
+      const handleDelete = (index) => {
+        const filterImages = [...images];
+        filterImages.splice(index, 1);
+        setImages(filterImages);
+      };
+      const skeleton = boolean("skeleton", false);
+      return (
+        <>
+          <ImageGallery
+            name="image-gallery"
+            onAddImage={handleAddImage}
+            emptyLabel={text("emptyLabel", "Load your first picture")}
+            loading={boolean("loading", false)}
+            skeleton={skeleton}
+          >
+            {images.map((image, index) => (
+              <ImageGallery.Item
+                key={index}
+                onDelete={() => handleDelete(index)}
+                src={image}
+                skeleton={skeleton}
+              />
+            ))}
+          </ImageGallery>
+        </>
+      );
+    }}
+  </Story>
+</Preview>

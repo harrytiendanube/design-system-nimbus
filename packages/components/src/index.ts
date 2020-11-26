@@ -119,3 +119,7 @@ export * from "./Timeline";
 // EmptySearch reference added
 export { default as EmptySearch } from "./EmptySearch";
 export * from "./EmptySearch";
+
+// ImageGallery reference added
+export { default as ImageGallery } from "./ImageGallery";
+export * from "./ImageGallery";
