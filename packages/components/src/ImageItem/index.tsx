@@ -68,9 +68,9 @@ const Skeleton = () => (
   <div className="nimbus--image-item-skeleton">
     <div className="nimbus--image-item-skeleton__thumbnail" />
     <div className="nimbus--image-item-skeleton__info">
-      <div className="nimbus--image-item-skeleton__info-item" />
-      <div className="nimbus--image-item-skeleton__info-item" />
-      <div className="nimbus--image-item-skeleton__info-item" />
+      <Text.Skeleton width="large" />
+      <Text.Skeleton width="medium" />
+      <Text.Skeleton width="small" />
     </div>
   </div>
 );

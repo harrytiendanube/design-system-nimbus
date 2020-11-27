@@ -87,7 +87,13 @@ describe("<ImageItem />", () => {
       container.querySelector(".nimbus--image-item-skeleton__info"),
     ).toBeTruthy();
     expect(
-      container.querySelector(".nimbus--image-item-skeleton__info-item"),
+      container.querySelector(".nimbus--text-skeleton--large"),
+    ).toBeTruthy();
+    expect(
+      container.querySelector(".nimbus--text-skeleton--medium"),
+    ).toBeTruthy();
+    expect(
+      container.querySelector(".nimbus--text-skeleton--small"),
     ).toBeTruthy();
   });
 

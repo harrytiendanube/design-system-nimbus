@@ -79,7 +79,3 @@ $thumbnail-dimensions: 72px;
   flex-direction: column;
   width: 100%;
 }
-
-.#{$prefix}--image-item-skeleton__info-item {
-  @include nimbus--skeleton($spacing-small, 80px, $spacing-xx-small, 0);
-}
