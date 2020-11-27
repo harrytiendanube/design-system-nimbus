@@ -13,9 +13,9 @@ const myBackNavigation = {
 };
 const myPaginationPrevious = jest.fn();
 const myPaginationNext = jest.fn();
-const myEditAction = {
+const myHeaderAction = {
   onClick: jest.fn(),
-  children: "Edit action",
+  children: "Header action",
 };
 const myPrimaryAction = {
   onClick: jest.fn(),
@@ -50,7 +50,7 @@ describe("<Page /> on Desktop", () => {
         backNavigation={myBackNavigation}
         paginationPrevious={myPaginationPrevious}
         paginationNext={myPaginationNext}
-        editAction={myEditAction}
+        headerAction={myHeaderAction}
         primaryAction={myPrimaryAction}
         secondaryActions={mySecondaryActions}
         headerLabels={myHeaderLabels}
@@ -61,7 +61,7 @@ describe("<Page /> on Desktop", () => {
 
     expect(screen.getByRole("button", { name: myBackNavigation.children }));
     expect(
-      screen.queryByRole("button", { name: myEditAction.children }),
+      screen.queryByRole("button", { name: myHeaderAction.children }),
     ).toBeFalsy();
     expect(screen.getByRole("button", { name: myPrimaryAction.children }));
     expect(container.querySelectorAll("a").length).toEqual(
@@ -87,7 +87,7 @@ describe("<Page /> on Desktop", () => {
     ).toBeFalsy();
     expect(screen.queryByRole("button", { name: "" })).toBeFalsy();
     expect(
-      screen.queryByRole("button", { name: myEditAction.children }),
+      screen.queryByRole("button", { name: myHeaderAction.children }),
     ).toBeFalsy();
     expect(
       screen.queryByRole("button", { name: myPrimaryAction.children }),
@@ -108,7 +108,7 @@ describe("<Page /> on Desktop", () => {
         backNavigation={myBackNavigation}
         paginationPrevious={myPaginationPrevious}
         paginationNext={myPaginationNext}
-        editAction={myEditAction}
+        headerAction={myHeaderAction}
         primaryAction="skeleton"
         secondaryActions={["skeleton", "skeleton"]}
         headerLabels={["skeleton", "skeleton"]}
@@ -144,7 +144,7 @@ describe("<Page/> on Mobile", () => {
         backNavigation={myBackNavigation}
         paginationPrevious={myPaginationPrevious}
         paginationNext={myPaginationNext}
-        editAction={myEditAction}
+        headerAction={myHeaderAction}
         primaryAction={myPrimaryAction}
         secondaryActions={mySecondaryActions}
         headerLabels={myHeaderLabels}
@@ -162,7 +162,7 @@ describe("<Page/> on Mobile", () => {
     });
 
     // No actions renders before button pressed
-    expect(screen.getByText(myEditAction.children));
+    expect(screen.getByText(myHeaderAction.children));
     expect(
       screen.queryByRole("button", { name: myPrimaryAction.children }),
     ).toBeFalsy();
@@ -175,7 +175,7 @@ describe("<Page/> on Mobile", () => {
     // Renders actions after button pressed
     userEvent.click(container.querySelectorAll("a")[1]);
     expect(container.querySelectorAll("a").length).toEqual(
-      mySecondaryActions.length + 5, // 1 PrimaryAction + 1 Previous Action + 1 Next Action + 1 Edit Action + 1 Menu Top right
+      mySecondaryActions.length + 5, // 1 PrimaryAction + 1 Previous Action + 1 Next Action + 1 Header Action + 1 Menu Top right
     );
 
     const header = container.querySelector("#header");

@@ -33,8 +33,8 @@ export interface InterfacePage {
   paginationPrevious?: () => void;
   /** Defines whether the page has pagination to next */
   paginationNext?: () => void;
-  /** Edit action for the title section */
-  editAction?: Pick<InterfaceLink, "children" | "onClick">;
+  /** Header action for the title section */
+  headerAction?: Pick<InterfaceLink, "children" | "onClick" | "icon">;
   /** Primary action for the title section */
   primaryAction?:
     | Pick<InterfaceButton, "children" | "onClick" | "icon" | "iconPosition">
@@ -54,7 +54,7 @@ function Page({
   backNavigation,
   paginationPrevious,
   paginationNext,
-  editAction,
+  headerAction,
   primaryAction,
   secondaryActions,
   headerLabels,
@@ -147,9 +147,11 @@ function Page({
       <div className="nimbus--page-navbar__toolbar">
         <Responsive display="mobile">
           <Stack justify="flex-end" spacing="tight">
-            {editAction && (
+            {headerAction && (
               <Stack.Item>
-                <Link onClick={editAction.onClick}>{editAction.children}</Link>
+                <Link icon={headerAction.icon} onClick={headerAction.onClick}>
+                  {headerAction.children}
+                </Link>
               </Stack.Item>
             )}
             {menuPopover.length > 0 && (

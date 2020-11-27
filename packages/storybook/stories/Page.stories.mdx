@@ -1,9 +1,14 @@
 import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
-import { withKnobs, text, select } from "@storybook/addon-knobs";
+import { withKnobs, text, select, boolean } from "@storybook/addon-knobs";
 import { action } from "@storybook/addon-actions";
 import { withA11y } from "@storybook/addon-a11y";
 
-import { DownloadIcon, ListIcon, PlusCircleIcon } from "@tiendanube/icons";
+import {
+  DownloadIcon,
+  ListIcon,
+  PlusCircleIcon,
+  CheckCircleIcon,
+} from "@tiendanube/icons";
 
 import { Page, Text } from "@tiendanube/components/src";
 
@@ -25,31 +30,35 @@ TODO: complete
       }}
       paginationPrevious={action("paginationPrevious")}
       paginationNext={action("paginationNext")}
-      editAction={{
+      headerAction={{
         onClick: action("onClickEditAction"),
-        children: text("edit", "Edit"),
+        children: text("headerAction.children", "Edit"),
+        icon: boolean("headerAction.icon", true) ? CheckCircleIcon : null,
       }}
       primaryAction={{
-        children: "Add a product",
-        icon: PlusCircleIcon,
+        children: text("primaryAction.children", "Add a product"),
+        icon: boolean("primaryAction.icon", true) ? PlusCircleIcon : null,
         onClick: action("primaryAction.OnClick"),
       }}
       secondaryActions={[
         {
-          children: "Organize products",
-          icon: DownloadIcon,
+          children: text("secondaryActions[0].children", "Organize products"),
+          icon: boolean("secondaryActions[0].icon", true) ? DownloadIcon : null,
           onClick: action("secondaryActions[0].OnClick"),
         },
         {
-          children: "Import and export from CSV",
-          icon: ListIcon,
+          children: text(
+            "secondaryActions[1].children",
+            "Import and export from CSV",
+          ),
+          icon: boolean("secondaryActions[1].icon", true) ? ListIcon : null,
           onClick: action("secondaryActions[1].OnClick"),
         },
       ]}
       headerLabels={[
         {
-          id: text("label id 1", "label-id-1"),
-          appearance: select("label 1 appearance", [
+          id: "label-id-1",
+          appearance: select("headerLabels[0].appearance", [
             "default",
             "primary",
             "secondary",
@@ -57,11 +66,11 @@ TODO: complete
             "warning",
             "danger",
           ]),
-          label: text("label 1", "label 1"),
+          label: text("headerLabels[0].label", "label 1"),
         },
         {
-          id: text("label id 2", "label-id-2"),
-          appearance: select("label 2 appearance", [
+          id: "label-id-2",
+          appearance: select("headerLabels[1].appearance", [
             "default",
             "primary",
             "secondary",
@@ -69,7 +78,7 @@ TODO: complete
             "warning",
             "danger",
           ]),
-          label: text("label 2", "label 2"),
+          label: text("headerLabels[1].label", "label 2"),
         },
       ]}
     >
