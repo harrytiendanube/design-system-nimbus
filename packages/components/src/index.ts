@@ -135,3 +135,7 @@ export * from "./ImageGallery";
 // Toast reference added
 export { default as Toast } from "./Toast";
 export * from "./Toast";
+
+// Toast reference added
+export { default as ErrorState } from "./ErrorState";
+export * from "./ErrorState";

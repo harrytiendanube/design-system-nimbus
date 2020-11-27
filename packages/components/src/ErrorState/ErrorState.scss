@@ -1,0 +1,29 @@
+@import "../../styles/core";
+
+// EmptyState
+
+.#{$prefix}--error-state {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: $spacing-medium 0;
+
+  svg {
+    fill: $color-secondary;
+  }
+}
+
+.#{$prefix}--error-state__icon {
+  margin-bottom: $spacing-x-small;
+}
+
+.#{$prefix}--error-state__content {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: -$spacing-xx-small;
+
+  > * {
+    margin-top: $spacing-x-small;
+  }
+}
