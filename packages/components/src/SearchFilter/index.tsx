@@ -15,7 +15,7 @@ export interface InterfaceSearchFilter {
   /** Label text for filter button */
   label?: string;
   /** Number of results to show */
-  resultCount: string;
+  resultCount?: string;
   /** Applied filters visible */
   appliedFilters?: InterfaceIdLabel[];
   /** Callback on submitting search */
@@ -91,7 +91,7 @@ function SearchFilter({
         {renderFiltersButton}
       </div>
       <div className="nimbus--search-filters__results">
-        <Text>{resultCount}</Text>
+        {resultCount && <Text>{resultCount}</Text>}
         {renderFilters}
       </div>
     </div>
