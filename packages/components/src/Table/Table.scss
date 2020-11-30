@@ -91,7 +91,10 @@
 .#{$prefix}--table-wrapper--ruled {
   .#{$prefix}--table-row {
     border-bottom: 1px solid $color-default;
-    border-top: 1px solid $color-default;
+
+    &:first-child {
+      border-top: 1px solid $color-default;
+    }
   }
 }
 
