@@ -84,6 +84,8 @@ $gallery-border-width: 2px;
   background-color: transparent;
   border: 0;
   cursor: pointer;
+  margin-right: -$spacing-xx-small;
+  margin-top: -$spacing-xx-small;
   padding: $spacing-x-small;
   position: absolute;
   right: 0;
@@ -91,7 +93,7 @@ $gallery-border-width: 2px;
 }
 
 .#{$prefix}--image-gallery-item__delete-button {
-  background-color: $color-default;
+  background-color: rgba($color-default, 0.8);
   border-radius: 100%;
   display: block;
   padding: $spacing-x-small;
