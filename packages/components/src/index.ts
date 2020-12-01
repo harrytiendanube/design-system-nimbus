@@ -139,3 +139,7 @@ export * from "./Toast";
 // Toast reference added
 export { default as ErrorState } from "./ErrorState";
 export * from "./ErrorState";
+
+// StatePriv reference added
+export { default as StatePriv } from "./StatePriv";
+export * from "./StatePriv";

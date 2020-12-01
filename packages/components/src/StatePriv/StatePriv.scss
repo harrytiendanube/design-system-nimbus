@@ -2,7 +2,7 @@
 
 // EmptyState
 
-.#{$prefix}--empty-search {
+.#{$prefix}--state-priv {
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -13,11 +13,14 @@
   }
 }
 
-.#{$prefix}--empty-search__icon {
+.#{$prefix}--state-priv__icon {
   margin-bottom: $spacing-x-small;
 }
 
-.#{$prefix}--empty-search__content {
+.#{$prefix}--state-priv__content {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
   margin-top: -$spacing-xx-small;
 
   > * {
