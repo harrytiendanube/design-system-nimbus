@@ -13,7 +13,7 @@ const isRequired = (value: string, required: boolean): boolean =>
  * @param value
  */
 const isEmail = (value: string): boolean =>
-  /^([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_\-.]+).([a-zA-Z]{2,5})$/.test(value);
+  /^([a-zA-Z0-9_\-.+]+)@([a-zA-Z0-9_\-.]+).([a-zA-Z]{2,5})$/.test(value);
 
 /**
  * Validate the minimum string size

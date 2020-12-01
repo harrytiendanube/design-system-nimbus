@@ -27,6 +27,11 @@ export type InputTypes =
   | "email"
   | "search";
 
+  export type InputModes =
+  | "text"
+  | "decimal"
+;
+
 export interface InterfaceValidation {
   type?: InputTypes;
   minLength?: number;

@@ -23,6 +23,7 @@ const withValidation = (FieldComponent: React.FC<InterfaceInput>) =>
       label,
       value = INPUT_VALUE_DEFAULT,
       type,
+      inputMode,
       multiRows,
       rows,
       focused,
@@ -108,6 +109,7 @@ const withValidation = (FieldComponent: React.FC<InterfaceInput>) =>
           label={label}
           value={value}
           type={type}
+          inputMode={inputMode}
           multiRows={multiRows}
           rows={rows}
           focused={focused}

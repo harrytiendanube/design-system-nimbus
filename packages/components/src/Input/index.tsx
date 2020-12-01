@@ -9,7 +9,7 @@ import {
 } from "@tiendanube/icons";
 
 import { withValidator } from "../validator";
-import { InputTypes } from "../validator/interfaces";
+import { InputTypes, InputModes } from "../validator/interfaces";
 import { InterfaceNameValue } from "../common/interfaces";
 // import Text from "../Text";
 
@@ -26,6 +26,8 @@ export interface InterfaceInput {
   value?: string;
   /** Input type */
   type?: InputTypes;
+  /** Input mode */
+  inputMode?: InputModes;
   /** Set multiple rows format */
   multiRows?: boolean;
   /** Set the number of rows (Applies only when multiRows is true) */
@@ -71,6 +73,7 @@ function Input({
   label = "",
   value = "",
   type = "text",
+  inputMode,
   multiRows = false,
   rows = 1,
   focused = false,
@@ -199,6 +202,7 @@ function Input({
             id={`input_${name}`}
             ref={inputTextAreaRef}
             name={name}
+            inputMode={inputMode}
             value={inputValue}
             placeholder={placeholder}
             rows={rows}
@@ -218,6 +222,7 @@ function Input({
               id={`input_${name}`}
               name={name}
               type={type}
+              inputMode={inputMode}
               ref={inputRef}
               value={inputValue}
               placeholder={placeholder}

@@ -6,7 +6,7 @@
   display: block;
 
   .#{$prefix}--alert,
-  .#{$prefix}--input,
+  .#{$prefix}--input-wrapper,
   .#{$prefix}--link {
     margin-bottom: $spacing-small;
   }
@@ -33,7 +33,7 @@
 @include nimbus--breakpoint-up(md) {
   .#{$prefix}--form {
     .#{$prefix}--alert,
-    .#{$prefix}--input,
+    .#{$prefix}--input-wrapper,
     .#{$prefix}--link {
       margin-bottom: $spacing-medium;
     }
