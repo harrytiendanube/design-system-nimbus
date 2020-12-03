@@ -25,6 +25,17 @@ $heading-element: (
     ),
 ) !default;
 
+$text-featured: (
+  font-family: $font-family,
+  font-weight: map-get($nimbus--font-weights, "regular"),
+  font-size: nimbus--rem(map-get($nimbus--title-sizes, "h1")),
+  line-height:
+    nimbus--rem(
+      map-get($nimbus--title-sizes, "h1") *
+        map-get($nimbus--line-heights, "body")
+    ),
+) !default;
+
 $text-heading: (
   font-family: $font-family,
   font-weight: map-get($nimbus--font-weights, "bold"),
@@ -85,6 +96,7 @@ $text-button: (
 $nimbus--type-tokens: (
   heading-page: $heading-page,
   heading-element: $heading-element,
+  text-featured: $text-featured,
   text-heading: $text-heading,
   text-body: $text-body,
   text-label: $text-label,

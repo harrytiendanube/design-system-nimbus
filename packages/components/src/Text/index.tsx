@@ -9,7 +9,7 @@ export interface InterfaceText {
   /** Text to be displayed */
   children: React.ReactText;
   /** Size */
-  size?: "base" | "small";
+  size?: "featured" | "base" | "small";
   /** Defines if the text is to be rendered as a block element */
   block?: boolean;
   /** Text color */

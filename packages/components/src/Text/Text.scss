@@ -1,9 +1,53 @@
 @import "../../styles/core";
 
-// Links
+// Text
+
+$text-body-colors: (
+  default: $color-body-text,
+  primary: $color-primary,
+  secondary: $color-secondary,
+  success: $color-success,
+  warning: $color-warning,
+  danger: $color-danger,
+  light: $color-grey-60,
+);
+
+$text-background-colors: (
+  default: #fafafa,
+  primary: $color-primary-light,
+  secondary: $color-secondary-light,
+  success: $color-success-light,
+  warning: $color-warning-light,
+  danger: $color-danger-light,
+  light: $color-default,
+);
+
+@mixin nimbus--text-color {
+  @each $name, $color in $text-body-colors {
+    &--#{$name} {
+      color: $color;
+    }
+  }
+}
+
+@mixin nimbus--text-background {
+  @each $name, $color in $text-background-colors {
+    &--#{$name} {
+      background-color: $color;
+      border-radius: $actions-border-radius;
+      color: $color-body-text;
+      display: block;
+      padding: $spacing-x-small;
+    }
+  }
+}
 
 .#{$prefix}--text {
   display: inline-block;
+
+  &.#{$prefix}--text-size--featured {
+    @include nimbus--type("text-featured");
+  }
 
   &.#{$prefix}--text-size--base {
     @include nimbus--type("text-body");
@@ -33,68 +77,12 @@
     text-align: center;
   }
 
-  &.#{$prefix}--text-color--default {
-    color: $color-body-text;
+  &.#{$prefix}--text-color {
+    @include nimbus--text-color;
   }
 
-  &.#{$prefix}--text-color--primary {
-    color: $color-primary;
-  }
-
-  &.#{$prefix}--text-color--secondary {
-    color: $color-secondary;
-  }
-
-  &.#{$prefix}--text-color--success {
-    color: $color-success;
-  }
-
-  &.#{$prefix}--text-color--warning {
-    color: $color-warning;
-  }
-
-  &.#{$prefix}--text-color--danger {
-    color: $color-danger;
-  }
-
-  &.#{$prefix}--text-color--light {
-    color: $color-grey-60;
-  }
-
-  @mixin text-background($color) {
-    background-color: $color;
-    border-radius: $actions-border-radius;
-    color: $color-body-text;
-    display: block;
-    padding: $spacing-x-small;
-  }
-
-  &.#{$prefix}--text-background--default {
-    @include text-background(#fafafa);
-  }
-
-  &.#{$prefix}--text-background--primary {
-    @include text-background($color-primary-light);
-  }
-
-  &.#{$prefix}--text-background--secondary {
-    @include text-background($color-secondary-light);
-  }
-
-  &.#{$prefix}--text-background--success {
-    @include text-background($color-success-light);
-  }
-
-  &.#{$prefix}--text-background--warning {
-    @include text-background($color-warning-light);
-  }
-
-  &.#{$prefix}--text-background--danger {
-    @include text-background($color-danger-light);
-  }
-
-  &.#{$prefix}--text-background--light {
-    @include text-background($color-default);
+  &.#{$prefix}--text-background {
+    @include nimbus--text-background;
   }
 }
 
