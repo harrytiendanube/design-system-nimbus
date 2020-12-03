@@ -143,3 +143,7 @@ export * from "./ErrorState";
 // StatePriv reference added
 export { default as StatePriv } from "./StatePriv";
 export * from "./StatePriv";
+
+// Menu reference added
+export { default as Menu } from "./Menu";
+export * from "./Menu";

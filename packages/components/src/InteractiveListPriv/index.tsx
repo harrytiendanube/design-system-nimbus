@@ -24,7 +24,7 @@ export interface InterfaceInteractiveListPriv {
   /** Renders as skeleton */
   skeleton?: boolean;
   /** Add item onClick callback */
-  onClickAddItem: () => null;
+  onClickAddItem: () => void;
 }
 
 function InteractiveListPriv({

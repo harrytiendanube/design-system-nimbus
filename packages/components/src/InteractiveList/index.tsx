@@ -26,9 +26,9 @@ export interface InterfaceInteractiveList {
   /** Renders as skeleton */
   skeleton?: boolean;
   /** Add item onClick callback */
-  onClickAddItem: () => null;
+  onClickAddItem: () => void;
   /** OnChange callback */
-  onChange: (selected: string[]) => null;
+  onChange: (selected: string[]) => void;
 }
 
 function InteractiveList({

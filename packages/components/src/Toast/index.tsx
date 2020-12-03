@@ -18,7 +18,7 @@ export interface InterfaceToast {
   /** Appearance */
   appearance?: "primary" | "secondary" | "success" | "warning" | "danger";
   /** OnClose callback */
-  onClose: () => null;
+  onClose: () => void;
 }
 
 function Toast({

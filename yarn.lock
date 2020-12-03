@@ -3301,23 +3301,10 @@
   resolved "https://registry.yarnpkg.com/@tiendanube/eslint-config/-/eslint-config-0.3.1.tgz#c83b3c31b4fe187eca64cbcb4114523ead8c1333"
   integrity sha512-5wr7Wy1xmlv6JKs2p+CGd7CVD13S7plqSDzJ2/ZBNwttMnxFJliI0gNGhlrSsEI+e7PQdkDnqr9gwPuI17BJ1w==
 
-"@tiendanube/icons@0.1.5":
-  version "0.1.5"
-  resolved "https://registry.yarnpkg.com/@tiendanube/icons/-/icons-0.1.5.tgz#60073dd78d6f502dd8e56450b29207793fb01def"
-  integrity sha512-SHtGs4OH7DUNdj4kn13qGRx6vIQJrtqbyuerGxJRsuntJcTJKGH/zb5lk6CQ98FzKu3HAzzSeYXXT+oy0kbrUg==
-  dependencies:
-    cheerio "1.0.0-rc.3"
-    globby "11.0.1"
-    lodash.merge "4.6.2"
-    path "0.12.7"
-    svgo "1.3.2"
-    trim-newlines "3.0.0"
-    yargs "15.3.1"
-
-"@tiendanube/icons@0.1.6":
-  version "0.1.6"
-  resolved "https://registry.yarnpkg.com/@tiendanube/icons/-/icons-0.1.6.tgz#aa9469e3612030ff9edb4c11a9bd35fc9e77b59b"
-  integrity sha512-NJueJuBg4ZgL/gFhB9eBLBxsBhkt8OZM36aOt2kyVRWa+rV9PgTHRUuowunRFM7XgRZbg2H3OZ3or6aoZgNGIA==
+"@tiendanube/icons@0.1.7":
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/@tiendanube/icons/-/icons-0.1.7.tgz#2832cfa8ea65b2afb76f48fbee26fda84c57305e"
+  integrity sha512-QxxdwMnOZyP4vKtQevqFrvBChcfieQ3C4f1+npcE0m/i+M/PjgtavZcweVP//2IEGbzHW26+kiHZaI/3Qr6KCw==
   dependencies:
     cheerio "1.0.0-rc.3"
     globby "11.0.1"
