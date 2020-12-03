@@ -17,7 +17,6 @@ const InputComponent = (props: any) => (
     name="myName"
     autoCapitalize
     autoCorrect
-    isValid
     required
     minLength={5}
     maxLength={10}
@@ -42,7 +41,7 @@ describe("<Input />", () => {
     expect(screen.getByDisplayValue("myValue")).toBeTruthy();
     // Textbox does not render any button to clear input
     expect(screen.queryByRole("button")).toBeNull();
-    // Textbox does not render ExclamationCircleIcon when isValid
+    // Textbox does not render ExclamationCircleIcon when error is null
     expect(
       container.querySelector("span.nimbus--input__append"),
     ).not.toBeTruthy();
@@ -241,14 +240,14 @@ describe("<Input multiRows rows={3} autoCapitalize autoCorrect />", () => {
   });
 });
 
-describe("<Input isValid={false} />", () => {
+describe('<Input error="error" />', () => {
   it("render", () => {
     const { container } = setup({
-      props: { isValid: false },
+      props: { error: "error" },
     });
     expect(screen.getByRole("textbox")).toBeTruthy();
     expect(screen.getByPlaceholderText("myPlaceholder")).toBeTruthy();
-    // Render ExclamationCircleIcon when not isValid
+    // Render ExclamationCircleIcon when error is not null
     expect(container.querySelector("span.nimbus--input__append")).toBeTruthy();
     expect(container.querySelector("svg")).toBeTruthy();
   });

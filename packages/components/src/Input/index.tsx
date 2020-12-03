@@ -11,7 +11,7 @@ import {
 import { withValidator } from "../validator";
 import { InputTypes, InputModes } from "../validator/interfaces";
 import { InterfaceNameValue } from "../common/interfaces";
-// import Text from "../Text";
+import Text from "../Text";
 
 import "./Input.css";
 
@@ -43,8 +43,8 @@ export interface InterfaceInput {
   prependLabel?: string;
   /** Append label */
   appendLabel?: string;
-  /** Indicates if input is valid */
-  isValid?: boolean;
+  /** Error message */
+  error?: string;
   /** Minimum count of inserted chars */
   minLength?: number;
   /** Maximum count of inserted chars */
@@ -80,7 +80,7 @@ function Input({
   prependIcon: PrependIcon,
   prependLabel,
   appendLabel,
-  isValid = true,
+  error,
   minLength = 0,
   maxLength = 50,
   required = false,
@@ -170,7 +170,7 @@ function Input({
           <CloseIcon />
         </button>
       )}
-      {type !== "search" && !isValid && (
+      {type !== "search" && error && (
         <span className="nimbus--input__append">
           <ExclamationCircleIcon />
         </span>
@@ -244,8 +244,13 @@ function Input({
     </>
   );
 
+  const className = classNames(
+    "nimbus--input-wrapper",
+    { "nimbus--input-validation--error": error, }
+    );
+
   return (
-    <div className="nimbus--input-wrapper">
+    <div className={className}>
       {renderLabel}
       {renderPrependLabel || renderAppendLabel ? (
         <div className="nimbus--input__container">
@@ -256,6 +261,7 @@ function Input({
       ) : (
         inputField
       )}
+      {error && <Text block size="small" appearance="danger" textAlign="left">{error}</Text>}
     </div>
   );
 }

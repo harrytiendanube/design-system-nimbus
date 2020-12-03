@@ -37,9 +37,9 @@ TODO: complete
       multiRows={boolean("multiRows", false)}
       rows={number("rows", 1)}
       focused={boolean("focused", false)}
-      isValid={boolean("isValid", true)}
       autoCapitalize={boolean("autoCapitalize", false)}
       autoCorrect={boolean("autoCorrect", false)}
+      error={text("error", "")}
       name="name"
       onChange={action("onChange")}
     />
@@ -97,6 +97,7 @@ TODO: complete
       value=""
       placeholder="placeholder"
       name="name"
+      error={text("error", "")}
     />
   </Story>
 </Preview>
@@ -113,6 +114,7 @@ TODO: complete
       value=""
       placeholder="placeholder"
       name="name"
+      error={text("error", "")}
     />
     <br />
     <Input
@@ -122,6 +124,7 @@ TODO: complete
       value=""
       placeholder="placeholder"
       name="name"
+      error={text("error", "")}
     />
     <br />
     <Input
@@ -131,6 +134,7 @@ TODO: complete
       value=""
       placeholder="placeholder"
       name="name"
+      error={text("error", "")}
     />
   </Story>
 </Preview>

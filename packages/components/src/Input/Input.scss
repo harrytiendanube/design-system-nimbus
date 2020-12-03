@@ -3,12 +3,6 @@
 // Inputs
 
 .#{$prefix}--input-validation--error {
-  margin-bottom: $spacing-small;
-
-  @include nimbus--breakpoint(md) {
-    margin-bottom: $spacing-medium;
-  }
-
   .#{$prefix}--input {
     .#{$prefix}--input__append svg {
       fill: $color-danger;
@@ -29,13 +23,7 @@
   }
 
   .#{$prefix}--text {
-    color: $color-danger;
-    display: block;
-    margin-top: -$spacing-x-small;
-
-    @include nimbus--breakpoint(md) {
-      margin-top: -$spacing-small;
-    }
+    margin-top: $spacing-x-small;
   }
 }
 
@@ -100,6 +88,7 @@
   .#{$prefix}--input__append {
     appearance: none;
     background: none;
+    border-color: transparent;
     padding: $spacing-x-small;
     position: absolute;
     top: 50%;

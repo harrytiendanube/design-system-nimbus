@@ -4,7 +4,6 @@ import { ValidationsContext } from "./FormContext";
 import { InterfaceValidation } from "./interfaces";
 import { InterfaceInput } from "../Input";
 import { InterfaceNameValue } from "../common/interfaces";
-import { Text } from "..";
 
 const INPUT_VALUE_DEFAULT = "";
 
@@ -93,53 +92,36 @@ const withValidation = (FieldComponent: React.FC<InterfaceInput>) =>
       [textValidation],
     );
 
+    const error =
+      submitted && formFields[name] && showError(name, formFields[name].error)
+        ? showError(name, formFields[name].error)
+        : "";
     return (
-      <div
-        className={`${
-          submitted &&
-          formFields[name] &&
-          showError(name, formFields[name].error)
-            ? "nimbus--input-validation--error"
-            : "nimbus--input-validation"
-        }`}
-      >
-        <FieldComponent
-          name={name}
-          placeholder={placeholder}
-          label={label}
-          value={value}
-          type={type}
-          inputMode={inputMode}
-          multiRows={multiRows}
-          rows={rows}
-          focused={focused}
-          prependIcon={prependIcon}
-          prependLabel={prependLabel}
-          appendLabel={appendLabel}
-          minLength={minLength}
-          maxLength={maxLength}
-          pattern={pattern}
-          required={required}
-          autoCapitalize={autoCapitalize}
-          autoCorrect={autoCorrect}
-          onSubmit={onSubmit}
-          onFocus={onFocus}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          isValid={
-            !submitted ||
-            !formFields[name] ||
-            !showError(name, formFields[name].error)
-          }
-        />
-        {submitted &&
-          formFields[name] &&
-          showError(name, formFields[name].error) && (
-            <Text size="small">
-              {showError(name, formFields[name].error) || ""}
-            </Text>
-          )}
-      </div>
+      <FieldComponent
+        name={name}
+        placeholder={placeholder}
+        label={label}
+        value={value}
+        type={type}
+        inputMode={inputMode}
+        multiRows={multiRows}
+        rows={rows}
+        focused={focused}
+        prependIcon={prependIcon}
+        prependLabel={prependLabel}
+        appendLabel={appendLabel}
+        minLength={minLength}
+        maxLength={maxLength}
+        pattern={pattern}
+        required={required}
+        autoCapitalize={autoCapitalize}
+        autoCorrect={autoCorrect}
+        onSubmit={onSubmit}
+        onFocus={onFocus}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        error={error as string}
+      />
     );
   });
 
