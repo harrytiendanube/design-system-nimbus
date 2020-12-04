@@ -21,7 +21,10 @@ import "../utils/style.css";
 TODO: complete
 
 <Preview>
-  <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
+  <Story
+    name="default"
+    parameters={{ decorators: [withKnobs, withA11y], layout: "fullscreen" }}
+  >
     <Page
       title={text("title", "Title")}
       backNavigation={{
@@ -128,10 +131,18 @@ TODO: complete
 
 <Props of={Page} />
 
+<Text>
+  - Parameters <Text appearance="primary">backNavigation </Text> and{" "}
+  <Text appearance="primary"> menuNavigation </Text> are mutually exclusive
+</Text>
+
 # Skeleton
 
 <Preview>
-  <Story name="skeleton" parameters={{ decorators: [withKnobs, withA11y] }}>
+  <Story
+    name="skeleton"
+    parameters={{ decorators: [withKnobs, withA11y], layout: "fullscreen" }}
+  >
     <Page
       title="skeleton"
       backNavigation={{
@@ -154,15 +165,24 @@ TODO: complete
 TODO: complete
 
 <Preview>
-  <Story name="basic page" parameters={{ decorators: [withKnobs, withA11y] }}>
-    <Page title={text("title", "Title")}>
+  <Story
+    name="basic page"
+    parameters={{ decorators: [withKnobs, withA11y], layout: "fullscreen" }}
+  >
+    <Page
+      menuNavigation={action("onClickMenuNavigation")}
+      title={text("title", "Title")}
+    >
       <Text>Page content</Text>
     </Page>
   </Story>
 </Preview>
 
 <Preview>
-  <Story name="fixed header" parameters={{ decorators: [withKnobs, withA11y] }}>
+  <Story
+    name="fixed header"
+    parameters={{ decorators: [withKnobs, withA11y], layout: "fullscreen" }}
+  >
     <Page
       title={text("title", "Title")}
       backNavigation={{

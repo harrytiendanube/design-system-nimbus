@@ -6,6 +6,7 @@ import {
   ChevronLeftIcon,
   ArrowLeftIcon,
   ArrowRightIcon,
+  MenuIcon,
 } from "@tiendanube/icons";
 import classNames from "classnames";
 import Responsive from "../Responsive";
@@ -29,6 +30,8 @@ export interface InterfacePage {
   title: string;
   /** Navigation to previous screen */
   backNavigation?: Pick<InterfaceButton, "children" | "onClick">;
+  /** Navigation to hamburger menu */
+  menuNavigation?: () => void;
   /** Defines whether the page has pagination to previous */
   paginationPrevious?: () => void;
   /** Defines whether the page has pagination to next */
@@ -52,6 +55,7 @@ function Page({
   children,
   title,
   backNavigation,
+  menuNavigation,
   paginationPrevious,
   paginationNext,
   headerAction,
@@ -59,6 +63,12 @@ function Page({
   secondaryActions,
   headerLabels,
 }: InterfacePage): JSX.Element {
+  if (backNavigation && menuNavigation) {
+    throw new Error(
+      "You can not use parameters 'backNavigation' and 'menuNavigation' simultaneously",
+    );
+  }
+
   const [showTitle, setShowTitle] = React.useState(false);
 
   const renderPrimaryAction = primaryAction && (
@@ -127,6 +137,15 @@ function Page({
           >
             {backNavigation.children}
           </Button>
+        )}
+        {menuNavigation && (
+          <Responsive display="mobile">
+            <Button
+              onClick={menuNavigation}
+              icon={MenuIcon}
+              appearance="secondary"
+            />
+          </Responsive>
         )}
       </div>
       <Responsive display="mobile">
