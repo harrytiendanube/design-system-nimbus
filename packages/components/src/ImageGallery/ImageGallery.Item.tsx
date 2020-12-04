@@ -21,23 +21,31 @@ function Item({
 }: InterfaceImageGalleryItem): JSX.Element {
   return (
     <div className="nimbus--image-gallery-item__wrapper">
-      {skeleton ? (
-        <div className="nimbus--image-gallery-skeleton" />
-      ) : (
-        <>
-          <img src={src} alt={altText} className="nimbus--image-gallery-item" />
-          <button
-            aria-label="Delete image"
-            type="button"
-            onClick={onDelete}
-            className="nimbus--image-gallery-item__delete"
-          >
-            <span className="nimbus--image-gallery-item__delete-button">
-              <TrashIcon />
-            </span>
-          </button>
-        </>
-      )}
+      <div className="nimbus--image-gallery-item">
+        {skeleton ? (
+          <div className="nimbus--image-gallery-skeleton__wrapper">
+            <div className="nimbus--image-gallery-skeleton" />
+          </div>
+        ) : (
+          <>
+            <img
+              src={src}
+              alt={altText}
+              className="nimbus--image-gallery-item__image"
+            />
+            <button
+              aria-label="Delete image"
+              type="button"
+              onClick={onDelete}
+              className="nimbus--image-gallery-item__delete"
+            >
+              <span className="nimbus--image-gallery-item__delete-button">
+                <TrashIcon />
+              </span>
+            </button>
+          </>
+        )}
+      </div>
     </div>
   );
 }

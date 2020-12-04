@@ -87,29 +87,40 @@ function ImageGallery({
 
     return (
       <div className={className}>
-        <label htmlFor={id} className={fileInputClassName}>
-          <input
-            type="file"
-            id={id}
-            accept="image/*"
-            disabled={loading}
-            onChange={handleChange}
-          />
-          {spinner}
-        </label>
+        <div className="nimbus--image-gallery-item">
+          <label htmlFor={id} className={fileInputClassName}>
+            <input
+              type="file"
+              id={id}
+              accept="image/*"
+              disabled={loading}
+              onChange={handleChange}
+            />
+            {spinner}
+          </label>
+        </div>
       </div>
     );
   };
 
   const renderSkeletonItem = (
     <div className="nimbus--image-gallery-item__wrapper">
+      <div className="nimbus--image-gallery-item">
+        <div className="nimbus--image-gallery-skeleton__wrapper">
+          <div className="nimbus--image-gallery-skeleton" />
+        </div>
+      </div>
+    </div>
+  );
+  const renderSkeleton = (
+    <div className="nimbus--image-gallery__empty">
       <div className="nimbus--image-gallery-skeleton" />
     </div>
   );
-  const renderSkeleton = <div className="nimbus--image-gallery-skeleton" />;
 
   const renderChildren = (
-    <div className="nimbus--image-gallery__slider">
+    <div className="nimbus--image-gallery__row">
+      {children}
       {skeleton
         ? renderSkeletonItem
         : childrenCount < maxItems &&
@@ -117,7 +128,6 @@ function ImageGallery({
             renderSpinnerAdd,
             "nimbus--image-gallery-item__wrapper",
           )}
-      {children}
     </div>
   );
   const renderEmpty = skeleton

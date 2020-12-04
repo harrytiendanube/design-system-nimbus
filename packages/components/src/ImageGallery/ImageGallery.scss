@@ -2,40 +2,47 @@
 
 // Image Gallery
 
-$gallery-size: 88px;
+$gallery-size: 104px;
 $gallery-border-width: 2px;
 
-.#{$prefix}--image-gallery__slider {
+.#{$prefix}--image-gallery__row {
   display: flex;
-  flex-wrap: nowrap;
-  overflow-x: auto;
+  flex-wrap: wrap;
+  margin-left: -$spacing-xx-small;
+  margin-right: -$spacing-xx-small;
+  margin-top: -$spacing-x-small;
+}
+
+.#{$prefix}--image-gallery__empty {
+  > .#{$prefix}--image-gallery-item {
+    padding: 0;
+
+    > .#{$prefix}--image-gallery__file-button {
+      background-color: transparent;
+      border: $gallery-border-width dashed $input-border-color;
+      border-radius: $actions-border-radius;
+      height: $gallery-size;
+      position: static;
+      width: 100%;
+
+      /* stylelint-disable-next-line selector-max-compound-selectors */
+      svg {
+        fill: $color-secondary;
+      }
+
+      &.is--loading {
+        border-color: $color-default;
+      }
+    }
+  }
 
   .#{$prefix}--image-gallery-skeleton {
     @include nimbus--skeleton(
       $height: $gallery-size,
-      $width: $gallery-size,
+      $width: 100%,
       $vertical-margin: 0,
       $horizontal-margin: 0
     );
-    border-radius: $actions-border-radius;
-  }
-}
-
-.#{$prefix}--image-gallery__empty {
-  > .#{$prefix}--image-gallery__file-button {
-    background-color: transparent;
-    border: $gallery-border-width dashed $input-border-color;
-    border-radius: $actions-border-radius;
-    height: $gallery-size;
-    width: 100%;
-
-    svg {
-      fill: $color-secondary;
-    }
-
-    &.is--loading {
-      border-color: $color-default;
-    }
   }
 }
 
@@ -48,23 +55,33 @@ $gallery-border-width: 2px;
 }
 
 .#{$prefix}--image-gallery-item__wrapper {
-  border-radius: $actions-border-radius;
-  display: inline-block;
-  height: $gallery-size;
-  min-height: $gallery-size;
-  min-width: $gallery-size;
-  overflow: hidden;
-  position: relative;
-  width: $gallery-size;
+  flex: 0 0 percentage(1 / 3);
+  margin-top: $spacing-x-small;
+  padding-left: $spacing-xx-small;
+  padding-right: $spacing-xx-small;
+  width: percentage(1 / 3);
 
-  &:not(:last-of-type) {
-    margin-right: $spacing-small;
+  @include nimbus--breakpoint(400px) {
+    flex: 1 1 percentage(1 / 4);
+    max-height: $gallery-size;
+    max-width: $gallery-size;
+    width: percentage(1 / 4);
   }
+}
+
+.#{$prefix}--image-gallery-item {
+  border-radius: $actions-border-radius;
+  overflow: hidden;
+  padding-top: 100%;
+  position: relative;
 
   > .#{$prefix}--image-gallery__file-button {
     background-color: $color-default;
     border: 0;
     height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
     width: 100%;
 
     svg {
@@ -73,9 +90,12 @@ $gallery-border-width: 2px;
   }
 }
 
-.#{$prefix}--image-gallery-item {
+.#{$prefix}--image-gallery-item__image {
   height: 100%;
+  left: 0;
   object-fit: cover;
+  position: absolute;
+  top: 0;
   width: 100%;
 }
 
@@ -121,9 +141,18 @@ $gallery-border-width: 2px;
   }
 }
 
+.#{$prefix}--image-gallery-skeleton__wrapper {
+  display: block;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
 .#{$prefix}--image-gallery-skeleton {
   @include nimbus--skeleton(
-    $height: $gallery-size,
+    $height: 100%,
     $width: 100%,
     $vertical-margin: 0,
     $horizontal-margin: 0
