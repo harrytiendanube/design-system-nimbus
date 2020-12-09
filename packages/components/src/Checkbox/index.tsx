@@ -18,46 +18,38 @@ interface InterfaceCheckbox {
   onChange?(event: InterfaceNameChecked): void;
 }
 
-/**
- * @param name Name of the checkbox
- * @param label Text to be displayed in the label
- * @param checked Whether the checkbox is checked by default or not
- * @param disabled Indicates if the checkbox is disabled
- * @param onChange Event to be fired upon checking the checkbox
- */
-const Checkbox = React.memo(function Checkbox({
+function Checkbox({
   name,
   label,
   checked = false,
   disabled = false,
   onChange,
 }: InterfaceCheckbox): JSX.Element {
-  const handleChange = React.useCallback(
-    (event: React.ChangeEvent<HTMLInputElement>) => {
-      const target = event.target as HTMLInputElement;
-      onChange?.({ name: target.name, checked: target.checked });
-    },
-    [onChange],
-  );
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const target = event.target as HTMLInputElement;
+    onChange?.({ name: target.name, checked: target.checked });
+  };
 
-  const memorizedChecked = React.useMemo(
-    () =>
-      checked && (
-        <div className="nimbus--checkbox__check">
-          <CheckIcon />
-        </div>
-      ),
-    [checked],
+  const renderChecked = checked && (
+    <div className="nimbus--checkbox__check">
+      <CheckIcon />
+    </div>
   );
 
   const isIndeterminate = checked === "indeterminate";
   const isChecked = !isIndeterminate && Boolean(checked);
+
+  const inputRef = React.useRef<HTMLInputElement>(null);
+  React.useEffect(() => {
+    if (!isChecked) inputRef.current?.blur();
+  }, [isChecked]);
 
   return (
     <div className="nimbus--checkbox-wrapper">
       <input
         type="checkbox"
         id={`check_${name}`}
+        ref={inputRef}
         name={name}
         onChange={handleChange}
         value={name}
@@ -73,12 +65,10 @@ const Checkbox = React.memo(function Checkbox({
       >
         <span className="nimbus--text">{label}</span>
       </label>
-      {memorizedChecked}
+      {renderChecked}
     </div>
   );
-}) as React.NamedExoticComponent<InterfaceCheckbox> & {
-  Skeleton: typeof Skeleton;
-};
+}
 
 const Skeleton = () => <div className="nimbus--checkbox-skeleton" />;
 

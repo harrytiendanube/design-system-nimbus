@@ -29,10 +29,6 @@
       visibility: visible;
     }
 
-    &:hover + .#{$prefix}--checkbox-label::before {
-      border-color: $color-primary;
-    }
-
     &:disabled + .#{$prefix}--checkbox-label::before,
     &:hover:disabled + .#{$prefix}--checkbox-label::before,
     &:focus:disabled + .#{$prefix}--checkbox-label::before {
