@@ -125,4 +125,5 @@ $nimbus--type-tokens: (
   -webkit-line-clamp: $lines;
   overflow: hidden;
   text-overflow: ellipsis;
+  word-break: break-all;
 }
