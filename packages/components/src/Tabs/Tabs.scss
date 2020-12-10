@@ -1,0 +1,36 @@
+@import "../../styles/core";
+
+// Tabs
+
+.#{$prefix}--tabs {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+
+  .#{$prefix}--tab {
+    @include nimbus--type("text-body");
+    align-items: center;
+    appearance: none;
+    background-color: transparent;
+    border-color: $color-default;
+    border-style: none none solid;
+    border-width: 2px;
+    color: $color-body-text;
+    cursor: pointer;
+    display: flex;
+    flex: 1 1 auto;
+    justify-content: center;
+    padding: 0 $spacing-x-small $spacing-x-small;
+    text-align: center;
+    transition: $button-hover-delay ease;
+
+    &.#{$prefix}--tab--active {
+      border-color: $color-primary;
+      color: $color-primary;
+    }
+  }
+}
+
+.#{$prefix}--tabs-content {
+  padding-top: $spacing-small;
+}

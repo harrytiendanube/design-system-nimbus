@@ -147,3 +147,7 @@ export * from "./StatePriv";
 // Menu reference added
 export { default as Menu } from "./Menu";
 export * from "./Menu";
+
+// Tabs reference added
+export { default as Tabs } from "./Tabs";
+export * from "./Tabs";

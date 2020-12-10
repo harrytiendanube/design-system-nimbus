@@ -1,0 +1,43 @@
+import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
+import { withKnobs } from "@storybook/addon-knobs";
+import { withA11y } from "@storybook/addon-a11y";
+
+import { Tabs, Text } from "@tiendanube/components/src";
+import "../utils/style.css";
+
+<Meta title="Components/Tabs" component={Tabs} />
+
+# Tabs
+
+TODO: complete
+
+<Preview>
+  <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
+    {() => {
+      const [activeTab, setActiveTab] = React.useState(0);
+      const handleChangeTab = (index) => {
+        setActiveTab(index);
+      };
+      return (
+        <>
+          <Tabs activeTab={activeTab} onChange={handleChangeTab}>
+            <Tabs.Item label="Today">
+              <Text>This is content for Today</Text>
+            </Tabs.Item>
+            <Tabs.Item label="Yesterday">
+              <Text>This is content for Yesterday</Text>
+            </Tabs.Item>
+          </Tabs>
+        </>
+      );
+    }}
+  </Story>
+</Preview>
+
+## Properties Tabs
+
+<Props of={Tabs} />
+
+## Properties Tabs.Item
+
+<Props of={Tabs.Item.type} />

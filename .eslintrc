@@ -119,7 +119,9 @@
           "instanceof",
           "touchstart",
           "toggler",
-          "priv"
+          "priv",
+          "tablist",
+          "tabpanel"
         ]
       }
     ]
