@@ -23,15 +23,18 @@ import {
   Text,
 } from "..";
 
+export interface InterfaceHeaderNavigation {
+  type: "menu" | "back";
+  action: Pick<InterfaceButton, "children" | "onClick">;
+}
+
 export interface InterfacePage {
   /** Component to render in page content. */
   children: React.ReactNode;
   /** Title */
   title: string;
-  /** Navigation to previous screen */
-  backNavigation?: Pick<InterfaceButton, "children" | "onClick">;
-  /** Navigation to hamburger menu */
-  menuNavigation?: () => void;
+  /** Header left action */
+  headerNavigation?: InterfaceHeaderNavigation;
   /** Defines whether the page has pagination to previous */
   paginationPrevious?: () => void;
   /** Defines whether the page has pagination to next */
@@ -54,8 +57,7 @@ export interface InterfacePage {
 function Page({
   children,
   title,
-  backNavigation,
-  menuNavigation,
+  headerNavigation,
   paginationPrevious,
   paginationNext,
   headerAction,
@@ -63,12 +65,6 @@ function Page({
   secondaryActions,
   headerLabels,
 }: InterfacePage): JSX.Element {
-  if (backNavigation && menuNavigation) {
-    throw new Error(
-      "You can not use parameters 'backNavigation' and 'menuNavigation' simultaneously",
-    );
-  }
-
   const [showTitle, setShowTitle] = React.useState(false);
 
   const renderPrimaryAction = primaryAction && (
@@ -129,19 +125,19 @@ function Page({
       })}
     >
       <div className="nimbus--page-navbar__back">
-        {backNavigation && (
+        {headerNavigation?.type === "back" && (
           <Button
-            onClick={backNavigation.onClick}
+            onClick={headerNavigation.action.onClick}
             icon={ChevronLeftIcon}
             appearance="secondary"
           >
-            {backNavigation.children}
+            {headerNavigation.action.children}
           </Button>
         )}
-        {menuNavigation && (
+        {headerNavigation?.type === "menu" && (
           <Responsive display="mobile">
             <Button
-              onClick={menuNavigation}
+              onClick={headerNavigation.action.onClick}
               icon={MenuIcon}
               appearance="secondary"
             />

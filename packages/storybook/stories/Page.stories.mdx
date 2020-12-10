@@ -27,9 +27,12 @@ TODO: complete
   >
     <Page
       title={text("title", "Title")}
-      backNavigation={{
-        onClick: action("onClickBackNavigation"),
-        children: text("back", "Back"),
+      headerNavigation={{
+        type: "back",
+        action: {
+          onClick: action("headerNavigation.action.onClick"),
+          children: text("back", "Back"),
+        },
       }}
       paginationPrevious={action("paginationPrevious")}
       paginationNext={action("paginationNext")}
@@ -131,11 +134,6 @@ TODO: complete
 
 <Props of={Page} />
 
-<Text>
-  - Parameters <Text appearance="primary">backNavigation </Text> and{" "}
-  <Text appearance="primary"> menuNavigation </Text> are mutually exclusive
-</Text>
-
 # Skeleton
 
 <Preview>
@@ -145,9 +143,12 @@ TODO: complete
   >
     <Page
       title="skeleton"
-      backNavigation={{
-        onClick: action("onClickBackNavigation"),
-        children: text("back", "Back"),
+      headerNavigation={{
+        type: "back",
+        action: {
+          onClick: action("headerNavigation.action.onClick"),
+          children: text("back", "Back"),
+        },
       }}
       paginationPrevious={action("paginationPrevious")}
       paginationNext={action("paginationNext")}
@@ -170,13 +171,22 @@ TODO: complete
     parameters={{ decorators: [withKnobs, withA11y], layout: "fullscreen" }}
   >
     <Page
-      menuNavigation={action("onClickMenuNavigation")}
+      headerNavigation={{
+        type: "menu",
+        action: {
+          onClick: action("headerNavigation.action.onClick"),
+        },
+      }}
       title={text("title", "Title")}
     >
       <Text>Page content</Text>
     </Page>
   </Story>
 </Preview>
+
+## Fixed Header
+
+TODO: complete
 
 <Preview>
   <Story
@@ -185,9 +195,12 @@ TODO: complete
   >
     <Page
       title={text("title", "Title")}
-      backNavigation={{
-        onClick: action("onClickBackNavigation"),
-        children: text("back", "Back"),
+      headerNavigation={{
+        type: "back",
+        action: {
+          onClick: action("headerNavigation.action.onClick"),
+          children: text("back", "Back"),
+        },
       }}
       paginationPrevious={action("paginationPrevious")}
       paginationNext={action("paginationNext")}
