@@ -54,6 +54,8 @@ function Menu({ children, title, href, footer }: InterfaceMenu): JSX.Element {
             <a
               href={href}
               aria-label={title}
+              target="_blank"
+              rel="noreferrer"
               className="nimbus--menu-header__action"
             >
               <ExternalLinkIcon />

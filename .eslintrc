@@ -121,7 +121,8 @@
           "toggler",
           "priv",
           "tablist",
-          "tabpanel"
+          "tabpanel",
+          "noreferrer"
         ]
       }
     ]
