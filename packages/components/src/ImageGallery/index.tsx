@@ -37,6 +37,8 @@ function ImageGallery({
   skeleton,
   onAddImage,
 }: InterfaceImageGallery): JSX.Element {
+  const [value, setValue] = React.useState("");
+
   const convertBase64 = (file: Blob) => {
     return new Promise((resolve, reject) => {
       const fileReader = new FileReader();
@@ -50,13 +52,20 @@ function ImageGallery({
     });
   };
 
+  const handleClick = () => {
+    setValue("");
+  };
+
   const handleChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = (event.target.files && event.target.files[0]) as Blob;
-    const base64 = (await convertBase64(file)) as string;
-    // eslint-disable-next-line no-shadow
-    const { name, size, type } = (file as unknown) as InterfaceFileUpload;
-    onAddImage?.({ name, size, type, base64 });
+    if (file) {
+      const base64 = (await convertBase64(file)) as string;
+      // eslint-disable-next-line no-shadow
+      const { name, size, type } = (file as unknown) as InterfaceFileUpload;
+      onAddImage?.({ name, size, type, base64 });
+    }
   };
+
   const renderSpinnerEmpty = loading ? (
     <div className="nimbus--image-gallery__spinner" />
   ) : (
@@ -92,8 +101,10 @@ function ImageGallery({
             <input
               type="file"
               id={id}
+              value={value}
               accept="image/*"
               disabled={loading}
+              onClick={handleClick}
               onChange={handleChange}
             />
             {spinner}
