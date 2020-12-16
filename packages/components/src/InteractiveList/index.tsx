@@ -39,33 +39,26 @@ function InteractiveList({
   onClickAddItem,
   onChange,
 }: InterfaceInteractiveList): JSX.Element {
-  const activesInitial: { [key: string]: boolean } = {};
-  let radioInitial = "";
-  options.forEach((option) => {
-    activesInitial[option.name] = !!option.active;
-    if (!radioInitial && option.active) radioInitial = option.name;
-  });
-
-  const [actives, setActives] = React.useState(activesInitial); // State for CheckBoxes
-  const [active, setActive] = React.useState(radioInitial); // State for Radios
-
   const handleChangeAction = (event: InterfaceNameChecked) => {
-    const result = { name: event.name, checked: event.checked };
-    const newValues = [result.name];
-    onChange(newValues);
+    onChange([event.name]);
   };
 
   const handleChangeCheck = (event: InterfaceNameChecked) => {
-    const newActives = { ...actives, [event.name]: event.checked };
-    setActives(newActives);
-    const objectEntries = Object.entries(newActives);
-    onChange(
-      objectEntries.filter((entry) => entry[1]).map((entry) => entry[0]),
+    const newOptions = [...options];
+    const optionIndex = newOptions.findIndex(
+      (option) => option.name === event.name,
     );
+    newOptions[optionIndex] = {
+      ...newOptions[optionIndex],
+      active: event.checked,
+    };
+    const activeOptions = newOptions
+      .filter((option) => option.active)
+      .map((option) => option.name);
+    onChange(activeOptions);
   };
 
   const handleChangeRadio = (event: InterfaceNameChecked) => {
-    setActive(event.name);
     onChange([event.name]);
   };
 
@@ -92,7 +85,7 @@ function InteractiveList({
         name={option.name}
         description={option.description}
         labels={option.labels}
-        checked={actives[option.name]}
+        checked={option.active}
         skeleton={skeleton}
         onChange={handleChangeCheck}
       />
@@ -107,7 +100,7 @@ function InteractiveList({
         value={option.name}
         description={option.description}
         labels={option.labels}
-        checked={active === option.name}
+        checked={option.active}
         skeleton={skeleton}
         onChange={handleChangeRadio}
       />

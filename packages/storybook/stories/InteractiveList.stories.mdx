@@ -16,6 +16,35 @@ TODO: complete
   <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
     {() => {
       const skeleton = boolean("skeleton", false);
+      const optionsInitial = [
+        {
+          title: "Color",
+          name: "color",
+          labels: [
+            { id: "1", label: "pink", colorTag: "#E68CFA" },
+            { id: "2", label: "black", colorTag: "#000000" },
+            { id: "3", label: "red", colorTag: "#ff0000" },
+            { id: "4", label: "blue", colorTag: "#027cdc" },
+            { id: "5", label: "gray", colorTag: "#f9f9f9" },
+            { id: "6", label: "light gray", colorTag: "#fafafa" },
+            { id: "7", label: "dark blue", colorTag: "#2c3357" },
+          ],
+        },
+        {
+          title: "Size",
+          name: "size",
+          labels: [
+            { id: "1", label: "S" },
+            { id: "2", label: "XS" },
+          ],
+        },
+        {
+          title: "Variant",
+          name: "variant",
+          description: "description",
+        },
+      ];
+      const [options] = React.useState(optionsInitial);
       return (
         <InteractiveList
           addItemLabel="Add a variant"
@@ -23,34 +52,7 @@ TODO: complete
           onChange={action("onChange")}
           mode="action"
           skeleton={skeleton}
-          options={[
-            {
-              title: "Color",
-              name: "color",
-              labels: [
-                { id: "1", label: "pink", colorTag: "#E68CFA" },
-                { id: "2", label: "black", colorTag: "#000000" },
-                { id: "3", label: "red", colorTag: "#ff0000" },
-                { id: "4", label: "blue", colorTag: "#027cdc" },
-                { id: "5", label: "gray", colorTag: "#f9f9f9" },
-                { id: "6", label: "light gray", colorTag: "#fafafa" },
-                { id: "7", label: "dark blue", colorTag: "#2c3357" },
-              ],
-            },
-            {
-              title: "Size",
-              name: "size",
-              labels: [
-                { id: "1", label: "S" },
-                { id: "2", label: "XS" },
-              ],
-            },
-            {
-              title: "Variant",
-              name: "variant",
-              description: "description",
-            },
-          ]}
+          options={options}
         />
       );
     }}
@@ -67,26 +69,38 @@ TODO: complete
   <Story name="checkbox" parameters={{ decorators: [withKnobs, withA11y] }}>
     {() => {
       const skeleton = boolean("skeleton", false);
+      const optionsInitial = [
+        {
+          title: "Shirts",
+          name: "shirts",
+          active: true,
+        },
+        {
+          title: "Pants",
+          name: "pants",
+        },
+        {
+          title: "Shoes",
+          name: "shoes",
+        },
+      ];
+      const [options, setOptions] = React.useState(optionsInitial);
+      const handleChange = (selected) => {
+        action("onChange")(selected);
+        setOptions((currentOptions) => {
+          const newOptions = currentOptions.map((option) => ({
+            ...option,
+            active: selected.includes(option.name),
+          }));
+          return newOptions;
+        });
+      };
       return (
         <InteractiveList
-          onChange={action("onChange")}
+          onChange={handleChange}
           mode="multi"
           skeleton={skeleton}
-          options={[
-            {
-              title: "Shirts",
-              name: "shirts",
-              active: true,
-            },
-            {
-              title: "Pants",
-              name: "pants",
-            },
-            {
-              title: "Shoes",
-              name: "shoes",
-            },
-          ]}
+          options={options}
         />
       );
     }}
@@ -99,22 +113,34 @@ TODO: complete
   <Story name="radio" parameters={{ decorators: [withKnobs, withA11y] }}>
     {() => {
       const skeleton = boolean("skeleton", false);
+      const optionsInitial = [
+        {
+          title: "Limited",
+          name: "limited",
+          active: true,
+        },
+        {
+          title: "Unlimited",
+          name: "unlimited",
+        },
+      ];
+      const [options, setOptions] = React.useState(optionsInitial);
+      const handleChange = (selected) => {
+        action("onChange")(selected);
+        setOptions((currentOptions) => {
+          const newOptions = currentOptions.map((option) => ({
+            ...option,
+            active: selected[0] === option.name,
+          }));
+          return newOptions;
+        });
+      };
       return (
         <InteractiveList
-          onChange={action("onChange")}
+          onChange={handleChange}
           mode="single"
           skeleton={skeleton}
-          options={[
-            {
-              title: "Limited",
-              name: "limited",
-              active: true,
-            },
-            {
-              title: "Unlimited",
-              name: "unlimited",
-            },
-          ]}
+          options={options}
         />
       );
     }}
