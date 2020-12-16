@@ -122,7 +122,7 @@ describe("Form", () => {
 
     const button = screen.getByRole("button", { name: mySubmitLabel });
     userEvent.click(button);
-    expect(handleSubmit).toHaveBeenCalled();
+    expect(handleSubmit).not.toHaveBeenCalled();
   });
 
   it("calls onClickButton (cancel)", () => {

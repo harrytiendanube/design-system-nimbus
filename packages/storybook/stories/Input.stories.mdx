@@ -7,7 +7,6 @@ import {
   boolean,
 } from "@storybook/addon-knobs";
 import { withA11y } from "@storybook/addon-a11y";
-import { action } from "@storybook/addon-actions";
 
 import { Input, Text } from "@tiendanube/components/src";
 import { ArrowRightIcon } from "@tiendanube/icons";
@@ -23,26 +22,33 @@ TODO: complete
 
 <Preview>
   <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
-    <Input
-      type={select("type", [
-        "text",
-        "tel",
-        "number",
-        "password",
-        "email",
-        "search",
-      ])}
-      label={text("label", "Label")}
-      placeholder={text("placeholder", "placeholder")}
-      multiRows={boolean("multiRows", false)}
-      rows={number("rows", 1)}
-      focused={boolean("focused", false)}
-      autoCapitalize={boolean("autoCapitalize", false)}
-      autoCorrect={boolean("autoCorrect", false)}
-      error={text("error", "")}
-      name="name"
-      onChange={action("onChange")}
-    />
+    {() => {
+      const [value, setValue] = React.useState("");
+      return (
+        <Input
+          type={select("type", [
+            "text",
+            "tel",
+            "number",
+            "password",
+            "email",
+            "search",
+          ])}
+          value={value}
+          label={text("label", "Label")}
+          placeholder={text("placeholder", "placeholder")}
+          multiRows={boolean("multiRows", false)}
+          rows={number("rows", 1)}
+          focused={boolean("focused", false)}
+          autoCapitalize={boolean("autoCapitalize", false)}
+          autoCorrect={boolean("autoCorrect", false)}
+          error={text("error", "")}
+          name="name"
+          onChange={(e) => setValue(e.value)}
+          disabled={boolean("disabled", false)}
+        />
+      );
+    }}
   </Story>
 </Preview>
 
@@ -69,18 +75,14 @@ TODO: complete
   <Story name="type search" parameters={{ decorators: [withKnobs, withA11y] }}>
     {() => {
       const [value, setValue] = React.useState("");
-      const handleChange = (e) => setValue(e.value);
-      const handleSubmit = (e) => {
-        setValue(e.value);
-      };
       return (
         <Input
           type="search"
           placeholder="placeholder"
           name="name"
           value={value}
-          onChange={handleChange}
-          onSubmit={handleSubmit}
+          onChange={(e) => setValue(e.value)}
+          onSubmit={() => setValue("")}
         />
       );
     }}
@@ -91,14 +93,20 @@ TODO: complete
 
 <Preview withToolbar>
   <Story name="with prepend icon">
-    <Input
-      label="Label"
-      prependIcon={ArrowRightIcon}
-      value=""
-      placeholder="placeholder"
-      name="name"
-      error={text("error", "")}
-    />
+    {() => {
+      const [value, setValue] = React.useState("");
+      return (
+        <Input
+          label="Label"
+          prependIcon={ArrowRightIcon}
+          value={value}
+          placeholder="placeholder"
+          name="name"
+          error={text("error", "")}
+          onChange={(e) => setValue(e.value)}
+        />
+      );
+    }}
   </Story>
 </Preview>
 
@@ -106,36 +114,56 @@ TODO: complete
 
 <Preview withToolbar>
   <Story name="with prepend / append label">
-    <Input
-      label="Label"
-      prependLabel={select("prependLabel", ["$", "R$", "U$S"], "$")}
-      appendLabel={select("appendLabel", ["cm", "kg"], "cm")}
-      inputMode="decimal"
-      value=""
-      placeholder="placeholder"
-      name="name"
-      error={text("error", "")}
-    />
-    <br />
-    <Input
-      label="Label"
-      prependLabel={select("prependLabel2", ["$", "R$", "U$S"], "U$S")}
-      inputMode="decimal"
-      value=""
-      placeholder="placeholder"
-      name="name"
-      error={text("error", "")}
-    />
-    <br />
-    <Input
-      label="Label"
-      appendLabel={select("appendLabel2", ["cm", "kg"], "kg")}
-      inputMode="decimal"
-      value=""
-      placeholder="placeholder"
-      name="name"
-      error={text("error", "")}
-    />
+    {() => {
+      const [values, setValues] = React.useState({ a: "", b: "", c: "" });
+      const handleChange = (event) => {
+        const { name, value } = event;
+        setValues((prevState) => ({
+          ...prevState,
+          [name]: value,
+        }));
+      };
+      return (
+        <>
+          <Input
+            label="Label"
+            prependLabel={select("prependLabel", ["$", "R$", "U$S"], "$")}
+            appendLabel={select("appendLabel", ["cm", "kg"], "cm")}
+            inputMode="decimal"
+            value={values.a}
+            placeholder="placeholder"
+            name="a"
+            error={text("error", "")}
+            onChange={handleChange}
+            disabled={boolean("disabled", false)}
+          />
+          <br />
+          <Input
+            label="Label"
+            prependLabel={select("prependLabel2", ["$", "R$", "U$S"], "U$S")}
+            inputMode="decimal"
+            value={values.b}
+            placeholder="placeholder"
+            name="b"
+            error={text("error", "")}
+            onChange={handleChange}
+            disabled={boolean("disabled", false)}
+          />
+          <br />
+          <Input
+            label="Label"
+            appendLabel={select("appendLabel2", ["cm", "kg"], "kg")}
+            inputMode="decimal"
+            value={values.c}
+            placeholder="placeholder"
+            name="c"
+            error={text("error", "")}
+            onChange={handleChange}
+            disabled={boolean("disabled", false)}
+          />
+        </>
+      );
+    }}
   </Story>
 </Preview>
 
@@ -145,11 +173,17 @@ TODO: complete
 
 <Preview withToolbar>
   <Story name="stressed">
-    <Input
-      label={LOREM_STRESS}
-      value=""
-      name="name"
-      placeholder="placeholder"
-    />
+    {() => {
+      const [value, setValue] = React.useState("");
+      return (
+        <Input
+          label={LOREM_STRESS}
+          value={value}
+          name="name"
+          placeholder="placeholder"
+          onChange={(e) => setValue(e.value)}
+        />
+      );
+    }}
   </Story>
 </Preview>

@@ -59,7 +59,7 @@ describe("<Input />", () => {
 
   it("calls onBlur", () => {
     const handleBlur = (event: InterfaceNameValue) => {
-      expect(event.value).toBe("myNewValue");
+      expect(event.value).toBe("");
     };
     setup({ props: { value: "", onBlur: handleBlur } });
     const element: HTMLElement = screen.getByRole("textbox");

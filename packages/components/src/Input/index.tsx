@@ -57,6 +57,8 @@ export interface InterfaceInput {
   autoCapitalize?: boolean;
   /** Controls if text input is automatically corrected */
   autoCorrect?: boolean;
+  /** Determines whether the input is disabled */
+  disabled?: boolean;
   /** OnChange callback function */
   onChange?: (event: InterfaceNameValue) => void;
   /** OnSubmit callback function */
@@ -86,6 +88,7 @@ function Input({
   required = false,
   autoCapitalize = false,
   autoCorrect = false,
+  disabled = false,
   onChange,
   onSubmit,
   onBlur,
@@ -102,13 +105,10 @@ function Input({
     );
   }
 
-  const [inputValue, setInputValue] = React.useState(value);
-
   const handleChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { target } = event;
-    setInputValue(target.value);
     onChange?.({ name: target.name, value: target.value });
   };
 
@@ -130,13 +130,11 @@ function Input({
     if (e.key === "Enter" && type === "search") {
       e.preventDefault();
       onSubmit?.({ name, value });
-      setInputValue("");
     }
   };
 
   const handleClose = () => {
     onSubmit?.({ name, value: "" });
-    setInputValue("");
   };
 
   const renderLabel = type !== "search" && (
@@ -203,7 +201,7 @@ function Input({
             ref={inputTextAreaRef}
             name={name}
             inputMode={inputMode}
-            value={inputValue}
+            value={value}
             placeholder={placeholder}
             rows={rows}
             autoCapitalize={autoCapitalize ? "on" : "off"}
@@ -214,6 +212,7 @@ function Input({
             minLength={minLength}
             maxLength={maxLength}
             required={required}
+            disabled={disabled}
           />
         ) : (
           <>
@@ -224,7 +223,7 @@ function Input({
               type={type}
               inputMode={inputMode}
               ref={inputRef}
-              value={inputValue}
+              value={value}
               placeholder={placeholder}
               autoCapitalize={autoCapitalize ? "on" : "off"}
               autoCorrect={autoCorrect ? "on" : "off"}
@@ -235,6 +234,7 @@ function Input({
               minLength={minLength}
               maxLength={maxLength}
               required={required}
+              disabled={disabled}
             />
             {renderLeftIcon}
             {renderRightIcon}
@@ -246,6 +246,7 @@ function Input({
 
   const className = classNames("nimbus--input-wrapper", {
     "nimbus--input-validation--error": error,
+    "nimbus--input--disabled": disabled,
   });
 
   return (
