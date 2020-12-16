@@ -16,11 +16,15 @@ describe("<Modal />", () => {
       <Modal
         show={myShow}
         title={myTitle}
-        primaryActionLabel={myPAL}
-        secondaryActionLabel={mySAL}
+        primaryAction={{
+          children: myPAL,
+          onClick: jest.fn,
+        }}
+        secondaryAction={{
+          children: mySAL,
+          onClick: jest.fn,
+        }}
         onDismiss={jest.fn}
-        onClickPrimary={jest.fn}
-        onClickSecondary={jest.fn}
       >
         <Text>{myTextModal}</Text>
       </Modal>,
@@ -40,11 +44,15 @@ describe("<Modal />", () => {
       <Modal
         show={false}
         title={myTitle}
-        primaryActionLabel={myPAL}
-        secondaryActionLabel={mySAL}
+        primaryAction={{
+          children: myPAL,
+          onClick: jest.fn,
+        }}
+        secondaryAction={{
+          children: mySAL,
+          onClick: jest.fn,
+        }}
         onDismiss={jest.fn}
-        onClickPrimary={jest.fn}
-        onClickSecondary={jest.fn}
       >
         <Text>{myTextModal}</Text>
       </Modal>,
@@ -76,8 +84,10 @@ describe("<Modal />", () => {
       <Modal
         show={myShow}
         title={myTitle}
-        primaryActionLabel={myPAL}
-        onClickPrimary={handleClick}
+        primaryAction={{
+          children: myPAL,
+          onClick: handleClick,
+        }}
       >
         <Text>{myTextModal}</Text>
       </Modal>,
@@ -92,8 +102,10 @@ describe("<Modal />", () => {
       <Modal
         show={myShow}
         title={myTitle}
-        secondaryActionLabel={mySAL}
-        onClickSecondary={handleClick}
+        secondaryAction={{
+          children: mySAL,
+          onClick: handleClick,
+        }}
       >
         <Text>{myTextModal}</Text>
       </Modal>,

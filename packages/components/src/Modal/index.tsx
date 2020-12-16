@@ -5,8 +5,7 @@ import "./Modal.css";
 
 import { CloseIcon } from "@tiendanube/icons";
 
-import Title from "../Title";
-import Button from "../Button";
+import { Title, Button, InterfaceButton } from "..";
 
 interface InterfaceModal {
   /** Text to be displayed in the label */
@@ -17,14 +16,10 @@ interface InterfaceModal {
   onDismiss?: () => void;
   /** React node of type children */
   children: React.ReactNode;
-  /** Label of primary action */
-  primaryActionLabel?: string;
-  /** Label of secondary action */
-  secondaryActionLabel?: string;
-  /** OnClickPrimary callback function */
-  onClickPrimary?: () => void;
-  /** OnClickSecondary callback function */
-  onClickSecondary?: () => void;
+  /** Primary Action */
+  primaryAction?: Pick<InterfaceButton, "children" | "onClick" | "appearance">;
+  /** Secondary Action */
+  secondaryAction?: Pick<InterfaceButton, "children" | "onClick">;
 }
 
 /**
@@ -32,10 +27,8 @@ interface InterfaceModal {
  * @param show Indicates if the modal has to be shown
  * @param onDismiss Callback function
  * @param children React node of type children
- * @param primaryActionLabel Label of primary action
- * @param secondaryActionLabel Label of secondary action
- * @param onClickPrimary Callback function
- * @param onClickSecondary Callback function
+ * @param primaryAction Primary Action
+ * @param secondaryAction Secondary Action
  */
 
 function Modal({
@@ -43,10 +36,8 @@ function Modal({
   show,
   onDismiss,
   children,
-  primaryActionLabel,
-  secondaryActionLabel = "",
-  onClickPrimary,
-  onClickSecondary,
+  primaryAction,
+  secondaryAction,
 }: InterfaceModal): JSX.Element {
   const handleClickOutside = React.useCallback(
     (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -84,27 +75,22 @@ function Modal({
       ),
     [onDismiss],
   );
-  const memorizedSecondary = React.useMemo(
-    () =>
-      secondaryActionLabel &&
-      onClickSecondary && (
-        <div className="nimbus--action-wrapper__item">
-          <Button onClick={onClickSecondary}>{secondaryActionLabel}</Button>
-        </div>
-      ),
-    [secondaryActionLabel, onClickSecondary],
+  const memorizedSecondary = secondaryAction && (
+    <div className="nimbus--action-wrapper__item">
+      <Button onClick={secondaryAction.onClick}>
+        {secondaryAction.children}
+      </Button>
+    </div>
   );
-  const memorizedPrimary = React.useMemo(
-    () =>
-      primaryActionLabel &&
-      onClickPrimary && (
-        <div className="nimbus--action-wrapper__item">
-          <Button onClick={onClickPrimary} appearance="primary">
-            {primaryActionLabel}
-          </Button>
-        </div>
-      ),
-    [primaryActionLabel, onClickPrimary],
+  const memorizedPrimary = primaryAction && (
+    <div className="nimbus--action-wrapper__item">
+      <Button
+        onClick={primaryAction.onClick}
+        appearance={primaryAction.appearance}
+      >
+        {primaryAction.children}
+      </Button>
+    </div>
   );
   const container: HTMLElement = React.useMemo(
     () => document.createElement("div"),
