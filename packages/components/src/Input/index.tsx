@@ -244,10 +244,9 @@ function Input({
     </>
   );
 
-  const className = classNames(
-    "nimbus--input-wrapper",
-    { "nimbus--input-validation--error": error, }
-    );
+  const className = classNames("nimbus--input-wrapper", {
+    "nimbus--input-validation--error": error,
+  });
 
   return (
     <div className={className}>
@@ -261,10 +260,35 @@ function Input({
       ) : (
         inputField
       )}
-      {error && <Text block size="small" appearance="danger" textAlign="left">{error}</Text>}
+      {error && (
+        <Text block size="small" appearance="danger" textAlign="left">
+          {error}
+        </Text>
+      )}
     </div>
   );
 }
+
+export interface InterfaceTextSkeleton {
+  /** Amount of rows for the skeleton input to emulate a textarea */
+  rows?: number;
+}
+
+function Skeleton({ rows = 1 }: InterfaceTextSkeleton): JSX.Element {
+  const skeletonClassName = classNames(
+    "nimbus--input-skeleton",
+    `rows-${rows}`,
+  );
+
+  return (
+    <div className={skeletonClassName}>
+      <div className="nimbus--input-skeleton__label" />
+      <div className="nimbus--input-skeleton__field" />
+    </div>
+  );
+}
+
+Input.Skeleton = Skeleton;
 
 export const InputValidator = withValidator(Input);
 export default Input;

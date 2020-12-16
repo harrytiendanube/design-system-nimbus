@@ -159,3 +159,35 @@
     }
   }
 }
+
+@mixin nimbus--input-skeleton-rows {
+  @for $i from 1 through 10 {
+    &-#{$i} {
+      .#{$prefix}--input-skeleton__field {
+        @include nimbus--skeleton(
+          $i * $spacing-medium + $spacing-small + 2px,
+          100%,
+          0,
+          0
+        );
+      }
+    }
+  }
+}
+
+.#{$prefix}--input-skeleton {
+  display: block;
+  width: 100%;
+
+  &.rows {
+    @include nimbus--input-skeleton-rows;
+  }
+
+  .#{$prefix}--input-skeleton__label {
+    @include nimbus--skeleton(14px, 80px, 4px, 0);
+  }
+
+  .#{$prefix}--input-skeleton__field {
+    border-radius: $actions-border-radius;
+  }
+}
