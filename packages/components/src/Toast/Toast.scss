@@ -19,12 +19,25 @@ $situation-colors: (
 }
 
 .#{$prefix}--toast-wrapper {
+  @supports (padding-bottom: constant(safe-area-inset-bottom)) {
+    --safe-area-inset-bottom: constant(safe-area-inset-bottom);
+
+    padding-bottom: calc(var(--safe-area-inset-bottom) + #{$spacing-medium});
+  }
+  @supports (padding-bottom: env(safe-area-inset-bottom)) {
+    --safe-area-inset-bottom: env(safe-area-inset-bottom);
+
+    padding-bottom: calc(var(--safe-area-inset-bottom) + #{$spacing-medium});
+  }
   bottom: 0;
   display: flex;
   justify-content: center;
   left: 0;
-  padding: $spacing-medium;
-  position: absolute;
+  padding-bottom: $spacing-medium;
+  padding-left: $spacing-medium;
+  padding-right: $spacing-medium;
+  padding-top: $spacing-medium;
+  position: fixed;
   width: 100%;
   z-index: 800;
 
