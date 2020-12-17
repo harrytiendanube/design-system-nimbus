@@ -2,12 +2,15 @@ import * as React from "react";
 
 import classNames from "classnames";
 
+import Span from "./Text.Span";
 import Skeleton from "./Text.Skeleton";
 import "./Text.css";
 
+export { InterfaceTextSpan } from "./Text.Span";
+
 export interface InterfaceText {
   /** Text to be displayed */
-  children: React.ReactText;
+  children: React.ReactNode;
   /** Size */
   size?: "featured" | "base" | "small";
   /** Defines if the text is to be rendered as a block element */
@@ -63,8 +66,11 @@ const Text = React.memo(function Text({
   return <p className={className}>{children}</p>;
 }) as React.NamedExoticComponent<InterfaceText> & {
   Skeleton: typeof Skeleton;
+} & {
+  Span: typeof Span;
 };
 
+Text.Span = Span;
 Text.Skeleton = Skeleton;
 
 export default Text;

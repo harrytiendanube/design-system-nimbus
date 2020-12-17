@@ -26,6 +26,10 @@ $text-background-colors: (
   @each $name, $color in $text-body-colors {
     &--#{$name} {
       color: $color;
+
+      svg {
+        fill: $color;
+      }
     }
   }
 }
@@ -38,12 +42,25 @@ $text-background-colors: (
       color: $color-body-text;
       display: block;
       padding: $spacing-x-small;
+
+      &.#{$prefix}--text-span {
+        display: inline-block;
+      }
+
+      svg {
+        fill: $color-body-text;
+      }
     }
   }
 }
 
 .#{$prefix}--text {
   display: inline-block;
+
+  svg {
+    margin-right: $spacing-xx-small;
+    margin-top: -$spacing-xx-small;
+  }
 
   &.#{$prefix}--text-size--featured {
     @include nimbus--type("text-featured");

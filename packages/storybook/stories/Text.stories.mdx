@@ -44,6 +44,10 @@ TODO: complete
 
 <Props of={Text.Skeleton.type} />
 
+## Properties Text.Span
+
+<Props of={Text.Span.type} />
+
 # Skeleton
 
 <Preview>
@@ -51,6 +55,46 @@ TODO: complete
     <Text.Skeleton
       width={select("width", ["small", "medium", "large", "fill"])}
     />
+  </Story>
+</Preview>
+
+# Span
+
+<Preview>
+  <Story name="span" parameters={{ decorators: [withKnobs, withA11y] }}>
+    <Text
+      appearance={select("appearance", [
+        "default",
+        "primary",
+        "secondary",
+        "success",
+        "warning",
+        "danger",
+        "light",
+      ])}
+      bold={boolean("bold", false)}
+      block={boolean("block", false)}
+      size={select("size", ["base", "small", "featured"])}
+      background={boolean("background", false)}
+    >
+      {text("Text content", "Text content")}
+      <Text.Span
+        appearance={select("span appearance", [
+          "default",
+          "primary",
+          "secondary",
+          "success",
+          "warning",
+          "danger",
+          "light",
+        ])}
+        bold={boolean("span bold", false)}
+        size={select("span size", ["base", "small", "featured"])}
+        background={boolean("span background", false)}
+      >
+        {text("Span content", "Span content")}
+      </Text.Span>
+    </Text>
   </Story>
 </Preview>
 
