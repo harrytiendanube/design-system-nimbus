@@ -40,6 +40,8 @@ TODO: complete
         onClick: action("onClickEditAction"),
         children: text("headerAction.children", "Edit"),
         icon: boolean("headerAction.icon", true) ? CheckCircleIcon : null,
+        spinner: boolean("headerAction.spinner", false),
+        disabled: boolean("headerAction.disabled", false),
       }}
       primaryAction={{
         children: text("primaryAction.children", "Add a product"),

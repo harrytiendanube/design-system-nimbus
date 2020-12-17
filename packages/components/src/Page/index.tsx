@@ -40,7 +40,10 @@ export interface InterfacePage {
   /** Defines whether the page has pagination to next */
   paginationNext?: () => void;
   /** Header action for the title section */
-  headerAction?: Pick<InterfaceLink, "children" | "onClick" | "icon">;
+  headerAction?: Pick<
+    InterfaceLink,
+    "children" | "onClick" | "icon" | "spinner" | "disabled"
+  >;
   /** Primary action for the title section */
   primaryAction?:
     | Pick<InterfaceButton, "children" | "onClick" | "icon" | "iconPosition">
@@ -164,7 +167,12 @@ function Page({
           <Stack justify="flex-end" spacing="tight">
             {headerAction && (
               <Stack.Item>
-                <Link icon={headerAction.icon} onClick={headerAction.onClick}>
+                <Link
+                  icon={headerAction.icon}
+                  onClick={headerAction.onClick}
+                  spinner={headerAction.spinner}
+                  disabled={headerAction.disabled}
+                >
                   {headerAction.children}
                 </Link>
               </Stack.Item>
@@ -233,29 +241,34 @@ function Page({
       <div className="nimbus--page-header">
         {renderNavigation}
         <div className="nimbus--page-heading" id="header">
-          <Stack>
-            <Stack.Item fill>
+          <Responsive display="desktop">
+            <Stack>
+              <Stack.Item fill>
+                {title === "skeleton" ? (
+                  <PageTitle.Skeleton />
+                ) : (
+                  <PageTitle title={title} />
+                )}
+              </Stack.Item>
+              {renderSecondaryActions}
+              {renderPrimaryAction}
+            </Stack>
+          </Responsive>
+          <Responsive display="mobile">
+            <div className="nimbus--page-heading__main">
               {title === "skeleton" ? (
                 <PageTitle.Skeleton />
               ) : (
                 <PageTitle title={title} />
               )}
-            </Stack.Item>
-            {paginationPrevious && paginationNext && (
-              <Responsive display="mobile">
-                <Stack.Item>
+              {paginationPrevious && paginationNext && (
+                <div className="nimbus--page-heading__pagination">
                   <Link onClick={paginationPrevious} icon={ArrowLeftIcon} />
-                </Stack.Item>
-                <Stack.Item>
                   <Link onClick={paginationNext} icon={ArrowRightIcon} />
-                </Stack.Item>
-              </Responsive>
-            )}
-            <Responsive display="desktop">
-              {renderSecondaryActions}
-              {renderPrimaryAction}
-            </Responsive>
-          </Stack>
+                </div>
+              )}
+            </div>
+          </Responsive>
           {renderHeaderLabels}
         </div>
       </div>

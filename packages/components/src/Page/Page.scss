@@ -51,6 +51,31 @@ body {
   }
 }
 
+.#{$prefix}--page-heading__main {
+  display: flex;
+  flex-wrap: nowrap;
+  margin-left: -$spacing-small;
+
+  .#{$prefix}--page-title {
+    flex: 1 1 auto;
+    margin-left: $spacing-small;
+  }
+}
+
+.#{$prefix}--page-heading__pagination {
+  flex: 0 0 auto;
+  margin-left: $spacing-small;
+
+  .#{$prefix}--link {
+    line-height: 1;
+    padding: $spacing-x-small + $spacing-xx-small;
+
+    .nimbus--link__icon--start {
+      margin: 0;
+    }
+  }
+}
+
 .#{$prefix}--page-header__labels {
   margin-top: $spacing-x-small;
 }
