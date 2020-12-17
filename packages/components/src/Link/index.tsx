@@ -3,6 +3,8 @@ import { Icon as IconType } from "@tiendanube/icons";
 
 import "./Link.css";
 
+import classNames from "classnames";
+
 export interface InterfaceLink {
   /** React node of type children. */
   children?: React.ReactNode;
@@ -20,6 +22,10 @@ export interface InterfaceLink {
   iconPosition?: "start" | "end";
   /** The size of the button icon */
   iconSize?: "small" | "medium" | "large";
+  /** Indicates if the link is disabled */
+  disabled?: boolean;
+  /** If true, will render a spinner at start position */
+  spinner?: boolean;
   /** OnClick callback function */
   onClick?: () => void;
 }
@@ -33,19 +39,27 @@ function Link({
   icon: Icon,
   iconPosition = "start",
   iconSize = "small",
+  disabled = false,
+  spinner = false,
   onClick,
 }: InterfaceLink): JSX.Element {
-  const classname = `nimbus--link nimbus--link--${appearance} ${
-    underline ? "nimbus--link--underlined" : ""
-  }`;
+  const classname = classNames(
+    "nimbus--link",
+    `nimbus--link--${appearance}`,
+    { "nimbus--link--underlined": underline },
+    { "nimbus--link--disabled": disabled },
+    { "nimbus--link--loading": spinner },
+  );
 
-  const renderStartIcon = Icon && iconPosition === "start" && (
+  const iconSpinner = spinner && <span className="nimbus--link-spinner" />;
+
+  const renderStartIcon = !spinner && Icon && iconPosition === "start" && (
     <i className="nimbus--link__icon--start">
       <Icon size={iconSize} />
     </i>
   );
 
-  const renderEndIcon = Icon && iconPosition === "end" && (
+  const renderEndIcon = !spinner && Icon && iconPosition === "end" && (
     <i className="nimbus--link__icon--end">
       <Icon size={iconSize} />
     </i>
@@ -68,6 +82,7 @@ function Link({
       onClick={handleOnClick}
       target={target}
     >
+      {iconSpinner}
       {renderStartIcon}
       {children}
       {renderEndIcon}
