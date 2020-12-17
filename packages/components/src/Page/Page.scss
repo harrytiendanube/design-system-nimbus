@@ -56,7 +56,8 @@ body {
   flex-wrap: nowrap;
   margin-left: -$spacing-small;
 
-  .#{$prefix}--page-title {
+  .#{$prefix}--page-title,
+  .#{$prefix}--page-title-skeleton {
     flex: 1 1 auto;
     margin-left: $spacing-small;
   }
