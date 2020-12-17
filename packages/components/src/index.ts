@@ -151,3 +151,7 @@ export * from "./Menu";
 // Tabs reference added
 export { default as Tabs } from "./Tabs";
 export * from "./Tabs";
+
+// List reference added
+export { default as List } from "./List";
+export * from "./List";

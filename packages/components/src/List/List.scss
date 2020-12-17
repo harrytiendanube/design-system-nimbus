@@ -1,0 +1,33 @@
+@import "../../styles/core";
+
+// List
+
+.#{$prefix}--list {
+  display: block;
+  list-style: none;
+  margin-top: -$spacing-x-small;
+}
+
+.#{$prefix}--list-item {
+  display: block;
+  margin-top: $spacing-x-small;
+  padding-left: $spacing-small;
+  position: relative;
+}
+
+.#{$prefix}--list--unordered {
+  .#{$prefix}--list-item {
+    &::before {
+      background-color: $color-grey-35;
+      border-radius: 100%;
+      content: "";
+      display: block;
+      height: $spacing-x-small;
+      left: 0;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: $spacing-x-small;
+    }
+  }
+}

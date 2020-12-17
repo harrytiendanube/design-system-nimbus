@@ -55,7 +55,7 @@
   "rules": {
     "import/no-unresolved": "off", // TODO: review
     "no-unused-vars": "off",
-    "jsx-a11y/anchor-is-valid":"off",
+    "jsx-a11y/anchor-is-valid": "off",
     "@typescript-eslint/no-unused-vars": ["error"],
     "react/default-props-match-prop-types": "off", // We don't use prop-tpyes
     "react/prop-types": "off", // We don't use prop-tpyes
@@ -122,7 +122,8 @@
           "priv",
           "tablist",
           "tabpanel",
-          "noreferrer"
+          "noreferrer",
+          "unordered"
         ]
       }
     ]

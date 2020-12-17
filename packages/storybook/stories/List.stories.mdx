@@ -1,0 +1,36 @@
+import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
+import { withKnobs } from "@storybook/addon-knobs";
+import { withA11y } from "@storybook/addon-a11y";
+import { List, Text } from "@tiendanube/components/src";
+
+import "../utils/style.css";
+
+<Meta title="Atoms/List" component={List} />
+
+# List
+
+TODO: complete
+
+<Preview>
+  <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
+    <List>
+      <List.Item>
+        <Text>List item 1</Text>
+      </List.Item>
+      <List.Item>
+        <Text>List item 2</Text>
+      </List.Item>
+      <List.Item>
+        <Text>List item 3</Text>
+      </List.Item>
+    </List>
+  </Story>
+</Preview>
+
+## Properties List
+
+<Props of={List} />
+
+## Properties List.Item
+
+<Props of={List.Item} />
