@@ -15,3 +15,11 @@
 .fullscreen-container {
   height: 100vh;
 }
+
+.stick-to-bottom {
+  bottom: 0;
+  display: block;
+  left: 0;
+  position: fixed;
+  width: 100%;
+}

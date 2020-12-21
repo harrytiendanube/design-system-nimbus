@@ -1,0 +1,38 @@
+@import "../../styles/core";
+
+// NavTabs
+
+.#{$prefix}--nav-tabs {
+  align-items: center;
+  background-color: $color-background;
+  border-top: 1px solid $color-default;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  padding: $spacing-x-small $spacing-small;
+  width: 100%;
+}
+
+.#{$prefix}--nav-tabs-item {
+  align-items: center;
+  appearance: none;
+  background-color: transparent;
+  border-radius: $actions-border-radius;
+  cursor: pointer;
+  display: flex;
+  flex: 0 0 auto;
+  padding: $spacing-x-small + $spacing-xx-small;
+  width: auto;
+
+  svg {
+    fill: $color-secondary;
+  }
+}
+
+.#{$prefix}--nav-tabs-item--active {
+  background-color: #edf5fe;
+
+  svg {
+    fill: $color-primary;
+  }
+}
