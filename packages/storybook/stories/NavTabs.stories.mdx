@@ -18,26 +18,24 @@ TODO: complete
     name="default"
     parameters={{ decorators: [withKnobs, withA11y], layout: "fullscreen" }}
   >
-    <div className="stick-to-bottom">
-      <NavTabs>
-        <NavTabs.Item
-          label="Dashboard"
-          icon={HomeIcon}
-          onClick={action("onClick Start")}
-          active
-        />
-        <NavTabs.Item
-          label="Orders"
-          icon={MoneyIcon}
-          onClick={action("onClick Sales")}
-        />
-        <NavTabs.Item
-          label="Products"
-          icon={TagIcon}
-          onClick={action("onClick Products")}
-        />
-      </NavTabs>
-    </div>
+    <NavTabs>
+      <NavTabs.Item
+        label="Dashboard"
+        icon={HomeIcon}
+        onClick={action("onClick Start")}
+        active
+      />
+      <NavTabs.Item
+        label="Orders"
+        icon={MoneyIcon}
+        onClick={action("onClick Sales")}
+      />
+      <NavTabs.Item
+        label="Products"
+        icon={TagIcon}
+        onClick={action("onClick Products")}
+      />
+    </NavTabs>
   </Story>
 </Preview>
 
