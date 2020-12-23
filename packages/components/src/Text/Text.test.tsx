@@ -38,9 +38,7 @@ describe("<Text />", () => {
     );
   });
   it("render skeleton", () => {
-    const { container } = render(<Text.Skeleton width="medium" />);
-    expect(
-      container.querySelector(".nimbus--text-skeleton--medium"),
-    ).toBeTruthy();
+    const { container } = render(<Text.Skeleton width="medium" size="base" />);
+    expect(container.querySelector(".nimbus--text-skeleton")).toBeTruthy();
   });
 });

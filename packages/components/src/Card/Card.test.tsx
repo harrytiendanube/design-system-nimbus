@@ -86,7 +86,7 @@ describe("<Card />", () => {
     );
     expect(container.querySelector(".nimbus--label-skeleton")).toBeTruthy();
     expect(
-      container.querySelector(".nimbus--text-skeleton--medium"),
+      container.querySelector(".nimbus--text-skeleton--width-medium"),
     ).toBeTruthy();
     expect(container.querySelectorAll(".nimbus--button-skeleton")).toHaveLength(
       2,

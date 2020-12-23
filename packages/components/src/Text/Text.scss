@@ -103,18 +103,50 @@ $text-background-colors: (
   }
 }
 
-.#{$prefix}--text-skeleton--small {
-  @include nimbus--skeleton($spacing-small, 40px, $spacing-xx-small, 0);
-}
+$text-skeleton-widths: (
+  small: 40px,
+  medium: 80px,
+  large: 120px,
+  fill: 100%,
+);
 
-.#{$prefix}--text-skeleton--medium {
-  @include nimbus--skeleton($spacing-small, 80px, $spacing-xx-small, 0);
-}
+$text-skeleton-size-small: (
+  height: $font-size-small,
+  margin: $spacing-xx-small 0,
+);
 
-.#{$prefix}--text-skeleton--large {
-  @include nimbus--skeleton($spacing-small, 120px, $spacing-xx-small, 0);
-}
+$text-skeleton-size-base: (
+  height: $font-size-medium,
+  margin: $spacing-xx-small 0,
+);
 
-.#{$prefix}--text-skeleton--fill {
-  @include nimbus--skeleton($spacing-small, 100%, $spacing-xx-small, 0);
+$text-skeleton-size-featured: (
+  height: $font-size-xxx-large,
+  margin: $spacing-x-small 0,
+);
+
+$text-skeleton-tokens: (
+  small: $text-skeleton-size-small,
+  base: $text-skeleton-size-base,
+  featured: $text-skeleton-size-featured,
+);
+
+.#{$prefix}--text-skeleton {
+  @include nimbus--skeleton(0, 0, 0, 0);
+
+  @each $name, $width in $text-skeleton-widths {
+    &--width-#{$name} {
+      width: $width;
+    }
+  }
+
+  @each $name, $size in $text-skeleton-tokens {
+    &--size-#{$name} {
+      $token: map-get($text-skeleton-tokens, $name);
+
+      @each $property, $value in $token {
+        #{$property}: $value;
+      }
+    }
+  }
 }
