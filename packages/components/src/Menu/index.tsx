@@ -69,12 +69,21 @@ function Menu({
 
   React.useEffect(() => {
     document.body.appendChild(container);
-    document.body.classList.add(bodyClassName);
     return () => {
       document.body.removeChild(container);
-      document.body.classList.remove(bodyClassName);
     };
   }, [container]);
+
+  React.useEffect(() => {
+    if (show) {
+      document.body.classList.add(bodyClassName);
+    } else {
+      document.body.classList.remove(bodyClassName);
+    }
+    return () => {
+      document.body.classList.remove(bodyClassName);
+    };
+  }, [show]);
 
   const element: JSX.Element = (
     <div
