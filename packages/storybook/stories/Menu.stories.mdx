@@ -9,7 +9,7 @@ import {
   MobileIcon,
   LogOutIcon,
 } from "@tiendanube/icons";
-import { Menu } from "@tiendanube/components/src";
+import { Menu, Button } from "@tiendanube/components/src";
 
 import "../utils/style.css";
 
@@ -68,3 +68,52 @@ TODO: complete
 ## Properties Menu.Item
 
 <Props of={Menu.Item} />
+
+## Text
+
+<Preview>
+  <Story name="test" parameters={{ decorators: [withKnobs, withA11y] }}>
+    {() => {
+      const [show, setShow] = React.useState(false);
+      return (
+        <>
+          <Button onClick={() => setShow(true)}>Show Menu</Button>
+          <Menu
+            title={text("title", "Store nimbus")}
+            href="http://www.tiendanube.com"
+            onClose={() => setShow(false)}
+            show={show}
+            footer={{
+              label: "Close Session",
+              icon: LogOutIcon,
+              onClick: action("onClick Close"),
+            }}
+          >
+            <Menu.Section>
+              <Menu.Item
+                icon={HomeIcon}
+                onClick={action("onClick Start")}
+                active
+              >
+                Start
+              </Menu.Item>
+            </Menu.Section>
+            <Menu.Section title="Manage">
+              <Menu.Item icon={CashIcon} onClick={action("onClick Sales")}>
+                Sales
+              </Menu.Item>
+              <Menu.Item icon={TagIcon} onClick={action("onClick Products")}>
+                Products
+              </Menu.Item>
+            </Menu.Section>
+            <Menu.Section title="Enhance">
+              <Menu.Item icon={MobileIcon} onClick={action("onClick Keyboard")}>
+                Keyboard
+              </Menu.Item>
+            </Menu.Section>
+          </Menu>
+        </>
+      );
+    }}
+  </Story>
+</Preview>

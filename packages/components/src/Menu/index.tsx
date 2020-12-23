@@ -1,4 +1,5 @@
 import * as React from "react";
+import * as ReactDOM from "react-dom";
 
 import classNames from "classnames";
 
@@ -30,52 +31,98 @@ export interface InterfaceMenu {
   href: string;
   /** Spacing between children */
   footer: InterfaceFooterMenu;
+  /** Open menu callback */
+  show?: boolean;
+  /** OnClose callback */
+  onClose: () => void;
 }
 
-function Menu({ children, title, href, footer }: InterfaceMenu): JSX.Element {
-  const mainClass = classNames("nimbus--menu-wrapper");
+function Menu({
+  children,
+  title,
+  href,
+  footer,
+  onClose,
+  show = false,
+}: InterfaceMenu): JSX.Element {
   const FooterIcon = footer.icon;
 
-  return (
-    <div className={mainClass}>
-      <div className="nimbus--menu-header">
-        <Stack justify="space-between">
-          <Stack.Item fill>
-            <Stack spacing="tight">
-              <Stack.Item>
-                <TiendanubeIcon size="medium" />
-              </Stack.Item>
-              <Stack.Item>
-                <Title type="h5">{title}</Title>
-              </Stack.Item>
-            </Stack>
-          </Stack.Item>
-          <Stack.Item>
-            <a
-              href={href}
-              aria-label={title}
-              target="_blank"
-              rel="noreferrer"
-              className="nimbus--menu-header__action"
-            >
-              <ExternalLinkIcon />
-            </a>
-          </Stack.Item>
-        </Stack>
-      </div>
-      <div className="nimbus--menu-body">{children}</div>
-      <div className="nimbus--menu-footer">
-        <button
-          type="button"
-          onClick={footer.onClick}
-          className="nimbus--menu-item"
-        >
-          <FooterIcon />
-          {footer.label}
-        </button>
+  const handleClickOutside = React.useCallback(
+    (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+      if ((event.target as HTMLElement).id === "nimbus--menu") {
+        onClose?.();
+      }
+    },
+    [onClose],
+  );
+
+  const wrapperClassName = classNames("nimbus--menu", {
+    "is--visible": show,
+  });
+
+  const container: HTMLElement = React.useMemo(
+    () => document.createElement("div"),
+    [],
+  );
+
+  const bodyClassName = "nimbus--menu--open";
+
+  React.useEffect(() => {
+    document.body.appendChild(container);
+    document.body.classList.add(bodyClassName);
+    return () => {
+      document.body.removeChild(container);
+      document.body.classList.remove(bodyClassName);
+    };
+  }, [container]);
+
+  const element: JSX.Element = (
+    <div
+      id="nimbus--menu"
+      className={wrapperClassName}
+      role="presentation"
+      onClick={handleClickOutside}
+    >
+      <div className="nimbus--menu-wrapper">
+        <div className="nimbus--menu-header">
+          <Stack justify="space-between">
+            <Stack.Item fill>
+              <Stack spacing="tight">
+                <Stack.Item>
+                  <TiendanubeIcon size="medium" />
+                </Stack.Item>
+                <Stack.Item>
+                  <Title type="h5">{title}</Title>
+                </Stack.Item>
+              </Stack>
+            </Stack.Item>
+            <Stack.Item>
+              <a
+                href={href}
+                aria-label={title}
+                className="nimbus--menu-header__action"
+              >
+                <ExternalLinkIcon />
+              </a>
+            </Stack.Item>
+          </Stack>
+        </div>
+        <div className="nimbus--menu-body">{children}</div>
+        <div className="nimbus--menu-footer">
+          <button
+            type="button"
+            onClick={footer.onClick}
+            className="nimbus--menu-item"
+          >
+            <FooterIcon />
+            {footer.label}
+          </button>
+        </div>
       </div>
     </div>
   );
+
+  return ReactDOM.createPortal(element, container);
 }
 
 Menu.Section = Section;

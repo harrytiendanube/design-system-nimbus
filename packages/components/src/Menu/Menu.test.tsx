@@ -15,6 +15,7 @@ describe("<Stack />", () => {
     render(
       <Menu
         title="title"
+        onClose={jest.fn()}
         href="http://www.tiendanube.com"
         footer={{
           label: "Close Session",
