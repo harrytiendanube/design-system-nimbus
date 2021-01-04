@@ -110,6 +110,8 @@ function Menu({
                 href={href}
                 aria-label={title}
                 className="nimbus--menu-header__action"
+                rel="noreferrer"
+                target="_blank"
               >
                 <ExternalLinkIcon />
               </a>
