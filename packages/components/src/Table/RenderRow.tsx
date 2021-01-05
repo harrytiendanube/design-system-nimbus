@@ -60,7 +60,13 @@ const RenderRow = ({
     event: React.MouseEvent<HTMLTableRowElement, MouseEvent>,
   ) => {
     event.stopPropagation();
-    if (!editMode) rowProps.onClick?.();
+    if (editMode) {
+      // Select / UnSelect row when edit mode
+      onEditMode?.({ name: `${index}`, checked: !rowsState[index] });
+    } else {
+      // Calls onClick row when not edit mode
+      rowProps.onClick?.();
+    }
   };
 
   return (

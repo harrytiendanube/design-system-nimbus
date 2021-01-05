@@ -247,6 +247,7 @@ const Table = React.memo(function Table({
         "nimbus--table-wrapper",
         { "nimbus--table-wrapper--ruled": ruled },
         { "nimbus--table-wrapper--actions": massAction && editMode },
+        { "nimbus--table-wrapper--edit-mode": editMode },
         `nimbus--table-wrapper--spacing-${spacing}`,
       ),
     [editMode, massAction, ruled, spacing],

@@ -25,6 +25,13 @@ function Checkbox({
   disabled = false,
   onChange,
 }: InterfaceCheckbox): JSX.Element {
+  const handleClickDiv = (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+  ) => {
+    // Stops click propagation to prevent unwanted behavior when component is used within a table row.
+    event.stopPropagation();
+  };
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const target = event.target as HTMLInputElement;
     onChange?.({ name: target.name, checked: target.checked });
@@ -45,7 +52,8 @@ function Checkbox({
   }, [isChecked]);
 
   return (
-    <div className="nimbus--checkbox-wrapper">
+    // eslint-disable-next-line jsx-a11y/no-static-element-interactions
+    <div className="nimbus--checkbox-wrapper" onClick={handleClickDiv}>
       <input
         type="checkbox"
         id={`check_${name}`}

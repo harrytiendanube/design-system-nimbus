@@ -98,6 +98,14 @@
   }
 }
 
+.#{$prefix}--table-wrapper--edit-mode {
+  .#{$prefix}--table-row {
+    * {
+      pointer-events: none;
+    }
+  }
+}
+
 .#{$prefix}--table-wrapper--spacing-base {
   &.#{$prefix}--table-wrapper--actions {
     .#{$prefix}--table-row {
