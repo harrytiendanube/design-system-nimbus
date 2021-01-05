@@ -18,6 +18,7 @@
 
   .#{$prefix}--text {
     @include nimbus--type("text-label");
+    @include nimbus--text-trim(5);
     color: $color-background;
     width: 160px;
   }
