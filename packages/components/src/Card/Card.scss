@@ -27,7 +27,12 @@
     position: relative;
 
     &.is-collapsible {
+      appearance: none;
+      background-color: transparent;
+      border: $button-border-width solid transparent;
+      cursor: pointer;
       padding-right: $spacing-xxx-large;
+      width: 100%;
     }
 
     .#{$prefix}--card-header__title {
@@ -69,11 +74,7 @@
   }
 
   .#{$prefix}--card-header__collapse {
-    appearance: none;
-    background-color: transparent;
-    border: $button-border-width solid transparent;
     border-radius: $actions-border-radius;
-    cursor: pointer;
     padding: $spacing-small;
     position: absolute;
     right: 0;
@@ -83,19 +84,6 @@
 
     svg {
       transition: $motion-fast;
-    }
-
-    &:hover {
-      background-color: $color-default;
-    }
-
-    &:active {
-      background-color: $color-default-hover;
-    }
-
-    &:focus {
-      border-color: $color-default-hover;
-      box-shadow: 0 0 0 $button-border-width $color-default-hover;
     }
 
     &.is-open {

@@ -147,16 +147,13 @@ function Card({
   const memorizedCollapsibleButton = React.useMemo(
     () =>
       isCollapsible && (
-        <button
-          type="button"
-          aria-label="Expand"
+        <span
           className={`nimbus--card-header__collapse ${open ? "is-open" : ""}`}
-          onClick={handleCollapse}
         >
           <ChevronDownIcon />
-        </button>
+        </span>
       ),
-    [isCollapsible, handleCollapse, open],
+    [isCollapsible, open],
   );
 
   const memorizedChildren = React.useMemo(
@@ -199,18 +196,30 @@ function Card({
 
   return (
     <div className="nimbus--card-wrapper">
-      <div
-        className={`nimbus--card-header ${
-          isCollapsible ? "is-collapsible" : ""
-        }`}
-      >
-        <div className="nimbus--card-header__title">
-          <Title type="h3">{title}</Title>
+      {isCollapsible ? (
+        <button
+          type="button"
+          aria-label="Expand"
+          className="nimbus--card-header is-collapsible"
+          onClick={handleCollapse}
+        >
+          <div className="nimbus--card-header__title">
+            <Title type="h3">{title}</Title>
+          </div>
+          {memorizedHeaderLabel}
+          {memorizedHeaderAction}
+          {memorizedCollapsibleButton}
+        </button>
+      ) : (
+        <div className="nimbus--card-header">
+          <div className="nimbus--card-header__title">
+            <Title type="h3">{title}</Title>
+          </div>
+          {memorizedHeaderLabel}
+          {memorizedHeaderAction}
+          {memorizedCollapsibleButton}
         </div>
-        {memorizedHeaderLabel}
-        {memorizedHeaderAction}
-        {memorizedCollapsibleButton}
-      </div>
+      )}
       {memorizedCollapsibleChildren}
     </div>
   );
