@@ -164,29 +164,19 @@ function Page({
       </Responsive>
       <div className="nimbus--page-navbar__toolbar">
         <Responsive display="mobile">
-          <Stack justify="flex-end" spacing="tight">
-            {headerAction && (
-              <Stack.Item>
-                <Link
-                  icon={headerAction.icon}
-                  onClick={headerAction.onClick}
-                  spinner={headerAction.spinner}
-                  disabled={headerAction.disabled}
-                >
-                  {headerAction.children}
-                </Link>
-              </Stack.Item>
-            )}
-            {menuPopover.length > 0 && (
-              <Stack.Item>
-                <Popover
-                  menu={menuPopover}
-                  name="dropdownMenu"
-                  position="right"
-                />
-              </Stack.Item>
-            )}
-          </Stack>
+          {headerAction && (
+            <Link
+              icon={headerAction.icon}
+              onClick={headerAction.onClick}
+              spinner={headerAction.spinner}
+              disabled={headerAction.disabled}
+            >
+              {headerAction.children}
+            </Link>
+          )}
+          {menuPopover.length > 0 && (
+            <Popover menu={menuPopover} name="dropdownMenu" position="right" />
+          )}
         </Responsive>
         {paginationPrevious && paginationNext && (
           <Responsive display="desktop">

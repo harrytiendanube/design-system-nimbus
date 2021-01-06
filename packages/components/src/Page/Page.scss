@@ -118,6 +118,10 @@ body {
 }
 
 .#{$prefix}--page-navbar__toolbar {
+  align-items: center;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
   text-align: right;
 }
 
@@ -128,8 +132,8 @@ body {
   > .#{$prefix}--stack-wrapper
   > .#{$prefix}--stack-item
   > .#{$prefix}--button,
-.#{$prefix}--page-navbar__toolbar > .#{$prefix}--button,
-#nimbus-popover-initiator-dropdownMenu .#{$prefix}--button {
+.#{$prefix}--page-navbar__toolbar > .#{$prefix}--link,
+#nimbus-popover-initiator-dropdownMenu .#{$prefix}--link {
   background-color: transparent;
   border-color: transparent;
   color: $color-secondary;

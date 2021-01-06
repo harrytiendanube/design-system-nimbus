@@ -51,16 +51,24 @@ function Link({
     { "nimbus--link--loading": spinner },
   );
 
+  const iconStartClass = classNames({
+    "nimbus--link__icon--start": iconPosition === "start" && children,
+  });
+
+  const iconEndClass = classNames({
+    "nimbus--link__icon--end": iconPosition === "end" && children,
+  });
+
   const iconSpinner = spinner && <span className="nimbus--link-spinner" />;
 
   const renderStartIcon = !spinner && Icon && iconPosition === "start" && (
-    <i className="nimbus--link__icon--start">
+    <i className={iconStartClass}>
       <Icon size={iconSize} />
     </i>
   );
 
   const renderEndIcon = !spinner && Icon && iconPosition === "end" && (
-    <i className="nimbus--link__icon--end">
+    <i className={iconEndClass}>
       <Icon size={iconSize} />
     </i>
   );
