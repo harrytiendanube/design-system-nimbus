@@ -43,11 +43,11 @@ function Button({
     { "nimbus--button-loading": spinner },
   );
 
-  const iconStartClass = classNames({
+  const iconStartClass = classNames("nimbus--button__icon", {
     "nimbus--button__icon--start": iconPosition === "start" && children,
   });
 
-  const iconEndClass = classNames({
+  const iconEndClass = classNames("nimbus--button__icon", {
     "nimbus--button__icon--end": iconPosition === "end" && children,
   });
 

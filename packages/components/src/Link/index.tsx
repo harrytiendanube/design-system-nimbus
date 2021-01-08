@@ -51,11 +51,11 @@ function Link({
     { "nimbus--link--loading": spinner },
   );
 
-  const iconStartClass = classNames({
+  const iconStartClass = classNames("nimbus--link__icon", {
     "nimbus--link__icon--start": iconPosition === "start" && children,
   });
 
-  const iconEndClass = classNames({
+  const iconEndClass = classNames("nimbus--link__icon", {
     "nimbus--link__icon--end": iconPosition === "end" && children,
   });
 

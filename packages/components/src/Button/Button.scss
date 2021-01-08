@@ -2,6 +2,10 @@
 
 // Buttons
 
+.#{$prefix}--button__icon {
+  display: inline-flex;
+}
+
 .#{$prefix}--button__icon--start {
   margin-right: $spacing-x-small;
 }
