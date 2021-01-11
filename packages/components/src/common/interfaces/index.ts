@@ -42,14 +42,3 @@ export interface InterfaceMassAction {
   getLabel(quantity: number): string;
   onChange(selected: InterfaceMassActionSelected): void;
 }
-
-export interface InterfaceFileUpload {
-  /** Name */
-  name: string;
-  /** Size in bytes */
-  size: number;
-  /** Type */
-  type: string;
-  /** Content File in base64 */
-  base64?: string;
-}

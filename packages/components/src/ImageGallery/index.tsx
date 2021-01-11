@@ -2,7 +2,7 @@ import * as React from "react";
 import classNames from "classnames";
 
 import { CameraIcon, PlusCircleIcon } from "@tiendanube/icons";
-import { InterfaceFileUpload } from "../common/interfaces";
+
 import Item from "./ImageGallery.Item";
 
 import "./ImageGallery.css";
@@ -25,7 +25,7 @@ export interface InterfaceImageGallery {
   /** Renders as skeleton */
   skeleton?: boolean;
   /** Callback event for adding new images */
-  onAddImage?(file: InterfaceFileUpload): void;
+  onAddImage(): void;
 }
 
 function ImageGallery({
@@ -37,34 +37,7 @@ function ImageGallery({
   skeleton,
   onAddImage,
 }: InterfaceImageGallery): JSX.Element {
-  const [value, setValue] = React.useState("");
-
-  const convertBase64 = (file: Blob) => {
-    return new Promise((resolve, reject) => {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
-      fileReader.onload = () => {
-        resolve(fileReader.result);
-      };
-      fileReader.onerror = (error) => {
-        reject(error);
-      };
-    });
-  };
-
-  const handleClick = () => {
-    setValue("");
-  };
-
-  const handleChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = (event.target.files && event.target.files[0]) as Blob;
-    if (file) {
-      const base64 = (await convertBase64(file)) as string;
-      // eslint-disable-next-line no-shadow
-      const { name, size, type } = (file as unknown) as InterfaceFileUpload;
-      onAddImage?.({ name, size, type, base64 });
-    }
-  };
+  const id = `nimbus--input-${name}`;
 
   const renderSpinnerEmpty = loading ? (
     <div className="nimbus--image-gallery__spinner" />
@@ -85,8 +58,6 @@ function ImageGallery({
   const childrenCount = React.Children.count(children);
 
   const renderInputFile = (spinner: JSX.Element, className: string) => {
-    const id = `nimbus--input-${name}`;
-
     const fileInputClassName = classNames(
       "nimbus--image-gallery__file-button",
       {
@@ -98,14 +69,13 @@ function ImageGallery({
       <div className={className}>
         <div className="nimbus--image-gallery-item">
           <label htmlFor={id} className={fileInputClassName}>
-            <input
-              type="file"
+            <button
+              name={id}
+              aria-label={id}
               id={id}
-              value={value}
-              accept="image/*"
+              type="button"
               disabled={loading}
-              onClick={handleClick}
-              onChange={handleChange}
+              onClick={onAddImage}
             />
             {spinner}
           </label>

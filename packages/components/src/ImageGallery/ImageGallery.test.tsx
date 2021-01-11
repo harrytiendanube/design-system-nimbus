@@ -14,7 +14,7 @@ describe("<ImageGallery />", () => {
         <ImageGallery.Item onDelete={jest.fn()} src="http://www.myurl.com" />
       </ImageGallery>,
     );
-    const element: HTMLElement = screen.getByRole("button");
+    const element: HTMLElement[] = screen.queryAllByRole("button");
     expect(element).toBeTruthy();
   });
 });
