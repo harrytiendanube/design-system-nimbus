@@ -33,6 +33,8 @@ export interface InterfaceMenu {
   footer: InterfaceFooterMenu;
   /** Open menu callback */
   show?: boolean;
+  /** Side from which the menu emerges */
+  position?: "left" | "right";
   /** OnClose callback */
   onClose: () => void;
 }
@@ -44,6 +46,7 @@ function Menu({
   footer,
   onClose,
   show = false,
+  position = "right",
 }: InterfaceMenu): JSX.Element {
   const FooterIcon = footer.icon;
 
@@ -56,9 +59,11 @@ function Menu({
     [onClose],
   );
 
-  const wrapperClassName = classNames("nimbus--menu", {
-    "is--visible": show,
-  });
+  const wrapperClassName = classNames(
+    "nimbus--menu",
+    { "is--visible": show },
+    `position--${position}`,
+  );
 
   const container: HTMLElement = React.useMemo(
     () => document.createElement("div"),

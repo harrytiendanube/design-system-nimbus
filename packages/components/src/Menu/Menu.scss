@@ -4,6 +4,21 @@
 
 $footer-height: 56px;
 
+$menu-position-left: (
+  left: 0,
+  transform: translateX(-100%),
+);
+
+$menu-position-right: (
+  right: 0,
+  transform: translateX(100%),
+);
+
+$menu-position: (
+  left: $menu-position-left,
+  right: $menu-position-right,
+);
+
 body {
   &.#{$prefix}--menu--open {
     overflow: hidden;
@@ -24,6 +39,18 @@ body {
   visibility: hidden;
   width: 100vw;
   z-index: 900;
+
+  @each $name, $position in $menu-position {
+    $token: map-get($menu-position, $name);
+
+    &.position--#{$name} {
+      .#{$prefix}--menu-wrapper {
+        @each $property, $value in $token {
+          #{$property}: $value;
+        }
+      }
+    }
+  }
 
   &.is--visible {
     opacity: 1;
@@ -51,11 +78,9 @@ body {
   }
   background-color: $color-white;
   height: 100%;
-  left: 0;
   max-width: 260px;
   position: absolute;
   top: 0;
-  transform: translateX(-100%);
   transition: opacity $motion-base ease, transform $motion-base ease;
   width: 100%;
   z-index: 901;

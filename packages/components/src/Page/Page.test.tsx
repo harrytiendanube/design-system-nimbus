@@ -11,11 +11,8 @@ const PageComponent = (props: any) => (
   <Page
     title="myTitle"
     headerNavigation={{
-      type: "back",
-      action: {
-        onClick: jest.fn(),
-        children: "Back",
-      },
+      onClick: jest.fn(),
+      children: "Back",
     }}
     paginationPrevious={jest.fn()}
     paginationNext={jest.fn()}

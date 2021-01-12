@@ -6,7 +6,6 @@ import {
   ChevronLeftIcon,
   ArrowLeftIcon,
   ArrowRightIcon,
-  MenuIcon,
 } from "@tiendanube/icons";
 import classNames from "classnames";
 import Responsive from "../Responsive";
@@ -23,18 +22,13 @@ import {
   Text,
 } from "..";
 
-export interface InterfaceHeaderNavigation {
-  type: "menu" | "back";
-  action: Pick<InterfaceButton, "children" | "onClick">;
-}
-
 export interface InterfacePage {
   /** Component to render in page content. */
   children: React.ReactNode;
   /** Title */
   title: string;
   /** Header left action */
-  headerNavigation?: InterfaceHeaderNavigation;
+  headerNavigation?: Pick<InterfaceButton, "children" | "onClick">;
   /** Defines whether the page has pagination to previous */
   paginationPrevious?: () => void;
   /** Defines whether the page has pagination to next */
@@ -128,23 +122,14 @@ function Page({
       })}
     >
       <div className="nimbus--page-navbar__back">
-        {headerNavigation?.type === "back" && (
+        {headerNavigation && (
           <Button
-            onClick={headerNavigation.action.onClick}
+            onClick={headerNavigation.onClick}
             icon={ChevronLeftIcon}
             appearance="secondary"
           >
-            {headerNavigation.action.children}
+            {headerNavigation.children}
           </Button>
-        )}
-        {headerNavigation?.type === "menu" && (
-          <Responsive display="mobile">
-            <Button
-              onClick={headerNavigation.action.onClick}
-              icon={MenuIcon}
-              appearance="secondary"
-            />
-          </Responsive>
         )}
       </div>
       <Responsive display="mobile">

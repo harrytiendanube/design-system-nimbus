@@ -8,14 +8,9 @@ import {
   ListIcon,
   PlusCircleIcon,
   CheckCircleIcon,
-  LogOutIcon,
-  HomeIcon,
-  CashIcon,
-  TagIcon,
-  MobileIcon,
 } from "@tiendanube/icons";
 
-import { Page, Text, Menu } from "@tiendanube/components/src";
+import { Page, Text } from "@tiendanube/components/src";
 
 import "../utils/style.css";
 
@@ -33,11 +28,8 @@ TODO: complete
     <Page
       title={text("title", "Title")}
       headerNavigation={{
-        type: "back",
-        action: {
-          onClick: action("headerNavigation.action.onClick"),
-          children: text("back", "Back"),
-        },
+        onClick: action("headerNavigation.onClick"),
+        children: text("back", "Back"),
       }}
       paginationPrevious={action("paginationPrevious")}
       paginationNext={action("paginationNext")}
@@ -151,11 +143,8 @@ TODO: complete
     <Page
       title="skeleton"
       headerNavigation={{
-        type: "back",
-        action: {
-          onClick: action("headerNavigation.action.onClick"),
-          children: text("back", "Back"),
-        },
+        onClick: action("headerNavigation.action.onClick"),
+        children: text("back", "Back"),
       }}
       paginationPrevious={action("paginationPrevious")}
       paginationNext={action("paginationNext")}
@@ -177,15 +166,7 @@ TODO: complete
     name="basic page"
     parameters={{ decorators: [withKnobs, withA11y], layout: "fullscreen" }}
   >
-    <Page
-      headerNavigation={{
-        type: "menu",
-        action: {
-          onClick: action("headerNavigation.action.onClick"),
-        },
-      }}
-      title={text("title", "Title")}
-    >
+    <Page title={text("title", "Title")}>
       <Text>Page content</Text>
     </Page>
   </Story>
@@ -203,11 +184,8 @@ TODO: complete
     <Page
       title={text("title", "Title")}
       headerNavigation={{
-        type: "back",
-        action: {
-          onClick: action("headerNavigation.action.onClick"),
-          children: text("back", "Back"),
-        },
+        onClick: action("headerNavigation.action.onClick"),
+        children: text("back", "Back"),
       }}
       paginationPrevious={action("paginationPrevious")}
       paginationNext={action("paginationNext")}
@@ -254,164 +232,5 @@ TODO: complete
     >
       <Text>Page content</Text>
     </Page>
-  </Story>
-</Preview>
-
-# Menu
-
-<Preview>
-  <Story
-    name="menu"
-    parameters={{ decorators: [withKnobs, withA11y], layout: "fullscreen" }}
-  >
-    {() => {
-      const [show, setShow] = React.useState(false);
-      return (
-        <>
-          <Page
-            title={text("title", "Title")}
-            headerNavigation={{
-              type: "menu",
-              action: {
-                onClick: () => setShow(true),
-              },
-            }}
-            paginationPrevious={action("paginationPrevious")}
-            paginationNext={action("paginationNext")}
-            headerAction={{
-              onClick: action("onClickEditAction"),
-              children: text("headerAction.children", "Edit"),
-              icon: boolean("headerAction.icon", true) ? CheckCircleIcon : null,
-            }}
-            primaryAction={{
-              children: text("primaryAction.children", "Add a product"),
-              icon: boolean("primaryAction.icon", true) ? PlusCircleIcon : null,
-              onClick: action("primaryAction.OnClick"),
-            }}
-            secondaryActions={[
-              {
-                children: text(
-                  "secondaryActions[0].children",
-                  "Organize products",
-                ),
-                icon: boolean("secondaryActions[0].icon", true)
-                  ? DownloadIcon
-                  : null,
-                onClick: action("secondaryActions[0].OnClick"),
-              },
-              {
-                children: text(
-                  "secondaryActions[1].children",
-                  "Import and export from CSV",
-                ),
-                icon: boolean("secondaryActions[1].icon", true)
-                  ? ListIcon
-                  : null,
-                onClick: action("secondaryActions[1].OnClick"),
-              },
-            ]}
-            headerLabels={[
-              {
-                id: "label-id-1",
-                appearance: select("headerLabels[0].appearance", [
-                  "default",
-                  "primary",
-                  "secondary",
-                  "success",
-                  "warning",
-                  "danger",
-                ]),
-                label: text("headerLabels[0].label", "label 1"),
-              },
-              {
-                id: "label-id-2",
-                appearance: select("headerLabels[1].appearance", [
-                  "default",
-                  "primary",
-                  "secondary",
-                  "success",
-                  "warning",
-                  "danger",
-                ]),
-                label: text("headerLabels[1].label", "label 2"),
-              },
-            ]}
-          >
-            <Text block>Page content</Text>
-            <Text block>Page content</Text>
-            <Text block>Page content</Text>
-            <Text block>Page content</Text>
-            <Text block>Page content</Text>
-            <Text block>Page content</Text>
-            <Text block>Page content</Text>
-            <Text block>Page content</Text>
-            <Text block>Page content</Text>
-            <Text block>Page content</Text>
-            <Text block>Page content</Text>
-            <Text block>Page content</Text>
-            <Text block>Page content</Text>
-            <Text block>Page content</Text>
-            <Text block>Page content</Text>
-            <Text block>Page content</Text>
-            <Text block>Page content</Text>
-            <Text block>Page content</Text>
-            <Text block>Page content</Text>
-            <Text block>Page content</Text>
-            <Text block>Page content</Text>
-            <Text block>Page content</Text>
-            <Text block>Page content</Text>
-            <Text block>Page content</Text>
-            <Text block>Page content</Text>
-            <Text block>Page content</Text>
-            <Text block>Page content</Text>
-            <Text block>Page content</Text>
-            <Text block>Page content</Text>
-            <Text block>Page content</Text>
-            <Text block>Page content</Text>
-            <Text block>Page content</Text>
-            <Text block>Page content</Text>
-            <Text block>Page content</Text>
-            <Text block>Page content</Text>
-            <Text block>Page content</Text>
-            <Text block>Page content</Text>
-            <Text block>Page content</Text>
-          </Page>
-          <Menu
-            title={text("title", "Store nimbus")}
-            href="http://www.tiendanube.com"
-            onClose={() => setShow(false)}
-            show={show}
-            footer={{
-              label: "Close Session",
-              icon: LogOutIcon,
-              onClick: action("onClick Close"),
-            }}
-          >
-            <Menu.Section>
-              <Menu.Item
-                icon={HomeIcon}
-                onClick={action("onClick Start")}
-                active
-              >
-                Start
-              </Menu.Item>
-            </Menu.Section>
-            <Menu.Section title="Manage">
-              <Menu.Item icon={CashIcon} onClick={action("onClick Sales")}>
-                Sales
-              </Menu.Item>
-              <Menu.Item icon={TagIcon} onClick={action("onClick Products")}>
-                Products
-              </Menu.Item>
-            </Menu.Section>
-            <Menu.Section title="Enhance">
-              <Menu.Item icon={MobileIcon} onClick={action("onClick Keyboard")}>
-                Keyboard
-              </Menu.Item>
-            </Menu.Section>
-          </Menu>
-        </>
-      );
-    }}
   </Story>
 </Preview>
