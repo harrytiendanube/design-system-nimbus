@@ -102,6 +102,17 @@ function Modal({
       document.body.removeChild(container);
     };
   }, [container]);
+  const bodyClassName = "nimbus--modal--open";
+  React.useEffect(() => {
+    if (show) {
+      document.body.classList.add(bodyClassName);
+    } else {
+      document.body.classList.remove(bodyClassName);
+    }
+    return () => {
+      document.body.classList.remove(bodyClassName);
+    };
+  }, [show]);
   const element: JSX.Element = (
     <div
       id="nimbus-modal"

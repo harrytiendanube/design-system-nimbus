@@ -2,6 +2,12 @@
 
 // Modal
 
+body {
+  &.#{$prefix}--modal--open {
+    overflow: hidden;
+  }
+}
+
 .#{$prefix}--modal {
   align-items: center;
   background-color: rgba(#000, 0.5);
