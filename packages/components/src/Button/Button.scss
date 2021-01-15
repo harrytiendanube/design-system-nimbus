@@ -4,6 +4,7 @@
 
 .#{$prefix}--button__icon {
   display: inline-flex;
+  padding: $spacing-xx-small 0;
 }
 
 .#{$prefix}--button__icon--start {
