@@ -8,6 +8,7 @@
   background-color: transparent;
   cursor: pointer;
   display: inline-flex;
+  -webkit-tap-highlight-color: transparent;
   text-align: center;
   transition: $button-hover-delay ease;
   vertical-align: middle;

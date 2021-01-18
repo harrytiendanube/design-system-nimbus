@@ -8,6 +8,7 @@
   border: $button-border-width solid transparent;
   border-radius: $actions-border-radius;
   color: $font-color;
+  -webkit-tap-highlight-color: transparent;
   text-align: left;
   text-decoration: none;
 
