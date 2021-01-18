@@ -107,6 +107,20 @@ function Page({
     | Pick<InterfaceLink, "children" | "appearance" | "onClick" | "icon">
     | "skeleton";
 
+  let menuPrimaryActionIcon: React.ReactElement | null = null;
+
+  if (menuPrimaryAction) {
+    menuPrimaryActionIcon =
+      menuPrimaryAction === "skeleton" ? (
+        <Link.Skeleton />
+      ) : (
+        <Link
+          onClick={menuPrimaryAction.onClick}
+          icon={menuPrimaryAction.icon}
+        />
+      );
+  }
+
   const menuPopover = [...menuSecondaryActions];
 
   if (menuPrimaryAction) {
@@ -159,9 +173,12 @@ function Page({
               {headerAction.children}
             </Link>
           )}
-          {menuPopover.length > 0 && (
+          {menuSecondaryActions.length > 0 && (
             <Popover menu={menuPopover} name="dropdownMenu" position="right" />
           )}
+          {menuSecondaryActions.length === 0 &&
+            menuPrimaryActionIcon &&
+            menuPrimaryActionIcon}
         </Responsive>
         {paginationPrevious && paginationNext && (
           <Responsive display="desktop">

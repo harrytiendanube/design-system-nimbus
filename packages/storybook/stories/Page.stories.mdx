@@ -234,3 +234,100 @@ TODO: complete
     </Page>
   </Story>
 </Preview>
+
+## No secondary actions
+
+TODO: Complete
+
+<Preview>
+  <Story
+    name="no secondary actions"
+    parameters={{ decorators: [withKnobs, withA11y], layout: "fullscreen" }}
+  >
+    <Page
+      title={text("title", "Title")}
+      headerNavigation={{
+        onClick: action("headerNavigation.onClick"),
+        children: text("back", "Back"),
+      }}
+      paginationPrevious={action("paginationPrevious")}
+      paginationNext={action("paginationNext")}
+      headerAction={{
+        onClick: action("onClickEditAction"),
+        children: text("headerAction.children", "Edit"),
+        spinner: boolean("headerAction.spinner", false),
+        disabled: boolean("headerAction.disabled", false),
+      }}
+      primaryAction={{
+        children: text("primaryAction.children", "Add a product"),
+        icon: boolean("primaryAction.icon", true) ? PlusCircleIcon : null,
+        onClick: action("primaryAction.OnClick"),
+      }}
+      headerLabels={[
+        {
+          id: "label-id-1",
+          appearance: select("headerLabels[0].appearance", [
+            "default",
+            "primary",
+            "secondary",
+            "success",
+            "warning",
+            "danger",
+          ]),
+          label: text("headerLabels[0].label", "label 1"),
+        },
+        {
+          id: "label-id-2",
+          appearance: select("headerLabels[1].appearance", [
+            "default",
+            "primary",
+            "secondary",
+            "success",
+            "warning",
+            "danger",
+          ]),
+          label: text("headerLabels[1].label", "label 2"),
+        },
+      ]}
+    >
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+      <Text block>Page content</Text>
+    </Page>
+  </Story>
+</Preview>
