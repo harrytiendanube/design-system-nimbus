@@ -34,9 +34,12 @@ const RenderRow = ({
   const { rowProps } = React.useContext(RowContext);
   const [isTouching, setTouching] = React.useState(false);
   const time = React.useRef<number>();
-  const className = classNames("nimbus--table-row", {
+  const classNameRow = classNames("nimbus--table-row", {
     "nimbus--table-row--grayed": rowProps.grayed,
     "nimbus--table-row--touching": isTouching,
+  });
+  const classNameRowCheck = classNames("nimbus--table-row__check", {
+    "is--visible": massAction && editMode,
   });
 
   const handleTouchStart = () => {
@@ -76,21 +79,19 @@ const RenderRow = ({
       onTouchMove={handleCancelTouch}
       onTouchCancel={handleCancelTouch}
       onClick={handleClick}
-      className={className}
+      className={classNameRow}
     >
-      {massAction && editMode && (
-        <td className="nimbus--table-row__check">
-          {skeleton ? (
-            <Checkbox.Skeleton />
-          ) : (
-            <Checkbox
-              name={`${index}`}
-              checked={rowsState[index]}
-              onChange={onChangeRow}
-            />
-          )}
-        </td>
-      )}
+      <td className={classNameRowCheck}>
+        {skeleton ? (
+          <Checkbox.Skeleton />
+        ) : (
+          <Checkbox
+            name={`${index}`}
+            checked={rowsState[index]}
+            onChange={onChangeRow}
+          />
+        )}
+      </td>
       {children}
     </tr>
   );

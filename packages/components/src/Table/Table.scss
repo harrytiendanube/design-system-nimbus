@@ -177,17 +177,28 @@
     display: flex;
     flex-wrap: wrap;
     position: relative;
+    transition: padding $motion-fast ease;
   }
 
   .#{$prefix}--table-row__check {
+    opacity: 0;
     padding-left: $spacing-small;
     padding-right: $spacing-x-small;
+    transform: translateX(-100%);
+    transition: transform $motion-fast ease, opacity $motion-fast ease;
+    visibility: hidden;
 
     @include nimbus--breakpoint-down(md) {
       height: 100%;
       left: 0;
       position: absolute;
       top: 0;
+    }
+
+    &.is--visible {
+      opacity: 1;
+      transform: translateX(0);
+      visibility: visible;
     }
   }
 
@@ -248,7 +259,6 @@
 .#{$prefix}--table-row--touching {
   background-color: #fafafa;
   overflow: hidden;
-  transition: $motion-fast ease;
 
   &::before {
     @include nimbus--breakpoint-down(md) {
