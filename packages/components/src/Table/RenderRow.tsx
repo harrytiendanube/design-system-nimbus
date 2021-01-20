@@ -39,7 +39,7 @@ const RenderRow = ({
     "nimbus--table-row--touching": isTouching,
   });
   const classNameRowCheck = classNames("nimbus--table-row__check", {
-    "is--visible": massAction && editMode,
+    "is--visible": editMode,
   });
 
   const handleTouchStart = () => {
@@ -81,17 +81,19 @@ const RenderRow = ({
       onClick={handleClick}
       className={classNameRow}
     >
-      <td className={classNameRowCheck}>
-        {skeleton ? (
-          <Checkbox.Skeleton />
-        ) : (
-          <Checkbox
-            name={`${index}`}
-            checked={rowsState[index]}
-            onChange={onChangeRow}
-          />
-        )}
-      </td>
+      {massAction && (
+        <td className={classNameRowCheck}>
+          {skeleton ? (
+            <Checkbox.Skeleton />
+          ) : (
+            <Checkbox
+              name={`${index}`}
+              checked={rowsState[index]}
+              onChange={onChangeRow}
+            />
+          )}
+        </td>
+      )}
       {children}
     </tr>
   );

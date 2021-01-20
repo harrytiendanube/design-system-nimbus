@@ -111,13 +111,10 @@
     .#{$prefix}--table-row {
       @include nimbus--breakpoint-down(md) {
         padding: $spacing-small $spacing-x-small $spacing-small $spacing-x-large;
-      }
 
-      .#{$prefix}--table-row__check {
-        width: $spacing-xx-large;
-
-        @include nimbus--breakpoint-down(md) {
+        .#{$prefix}--table-row__check {
           padding: $spacing-small $spacing-x-small 0 $spacing-small;
+          width: $spacing-xx-large;
         }
       }
     }
@@ -181,18 +178,18 @@
   }
 
   .#{$prefix}--table-row__check {
-    opacity: 0;
     padding-left: $spacing-small;
     padding-right: $spacing-x-small;
-    transform: translateX(-100%);
-    transition: transform $motion-fast ease, opacity $motion-fast ease;
-    visibility: hidden;
 
     @include nimbus--breakpoint-down(md) {
       height: 100%;
       left: 0;
+      opacity: 0;
       position: absolute;
       top: 0;
+      transform: translateX(-100%);
+      transition: transform $motion-fast ease, opacity $motion-fast ease;
+      visibility: hidden;
     }
 
     &.is--visible {

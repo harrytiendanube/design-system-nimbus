@@ -220,6 +220,7 @@ TODO: complete
         "Payment status",
         "Shipping status",
       ];
+      const massAction = {};
       const createRows = (init, cant) => {
         const rows = [];
         for (let i = init; i < init + cant; i++) {
@@ -254,7 +255,7 @@ TODO: complete
       const rows = createRows(1, 5);
       return (
         <>
-          <Table headers={headers} ruled skeleton>
+          <Table headers={headers} ruled massAction={massAction} skeleton>
             {rows}
           </Table>
         </>

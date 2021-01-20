@@ -136,7 +136,6 @@ const Table = React.memo(function Table({
 
   const memorizedMassAction = React.useMemo(
     () =>
-      editMode &&
       massAction &&
       massActionCheckValue && (
         <div className="nimbus--table__mass-actions">
@@ -162,7 +161,6 @@ const Table = React.memo(function Table({
         </div>
       ),
     [
-      editMode,
       handleOnChangeCheckMassAction,
       handleOnChangeSelectMassAction,
       massAction,
@@ -178,10 +176,10 @@ const Table = React.memo(function Table({
       headers && (
         <thead className="nimbus--table__header">
           <tr className="nimbus--table-row">
-            {massAction && editMode && (
+            {massAction && (
               <th className="nimbus--table-row__check">
                 {skeleton ? (
-                  <Checkbox.Skeleton />
+                  <Checkbox name="check-all" disabled />
                 ) : (
                   <Checkbox
                     name="check-all"
@@ -200,7 +198,6 @@ const Table = React.memo(function Table({
         </thead>
       ),
     [
-      editMode,
       handleOnChangeCheckMassAction,
       headers,
       massAction,

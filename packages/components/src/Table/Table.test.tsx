@@ -92,10 +92,11 @@ describe("<Table />", () => {
         {rows}
       </Table>,
     );
+    expect(screen.getByRole("checkbox")).toBeTruthy();
     const rowsCount = React.Children.count(rows);
     expect(
       container.querySelectorAll(".nimbus--checkbox-skeleton"),
-    ).toHaveLength(rowsCount + 1);
+    ).toHaveLength(rowsCount);
   });
 
   it("renders Massive Select Area (indeterminate) when any row is checked", () => {
