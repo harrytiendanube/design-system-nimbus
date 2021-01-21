@@ -3,7 +3,6 @@ import * as React from "react";
 import Item from "./NavTabs.Item";
 
 import "./NavTabs.css";
-import { Responsive } from "..";
 
 export { InterfaceNavTabsItem } from "./NavTabs.Item";
 
@@ -13,11 +12,7 @@ export interface InterfaceNavTabs {
 }
 
 function NavTabs({ children }: InterfaceNavTabs): JSX.Element {
-  return (
-    <Responsive display="mobile">
-      <div className="nimbus--nav-tabs">{children}</div>
-    </Responsive>
-  );
+  return <div className="nimbus--nav-tabs">{children}</div>;
 }
 
 NavTabs.Item = Item;
