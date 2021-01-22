@@ -19,7 +19,7 @@
     "@storybook/addon-storysource": "6.0.21",
     "@storybook/addon-viewport": "6.0.21",
     "@storybook/addons": "6.0.21",
-    "@tiendanube/icons": "0.1.8",
+    "@tiendanube/icons": "0.2.1",
     "react-docgen-typescript-loader": "3.7.2"
   },
   "devDependencies": {
