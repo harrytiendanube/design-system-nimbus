@@ -48,6 +48,40 @@ describe("<Input />", () => {
     expect(container.querySelector("svg")).toBeNull();
   });
 
+  it("render disabled", () => {
+    setup({ props: { disabled: true } });
+    const input = screen.getByRole("textbox", { name: "myLabel" });
+    expect(input).toHaveProperty("disabled");
+  });
+
+  it("render skeleton", () => {
+    const { container } = setup({
+      Component: <Input.Skeleton />,
+    });
+    expect(container.querySelector(".nimbus--input-skeleton")).toBeTruthy();
+    expect(container.querySelector(".rows-1")).toBeTruthy();
+    expect(
+      container.querySelector(".nimbus--input-skeleton__label"),
+    ).toBeTruthy();
+    expect(
+      container.querySelector(".nimbus--input-skeleton__field"),
+    ).toBeTruthy();
+  });
+
+  it("render 2 rows skeleton", () => {
+    const { container } = setup({
+      Component: <Input.Skeleton rows={2} />,
+    });
+    expect(container.querySelector(".nimbus--input-skeleton")).toBeTruthy();
+    expect(container.querySelector(".rows-2")).toBeTruthy();
+    expect(
+      container.querySelector(".nimbus--input-skeleton__label"),
+    ).toBeTruthy();
+    expect(
+      container.querySelector(".nimbus--input-skeleton__field"),
+    ).toBeTruthy();
+  });
+
   it("calls onChange", () => {
     const handleChange = (event: InterfaceNameValue) => {
       expect("myNewValue").toContain(event.value);

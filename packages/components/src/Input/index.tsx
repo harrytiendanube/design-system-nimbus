@@ -185,8 +185,9 @@ function Input({
   const inputTextAreaRef = React.useRef<HTMLTextAreaElement>(null);
 
   React.useEffect(() => {
-    const input = multiRows ? inputTextAreaRef.current : inputRef.current;
-    if (!input || focused === undefined) return;
+    const input = (multiRows ? inputTextAreaRef.current : inputRef.current) as
+      | HTMLInputElement
+      | HTMLTextAreaElement;
     if (focused) input.focus();
     else input.blur();
   }, [focused, multiRows]);
