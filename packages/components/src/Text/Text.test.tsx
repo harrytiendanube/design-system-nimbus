@@ -41,4 +41,28 @@ describe("<Text />", () => {
     const { container } = render(<Text.Skeleton width="medium" size="base" />);
     expect(container.querySelector(".nimbus--text-skeleton")).toBeTruthy();
   });
+  it("render span", () => {
+    const { container } = render(
+      <>
+        <Text>
+          Text content<Text.Span>Span content</Text.Span>
+        </Text>
+        <Text>
+          Text content
+          <Text.Span size="small" appearance="primary" background bold>
+            Span content
+          </Text.Span>
+        </Text>
+      </>,
+    );
+    expect(container.querySelector(".nimbus--text-span")).toBeTruthy();
+    expect(container.querySelector(".nimbus--text-size--small")).toBeTruthy();
+    expect(
+      container.querySelector(".nimbus--text-color--primary"),
+    ).toBeTruthy();
+    expect(
+      container.querySelector(".nimbus--text-background--primary"),
+    ).toBeTruthy();
+    expect(container.querySelector(".nimbus--text--bold")).toBeTruthy();
+  });
 });
