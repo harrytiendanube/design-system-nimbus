@@ -22,11 +22,11 @@ export interface InterfaceInteractiveList {
   /** Options */
   options: InterfaceInteractiveListOptions[];
   /** Mode */
-  mode: "single" | "multi" | "action";
+  mode?: "single" | "multi" | "action";
   /** Renders as skeleton */
   skeleton?: boolean;
   /** Add item onClick callback */
-  onClickAddItem: () => void;
+  onClickAddItem?: () => void;
   /** OnChange callback */
   onChange: (selected: string[]) => void;
 }
