@@ -4,9 +4,26 @@ import { render, screen } from "@testing-library/react";
 import Toast from ".";
 
 describe("<Toast />", () => {
-  it("render", () => {
-    render(<Toast label="myLabel" appearance="primary" onClose={jest.fn()} />);
-    const element: HTMLElement = screen.getByText("myLabel");
-    expect(element).toBeTruthy();
+  it("render", (done) => {
+    const handleOnClose = jest.fn();
+    const { container } = render(
+      <Toast label="myLabel" onClose={handleOnClose} />,
+      { container: document.body },
+    );
+    expect(screen.getByText("myLabel")).toBeTruthy();
+    expect(container.querySelector(".nimbus--toast--primary")).toBeTruthy();
+    setTimeout(() => {
+      expect(handleOnClose).toHaveBeenCalledTimes(1);
+      done();
+    }, 4300);
+  });
+  it("render with appearance", () => {
+    const handleOnClose = jest.fn();
+    const { container } = render(
+      <Toast label="myLabel" appearance="secondary" onClose={handleOnClose} />,
+      { container: document.body },
+    );
+    expect(screen.getByText("myLabel")).toBeTruthy();
+    expect(container.querySelector(".nimbus--toast--secondary")).toBeTruthy();
   });
 });
