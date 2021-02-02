@@ -50,14 +50,13 @@ function Menu({
 }: InterfaceMenu): JSX.Element {
   const FooterIcon = footer.icon;
 
-  const handleClickOutside = React.useCallback(
-    (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-      if ((event.target as HTMLElement).id === "nimbus--menu") {
-        onClose?.();
-      }
-    },
-    [onClose],
-  );
+  const handleClickOutside = (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+  ) => {
+    if ((event.target as HTMLElement).id === "nimbus--menu") {
+      onClose();
+    }
+  };
 
   const wrapperClassName = classNames(
     "nimbus--menu",
