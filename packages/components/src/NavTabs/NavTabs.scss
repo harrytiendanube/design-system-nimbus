@@ -71,3 +71,19 @@ body {
     fill: $color-primary;
   }
 }
+
+.#{$prefix}--nav-tabs-item--badge {
+  position: relative;
+
+  &::after {
+    background-color: $color-primary;
+    border-radius: 100%;
+    content: "";
+    display: block;
+    height: $spacing-x-small;
+    position: absolute;
+    right: $spacing-xx-small;
+    top: $spacing-xx-small;
+    width: $spacing-x-small;
+  }
+}
