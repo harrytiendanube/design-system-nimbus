@@ -1,0 +1,42 @@
+import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
+import { withKnobs, boolean } from "@storybook/addon-knobs";
+import { action } from "@storybook/addon-actions";
+import { withA11y } from "@storybook/addon-a11y";
+
+import { PullToRefresh, Text } from "@tiendanube/components/src";
+
+import "../utils/style.css";
+
+<Meta title="Components/PullToRefresh" component={PullToRefresh} />
+
+# PullToRefresh
+
+TODO: complete
+
+<Preview>
+  <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
+    {() => {
+      return (
+        <PullToRefresh
+          onRefresh={action("onRefresh")}
+          loading={boolean("loading", false)}
+        >
+          <Text block>Line 1 content</Text>
+          <Text block>Line 2 content</Text>
+          <Text block>Line 3 content</Text>
+          <Text block>Line 4 content</Text>
+          <Text block>Line 5 content</Text>
+          <Text block>Line 6 content</Text>
+          <Text block>Line 7 content</Text>
+          <Text block>Line 8 content</Text>
+          <Text block>Line 9 content</Text>
+          <Text block>Line 10 content</Text>
+        </PullToRefresh>
+      );
+    }}
+  </Story>
+</Preview>
+
+## Properties
+
+<Props of={PullToRefresh} />

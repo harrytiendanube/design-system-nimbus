@@ -160,3 +160,6 @@ export * from "./NavTabs";
 export { default as List } from "./List";
 export * from "./List";
 
+// List reference added
+export { default as PullToRefresh } from "./PullToRefresh";
+export * from "./PullToRefresh";

@@ -1,0 +1,31 @@
+@import "../../styles/core";
+
+.#{$prefix}--refresh-container {
+  align-items: flex-end;
+  box-sizing: border-box;
+  display: flex;
+  height: 0;
+  justify-content: center;
+  overflow: hidden;
+
+  .#{$prefix}--icon-container {
+    color: $color-grey-60;
+    padding: $spacing-x-small;
+    transition: transform $motion-base ease;
+  }
+
+  &.rotate > .#{$prefix}--icon-container {
+    transform: rotate(180deg);
+  }
+}
+
+.#{$prefix}--refresh-spinner-wrapper {
+  padding: $spacing-x-small 0;
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+
+.#{$prefix}--refresh-spinner {
+  @include nimbus--spinner($spinner-color: $color-primary, $size: "base");
+}
