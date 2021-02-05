@@ -281,7 +281,3 @@
   text-align: center;
   width: 100%;
 }
-
-.#{$prefix}--spinner {
-  @include nimbus--spinner($spinner-color: $color-primary, $size: "large");
-}

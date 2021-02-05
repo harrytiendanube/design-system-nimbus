@@ -12,6 +12,7 @@ import "./Table.css";
 import Text from "../Text";
 import Checkbox from "../Checkbox";
 import Select from "../Select";
+import Spinner from "../Spinner";
 
 import {
   InterfaceNameChecked,
@@ -295,7 +296,7 @@ const Table = React.memo(function Table({
         <div id="end" />
         {loading && (
           <div className="nimbus--spinner-wrapper">
-            <div className="nimbus--spinner" />
+            <Spinner size="large" />
           </div>
         )}
       </div>

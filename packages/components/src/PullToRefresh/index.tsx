@@ -3,6 +3,8 @@ import * as React from "react";
 import { ChevronDownIcon } from "@tiendanube/icons";
 import useEventListener from "./useEventListener";
 
+import Spinner from "../Spinner";
+
 import "./PullToRefresh.css";
 
 const distance = 60;
@@ -125,7 +127,7 @@ function PullToRefresh({
     <div>
       {loading && (
         <div className="nimbus--refresh-spinner-wrapper">
-          <div className="nimbus--refresh-spinner" />
+          <Spinner size="medium" />
         </div>
       )}
       <div ref={container} className="nimbus--refresh-container">
