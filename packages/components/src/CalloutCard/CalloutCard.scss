@@ -1,0 +1,71 @@
+@import "core";
+
+// Callout Card
+
+$callout-color-primary: (
+  "background": #edf5fe,
+  "foreground": $color-primary-light,
+);
+
+$callout-color-secondary: (
+  "background": #eef1f7,
+  "foreground": $color-secondary-light,
+);
+
+$callout-color-success: (
+  "background": #effdf7,
+  "foreground": $color-success-light,
+);
+
+$callout-color-warning: (
+  "background": #fff5e9,
+  "foreground": $color-warning-light,
+);
+
+$callout-color-danger: (
+  "background": #fcebeb,
+  "foreground": $color-danger-light,
+);
+
+$callout-colors: (
+  primary: $callout-color-primary,
+  secondary: $callout-color-secondary,
+  success: $callout-color-success,
+  warning: $callout-color-warning,
+  danger: $callout-color-danger,
+);
+
+.#{$prefix}--callout-card {
+  @each $name, $color in $callout-colors {
+    &--#{$name} {
+      background-color: map-get($color, "background");
+
+      .#{$prefix}--callout-card__icon {
+        background-color: map-get($color, "foreground");
+      }
+    }
+  }
+  border-radius: $actions-border-radius;
+  display: flex;
+  flex-wrap: nowrap;
+  padding: $spacing-small;
+
+  .#{$prefix}--callout-card__icon {
+    border-radius: $actions-border-radius;
+    flex: 0 0 auto;
+    margin-right: $spacing-small;
+    padding: $spacing-xx-small + $spacing-x-small;
+  }
+
+  .#{$prefix}--callout-card__info {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    justify-content: center;
+
+    .#{$prefix}--text {
+      @include nimbus--text-trim(1);
+      color: $color-body-text;
+    }
+  }
+}

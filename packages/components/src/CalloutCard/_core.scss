@@ -1,0 +1,19 @@
+@import "../../styles/core";
+
+// CalloutCard Mixins
+
+@mixin calloutcard($bg-color) {
+  align-items: center;
+  background-color: $bg-color;
+  border-radius: 50%;
+  display: flex;
+  flex: 0 0 auto;
+  height: $spacing-large;
+  justify-content: center;
+  margin-right: $spacing-x-small;
+  width: $spacing-large;
+
+  svg {
+    fill: $color-body-text;
+  }
+}

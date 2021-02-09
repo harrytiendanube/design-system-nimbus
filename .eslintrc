@@ -126,7 +126,7 @@
           "unordered",
           "touchmove",
           "touchend",
-          ""
+          "callout"
         ]
       }
     ]
