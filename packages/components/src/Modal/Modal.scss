@@ -38,7 +38,6 @@ body {
 
 .#{$prefix}--modal-wrapper {
   background-color: $color-background;
-  border: $input-border-width solid $input-border-color;
   border-radius: $actions-border-radius;
   height: auto;
   max-height: 100%;
