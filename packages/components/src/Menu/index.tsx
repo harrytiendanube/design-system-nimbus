@@ -10,7 +10,7 @@ import {
 } from "@tiendanube/icons";
 import Item from "./Menu.Item";
 import Section from "./Menu.Section";
-import { Title, Stack } from "..";
+import { Title, Stack, IconButton } from "..";
 
 import "./Menu.css";
 
@@ -110,15 +110,11 @@ function Menu({
               </Stack>
             </Stack.Item>
             <Stack.Item>
-              <a
+              <IconButton
                 href={href}
-                aria-label={title}
-                className="nimbus--menu-header__action"
-                rel="noreferrer"
-                target="_blank"
-              >
-                <ExternalLinkIcon />
-              </a>
+                ariaLabel={title}
+                icon={ExternalLinkIcon}
+              />
             </Stack.Item>
           </Stack>
         </div>

@@ -97,7 +97,7 @@ describe("<Menu />", () => {
       buttonKeyboard,
     } = setup();
     expect(screen.getByRole("heading", { name: "title" })).toBeTruthy();
-    expect(screen.getByRole("link", { name: "title" })).toBeTruthy();
+    expect(screen.getByRole("button", { name: "title" })).toBeTruthy();
     expect(presentation).not.toHaveClass("is--visible");
     expect(buttonStart).toBeTruthy();
     expect(buttonSales).toBeTruthy();

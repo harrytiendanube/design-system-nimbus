@@ -1,10 +1,11 @@
 import * as React from "react";
 
-import "./Card.css";
-
 import { Icon as IconType, ChevronDownIcon } from "@tiendanube/icons";
 
+import "./Card.css";
+
 import {
+  IconButton,
   Title,
   Button,
   Label,
@@ -112,14 +113,7 @@ function Card({
     () =>
       Icon &&
       onClickHeaderIcon && (
-        <button
-          type="button"
-          aria-label={title}
-          className="nimbus--card-header__action"
-          onClick={onClickHeaderIcon}
-        >
-          <Icon />
-        </button>
+        <IconButton icon={Icon} ariaLabel={title} onClick={onClickHeaderIcon} />
       ),
     [Icon, title, onClickHeaderIcon],
   );

@@ -170,3 +170,6 @@ export * from "./Spinner";
 // CalloutCard reference added
 export { default as CalloutCard } from "./CalloutCard";
 export * from "./CalloutCard";
+
+// IconButton reference added
+export * from "./IconButton";

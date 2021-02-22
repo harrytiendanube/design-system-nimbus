@@ -44,33 +44,6 @@
         @include nimbus--text-trim(1);
       }
     }
-
-    .#{$prefix}--card-header__action {
-      appearance: none;
-      background-color: $color-default;
-      border: $button-border-width solid $color-default;
-      border-radius: 100%;
-      color: $color-primary;
-      cursor: pointer;
-      flex: 0 0 auto;
-      margin-bottom: -$spacing-x-small;
-      margin-top: -$spacing-x-small;
-      padding: $spacing-x-small;
-      transition: $button-hover-delay ease;
-
-      &:hover {
-        background-color: $color-default-hover;
-      }
-
-      &:active {
-        background-color: $color-default-active;
-      }
-
-      &:focus {
-        border-color: $color-default-active;
-        box-shadow: 0 0 0 $button-border-width $color-default-active;
-      }
-    }
   }
 
   .#{$prefix}--card-header__collapse {
