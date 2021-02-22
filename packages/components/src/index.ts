@@ -171,5 +171,9 @@ export * from "./Spinner";
 export { default as CalloutCard } from "./CalloutCard";
 export * from "./CalloutCard";
 
+// ToastProgress reference added
+export { default as ToastProgress } from "./ToastProgress";
+export * from "./ToastProgress";
+
 // IconButton reference added
 export * from "./IconButton";

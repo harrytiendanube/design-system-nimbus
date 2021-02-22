@@ -1,6 +1,7 @@
 @import "../../styles/core";
 
 // NavTabs
+/* stylelint-disable function-parentheses-space-inside -- Disabling because linter automatically breaks lines in account of the amount of characters */
 
 $nav-tabs-height: 65px;
 
@@ -17,6 +18,23 @@ body {
       padding-bottom: calc(var(--safe-area-inset-bottom) + #{$nav-tabs-height});
     }
     padding-bottom: $nav-tabs-height;
+
+    .#{$prefix}--toast-wrapper {
+      @supports (padding-bottom: constant(safe-area-inset-bottom)) {
+        --safe-area-inset-bottom: constant(safe-area-inset-bottom);
+        padding-bottom: calc(
+          var(--safe-area-inset-bottom) + #{$nav-tabs-height} + #{$spacing-medium}
+        );
+      }
+      @supports (padding-bottom: env(safe-area-inset-bottom)) {
+        --safe-area-inset-bottom: env(safe-area-inset-bottom);
+
+        padding-bottom: calc(
+          var(--safe-area-inset-bottom) + #{$nav-tabs-height} + #{$spacing-medium}
+        );
+      }
+      padding-bottom: $nav-tabs-height + $spacing-medium;
+    }
   }
 }
 

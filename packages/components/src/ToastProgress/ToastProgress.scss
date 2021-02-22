@@ -1,0 +1,58 @@
+@import "../../styles/core";
+
+// ToastProgress
+
+.#{$prefix}--toast-progress-wrapper {
+  @supports (padding-bottom: constant(safe-area-inset-bottom)) {
+    --safe-area-inset-bottom: constant(safe-area-inset-bottom);
+
+    padding-bottom: calc(var(--safe-area-inset-bottom) + #{$spacing-medium});
+  }
+  @supports (padding-bottom: env(safe-area-inset-bottom)) {
+    --safe-area-inset-bottom: env(safe-area-inset-bottom);
+
+    padding-bottom: calc(var(--safe-area-inset-bottom) + #{$spacing-medium});
+  }
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  padding-bottom: $spacing-medium;
+  padding-left: $spacing-medium;
+  padding-right: $spacing-medium;
+  padding-top: $spacing-medium;
+  position: fixed;
+  width: 100%;
+  z-index: 800;
+
+  &.is--visible {
+    .#{$prefix}--toast-progress {
+      transform: translateY(0);
+    }
+  }
+}
+
+.#{$prefix}--toast-progress {
+  align-items: center;
+  background-color: $color-body-text;
+  border-radius: $spacing-x-small;
+  display: inline-flex;
+  padding: $spacing-x-small;
+  transform: translateY(200%);
+  transition: $motion-fast ease;
+
+  .#{$prefix}--spinner {
+    color: $color-background;
+
+    &::before,
+    &::after {
+      background-color: $color-body-text;
+    }
+  }
+
+  .#{$prefix}--text {
+    @include nimbus--text-trim(1);
+    color: $color-white;
+    margin-left: $spacing-x-small;
+  }
+}
