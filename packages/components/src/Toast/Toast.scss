@@ -37,12 +37,14 @@ $situation-colors: (
   padding-left: $spacing-medium;
   padding-right: $spacing-medium;
   padding-top: $spacing-medium;
+  pointer-events: none;
   position: fixed;
   width: 100%;
   z-index: 800;
 
   &.is--visible {
     .#{$prefix}--toast {
+      opacity: 1;
       transform: translateY(0);
     }
   }
@@ -53,8 +55,9 @@ $situation-colors: (
   align-items: center;
   border-radius: $spacing-x-small;
   display: inline-flex;
+  opacity: 0;
   padding: $spacing-x-small;
-  transform: translateY(200%);
+  transform: translateY(300%);
   transition: $motion-fast ease;
 
   svg {
