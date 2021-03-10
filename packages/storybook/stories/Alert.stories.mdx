@@ -2,12 +2,12 @@ import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
 import { withKnobs, select, text, boolean } from "@storybook/addon-knobs";
 import { action } from "@storybook/addon-actions";
 import { withA11y } from "@storybook/addon-a11y";
-import { Alert } from "@tiendanube/components/src";
+import { Alert, Stack } from "@tiendanube/components/src";
 import { LOREM_STRESS } from "./utils/constants";
 
 import "../utils/style.css";
 
-<Meta title="Atoms/Alert" component={Alert} />
+<Meta title="Components/Alert" component={Alert} />
 
 # Alert
 
@@ -46,21 +46,28 @@ TODO: complete
 
 <Preview withToolbar>
   <Story name="appearance">
-    <div className="separate">
-      <Alert show>Default State</Alert>
-      <Alert appearance="primary" show>
-        Primary State
-      </Alert>
-      <Alert appearance="danger" show>
-        Danger State
-      </Alert>
-      <Alert appearance="warning" show>
-        Warning State
-      </Alert>
-      <Alert appearance="success" show>
-        Success State
-      </Alert>
-    </div>
+    <Stack column align="stretch">
+      <Stack.Item>
+        <Alert appearance="primary" show>
+          Primary State
+        </Alert>
+      </Stack.Item>
+      <Stack.Item>
+        <Alert appearance="danger" show>
+          Danger State
+        </Alert>
+      </Stack.Item>
+      <Stack.Item>
+        <Alert appearance="warning" show>
+          Warning State
+        </Alert>
+      </Stack.Item>
+      <Stack.Item>
+        <Alert appearance="success" show>
+          Success State
+        </Alert>
+      </Stack.Item>
+    </Stack>
   </Story>
 </Preview>
 

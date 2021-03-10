@@ -2,6 +2,7 @@ import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 import { withKnobs } from "@storybook/addon-knobs";
 import { withA11y } from "@storybook/addon-a11y";
 
+import { Stack } from "@tiendanube/components/src";
 import { TiendanubeIcon } from "@tiendanube/icons";
 
 <Meta title="Atoms/Icon" component={TiendanubeIcon} />
@@ -21,11 +22,17 @@ TODO: Complete
 TODO: complete
 
 <Preview withToolbar>
-  <Story name="appearance">
-    <div className="separate">
-      <TiendanubeIcon size="small" />
-      <TiendanubeIcon size="medium" />
-      <TiendanubeIcon size="large" />
-    </div>
+  <Story name="size">
+    <Stack wrap>
+      <Stack.Item>
+        <TiendanubeIcon size="small" />
+      </Stack.Item>
+      <Stack.Item>
+        <TiendanubeIcon size="medium" />
+      </Stack.Item>
+      <Stack.Item>
+        <TiendanubeIcon size="large" />
+      </Stack.Item>
+    </Stack>
   </Story>
 </Preview>

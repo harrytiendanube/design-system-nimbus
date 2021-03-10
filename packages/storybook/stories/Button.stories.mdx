@@ -3,9 +3,8 @@ import { withKnobs, select, text, boolean } from "@storybook/addon-knobs";
 import { action } from "@storybook/addon-actions";
 import { withA11y } from "@storybook/addon-a11y";
 
-import { Button } from "@tiendanube/components/src";
-import { ArrowRightIcon, ExternalLinkIcon } from "@tiendanube/icons";
-import { LOREM_STRESS } from "./utils/constants";
+import { Button, Stack } from "@tiendanube/components/src";
+import { PlusCircleIcon } from "@tiendanube/icons";
 
 import "../utils/style.css";
 
@@ -19,9 +18,8 @@ TODO: complete
   <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
     <Button
       ariaLabel={text("aria-label", "aria-label")}
-      icon={ArrowRightIcon}
+      icon={PlusCircleIcon}
       iconPosition={select("iconPosition", ["start", "end"])}
-      iconSize={select("iconSize", ["small", "medium", "large"])}
       appearance={select("appearance", [
         "default",
         "primary",
@@ -55,40 +53,47 @@ TODO: complete
 
 <Preview withToolbar>
   <Story name="appearance">
-    <div>
-      <div className="separate">
-        <Button appearance="default"> Default </Button>
-        <Button appearance="primary"> Primary </Button>
-        <Button appearance="secondary"> Secondary </Button>
-        <Button appearance="danger"> Danger </Button>
-      </div>
-      <br />
-      <div className="separate">
-        <Button appearance="default" disabled>
-          Default
-        </Button>
-        <Button appearance="primary" disabled>
-          Primary
-        </Button>
-        <Button appearance="secondary" disabled>
-          Secondary
-        </Button>
-        <Button appearance="danger" disabled>
-          Danger
-        </Button>
-      </div>
-    </div>
-  </Story>
-</Preview>
-
-## Stressed
-
-TODO: complete
-
-<Preview withToolbar>
-  <Story name="stressed">
-    <Button icon={ExternalLinkIcon} iconPosition="end">
-      {LOREM_STRESS}
-    </Button>
+    <Stack column align="flex-start">
+      <Stack.Item>
+        <Stack wrap>
+          <Stack.Item>
+            <Button appearance="default">Default</Button>
+          </Stack.Item>
+          <Stack.Item>
+            <Button appearance="primary">Primary</Button>
+          </Stack.Item>
+          <Stack.Item>
+            <Button appearance="secondary">Secondary</Button>
+          </Stack.Item>
+          <Stack.Item>
+            <Button appearance="danger">Danger</Button>
+          </Stack.Item>
+        </Stack>
+      </Stack.Item>
+      <Stack.Item>
+        <Stack wrap>
+          <Stack.Item>
+            <Button appearance="default" disabled>
+              Default
+            </Button>
+          </Stack.Item>
+          <Stack.Item>
+            <Button appearance="primary" disabled>
+              Primary
+            </Button>
+          </Stack.Item>
+          <Stack.Item>
+            <Button appearance="secondary" disabled>
+              Secondary
+            </Button>
+          </Stack.Item>
+          <Stack.Item>
+            <Button appearance="danger" disabled>
+              Danger
+            </Button>
+          </Stack.Item>
+        </Stack>
+      </Stack.Item>
+    </Stack>
   </Story>
 </Preview>

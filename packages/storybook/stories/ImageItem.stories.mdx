@@ -18,23 +18,21 @@ TODO: Complete
 
 <Preview>
   <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
-    <div className="separate">
-      <ImageItem
-        thumbnail={IMAGE_PRODUCT}
-        link={{
-          children: text("link.children", "Product"),
-          onClick: action("link.OnClick"),
-        }}
-        subtitle={{
-          children: text("subtitle.children", "Variant"),
-          appearance: select("subtitle.appearance", IMAGE_APPEARANCES),
-        }}
-        description={{
-          children: text("description.children", "1 x $3.500"),
-          appearance: select("description.appearance", IMAGE_APPEARANCES),
-        }}
-      />
-    </div>
+    <ImageItem
+      thumbnail={IMAGE_PRODUCT}
+      link={{
+        children: text("link.children", "Product"),
+        onClick: action("link.OnClick"),
+      }}
+      subtitle={{
+        children: text("subtitle.children", "Variant"),
+        appearance: select("subtitle.appearance", IMAGE_APPEARANCES),
+      }}
+      description={{
+        children: text("description.children", "1 x $3.500"),
+        appearance: select("description.appearance", IMAGE_APPEARANCES),
+      }}
+    />
   </Story>
 </Preview>
 
@@ -46,9 +44,7 @@ TODO: Complete
 
 <Preview>
   <Story name="skeleton" parameters={{ decorators: [withKnobs, withA11y] }}>
-    <div className="separate">
-      <ImageItem.Skeleton />
-    </div>
+    <ImageItem.Skeleton />
   </Story>
 </Preview>
 
@@ -58,13 +54,11 @@ TODO: complete
 
 <Preview>
   <Story name="without thumbnail">
-    <div className="separate">
-      <ImageItem
-        link={{ children: "Product", onClick: action("link.OnClick") }}
-        subtitle={{ children: "Variant" }}
-        description={{ children: "1 x $3.500" }}
-      />
-    </div>
+    <ImageItem
+      link={{ children: "Product", onClick: action("link.OnClick") }}
+      subtitle={{ children: "Variant" }}
+      description={{ children: "1 x $3.500" }}
+    />
   </Story>
 </Preview>
 
@@ -74,17 +68,15 @@ TODO: complete
 
 <Preview>
   <Story name="non-existent thumbnail">
-    <div className="separate">
-      <ImageItem
-        thumbnail="http://thisURLsDoesNotExists.com"
-        link={{
-          children: text("link.children", "Product"),
-          onClick: action("link.OnClick"),
-        }}
-        subtitle={{ children: "Variant" }}
-        description={{ children: "1 x $3.500" }}
-      />
-    </div>
+    <ImageItem
+      thumbnail="http://thisURLsDoesNotExists.com"
+      link={{
+        children: text("link.children", "Product"),
+        onClick: action("link.OnClick"),
+      }}
+      subtitle={{ children: "Variant" }}
+      description={{ children: "1 x $3.500" }}
+    />
   </Story>
 </Preview>
 
@@ -94,16 +86,14 @@ TODO: complete
 
 <Preview>
   <Story name="stressed">
-    <div className="separate">
-      <ImageItem
-        thumbnail={IMAGE_PRODUCT}
-        link={{
-          children: LOREM_STRESS,
-          onClick: action("link.OnClick"),
-        }}
-        subtitle={{ children: LOREM_STRESS }}
-        description={{ children: "1 x $3.500" }}
-      />
-    </div>
+    <ImageItem
+      thumbnail={IMAGE_PRODUCT}
+      link={{
+        children: LOREM_STRESS,
+        onClick: action("link.OnClick"),
+      }}
+      subtitle={{ children: LOREM_STRESS }}
+      description={{ children: "1 x $3.500" }}
+    />
   </Story>
 </Preview>

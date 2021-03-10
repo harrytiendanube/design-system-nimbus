@@ -7,14 +7,17 @@ import image from "./utils/login-background.jpg";
 
 import "../utils/style.css";
 
-<Meta title="Atoms/LayoutBackground" component={LayoutBackground} />
+<Meta title="Layout/LayoutBackground" component={LayoutBackground} />
 
 # LayoutBackground
 
 TODO: complete
 
 <Preview>
-  <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
+  <Story
+    name="default"
+    parameters={{ decorators: [withKnobs, withA11y], layout: "fullscreen" }}
+  >
     <LayoutBackground image={image}>
       <Text>{text("Text", "Content")}</Text>
     </LayoutBackground>

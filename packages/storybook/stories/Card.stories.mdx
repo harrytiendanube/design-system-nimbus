@@ -16,31 +16,29 @@ TODO: complete
 
 <Preview>
   <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
-    <div className="separate">
-      <Card
-        title={text("title", "Card Title")}
-        primaryButton={{
-          children: text("primaryButton.children", "Primary"),
-          onClick: action("onClickPrimary"),
-          disabled: boolean("primaryButton.disabled", false),
-          spinner: boolean("primaryButton.spinner", false),
-        }}
-        secondaryButton={{
-          children: text("secondaryButton.children", "Secondary"),
-          onClick: action("onClickSecondary"),
-          disabled: boolean("secondaryButton.disabled", false),
-          spinner: boolean("secondaryButton.spinner", false),
-        }}
-        headerLabel={{
-          id: "header-label-id",
-          label: "Header label",
-          appearance: "warning",
-          icon: CreditCardIcon,
-        }}
-      >
-        <Text>Card content</Text>
-      </Card>
-    </div>
+    <Card
+      title={text("title", "Card Title")}
+      primaryButton={{
+        children: text("primaryButton.children", "Primary"),
+        onClick: action("onClickPrimary"),
+        disabled: boolean("primaryButton.disabled", false),
+        spinner: boolean("primaryButton.spinner", false),
+      }}
+      secondaryButton={{
+        children: text("secondaryButton.children", "Secondary"),
+        onClick: action("onClickSecondary"),
+        disabled: boolean("secondaryButton.disabled", false),
+        spinner: boolean("secondaryButton.spinner", false),
+      }}
+      headerLabel={{
+        id: "header-label-id",
+        label: "Header label",
+        appearance: "warning",
+        icon: CreditCardIcon,
+      }}
+    >
+      <Text>Card content</Text>
+    </Card>
   </Story>
 </Preview>
 
@@ -52,16 +50,14 @@ TODO: complete
 
 <Preview>
   <Story name="skeleton" parameters={{ decorators: [withKnobs, withA11y] }}>
-    <div className="separate">
-      <Card
-        title={text("title", "Card Title")}
-        primaryButton="skeleton"
-        secondaryButton="skeleton"
-        headerLabel="skeleton"
-      >
-        <Text.Skeleton />
-      </Card>
-    </div>
+    <Card
+      title={text("title", "Card Title")}
+      primaryButton="skeleton"
+      secondaryButton="skeleton"
+      headerLabel="skeleton"
+    >
+      <Text.Skeleton />
+    </Card>
   </Story>
 </Preview>
 
@@ -71,22 +67,20 @@ TODO: complete
 
 <Preview>
   <Story name="collapsible" parameters={{ decorators: [withKnobs, withA11y] }}>
-    <div className="separate">
-      <Card
-        title="Card Title"
-        primaryButton={{
-          children: "Primary",
-          onClick: action("onClickPrimary"),
-        }}
-        secondaryButton={{
-          children: "Secondary",
-          onClick: action("onClickSecondary"),
-        }}
-        isCollapsible
-      >
-        <Text>Card content</Text>
-      </Card>
-    </div>
+    <Card
+      title="Card Title"
+      primaryButton={{
+        children: "Primary",
+        onClick: action("onClickPrimary"),
+      }}
+      secondaryButton={{
+        children: "Secondary",
+        onClick: action("onClickSecondary"),
+      }}
+      isCollapsible
+    >
+      <Text>Card content</Text>
+    </Card>
   </Story>
 </Preview>
 
@@ -96,22 +90,20 @@ TODO: complete
 
 <Preview>
   <Story name="icon" parameters={{ decorators: [withKnobs, withA11y] }}>
-    <div className="separate">
-      <Card
-        title="Card Title"
-        primaryButton={{
-          children: "Primary",
-          onClick: action("onClickPrimary"),
-        }}
-        secondaryButton={{
-          children: "Secondary",
-          onClick: action("onClickSecondary"),
-        }}
-        headerIcon={PrinterIcon}
-        onClickHeaderIcon={action("onClickHeaderIcon")}
-      >
-        <Text>Card content</Text>
-      </Card>
-    </div>
+    <Card
+      title="Card Title"
+      primaryButton={{
+        children: "Primary",
+        onClick: action("onClickPrimary"),
+      }}
+      secondaryButton={{
+        children: "Secondary",
+        onClick: action("onClickSecondary"),
+      }}
+      headerIcon={PrinterIcon}
+      onClickHeaderIcon={action("onClickHeaderIcon")}
+    >
+      <Text>Card content</Text>
+    </Card>
   </Story>
 </Preview>

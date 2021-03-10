@@ -1,0 +1,22 @@
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+
+import { Title } from "@tiendanube/components/src";
+import logo from "../utils/nimbus-logo.svg";
+
+import "../utils/style.css";
+
+<Meta title="Intro/Welcome" />
+
+# Welcome
+
+TODO: complete
+
+<Preview>
+  <Story name="welcome" parameters={{ layout: "fullscreen" }}>
+    <div className="nimbus--welcome-story">
+      <img alt="Nimbus Design System" src={logo} height="30" />
+      <Title type="h1">Nimbus</Title>
+      <Title type="h1">Design System</Title>
+    </div>
+  </Story>
+</Preview>

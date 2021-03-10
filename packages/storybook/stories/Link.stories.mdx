@@ -3,9 +3,8 @@ import { withKnobs, select, text, boolean } from "@storybook/addon-knobs";
 import { action } from "@storybook/addon-actions";
 import { withA11y } from "@storybook/addon-a11y";
 
-import { Link } from "@tiendanube/components/src";
+import { Link, Stack } from "@tiendanube/components/src";
 import { ExternalLinkIcon } from "@tiendanube/icons";
-import { LOREM_STRESS } from "./utils/constants";
 
 import "../utils/style.css";
 
@@ -90,29 +89,14 @@ TODO: complete
   </Story>
 </Preview>
 
-## Stressed
-
-<Preview withToolbar>
-  <Story name="stressed">
-    <Link
-      href="http://www.tiendanube.com"
-      target="_blank"
-      icon={ExternalLinkIcon}
-      iconPosition="end"
-    >
-      {LOREM_STRESS}
-    </Link>
-  </Story>
-</Preview>
-
 ## Appearance
 
 TODO: complete
 
 <Preview withToolbar>
   <Story name="appearance">
-    <div>
-      <div className="separate">
+    <Stack wrap>
+      <Stack.Item>
         <Link
           appearance="default"
           href="http://www.tiendanube.com"
@@ -121,6 +105,8 @@ TODO: complete
         >
           Default
         </Link>
+      </Stack.Item>
+      <Stack.Item>
         <Link
           appearance="primary"
           href="http://www.tiendanube.com"
@@ -129,6 +115,8 @@ TODO: complete
         >
           Primary
         </Link>
+      </Stack.Item>
+      <Stack.Item>
         <Link
           appearance="secondary"
           href="http://www.tiendanube.com"
@@ -137,6 +125,8 @@ TODO: complete
         >
           Secondary
         </Link>
+      </Stack.Item>
+      <Stack.Item>
         <Link
           appearance="danger"
           href="http://www.tiendanube.com"
@@ -145,8 +135,8 @@ TODO: complete
         >
           Danger
         </Link>
-      </div>
-    </div>
+      </Stack.Item>
+    </Stack>
   </Story>
 </Preview>
 
@@ -156,8 +146,8 @@ TODO: complete
 
 <Preview withToolbar>
   <Story name="underline">
-    <div>
-      <div className="separate">
+    <Stack wrap>
+      <Stack.Item>
         <Link
           appearance="default"
           href="http://www.tiendanube.com"
@@ -167,6 +157,8 @@ TODO: complete
         >
           Default
         </Link>
+      </Stack.Item>
+      <Stack.Item>
         <Link
           appearance="primary"
           href="http://www.tiendanube.com"
@@ -176,6 +168,8 @@ TODO: complete
         >
           Primary
         </Link>
+      </Stack.Item>
+      <Stack.Item>
         <Link
           appearance="secondary"
           href="http://www.tiendanube.com"
@@ -185,6 +179,8 @@ TODO: complete
         >
           Secondary
         </Link>
+      </Stack.Item>
+      <Stack.Item>
         <Link
           appearance="danger"
           href="http://www.tiendanube.com"
@@ -194,7 +190,7 @@ TODO: complete
         >
           Danger
         </Link>
-      </div>
-    </div>
+      </Stack.Item>
+    </Stack>
   </Story>
 </Preview>

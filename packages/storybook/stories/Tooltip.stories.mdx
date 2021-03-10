@@ -3,9 +3,9 @@ import { withKnobs } from "@storybook/addon-knobs";
 import { withA11y } from "@storybook/addon-a11y";
 
 import { InfoCircleIcon } from "@tiendanube/icons";
-import { Tooltip, Text } from "@tiendanube/components/src";
+import { Tooltip, Text, Stack } from "@tiendanube/components/src";
 
-<Meta title="Components/Tooltip" component={Tooltip} />
+<Meta title="Atoms/Tooltip" component={Tooltip} />
 
 # Tooltip
 
@@ -13,13 +13,9 @@ TODO: complete
 
 <Preview>
   <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
-    <>
-      <div className="separate">
-        <Tooltip labelIcon={InfoCircleIcon}>
-          <Text>Tooltip text</Text>
-        </Tooltip>
-      </div>
-    </>
+    <Tooltip labelIcon={InfoCircleIcon}>
+      <Text>Tooltip text</Text>
+    </Tooltip>
   </Story>
 </Preview>
 
@@ -33,22 +29,28 @@ TODO: complete
 
 <Preview>
   <Story name="positions" parameters={{ decorators: [withKnobs, withA11y] }}>
-    <>
-      <div className="separate">
+    <Stack wrap justify="space-between">
+      <Stack.Item>
         <Tooltip labelIcon={InfoCircleIcon} position="top">
           <Text>Tooltip top</Text>
         </Tooltip>
+      </Stack.Item>
+      <Stack.Item>
         <Tooltip labelIcon={InfoCircleIcon} position="bottom">
           <Text>Tooltip bottom</Text>
         </Tooltip>
+      </Stack.Item>
+      <Stack.Item>
         <Tooltip labelIcon={InfoCircleIcon} position="left">
           <Text>Tooltip left</Text>
         </Tooltip>
+      </Stack.Item>
+      <Stack.Item>
         <Tooltip labelIcon={InfoCircleIcon} position="right">
           <Text>Tooltip right</Text>
         </Tooltip>
-      </div>
-    </>
+      </Stack.Item>
+    </Stack>
   </Story>
 </Preview>
 
@@ -58,12 +60,8 @@ TODO: complete
 
 <Preview>
   <Story name="text label" parameters={{ decorators: [withKnobs, withA11y] }}>
-    <>
-      <div className="separate">
-        <Tooltip labelText="Tooltip label">
-          <Text>Tooltip top</Text>
-        </Tooltip>
-      </div>
-    </>
+    <Tooltip labelText="Tooltip label">
+      <Text>Tooltip top</Text>
+    </Tooltip>
   </Story>
 </Preview>

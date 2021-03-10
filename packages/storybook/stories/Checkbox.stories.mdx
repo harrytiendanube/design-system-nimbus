@@ -3,7 +3,7 @@ import { withKnobs } from "@storybook/addon-knobs";
 import { action } from "@storybook/addon-actions";
 import { withA11y } from "@storybook/addon-a11y";
 
-import { Checkbox } from "@tiendanube/components/src";
+import { Checkbox, Stack } from "@tiendanube/components/src";
 
 import "../utils/style.css";
 
@@ -15,24 +15,30 @@ TODO: complete
 
 <Preview>
   <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
-    <div className="separate">
-      <Checkbox
-        label="Checked"
-        name="checkboxA"
-        onChange={action("onChange")}
-        checked
-      />
-      <Checkbox
-        label="Unchecked"
-        name="checkboxB"
-        onChange={action("onChange")}
-      />
-      <Checkbox
-        label="Indeterminate"
-        name="checkboxB"
-        checked="indeterminate"
-      />
-    </div>
+    <Stack>
+      <Stack.Item>
+        <Checkbox
+          label="Checked"
+          name="checkboxA"
+          onChange={action("onChange")}
+          checked
+        />
+      </Stack.Item>
+      <Stack.Item>
+        <Checkbox
+          label="Unchecked"
+          name="checkboxB"
+          onChange={action("onChange")}
+        />
+      </Stack.Item>
+      <Stack.Item>
+        <Checkbox
+          label="Indeterminate"
+          name="checkboxB"
+          checked="indeterminate"
+        />
+      </Stack.Item>
+    </Stack>
   </Story>
 </Preview>
 
@@ -63,27 +69,33 @@ TODO: complete
       const handleChange = (event) =>
         setChecked({ ...checked, [event.name]: event.checked });
       return (
-        <div className="separate">
-          <Checkbox
-            label="Check A"
-            name="checkboxA"
-            checked={checked.checkboxA}
-            onChange={handleChange}
-          />
-          <Checkbox
-            label="Check B"
-            name="checkboxB"
-            checked={checked.checkboxB}
-            onChange={handleChange}
-          />
-          <Checkbox
-            label="Check C"
-            name="checkboxC"
-            checked={checked.checkboxC}
-            onChange={handleChange}
-            disabled
-          />
-        </div>
+        <Stack wrap>
+          <Stack.Item>
+            <Checkbox
+              label="Check A"
+              name="checkboxA"
+              checked={checked.checkboxA}
+              onChange={handleChange}
+            />
+          </Stack.Item>
+          <Stack.Item>
+            <Checkbox
+              label="Check B"
+              name="checkboxB"
+              checked={checked.checkboxB}
+              onChange={handleChange}
+            />
+          </Stack.Item>
+          <Stack.Item>
+            <Checkbox
+              label="Check C"
+              name="checkboxC"
+              checked={checked.checkboxC}
+              onChange={handleChange}
+              disabled
+            />
+          </Stack.Item>
+        </Stack>
       );
     }}
   </Story>

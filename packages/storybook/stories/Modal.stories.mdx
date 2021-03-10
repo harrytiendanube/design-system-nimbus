@@ -3,7 +3,6 @@ import { withKnobs, text, boolean, select } from "@storybook/addon-knobs";
 import { action } from "@storybook/addon-actions";
 import { withA11y } from "@storybook/addon-a11y";
 import { Modal, Select, Button, Alert } from "@tiendanube/components/src";
-import { SlidersIcon } from "@tiendanube/icons";
 import { STATUS_ORDER, SHIPPING_METHOD } from "./utils/constants";
 
 import "../utils/style.css";
@@ -79,14 +78,7 @@ TODO: complete
       };
       return (
         <div>
-          <Button
-            appearance="primary"
-            icon={SlidersIcon}
-            iconPosition="end"
-            onClick={() => setShow(true)}
-          >
-            Filters
-          </Button>
+          <Button onClick={() => setShow(true)}>Show Modal</Button>
           {!show && (
             <div>
               <Alert show={filter}>

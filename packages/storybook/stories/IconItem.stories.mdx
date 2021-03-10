@@ -3,7 +3,7 @@ import { withKnobs, select, text } from "@storybook/addon-knobs";
 import { action } from "@storybook/addon-actions";
 import { withA11y } from "@storybook/addon-a11y";
 
-import { IconItem } from "@tiendanube/components/src";
+import { IconItem, Stack } from "@tiendanube/components/src";
 
 import {
   ArchiveIcon,
@@ -48,40 +48,52 @@ TODO: complete
 
 <Preview withToolbar>
   <Story name="appearance">
-    <div className="separate">
-      <IconItem appearance="default" icon={ArchiveIcon} title="Archived" />
-      <IconItem
-        appearance="primary"
-        icon={TruckIcon}
-        title="Ready to send"
-        subtitle="Shipping method"
-      />
-      <IconItem
-        appearance="secondary"
-        icon={BoxUnpackedIcon}
-        title="Ready to pack"
-        subtitle="Shipping method"
-      />
-      <IconItem
-        appearance="danger"
-        icon={ExclamationTriangleIcon}
-        title="Payment declined"
-      />
-      <IconItem
-        appearance="warning"
-        icon={CreditCardIcon}
-        title="Waiting for payment confirmation"
-        link={{
-          children: "Payment method",
-          href: "https://www.tiendanube.com",
-          onClick: action("onClick"),
-        }}
-      />
-      <IconItem
-        appearance="success"
-        icon={CheckCircleIcon}
-        title="Paid and shipped"
-      />
-    </div>
+    <Stack wrap>
+      <Stack.Item>
+        <IconItem appearance="default" icon={ArchiveIcon} title="Archived" />
+      </Stack.Item>
+      <Stack.Item>
+        <IconItem
+          appearance="primary"
+          icon={TruckIcon}
+          title="Ready to send"
+          subtitle="Shipping method"
+        />
+      </Stack.Item>
+      <Stack.Item>
+        <IconItem
+          appearance="secondary"
+          icon={BoxUnpackedIcon}
+          title="Ready to pack"
+          subtitle="Shipping method"
+        />
+      </Stack.Item>
+      <Stack.Item>
+        <IconItem
+          appearance="danger"
+          icon={ExclamationTriangleIcon}
+          title="Payment declined"
+        />
+      </Stack.Item>
+      <Stack.Item>
+        <IconItem
+          appearance="warning"
+          icon={CreditCardIcon}
+          title="Waiting for payment confirmation"
+          link={{
+            children: "Payment method",
+            href: "https://www.tiendanube.com",
+            onClick: action("onClick"),
+          }}
+        />
+      </Stack.Item>
+      <Stack.Item>
+        <IconItem
+          appearance="success"
+          icon={CheckCircleIcon}
+          title="Paid and shipped"
+        />
+      </Stack.Item>
+    </Stack>
   </Story>
 </Preview>
