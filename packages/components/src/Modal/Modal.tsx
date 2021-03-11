@@ -18,7 +18,10 @@ export interface InterfaceModal {
   /** React node of type children */
   children: React.ReactNode;
   /** Primary Action */
-  primaryAction?: Pick<InterfaceButton, "children" | "onClick" | "appearance">;
+  primaryAction?: Pick<
+    InterfaceButton,
+    "children" | "onClick" | "appearance" | "icon" | "iconPosition"
+  >;
   /** Secondary Action */
   secondaryAction?: Pick<InterfaceButton, "children" | "onClick">;
 }
@@ -66,6 +69,8 @@ function Modal({
       <Button
         onClick={primaryAction.onClick}
         appearance={primaryAction.appearance}
+        icon={primaryAction.icon}
+        iconPosition={primaryAction.iconPosition}
       >
         {primaryAction.children}
       </Button>
