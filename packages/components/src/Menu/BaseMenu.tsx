@@ -9,7 +9,7 @@ import {
 import Item from "./Menu.Item";
 import Section from "./Menu.Section";
 
-import { Title, Stack } from "..";
+import { Title, Stack, IconButton } from "..";
 
 import "./Menu.css";
 
@@ -57,15 +57,7 @@ function BaseMenu({
             </Stack>
           </Stack.Item>
           <Stack.Item>
-            <a
-              href={href}
-              aria-label={title}
-              className="nimbus--menu-header__action"
-              rel="noreferrer"
-              target="_blank"
-            >
-              <ExternalLinkIcon />
-            </a>
+            <IconButton icon={ExternalLinkIcon} ariaLabel={title} href={href} />
           </Stack.Item>
         </Stack>
       </div>
