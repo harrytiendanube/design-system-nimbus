@@ -23,7 +23,7 @@ body {
   top: 0;
   transition: box-shadow $motion-base cubic-bezier(0.4, 0, 0.4, 1);
   width: 100%;
-  z-index: 700;
+  z-index: 1;
 
   @include nimbus--breakpoint(md) {
     padding-left: $spacing-small;

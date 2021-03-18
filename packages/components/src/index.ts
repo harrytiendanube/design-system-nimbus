@@ -42,7 +42,6 @@ export { default as Layout } from "./Layout";
 export * from "./Layout";
 
 // Page reference added
-export { default as Page } from "./Page";
 export * from "./Page";
 
 // RadioButton reference added
@@ -144,7 +143,6 @@ export { default as StatePriv } from "./StatePriv";
 export * from "./StatePriv";
 
 // Menu reference added
-export { default as Menu } from "./Menu";
 export * from "./Menu";
 
 // Tabs reference added
@@ -152,7 +150,6 @@ export { default as Tabs } from "./Tabs";
 export * from "./Tabs";
 
 // NavTabs reference added
-export { default as NavTabs } from "./NavTabs";
 export * from "./NavTabs";
 
 // List reference added
@@ -177,3 +174,9 @@ export * from "./ToastProgress";
 
 // IconButton reference added
 export * from "./IconButton";
+
+// NimbusApp reference added
+export * from "./NimbusApp";
+
+// NimbusApp reference added
+export * from "./Portal";

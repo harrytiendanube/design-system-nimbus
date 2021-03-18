@@ -211,6 +211,8 @@ function Page({
     </div>
   );
 
+  const targetID = React.useRef<HTMLDivElement>(null);
+
   React.useEffect(() => {
     const options = {
       threshold: 0.75,
@@ -221,8 +223,7 @@ function Page({
       } else setShowTitle(true);
     };
     const observer = new IntersectionObserver(callback, options);
-    const target = document.querySelector("#header");
-    observer.observe(target as Element);
+    observer.observe(targetID.current as HTMLDivElement);
     return () => {
       observer.disconnect();
     };
@@ -232,7 +233,7 @@ function Page({
     <div className="nimbus--page">
       <div className="nimbus--page-header">
         {renderNavigation}
-        <div className="nimbus--page-heading" id="header">
+        <div className="nimbus--page-heading" ref={targetID}>
           <Responsive display="desktop">
             <Stack>
               <Stack.Item fill>

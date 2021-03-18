@@ -2,6 +2,8 @@
 
 // IconButton
 
+$icon-button-size: $spacing-large + 2px;
+
 .#{$prefix}--icon-button__wrapper {
   appearance: none;
   background: none;
@@ -39,4 +41,9 @@
     padding: $spacing-x-small;
     transition: $button-hover-delay ease;
   }
+}
+
+.#{$prefix}--icon-button-skeleton {
+  @include nimbus--skeleton($icon-button-size, $icon-button-size, 0, 0);
+  border-radius: 100%;
 }

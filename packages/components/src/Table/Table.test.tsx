@@ -258,7 +258,7 @@ describe("<Table />", () => {
         {rows}
       </Table>,
     );
-    const end = container.querySelector("#end");
+    const end = container.querySelector(".nimbus--table-bottom");
     mockIsIntersecting(end as Element, false);
     expect(handleEndScroll).not.toHaveBeenCalled();
     mockIsIntersecting(end as Element, true);
@@ -268,7 +268,7 @@ describe("<Table />", () => {
   it("does not call onEndScroll if it not provided", () => {
     const handleEndScroll = jest.fn();
     const { container } = render(<Table headers={myHeaders}>{rows}</Table>);
-    const end = container.querySelector("#end");
+    const end = container.querySelector(".nimbus--table-bottom");
     mockIsIntersecting(end as Element, false);
     expect(handleEndScroll).not.toHaveBeenCalled();
     mockIsIntersecting(end as Element, true);

@@ -6,6 +6,8 @@ import "./Modal.css";
 export interface InterfaceBaseModal {
   /** Indicates if the modal has to be shown */
   show: boolean;
+
+  portal: boolean;
   /** OnDismiss callback function */
   onDismiss?: () => void;
   /** React node of type children */
@@ -16,6 +18,7 @@ function BaseModal({
   show,
   onDismiss,
   children,
+  portal = true,
 }: InterfaceBaseModal): JSX.Element {
   const handleClickOutside = React.useCallback(
     (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -75,6 +78,9 @@ function BaseModal({
       </div>
     </div>
   );
+  if (!portal) {
+    return element;
+  }
   return ReactDOM.createPortal(element, container);
 }
 

@@ -1,0 +1,27 @@
+@import "../../styles/core";
+
+// Portal
+
+body {
+  &.#{$prefix}--portal--open {
+    overflow: hidden;
+  }
+}
+
+.#{$prefix}--portal {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  height: 100vh;
+  left: 0;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  visibility: hidden;
+  width: 100vw;
+  z-index: 1000;
+
+  &.is-visible {
+    visibility: visible;
+  }
+}

@@ -50,4 +50,8 @@ function IconButton({
   );
 }
 
+const Skeleton = () => <span className="nimbus--icon-button-skeleton" />;
+
+IconButton.Skeleton = Skeleton;
+
 export default IconButton;

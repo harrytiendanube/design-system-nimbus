@@ -19,12 +19,6 @@ $menu-position: (
   right: $menu-position-right,
 );
 
-body {
-  &.#{$prefix}--menu--open {
-    overflow: hidden;
-  }
-}
-
 .#{$prefix}--menu {
   align-items: center;
   background-color: rgba(#000, 0.5);

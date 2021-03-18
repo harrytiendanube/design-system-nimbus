@@ -207,6 +207,8 @@ const Table = React.memo(function Table({
     ],
   );
 
+  const targetID = React.useRef<HTMLDivElement>(null);
+
   React.useEffect(() => {
     const margin = Math.trunc(window.innerHeight * marginEndScroll);
     const options = {
@@ -220,7 +222,8 @@ const Table = React.memo(function Table({
       }
     };
     const observer = new IntersectionObserver(callback, options);
-    observer.observe(document.querySelector("#end") as Element);
+
+    observer.observe(targetID.current as HTMLDivElement);
 
     const newRowState = [
       ...rowsState,
@@ -293,7 +296,7 @@ const Table = React.memo(function Table({
           </tbody>
         </table>
 
-        <div id="end" />
+        <div className="nimbus--table-bottom" ref={targetID} />
         {loading && (
           <div className="nimbus--spinner-wrapper">
             <Spinner size="large" />

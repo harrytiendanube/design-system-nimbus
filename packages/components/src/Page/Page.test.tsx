@@ -177,7 +177,7 @@ describe("<Page/> on Mobile", () => {
       7, // 2 secondaryActions + 1 PrimaryAction + 1 Previous Action + 1 Next Action + 1 Header Action + 1 Menu Top right
     );
 
-    const header = container.querySelector("#header");
+    const header = container.querySelector(".nimbus--page-heading");
 
     // Shows Title on header when is not intersecting with Title on body
     mockIsIntersecting(header as Element, false);

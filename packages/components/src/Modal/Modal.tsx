@@ -13,6 +13,8 @@ export interface InterfaceModal {
   title: string;
   /** Indicates if the modal has to be shown */
   show: boolean;
+
+  portal?: boolean;
   /** OnDismiss callback function */
   onDismiss?: () => void;
   /** React node of type children */
@@ -42,6 +44,7 @@ function Modal({
   children,
   primaryAction,
   secondaryAction,
+  portal = true,
 }: InterfaceModal): JSX.Element {
   const memorizedDismissable = React.useMemo(
     () =>
@@ -78,7 +81,7 @@ function Modal({
   );
 
   return (
-    <BaseModal show={show} onDismiss={onDismiss}>
+    <BaseModal show={show} onDismiss={onDismiss} portal={portal}>
       <div className="nimbus--modal-header">
         <div className="nimbus--modal-header__title">
           <Title type="h3">{title}</Title>
