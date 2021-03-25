@@ -8,6 +8,12 @@ import {
   TagIcon,
   MobileIcon,
   LogOutIcon,
+  UserIcon,
+  StatsIcon,
+  MarketingIcon,
+  ToolsIcon,
+  AppsIcon,
+  EcosystemIcon,
 } from "@tiendanube/icons";
 import { Menu, Button } from "@tiendanube/components/src";
 
@@ -117,5 +123,85 @@ TODO: complete
         </>
       );
     }}
+  </Story>
+</Preview>
+
+# Stressed
+
+<Preview>
+  <Story
+    name="stressed"
+    parameters={{ decorators: [withKnobs, withA11y], layout: "fullscreen" }}
+  >
+    <div className="fullscreen-container">
+      <Menu
+        title={text("title", "Store nimbus")}
+        href="http://www.tiendanube.com"
+        show={boolean("show", false)}
+        footer={{
+          label: "Close Session",
+          icon: LogOutIcon,
+          onClick: action("onClick Close"),
+        }}
+      >
+        <Menu.Section>
+          <Menu.Item icon={HomeIcon} onClick={action("onClick Home")}>
+            Home
+          </Menu.Item>
+          <Menu.Item icon={StatsIcon} onClick={action("onClick Stats")}>
+            Stats
+          </Menu.Item>
+        </Menu.Section>
+        <Menu.Section title="Manage">
+          <Menu.Item
+            icon={CashIcon}
+            onClick={action("onClick Sales")}
+            active={boolean("Sales active")}
+            subItem={[
+              {
+                children: "Orders list",
+                onClick: action("onClick orders list"),
+                active: true,
+              },
+              {
+                children: "Manual orders",
+                onClick: action("onClick manual orders"),
+              },
+              {
+                children: "Abandoned carts",
+                onClick: action("onClick abandoned carts"),
+              },
+            ]}
+          >
+            Sales
+          </Menu.Item>
+          <Menu.Item icon={TagIcon} onClick={action("onClick Products")}>
+            Products
+          </Menu.Item>
+          <Menu.Item icon={UserIcon} onClick={action("onClick Customers")}>
+            Customers
+          </Menu.Item>
+          <Menu.Item icon={MarketingIcon} onClick={action("onClick Marketing")}>
+            Marketing
+          </Menu.Item>
+        </Menu.Section>
+        <Menu.Section title="Customize">
+          <Menu.Item icon={ToolsIcon} onClick={action("onClick Customize")}>
+            My store
+          </Menu.Item>
+        </Menu.Section>
+        <Menu.Section title="Enhance">
+          <Menu.Item icon={MobileIcon} onClick={action("onClick Keyboard")}>
+            Keyboard
+          </Menu.Item>
+          <Menu.Item icon={AppsIcon} onClick={action("onClick Apps")}>
+            My apps
+          </Menu.Item>
+          <Menu.Item icon={EcosystemIcon} onClick={action("onClick Ecosystem")}>
+            Sales channels
+          </Menu.Item>
+        </Menu.Section>
+      </Menu>
+    </div>
   </Story>
 </Preview>

@@ -71,6 +71,9 @@ $menu-position: (
     padding-top: var(--safe-area-inset-top);
   }
   background-color: $color-white;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
   height: 100%;
   max-width: 260px;
   position: absolute;
@@ -81,11 +84,14 @@ $menu-position: (
 }
 
 .#{$prefix}--menu-header {
+  flex: 0 0 auto;
   padding: $spacing-small $spacing-small $spacing-xxx-large;
 }
 
 .#{$prefix}--menu-body {
-  padding: $spacing-x-small $spacing-x-small $footer-height $spacing-x-small;
+  flex: 1 1 auto;
+  overflow-y: auto;
+  padding: $spacing-x-small;
 }
 
 .#{$prefix}--menu-footer {
@@ -99,10 +105,8 @@ $menu-position: (
 
     padding-bottom: calc(var(--safe-area-inset-bottom) + #{$spacing-x-small});
   }
-  bottom: 0;
-  left: 0;
+  flex: 0 0 auto;
   padding: $spacing-x-small;
-  position: absolute;
   width: 100%;
 }
 
@@ -115,16 +119,20 @@ $menu-position: (
   padding: 0 $spacing-x-small;
 }
 
+.#{$prefix}--menu-item-wrapper {
+  border-radius: $actions-border-radius;
+}
+
 .#{$prefix}--menu-item {
   @include nimbus--type("text-body");
   align-items: center;
   appearance: none;
   background-color: transparent;
-  border-radius: $actions-border-radius;
   color: $color-secondary;
   cursor: pointer;
   display: flex;
   padding: $spacing-x-small;
+  transition: $motion-base ease;
   width: 100%;
 
   svg {
@@ -135,9 +143,39 @@ $menu-position: (
 
 .#{$prefix}--menu-item--active {
   background-color: #edf5fe;
-  color: $color-primary;
 
-  svg {
-    fill: $color-primary;
+  .#{$prefix}--menu-item {
+    color: $color-primary;
+
+    svg {
+      fill: $color-primary;
+    }
   }
+
+  .#{$prefix}--menu-sub-item-wrapper {
+    max-height: 1000px;
+  }
+}
+
+.#{$prefix}--menu-sub-item-wrapper {
+  display: flex;
+  flex-direction: column;
+  max-height: 0;
+  overflow: hidden;
+  transition: $motion-base ease;
+}
+
+.#{$prefix}--menu-sub-item {
+  @include nimbus--type("text-body");
+  appearance: none;
+  background-color: transparent;
+  color: $color-secondary;
+  cursor: pointer;
+  padding: $spacing-x-small $spacing-x-small $spacing-x-small $spacing-large;
+  text-align: left;
+  width: 100%;
+}
+
+.#{$prefix}--menu-sub-item--active {
+  color: $color-primary;
 }
