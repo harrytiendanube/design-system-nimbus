@@ -7,6 +7,7 @@ import { SearchFilter } from "..";
 const myPlaceholder = "myPlaceholder";
 const myResultCount = "myResultCount";
 const myLabel = "myLabel";
+const myAriaLabel = "myAriaLabel";
 const myNewValue = "myNewValue";
 const myFilters = [
   { id: "id-1", label: "myLabel-1" },
@@ -27,9 +28,12 @@ describe("<SearchFilter />", () => {
         onDismiss={jest.fn()}
       />,
     );
+    const buttonFilter = screen.getByRole("button", { name: myLabel });
+
     expect(screen.getByRole("searchbox")).toBeTruthy();
     expect(screen.getByPlaceholderText(myPlaceholder)).toBeTruthy();
-    expect(screen.getByRole("button", { name: myLabel })).toBeTruthy();
+    expect(buttonFilter).toBeTruthy();
+    expect(buttonFilter).toHaveAttribute("aria-label", myLabel);
     myFilters.forEach((filter) =>
       expect(screen.getByRole("button", { name: filter.label })).toBeTruthy(),
     );
@@ -68,6 +72,23 @@ describe("<SearchFilter />", () => {
     expect(screen.getByPlaceholderText(myPlaceholder)).toBeTruthy();
     expect(screen.queryByRole("button")).toBeFalsy();
     expect(screen.getByText(myResultCount)).toBeTruthy();
+  });
+
+  it("render without label must have a aria-label value", () => {
+    render(
+      <SearchFilter
+        placeholder={myPlaceholder}
+        resultCount={myResultCount}
+        ariaLabel={myAriaLabel}
+        appliedFilters={myFilters}
+        onClick={jest.fn()}
+        onSubmit={jest.fn()}
+        onDismiss={jest.fn()}
+      />,
+    );
+    const buttonFilter = screen.getByRole("button", { name: myAriaLabel });
+    expect(buttonFilter).toBeTruthy();
+    expect(buttonFilter).toHaveAttribute("aria-label", myAriaLabel);
   });
 
   it("calls onClick when main button is pressed", () => {

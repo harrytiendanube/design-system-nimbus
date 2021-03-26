@@ -14,6 +14,8 @@ export interface InterfaceSearchFilter {
   placeholder: string;
   /** Label text for filter button */
   label?: string;
+  /** Aria-label text for filter button */
+  ariaLabel?: string;
   /** Number of results to show */
   resultCount?: string;
   /** Applied filters visible */
@@ -29,6 +31,7 @@ export interface InterfaceSearchFilter {
 function SearchFilter({
   placeholder,
   label: labelButton,
+  ariaLabel,
   resultCount,
   appliedFilters,
   onSubmit,
@@ -62,7 +65,12 @@ function SearchFilter({
 
   const renderFiltersButton = onClick && (
     <div className="nimbus--search-filters__filters">
-      <Button appearance="default" icon={SlidersIcon} onClick={onClick}>
+      <Button
+        ariaLabel={ariaLabel || labelButton}
+        appearance="default"
+        icon={SlidersIcon}
+        onClick={onClick}
+      >
         {labelButton}
       </Button>
     </div>
