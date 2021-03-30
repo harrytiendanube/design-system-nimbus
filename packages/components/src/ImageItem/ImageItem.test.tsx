@@ -21,7 +21,6 @@ describe("<ImageItem />", () => {
         description={myDescription}
       />,
     );
-    expect(screen.getByRole("listitem")).toBeTruthy();
     expect(screen.getByAltText(myLink.children)).toHaveAttribute(
       "src",
       myThumbnail,
@@ -38,7 +37,6 @@ describe("<ImageItem />", () => {
         description={myDescription}
       />,
     );
-    expect(screen.getByRole("listitem")).toBeTruthy();
     expect(screen.queryByAltText(myLink.children)).toBeFalsy();
     expect(screen.getByText(mySubtitle.children)).toBeTruthy();
     expect(screen.getByText(myDescription.children)).toBeTruthy();
@@ -52,7 +50,6 @@ describe("<ImageItem />", () => {
         description={myDescription}
       />,
     );
-    expect(screen.getByRole("listitem")).toBeTruthy();
     expect(screen.getByAltText(myLink.children)).toHaveAttribute(
       "src",
       myThumbnail,
@@ -65,7 +62,6 @@ describe("<ImageItem />", () => {
     const { container } = render(
       <ImageItem thumbnail={myThumbnail} link={myLink} subtitle={mySubtitle} />,
     );
-    expect(screen.getByRole("listitem")).toBeTruthy();
     expect(screen.getByAltText(myLink.children)).toHaveAttribute(
       "src",
       myThumbnail,

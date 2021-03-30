@@ -88,7 +88,7 @@ function Link({
       className={classname}
       href={href}
       onClick={handleOnClick}
-      target={target}
+      target={href && target}
     >
       {iconSpinner}
       {renderStartIcon}

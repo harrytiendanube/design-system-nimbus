@@ -46,7 +46,7 @@ function ImageItem({
   );
 
   return (
-    <div className="nimbus--image-item" role="listitem">
+    <div className="nimbus--image-item">
       <div
         className="nimbus--image-item__thumbnail"
         aria-label={link.children as string}

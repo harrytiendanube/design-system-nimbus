@@ -50,6 +50,24 @@ describe("<Link />", () => {
     expect(container.querySelector("svg")).toBeFalsy();
   });
 
+  it("renders without href", () => {
+    render(
+      <Link
+        icon={ExternalLinkIcon}
+        iconPosition={myIconPosition}
+        iconSize={myIconSize}
+        target={myTarget}
+        appearance={myAppearance}
+        underline={myUnderline}
+      >
+        {myText}
+      </Link>,
+    );
+    const component = screen.getByText(myText);
+    expect(component).toBeTruthy();
+    expect(component).not.toHaveAttribute("target");
+  });
+
   it("renders with underline", () => {
     render(
       <Link href={myHref} underline>
