@@ -84,7 +84,7 @@ body {
 }
 
 .#{$prefix}--nav-tabs-item--active {
-  background-color: #edf5fe;
+  background-color: $color-primary-lighter;
 
   svg {
     fill: $color-primary;

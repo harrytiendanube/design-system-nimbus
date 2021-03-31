@@ -142,7 +142,7 @@ $menu-position: (
 }
 
 .#{$prefix}--menu-item--active {
-  background-color: #edf5fe;
+  background-color: $color-primary-lighter;
 
   .#{$prefix}--menu-item {
     color: $color-primary;

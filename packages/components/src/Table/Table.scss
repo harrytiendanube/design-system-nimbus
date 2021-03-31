@@ -200,7 +200,7 @@
   }
 
   &.#{$prefix}--table-row--grayed {
-    background-color: #fafafa;
+    background-color: $color-background-secondary;
   }
 
   .#{$prefix}--table-row__item {
@@ -254,7 +254,7 @@
 }
 
 .#{$prefix}--table-row--touching {
-  background-color: #fafafa;
+  background-color: $color-background-secondary;
   overflow: hidden;
 
   &::before {

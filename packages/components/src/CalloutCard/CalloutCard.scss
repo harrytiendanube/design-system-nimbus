@@ -3,27 +3,27 @@
 // Callout Card
 
 $callout-color-primary: (
-  "background": #edf5fe,
+  "background": $color-primary-lighter,
   "foreground": $color-primary-light,
 );
 
 $callout-color-secondary: (
-  "background": #eef1f7,
+  "background": $color-secondary-lighter,
   "foreground": $color-secondary-light,
 );
 
 $callout-color-success: (
-  "background": #effdf7,
+  "background": $color-success-lighter,
   "foreground": $color-success-light,
 );
 
 $callout-color-warning: (
-  "background": #fff5e9,
+  "background": $color-warning-lighter,
   "foreground": $color-warning-light,
 );
 
 $callout-color-danger: (
-  "background": #fcebeb,
+  "background": $color-danger-lighter,
   "foreground": $color-danger-light,
 );
 

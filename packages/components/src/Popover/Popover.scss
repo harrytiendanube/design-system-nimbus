@@ -55,10 +55,10 @@
       width: 100%;
 
       &.#{$prefix}--link--primary {
-        background-color: #edf5fe;
+        background-color: $color-primary-lighter;
 
         &:hover {
-          background-color: darken(#edf5fe, 1);
+          background-color: darken($color-primary-lighter, 1);
         }
       }
     }

@@ -13,7 +13,7 @@ $text-body-colors: (
 );
 
 $text-background-colors: (
-  default: #fafafa,
+  default: $color-background-secondary,
   primary: $color-primary-light,
   secondary: $color-secondary-light,
   success: $color-success-light,
