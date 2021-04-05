@@ -28,18 +28,18 @@ describe("<Tabs />", () => {
     setup({ props: {} });
     expect(screen.getByRole("tablist")).toBeTruthy();
     expect(screen.getByRole("tabpanel")).toBeTruthy();
-    expect(screen.getAllByRole("presentation").length).toEqual(2);
+    expect(screen.getAllByRole("tab").length).toEqual(2);
   });
   it("render with activeTab", () => {
     setup({ props: { activeTab: 0 } });
     expect(screen.getByRole("tablist")).toBeTruthy();
     expect(screen.getByRole("tabpanel")).toBeTruthy();
-    expect(screen.getAllByRole("presentation").length).toEqual(2);
+    expect(screen.getAllByRole("tab").length).toEqual(2);
   });
   it("calls onChange", () => {
     const handleOnChange = jest.fn();
     setup({ props: { onChange: handleOnChange } });
-    userEvent.click(screen.getAllByRole("presentation")[1]);
+    userEvent.click(screen.getAllByRole("tab")[1]);
     expect(handleOnChange).toHaveBeenCalled();
   });
 });

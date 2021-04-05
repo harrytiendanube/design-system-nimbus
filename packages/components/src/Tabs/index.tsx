@@ -39,7 +39,7 @@ function Tabs({
     return (
       <li
         key={label}
-        role="presentation"
+        role="tab"
         className={tabClassName}
         onClick={handleOnclickTab}
       >

@@ -10,6 +10,8 @@ export interface InterfaceTooltip {
   labelIcon?: IconType;
   /** Text Label for the Tooltip */
   labelText?: string;
+  /** Text AriaLabel for the Tooltip */
+  ariaLabel?: string;
   /** Position of the tooltip */
   position?: "auto" | "top" | "bottom" | "left" | "right";
   /** React node of type children */
@@ -19,6 +21,7 @@ export interface InterfaceTooltip {
 function Tooltip({
   labelIcon: Icon,
   labelText,
+  ariaLabel,
   position = "top",
   children,
 }: InterfaceTooltip): JSX.Element {
@@ -67,7 +70,11 @@ function Tooltip({
       className: "nimbus--tooltip-trigger",
     });
     return (
-      <span {...triggerProps} role="tooltip" aria-label={labelText}>
+      <span
+        {...triggerProps}
+        role="tooltip"
+        aria-label={ariaLabel || labelText}
+      >
         {renderIconOrLabel}
       </span>
     );
