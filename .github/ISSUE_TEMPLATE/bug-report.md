@@ -3,7 +3,7 @@ name: Bug report
 about: Create a report to help us improve
 title: "[NIMBUS]"
 labels: bug
-assignees: DamianHorn, ivankljenak, juanchigallego, NicoCroce, radomskip
+assignees: DamianHorn, ivankljenak, juanchigallego, NicoCroce, radomskip, diegopsilverio
 
 ---
 
