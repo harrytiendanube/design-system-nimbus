@@ -40,7 +40,7 @@ function Item({
   };
 
   return (
-    <label htmlFor={id} className={mainClass}>
+    <label htmlFor={id} className={mainClass} role="listitem">
       <div className="nimbus--interactive-list-item__title">
         {skeleton ? <Text.Skeleton /> : <Text>{title}</Text>}
         <div className="nimbus--radio-wrapper">

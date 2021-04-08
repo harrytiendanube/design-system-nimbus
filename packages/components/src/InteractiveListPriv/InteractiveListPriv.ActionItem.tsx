@@ -35,19 +35,21 @@ function Item({
   };
 
   return (
-    <button
-      type="button"
-      id={name}
-      style={{ display: "block" }}
-      className={mainClass}
-      onClick={handleChange}
-    >
-      <div className="nimbus--interactive-list-item__title">
-        {skeleton ? <Text.Skeleton /> : <Text>{title}</Text>}
-        {!skeleton && <ChevronRightIcon />}
-      </div>
-      {renderBelow(description, labels, skeleton)}
-    </button>
+    <div role="listitem" className={mainClass}>
+      <button
+        type="button"
+        id={name}
+        style={{ display: "block" }}
+        onClick={handleChange}
+        className="nimbus--interactive-list-item__button"
+      >
+        <div className="nimbus--interactive-list-item__title">
+          {skeleton ? <Text.Skeleton /> : <Text>{title}</Text>}
+          {!skeleton && <ChevronRightIcon />}
+        </div>
+        {renderBelow(description, labels, skeleton)}
+      </button>
+    </div>
   );
 }
 

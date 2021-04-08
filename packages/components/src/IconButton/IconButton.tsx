@@ -39,7 +39,7 @@ function IconButton({
       className="nimbus--icon-button__wrapper"
       onClick={handleOnClick}
       href={href}
-      target={target}
+      target={href && target}
       aria-label={ariaLabel}
       role="button"
     >

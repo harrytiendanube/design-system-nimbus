@@ -43,6 +43,7 @@ describe("<InteractiveListPriv />", () => {
     );
 
     expect(screen.getByRole("list")).toHaveClass("nimbus--interactive-list");
+    expect(screen.queryAllByRole("listitem")).toHaveLength(3);
     const buttonColor = screen.getByRole("button", {
       name: "Color pink black red blue",
     });
@@ -82,6 +83,8 @@ describe("<InteractiveListPriv />", () => {
       </InteractiveListPriv>,
     );
     expect(screen.getByRole("list")).toHaveClass("nimbus--interactive-list");
+    expect(screen.queryAllByRole("listitem")).toHaveLength(3);
+
     const checkShirts = screen.getByRole("checkbox", {
       name: "Shirts",
     });
@@ -115,6 +118,8 @@ describe("<InteractiveListPriv />", () => {
       </InteractiveListPriv>,
     );
     expect(screen.getByRole("list")).toHaveClass("nimbus--interactive-list");
+    expect(screen.queryAllByRole("listitem")).toHaveLength(2);
+
     const radioLimited = screen.getByRole("radio", {
       name: "Limited",
     });
