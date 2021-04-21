@@ -53,6 +53,13 @@ TODO: complete
           <Menu.Item icon={TagIcon} onClick={action("onClick Products")}>
             Products
           </Menu.Item>
+          <Menu.Item
+            icon={UserIcon}
+            onClick={action("onClick Customers")}
+            label={{ id: "label-new", appearance: "primary", label: "New!" }}
+          >
+            Customers
+          </Menu.Item>
         </Menu.Section>
         <Menu.Section title="Enhance">
           <Menu.Item icon={MobileIcon} onClick={action("onClick Keyboard")}>
@@ -166,6 +173,11 @@ TODO: complete
               {
                 children: "Manual orders",
                 onClick: action("onClick manual orders"),
+                label: {
+                  id: "label-new",
+                  appearance: "primary",
+                  label: "New!",
+                },
               },
               {
                 children: "Abandoned carts",

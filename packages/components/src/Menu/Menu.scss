@@ -141,6 +141,11 @@ $menu-position: (
   }
 }
 
+.#{$prefix}--menu-item__label {
+  flex: 1 1 auto;
+  text-align: left;
+}
+
 .#{$prefix}--menu-item--active {
   background-color: $color-primary-lighter;
 
@@ -171,6 +176,7 @@ $menu-position: (
   background-color: transparent;
   color: $color-secondary;
   cursor: pointer;
+  display: flex;
   padding: $spacing-x-small $spacing-x-small $spacing-x-small $spacing-large;
   text-align: left;
   width: 100%;
