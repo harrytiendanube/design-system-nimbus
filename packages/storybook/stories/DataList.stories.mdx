@@ -1,0 +1,150 @@
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
+import { withKnobs, boolean } from "@storybook/addon-knobs";
+import { action } from "@storybook/addon-actions";
+import { withA11y } from "@storybook/addon-a11y";
+
+import { Text, DataList } from "@tiendanube/components/src";
+
+import "../utils/style.css";
+
+<Meta title="Components/DataList" component={DataList} />
+
+# DateList
+
+TODO: complete
+
+<Preview>
+  <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
+    {() => {
+      const rows = [
+        {
+          id: "1",
+          order: "1",
+          date: "20 jun",
+          buyer: "Name Last name",
+          total: "$3.500",
+          products: "6 products",
+          payment: "Awaiting payment",
+          shipping: "Unpacked",
+        },
+        {
+          id: "2",
+          order: "2",
+          date: "21 jun",
+          buyer: "Name Last name",
+          total: "$3.500",
+          products: "6 products",
+          payment: "Awaiting payment",
+          shipping: "Unpacked",
+        },
+        {
+          id: "3",
+          order: "3",
+          date: "22 jun",
+          buyer: "Name Last name",
+          total: "$3.500",
+          products: "6 products",
+          payment: "Awaiting payment",
+          shipping: "Unpacked",
+        },
+      ];
+      const { Row, Cell } = DataList;
+      const initialSelectedRows = [];
+      const [selectedRows, setSelectedRows] = React.useState(
+        initialSelectedRows,
+      );
+      const [editMode, setEditMode] = React.useState(false);
+      const [valueSelected, setValueSelected] = React.useState("");
+      const handleSelectAll = (all) => {
+        if (all) {
+          setSelectedRows(rows.map((row) => row.id));
+        }
+        if (!all) {
+          setSelectedRows([]);
+        }
+      };
+      const handleOnSelectRow = (id) => {
+        if (selectedRows.includes(id)) {
+          const newSelectedRows = selectedRows.filter((rowId) => rowId !== id);
+          setSelectedRows(newSelectedRows);
+          return;
+        }
+        setSelectedRows([...selectedRows, id]);
+      };
+      const checkedLength = selectedRows.length;
+      const trueOrIndeterminate =
+        checkedLength === rows.length ? true : "indeterminate";
+      const checked = checkedLength === 0 ? false : trueOrIndeterminate;
+      const onEditMode = () => {
+        setEditMode(true);
+      };
+      const bulkAction = {
+        checked,
+        placeholder: "Select an Option",
+        label: `${selectedRows.length} selected`,
+        onSelectAll: handleSelectAll,
+        options: [
+          { label: "Option 1", value: "1" },
+          { label: "Option 2", value: "2" },
+          { label: "Option 3", value: "3" },
+          { label: "Option 4", value: "4" },
+        ],
+        valueSelected,
+        onChange: (value) => setValueSelected(value),
+      };
+      return (
+        <DataList
+          ruled
+          editMode={editMode}
+          onEditMode={onEditMode}
+          skeleton={boolean("skeleton", false)}
+          bulkAction={bulkAction}
+        >
+          {rows.map((row, index) => (
+            <Row
+              key={index}
+              id={`${row.order}`}
+              onClick={action("OnClick Row")}
+              onChange={handleOnSelectRow}
+              active={selectedRows.includes(row.id)}
+            >
+              <Cell width={60}>
+                <Text>{row.order}</Text>
+              </Cell>
+              <Cell alignRight width={40}>
+                <Text>{row.date}</Text>
+              </Cell>
+              <Cell width={60} trimText>
+                <Text>{row.buyer}</Text>
+              </Cell>
+              <Cell width={40} alignRight>
+                <Text>{row.total}</Text>
+              </Cell>
+              <Cell width={100}>
+                <Text>{row.products}</Text>
+              </Cell>
+              <Cell width="auto" extraPadding>
+                <Text>{row.payment}</Text>
+              </Cell>
+              <Cell width="auto" extraPadding>
+                <Text>{row.shipping}</Text>
+              </Cell>
+            </Row>
+          ))}
+        </DataList>
+      );
+    }}
+  </Story>
+</Preview>
+
+## Properties DateList
+
+<Props of={DataList} />
+
+## Properties DataList.Row
+
+<Props of={DataList.Row} />
+
+## Properties DataList.Cell
+
+<Props of={DataList.Cell} />

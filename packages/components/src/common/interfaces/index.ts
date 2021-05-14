@@ -42,3 +42,15 @@ export interface InterfaceMassAction {
   getLabel(quantity: number): string;
   onChange(selected: InterfaceMassActionSelected): void;
 }
+
+export interface InterfaceBulkAction {
+  // Properties of check
+  checked?: boolean | "indeterminate";
+  placeholder: string;
+  label: string;
+  onSelectAll?: (value: boolean) => void;
+  // Properties of Select
+  options: InterfaceSelectOption[];
+  valueSelected: string;
+  onChange(valueSelected: string): void;
+}

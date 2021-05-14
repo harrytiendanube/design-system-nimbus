@@ -178,5 +178,8 @@ export * from "./IconButton";
 // NimbusApp reference added
 export * from "./NimbusApp";
 
-// NimbusApp reference added
+// Portal reference added
 export * from "./Portal";
+
+// DataList reference added
+export * from "./DataList";
