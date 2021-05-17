@@ -12,7 +12,7 @@
   margin-left: -$spacing-small;
   margin-right: -$spacing-small;
 
-  @include nimbus--breakpoint(md) {
+  @include nimbus--breakpoint(lg) {
     margin: 0;
   }
 
@@ -31,7 +31,7 @@
     width: 100%;
     z-index: 800;
 
-    @include nimbus--breakpoint(md) {
+    @include nimbus--breakpoint(lg) {
       padding-top: $spacing-x-small;
       position: sticky;
     }
@@ -58,7 +58,7 @@
 .#{$prefix}--data-list__header {
   display: table-header-group;
 
-  @include nimbus--breakpoint-down(md) {
+  @include nimbus--breakpoint-down(lg) {
     border: 0;
     clip: rect(0, 0, 0, 0);
     height: 1px;
@@ -77,7 +77,7 @@
   margin-left: -$spacing-small;
   margin-right: -$spacing-small;
 
-  @include nimbus--breakpoint(md) {
+  @include nimbus--breakpoint(lg) {
     margin: 0;
   }
 }
@@ -87,7 +87,7 @@
 .#{$prefix}--data-list-row {
   display: table-row;
 
-  @include nimbus--breakpoint-down(md) {
+  @include nimbus--breakpoint-down(lg) {
     display: flex;
     flex-wrap: wrap;
     position: relative;
@@ -95,7 +95,7 @@
   }
 
   .#{$prefix}--data-list-row__check-wrapper {
-    @include nimbus--breakpoint-down(md) {
+    @include nimbus--breakpoint-down(lg) {
       display: none;
       left: 0;
       opacity: 0;
@@ -121,7 +121,7 @@
   text-align: left;
   vertical-align: middle;
 
-  @include nimbus--breakpoint-down(md) {
+  @include nimbus--breakpoint-down(lg) {
     display: inline-block;
   }
 }
@@ -133,7 +133,7 @@
   overflow: hidden;
 
   &::before {
-    @include nimbus--breakpoint-down(md) {
+    @include nimbus--breakpoint-down(lg) {
       animation: pulse 2.5s 1 0.5s ease;
       background-color: $color-default;
       border-radius: 100%;
@@ -167,7 +167,7 @@
   &.#{$prefix}--data-list-wrapper--edit-mode {
     .#{$prefix}--data-list-row {
       * {
-        @include nimbus--breakpoint-down(md) {
+        @include nimbus--breakpoint-down(lg) {
           pointer-events: none;
         }
       }
@@ -175,7 +175,7 @@
   }
 
   &.#{$prefix}--data-list-wrapper--ruled {
-    @include nimbus--breakpoint(md) {
+    @include nimbus--breakpoint(lg) {
       border: $input-border-width solid $color-default;
       border-radius: $actions-border-radius;
     }
@@ -192,7 +192,7 @@
   &.#{$prefix}--data-list-wrapper--spacing-base {
     &.#{$prefix}--data-list-wrapper--actions {
       .#{$prefix}--data-list-row {
-        @include nimbus--breakpoint-down(md) {
+        @include nimbus--breakpoint-down(lg) {
           padding: $spacing-small $spacing-x-small $spacing-small
             $spacing-x-large;
         }
@@ -200,18 +200,18 @@
     }
 
     .#{$prefix}--data-list-row {
-      @include nimbus--breakpoint-down(md) {
+      @include nimbus--breakpoint-down(lg) {
         padding: $spacing-small $spacing-x-small;
       }
 
       .#{$prefix}--data-list-row__item {
         padding: $spacing-small $spacing-x-small;
 
-        @include nimbus--breakpoint-down(md) {
+        @include nimbus--breakpoint-down(lg) {
           padding: 0 $spacing-x-small;
         }
 
-        @include nimbus--breakpoint(md) {
+        @include nimbus--breakpoint(lg) {
           &:first-of-type {
             padding-left: $spacing-small;
           }
@@ -222,7 +222,7 @@
         }
 
         &.#{$prefix}--data-list-row__item--extra-padding {
-          @include nimbus--breakpoint-down(md) {
+          @include nimbus--breakpoint-down(lg) {
             padding: $spacing-x-small 0 0 $spacing-x-small;
           }
         }
@@ -233,7 +233,7 @@
   &.#{$prefix}--data-list-wrapper--spacing-tight {
     &.#{$prefix}--data-list-wrapper--actions {
       .#{$prefix}--data-list-row {
-        @include nimbus--breakpoint-down(md) {
+        @include nimbus--breakpoint-down(lg) {
           padding: $spacing-x-small $spacing-x-small $spacing-x-small
             $spacing-large;
         }
@@ -241,14 +241,14 @@
     }
 
     .#{$prefix}--data-list-row {
-      @include nimbus--breakpoint-down(md) {
+      @include nimbus--breakpoint-down(lg) {
         padding: $spacing-x-small;
       }
 
       .#{$prefix}--data-list-row__item {
         padding: $spacing-x-small;
 
-        @include nimbus--breakpoint-down(md) {
+        @include nimbus--breakpoint-down(lg) {
           padding: 0 $spacing-x-small;
         }
       }
@@ -272,7 +272,7 @@
       @include nimbus--text-trim(2);
       text-align: inherit;
 
-      @include nimbus--breakpoint(md) {
+      @include nimbus--breakpoint(lg) {
         max-width: 160px;
         white-space: nowrap;
       }
@@ -280,20 +280,20 @@
   }
 
   &.#{$prefix}--data-list-row__item--fill-width {
-    @include nimbus--breakpoint-down(md) {
+    @include nimbus--breakpoint-down(lg) {
       flex: 1 1 auto;
     }
   }
 
   &.#{$prefix}--data-list-row__item--auto-width {
-    @include nimbus--breakpoint-down(md) {
+    @include nimbus--breakpoint-down(lg) {
       flex: 0 0 auto;
     }
   }
 
   @for $n from 0 through 100 {
     &.#{$prefix}--data-list-row__item--#{$n}-width {
-      @include nimbus--breakpoint-down(md) {
+      @include nimbus--breakpoint-down(lg) {
         flex: 1 1 percentage($n / 100);
         max-width: percentage($n / 100);
       }
@@ -301,7 +301,7 @@
   }
 
   &.#{$prefix}--data-list-row__item--align-right {
-    @include nimbus--breakpoint-down(md) {
+    @include nimbus--breakpoint-down(lg) {
       text-align: right;
     }
   }
