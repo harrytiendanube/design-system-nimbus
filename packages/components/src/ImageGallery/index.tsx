@@ -7,7 +7,7 @@ import Item from "./ImageGallery.Item";
 
 import "./ImageGallery.css";
 
-import { Text } from "..";
+import { Text, Spinner } from "..";
 
 export { InterfaceImageGalleryItem } from "./ImageGallery.Item";
 
@@ -40,7 +40,7 @@ function ImageGallery({
   const id = `nimbus--input-${name}`;
 
   const renderSpinnerEmpty = loading ? (
-    <div className="nimbus--image-gallery__spinner" />
+    <Spinner size="medium" appearance="secondary" />
   ) : (
     <>
       <CameraIcon size="large" />
@@ -50,7 +50,7 @@ function ImageGallery({
     </>
   );
   const renderSpinnerAdd = loading ? (
-    <div className="nimbus--image-gallery__spinner" />
+    <Spinner size="medium" appearance="secondary" />
   ) : (
     <PlusCircleIcon size="large" />
   );

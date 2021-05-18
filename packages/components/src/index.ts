@@ -161,7 +161,6 @@ export { default as PullToRefresh } from "./PullToRefresh";
 export * from "./PullToRefresh";
 
 // Spinner reference added
-export { default as Spinner } from "./Spinner";
 export * from "./Spinner";
 
 // CalloutCard reference added

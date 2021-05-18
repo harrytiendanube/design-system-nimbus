@@ -46,14 +46,6 @@ $gallery-border-width: 2px;
   }
 }
 
-.#{$prefix}--image-gallery__spinner {
-  @include nimbus--spinner(
-    $spinner-color: $color-secondary,
-    $bg-color: $color-background-secondary,
-    $size: "medium"
-  );
-}
-
 .#{$prefix}--image-gallery-item__wrapper {
   flex: 0 0 percentage(1 / 3);
   margin-top: $spacing-x-small;
@@ -87,6 +79,10 @@ $gallery-border-width: 2px;
 
     svg {
       fill: $color-grey-35;
+    }
+
+    &.is--loading svg {
+      fill: none;
     }
   }
 }

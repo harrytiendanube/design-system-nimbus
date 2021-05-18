@@ -39,7 +39,7 @@ function ToastProgress({
   const element: JSX.Element = (
     <div className={wrapperClassName}>
       <div className="nimbus--toast-progress">
-        <Spinner />
+        <Spinner appearance="light" />
         <Text>{label}</Text>
         {percentage && <Text bold>{percentage}%</Text>}
       </div>

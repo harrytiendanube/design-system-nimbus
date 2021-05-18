@@ -4,6 +4,7 @@ import "./Button.css";
 
 import classNames from "classnames";
 import { Icon as IconType } from "@tiendanube/icons";
+import { Spinner } from "..";
 
 export interface InterfaceButton {
   /** React node of type children. */
@@ -51,7 +52,7 @@ function Button({
     "nimbus--button__icon--end": iconPosition === "end" && children,
   });
 
-  const iconSpinner = spinner && <span className="nimbus--button-spinner" />;
+  const iconSpinner = spinner && <Spinner />;
 
   const iconStart = !spinner && Icon && iconPosition === "start" && (
     <i className={iconStartClass}>

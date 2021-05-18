@@ -5,6 +5,8 @@ import "./Link.css";
 
 import classNames from "classnames";
 
+import { Spinner } from "..";
+
 export interface InterfaceLink {
   /** React node of type children. */
   children?: React.ReactNode;
@@ -59,7 +61,7 @@ function Link({
     "nimbus--link__icon--end": iconPosition === "end" && children,
   });
 
-  const iconSpinner = spinner && <span className="nimbus--link-spinner" />;
+  const iconSpinner = spinner && <Spinner />;
 
   const renderStartIcon = !spinner && Icon && iconPosition === "start" && (
     <i className={iconStartClass}>

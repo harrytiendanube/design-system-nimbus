@@ -38,19 +38,11 @@
   &:hover {
     background-color: $hover-bg-color;
     border-color: $hover-bg-color;
-
-    .#{$prefix}--button-spinner {
-      @include nimbus--spinner-color($hover-bg-color);
-    }
   }
 
   &:active {
     background-color: $focus-color;
     border-color: $focus-color;
-
-    .#{$prefix}--button-spinner {
-      @include nimbus--spinner-color($focus-color);
-    }
   }
 
   &:focus {
@@ -58,8 +50,11 @@
     box-shadow: 0 0 0 $button-border-width $focus-color;
   }
 
-  .#{$prefix}--button-spinner {
-    @include nimbus--spinner($bg-color: $bg-color);
+  .#{$prefix}--spinner {
     margin-right: $spacing-x-small;
+
+    path {
+      stroke: $font-color;
+    }
   }
 }

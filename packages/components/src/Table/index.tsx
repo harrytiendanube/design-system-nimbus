@@ -12,7 +12,7 @@ import "./Table.css";
 import Text from "../Text";
 import Checkbox from "../Checkbox";
 import Select from "../Select";
-import Spinner from "../Spinner";
+import { Spinner } from "..";
 
 import {
   InterfaceNameChecked,

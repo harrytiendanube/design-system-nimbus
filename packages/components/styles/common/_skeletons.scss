@@ -36,64 +36,6 @@
   }
 }
 
-@mixin nimbus--spinner-color($bg-color) {
-  &::before,
-  &::after {
-    background-color: $bg-color;
-  }
-}
-
-$nimbus--spinner-size: (
-  "small": $spacing-x-small,
-  "base": $spacing-small,
-  "medium": $spacing-medium,
-  "large": $spacing-large,
-) !default;
-
-@mixin nimbus--spinner(
-  $spinner-color: "",
-  $bg-color: $color-background,
-  $size: "base"
-) {
-  $spinner-size: map-get($nimbus--spinner-size, $size);
-  @include nimbus--spinner-color($bg-color);
-  @if not map-has-key($nimbus--spinner-size, $size) {
-    @error "Spinner size size with the name '#{$size} was not found";
-  }
-  border-radius: 50%;
-  box-shadow: inset 0 0 0 $spacing-xx-small;
-  color: $spinner-color;
-  display: inline-block;
-  height: $spinner-size;
-  position: relative;
-  transition: $button-hover-delay ease;
-  width: $spinner-size;
-
-  &::before,
-  &::after {
-    content: "";
-    height: #{$spinner-size + 2px};
-    position: absolute;
-    top: -1px;
-    transition: $button-hover-delay ease;
-    width: #{$spinner-size / 2 + 1px};
-  }
-
-  &::before {
-    animation: spinner 1.25s infinite ease 1s;
-    border-radius: 100% 0 0 100%;
-    left: -1px;
-    transform-origin: #{$spinner-size / 2 + 1px} #{$spinner-size / 2 + 1px};
-  }
-
-  &::after {
-    animation: spinner 1.25s infinite ease;
-    border-radius: 0 100% 100% 0;
-    left: #{$spinner-size / 2 + 1px};
-    transform-origin: 0 #{$spinner-size / 2 + 1px};
-  }
-}
-
 @keyframes skeleton {
   0% {
     left: 0;
@@ -125,15 +67,5 @@ $nimbus--spinner-size: (
   100% {
     left: 0;
     right: initial;
-  }
-}
-
-@keyframes spinner {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
   }
 }

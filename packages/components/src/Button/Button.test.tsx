@@ -80,11 +80,8 @@ describe("<Button/>", () => {
       </Button>,
     );
     expect(screen.getByRole("button", { name: myText }));
-    expect(container.querySelector("span")).toHaveClass(
-      "nimbus--button-spinner",
-    );
+    expect(container.querySelector("svg")).toHaveClass("nimbus--spinner");
     expect(container.querySelector("i")).toBeNull();
-    expect(container.querySelector("svg")).toBeNull();
   });
 
   it("render skeleton", () => {

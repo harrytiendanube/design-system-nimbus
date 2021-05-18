@@ -6,6 +6,7 @@ $nimbus--spinner-color: (
   "primary": $color-primary,
   "secondary": $color-secondary,
   "danger": $color-danger,
+  "light": $color-background,
 ) !default;
 
 $nimbus--spinner-size: (
@@ -18,7 +19,10 @@ $nimbus--spinner-size: (
 @mixin nimbus--spinner-color {
   @each $name, $color in $nimbus--spinner-color {
     &--#{$name} {
-      color: $color;
+      .#{$prefix}--spinner__left,
+      .#{$prefix}--spinner__right {
+        stroke: $color;
+      }
     }
   }
 }
@@ -28,21 +32,6 @@ $nimbus--spinner-size: (
     &--#{$name} {
       height: $size;
       width: $size;
-
-      &::before,
-      &::after {
-        height: #{$size + 2px};
-        width: #{$size / 2 + 1px};
-      }
-
-      &::before {
-        transform-origin: #{$size / 2 + 1px} #{$size / 2 + 1px};
-      }
-
-      &::after {
-        left: #{$size / 2 + 1px};
-        transform-origin: 0 #{$size / 2 + 1px};
-      }
     }
   }
 }
@@ -62,29 +51,23 @@ $nimbus--spinner-size: (
 .#{$prefix}--spinner {
   @include nimbus--spinner-color;
   @include nimbus--spinner-size;
-  border-radius: 50%;
-  box-shadow: inset 0 0 0 $spacing-xx-small;
   display: inline-block;
+  fill: none;
   position: relative;
   transition: $button-hover-delay ease;
 
-  &::before,
-  &::after {
-    background-color: $color-background;
-    content: "";
-    position: absolute;
-    top: -1px;
+  .#{$prefix}--spinner__left,
+  .#{$prefix}--spinner__right {
+    stroke-width: 3px;
+    transform-origin: center;
     transition: $button-hover-delay ease;
   }
 
-  &::before {
+  .#{$prefix}--spinner__left {
     animation: spinner 1.25s infinite ease 1s;
-    border-radius: 100% 0 0 100%;
-    left: -1px;
   }
 
-  &::after {
+  .#{$prefix}--spinner__right {
     animation: spinner 1.25s infinite ease;
-    border-radius: 0 100% 100% 0;
   }
 }

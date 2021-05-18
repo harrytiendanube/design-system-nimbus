@@ -25,7 +25,3 @@
   text-align: center;
   width: 100%;
 }
-
-.#{$prefix}--refresh-spinner {
-  @include nimbus--spinner($spinner-color: $color-primary, $size: "base");
-}

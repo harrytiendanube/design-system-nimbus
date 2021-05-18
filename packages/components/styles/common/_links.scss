@@ -35,8 +35,11 @@
     box-shadow: 0 0 0 $button-border-width $focus-color;
   }
 
-  .#{$prefix}--link-spinner {
-    @include nimbus--spinner($spinner-color: $font-color);
+  .#{$prefix}--spinner {
     margin-right: $spacing-xx-small;
+
+    path {
+      stroke: $font-color;
+    }
   }
 }
