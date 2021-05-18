@@ -7,6 +7,8 @@ import classNames from "classnames";
 import Text from "../Text";
 
 export interface InterfaceCalloutCard {
+  /** ID */
+  id?: string;
   /** Icon Component imported from @tiendanube/icons */
   icon: IconType;
   /** Appearance of the CalloutCard determines the background color */
@@ -15,13 +17,17 @@ export interface InterfaceCalloutCard {
   title: string;
   /** Subtitle for the CalloutCard */
   subtitle: string;
+  /** Event fired when clicking the component */
+  onClick?: (id: string | undefined) => void;
 }
 
 function CalloutCard({
+  id,
   icon: Icon,
   appearance,
   title,
   subtitle,
+  onClick,
 }: InterfaceCalloutCard): JSX.Element {
   const className = classNames(
     "nimbus--callout-card",
@@ -30,8 +36,8 @@ function CalloutCard({
 
   const renderSubtitle = subtitle && <Text>{subtitle}</Text>;
 
-  return (
-    <div className={className}>
+  const cardContent = (
+    <>
       <div className="nimbus--callout-card__icon" aria-label={title}>
         <Icon size="medium" />
       </div>
@@ -39,7 +45,22 @@ function CalloutCard({
         <Text bold>{title}</Text>
         {renderSubtitle}
       </div>
-    </div>
+    </>
+  );
+
+  const handleClick = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ): void => {
+    event.stopPropagation();
+    onClick?.(id);
+  };
+
+  return onClick ? (
+    <button id={id} type="button" className={className} onClick={handleClick}>
+      {cardContent}
+    </button>
+  ) : (
+    <div className={className}>{cardContent}</div>
   );
 }
 

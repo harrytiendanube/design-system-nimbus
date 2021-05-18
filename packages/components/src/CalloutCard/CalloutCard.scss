@@ -49,6 +49,13 @@ $callout-colors: (
   display: flex;
   flex-wrap: nowrap;
   padding: $spacing-small;
+  width: 100%;
+
+  &[type="button"] {
+    appearance: none;
+    border: 0;
+    cursor: pointer;
+  }
 
   .#{$prefix}--callout-card__icon {
     border-radius: $actions-border-radius;
