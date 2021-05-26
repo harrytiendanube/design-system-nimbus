@@ -14,8 +14,20 @@
 
   svg {
     fill: inherit;
-    margin-left: $spacing-xx-small;
     margin-top: -$spacing-xx-small;
+  }
+
+  .#{$prefix}--chip__icon,
+  .#{$prefix}--chip__close {
+    display: inline-block;
+  }
+
+  .#{$prefix}--chip__icon {
+    margin-right: $spacing-xx-small;
+  }
+
+  .#{$prefix}--chip__close {
+    margin-left: $spacing-xx-small;
   }
 
   &:hover {

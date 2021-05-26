@@ -2,7 +2,7 @@ import * as React from "react";
 
 import "./Chip.css";
 
-import { CloseIcon } from "@tiendanube/icons";
+import { CloseIcon, Icon as IconType } from "@tiendanube/icons";
 import Text from "../Text";
 
 export interface InterfaceChip {
@@ -10,10 +10,17 @@ export interface InterfaceChip {
   id: string;
   /** Text for the chip label */
   label: React.ReactText;
+  /** Icon for the chip label */
+  icon?: IconType;
   /** Event to be fired upon dismissing the chip */
   onDismiss(id: string): void;
 }
-function Chip({ id, label, onDismiss }: InterfaceChip): JSX.Element {
+function Chip({
+  id,
+  label,
+  icon: Icon,
+  onDismiss,
+}: InterfaceChip): JSX.Element {
   const handleClick = () => {
     onDismiss(id);
   };
@@ -24,8 +31,15 @@ function Chip({ id, label, onDismiss }: InterfaceChip): JSX.Element {
       className="nimbus--chip"
       onClick={handleClick}
     >
+      {Icon && (
+        <div className="nimbus--chip__icon">
+          <Icon />
+        </div>
+      )}
       <Text>{label}</Text>
-      <CloseIcon />
+      <div className="nimbus--chip__close">
+        <CloseIcon />
+      </div>
     </button>
   );
 }
