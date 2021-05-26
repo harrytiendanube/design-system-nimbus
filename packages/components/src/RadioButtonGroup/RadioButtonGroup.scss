@@ -61,12 +61,6 @@
 // RadioButtonGroup
 
 .#{$prefix}--radio-button-group-wrapper {
-  > .#{$prefix}--text {
-    @include nimbus--type("text-label");
-    color: $color-body-text;
-    margin-bottom: $spacing-x-small;
-  }
-
   .#{$prefix}--radio-button-group {
     display: flex;
     flex-wrap: wrap;
@@ -77,6 +71,24 @@
       margin-bottom: $spacing-x-small;
       padding-left: $spacing-xx-small;
       padding-right: $spacing-xx-small;
+    }
+  }
+}
+
+.#{$prefix}--radio-button-group__label {
+  @include nimbus--type("text-label");
+  color: $color-body-text;
+  display: block;
+  margin-bottom: $spacing-x-small;
+  width: 100%;
+
+  .#{$prefix}--radio-button-group__label-icon {
+    display: inline-block;
+    margin-right: $spacing-xx-small;
+
+    svg {
+      fill: $color-body-text;
+      margin-top: -$spacing-xx-small;
     }
   }
 }

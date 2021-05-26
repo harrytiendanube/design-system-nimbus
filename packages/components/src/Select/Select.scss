@@ -8,6 +8,16 @@
   display: block;
   margin-bottom: $spacing-x-small;
   width: 100%;
+
+  .#{$prefix}--select__label-icon {
+    display: inline-block;
+    margin-right: $spacing-xx-small;
+
+    svg {
+      fill: $color-body-text;
+      margin-top: -$spacing-xx-small;
+    }
+  }
 }
 
 .#{$prefix}--select {

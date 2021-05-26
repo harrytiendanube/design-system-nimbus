@@ -2,6 +2,7 @@ import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
 import { withKnobs, text } from "@storybook/addon-knobs";
 import { withA11y } from "@storybook/addon-a11y";
 import { action } from "@storybook/addon-actions";
+import { EyeIcon } from "@tiendanube/icons";
 
 import { Select } from "@tiendanube/components/src";
 
@@ -82,6 +83,29 @@ TODO: complete
             { label: "Option 4", value: "4" },
           ],
         },
+      ]}
+      onChange={action("onChange")}
+    />
+  </Story>
+</Preview>
+
+# Select with icon label
+
+<Preview>
+  <Story
+    name="with icon label"
+    parameters={{ decorators: [withKnobs, withA11y] }}
+  >
+    <Select
+      label={text("label", "Select Label")}
+      labelIcon={EyeIcon}
+      name={text("name", "Select name")}
+      placeholder="Select an Option"
+      options={[
+        { label: "Option 1", value: "1" },
+        { label: "Option 2", value: "2" },
+        { label: "Option 3", value: "3" },
+        { label: "Option 4", value: "4" },
       ]}
       onChange={action("onChange")}
     />

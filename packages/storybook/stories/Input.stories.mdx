@@ -9,7 +9,7 @@ import {
 import { withA11y } from "@storybook/addon-a11y";
 
 import { Input, Text } from "@tiendanube/components/src";
-import { ArrowRightIcon } from "@tiendanube/icons";
+import { ArrowRightIcon, EyeIcon } from "@tiendanube/icons";
 import { LOREM_STRESS } from "./utils/constants";
 
 import "../utils/style.css";
@@ -162,6 +162,32 @@ TODO: complete
             disabled={boolean("disabled", false)}
           />
         </>
+      );
+    }}
+  </Story>
+</Preview>
+
+## Input with icon label
+
+TODO: complete
+
+<Preview withToolbar>
+  <Story
+    name="with icon label"
+    parameters={{ decorators: [withKnobs, withA11y] }}
+  >
+    {() => {
+      const [value, setValue] = React.useState("");
+      return (
+        <Input
+          label="input label"
+          labelIcon={EyeIcon}
+          placeholder="placeholder"
+          name="name"
+          value={value}
+          onChange={(e) => setValue(e.value)}
+          onSubmit={() => setValue("")}
+        />
       );
     }}
   </Story>

@@ -2,6 +2,8 @@ import * as React from "react";
 
 import "./RadioButtonGroup.css";
 
+import { Icon as IconType } from "@tiendanube/icons";
+
 import {
   InterfaceNameValue,
   InterfaceRadioButtonOption,
@@ -13,6 +15,8 @@ interface InterfaceRadioButtonGroup {
   name: string;
   /** Text to be displayed in the label */
   label?: string;
+  /** Icon to be displayed in the label */
+  labelIcon?: IconType;
   /** Current value */
   value?: string;
   /** Array of options to be displayed */
@@ -32,6 +36,7 @@ interface InterfaceRadioButtonGroup {
 function RadioButtonGroup({
   name,
   label: groupLabel,
+  labelIcon: Icon,
   value: groupValue,
   options,
   onChange,
@@ -44,8 +49,18 @@ function RadioButtonGroup({
   );
 
   const memorizedLabel = React.useMemo(
-    () => groupLabel && <Text>{groupLabel}</Text>,
-    [groupLabel],
+    () =>
+      groupLabel && (
+        <div className="nimbus--radio-button-group__label">
+          {Icon && (
+            <div className="nimbus--radio-button-group__label-icon">
+              <Icon />
+            </div>
+          )}
+          {groupLabel}
+        </div>
+      ),
+    [groupLabel, Icon],
   );
   return (
     <div className="nimbus--radio-button-group-wrapper">

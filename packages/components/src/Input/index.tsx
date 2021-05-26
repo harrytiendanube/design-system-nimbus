@@ -22,6 +22,8 @@ export interface InterfaceInput {
   placeholder: string;
   /** Label */
   label?: string;
+  /** Icon to be displayed in the label */
+  labelIcon?: IconType;
   /** Input value */
   value?: string;
   /** Input type */
@@ -73,6 +75,7 @@ function Input({
   name,
   placeholder,
   label = "",
+  labelIcon: LabelIcon,
   value = "",
   type = "text",
   inputMode,
@@ -139,6 +142,11 @@ function Input({
 
   const renderLabel = type !== "search" && (
     <label className="nimbus--input__label" htmlFor={`input_${name}`}>
+      {LabelIcon && (
+        <div className="nimbus--input__label-icon">
+          <LabelIcon />
+        </div>
+      )}
       {label}
     </label>
   );

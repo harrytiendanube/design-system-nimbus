@@ -2,7 +2,7 @@ import * as React from "react";
 
 import "./Select.css";
 
-import { ChevronDownIcon } from "@tiendanube/icons";
+import { ChevronDownIcon, Icon as IconType } from "@tiendanube/icons";
 import { RenderOption, RenderGroup } from "./renders";
 import {
   InterfaceNameValue,
@@ -16,6 +16,8 @@ interface InterfaceSelect {
   name: string;
   /** Text to be displayed in the label */
   label?: string;
+  /** Icon to be displayed in the label */
+  labelIcon?: IconType;
   /** Array of options to be displayed */
   options: InterfaceSelectOptionGroup[];
   /** Current value */
@@ -39,6 +41,7 @@ interface InterfaceSelect {
 function Select({
   name,
   label: selectLabel,
+  labelIcon: Icon,
   options,
   value: selectValue = "",
   placeholder,
@@ -56,10 +59,15 @@ function Select({
     () =>
       selectLabel && (
         <label className="nimbus--select__label" htmlFor={`select_${name}`}>
+          {Icon && (
+            <div className="nimbus--select__label-icon">
+              <Icon />
+            </div>
+          )}
           {selectLabel}
         </label>
       ),
-    [selectLabel, name],
+    [selectLabel, name, Icon],
   );
   const memorizedPlaceholder = React.useMemo(() => {
     return (
