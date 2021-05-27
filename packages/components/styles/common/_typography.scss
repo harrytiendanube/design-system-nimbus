@@ -80,6 +80,17 @@ $text-label-tight: (
     ),
 ) !default;
 
+$text-small: (
+  font-family: $font-family,
+  font-weight: map-get($nimbus--font-weights, "regular"),
+  font-size: nimbus--rem(map-get($nimbus--body-sizes, "smaller")),
+  line-height:
+    nimbus--rem(
+      map-get($nimbus--body-sizes, "smaller") *
+        map-get($nimbus--line-heights, "base")
+    ),
+) !default;
+
 $text-button: (
   font-family: $font-family,
   font-weight: map-get($nimbus--font-weights, "bold"),
@@ -101,6 +112,7 @@ $nimbus--type-tokens: (
   text-body: $text-body,
   text-label: $text-label,
   text-label-tight: $text-label-tight,
+  text-small: $text-small,
   text-button: $text-button,
 ) !default;
 

@@ -14,6 +14,8 @@ export interface InterfaceSearchFilter {
   placeholder: string;
   /** Label text for filter button */
   label?: string;
+  /** Number of filters applied for button badge */
+  filterCount?: number;
   /** Aria-label text for filter button */
   ariaLabel?: string;
   /** Number of results to show */
@@ -31,6 +33,7 @@ export interface InterfaceSearchFilter {
 function SearchFilter({
   placeholder,
   label: labelButton,
+  filterCount,
   ariaLabel,
   resultCount,
   appliedFilters,
@@ -66,6 +69,7 @@ function SearchFilter({
   const renderFiltersButton = onClick && (
     <div className="nimbus--search-filters__filters">
       <Button
+        badge={filterCount}
         ariaLabel={ariaLabel || labelButton}
         appearance="default"
         icon={SlidersIcon}

@@ -57,4 +57,13 @@
       stroke: $font-color;
     }
   }
+
+  .#{$prefix}--button__badge {
+    @include nimbus--type("text-small");
+    background-color: $font-color;
+    border-radius: $spacing-x-small;
+    color: $bg-color;
+    padding: 2px $spacing-x-small;
+    text-align: center;
+  }
 }

@@ -15,6 +15,10 @@
   margin-left: $spacing-x-small;
 }
 
+.#{$prefix}--button__badge--margin {
+  margin-left: $spacing-x-small;
+}
+
 .#{$prefix}--button--default {
   @include button(
     $color-secondary,

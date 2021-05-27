@@ -13,6 +13,7 @@ export interface InterfaceButton {
   ariaLabel?: string;
   /** Type of appearance */
   appearance?: "default" | "primary" | "secondary" | "default" | "danger";
+  badge?: React.ReactText;
   /** Icon Component imported from @tiendanube/icons */
   icon?: IconType;
   /** Position of the icon inside the button */
@@ -30,6 +31,7 @@ export interface InterfaceButton {
 function Button({
   children,
   ariaLabel,
+  badge,
   icon: Icon,
   iconPosition = "start",
   appearance = "default",
@@ -45,11 +47,16 @@ function Button({
   );
 
   const iconStartClass = classNames("nimbus--button__icon", {
-    "nimbus--button__icon--start": iconPosition === "start" && children,
+    "nimbus--button__icon--start":
+      (iconPosition === "start" && children) || badge,
   });
 
   const iconEndClass = classNames("nimbus--button__icon", {
-    "nimbus--button__icon--end": iconPosition === "end" && children,
+    "nimbus--button__icon--end": (iconPosition === "end" && children) || badge,
+  });
+
+  const badgeClass = classNames("nimbus--button__badge", {
+    "nimbus--button__badge--margin": children,
   });
 
   const iconSpinner = spinner && <Spinner />;
@@ -65,6 +72,8 @@ function Button({
       <Icon size={iconSize} />
     </i>
   );
+
+  const buttonBadge = badge && <span className={badgeClass}>{badge}</span>;
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.stopPropagation();
@@ -82,6 +91,7 @@ function Button({
       {iconSpinner}
       {iconStart}
       {children}
+      {buttonBadge}
       {iconEnd}
     </button>
   );
