@@ -182,3 +182,6 @@ export * from "./Portal";
 
 // DataList reference added
 export * from "./DataList";
+
+// Thumbnail reference added
+export * from "./Thumbnail";

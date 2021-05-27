@@ -26,6 +26,13 @@ export const IMAGE_PRODUCT_3 =
 export const IMAGE_PRODUCT_4 =
   "https://images.unsplash.com/photo-1503602642458-232111445657?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80";
 
+export const images = {
+  none: null,
+  image1: IMAGE_PRODUCT,
+  image2: IMAGE_PRODUCT_2,
+  image3: IMAGE_PRODUCT_3,
+};
+
 export const IMAGE_APPEARANCES = [
   "default",
   "primary",

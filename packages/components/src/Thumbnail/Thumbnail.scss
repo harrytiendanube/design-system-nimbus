@@ -1,0 +1,241 @@
+@import "../../styles/core";
+
+/* stylelint-disable indentation */
+
+// Thumbnail
+
+$nimbus--aspect-ratios: (
+  (16, 9),
+  (9, 16),
+  (4, 3),
+  (3, 4),
+  (2, 1),
+  (1, 2),
+  (1, 1)
+);
+
+@each $aspect-ratio in $nimbus--aspect-ratios {
+  $width: nth($aspect-ratio, 1);
+  $height: nth($aspect-ratio, 2);
+
+  .#{$prefix}--aspect-ratio--#{$width}-#{$height}::before {
+    padding-top: percentage($height / $width);
+  }
+}
+
+.#{$prefix}--thumbnail-wrapper {
+  border-radius: $actions-border-radius;
+  display: block;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+
+  &::before {
+    content: "";
+    float: left;
+    height: 0;
+    margin-left: -1px;
+    width: 1px;
+  }
+
+  &::after {
+    clear: both;
+    content: "";
+    display: table;
+  }
+
+  button {
+    cursor: pointer;
+  }
+}
+
+.#{$prefix}--thumbnail,
+.#{$prefix}--thumbnail-placeholder,
+.#{$prefix}--thumbnail-overlay,
+.#{$prefix}--thumbnail-button {
+  height: 100%;
+  left: 0;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.#{$prefix}--thumbnail-placeholder {
+  align-items: center;
+  background-color: $color-default;
+  display: flex;
+  justify-content: center;
+
+  svg {
+    fill: $color-grey-35;
+    margin-top: -$spacing-xx-small;
+  }
+}
+
+.#{$prefix}--thumbnail-select-wrapper {
+  cursor: pointer;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+
+  .#{$prefix}--thumbnail-select {
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+
+    &:checked + .#{$prefix}--thumbnail-select__label {
+      background-color: rgba($color-primary, 0.3);
+      border: $input-border-width solid $color-primary;
+      border-radius: $actions-border-radius;
+    }
+
+    &:checked + .#{$prefix}--thumbnail-select__label::before {
+      border-color: $color-primary;
+    }
+
+    &:checked + .#{$prefix}--thumbnail-select__label::before,
+    &:checked
+      ~ .#{$prefix}--thumbnail-select__label
+      > .#{$prefix}--thumbnail-select__check {
+      visibility: visible;
+    }
+
+    &:hover + .#{$prefix}--thumbnail-select__label::before {
+      border-color: $color-primary;
+    }
+
+    &:disabled + .#{$prefix}--thumbnail-select__label::before,
+    &:hover:disabled + .#{$prefix}--thumbnail-select__label::before,
+    &:focus:disabled + .#{$prefix}--thumbnail-select__label::before {
+      background-color: $input-disabled-background;
+      border-color: $input-disabled-background;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    &:disabled + .#{$prefix}--thumbnail-select__label,
+    &:hover:disabled + .#{$prefix}--thumbnail-select__label,
+    &:focus:disabled + .#{$prefix}--thumbnail-select__label {
+      .#{$prefix}--text {
+        color: $input-disabled-text;
+      }
+    }
+
+    &:active + .#{$prefix}--thumbnail-select__label::before {
+      background-color: $color-primary-active;
+      border-color: $color-primary-active;
+    }
+
+    &:focus + .#{$prefix}--thumbnail-select__label::before {
+      border-color: $color-primary-active;
+      box-shadow: 0 0 0 $button-border-width $color-primary-active;
+    }
+  }
+
+  .#{$prefix}--thumbnail-select__label {
+    cursor: pointer;
+    display: inline-block;
+    height: 100%;
+    position: relative;
+    width: 100%;
+
+    &::before {
+      background-color: transparent;
+      border: $input-border-width solid $color-background;
+      border-radius: 100%;
+      box-shadow: 0 0 7px rgba(0, 0, 0, 0.25), inset 0 0 7px rgba(0, 0, 0, 0.25);
+      content: "";
+      height: $spacing-medium;
+      left: $spacing-x-small;
+      position: absolute;
+      top: $spacing-x-small;
+      transition: $motion-base ease;
+      width: $spacing-medium;
+    }
+  }
+
+  .#{$prefix}--thumbnail-select__check {
+    align-items: center;
+    background-color: $color-primary;
+    border-radius: 100%;
+    display: flex;
+    height: $spacing-medium;
+    justify-content: center;
+    left: $spacing-x-small + 1px;
+    pointer-events: none;
+    position: absolute;
+    top: $spacing-x-small + 1px;
+    visibility: hidden;
+    width: $spacing-medium;
+
+    svg {
+      fill: $color-background;
+    }
+  }
+}
+
+.#{$prefix}--thumbnail-overlay {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  z-index: 9;
+}
+
+.#{$prefix}--thumbnail-overlay--white {
+  background-color: rgba($color-background, 0.5);
+}
+
+.#{$prefix}--thumbnail-overlay--blue {
+  background-color: rgba($color-secondary, 0.8);
+}
+
+.#{$prefix}--thumbnail-button {
+  align-items: center;
+  background-color: $color-primary-lighter;
+  border: 2px dashed $color-primary;
+  border-radius: $actions-border-radius;
+  display: flex;
+  justify-content: center;
+
+  svg {
+    fill: $color-primary;
+  }
+
+  &:disabled {
+    background-color: $color-default;
+    border-color: $color-grey-35;
+    cursor: not-allowed;
+
+    svg {
+      fill: $color-grey-35;
+    }
+  }
+}
+
+.#{$prefix}--thumbnail-plus {
+  display: block;
+
+  .#{$prefix}--text {
+    color: $color-background;
+  }
+}
+
+.#{$prefix}--thumbnail-skeleton {
+  @include nimbus--skeleton(
+    $height: 100%,
+    $width: 100%,
+    $vertical-margin: 0,
+    $horizontal-margin: 0
+  );
+  border-radius: $actions-border-radius;
+  position: absolute;
+}
