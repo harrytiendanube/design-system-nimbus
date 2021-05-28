@@ -146,7 +146,7 @@ function Page({
           </Button>
         )}
       </div>
-      <Responsive display="mobile">
+      <Responsive displays={["mobile"]}>
         <div
           className={`nimbus--page-navbar__title ${
             showTitle ? "is-visible" : ""
@@ -162,7 +162,7 @@ function Page({
         </div>
       </Responsive>
       <div className="nimbus--page-navbar__toolbar">
-        <Responsive display="mobile">
+        <Responsive displays={["mobile"]}>
           {headerAction && (
             <Link
               icon={headerAction.icon}
@@ -181,7 +181,7 @@ function Page({
             menuPrimaryActionIcon}
         </Responsive>
         {paginationPrevious && paginationNext && (
-          <Responsive display="desktop">
+          <Responsive displays={["tablet", "desktop"]}>
             <Link onClick={paginationPrevious} icon={ArrowLeftIcon} />
             <Link onClick={paginationNext} icon={ArrowRightIcon} />
           </Responsive>
@@ -234,7 +234,7 @@ function Page({
       <div className="nimbus--page-header">
         {renderNavigation}
         <div className="nimbus--page-heading" ref={targetID}>
-          <Responsive display="desktop">
+          <Responsive displays={["tablet", "desktop"]}>
             <Stack>
               <Stack.Item fill>
                 {title === "skeleton" ? (
@@ -247,7 +247,7 @@ function Page({
               {renderPrimaryAction}
             </Stack>
           </Responsive>
-          <Responsive display="mobile">
+          <Responsive displays={["mobile"]}>
             <div className="nimbus--page-heading__main">
               {title === "skeleton" ? (
                 <PageTitle.Skeleton />

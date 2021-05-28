@@ -1,20 +1,21 @@
 import * as React from "react";
 
 export interface InterfaceResponsive {
-  display: "desktop" | "mobile";
+  displays: ("desktop" | "mobile" | "tablet")[];
   children: React.ReactNode;
 }
 
-function Responsive({ display, children }: InterfaceResponsive): JSX.Element {
+export const limitsWith = {
+  mobile: { min: 0, max: 671 },
+  tablet: { min: 672, max: 1023 },
+  desktop: { min: 1024, max: 99999 },
+};
+
+function Responsive({ displays, children }: InterfaceResponsive): JSX.Element {
   const [dimensions, setDimensions] = React.useState({
     height: window.innerHeight,
     width: window.innerWidth,
   });
-
-  const limitsWith = {
-    mobile: { min: 0, max: 671 },
-    desktop: { min: 672, max: 99999 },
-  };
 
   React.useEffect(() => {
     function handleReSize() {
@@ -31,13 +32,18 @@ function Responsive({ display, children }: InterfaceResponsive): JSX.Element {
     };
   });
 
-  return (
-    <>
-      {limitsWith[display].min <= dimensions.width &&
-        dimensions.width <= limitsWith[display].max &&
-        children}
-    </>
-  );
+  let renderChildren = false;
+  displays.forEach((display) => {
+    if (
+      !renderChildren &&
+      limitsWith[display].min <= dimensions.width &&
+      dimensions.width <= limitsWith[display].max
+    ) {
+      renderChildren = true;
+    }
+  });
+
+  return <>{renderChildren && children}</>;
 }
 
 export default React.memo(Responsive);
