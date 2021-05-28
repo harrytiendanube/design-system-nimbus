@@ -13,7 +13,8 @@
   margin-right: -$spacing-small;
 
   @include nimbus--breakpoint(lg) {
-    margin: 0;
+    margin-left: -$spacing-medium;
+    margin-right: -$spacing-medium;
   }
 
   .#{$prefix}--data-list__mass-actions {
@@ -31,11 +32,6 @@
     width: 100%;
     z-index: 800;
 
-    @include nimbus--breakpoint(lg) {
-      padding-top: $spacing-x-small;
-      position: sticky;
-    }
-
     > * {
       padding-left: $spacing-x-small;
       padding-right: $spacing-x-small;
@@ -48,67 +44,28 @@
   }
 }
 
-.#{$prefix}--data-list {
-  border-collapse: collapse;
-  border-spacing: 0;
-  display: table;
-  width: 100%;
-}
-
-.#{$prefix}--data-list__header {
-  display: table-header-group;
-
-  @include nimbus--breakpoint-down(lg) {
-    border: 0;
-    clip: rect(0, 0, 0, 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    visibility: inherit;
-    white-space: nowrap;
-    width: 1px;
-  }
-}
-
-.#{$prefix}--data-list__body {
-  display: table-row-group;
-  margin-left: -$spacing-small;
-  margin-right: -$spacing-small;
-
-  @include nimbus--breakpoint(lg) {
-    margin: 0;
-  }
-}
-
 // Row
 
 .#{$prefix}--data-list-row {
-  display: table-row;
-
-  @include nimbus--breakpoint-down(lg) {
-    display: flex;
-    flex-wrap: wrap;
-    position: relative;
-    transition: padding $motion-fast ease;
-  }
+  cursor: pointer;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  transition: padding $motion-fast ease;
 
   .#{$prefix}--data-list-row__check-wrapper {
-    @include nimbus--breakpoint-down(lg) {
-      display: none;
-      left: 0;
-      opacity: 0;
-      position: absolute;
-      top: $spacing-small;
-      transform: translateX(-100%);
-      transition: transform $motion-fast ease, opacity $motion-fast ease;
+    display: none;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: $spacing-small;
+    transform: translateX(-100%);
+    transition: transform $motion-fast ease, opacity $motion-fast ease;
 
-      &.is--visible {
-        display: inline-block;
-        opacity: 1;
-        transform: translateX(0);
-      }
+    &.is--visible {
+      display: inline-block;
+      opacity: 1;
+      transform: translateX(0);
     }
   }
 }
@@ -116,14 +73,10 @@
 // Cell
 
 .#{$prefix}--data-list-row__item {
-  display: table-cell;
+  display: inline-block;
   position: relative;
   text-align: left;
   vertical-align: middle;
-
-  @include nimbus--breakpoint-down(lg) {
-    display: inline-block;
-  }
 }
 
 // Long tap interaction
@@ -133,20 +86,18 @@
   overflow: hidden;
 
   &::before {
-    @include nimbus--breakpoint-down(lg) {
-      animation: pulse 2.5s 1 0.5s ease;
-      background-color: $color-default;
-      border-radius: 100%;
-      content: "";
-      display: block;
-      height: 24px;
-      left: 50%;
-      opacity: 0;
-      position: absolute;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      width: 24px;
-    }
+    animation: pulse 2.5s 1 0.5s ease;
+    background-color: $color-default;
+    border-radius: 100%;
+    content: "";
+    display: block;
+    height: 24px;
+    left: 50%;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 24px;
   }
 }
 
@@ -167,19 +118,12 @@
   &.#{$prefix}--data-list-wrapper--edit-mode {
     .#{$prefix}--data-list-row {
       * {
-        @include nimbus--breakpoint-down(lg) {
-          pointer-events: none;
-        }
+        pointer-events: none;
       }
     }
   }
 
   &.#{$prefix}--data-list-wrapper--ruled {
-    @include nimbus--breakpoint(lg) {
-      border: $input-border-width solid $color-default;
-      border-radius: $actions-border-radius;
-    }
-
     .#{$prefix}--data-list__body {
       border-top: 1px solid $color-default;
 
@@ -192,39 +136,26 @@
   &.#{$prefix}--data-list-wrapper--spacing-base {
     &.#{$prefix}--data-list-wrapper--actions {
       .#{$prefix}--data-list-row {
-        @include nimbus--breakpoint-down(lg) {
-          padding: $spacing-small $spacing-x-small $spacing-small
-            $spacing-x-large;
-        }
+        padding: $spacing-small $spacing-x-small $spacing-small $spacing-x-large;
       }
     }
 
     .#{$prefix}--data-list-row {
-      @include nimbus--breakpoint-down(lg) {
-        padding: $spacing-small $spacing-x-small;
+      padding: $spacing-small $spacing-x-small;
+
+      @include nimbus--breakpoint(lg) {
+        padding: $spacing-small;
       }
 
       .#{$prefix}--data-list-row__item {
-        padding: $spacing-small $spacing-x-small;
+        padding: 0 $spacing-x-small;
 
-        @include nimbus--breakpoint-down(lg) {
-          padding: 0 $spacing-x-small;
-        }
-
-        @include nimbus--breakpoint(lg) {
-          &:first-of-type {
-            padding-left: $spacing-small;
-          }
-
-          &:last-of-type {
-            padding-right: $spacing-small;
-          }
+        &:last-of-type {
+          padding-right: $spacing-small;
         }
 
         &.#{$prefix}--data-list-row__item--extra-padding {
-          @include nimbus--breakpoint-down(lg) {
-            padding: $spacing-x-small 0 0 $spacing-x-small;
-          }
+          padding: $spacing-x-small 0 0 $spacing-x-small;
         }
       }
     }
@@ -233,24 +164,16 @@
   &.#{$prefix}--data-list-wrapper--spacing-tight {
     &.#{$prefix}--data-list-wrapper--actions {
       .#{$prefix}--data-list-row {
-        @include nimbus--breakpoint-down(lg) {
-          padding: $spacing-x-small $spacing-x-small $spacing-x-small
-            $spacing-large;
-        }
+        padding: $spacing-x-small $spacing-x-small $spacing-x-small
+          $spacing-large;
       }
     }
 
     .#{$prefix}--data-list-row {
-      @include nimbus--breakpoint-down(lg) {
-        padding: $spacing-x-small;
-      }
+      padding: $spacing-x-small;
 
       .#{$prefix}--data-list-row__item {
-        padding: $spacing-x-small;
-
-        @include nimbus--breakpoint-down(lg) {
-          padding: 0 $spacing-x-small;
-        }
+        padding: 0 $spacing-x-small;
       }
     }
   }
@@ -270,40 +193,29 @@
   &.#{$prefix}--data-list-row__item--trim-text {
     .#{$prefix}--text {
       @include nimbus--text-trim(2);
+      max-width: 160px;
       text-align: inherit;
-
-      @include nimbus--breakpoint(lg) {
-        max-width: 160px;
-        white-space: nowrap;
-      }
+      white-space: nowrap;
     }
   }
 
   &.#{$prefix}--data-list-row__item--fill-width {
-    @include nimbus--breakpoint-down(lg) {
-      flex: 1 1 auto;
-    }
+    flex: 1 1 auto;
   }
 
   &.#{$prefix}--data-list-row__item--auto-width {
-    @include nimbus--breakpoint-down(lg) {
-      flex: 0 0 auto;
-    }
+    flex: 0 0 auto;
   }
 
   @for $n from 0 through 100 {
     &.#{$prefix}--data-list-row__item--#{$n}-width {
-      @include nimbus--breakpoint-down(lg) {
-        flex: 1 1 percentage($n / 100);
-        max-width: percentage($n / 100);
-      }
+      flex: 1 1 percentage($n / 100);
+      max-width: percentage($n / 100);
     }
   }
 
   &.#{$prefix}--data-list-row__item--align-right {
-    @include nimbus--breakpoint-down(lg) {
-      text-align: right;
-    }
+    text-align: right;
   }
 
   &.#{$prefix}--data-list-row__item--row-title {
