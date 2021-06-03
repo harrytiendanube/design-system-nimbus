@@ -204,6 +204,7 @@ $nimbus--aspect-ratios: (
   border: 2px dashed $color-primary;
   border-radius: $actions-border-radius;
   display: flex;
+  flex-direction: column;
   justify-content: center;
 
   svg {
@@ -218,6 +219,14 @@ $nimbus--aspect-ratios: (
     svg {
       fill: $color-grey-35;
     }
+
+    .#{$prefix}--text {
+      color: $color-grey-35;
+    }
+  }
+
+  .#{$prefix}--text {
+    margin-top: $spacing-x-small;
   }
 }
 

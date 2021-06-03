@@ -2,6 +2,7 @@ import * as React from "react";
 import { PlusCircleIcon } from "@tiendanube/icons";
 
 import ThumbnailButton, { InterfaceThumbnailButton } from "./Thumbnail.Button";
+import { Text } from "..";
 
 import "./Thumbnail.css";
 
@@ -11,6 +12,8 @@ export interface InterfaceThumbnailAdd
   src: string;
   /** Alternative text for the image */
   altText: string;
+  /** Provide additional context to the action */
+  helperText?: string;
 }
 
 function Add({
@@ -19,6 +22,7 @@ function Add({
   onClick,
   disabled = false,
   ariaLabel,
+  helperText,
 }: InterfaceThumbnailAdd): JSX.Element {
   return (
     <ThumbnailButton
@@ -30,6 +34,11 @@ function Add({
       className="nimbus--thumbnail-button-add"
     >
       <PlusCircleIcon size="large" />
+      {helperText && (
+        <Text size="small" appearance="primary" bold textAlign="center">
+          {helperText}
+        </Text>
+      )}
     </ThumbnailButton>
   );
 }
