@@ -36,7 +36,7 @@ export interface InterfacePage {
   /** Header action for the title section */
   headerAction?: Pick<
     InterfaceLink,
-    "children" | "onClick" | "icon" | "spinner" | "disabled"
+    "appearance" | "children" | "onClick" | "icon" | "spinner" | "disabled"
   >;
   /** Primary action for the title section */
   primaryAction?:
@@ -165,6 +165,7 @@ function Page({
         <Responsive displays={["mobile"]}>
           {headerAction && (
             <Link
+              appearance={headerAction.appearance}
               icon={headerAction.icon}
               onClick={headerAction.onClick}
               spinner={headerAction.spinner}

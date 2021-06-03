@@ -23,7 +23,7 @@ body {
   top: 0;
   transition: box-shadow $motion-base cubic-bezier(0.4, 0, 0.4, 1);
   width: 100%;
-  z-index: 1;
+  z-index: 100;
 
   @include nimbus--breakpoint(md) {
     padding-left: $spacing-small;
@@ -148,5 +148,24 @@ body {
   &:hover {
     background-color: transparent;
     border-color: $color-secondary-light;
+  }
+
+  &.#{$prefix}--link--danger {
+    color: $color-danger;
+
+    svg {
+      fill: $color-danger;
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 $button-border-width $color-danger-light;
+    }
+
+    &:focus,
+    &:active,
+    &:hover {
+      background-color: transparent;
+      border-color: $color-danger-light;
+    }
   }
 }

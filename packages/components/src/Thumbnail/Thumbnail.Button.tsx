@@ -1,5 +1,7 @@
 import * as React from "react";
 
+import classNames from "classnames";
+
 import Wrapper, { InterfaceThumbnailWrapper } from "./Thumbnail.Wrapper";
 
 import "./Thumbnail.css";
@@ -27,6 +29,7 @@ function Button({
   disabled,
   onClick,
 }: InterfaceThumbnailButton): JSX.Element {
+  const buttonClass = classNames("nimbus--thumbnail-button", className);
   return (
     <Wrapper aspectRatio={aspectRatio} width={width}>
       <button
@@ -35,7 +38,7 @@ function Button({
         type="button"
         onClick={onClick}
         disabled={disabled}
-        className={className}
+        className={buttonClass}
       >
         {children}
       </button>

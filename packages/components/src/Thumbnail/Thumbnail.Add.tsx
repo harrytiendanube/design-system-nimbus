@@ -27,7 +27,7 @@ function Add({
       ariaLabel={ariaLabel}
       onClick={onClick}
       disabled={disabled}
-      className="nimbus--thumbnail-button"
+      className="nimbus--thumbnail-button-add"
     >
       <PlusCircleIcon size="large" />
     </ThumbnailButton>

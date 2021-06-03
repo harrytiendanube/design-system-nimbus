@@ -39,6 +39,7 @@ TODO: complete
         icon: boolean("headerAction.icon", true) ? CheckCircleIcon : null,
         spinner: boolean("headerAction.spinner", false),
         disabled: boolean("headerAction.disabled", false),
+        appearance: select("headerAction.appearance", ["secondary", "danger"]),
       }}
       primaryAction={{
         children: text("primaryAction.children", "Add a product"),
