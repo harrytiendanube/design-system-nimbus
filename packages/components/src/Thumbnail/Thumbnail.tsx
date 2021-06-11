@@ -5,6 +5,8 @@ import Add from "./Thumbnail.Add";
 import Empty from "./Thumbnail.Empty";
 import Select from "./Thumbnail.Select";
 import Plus from "./Thumbnail.Plus";
+import File from "./Thumbnail.File";
+import Error from "./Thumbnail.Error";
 
 import Wrapper, { InterfaceThumbnailWrapper } from "./Thumbnail.Wrapper";
 import { Spinner } from "../Spinner";
@@ -12,9 +14,11 @@ import { Spinner } from "../Spinner";
 import "./Thumbnail.css";
 
 export { InterfaceThumbnailAdd } from "./Thumbnail.Add";
+export { InterfaceThumbnailFile } from "./Thumbnail.File";
 export { InterfaceThumbnailEmpty } from "./Thumbnail.Empty";
 export { InterfaceThumbnailPlus } from "./Thumbnail.Plus";
 export { InterfaceThumbnailSelect } from "./Thumbnail.Select";
+export { InterfaceThumbnailError } from "./Thumbnail.Error";
 
 export interface InterfaceThumbnail
   extends Omit<InterfaceThumbnailWrapper, "children"> {
@@ -53,8 +57,10 @@ function Thumbnail({
 
 Thumbnail.Skeleton = Skeleton;
 Thumbnail.Add = Add;
+Thumbnail.File = File;
 Thumbnail.Plus = Plus;
 Thumbnail.Empty = Empty;
 Thumbnail.Select = Select;
+Thumbnail.Error = Error;
 
 export default Thumbnail;

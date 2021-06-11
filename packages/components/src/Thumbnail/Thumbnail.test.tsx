@@ -39,48 +39,4 @@ describe("<Thumbnail />", () => {
       container.querySelector(".nimbus--aspect-ratio--16-9"),
     ).toHaveAttribute("style", "width: 90%;");
   });
-
-  /*
-
-  describe("when editMode", () => {
-    it("should call selectOnClick", () => {
-      const onSelectClickMock = jest.fn();
-      const selectId = "mySelectId";
-      setup({
-        props: {
-          src: "mySrc",
-          altText: "myAltText",
-          selectMode: true,
-          selected: true,
-          selectId,
-          selectOnClick: onSelectClickMock,
-        },
-      });
-
-      const elementCheckbox = screen.getByRole("checkbox");
-      expect(elementCheckbox).toBeChecked();
-      userEvent.click(elementCheckbox);
-      expect(onSelectClickMock).toHaveBeenCalledWith(selectId);
-    });
-  });
-
-  describe("when is loading", () => {
-    it("should display spinner", () => {
-      const myAltText = "myAltText";
-      const { container } = setup({
-        props: {
-          src: "mySrc",
-          altText: myAltText,
-          loading: true,
-        },
-      });
-
-      expect(screen.queryByRole("checkbox")).toBeNull();
-      expect(
-        container.querySelector(".nimbus--thumbnail-loading"),
-      ).toBeInTheDocument();
-      expect(screen.getByRole("img", { name: myAltText })).toBeInTheDocument();
-    });
-  });
-  */
 });

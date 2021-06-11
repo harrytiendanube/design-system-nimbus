@@ -126,7 +126,9 @@
           "unordered",
           "touchmove",
           "touchend",
-          "callout"
+          "callout",
+          "jpeg",
+          "gif"
         ]
       }
     ]

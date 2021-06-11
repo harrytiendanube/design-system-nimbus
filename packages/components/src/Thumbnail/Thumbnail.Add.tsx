@@ -6,12 +6,9 @@ import { Text } from "..";
 
 import "./Thumbnail.css";
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface InterfaceThumbnailAdd
   extends Omit<InterfaceThumbnailButton, "children" | "className"> {
-  /** URL source for the image */
-  src: string;
-  /** Alternative text for the image */
-  altText: string;
   /** Provide additional context to the action */
   helperText?: string;
 }

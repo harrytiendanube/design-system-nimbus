@@ -146,6 +146,33 @@ TODO: complete
 
 <Props of={Thumbnail.Add} />
 
+# File
+
+<Preview>
+  <Story name="file" parameters={{ decorators: [withKnobs, withA11y] }}>
+    <Thumbnail.File
+      aspectRatio={select("aspect ratio", [
+        "1-1",
+        "16-9",
+        "9-16",
+        "4-3",
+        "3-4",
+        "2-1",
+        "1-2",
+      ])}
+      width={number("width", 104)}
+      ariaLabel={text("aria label", "aria label")}
+      open={boolean("open", false)}
+      disabled={boolean("disabled", false)}
+      onChange={action("onChange")}
+    />
+  </Story>
+</Preview>
+
+## File Properties
+
+<Props of={Thumbnail.File} />
+
 # Plus
 
 <Preview>
@@ -173,3 +200,30 @@ TODO: complete
 ## Plus Properties
 
 <Props of={Thumbnail.Plus} />
+
+# Error
+
+<Preview>
+  <Story name="error" parameters={{ decorators: [withKnobs, withA11y] }}>
+    <Thumbnail.Error
+      aspectRatio={select("aspect ratio", [
+        "1-1",
+        "16-9",
+        "9-16",
+        "4-3",
+        "3-4",
+        "2-1",
+        "1-2",
+      ])}
+      width={number("width", 104)}
+      src={select("src", images, images.image1)}
+      ariaLabel={text("aria label", "aria label")}
+      onClick={action("error")}
+      altText={text("alt text", "Alternative text")}
+    />
+  </Story>
+</Preview>
+
+## Error Properties
+
+<Props of={Thumbnail.Error} />

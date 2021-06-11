@@ -61,6 +61,10 @@ $nimbus--aspect-ratios: (
   width: 100%;
 }
 
+.#{$prefix}--thumbnail-file {
+  display: none;
+}
+
 .#{$prefix}--thumbnail-placeholder {
   align-items: center;
   background-color: $color-default;
@@ -235,6 +239,12 @@ $nimbus--aspect-ratios: (
 
   .#{$prefix}--text {
     color: $color-background;
+  }
+}
+
+.#{$prefix}--thumbnail-error {
+  svg {
+    fill: $color-danger;
   }
 }
 
