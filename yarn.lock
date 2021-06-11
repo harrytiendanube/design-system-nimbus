@@ -3301,10 +3301,10 @@
   resolved "https://registry.yarnpkg.com/@tiendanube/eslint-config/-/eslint-config-0.3.1.tgz#c83b3c31b4fe187eca64cbcb4114523ead8c1333"
   integrity sha512-5wr7Wy1xmlv6JKs2p+CGd7CVD13S7plqSDzJ2/ZBNwttMnxFJliI0gNGhlrSsEI+e7PQdkDnqr9gwPuI17BJ1w==
 
-"@tiendanube/icons@0.2.1":
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/@tiendanube/icons/-/icons-0.2.1.tgz#fa2a4479cb65f526152a16e34f0a9e6972a13dac"
-  integrity sha512-bWw/aKkjtJ/uiZG6uJxwlQGD4nReOXA3HC1E+36kBLtGPZTPxLLcb2uHoN7aYk7wixatqi7sk2h6s8KcB3D1hQ==
+"@tiendanube/icons@0.2.2":
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/@tiendanube/icons/-/icons-0.2.2.tgz#70324a95e24ffecbc0d05dd55a5be0422d9f4c3d"
+  integrity sha512-v26suL3yNpk8mGr55F5m/u5nWWLWSWOkM7lnOn3ovMwXS9AEVTWPymSi/i8nvihkQeOcvMmXhk/h2LmvRzNOwQ==
   dependencies:
     cheerio "1.0.0-rc.3"
     globby "11.0.1"

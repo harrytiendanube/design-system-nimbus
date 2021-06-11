@@ -185,3 +185,6 @@ export * from "./DataList";
 
 // Thumbnail reference added
 export * from "./Thumbnail";
+
+// KeyboardToolbar reference added
+export * from "./KeyboardToolbar";
