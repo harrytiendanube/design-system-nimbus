@@ -19,6 +19,8 @@ export interface InterfaceCalloutCard {
   subtitle: string;
   /** Event fired when clicking the component */
   onClick?: (id: string | undefined) => void;
+  /** Renders the component as skeleton */
+  skeleton?: boolean;
 }
 
 function CalloutCard({
@@ -28,21 +30,29 @@ function CalloutCard({
   title,
   subtitle,
   onClick,
+  skeleton = false,
 }: InterfaceCalloutCard): JSX.Element {
   const className = classNames(
     "nimbus--callout-card",
     `nimbus--callout-card--${appearance}`,
+    { "nimbus--callout-card--skeleton": skeleton },
   );
 
-  const renderSubtitle = subtitle && <Text>{subtitle}</Text>;
+  const renderTitle = skeleton ? <Text.Skeleton /> : <Text bold>{title}</Text>;
+  const renderSubtitle =
+    subtitle && skeleton ? (
+      <Text.Skeleton width="fill" />
+    ) : (
+      <Text>{subtitle}</Text>
+    );
 
   const cardContent = (
     <>
       <div className="nimbus--callout-card__icon" aria-label={title}>
-        <Icon size="medium" />
+        {!skeleton && <Icon size="medium" />}
       </div>
       <div className="nimbus--callout-card__info">
-        <Text bold>{title}</Text>
+        {renderTitle}
         {renderSubtitle}
       </div>
     </>

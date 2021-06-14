@@ -75,4 +75,14 @@ $callout-colors: (
       color: $color-body-text;
     }
   }
+
+  &.#{$prefix}--callout-card--skeleton {
+    background-color: $color-grey-10;
+
+    .#{$prefix}--callout-card__icon {
+      background-color: $color-grey-0;
+      min-height: $spacing-xx-large;
+      min-width: $spacing-xx-large;
+    }
+  }
 }
