@@ -49,7 +49,7 @@ function File({
       ariaLabel={ariaLabel}
       onClick={handleOnClick}
       disabled={disabled}
-      className="nimbus--thumbnail-button"
+      className="nimbus--thumbnail-button-add"
     >
       <PlusCircleIcon size="large" />
       <input
