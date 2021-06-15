@@ -13,25 +13,43 @@ TODO: complete
 
 <Preview>
   <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
-    <Stack
-      justify={select("justify", [
-        "flex-start",
-        "center",
-        "flex-end",
-        "space-between",
-      ])}
-      align={select("align", ["flex-start", "center", "flex-end", "stretch"])}
-      spacing={select("spacing", ["base", "tight"])}
-      column={boolean("column", false)}
-      wrap={boolean("wrap", false)}
-    >
-      <Stack.Item fill={boolean("fill", false)}>
-        <Title>Title</Title>
-      </Stack.Item>
-      <Stack.Item>
-        <Label id="label" label={text("label", "Label")} />
-      </Stack.Item>
-    </Stack>
+    {() => {
+      const columns = {
+        none: null,
+        2: 2,
+        3: 3,
+        4: 4,
+        5: 5,
+        6: 6,
+      };
+      return (
+        <Stack
+          justify={select("justify", [
+            "flex-start",
+            "center",
+            "flex-end",
+            "space-between",
+          ])}
+          align={select("align", [
+            "flex-start",
+            "center",
+            "flex-end",
+            "stretch",
+          ])}
+          spacing={select("spacing", ["base", "tight"])}
+          column={boolean("column", false)}
+          wrap={boolean("wrap", false)}
+          cols={select("columns", columns, "none")}
+        >
+          <Stack.Item fill={boolean("fill", false)}>
+            <Title>Title</Title>
+          </Stack.Item>
+          <Stack.Item>
+            <Label id="label" label={text("label", "Label")} />
+          </Stack.Item>
+        </Stack>
+      );
+    }}
   </Story>
 </Preview>
 
@@ -42,3 +60,138 @@ TODO: complete
 ## Properties Stack.Item
 
 <Props of={Stack.Item.type} />
+
+# Columns
+
+<Preview>
+  <Story name="columns" parameters={{ decorators: [withKnobs, withA11y] }}>
+    {() => {
+      const columns = {
+        none: null,
+        2: 2,
+        3: 3,
+        4: 4,
+        5: 5,
+        6: 6,
+      };
+      return (
+        <Stack
+          spacing={select("spacing", ["base", "tight"])}
+          wrap
+          cols={select("columns", columns, "none")}
+        >
+          <Stack.Item fill>
+            <div
+              style={{
+                display: "block",
+                height: "40px",
+                width: "100%",
+                backgroundColor: "red",
+              }}
+            />
+          </Stack.Item>
+          <Stack.Item fill>
+            <div
+              style={{
+                display: "block",
+                height: "40px",
+                width: "100%",
+                backgroundColor: "red",
+              }}
+            />
+          </Stack.Item>
+          <Stack.Item fill>
+            <div
+              style={{
+                display: "block",
+                height: "40px",
+                width: "100%",
+                backgroundColor: "red",
+              }}
+            />
+          </Stack.Item>
+          <Stack.Item fill>
+            <div
+              style={{
+                display: "block",
+                height: "40px",
+                width: "100%",
+                backgroundColor: "red",
+              }}
+            />
+          </Stack.Item>
+          <Stack.Item fill>
+            <div
+              style={{
+                display: "block",
+                height: "40px",
+                width: "100%",
+                backgroundColor: "red",
+              }}
+            />
+          </Stack.Item>
+          <Stack.Item fill>
+            <div
+              style={{
+                display: "block",
+                height: "40px",
+                width: "100%",
+                backgroundColor: "red",
+              }}
+            />
+          </Stack.Item>
+          <Stack.Item fill>
+            <div
+              style={{
+                display: "block",
+                height: "40px",
+                width: "100%",
+                backgroundColor: "red",
+              }}
+            />
+          </Stack.Item>
+          <Stack.Item fill>
+            <div
+              style={{
+                display: "block",
+                height: "40px",
+                width: "100%",
+                backgroundColor: "red",
+              }}
+            />
+          </Stack.Item>
+          <Stack.Item fill>
+            <div
+              style={{
+                display: "block",
+                height: "40px",
+                width: "100%",
+                backgroundColor: "red",
+              }}
+            />
+          </Stack.Item>
+          <Stack.Item fill>
+            <div
+              style={{
+                display: "block",
+                height: "40px",
+                width: "100%",
+                backgroundColor: "red",
+              }}
+            />
+          </Stack.Item>
+          <Stack.Item fill>
+            <div
+              style={{
+                display: "block",
+                height: "40px",
+                width: "100%",
+                backgroundColor: "red",
+              }}
+            />
+          </Stack.Item>
+        </Stack>
+      );
+    }}
+  </Story>
+</Preview>

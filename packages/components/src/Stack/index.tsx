@@ -18,6 +18,8 @@ export interface InterfaceStack {
   spacing?: "base" | "tight";
   /** Define if the stack is a column */
   column?: boolean;
+  /** Separates the content of the stack into equal-width columns */
+  cols?: "2" | "3" | "4" | "5" | "6";
   /** Define if items break into lines upon reaching the parent's limit */
   wrap?: boolean;
 }
@@ -37,6 +39,7 @@ const Stack = React.memo(function Stack({
   align = "center",
   spacing = "base",
   column = false,
+  cols,
   wrap = false,
 }: InterfaceStack) {
   const mainClass = React.useMemo(
@@ -48,8 +51,9 @@ const Stack = React.memo(function Stack({
         `spacing--${spacing}`,
         { "stack--column": column },
         { "stack--wrap": wrap },
+        `columns--${cols}`,
       ),
-    [justify, spacing, align, column, wrap],
+    [justify, spacing, align, column, wrap, cols],
   );
 
   return <div className={mainClass}>{children}</div>;
