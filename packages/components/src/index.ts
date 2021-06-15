@@ -186,5 +186,8 @@ export * from "./DataList";
 // Thumbnail reference added
 export * from "./Thumbnail";
 
+// CustomInput reference added
+export * from "./CustomInput";
+
 // KeyboardToolbar reference added
 export * from "./KeyboardToolbar";

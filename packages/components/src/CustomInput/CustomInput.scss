@@ -1,0 +1,44 @@
+@import "../../styles/core";
+
+.#{$prefix}--custom-input__label {
+  @include nimbus--type("text-label");
+  color: $color-body-text;
+  display: block;
+  margin-bottom: $spacing-x-small;
+  width: 100%;
+
+  .#{$prefix}--custom-input__label-icon {
+    display: inline-block;
+    margin-right: $spacing-xx-small;
+
+    svg {
+      fill: $color-body-text;
+      margin-top: -$spacing-xx-small;
+    }
+  }
+}
+
+.#{$prefix}--custom-input__field {
+  @include nimbus--type("text-body");
+  appearance: none;
+  background-color: transparent;
+  border: $input-border-width solid $input-border-color;
+  border-radius: $actions-border-radius;
+  color: $color-secondary;
+  padding: $spacing-x-small;
+  text-align: left;
+  transition: $motion-fast ease;
+  width: 100%;
+
+  &.#{$prefix}--custom-input__field--disabled {
+    background-color: $input-disabled-background;
+    color: $input-disabled-text;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  &.#{$prefix}--custom-input__field--focus {
+    border-color: $color-primary-active;
+    box-shadow: 0 0 0 $input-border-width $color-primary-active;
+  }
+}
