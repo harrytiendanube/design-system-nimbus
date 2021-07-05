@@ -3,7 +3,7 @@ import { withKnobs, text, color } from "@storybook/addon-knobs";
 import { action } from "@storybook/addon-actions";
 import { withA11y } from "@storybook/addon-a11y";
 import { Label, Text, Stack } from "@tiendanube/components/src";
-import { LABEL_APPEARANCES_ICONS } from "./utils/constants";
+import { LABEL_APPEARANCES_ICONS, LOREM_STRESS } from "./utils/constants";
 
 import "../utils/style.css";
 
@@ -146,5 +146,13 @@ TODO: complete
         />
       </Stack.Item>
     </Stack>
+  </Story>
+</Preview>
+
+## Stressed
+
+<Preview>
+  <Story name="stressed" parameters={{ decorators: [withKnobs, withA11y] }}>
+    <Label id="id-1" label={LOREM_STRESS} />
   </Story>
 </Preview>

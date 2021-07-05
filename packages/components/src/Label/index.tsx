@@ -4,6 +4,7 @@ import "./Label.css";
 
 import classNames from "classnames";
 import { Icon as IconType } from "@tiendanube/icons";
+import { Text } from "..";
 
 export interface InterfaceLabel {
   /** ID */
@@ -58,13 +59,15 @@ function Label({
     backgroundColor: colorTag,
   };
 
+  const renderLabel = label && <Text size="small">{label}</Text>;
+
   return onClick ? (
     <button type="button" id={id} className={className} onClick={handleClick}>
       {Icon && <Icon />}
       {colorTag && (
         <span className="nimbus--label__color-tag" style={tagStyle} />
       )}
-      {label}
+      {renderLabel}
     </button>
   ) : (
     <span id={id} className={className} role="status">
@@ -72,7 +75,7 @@ function Label({
       {colorTag && (
         <span className="nimbus--label__color-tag" style={tagStyle} />
       )}
-      {label}
+      {renderLabel}
     </span>
   );
 }

@@ -13,10 +13,14 @@ $label-padding: (
   background-color: transparent;
   border-radius: $spacing-small;
   display: inline-flex;
-  white-space: nowrap;
+  max-width: 100%;
 
   svg {
     margin-right: $spacing-xx-small;
+  }
+
+  .#{$prefix}--text {
+    @include nimbus--text-trim(1);
   }
 
   &[type="button"] {
