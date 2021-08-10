@@ -3,7 +3,7 @@ name: New Request
 about: Request a missing component or feature
 title: "[REQUEST]"
 labels: enhancement
-assignees: DamianHorn, ivankljenak, juanchigallego, NicoCroce, radomskip, diegopsilverio
+assignees: juanchigallego, radomskip, diegopsilverio
 ---
 
 # Name of the feature or component
