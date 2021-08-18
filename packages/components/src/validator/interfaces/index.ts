@@ -27,10 +27,10 @@ export type InputTypes =
   | "email"
   | "search";
 
-  export type InputModes =
+export type InputModes =
   | "text"
   | "decimal"
-;
+  ;
 
 export interface InterfaceValidation {
   type?: InputTypes;
@@ -49,8 +49,8 @@ export interface InterfaceFormFields {
   [name: string]: InterfaceFieldValidate;
 }
 
-export interface InterfaceDataFields extends InterfaceGenericObject {}
-export interface InterfaceTextValidation extends InterfaceGenericObject {}
+export type InterfaceDataFields = InterfaceGenericObject
+export type InterfaceTextValidation = InterfaceGenericObject
 
 export interface InterfaceSubmitForm {
   data: InterfaceDataFields;

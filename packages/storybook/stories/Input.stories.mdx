@@ -42,7 +42,9 @@ TODO: complete
           focused={boolean("focused", false)}
           autoCapitalize={boolean("autoCapitalize", false)}
           autoCorrect={boolean("autoCorrect", false)}
+          success={text("success", "")}
           error={text("error", "")}
+          isLoading={boolean("isLoading", true)}
           name="name"
           onChange={(e) => setValue(e.value)}
           disabled={boolean("disabled", false)}
@@ -81,6 +83,9 @@ TODO: complete
           placeholder="placeholder"
           name="name"
           value={value}
+          error={text("error", "")}
+          success={text("success", "")}
+          isLoading={boolean("isLoading", true)}
           onChange={(e) => setValue(e.value)}
           onSubmit={() => setValue("")}
         />
@@ -103,6 +108,8 @@ TODO: complete
           placeholder="placeholder"
           name="name"
           error={text("error", "")}
+          success={text("success", "")}
+          isLoading={boolean("isLoading", true)}
           onChange={(e) => setValue(e.value)}
         />
       );
@@ -134,6 +141,8 @@ TODO: complete
             placeholder="placeholder"
             name="a"
             error={text("error", "")}
+            success={text("success", "")}
+            isLoading={boolean("isLoading", true)}
             onChange={handleChange}
             disabled={boolean("disabled", false)}
           />
@@ -146,6 +155,8 @@ TODO: complete
             placeholder="placeholder"
             name="b"
             error={text("error", "")}
+            success={text("success", "")}
+            isLoading={boolean("isLoading", true)}
             onChange={handleChange}
             disabled={boolean("disabled", false)}
           />
@@ -158,6 +169,8 @@ TODO: complete
             placeholder="placeholder"
             name="c"
             error={text("error", "")}
+            success={text("success", "")}
+            isLoading={boolean("isLoading", true)}
             onChange={handleChange}
             disabled={boolean("disabled", false)}
           />
@@ -183,6 +196,9 @@ TODO: complete
           label="input label"
           labelIcon={EyeIcon}
           placeholder="placeholder"
+          error={text("error", "")}
+          success={text("success", "")}
+          isLoading={boolean("isLoading", true)}
           name="name"
           value={value}
           onChange={(e) => setValue(e.value)}
@@ -206,6 +222,8 @@ TODO: complete
           label={LOREM_STRESS}
           value={value}
           name="name"
+          error={text("error", "")}
+          success={text("success", "")}
           placeholder="placeholder"
           onChange={(e) => setValue(e.value)}
         />

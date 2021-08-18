@@ -4,7 +4,7 @@
 import * as React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-
+import "@testing-library/jest-dom/extend-expect";
 import { ArrowRightIcon } from "@tiendanube/icons";
 import { Input } from "..";
 import { InterfaceNameValue } from "../common/interfaces";
@@ -284,5 +284,83 @@ describe('<Input error="error" />', () => {
     // Render ExclamationCircleIcon when error is not null
     expect(container.querySelector("span.nimbus--input__append")).toBeTruthy();
     expect(container.querySelector("svg")).toBeTruthy();
+  });
+});
+
+describe('<Input success="success message" type="search" />', () => {
+  it("render input with success icon and success message", () => {
+    setup({ props: { success: "success message" } });
+    const successMessage = screen.getByText("success message");
+    const circleIcon = screen.getByLabelText("CheckCircle");
+    expect(successMessage).toBeTruthy();
+    expect(circleIcon).toBeTruthy();
+  });
+
+  it("should not render icon success when field has type search", () => {
+    setup({
+      props: { success: "success message", type: "search" },
+    });
+    const successMessage = screen.getByText("success message");
+    const searchIcon = screen.getByLabelText("Close");
+    expect(successMessage).toBeTruthy();
+    expect(searchIcon).toBeTruthy();
+  });
+
+  it("should not render icon success when field has type password", () => {
+    setup({
+      props: { success: "success message", type: "password" },
+    });
+    const successMessage = screen.getByText("success message");
+    const eyeIcon = screen.getByLabelText("Eye");
+    expect(successMessage).toBeTruthy();
+    expect(eyeIcon).toBeTruthy();
+  });
+});
+
+describe('<Input isLoading="true" />', () => {
+  it("should render input with loading icon", () => {
+    const { container } = setup({ props: { isLoading: true } });
+    expect(container.querySelector("svg")).toHaveClass("nimbus--spinner");
+  });
+
+  it("should not render loading icon when type is search", () => {
+    setup({ props: { isLoading: true, type: "search" } });
+    const searchIcon = screen.getByLabelText("Close");
+    expect(searchIcon).toBeTruthy();
+  });
+
+  it("should not render loading icon when type is password", () => {
+    setup({ props: { isLoading: true, type: "password" } });
+    const eyeIcon = screen.getByLabelText("Eye");
+    expect(eyeIcon).toBeTruthy();
+  });
+
+  it("should not render loading icon when has error", () => {
+    setup({ props: { isLoading: true, error: "error message" } });
+    const errorMessage = screen.getByText("error message");
+    const errorIcon = screen.getByLabelText("ExclamationCircle");
+    expect(errorMessage).toBeTruthy();
+    expect(errorIcon).toBeTruthy();
+  });
+
+  it("should not render loading icon when has success", () => {
+    setup({ props: { isLoading: true, success: "success message" } });
+    const successMessage = screen.getByText("success message");
+    const successIcon = screen.getByLabelText("CheckCircle");
+    expect(successMessage).toBeTruthy();
+    expect(successIcon).toBeTruthy();
+  });
+});
+
+describe("<Input type='password' />", () => {
+  it("should show the value on password field when clicked on eye button", () => {
+    setup({ props: { type: "password" } });
+    const passwordInput = screen.getByTestId("inputField");
+    const button = screen.getByRole("button");
+    expect(passwordInput).toHaveAttribute("type", "password");
+    fireEvent.click(button);
+    expect(passwordInput).toHaveAttribute("type", "text");
+    fireEvent.click(button);
+    expect(passwordInput).toHaveAttribute("type", "password");
   });
 });

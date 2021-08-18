@@ -5,6 +5,9 @@ import {
   SearchIcon,
   CloseIcon,
   ExclamationCircleIcon,
+  CheckCircleIcon,
+  EyeIcon,
+  EyeOffIcon,
   Icon as IconType,
 } from "@tiendanube/icons";
 
@@ -14,6 +17,7 @@ import { InterfaceNameValue } from "../common/interfaces";
 import Text from "../Text";
 
 import "./Input.css";
+import { Spinner } from "../Spinner";
 
 export interface InterfaceInput {
   /** Name of the input, also used for the ID */
@@ -47,6 +51,10 @@ export interface InterfaceInput {
   appendLabel?: string;
   /** Error message */
   error?: string;
+  /** Success message */
+  success?: string;
+  /** Loading status */
+  isLoading?: boolean;
   /** Minimum count of inserted chars */
   minLength?: number;
   /** Maximum count of inserted chars */
@@ -86,6 +94,8 @@ function Input({
   prependLabel,
   appendLabel,
   error,
+  success,
+  isLoading,
   minLength = 0,
   maxLength = 50,
   required = false,
@@ -97,6 +107,7 @@ function Input({
   onBlur,
   onFocus,
 }: InterfaceInput): JSX.Element {
+  const [showPassword, setsShowPassword] = React.useState(false);
   if (prependLabel && PrependIcon) {
     throw new Error(
       "You can not use parameters 'prependLabel' and 'prependIcon' simultaneously",
@@ -151,38 +162,92 @@ function Input({
     </label>
   );
 
+  const prependClassname = classNames("nimbus--input__prepend", {
+    "nimbus--input__error": error,
+    "nimbus--input__success": success,
+  });
+
+  const appendClassname = classNames("nimbus--input__append", {
+    "nimbus--input__error": error,
+    "nimbus--input__success": success,
+  });
+
   const renderPrependLabel = prependLabel && (
-    <span className="nimbus--input__prepend">{prependLabel}</span>
+    <span className={prependClassname}>{prependLabel}</span>
   );
   const renderAppendLabel = appendLabel && (
-    <span className="nimbus--input__append">{appendLabel}</span>
+    <span className={appendClassname}>{appendLabel}</span>
   );
 
   const renderLeftIcon = (PrependIcon || type === "search") && (
-    <span className="nimbus--input__prepend">
+    <span className={prependClassname}>
       {type === "search" && <SearchIcon />}
       {PrependIcon && <PrependIcon />}
     </span>
   );
 
+  const getIcon = (iconType: string) => {
+    switch (iconType) {
+      case "search":
+        return (
+          <button
+            type="button"
+            className="nimbus--input__append nimbus--input__append__inside__icon"
+            onClick={handleClose}
+          >
+            <CloseIcon />
+          </button>
+        );
+      case "error":
+        return (
+          <span className="nimbus--input__append nimbus--input__append__inside__icon">
+            <ExclamationCircleIcon />
+          </span>
+        );
+
+      case "success":
+        return (
+          <span className="nimbus--input__append nimbus--input__append__inside__icon">
+            <CheckCircleIcon />
+          </span>
+        );
+      case "password":
+        return (
+          <button
+            type="button"
+            className="nimbus--input__append nimbus--input__password"
+            onClick={() => setsShowPassword(!showPassword)}
+          >
+            {showPassword ? <EyeOffIcon /> : <EyeIcon />}
+          </button>
+        );
+
+      case "isLoading":
+        return (
+          <span className="nimbus--input__append nimbus--input__append__inside__icon nimbus--input__spinner">
+            <Spinner />
+          </span>
+        );
+      default:
+        return null;
+    }
+  };
+
+  const handleType = type !== "search" && type !== "password";
+
   const renderRightIcon = (
     <>
-      {type === "search" && value && (
-        <button
-          type="button"
-          className="nimbus--input__append"
-          onClick={handleClose}
-        >
-          <CloseIcon />
-        </button>
-      )}
-      {type !== "search" && error && (
-        <span className="nimbus--input__append">
-          <ExclamationCircleIcon />
-        </span>
-      )}
+      {type === "search" && value && getIcon("search")}
+      {type === "password" && value && getIcon("password")}
+      {handleType && error && !success && getIcon("error")}
+      {handleType && success && !error && getIcon("success")}
+
+      {isLoading && handleType && !error && !success && getIcon("isLoading")}
+      {isLoading}
     </>
   );
+
+  const newType = showPassword ? "text" : type;
 
   const classname = classNames("nimbus--input__field", {
     "with-prepend": renderLeftIcon,
@@ -205,6 +270,7 @@ function Input({
       <div className="nimbus--input">
         {multiRows ? (
           <textarea
+            data-testid="textAreaField"
             className="nimbus--input__field"
             id={`input_${name}`}
             ref={inputTextAreaRef}
@@ -226,10 +292,11 @@ function Input({
         ) : (
           <>
             <input
+              data-testid="inputField"
               className={classname}
               id={`input_${name}`}
               name={name}
-              type={type}
+              type={newType}
               inputMode={inputMode}
               ref={inputRef}
               value={value}
@@ -256,7 +323,11 @@ function Input({
   const className = classNames("nimbus--input-wrapper", {
     "nimbus--input-validation--error": error,
     "nimbus--input--disabled": disabled,
+    "nimbus--input-validation--success": success,
   });
+
+  const warningMessage = error || success;
+  const appearanceWarningMessage = error ? "danger" : "success";
 
   return (
     <div className={className}>
@@ -270,11 +341,14 @@ function Input({
       ) : (
         inputField
       )}
-      {error && (
-        <Text block size="small" appearance="danger" textAlign="left">
-          {error}
-        </Text>
-      )}
+      <Text
+        block
+        size="small"
+        appearance={appearanceWarningMessage}
+        textAlign="left"
+      >
+        {warningMessage}
+      </Text>
     </div>
   );
 }

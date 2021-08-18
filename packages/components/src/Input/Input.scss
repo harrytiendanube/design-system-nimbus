@@ -27,6 +27,31 @@
   }
 }
 
+.#{$prefix}--input-validation--success {
+  .#{$prefix}--input {
+    .#{$prefix}--input__append svg {
+      fill: $color-success;
+    }
+
+    .#{$prefix}--input__field {
+      border-color: $color-success;
+
+      &:focus {
+        border-color: $color-success-active;
+        box-shadow: 0 0 0 $input-border-width $color-success-active;
+
+        ~ .#{$prefix}--input__append svg {
+          fill: $color-success;
+        }
+      }
+    }
+  }
+
+  .#{$prefix}--text {
+    margin-top: $spacing-x-small;
+  }
+}
+
 .#{$prefix}--input__label {
   @include nimbus--type("text-label");
   color: $color-body-text;
@@ -91,6 +116,24 @@
   }
 }
 
+.#{$prefix}--input__container:focus-within {
+  .#{$prefix}--input__prepend,
+  .#{$prefix}--input__append {
+    @include nimbus--type("text-body");
+    background-color: $color-primary-active;
+    border: 1px solid;
+    border-color: $color-primary-active;
+    box-shadow: 0 0 0 1px $color-primary-active;
+    color: $color-background;
+  }
+
+  .#{$prefix}--input__append__inside__icon {
+    background-color: transparent;
+    border: 0;
+    box-shadow: 0 0 0;
+  }
+}
+
 .#{$prefix}--input {
   position: relative;
 
@@ -115,6 +158,16 @@
 
   .#{$prefix}--input__append {
     right: 0;
+  }
+
+  .#{$prefix}--input__spinner {
+    svg {
+      fill: transparent;
+    }
+  }
+
+  .#{$prefix}--input__password {
+    cursor: pointer;
   }
 
   .#{$prefix}--input__field {
@@ -161,6 +214,10 @@
       ~ .#{$prefix}--input__prepend svg,
       ~ .#{$prefix}--input__append svg {
         fill: $color-secondary;
+      }
+
+      ~ .#{$prefix}--input__spinner svg {
+        fill: transparent;
       }
     }
 
