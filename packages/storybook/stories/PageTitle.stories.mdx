@@ -3,7 +3,9 @@ import { withKnobs, text } from "@storybook/addon-knobs";
 import { action } from "@storybook/addon-actions";
 import { withA11y } from "@storybook/addon-a11y";
 
-import { PageTitle } from "@tiendanube/components/src";
+import { PageTitle, Stack } from "@tiendanube/components/src";
+import { ExternalLinkIcon } from "@tiendanube/icons";
+
 import { LOREM_STRESS } from "./utils/constants";
 
 import "../utils/style.css";
@@ -48,14 +50,88 @@ TODO: complete
 
 <Preview withToolbar>
   <Story name="with link">
-    <PageTitle
-      title="Title"
-      link={{
-        children: "Link",
-        href: "http://www.tiendanube.com",
-        onClick: action("onClick"),
-      }}
-    />
+    <Stack wrap>
+      <Stack.Item>
+        <PageTitle
+          title="Title"
+          link={{
+            children: "Link",
+            href: "http://www.tiendanube.com",
+            onClick: action("onClick"),
+            appearance: "default",
+            target: "_blank",
+          }}
+        />
+      </Stack.Item>
+      <Stack.Item>
+        <PageTitle
+          title="Title"
+          link={{
+            children: "Link",
+            href: "http://www.tiendanube.com",
+            onClick: action("onClick"),
+            appearance: "default",
+            target: "_blank",
+            iconPosition: "end",
+            disabled: false,
+            spinner: false,
+            underline: false,
+            icon: ExternalLinkIcon,
+          }}
+        />
+      </Stack.Item>
+      <Stack.Item>
+        <PageTitle
+          title="Title"
+          link={{
+            children: "Link",
+            href: "http://www.tiendanube.com",
+            onClick: action("onClick"),
+            appearance: "primary",
+            target: "_blank",
+            iconPosition: "end",
+            disabled: false,
+            spinner: false,
+            underline: true,
+            icon: ExternalLinkIcon,
+          }}
+        />
+      </Stack.Item>
+      <Stack.Item>
+        <PageTitle
+          title="Title"
+          link={{
+            children: "Link",
+            href: "http://www.tiendanube.com",
+            onClick: action("onClick"),
+            appearance: "secondary",
+            target: "_blank",
+            iconPosition: "end",
+            disabled: false,
+            spinner: false,
+            underline: true,
+            icon: ExternalLinkIcon,
+          }}
+        />
+      </Stack.Item>
+      <Stack.Item>
+        <PageTitle
+          title="Title"
+          link={{
+            children: "Link",
+            href: "http://www.tiendanube.com",
+            onClick: action("onClick"),
+            appearance: "danger",
+            target: "_blank",
+            iconPosition: "end",
+            disabled: false,
+            spinner: false,
+            underline: true,
+            icon: ExternalLinkIcon,
+          }}
+        />
+      </Stack.Item>
+    </Stack>
   </Story>
 </Preview>
 
@@ -72,6 +148,13 @@ TODO: complete
         children: "Link",
         href: "http://www.tiendanube.com",
         onClick: action("onClick"),
+        appearance: "default",
+        target: "_blank",
+        iconPosition: "end",
+        disabled: false,
+        spinner: false,
+        underline: false,
+        icon: ExternalLinkIcon,
       }}
     />
   </Story>
