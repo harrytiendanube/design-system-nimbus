@@ -42,3 +42,8 @@
   font-weight: var(--font-weight-bold);
   margin-top: var(--spacing-medium);
 }
+
+.nimbus--welcome-story h3 {
+  color: var(--color-white);
+  margin-top: var(--spacing-medium);
+}

@@ -2,6 +2,7 @@ import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
 
 import { Title } from "@tiendanube/components/src";
 import logo from "../utils/nimbus-logo.svg";
+import PackageInfo from "../../components/package.json";
 
 import "../utils/style.css";
 
@@ -17,6 +18,7 @@ TODO: complete
       <img alt="Nimbus Design System" src={logo} height="30" />
       <Title type="h1">Nimbus</Title>
       <Title type="h1">Design System</Title>
+      <Title type="h3">{`v${PackageInfo.version}`}</Title>
     </div>
   </Story>
 </Preview>
