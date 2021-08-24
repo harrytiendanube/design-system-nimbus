@@ -350,6 +350,13 @@ describe('<Input isLoading="true" />', () => {
     expect(successMessage).toBeTruthy();
     expect(successIcon).toBeTruthy();
   });
+
+  it("should render without placeholder", () => {
+    setup({ props: { placeholder: null } });
+    const input = screen.getByRole("textbox", { name: "myLabel" });
+    expect(input).not.toHaveAttribute("placeholder", "myPlaceholder");
+    expect(screen.queryByPlaceholderText("myPlaceholder")).toBeNull();
+  });
 });
 
 describe("<Input type='password' />", () => {

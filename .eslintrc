@@ -53,6 +53,7 @@
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint", "testing-library", "spellcheck"],
   "rules": {
+    "react/button-has-type": "off",
     "import/no-unresolved": "off", // TODO: review
     "no-unused-vars": "off",
     "jsx-a11y/anchor-is-valid": "off",

@@ -23,7 +23,7 @@ export interface InterfaceInput {
   /** Name of the input, also used for the ID */
   name: string;
   /** Input placeholder */
-  placeholder: string;
+  placeholder?: string;
   /** Label */
   label?: string;
   /** Icon to be displayed in the label */

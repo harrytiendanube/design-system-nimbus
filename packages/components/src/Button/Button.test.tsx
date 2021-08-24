@@ -37,7 +37,7 @@ describe("<Button/>", () => {
   });
 
   it("renders without optional parameters", () => {
-    const { container } = render(<Button onClick={jest.fn()}>{myText}</Button>);
+    const { container } = render(<Button>{myText}</Button>);
     expect(screen.getByRole("button", { name: myText })).toHaveClass(
       `nimbus--button nimbus--button--${myAppearance}`,
     );
@@ -94,5 +94,12 @@ describe("<Button/>", () => {
     render(<Button onClick={handleClick}>{myText}</Button>);
     userEvent.click(screen.getByRole("button"));
     expect(handleClick).toHaveBeenCalled();
+  });
+
+  it("render with different type", () => {
+    render(<Button type="submit">{myText}</Button>);
+    const button = screen.getByRole("button", { name: myText });
+    expect(button).not.toHaveAttribute("type", "button");
+    expect(button).toHaveAttribute("type", "submit");
   });
 });

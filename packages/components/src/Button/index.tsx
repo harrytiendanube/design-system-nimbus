@@ -25,7 +25,9 @@ export interface InterfaceButton {
   /** If true, will render a spinner at start position */
   spinner?: boolean;
   /** Type of react mouse event onclick to manage event click and void return. */
-  onClick(event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  /** The type of button */
+  type?: "button" | "submit" | "reset";
 }
 
 function Button({
@@ -39,6 +41,7 @@ function Button({
   disabled = false,
   iconSize = "small",
   spinner,
+  type = "button",
 }: InterfaceButton): JSX.Element {
   const buttonClass = classNames(
     "nimbus--button",
@@ -77,13 +80,15 @@ function Button({
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.stopPropagation();
-    onClick(e);
+    if (typeof onClick === "function") {
+      onClick?.(e);
+    }
   };
 
   return (
     <button
       aria-label={ariaLabel}
-      type="button"
+      type={type}
       className={buttonClass}
       onClick={handleClick}
       disabled={disabled}
