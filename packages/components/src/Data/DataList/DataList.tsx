@@ -6,37 +6,18 @@ import "./DataList.css";
 import Row from "./Row";
 import Cell from "./Cell";
 
-import { InterfaceBulkAction } from "../common/interfaces";
 import HeaderBulkAction from "./HeaderBulkAction";
-
-interface InterfaceDataListContext {
-  /** Renders checkbox's for each row */
-  editMode?: boolean;
-  /** It renders checkbox's as skeletons */
-  skeleton?: boolean;
-  /** Event that will be triggered when a row is long pressed */
-  onEditMode?: () => void;
-}
+import { DataContextProvider, InterfaceDataContext } from "../DataContext";
 
 export { InterfaceDataListRow } from "./Row";
-
-export interface InterfaceDataList extends InterfaceDataListContext {
+export interface InterfaceDataList extends InterfaceDataContext {
   /** React node of type children */
   children?: React.ReactNode;
   /** Rows separated by lines */
   ruled?: boolean;
   /** Defines spacing between rows */
   spacing?: "base" | "tight";
-  /** Bulk action data */
-  bulkAction?: InterfaceBulkAction;
 }
-
-const DataListContext = React.createContext<InterfaceDataListContext>({});
-
-export function useDataList(): InterfaceDataListContext {
-  return React.useContext(DataListContext);
-}
-
 function DataList({
   children,
   ruled = true,
@@ -44,7 +25,9 @@ function DataList({
   spacing = "base",
   skeleton = false,
   bulkAction,
+  selectedRowsId,
   onEditMode,
+  onSelectRow,
 }: InterfaceDataList): JSX.Element {
   const className = classNames(
     "nimbus--data-list-wrapper",
@@ -55,12 +38,12 @@ function DataList({
   );
 
   return (
-    <DataListContext.Provider
-      value={{
-        editMode,
-        skeleton,
-        onEditMode,
-      }}
+    <DataContextProvider
+      editMode={editMode}
+      skeleton={skeleton}
+      onEditMode={onEditMode}
+      selectedRowsId={selectedRowsId}
+      onSelectRow={onSelectRow}
     >
       <div className={className}>
         {bulkAction && <HeaderBulkAction bulkAction={bulkAction} />}
@@ -68,7 +51,7 @@ function DataList({
           <div className="nimbus--data-list__body">{children}</div>
         </div>
       </div>
-    </DataListContext.Provider>
+    </DataContextProvider>
   );
 }
 

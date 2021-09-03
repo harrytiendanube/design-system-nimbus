@@ -3,7 +3,8 @@ import { withKnobs, boolean } from "@storybook/addon-knobs";
 import { action } from "@storybook/addon-actions";
 import { withA11y } from "@storybook/addon-a11y";
 
-import { Text, DataList } from "@tiendanube/components/src";
+import { Text, DataList, useBulkAction } from "@tiendanube/components/src";
+import { DATA_ROWS, OPTIONS } from "./utils/constants";
 
 import "../utils/style.css";
 
@@ -16,81 +17,21 @@ TODO: complete
 <Preview>
   <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
     {() => {
-      const rows = [
-        {
-          id: "1",
-          order: "1",
-          date: "20 jun",
-          buyer: "Name Last name",
-          total: "$3.500",
-          products: "6 products",
-          payment: "Awaiting payment",
-          shipping: "Unpacked",
-        },
-        {
-          id: "2",
-          order: "2",
-          date: "21 jun",
-          buyer: "Name Last name",
-          total: "$3.500",
-          products: "6 products",
-          payment: "Awaiting payment",
-          shipping: "Unpacked",
-        },
-        {
-          id: "3",
-          order: "3",
-          date: "22 jun",
-          buyer: "Name Last name",
-          total: "$3.500",
-          products: "6 products",
-          payment: "Awaiting payment",
-          shipping: "Unpacked",
-        },
-      ];
+      const getLabel = (n) => `${n} selected`;
+      const rowsId = DATA_ROWS.map((row) => row.id);
+      const onSelectAction = action("onSelectAction");
+      const placeholder = "Select an Option";
+      const { bulkAction, selectedRowsId, handleOnSelectRow } = useBulkAction({
+        rowsId,
+        placeholder,
+        getLabel,
+        options: OPTIONS,
+        onSelectAction,
+      });
       const { Row, Cell } = DataList;
-      const initialSelectedRows = [];
-      const [selectedRows, setSelectedRows] = React.useState(
-        initialSelectedRows,
-      );
       const [editMode, setEditMode] = React.useState(false);
-      const [valueSelected, setValueSelected] = React.useState("");
-      const handleSelectAll = (all) => {
-        if (all) {
-          setSelectedRows(rows.map((row) => row.id));
-        }
-        if (!all) {
-          setSelectedRows([]);
-        }
-      };
-      const handleOnSelectRow = (id) => {
-        if (selectedRows.includes(id)) {
-          const newSelectedRows = selectedRows.filter((rowId) => rowId !== id);
-          setSelectedRows(newSelectedRows);
-          return;
-        }
-        setSelectedRows([...selectedRows, id]);
-      };
-      const checkedLength = selectedRows.length;
-      const trueOrIndeterminate =
-        checkedLength === rows.length ? true : "indeterminate";
-      const checked = checkedLength === 0 ? false : trueOrIndeterminate;
       const onEditMode = () => {
         setEditMode(true);
-      };
-      const bulkAction = {
-        checked,
-        placeholder: "Select an Option",
-        label: `${selectedRows.length} selected`,
-        onSelectAll: handleSelectAll,
-        options: [
-          { label: "Option 1", value: "1" },
-          { label: "Option 2", value: "2" },
-          { label: "Option 3", value: "3" },
-          { label: "Option 4", value: "4" },
-        ],
-        valueSelected,
-        onChange: (value) => setValueSelected(value),
       };
       return (
         <DataList
@@ -99,14 +40,15 @@ TODO: complete
           onEditMode={onEditMode}
           skeleton={boolean("skeleton", false)}
           bulkAction={bulkAction}
+          selectedRowsId={selectedRowsId}
+          onSelectRow={handleOnSelectRow}
         >
-          {rows.map((row, index) => (
+          {DATA_ROWS.map((row, index) => (
             <Row
               key={index}
-              id={`${row.order}`}
+              id={row.id}
               onClick={action("OnClick Row")}
               onChange={handleOnSelectRow}
-              active={selectedRows.includes(row.id)}
             >
               <Cell width={60}>
                 <Text>{row.order}</Text>

@@ -1,3 +1,4 @@
+/* eslint-disable spellcheck/spell-checker */
 import {
   CreditCardIcon,
   CheckIcon,
@@ -66,3 +67,118 @@ export const SHIPPING_METHOD = [
   { label: "All", value: "Value 1" },
   { label: "OCA", value: "Value 2" },
 ];
+
+export const DATA_ROWS = [...new Array(8)].map((_, index) => {
+  return {
+    id: index + 1,
+    order: `${index + 1}0`,
+    date: "20 jun",
+    buyer: "Name Last name",
+    total: "$3.500",
+    products: `products`,
+    payment: "Awaiting payment",
+    shipping: "Unpacked",
+  };
+});
+
+export const DATA_ROWS_PLAYGROUND = [
+  {
+    id: "1",
+    order: "1564",
+    tooltip: "This is a tooltip with notes and a small text to provide context",
+    date: "25 Aug",
+    customer: "Obi Wan Kenobi",
+    total: "R$ 5.999,99",
+    products: "15 products",
+    payment: {
+      appearance: "warning",
+      label: "Awaiting payment",
+    },
+    shipping: {
+      appearance: "secondary",
+      label: "Unfulfilled",
+    },
+  },
+  {
+    id: "2",
+    order: "1563",
+    tooltip: "This is a tooltip with notes and a small text to provide context",
+    date: "24 Aug",
+    customer: "Luke Skywalker",
+    total: "R$ 21.599,99",
+    products: "121 products",
+    payment: {
+      appearance: "success",
+      label: "Payment accepted",
+    },
+    shipping: {
+      appearance: "primary",
+      label: "Fulfilled",
+    },
+  },
+  {
+    id: "3",
+    order: "1562",
+    tooltip: "This is a tooltip with notes and a small text to provide context",
+    date: "24 Aug",
+    customer: "Han Solo",
+    total: "R$ 599,99",
+    products: "1 product",
+    payment: {
+      appearance: "danger",
+      label: "Payment declined",
+    },
+    shipping: {
+      appearance: "secondary",
+      label: "Unfulfilled",
+    },
+  },
+  {
+    id: "4",
+    order: "1561",
+    tooltip: "This is a tooltip with notes and a small text to provide context",
+    date: "22 Aug",
+    customer: "Darth Vader",
+    total: "R$ 95",
+    products: "6 products",
+    payment: {
+      appearance: "warning",
+      label: "Awaiting payment",
+    },
+    shipping: {
+      appearance: "primary",
+      label: "Fulfilled",
+    },
+  },
+];
+
+export const OPTIONS = [
+  { label: "Option 1", value: "1" },
+  { label: "Option 2", value: "2" },
+  { label: "Option 3", value: "3" },
+  { label: "Option 4", value: "4" },
+];
+
+export const getPagesValues = (
+  pageSize: number,
+  totalPages: number,
+  currentPage: number,
+): {
+  firstRecordPage: number;
+  lastRecordPage: number;
+  totalRecords: number;
+  hasMorePages: boolean;
+  totalPages: number;
+} => {
+  const firstRecordPage = currentPage * pageSize - pageSize + 1;
+  const lastRecordPage = currentPage * pageSize;
+  const totalRecords = pageSize * totalPages;
+  const hasMorePages = currentPage < totalPages;
+  return {
+    firstRecordPage,
+    lastRecordPage,
+    totalRecords,
+    hasMorePages,
+    totalPages,
+  };
+};

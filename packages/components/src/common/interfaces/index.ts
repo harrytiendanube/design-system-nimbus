@@ -15,7 +15,10 @@ export interface InterfaceRadioButtonOption {
   value: string;
   disabled?: boolean;
 }
-
+export interface InterfaceLabelValue {
+  label: string;
+  value: string;
+}
 export interface InterfaceSelectOption {
   label: string;
   value: string;
@@ -47,10 +50,9 @@ export interface InterfaceBulkAction {
   // Properties of check
   checked?: boolean | "indeterminate";
   placeholder: string;
-  label: string;
-  onSelectAll?: (value: boolean) => void;
+  getLabel: (n: number) => string;
+  onSelectAll: (value: boolean) => void;
   // Properties of Select
   options: InterfaceSelectOption[];
-  valueSelected: string;
-  onChange(valueSelected: string): void;
+  onSelectAction(valueSelected: string): void;
 }

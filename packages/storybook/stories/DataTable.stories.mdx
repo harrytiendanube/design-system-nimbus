@@ -1,0 +1,459 @@
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
+import {
+  withKnobs,
+  boolean,
+  select,
+  number,
+  text,
+} from "@storybook/addon-knobs";
+import { action } from "@storybook/addon-actions";
+import { withA11y } from "@storybook/addon-a11y";
+
+import {
+  Text,
+  DataTable,
+  Input,
+  IconButton,
+  Pagination,
+  Stack,
+  useBulkAction,
+  Label,
+  Link,
+  Tooltip,
+  Thumbnail,
+} from "@tiendanube/components/src";
+
+import {
+  FileIcon,
+  ChatDotsIcon,
+  CreditCardIcon,
+  BoxUnpackedIcon,
+  LinkIcon,
+  CopyIcon,
+  TrashIcon,
+} from "@tiendanube/icons";
+import {
+  DATA_ROWS,
+  DATA_ROWS_PLAYGROUND,
+  OPTIONS,
+  images,
+  getPagesValues,
+} from "./utils/constants";
+
+import "../utils/style.css";
+
+<Meta title="Composite components/DataTable" component={DataTable} />
+
+# DataTable
+
+TODO: complete
+
+<Preview>
+  <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
+    {() => {
+      const getLabel = (n) => `${n} selected`;
+      const rowsId = DATA_ROWS.map((row) => row.id);
+      const onSelectAction = action("onSelectAction");
+      const placeholder = "Select an Option";
+      const { bulkAction, selectedRowsId, handleOnSelectRow } = useBulkAction({
+        rowsId,
+        placeholder,
+        getLabel,
+        options: OPTIONS,
+        onSelectAction,
+      });
+      const [page, setPage] = React.useState(1);
+      const {
+        firstRecordPage,
+        lastRecordPage,
+        totalRecords,
+        hasMorePages,
+        totalPages,
+      } = getPagesValues(20, 200, page);
+      const { Row, Cell, Header, Footer } = DataTable;
+      return (
+        <DataTable
+          skeleton={boolean("skeleton", false)}
+          bulkAction={boolean("bulk Actions", true) && bulkAction}
+          selectedRowsId={selectedRowsId}
+          onSelectRow={handleOnSelectRow}
+        >
+          <Header>
+            <Cell>
+              <Text>Col 1 header</Text>
+            </Cell>
+            <Cell>
+              <Text>Col 2 header</Text>
+            </Cell>
+            <Cell>
+              <Text>Col 3 header</Text>
+            </Cell>
+            <Cell>
+              <Text>Col 4 header</Text>
+            </Cell>
+            <Cell>
+              <Text>Col 5 header</Text>
+            </Cell>
+            <Cell>
+              <Text>Col 6 header</Text>
+            </Cell>
+            <Cell>
+              <Text>Col 7 header</Text>
+            </Cell>
+          </Header>
+          {DATA_ROWS.map((row, index) => (
+            <Row
+              key={index}
+              id={row.id}
+              onClick={action("OnClick Row")}
+              onChange={handleOnSelectRow}
+            >
+              <Cell>
+                <Text>Col 1 content</Text>
+              </Cell>
+              <Cell>
+                <Text>Col 2 content</Text>
+              </Cell>
+              <Cell>
+                <Text>Col 3 content</Text>
+              </Cell>
+              <Cell>
+                <Text>Col 4 content</Text>
+              </Cell>
+              <Cell>
+                <Text>Col 5 content</Text>
+              </Cell>
+              <Cell>
+                <Text>Col 6 content</Text>
+              </Cell>
+              <Cell>
+                <Text>Col 7 content</Text>
+              </Cell>
+            </Row>
+          ))}
+          <Footer>
+            <Stack justify="space-between">
+              <Stack.Item>
+                <Text>{`Showing entries ${firstRecordPage}-${lastRecordPage} of ${totalRecords}`}</Text>
+              </Stack.Item>
+              <Stack.Item>
+                <Pagination
+                  pageTotal={totalPages}
+                  pageSelected={page}
+                  hasMorePages={hasMorePages}
+                  onPageSelect={(selected) => setPage(selected)}
+                />
+              </Stack.Item>
+            </Stack>
+          </Footer>
+        </DataTable>
+      );
+    }}
+  </Story>
+</Preview>
+
+## Properties DataTable
+
+<Props of={DataTable} />
+
+## Properties DataTable.Header
+
+<Props of={DataTable.Header} />
+
+## Properties DataTable.Row
+
+<Props of={DataTable.Row} />
+
+## Properties DataTable.Cell
+
+<Props of={DataTable.Cell} />
+
+## Properties DataTable.Footer
+
+<Props of={DataTable.Footer} />
+
+<Preview>
+  <Story name="playground" parameters={{ decorators: [withKnobs, withA11y] }}>
+    {() => {
+      const getLabel = (n) => `${n} selected`;
+      const dataRows = [...DATA_ROWS_PLAYGROUND];
+      dataRows.push({
+        id: "5",
+        order: number("order number", 1560),
+        tooltip:
+          "This is a tooltip with notes and a small text to provide context",
+        date: text("date", "20 Aug"),
+        customer: text("customer name", "Boba Fett"),
+        total: text("total", "R$ 10.999,50"),
+        products: text("products", "10 products"),
+        payment: {
+          appearance: "success",
+          label: "Payment accepted",
+        },
+        shipping: {
+          appearance: "primary",
+          label: "Fulfilled",
+        },
+      });
+      const rowsId = dataRows.map((row) => row.id);
+      const onSelectAction = action("onSelectAction");
+      const placeholder = "Select an Option";
+      const { bulkAction, selectedRowsId, handleOnSelectRow } = useBulkAction({
+        rowsId,
+        placeholder,
+        getLabel,
+        options: OPTIONS,
+        onSelectAction,
+      });
+      const { Row, Cell, Header } = DataTable;
+      const orderColGrow = select(
+        "order col grow",
+        ["0", "1", "2", "3", "4"],
+        "0",
+      );
+      const orderColBasis = number("order col basis", 80);
+      const customerColGrow = select("customer col grow", [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+      ]);
+      return (
+        <DataTable
+          skeleton={boolean("skeleton", false)}
+          bulkAction={boolean("bulk Actions", true) && bulkAction}
+          selectedRowsId={selectedRowsId}
+          onSelectRow={handleOnSelectRow}
+        >
+          <Header>
+            <Cell grow={orderColGrow} basis={orderColBasis}>
+              <Text>Order</Text>
+            </Cell>
+            <Cell grow={orderColGrow} basis={orderColBasis}>
+              <Text>Date</Text>
+            </Cell>
+            <Cell grow={customerColGrow}>
+              <Text>Customer</Text>
+            </Cell>
+            <Cell>
+              <Text>Total</Text>
+            </Cell>
+            <Cell>
+              <Text>Products</Text>
+            </Cell>
+            <Cell>
+              <Text>Payment</Text>
+            </Cell>
+            <Cell>
+              <Text>Shipping</Text>
+            </Cell>
+          </Header>
+          {dataRows.map((row, index) => (
+            <Row
+              key={index}
+              id={row.id}
+              onClick={action("OnClick Row")}
+              onChange={handleOnSelectRow}
+              align="center"
+            >
+              <Cell grow={orderColGrow} basis={orderColBasis}>
+                <Stack spacing="tight">
+                  <Stack.Item>
+                    <Link
+                      appearance="primary"
+                      onClick={action("onClick order")}
+                    >
+                      {row.order}
+                    </Link>
+                  </Stack.Item>
+                  <Stack.Item>
+                    <Tooltip
+                      name="merchant-notes"
+                      labelIcon={FileIcon}
+                      labelText="Merchant notes"
+                    >
+                      <Text>{row.tooltip}</Text>
+                    </Tooltip>
+                  </Stack.Item>
+                </Stack>
+              </Cell>
+              <Cell grow={orderColGrow} basis={orderColBasis}>
+                <Text>{row.date}</Text>
+              </Cell>
+              <Cell
+                grow={customerColGrow}
+                trimText={boolean("trim name", true)}
+              >
+                <Stack spacing="tight">
+                  <Stack.Item>
+                    <Text>{row.customer}</Text>
+                  </Stack.Item>
+                  <Stack.Item>
+                    <Tooltip
+                      name="customer-notes"
+                      labelIcon={ChatDotsIcon}
+                      labelText="Customer notes"
+                    >
+                      <Text>{row.tooltip}</Text>
+                    </Tooltip>
+                  </Stack.Item>
+                </Stack>
+              </Cell>
+              <Cell>
+                <Text>{row.total}</Text>
+              </Cell>
+              <Cell>
+                <Text>{row.products}</Text>
+              </Cell>
+              <Cell>
+                <Label
+                  id="payment-status"
+                  icon={CreditCardIcon}
+                  label={row.payment.label}
+                  appearance={row.payment.appearance}
+                />
+              </Cell>
+              <Cell>
+                <Label
+                  id="shipping-status"
+                  icon={BoxUnpackedIcon}
+                  label={row.shipping.label}
+                  appearance={row.shipping.appearance}
+                />
+              </Cell>
+            </Row>
+          ))}
+        </DataTable>
+      );
+    }}
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="example" parameters={{ decorators: [withKnobs, withA11y] }}>
+    {() => {
+      const getLabel = (n) => `${n} selected`;
+      const rowsId = DATA_ROWS_PLAYGROUND.map((row) => row.id);
+      const onSelectAction = action("onSelectAction");
+      const placeholder = "Select an Option";
+      const { bulkAction, selectedRowsId, handleOnSelectRow } = useBulkAction({
+        rowsId,
+        placeholder,
+        getLabel,
+        options: OPTIONS,
+        onSelectAction,
+      });
+      const { Row, Cell, Header } = DataTable;
+      const productColGrow = 2;
+      const inputColGrow = 0;
+      const inputColBasis = 120;
+      const actionsColBasis = 180;
+      return (
+        <DataTable
+          skeleton={boolean("skeleton", false)}
+          bulkAction={boolean("bulk Actions", true) && bulkAction}
+          selectedRowsId={selectedRowsId}
+          onSelectRow={handleOnSelectRow}
+        >
+          <Header>
+            <Cell grow={productColGrow}>
+              <Text>Product</Text>
+            </Cell>
+            <Cell grow={inputColGrow} basis={inputColBasis}>
+              <Text>Stock</Text>
+            </Cell>
+            <Cell grow={inputColGrow} basis={inputColBasis}>
+              <Text>Price</Text>
+            </Cell>
+            <Cell grow={inputColGrow} basis={inputColBasis}>
+              <Text>Promotion</Text>
+            </Cell>
+            <Cell grow={productColGrow}>
+              <Text>Variations</Text>
+            </Cell>
+            <Cell grow={inputColGrow} basis={actionsColBasis}>
+              <Text>Actions</Text>
+            </Cell>
+          </Header>
+          <Row
+            id={1}
+            onClick={action("OnClick Row")}
+            onChange={handleOnSelectRow}
+          >
+            <Cell grow={productColGrow}>
+              <Stack spacing="tight" align="flex-start">
+                <Stack.Item>
+                  <Thumbnail
+                    aspectRatio="1-1"
+                    width={72}
+                    src={images.image1}
+                    altText="Alternative text"
+                  />
+                </Stack.Item>
+                <Stack.Item fill>
+                  <Stack column align="flex-start" spacing="tight">
+                    <Stack.Item>
+                      <Link
+                        appearance="primary"
+                        onClick={action("onClick product")}
+                      >
+                        Product name
+                      </Link>
+                    </Stack.Item>
+                    <Stack.Item>
+                      <Stack spacing="tight" wrap>
+                        {[...new Array(5)].map((_, index) => (
+                          <Stack.Item key={index}>
+                            <Label label="Label" />
+                          </Stack.Item>
+                        ))}
+                      </Stack>
+                    </Stack.Item>
+                  </Stack>
+                </Stack.Item>
+              </Stack>
+            </Cell>
+            <Cell grow={inputColGrow} basis={inputColBasis}>
+              <Input name="stock" />
+            </Cell>
+            <Cell grow={inputColGrow} basis={inputColBasis}>
+              <Input name="price" />
+            </Cell>
+            <Cell grow={inputColGrow} basis={inputColBasis}>
+              <Input name="promotion" />
+            </Cell>
+            <Cell grow={productColGrow}>
+              <Text>Variant name</Text>
+            </Cell>
+            <Cell grow={inputColGrow} basis={actionsColBasis}>
+              <Stack>
+                <Stack.Item>
+                  <IconButton
+                    icon={LinkIcon}
+                    ariaLabel="Aria label"
+                    onClick={action("onClick action")}
+                  />
+                </Stack.Item>
+                <Stack.Item>
+                  <IconButton
+                    icon={CopyIcon}
+                    ariaLabel="Aria label"
+                    onClick={action("onClick action")}
+                  />
+                </Stack.Item>
+                <Stack.Item>
+                  <IconButton
+                    icon={TrashIcon}
+                    ariaLabel="Aria label"
+                    onClick={action("onClick action")}
+                  />
+                </Stack.Item>
+              </Stack>
+            </Cell>
+          </Row>
+        </DataTable>
+      );
+    }}
+  </Story>
+</Preview>

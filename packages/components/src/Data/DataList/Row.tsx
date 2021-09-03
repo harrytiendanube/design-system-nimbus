@@ -1,35 +1,37 @@
 import classNames from "classnames";
 import * as React from "react";
 
-import Checkbox from "../Checkbox";
-import { useDataList } from "..";
+import Checkbox from "../../Checkbox";
+import { useDataContext } from "../DataContext";
 
 export interface InterfaceDataListRow {
   /** Id of row */
   id: string;
   /** React node of type children */
   children?: React.ReactNode;
-  /** Status of Checkbox of row */
-  active?: boolean;
   /** Adds a light gray background to the row */
   grayed?: boolean;
   /** Callback to be called when a row is clicked */
   onClick?: (id: string) => void;
-  /** Callback to be called when a checkbox of row is clicked */
-  onChange?: (id: string) => void;
 }
 
 function Row({
   id,
   children,
-  active = false,
   grayed,
   onClick,
-  onChange,
 }: InterfaceDataListRow): JSX.Element {
   const [isTouching, setTouching] = React.useState(false);
 
-  const { editMode, skeleton, onEditMode } = useDataList();
+  const {
+    editMode,
+    skeleton,
+    onEditMode,
+    selectedRowsId,
+    onSelectRow,
+  } = useDataContext();
+
+  const active = selectedRowsId?.includes(id);
 
   const classNameRow = classNames("nimbus--data-list-row", {
     "nimbus--data-list-row--grayed": grayed,
@@ -46,14 +48,14 @@ function Row({
   const time = React.useRef<number>();
 
   const handleTouchStart = () => {
-    if (onChange) {
+    if (onSelectRow) {
       setTouching(true);
       time.current = window.setTimeout(() => {
         setTouching(false);
         if (!editMode) {
           onEditMode?.();
         }
-        onChange?.(id);
+        onSelectRow?.(id);
       }, 500);
     }
   };
@@ -69,7 +71,7 @@ function Row({
     event.stopPropagation();
     if (editMode) {
       // Select / UnSelect row when edit mode
-      onChange?.(id);
+      onSelectRow?.(id);
     } else {
       // Calls onClick row when not edit mode
       onClick?.(id);
@@ -77,7 +79,7 @@ function Row({
   };
 
   const handleChange = () => {
-    onChange?.(id);
+    onSelectRow?.(id);
   };
 
   return (
@@ -90,7 +92,7 @@ function Row({
       onClick={handleClick}
       className={classNameRow}
     >
-      {onChange && editMode && (
+      {onSelectRow && editMode && (
         <div className={classNameRowCheck}>
           {skeleton ? (
             <Checkbox name={id} disabled />

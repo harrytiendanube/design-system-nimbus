@@ -1,0 +1,108 @@
+@import "../../../styles/core";
+
+// Table
+
+.#{$prefix}--data-table {
+  border: $input-border-width solid $color-default;
+  border-collapse: collapse;
+  border-radius: $actions-border-radius;
+  border-spacing: 0;
+  position: relative;
+  width: 100%;
+}
+
+.#{$prefix}--data-table__header {
+  background-color: $color-grey-10;
+
+  .#{$prefix}--text {
+    @include nimbus--text-trim(1);
+
+    color: $color-body-text;
+  }
+
+  .#{$prefix}--text,
+  .#{$prefix}--link,
+  .#{$prefix}--button {
+    @include nimbus--type("text-heading");
+  }
+}
+
+.#{$prefix}--data-table__bulk-actions {
+  @include nimbus--safe-area($spacing-x-small);
+
+  align-items: center;
+  background-color: $color-default;
+  border-radius: $actions-border-radius $actions-border-radius 0 0;
+  display: flex;
+  flex-wrap: nowrap;
+  padding-bottom: $spacing-x-small;
+  padding-left: $spacing-x-small;
+  padding-right: $spacing-x-small;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 800;
+
+  > * {
+    padding-left: $spacing-x-small;
+    padding-right: $spacing-x-small;
+  }
+
+  .#{$prefix}--data-table__bulk-actions__select {
+    flex: 1 1 auto;
+    max-width: 360px;
+  }
+}
+
+.#{$prefix}--data-table__header,
+.#{$prefix}--data-table__row {
+  border-bottom: 1px solid $color-default;
+  cursor: pointer;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  transition: padding $motion-fast ease;
+}
+
+.#{$prefix}--data-table__row {
+  &.#{$prefix}--data-table__row--active {
+    background-color: $color-primary-lighter;
+  }
+}
+
+.#{$prefix}--data-table__cell-checkbox {
+  display: none;
+  flex: 0;
+  opacity: 0;
+  padding: $spacing-small $spacing-x-small $spacing-small $spacing-small;
+  position: relative;
+
+  &.is--visible {
+    display: inline-flex;
+    opacity: 1;
+  }
+}
+
+.#{$prefix}--data-table__cell {
+  flex: 1;
+  padding: $spacing-small $spacing-x-small;
+
+  &:first-of-type {
+    padding-left: $spacing-small;
+  }
+
+  &:last-of-type {
+    padding-right: $spacing-small;
+  }
+
+  &.#{$prefix}--data-table__cell--trim-text {
+    .#{$prefix}--text {
+      @include nimbus--text-trim(1);
+    }
+  }
+}
+
+.#{$prefix}--data-table__footer {
+  background-color: $color-grey-10;
+  padding: $spacing-x-small $spacing-small;
+}

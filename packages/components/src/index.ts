@@ -180,8 +180,8 @@ export * from "./NimbusApp";
 // Portal reference added
 export * from "./Portal";
 
-// DataList reference added
-export * from "./DataList";
+// Data reference added
+export * from "./Data";
 
 // Thumbnail reference added
 export * from "./Thumbnail";
