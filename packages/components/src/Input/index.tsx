@@ -49,12 +49,7 @@ export interface InterfaceInput {
   prependLabel?: string;
   /** Append label */
   appendLabel?: string;
-  /** Error message */
-  error?: string;
-  /** Success message */
-  success?: string;
-  /** Loading status */
-  isLoading?: boolean;
+
   /** Minimum count of inserted chars */
   minLength?: number;
   /** Maximum count of inserted chars */
@@ -77,6 +72,16 @@ export interface InterfaceInput {
   onBlur?: (event: InterfaceNameValue) => void;
   /** OnFocus callback function */
   onFocus?: (event: InterfaceNameValue) => void;
+  /** Type of appearance */
+  appearance?:
+    | "default"
+    | "warning"
+    | "danger"
+    | "validation_loading"
+    | "validation_success"
+    | "validation_error";
+  /** Helper message */
+  helpText?: string | null;
 }
 
 function Input({
@@ -93,9 +98,8 @@ function Input({
   prependIcon: PrependIcon,
   prependLabel,
   appendLabel,
-  error,
-  success,
-  isLoading,
+  appearance = "default",
+  helpText,
   minLength = 0,
   maxLength = 50,
   required = false,
@@ -151,7 +155,7 @@ function Input({
     onSubmit?.({ name, value: "" });
   };
 
-  const renderLabel = type !== "search" && (
+  const renderLabel = type !== "search" && label && (
     <label className="nimbus--input__label" htmlFor={`input_${name}`}>
       {LabelIcon && (
         <div className="nimbus--input__label-icon">
@@ -163,13 +167,13 @@ function Input({
   );
 
   const prependClassname = classNames("nimbus--input__prepend", {
-    "nimbus--input__error": error,
-    "nimbus--input__success": success,
+    "nimbus--input__error": appearance === "validation_error",
+    "nimbus--input__success": appearance === "validation_success",
   });
 
   const appendClassname = classNames("nimbus--input__append", {
-    "nimbus--input__error": error,
-    "nimbus--input__success": success,
+    "nimbus--input__error": appearance === "validation_error",
+    "nimbus--input__success": appearance === "validation_success",
   });
 
   const renderPrependLabel = prependLabel && (
@@ -239,11 +243,11 @@ function Input({
     <>
       {type === "search" && value && getIcon("search")}
       {type === "password" && value && getIcon("password")}
-      {handleType && error && !success && getIcon("error")}
-      {handleType && success && !error && getIcon("success")}
-
-      {isLoading && handleType && !error && !success && getIcon("isLoading")}
-      {isLoading}
+      {handleType && appearance === "validation_error" && getIcon("error")}
+      {handleType && appearance === "validation_success" && getIcon("success")}
+      {handleType &&
+        appearance === "validation_loading" &&
+        getIcon("isLoading")}
     </>
   );
 
@@ -321,13 +325,16 @@ function Input({
   );
 
   const className = classNames("nimbus--input-wrapper", {
-    "nimbus--input-validation--error": error,
+    "nimbus--input-validation--error": appearance === "validation_error",
     "nimbus--input--disabled": disabled,
-    "nimbus--input-validation--success": success,
+    "nimbus--input-validation--success": appearance === "validation_success",
+    "nimbus--input-danger": appearance === "danger",
+    "nimbus--input-warning": appearance === "warning",
   });
 
-  const warningMessage = error || success;
-  const appearanceWarningMessage = error ? "danger" : "success";
+  const appearanceError = appearance === "validation_error" && "danger";
+  const appearanceSuccess = appearance === "validation_success" && "success";
+  const appearanceMessage = appearanceError || appearanceSuccess || "default";
 
   return (
     <div className={className}>
@@ -341,14 +348,16 @@ function Input({
       ) : (
         inputField
       )}
-      <Text
-        block
-        size="small"
-        appearance={appearanceWarningMessage}
-        textAlign="left"
-      >
-        {warningMessage}
-      </Text>
+      {helpText && (
+        <Text
+          block
+          size="small"
+          appearance={appearanceMessage}
+          textAlign="left"
+        >
+          {helpText}
+        </Text>
+      )}
     </div>
   );
 }

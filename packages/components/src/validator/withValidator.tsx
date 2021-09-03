@@ -96,6 +96,8 @@ const withValidation = (FieldComponent: React.FC<InterfaceInput>) =>
       submitted && formFields[name] && showError(name, formFields[name].error)
         ? showError(name, formFields[name].error)
         : "";
+
+    const appearanceError = error ? "validation_error" : "default";
     return (
       <FieldComponent
         name={name}
@@ -120,7 +122,8 @@ const withValidation = (FieldComponent: React.FC<InterfaceInput>) =>
         onFocus={onFocus}
         onChange={handleChange}
         onBlur={handleBlur}
-        error={error as string}
+        appearance={appearanceError}
+        helpText={error}
       />
     );
   });

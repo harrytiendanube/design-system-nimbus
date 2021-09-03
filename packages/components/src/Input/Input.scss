@@ -21,10 +21,6 @@
       }
     }
   }
-
-  .#{$prefix}--text {
-    margin-top: $spacing-x-small;
-  }
 }
 
 .#{$prefix}--input-validation--success {
@@ -46,11 +42,54 @@
       }
     }
   }
+}
 
-  .#{$prefix}--text {
-    margin-top: $spacing-x-small;
+.#{$prefix}--input-warning {
+  .#{$prefix}--input {
+    .#{$prefix}--input__append svg {
+      fill: $color-yellow;
+    }
+
+    .#{$prefix}--input__field {
+
+      background-color: $color-yellow-lighter;
+      border-color: $color-yellow;
+
+      &:focus {
+        border-color: $color-yellow;
+        box-shadow: 0 0 0 $input-border-width $color-yellow;
+
+        ~ .#{$prefix}--input__append svg {
+          fill: $color-yellow;
+        }
+      }
+    }
   }
 }
+
+.#{$prefix}--input-danger {
+  .#{$prefix}--input {
+    .#{$prefix}--input__append svg {
+      fill: $color-red;
+    }
+
+    .#{$prefix}--input__field {
+      background-color: $color-red-lighter;
+      border-color: $color-red;
+
+      &:focus {
+        border-color: $color-red;
+        box-shadow: 0 0 0 $input-border-width $color-red;
+
+        ~ .#{$prefix}--input__append svg {
+          fill: $color-red;
+        }
+      }
+    }
+  }
+}
+
+
 
 .#{$prefix}--input__label {
   @include nimbus--type("text-label");

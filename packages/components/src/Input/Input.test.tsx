@@ -274,88 +274,116 @@ describe("<Input multiRows rows={3} autoCapitalize autoCorrect />", () => {
   });
 });
 
-describe('<Input error="error" />', () => {
-  it("render", () => {
+describe('<Input appearance="warning" />', () => {
+  it("render input with warning style", () => {
     const { container } = setup({
-      props: { error: "error" },
+      props: { appearance: "warning" },
     });
-    expect(screen.getByRole("textbox")).toBeTruthy();
-    expect(screen.getByPlaceholderText("myPlaceholder")).toBeTruthy();
-    // Render ExclamationCircleIcon when error is not null
-    expect(container.querySelector("span.nimbus--input__append")).toBeTruthy();
-    expect(container.querySelector("svg")).toBeTruthy();
+    expect(container.firstChild).toHaveClass("nimbus--input-warning");
   });
 });
 
-describe('<Input success="success message" type="search" />', () => {
-  it("render input with success icon and success message", () => {
-    setup({ props: { success: "success message" } });
-    const successMessage = screen.getByText("success message");
-    const circleIcon = screen.getByLabelText("CheckCircle");
-    expect(successMessage).toBeTruthy();
-    expect(circleIcon).toBeTruthy();
-  });
-
-  it("should not render icon success when field has type search", () => {
-    setup({
-      props: { success: "success message", type: "search" },
+describe('<Input appearance="danger" />', () => {
+  it("render input with danger style and not have any icon", () => {
+    const { container } = setup({
+      props: { appearance: "danger" },
     });
-    const successMessage = screen.getByText("success message");
-    const searchIcon = screen.getByLabelText("Close");
-    expect(successMessage).toBeTruthy();
-    expect(searchIcon).toBeTruthy();
-  });
-
-  it("should not render icon success when field has type password", () => {
-    setup({
-      props: { success: "success message", type: "password" },
-    });
-    const successMessage = screen.getByText("success message");
-    const eyeIcon = screen.getByLabelText("Eye");
-    expect(successMessage).toBeTruthy();
-    expect(eyeIcon).toBeTruthy();
+    expect(container.firstChild).toHaveClass("nimbus--input-danger");
   });
 });
 
-describe('<Input isLoading="true" />', () => {
+describe('<Input appearance="validation_loading" />', () => {
   it("should render input with loading icon", () => {
-    const { container } = setup({ props: { isLoading: true } });
+    const { container } = setup({
+      props: { appearance: "validation_loading" },
+    });
     expect(container.querySelector("svg")).toHaveClass("nimbus--spinner");
   });
 
   it("should not render loading icon when type is search", () => {
-    setup({ props: { isLoading: true, type: "search" } });
+    const { container } = setup({
+      props: { appearance: "validation_loading", type: "search" },
+    });
     const searchIcon = screen.getByLabelText("Close");
     expect(searchIcon).toBeTruthy();
+    expect(container.querySelector("svg")).not.toHaveClass("nimbus--spinner");
   });
 
   it("should not render loading icon when type is password", () => {
-    setup({ props: { isLoading: true, type: "password" } });
+    const { container } = setup({
+      props: { appearance: "validation_loading", type: "password" },
+    });
     const eyeIcon = screen.getByLabelText("Eye");
     expect(eyeIcon).toBeTruthy();
+    expect(container.querySelector("svg")).not.toHaveClass("nimbus--spinner");
+  });
+});
+
+describe('<Input appearance=""validation_success"" />', () => {
+  it("should render input with success style and success icon", () => {
+    setup({
+      props: { appearance: "validation_success", helpText: "helper text" },
+    });
+    const helperText = screen.getByText("helper text");
+    const circleIcon = screen.getByLabelText("CheckCircle");
+
+    expect(helperText).toHaveClass("nimbus--text-color--success");
+    expect(circleIcon).toBeTruthy();
   });
 
-  it("should not render loading icon when has error", () => {
-    setup({ props: { isLoading: true, error: "error message" } });
-    const errorMessage = screen.getByText("error message");
+  it("should render input only with success style when type is search (not show success icon)", () => {
+    const { container } = setup({
+      props: {
+        appearance: "validation_success",
+        helpText: "helper text",
+        type: "search",
+      },
+    });
+    const helperText = screen.getByText("helper text");
+    const closeIcon = screen.getByLabelText("Close");
+    expect(container.firstChild).toHaveClass(
+      "nimbus--input-validation--success",
+    );
+    expect(helperText).toHaveClass("nimbus--text-color--success");
+    expect(closeIcon).toBeTruthy();
+  });
+});
+
+describe('<Input appearance=""validation_error"" />', () => {
+  it("should render input with error style and error icon", () => {
+    setup({
+      props: { appearance: "validation_error", helpText: "helper text" },
+    });
+    const helperText = screen.getByText("helper text");
     const errorIcon = screen.getByLabelText("ExclamationCircle");
-    expect(errorMessage).toBeTruthy();
+
+    expect(helperText).toHaveClass("nimbus--text-color--danger");
     expect(errorIcon).toBeTruthy();
   });
 
-  it("should not render loading icon when has success", () => {
-    setup({ props: { isLoading: true, success: "success message" } });
-    const successMessage = screen.getByText("success message");
-    const successIcon = screen.getByLabelText("CheckCircle");
-    expect(successMessage).toBeTruthy();
-    expect(successIcon).toBeTruthy();
+  it("should render input only with error style when type is search (not show error icon)", () => {
+    const { container } = setup({
+      props: {
+        appearance: "validation_error",
+        helpText: "helper text",
+        type: "search",
+      },
+    });
+    const helperText = screen.getByText("helper text");
+    const closeIcon = screen.getByLabelText("Close");
+    expect(container.firstChild).toHaveClass("nimbus--input-validation--error");
+    expect(helperText).toHaveClass("nimbus--text-color--danger");
+    expect(closeIcon).toBeTruthy();
   });
+});
 
-  it("should render without placeholder", () => {
-    setup({ props: { placeholder: null } });
-    const input = screen.getByRole("textbox", { name: "myLabel" });
-    expect(input).not.toHaveAttribute("placeholder", "myPlaceholder");
-    expect(screen.queryByPlaceholderText("myPlaceholder")).toBeNull();
+describe('<Input helpText="some helper text" />', () => {
+  it("should render input with helper text", () => {
+    setup({
+      props: { helpText: "helper text" },
+    });
+    const helperText = screen.getByText("helper text");
+    expect(helperText).toBeVisible();
   });
 });
 

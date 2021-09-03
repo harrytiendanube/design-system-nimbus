@@ -34,6 +34,15 @@ TODO: complete
             "email",
             "search",
           ])}
+          appearance={select("appearance", [
+            "default",
+            "warning",
+            "danger",
+            "validation_loading",
+            "validation_success",
+            "validation_error",
+          ])}
+          helpText={text("helpText", "some helper text")}
           value={value}
           label={text("label", "Label")}
           placeholder={text("placeholder", "placeholder")}
@@ -42,9 +51,6 @@ TODO: complete
           focused={boolean("focused", false)}
           autoCapitalize={boolean("autoCapitalize", false)}
           autoCorrect={boolean("autoCorrect", false)}
-          success={text("success", "")}
-          error={text("error", "")}
-          isLoading={boolean("isLoading", true)}
           name="name"
           onChange={(e) => setValue(e.value)}
           disabled={boolean("disabled", false)}
@@ -80,12 +86,18 @@ TODO: complete
       return (
         <Input
           type="search"
+          appearance={select("appearance", [
+            "default",
+            "warning",
+            "danger",
+            "validation_loading",
+            "validation_success",
+            "validation_error",
+          ])}
+          helpText={text("helpText", "some helper text")}
           placeholder="placeholder"
           name="name"
           value={value}
-          error={text("error", "")}
-          success={text("success", "")}
-          isLoading={boolean("isLoading", true)}
           onChange={(e) => setValue(e.value)}
           onSubmit={() => setValue("")}
         />
@@ -105,11 +117,17 @@ TODO: complete
           label="Label"
           prependIcon={ArrowRightIcon}
           value={value}
+          appearance={select("appearance", [
+            "default",
+            "warning",
+            "danger",
+            "validation_loading",
+            "validation_success",
+            "validation_error",
+          ])}
+          helpText={text("helpText", "some helper text")}
           placeholder="placeholder"
           name="name"
-          error={text("error", "")}
-          success={text("success", "")}
-          isLoading={boolean("isLoading", true)}
           onChange={(e) => setValue(e.value)}
         />
       );
@@ -134,15 +152,21 @@ TODO: complete
         <>
           <Input
             label="Label"
+            appearance={select("appearance", [
+              "default",
+              "warning",
+              "danger",
+              "validation_loading",
+              "validation_success",
+              "validation_error",
+            ])}
+            helpText={text("helpText", "some helper text")}
             prependLabel={select("prependLabel", ["$", "R$", "U$S"], "$")}
             appendLabel={select("appendLabel", ["cm", "kg"], "cm")}
             inputMode="decimal"
             value={values.a}
             placeholder="placeholder"
             name="a"
-            error={text("error", "")}
-            success={text("success", "")}
-            isLoading={boolean("isLoading", true)}
             onChange={handleChange}
             disabled={boolean("disabled", false)}
           />
@@ -150,27 +174,39 @@ TODO: complete
           <Input
             label="Label"
             prependLabel={select("prependLabel2", ["$", "R$", "U$S"], "U$S")}
+            appearance={select("appearance", [
+              "default",
+              "warning",
+              "danger",
+              "validation_loading",
+              "validation_success",
+              "validation_error",
+            ])}
+            helpText={text("helpText", "some helper text")}
             inputMode="decimal"
             value={values.b}
             placeholder="placeholder"
             name="b"
-            error={text("error", "")}
-            success={text("success", "")}
-            isLoading={boolean("isLoading", true)}
             onChange={handleChange}
             disabled={boolean("disabled", false)}
           />
           <br />
           <Input
             label="Label"
+            appearance={select("appearance", [
+              "default",
+              "warning",
+              "danger",
+              "validation_loading",
+              "validation_success",
+              "validation_error",
+            ])}
+            helpText={text("helpText", "some helper text")}
             appendLabel={select("appendLabel2", ["cm", "kg"], "kg")}
             inputMode="decimal"
             value={values.c}
             placeholder="placeholder"
             name="c"
-            error={text("error", "")}
-            success={text("success", "")}
-            isLoading={boolean("isLoading", true)}
             onChange={handleChange}
             disabled={boolean("disabled", false)}
           />
@@ -194,11 +230,17 @@ TODO: complete
       return (
         <Input
           label="input label"
+          appearance={select("appearance", [
+            "default",
+            "warning",
+            "danger",
+            "validation_loading",
+            "validation_success",
+            "validation_error",
+          ])}
+          helpText={text("helpText", "some helper text")}
           labelIcon={EyeIcon}
           placeholder="placeholder"
-          error={text("error", "")}
-          success={text("success", "")}
-          isLoading={boolean("isLoading", true)}
           name="name"
           value={value}
           onChange={(e) => setValue(e.value)}
@@ -222,8 +264,6 @@ TODO: complete
           label={LOREM_STRESS}
           value={value}
           name="name"
-          error={text("error", "")}
-          success={text("success", "")}
           placeholder="placeholder"
           onChange={(e) => setValue(e.value)}
         />
