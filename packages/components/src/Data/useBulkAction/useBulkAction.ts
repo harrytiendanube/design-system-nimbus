@@ -5,7 +5,7 @@ import {
   InterfaceSelectOption,
 } from "../../common/interfaces";
 
-interface InterfaceUseBulkAction {
+export interface InterfaceUseBulkAction {
   rowsId: string[];
   placeholder: string;
   getLabel: (count: number) => string;
