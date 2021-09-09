@@ -3,13 +3,17 @@ name: New Request
 about: Request a missing component or feature
 title: "[REQUEST]"
 labels: enhancement
-assignees: juanchigallego, radomskip, diegopsilverio
+assignees: juanchigallego, diegopsilverio, gabifagundes, juniorconquista
 ---
 
 # Name of the feature or component
 
 - [ ] New component
 - [ ] New feature to an existing component
+
+👨🏻‍💻👩🏻‍💻 **Team involved**
+
+Who's the team or squad requesting this change.
 
 📖 **Describe the feature or component**
 
