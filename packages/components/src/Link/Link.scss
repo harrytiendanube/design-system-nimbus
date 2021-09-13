@@ -23,19 +23,23 @@
 }
 
 .#{$prefix}--link--primary {
-  @include link($color-primary, $color-primary-hover, $color-primary-light);
+  @include link(
+    $color-primary-pure,
+    $color-primary-hover,
+    $color-primary-light
+  );
 }
 
 .#{$prefix}--link--secondary {
   @include link(
-    $color-secondary,
+    $color-secondary-pure,
     $color-secondary-hover,
     $color-secondary-light
   );
 }
 
 .#{$prefix}--link--danger {
-  @include link($color-danger, $color-danger-hover, $color-danger-light);
+  @include link($color-danger-pure, $color-danger-hover, $color-danger-light);
 }
 
 .#{$prefix}--link-skeleton {

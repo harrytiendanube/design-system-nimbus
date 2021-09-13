@@ -17,8 +17,8 @@
 
     &:checked + .#{$prefix}--checkbox-label::before,
     &.indeterminate + .#{$prefix}--checkbox-label::before {
-      background-color: $color-primary;
-      border-color: $color-primary;
+      background-color: $color-primary-pure;
+      border-color: $color-primary-pure;
     }
 
     &.indeterminate + .#{$prefix}--checkbox-label::after {

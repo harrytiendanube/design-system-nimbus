@@ -128,7 +128,7 @@ $menu-position: (
   align-items: center;
   appearance: none;
   background-color: transparent;
-  color: $color-secondary;
+  color: $color-secondary-pure;
   cursor: pointer;
   display: flex;
   padding: $spacing-x-small;
@@ -136,7 +136,7 @@ $menu-position: (
   width: 100%;
 
   svg {
-    fill: $color-secondary;
+    fill: $color-secondary-pure;
     margin-right: $spacing-x-small;
   }
 }
@@ -150,10 +150,10 @@ $menu-position: (
   background-color: $color-primary-lighter;
 
   .#{$prefix}--menu-item {
-    color: $color-primary;
+    color: $color-primary-pure;
 
     svg {
-      fill: $color-primary;
+      fill: $color-primary-pure;
     }
   }
 
@@ -174,7 +174,7 @@ $menu-position: (
   @include nimbus--type("text-body");
   appearance: none;
   background-color: transparent;
-  color: $color-secondary;
+  color: $color-secondary-pure;
   cursor: pointer;
   display: flex;
   padding: $spacing-x-small $spacing-x-small $spacing-x-small $spacing-large;
@@ -183,5 +183,5 @@ $menu-position: (
 }
 
 .#{$prefix}--menu-sub-item--active {
-  color: $color-primary;
+  color: $color-primary-pure;
 }

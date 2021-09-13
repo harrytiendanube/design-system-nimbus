@@ -75,7 +75,7 @@
     width: 1px;
 
     &:checked + .#{$prefix}--radio-label::before {
-      border-color: $color-primary;
+      border-color: $color-primary-pure;
     }
 
     &:checked + .#{$prefix}--radio-label::before,
@@ -84,7 +84,7 @@
     }
 
     &:hover + .#{$prefix}--radio-label::before {
-      border-color: $color-primary;
+      border-color: $color-primary-pure;
     }
 
     &:disabled + .#{$prefix}--radio-label::before,
@@ -172,7 +172,7 @@
 
   .#{$prefix}--radio__check {
     align-items: center;
-    background-color: $color-primary;
+    background-color: $color-primary-pure;
     border-radius: 100%;
     display: flex;
     height: 20px;

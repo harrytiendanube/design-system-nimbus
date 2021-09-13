@@ -18,7 +18,7 @@
 .#{$prefix}--list--unordered {
   .#{$prefix}--list-item {
     &::before {
-      background-color: $color-grey-35;
+      background-color: $color-grey-50;
       border-radius: 100%;
       content: "";
       display: block;

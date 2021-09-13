@@ -27,7 +27,7 @@ $gallery-border-width: 2px;
 
       /* stylelint-disable-next-line selector-max-compound-selectors */
       svg {
-        fill: $color-secondary;
+        fill: $color-secondary-pure;
       }
 
       &.is--loading {
@@ -78,7 +78,7 @@ $gallery-border-width: 2px;
     width: 100%;
 
     svg {
-      fill: $color-grey-35;
+      fill: $color-grey-50;
     }
 
     &.is--loading svg {
@@ -116,7 +116,7 @@ $gallery-border-width: 2px;
   padding: $spacing-x-small;
 
   svg {
-    fill: $color-primary;
+    fill: $color-primary-pure;
   }
 }
 

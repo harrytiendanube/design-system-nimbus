@@ -14,8 +14,8 @@
     width: 1px;
 
     &:checked + .#{$prefix}--radio-button-label {
-      background-color: $color-primary;
-      border-color: $color-primary;
+      background-color: $color-primary-pure;
+      border-color: $color-primary-pure;
 
       .#{$prefix}--text {
         color: $color-background;
@@ -35,7 +35,7 @@
     background-color: $color-default;
     border: $button-border-width solid $color-default;
     border-radius: $spacing-xx-small;
-    color: $color-secondary;
+    color: $color-secondary-pure;
     cursor: pointer;
     display: inline-block;
     padding: $spacing-xx-small $spacing-x-small;

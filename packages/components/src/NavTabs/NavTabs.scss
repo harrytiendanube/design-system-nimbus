@@ -79,7 +79,7 @@ body {
   width: auto;
 
   svg {
-    fill: $color-secondary;
+    fill: $color-secondary-pure;
   }
 }
 
@@ -87,7 +87,7 @@ body {
   background-color: $color-primary-lighter;
 
   svg {
-    fill: $color-primary;
+    fill: $color-primary-pure;
   }
 }
 
@@ -95,7 +95,7 @@ body {
   position: relative;
 
   &::after {
-    background-color: $color-primary;
+    background-color: $color-primary-pure;
     border-radius: 100%;
     content: "";
     display: block;

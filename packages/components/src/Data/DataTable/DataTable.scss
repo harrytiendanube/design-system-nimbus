@@ -12,7 +12,7 @@
 }
 
 .#{$prefix}--data-table__header {
-  background-color: $color-grey-10;
+  background-color: $color-grey-0;
 
   .#{$prefix}--text {
     @include nimbus--text-trim(1);
@@ -103,6 +103,6 @@
 }
 
 .#{$prefix}--data-table__footer {
-  background-color: $color-grey-10;
+  background-color: $color-grey-0;
   padding: $spacing-x-small $spacing-small;
 }

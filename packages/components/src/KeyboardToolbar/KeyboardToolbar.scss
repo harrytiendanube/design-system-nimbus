@@ -61,11 +61,11 @@
       cursor: not-allowed;
 
       svg {
-        fill: $color-grey-35;
+        fill: $color-grey-50;
       }
 
       .#{$prefix}--text {
-        color: $color-grey-35;
+        color: $color-grey-50;
       }
     }
   }
@@ -78,22 +78,22 @@
   width: 100%;
 
   svg {
-    fill: $color-secondary;
+    fill: $color-secondary-pure;
   }
 
   .#{$prefix}--text {
-    color: $color-secondary;
+    color: $color-secondary-pure;
   }
 
   &.is--active {
     background-color: $color-primary-lighter;
 
     svg {
-      fill: $color-primary;
+      fill: $color-primary-pure;
     }
 
     .#{$prefix}--text {
-      color: $color-primary;
+      color: $color-primary-pure;
     }
   }
 }

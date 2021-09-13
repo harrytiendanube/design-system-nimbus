@@ -25,8 +25,8 @@
     transition: $button-hover-delay ease;
 
     &.#{$prefix}--tab--active {
-      border-color: $color-primary;
-      color: $color-primary;
+      border-color: $color-primary-pure;
+      color: $color-primary-pure;
     }
   }
 }

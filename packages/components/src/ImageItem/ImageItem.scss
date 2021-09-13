@@ -35,7 +35,7 @@ $thumbnail-dimensions: 72px;
     }
 
     .#{$prefix}--image-item__placeholder svg {
-      fill: $color-grey-35;
+      fill: $color-grey-50;
       margin-top: -$spacing-xx-small;
     }
   }
@@ -54,7 +54,7 @@ $thumbnail-dimensions: 72px;
     }
 
     .#{$prefix}--link--primary {
-      color: $color-primary;
+      color: $color-primary-pure;
       font-weight: $font-weight-bold;
       text-decoration: none;
     }

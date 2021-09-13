@@ -20,7 +20,7 @@
 }
 
 .nimbus--welcome-story {
-  background-color: var(--color-blue-dark);
+  background-color: var(--color-blue-dark-pure);
   height: 100vh;
   overflow: hidden;
   padding: var(--spacing-medium);

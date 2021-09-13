@@ -5,18 +5,18 @@
 .#{$prefix}--input-validation--error {
   .#{$prefix}--input {
     .#{$prefix}--input__append svg {
-      fill: $color-danger;
+      fill: $color-danger-pure;
     }
 
     .#{$prefix}--input__field {
-      border-color: $color-danger;
+      border-color: $color-danger-pure;
 
       &:focus {
         border-color: $color-danger-active;
         box-shadow: 0 0 0 $input-border-width $color-danger-active;
 
         ~ .#{$prefix}--input__append svg {
-          fill: $color-danger;
+          fill: $color-danger-pure;
         }
       }
     }
@@ -26,18 +26,18 @@
 .#{$prefix}--input-validation--success {
   .#{$prefix}--input {
     .#{$prefix}--input__append svg {
-      fill: $color-success;
+      fill: $color-success-pure;
     }
 
     .#{$prefix}--input__field {
-      border-color: $color-success;
+      border-color: $color-success-pure;
 
       &:focus {
         border-color: $color-success-active;
         box-shadow: 0 0 0 $input-border-width $color-success-active;
 
         ~ .#{$prefix}--input__append svg {
-          fill: $color-success;
+          fill: $color-success-pure;
         }
       }
     }
@@ -47,20 +47,19 @@
 .#{$prefix}--input-warning {
   .#{$prefix}--input {
     .#{$prefix}--input__append svg {
-      fill: $color-yellow;
+      fill: $color-warning-pure;
     }
 
     .#{$prefix}--input__field {
-
-      background-color: $color-yellow-lighter;
-      border-color: $color-yellow;
+      background-color: $color-warning-lighter;
+      border-color: $color-warning-pure;
 
       &:focus {
-        border-color: $color-yellow;
-        box-shadow: 0 0 0 $input-border-width $color-yellow;
+        border-color: $color-warning-pure;
+        box-shadow: 0 0 0 $input-border-width $color-warning-pure;
 
         ~ .#{$prefix}--input__append svg {
-          fill: $color-yellow;
+          fill: $color-warning-pure;
         }
       }
     }
@@ -70,26 +69,24 @@
 .#{$prefix}--input-danger {
   .#{$prefix}--input {
     .#{$prefix}--input__append svg {
-      fill: $color-red;
+      fill: $color-danger-pure;
     }
 
     .#{$prefix}--input__field {
-      background-color: $color-red-lighter;
-      border-color: $color-red;
+      background-color: $color-danger-lighter;
+      border-color: $color-danger-pure;
 
       &:focus {
-        border-color: $color-red;
-        box-shadow: 0 0 0 $input-border-width $color-red;
+        border-color: $color-danger-pure;
+        box-shadow: 0 0 0 $input-border-width $color-danger-pure;
 
         ~ .#{$prefix}--input__append svg {
-          fill: $color-red;
+          fill: $color-danger-pure;
         }
       }
     }
   }
 }
-
-
 
 .#{$prefix}--input__label {
   @include nimbus--type("text-label");
@@ -215,7 +212,7 @@
     background-color: transparent;
     border: $input-border-width solid $input-border-color;
     border-radius: $actions-border-radius;
-    color: $color-secondary;
+    color: $color-secondary-pure;
     padding: $spacing-x-small;
     text-align: left;
     transition: $motion-fast ease;
@@ -252,7 +249,7 @@
 
       ~ .#{$prefix}--input__prepend svg,
       ~ .#{$prefix}--input__append svg {
-        fill: $color-secondary;
+        fill: $color-secondary-pure;
       }
 
       ~ .#{$prefix}--input__spinner svg {

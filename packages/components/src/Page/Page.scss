@@ -136,7 +136,7 @@ body {
 #nimbus-popover-initiator-dropdownMenu .#{$prefix}--link {
   background-color: transparent;
   border-color: transparent;
-  color: $color-secondary;
+  color: $color-secondary-pure;
   padding: $spacing-x-small;
 
   &:focus {
@@ -151,10 +151,10 @@ body {
   }
 
   &.#{$prefix}--link--danger {
-    color: $color-danger;
+    color: $color-danger-pure;
 
     svg {
-      fill: $color-danger;
+      fill: $color-danger-pure;
     }
 
     &:focus {

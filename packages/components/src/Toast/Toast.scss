@@ -3,11 +3,11 @@
 // Toast
 
 $situation-colors: (
-  primary: $color-primary,
-  secondary: $color-secondary,
-  success: $color-success,
-  warning: $color-warning,
-  danger: $color-danger,
+  primary: $color-primary-pure,
+  secondary: $color-secondary-pure,
+  success: $color-success-pure,
+  warning: $color-warning-pure,
+  danger: $color-danger-pure,
 );
 
 @mixin nimbus--toast {

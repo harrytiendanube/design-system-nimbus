@@ -3,9 +3,9 @@
 // Spinner mixins
 
 $nimbus--spinner-color: (
-  "primary": $color-primary,
-  "secondary": $color-secondary,
-  "danger": $color-danger,
+  "primary": $color-primary-pure,
+  "secondary": $color-secondary-pure,
+  "danger": $color-danger-pure,
   "light": $color-background,
 ) !default;
 

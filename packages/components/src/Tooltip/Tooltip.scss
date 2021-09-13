@@ -3,7 +3,11 @@
 // Tooltip
 
 .#{$prefix}--tooltip-trigger {
-  @include link($color-primary, $color-primary-hover, $color-primary-active);
+  @include link(
+    $color-primary-pure,
+    $color-primary-hover,
+    $color-primary-active
+  );
   margin: -$spacing-x-small;
   padding: $spacing-x-small;
 }

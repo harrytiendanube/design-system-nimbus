@@ -7,99 +7,63 @@ $heading-page: (
   font-family: $font-family,
   font-weight: map-get($nimbus--font-weights, "bold"),
   font-size: nimbus--rem(map-get($nimbus--title-sizes, "h1")),
-  line-height:
-    nimbus--rem(
-      map-get($nimbus--title-sizes, "h1") *
-        map-get($nimbus--line-heights, "heading")
-    ),
+  line-height: map-get($nimbus--line-heights, "heading"),
 ) !default;
 
 $heading-element: (
   font-family: $font-family,
   font-weight: map-get($nimbus--font-weights, "bold"),
   font-size: nimbus--rem(map-get($nimbus--title-sizes, "h3")),
-  line-height:
-    nimbus--rem(
-      map-get($nimbus--title-sizes, "h3") *
-        map-get($nimbus--line-heights, "heading")
-    ),
+  line-height: map-get($nimbus--line-heights, "heading"),
 ) !default;
 
 $text-featured: (
   font-family: $font-family,
   font-weight: map-get($nimbus--font-weights, "regular"),
   font-size: nimbus--rem(map-get($nimbus--title-sizes, "h1")),
-  line-height:
-    nimbus--rem(
-      map-get($nimbus--title-sizes, "h1") *
-        map-get($nimbus--line-heights, "body")
-    ),
+  line-height: map-get($nimbus--line-heights, "body"),
 ) !default;
 
 $text-heading: (
   font-family: $font-family,
   font-weight: map-get($nimbus--font-weights, "bold"),
   font-size: nimbus--rem(map-get($nimbus--body-sizes, "base")),
-  line-height:
-    nimbus--rem(
-      map-get($nimbus--body-sizes, "base") *
-        map-get($nimbus--line-heights, "body")
-    ),
+  line-height: map-get($nimbus--line-heights, "body"),
 ) !default;
 
 $text-body: (
   font-family: $font-family,
   font-weight: map-get($nimbus--font-weights, "regular"),
   font-size: nimbus--rem(map-get($nimbus--body-sizes, "base")),
-  line-height:
-    nimbus--rem(
-      map-get($nimbus--body-sizes, "base") *
-        map-get($nimbus--line-heights, "body")
-    ),
+  line-height: map-get($nimbus--line-heights, "body"),
 ) !default;
 
 $text-label: (
   font-family: $font-family,
   font-weight: map-get($nimbus--font-weights, "regular"),
   font-size: nimbus--rem(map-get($nimbus--body-sizes, "small")),
-  line-height:
-    nimbus--rem(
-      map-get($nimbus--body-sizes, "small") *
-        map-get($nimbus--line-heights, "body")
-    ),
+  line-height: map-get($nimbus--line-heights, "body"),
 ) !default;
 
 $text-label-tight: (
   font-family: $font-family,
   font-weight: map-get($nimbus--font-weights, "regular"),
   font-size: nimbus--rem(map-get($nimbus--body-sizes, "small")),
-  line-height:
-    nimbus--rem(
-      map-get($nimbus--body-sizes, "small") *
-        map-get($nimbus--line-heights, "base")
-    ),
+  line-height: map-get($nimbus--line-heights, "base"),
 ) !default;
 
 $text-small: (
   font-family: $font-family,
   font-weight: map-get($nimbus--font-weights, "regular"),
   font-size: nimbus--rem(map-get($nimbus--body-sizes, "smaller")),
-  line-height:
-    nimbus--rem(
-      map-get($nimbus--body-sizes, "smaller") *
-        map-get($nimbus--line-heights, "base")
-    ),
+  line-height: map-get($nimbus--line-heights, "base"),
 ) !default;
 
 $text-button: (
   font-family: $font-family,
   font-weight: map-get($nimbus--font-weights, "bold"),
   font-size: nimbus--rem(map-get($nimbus--body-sizes, "base")),
-  line-height:
-    nimbus--rem(
-      map-get($nimbus--body-sizes, "base") *
-        map-get($nimbus--line-heights, "body")
-    ),
+  line-height: map-get($nimbus--line-heights, "body"),
 ) !default;
 
 // Map with all font values

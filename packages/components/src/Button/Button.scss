@@ -21,7 +21,7 @@
 
 .#{$prefix}--button--default {
   @include button(
-    $color-secondary,
+    $color-secondary-pure,
     $color-default,
     $color-default-hover,
     $color-default-active
@@ -31,7 +31,7 @@
 .#{$prefix}--button--primary {
   @include button(
     $color-white,
-    $color-primary,
+    $color-primary-pure,
     $color-primary-hover,
     $color-primary-active
   );
@@ -40,7 +40,7 @@
 .#{$prefix}--button--secondary {
   @include button(
     $color-white,
-    $color-secondary,
+    $color-secondary-pure,
     $color-secondary-hover,
     $color-secondary-active
   );
@@ -49,7 +49,7 @@
 .#{$prefix}--button--danger {
   @include button(
     $color-white,
-    $color-danger,
+    $color-danger-pure,
     $color-danger-hover,
     $color-danger-active
   );

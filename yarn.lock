@@ -3289,10 +3289,10 @@
   dependencies:
     "@babel/runtime" "^7.10.2"
 
-"@tiendanube/design-tokens-nimbus@0.2.2":
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/@tiendanube/design-tokens-nimbus/-/design-tokens-nimbus-0.2.2.tgz#e72a54ca7a29539e78b1c502fcde2be0a53eb61e"
-  integrity sha512-gZaTH8iRKEwtLZZZ/6NONXc38doEUGTbZJ2xqcesJGkxTfDB3fkih2DY2/c3lkGnXwwU8qHTv4Vj44+SAyCUag==
+"@tiendanube/design-tokens-nimbus@0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@tiendanube/design-tokens-nimbus/-/design-tokens-nimbus-0.2.3.tgz#2f469e80cf7020df579a7b2620d2f608e73c2df0"
+  integrity sha512-mkV/s6dgDCJBPyCjxJCnvkhEj4dz7Qhi6vnlzGf+S17QCJL7y5xcqsFrYQAfljX2quaz9BFduL6YYG02a6hL4Q==
   dependencies:
     style-dictionary "2.10.0"
 

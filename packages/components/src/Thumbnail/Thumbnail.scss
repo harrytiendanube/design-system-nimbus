@@ -72,7 +72,7 @@ $nimbus--aspect-ratios: (
   justify-content: center;
 
   svg {
-    fill: $color-grey-35;
+    fill: $color-grey-50;
     margin-top: -$spacing-xx-small;
   }
 }
@@ -97,13 +97,13 @@ $nimbus--aspect-ratios: (
     width: 1px;
 
     &:checked + .#{$prefix}--thumbnail-select__label {
-      background-color: rgba($color-primary, 0.3);
-      border: $input-border-width solid $color-primary;
+      background-color: rgba($color-primary-pure, 0.3);
+      border: $input-border-width solid $color-primary-pure;
       border-radius: $actions-border-radius;
     }
 
     &:checked + .#{$prefix}--thumbnail-select__label::before {
-      border-color: $color-primary;
+      border-color: $color-primary-pure;
     }
 
     &:checked + .#{$prefix}--thumbnail-select__label::before,
@@ -114,7 +114,7 @@ $nimbus--aspect-ratios: (
     }
 
     &:hover + .#{$prefix}--thumbnail-select__label::before {
-      border-color: $color-primary;
+      border-color: $color-primary-pure;
     }
 
     &:disabled + .#{$prefix}--thumbnail-select__label::before,
@@ -169,7 +169,7 @@ $nimbus--aspect-ratios: (
 
   .#{$prefix}--thumbnail-select__check {
     align-items: center;
-    background-color: $color-primary;
+    background-color: $color-primary-pure;
     border-radius: 100%;
     display: flex;
     height: $spacing-medium;
@@ -199,33 +199,33 @@ $nimbus--aspect-ratios: (
 }
 
 .#{$prefix}--thumbnail-overlay--blue {
-  background-color: rgba($color-secondary, 0.8);
+  background-color: rgba($color-secondary-pure, 0.8);
 }
 
 .#{$prefix}--thumbnail-button-add {
   align-items: center;
   background-color: $color-primary-lighter;
-  border: 2px dashed $color-primary;
+  border: 2px dashed $color-primary-pure;
   border-radius: $actions-border-radius;
   display: flex;
   flex-direction: column;
   justify-content: center;
 
   svg {
-    fill: $color-primary;
+    fill: $color-primary-pure;
   }
 
   &:disabled {
     background-color: $color-default;
-    border-color: $color-grey-35;
+    border-color: $color-grey-50;
     cursor: not-allowed;
 
     svg {
-      fill: $color-grey-35;
+      fill: $color-grey-50;
     }
 
     .#{$prefix}--text {
-      color: $color-grey-35;
+      color: $color-grey-50;
     }
   }
 
@@ -244,7 +244,7 @@ $nimbus--aspect-ratios: (
 
 .#{$prefix}--thumbnail-error {
   svg {
-    fill: $color-danger;
+    fill: $color-danger-pure;
   }
 }
 

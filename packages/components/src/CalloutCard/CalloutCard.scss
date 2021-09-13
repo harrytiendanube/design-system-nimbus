@@ -77,10 +77,10 @@ $callout-colors: (
   }
 
   &.#{$prefix}--callout-card--skeleton {
-    background-color: $color-grey-10;
+    background-color: $color-grey-0;
 
     .#{$prefix}--callout-card__icon {
-      background-color: $color-grey-0;
+      background-color: $color-grey-25;
       min-height: $spacing-xx-large;
       min-width: $spacing-xx-large;
     }
