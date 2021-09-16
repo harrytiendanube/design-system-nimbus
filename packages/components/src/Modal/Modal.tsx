@@ -22,7 +22,7 @@ export interface InterfaceModal {
   /** Primary Action */
   primaryAction?: Pick<
     InterfaceButton,
-    "children" | "onClick" | "appearance" | "icon" | "iconPosition"
+    "children" | "onClick" | "appearance" | "icon" | "iconPosition" | "disabled"
   >;
   /** Secondary Action */
   secondaryAction?: Pick<InterfaceButton, "children" | "onClick">;
@@ -74,6 +74,7 @@ function Modal({
         appearance={primaryAction.appearance}
         icon={primaryAction.icon}
         iconPosition={primaryAction.iconPosition}
+        disabled={primaryAction.disabled}
       >
         {primaryAction.children}
       </Button>
