@@ -71,7 +71,8 @@ const setup = ({ Component, props }: any | null = {}) => {
   const buttonSales = screen.getByRole("button", { name: "Sales" });
   const buttonProducts = screen.getByRole("button", { name: "Products" });
   const buttonKeyboard = screen.getByRole("button", { name: "Keyboard" });
-  const buttonClose = screen.getByRole("button", { name: "Close Session" });
+  const buttonClose =
+    props?.footer && screen.getByRole("button", { name: "Close Session" });
 
   return {
     container,
@@ -95,7 +96,9 @@ describe("<Menu />", () => {
       buttonProducts,
       buttonClose,
       buttonKeyboard,
-    } = setup();
+    } = setup({
+      props: { footer: { label: "Close Session", icon: LogOutIcon } },
+    });
     expect(screen.getByRole("heading", { name: "title" })).toBeTruthy();
     expect(presentation).not.toHaveClass("is--visible");
     expect(buttonStart).toBeTruthy();
@@ -130,5 +133,13 @@ describe("<Menu />", () => {
     const { presentation, handleClose } = setup();
     userEvent.click(presentation);
     expect(handleClose).toHaveBeenCalledTimes(1);
+  });
+
+  it("should not render title, href and footer when doesn't pass this props", () => {
+    setup({ props: { title: null, href: null, footer: null } });
+    const header = screen.queryByTestId("nimbus--menu__header");
+    const footer = screen.queryByTestId("nimbus--menu__footer");
+    expect(header).toBeNull();
+    expect(footer).toBeNull();
   });
 });

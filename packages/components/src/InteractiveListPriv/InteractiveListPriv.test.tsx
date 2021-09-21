@@ -192,4 +192,20 @@ describe("<InteractiveListPriv />", () => {
       5,
     );
   });
+
+  it("render Items with success label tag", () => {
+    const { container } = render(
+      <InteractiveListPriv>
+        <InteractiveListPriv.ActionItem
+          title="other"
+          name="other"
+          labels={[{ id: "1", label: "other", appearance: "success" }]}
+          onChange={jest.fn()}
+        />
+      </InteractiveListPriv>,
+    );
+    expect(container.querySelectorAll(".nimbus--label--success")).toHaveLength(
+      1,
+    );
+  });
 });

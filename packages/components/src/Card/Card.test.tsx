@@ -92,4 +92,19 @@ describe("<Card />", () => {
       2,
     );
   });
+
+  it("render Card with no margin", () => {
+    const { container } = render(
+      <Card
+        title={myTitle}
+        primaryButton="skeleton"
+        secondaryButton="skeleton"
+        headerLabel="skeleton"
+        isFluid
+      >
+        <Text.Skeleton />
+      </Card>,
+    );
+    expect(container.querySelector(".nimbus--input__fluid")).toBeTruthy();
+  });
 });

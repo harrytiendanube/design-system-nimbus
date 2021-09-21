@@ -17,22 +17,22 @@ export { InterfaceMenuItem } from "./Menu.Item";
 
 export interface InterfaceFooterMenu {
   /** Label */
-  label: string;
+  label?: string;
   /** Icon */
-  icon: IconType;
+  icon?: IconType;
   /** OnClick */
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 export interface InterfaceBaseMenu {
   /** React node of type children */
   children: React.ReactNode;
   /** Title */
-  title: string;
+  title?: string;
   /** Href Link */
-  href: string;
+  href?: string;
   /** Footer */
-  footer: InterfaceFooterMenu;
+  footer?: InterfaceFooterMenu;
 }
 
 function BaseMenu({
@@ -41,37 +41,46 @@ function BaseMenu({
   children,
   footer,
 }: InterfaceBaseMenu): JSX.Element {
-  const IconFooter = footer.icon;
+  const hasHeader = title && href;
+  const IconFooter = footer?.icon as React.ElementType;
   return (
     <>
-      <div className="nimbus--menu-header">
-        <Stack justify="space-between">
-          <Stack.Item fill>
-            <Stack spacing="tight">
-              <Stack.Item>
-                <TiendanubeIcon size="medium" />
-              </Stack.Item>
-              <Stack.Item>
-                <Title type="h5">{title}</Title>
-              </Stack.Item>
-            </Stack>
-          </Stack.Item>
-          <Stack.Item>
-            <IconButton icon={ExternalLinkIcon} ariaLabel={title} href={href} />
-          </Stack.Item>
-        </Stack>
-      </div>
+      {hasHeader && (
+        <div className="nimbus--menu-header" data-testid="nimbus--menu__header">
+          <Stack justify="space-between">
+            <Stack.Item fill>
+              <Stack spacing="tight">
+                <Stack.Item>
+                  <TiendanubeIcon size="medium" />
+                </Stack.Item>
+                <Stack.Item>
+                  <Title type="h5">{title || ""}</Title>
+                </Stack.Item>
+              </Stack>
+            </Stack.Item>
+            <Stack.Item>
+              <IconButton
+                icon={ExternalLinkIcon}
+                ariaLabel={title || ""}
+                href={href || ""}
+              />
+            </Stack.Item>
+          </Stack>
+        </div>
+      )}
       <div className="nimbus--menu-body">{children}</div>
-      <div className="nimbus--menu-footer">
-        <button
-          type="button"
-          onClick={footer.onClick}
-          className="nimbus--menu-item"
-        >
-          <IconFooter />
-          {footer.label}
-        </button>
-      </div>
+      {footer && (
+        <div className="nimbus--menu-footer" data-testid="nimbus--menu__footer">
+          <button
+            type="button"
+            onClick={footer?.onClick}
+            className="nimbus--menu-item"
+          >
+            <IconFooter />
+            {footer?.label}
+          </button>
+        </div>
+      )}
     </>
   );
 }

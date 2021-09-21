@@ -1,4 +1,5 @@
 import * as React from "react";
+import classNames from "classnames";
 
 import { Icon as IconType, ChevronDownIcon } from "@tiendanube/icons";
 
@@ -29,6 +30,9 @@ interface InterfaceCard {
   headerLabel?: InterfaceLabel | "skeleton";
   /** Icon (imported from @tiendanube/icons) to show on the header of the Card */
   headerIcon?: IconType;
+  /** IsFluid in the case when card doesn't need padding */
+  isFluid?: boolean;
+
   /** Callback to be called when Icon header is clicked */
   onClickHeaderIcon?: () => void;
 }
@@ -53,6 +57,7 @@ function Card({
   headerLabel,
   headerIcon: Icon,
   onClickHeaderIcon,
+  isFluid,
 }: InterfaceCard): JSX.Element {
   const [open, setOpen] = React.useState(false);
 
@@ -188,8 +193,12 @@ function Card({
     [isCollapsible, memorizedChildren, open],
   );
 
+  const cardClassname = classNames("nimbus--card-wrapper", {
+    "nimbus--input__fluid": isFluid,
+  });
+
   return (
-    <div className="nimbus--card-wrapper">
+    <div className={cardClassname}>
       {isCollapsible ? (
         <button
           type="button"

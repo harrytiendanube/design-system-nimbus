@@ -10,13 +10,15 @@ export interface InterfaceInteractiveListRadioItem {
   /** Description */
   description?: string;
   /** Labels */
-  labels?: Pick<InterfaceLabel, "id" | "label" | "colorTag">[];
+  labels?: Pick<InterfaceLabel, "id" | "label" | "colorTag" | "appearance">[];
   /** Value */
   value: string;
   /** Checked value */
   checked?: boolean;
   /** Renders as skeleton */
   skeleton?: boolean;
+  /** Border bottom on options */
+  hideBorder?: boolean;
   /** OnChange callback */
   onChange: (event: InterfaceNameChecked) => void;
 }
@@ -28,9 +30,12 @@ function Item({
   value,
   checked,
   skeleton,
+  hideBorder,
   onChange,
 }: InterfaceInteractiveListRadioItem): JSX.Element {
-  const mainClass = classNames("nimbus--interactive-list-item");
+  const mainClass = classNames("nimbus--interactive-list-item", {
+    "nimbus--interactive-list-item__borderBottom": hideBorder,
+  });
 
   const id = `input_${title}`;
 

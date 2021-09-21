@@ -14,13 +14,13 @@ function Section({ children, title }: InterfaceMenuSection): JSX.Element {
   const mainClass = classNames("nimbus--menu-section");
   return (
     <div className={mainClass}>
-      <div className="nimbus--menu-section__title">
-        {title && (
+      {title && (
+        <div className="nimbus--menu-section__title">
           <Text size="small" block appearance="light">
             {title}
           </Text>
-        )}
-      </div>
+        </div>
+      )}
       <div className="nimbus--menu-section__content">{children}</div>
     </div>
   );

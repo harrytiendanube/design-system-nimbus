@@ -13,9 +13,11 @@ export interface InterfaceInteractiveListActionItem {
   /** Description */
   description?: string;
   /** Labels */
-  labels?: Pick<InterfaceLabel, "id" | "label" | "colorTag">[];
+  labels?: Pick<InterfaceLabel, "id" | "label" | "colorTag" | "appearance">[];
   /** Renders as skeleton */
   skeleton?: boolean;
+  /** Border bottom on options */
+  hideBorder?: boolean;
   /** OnChange callback */
   onChange: (event: InterfaceNameChecked) => void;
 }
@@ -26,9 +28,12 @@ function Item({
   description,
   labels,
   skeleton,
+  hideBorder,
   onChange,
 }: InterfaceInteractiveListActionItem): JSX.Element {
-  const mainClass = classNames("nimbus--interactive-list-item");
+  const mainClass = classNames("nimbus--interactive-list-item", {
+    "nimbus--interactive-list-item__borderBottom": hideBorder,
+  });
 
   const handleChange = () => {
     onChange({ name, checked: true });

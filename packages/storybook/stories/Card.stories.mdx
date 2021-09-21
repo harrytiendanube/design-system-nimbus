@@ -17,6 +17,7 @@ TODO: complete
 <Preview>
   <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
     <Card
+      isFluid={boolean("isFluid", false)}
       title={text("title", "Card Title")}
       primaryButton={{
         children: text("primaryButton.children", "Primary"),
@@ -55,6 +56,7 @@ TODO: complete
       primaryButton="skeleton"
       secondaryButton="skeleton"
       headerLabel="skeleton"
+      isFluid={boolean("isFluid", false)}
     >
       <Text.Skeleton />
     </Card>
@@ -77,6 +79,7 @@ TODO: complete
         children: "Secondary",
         onClick: action("onClickSecondary"),
       }}
+      isFluid={boolean("isFluid", false)}
       isCollapsible
     >
       <Text>Card content</Text>
@@ -101,6 +104,7 @@ TODO: complete
         onClick: action("onClickSecondary"),
       }}
       headerIcon={PrinterIcon}
+      isFluid={boolean("isFluid", false)}
       onClickHeaderIcon={action("onClickHeaderIcon")}
     >
       <Text>Card content</Text>

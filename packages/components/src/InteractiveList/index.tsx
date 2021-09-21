@@ -11,9 +11,11 @@ export interface InterfaceInteractiveListOptions {
   /** Description */
   description?: string;
   /** Labels */
-  labels?: Pick<InterfaceLabel, "id" | "label" | "colorTag">[];
+  labels?: Pick<InterfaceLabel, "id" | "label" | "colorTag" | "appearance">[];
   /** Active indicator */
   active?: boolean;
+  /** Hide border bottom on options */
+  hideBorder?: boolean;
 }
 
 export interface InterfaceInteractiveList {
@@ -73,6 +75,7 @@ function InteractiveList({
         labels={option.labels}
         skeleton={skeleton}
         onChange={handleChangeAction}
+        hideBorder={option.hideBorder}
       />
     ));
 
@@ -88,6 +91,7 @@ function InteractiveList({
         checked={option.active}
         skeleton={skeleton}
         onChange={handleChangeCheck}
+        hideBorder={option.hideBorder}
       />
     ));
 
@@ -103,6 +107,7 @@ function InteractiveList({
         checked={option.active}
         skeleton={skeleton}
         onChange={handleChangeRadio}
+        hideBorder={option.hideBorder}
       />
     ));
 

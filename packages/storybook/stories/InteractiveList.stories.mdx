@@ -31,6 +31,7 @@ TODO: complete
             { id: "5", label: "gray", colorTag: "#f9f9f9" },
             { id: "6", label: "light gray", colorTag: "#fafafa" },
             { id: "7", label: "dark blue", colorTag: "#2c3357" },
+            { id: "8", label: "success", appearance: "success" },
           ],
         },
         {
@@ -45,6 +46,7 @@ TODO: complete
           title: "Variant",
           name: "variant",
           description: "description",
+          hideBorder: true,
         },
       ];
       const [options] = React.useState(optionsInitial);
@@ -85,6 +87,13 @@ TODO: complete
         {
           title: "Shoes",
           name: "shoes",
+          labels: [
+            {
+              id: 1,
+              label: "label",
+              appearance: "success",
+            },
+          ],
         },
       ];
       const [options, setOptions] = React.useState(optionsInitial);
@@ -121,6 +130,13 @@ TODO: complete
           title: "Limited",
           name: "limited",
           active: true,
+          labels: [
+            {
+              id: 1,
+              label: "label",
+              appearance: "success",
+            },
+          ],
         },
         {
           title: "Unlimited",

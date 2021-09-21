@@ -18,7 +18,7 @@ const renderDescription = (
 );
 
 const renderLabels = (
-  labels?: Pick<InterfaceLabel, "id" | "label" | "colorTag">[],
+  labels?: Pick<InterfaceLabel, "id" | "label" | "colorTag" | "appearance">[],
   skeleton?: boolean,
 ): JSX.Element => (
   <>
@@ -33,6 +33,7 @@ const renderLabels = (
                 id={label.id}
                 label={label.label}
                 colorTag={label.colorTag}
+                appearance={label.appearance}
               />
             )}
           </Stack.Item>
@@ -44,7 +45,7 @@ const renderLabels = (
 
 const renderBelow = (
   description?: string,
-  labels?: Pick<InterfaceLabel, "id" | "label" | "colorTag">[],
+  labels?: Pick<InterfaceLabel, "id" | "label" | "colorTag" | "appearance">[],
   skeleton?: boolean,
 ): JSX.Element => {
   if (description && labels) {

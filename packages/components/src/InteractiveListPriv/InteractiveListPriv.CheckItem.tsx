@@ -13,11 +13,13 @@ export interface InterfaceInteractiveListCheckItem {
   /** Description */
   description?: string;
   /** Labels */
-  labels?: Pick<InterfaceLabel, "id" | "label" | "colorTag">[];
+  labels?: Pick<InterfaceLabel, "id" | "label" | "colorTag" | "appearance">[];
   /** Checked value */
   checked?: boolean;
   /** Renders as skeleton */
   skeleton?: boolean;
+  /** Border bottom on options */
+  hideBorder?: boolean;
   /** OnChange callback */
   onChange: (event: InterfaceNameChecked) => void;
 }
@@ -29,9 +31,12 @@ function Item({
   labels,
   checked,
   skeleton,
+  hideBorder,
   onChange,
 }: InterfaceInteractiveListCheckItem): JSX.Element {
-  const mainClass = classNames("nimbus--interactive-list-item");
+  const mainClass = classNames("nimbus--interactive-list-item", {
+    "nimbus--interactive-list-item__borderBottom": hideBorder,
+  });
 
   const id = `input_${title}`;
 

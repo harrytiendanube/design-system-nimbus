@@ -32,9 +32,9 @@ TODO: complete
   >
     <div className="fullscreen-container">
       <Menu
-        title={text("title", "Store nimbus")}
-        href="http://www.tiendanube.com"
-        show={boolean("show", false)}
+        title={text("title", "")}
+        href={text("href", "")}
+        show={boolean("show", true)}
         footer={{
           label: "Close Session",
           icon: LogOutIcon,
@@ -94,15 +94,10 @@ TODO: complete
           <Button onClick={() => setShow(true)}>Show Menu</Button>
           <Menu
             title={text("title", "Store nimbus")}
-            href="http://www.tiendanube.com"
+            href={text("href", "http://www.tiendanube.com")}
             onClose={() => setShow(false)}
             show={show}
             position={select("position", ["right", "left"])}
-            footer={{
-              label: "Close Session",
-              icon: LogOutIcon,
-              onClick: action("onClick Close"),
-            }}
           >
             <Menu.Section>
               <Menu.Item
@@ -143,8 +138,8 @@ TODO: complete
     <div className="fullscreen-container">
       <Menu
         title={text("title", "Store nimbus")}
-        href="http://www.tiendanube.com"
-        show={boolean("show", false)}
+        href={text("href", "http://www.tiendanube.com")}
+        show={boolean("show", true)}
         footer={{
           label: "Close Session",
           icon: LogOutIcon,

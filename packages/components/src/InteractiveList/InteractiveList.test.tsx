@@ -126,4 +126,33 @@ describe("<InteractiveList />", () => {
     userEvent.click(radioUnlimited);
     expect(handleChange).toBeCalledTimes(2);
   });
+
+  it("render options with no border bottom", () => {
+    const handleChange = jest.fn();
+
+    const { container } = render(
+      <InteractiveList
+        addItemLabel="Add a variant"
+        onChange={handleChange}
+        mode="single"
+        options={[
+          {
+            title: "Limited",
+            name: "limited",
+          },
+          {
+            title: "Unlimited",
+            name: "unlimited",
+            hideBorder: true,
+          },
+        ]}
+      />,
+    );
+
+    expect(
+      container.querySelectorAll(
+        ".nimbus--interactive-list-item__borderBottom",
+      ),
+    ).toHaveLength(1);
+  });
 });

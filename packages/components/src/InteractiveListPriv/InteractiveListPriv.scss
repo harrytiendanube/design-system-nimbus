@@ -37,6 +37,10 @@
   width: 100%;
 }
 
+&.#{$prefix}--interactive-list-item__borderBottom {
+  border-bottom: 0;
+}
+
 .#{$prefix}--interactive-list-item__button {
   appearance: none;
   background-color: transparent;
