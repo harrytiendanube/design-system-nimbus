@@ -55,8 +55,11 @@ TODO: complete
       const rowsId = DATA_ROWS.map((row) => row.id);
       const onSelectAction = action("onSelectAction");
       const placeholder = "Select an Option";
-      const { bulkAction, selectedRowsId, handleOnSelectRow } = useBulkAction({
+      const [selectedRowsId, setSelectedRowsId] = React.useState([]);
+      const { bulkAction, handleOnSelectRow } = useBulkAction({
         rowsId,
+        selectedRowsId,
+        setSelectedRowsId : (ids) => setSelectedRowsId(ids),
         placeholder,
         getLabel,
         options: OPTIONS,
@@ -198,8 +201,11 @@ TODO: complete
       const rowsId = dataRows.map((row) => row.id);
       const onSelectAction = action("onSelectAction");
       const placeholder = "Select an Option";
-      const { bulkAction, selectedRowsId, handleOnSelectRow } = useBulkAction({
+      const [selectedRowsId, setSelectedRowsId] = React.useState([]);
+      const { bulkAction, handleOnSelectRow } = useBulkAction({
         rowsId,
+        selectedRowsId,
+        setSelectedRowsId : (ids) => setSelectedRowsId(ids),
         placeholder,
         getLabel,
         options: OPTIONS,
@@ -337,8 +343,11 @@ TODO: complete
       const rowsId = DATA_ROWS_PLAYGROUND.map((row) => row.id);
       const onSelectAction = action("onSelectAction");
       const placeholder = "Select an Option";
-      const { bulkAction, selectedRowsId, handleOnSelectRow } = useBulkAction({
+      const [selectedRowsId, setSelectedRowsId] = React.useState([]);
+      const { bulkAction, handleOnSelectRow } = useBulkAction({
         rowsId,
+        selectedRowsId,
+        setSelectedRowsId,
         placeholder,
         getLabel,
         options: OPTIONS,

@@ -59,8 +59,11 @@ const DataListWithActions = () => {
   const onEditMode = () => {
     setEditMode(true);
   };
-  const { bulkAction, selectedRowsId, handleOnSelectRow } = useBulkAction({
+  const [selectedRowsId, setSelectedRowsId] = React.useState<string[]>([]);
+  const { bulkAction, handleOnSelectRow } = useBulkAction({
     rowsId,
+    selectedRowsId,
+    setSelectedRowsId,
     placeholder,
     getLabel,
     options,

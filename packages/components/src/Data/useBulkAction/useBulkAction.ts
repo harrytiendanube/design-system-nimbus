@@ -1,5 +1,3 @@
-import * as React from "react";
-
 import {
   InterfaceBulkAction,
   InterfaceSelectOption,
@@ -7,6 +5,8 @@ import {
 
 export interface InterfaceUseBulkAction {
   rowsId: string[];
+  selectedRowsId: string[];
+  setSelectedRowsId: (rowsId: string[]) => void;
   placeholder: string;
   getLabel: (count: number) => string;
   options: InterfaceSelectOption[];
@@ -15,21 +15,18 @@ export interface InterfaceUseBulkAction {
 
 export interface InterfaceUseBulkActionResult {
   bulkAction: InterfaceBulkAction;
-  selectedRowsId: string[];
   handleOnSelectRow: (id: string) => void;
 }
 
 function useBulkAction({
   rowsId,
+  selectedRowsId,
+  setSelectedRowsId,
   placeholder,
   getLabel,
   options,
   onSelectAction,
 }: InterfaceUseBulkAction): InterfaceUseBulkActionResult {
-  const initialSelectedIdRows: string[] = [];
-  const [selectedRowsId, setSelectedRowsId] = React.useState(
-    initialSelectedIdRows,
-  );
   const handleSelectAll = (all: boolean) => {
     if (all) {
       setSelectedRowsId([...rowsId]);
@@ -59,7 +56,7 @@ function useBulkAction({
     onSelectAction,
   };
 
-  return { bulkAction, selectedRowsId, handleOnSelectRow };
+  return { bulkAction, handleOnSelectRow };
 }
 
 export default useBulkAction;

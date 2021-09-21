@@ -70,9 +70,11 @@ const TableContent = () => (
 
 const DataTableWithActions = () => {
   const rowsId = rows.map((row) => row.id);
-
-  const { bulkAction, selectedRowsId, handleOnSelectRow } = useBulkAction({
+  const [selectedRowsId, setSelectedRowsId] = React.useState<string[]>([]);
+  const { bulkAction, handleOnSelectRow } = useBulkAction({
     rowsId,
+    selectedRowsId,
+    setSelectedRowsId,
     placeholder,
     getLabel,
     options,
