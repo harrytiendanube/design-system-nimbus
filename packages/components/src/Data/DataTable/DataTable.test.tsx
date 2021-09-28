@@ -175,9 +175,11 @@ describe("<DataTable />", () => {
     userEvent.selectOptions(screen.getByRole("combobox"), [options[0].value]);
     expect(mockOnSelectAction).toBeCalledTimes(1);
 
-    // click on a Row
+    // click on a Row calls OnClick and does not select
     expect(mockOnClick).toBeCalledTimes(0);
+    expect(screen.getAllByRole("checkbox")[1]).not.toBeChecked();
     userEvent.click(screen.getByText(rows[0].order));
+    expect(screen.getAllByRole("checkbox")[1]).not.toBeChecked();
     expect(mockOnClick).toBeCalledTimes(1);
   });
 });

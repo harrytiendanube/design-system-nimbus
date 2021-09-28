@@ -42,7 +42,6 @@ function Row({
     event: React.MouseEvent<HTMLTableRowElement, MouseEvent>,
   ) => {
     event.stopPropagation();
-    onSelectRow?.(id);
     onClick?.(id);
   };
 

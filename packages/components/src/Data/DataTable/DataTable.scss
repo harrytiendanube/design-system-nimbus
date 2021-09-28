@@ -57,7 +57,6 @@
 .#{$prefix}--data-table__header,
 .#{$prefix}--data-table__row {
   border-bottom: 1px solid $color-default;
-  cursor: pointer;
   display: flex;
   flex-wrap: wrap;
   position: relative;
