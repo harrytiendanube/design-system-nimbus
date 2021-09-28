@@ -61,6 +61,10 @@
 .#{$prefix}--interactive-list-item__info {
   margin-top: $spacing-x-small;
   text-align: left;
+  
+  .#{$prefix}--interactive-list-item__description-wrapper {
+    margin-bottom: $spacing-x-small;
+  }
 }
 
 // Radio

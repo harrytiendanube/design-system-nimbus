@@ -6,14 +6,17 @@ const renderDescription = (
   skeleton?: boolean,
 ): JSX.Element => (
   <>
-    {description &&
-      (skeleton ? (
-        <Text.Skeleton width="large" />
-      ) : (
-        <Text block size="small" appearance="light">
-          {description}
-        </Text>
-      ))}
+    {description && (
+      <div className="nimbus--interactive-list-item__description-wrapper">
+        {skeleton ? (
+          <Text.Skeleton width="large" />
+        ) : (
+          <Text block size="small" appearance="light">
+            {description}
+          </Text>
+        )}
+      </div>
+    )}
   </>
 );
 
@@ -48,17 +51,12 @@ const renderBelow = (
   labels?: Pick<InterfaceLabel, "id" | "label" | "colorTag" | "appearance">[],
   skeleton?: boolean,
 ): JSX.Element => {
-  if (description && labels) {
-    throw new Error(
-      "You can not use parameters 'description' and 'labels' simultaneously",
-    );
-  }
   return (
     <>
       {(labels || description) && (
         <div className="nimbus--interactive-list-item__info">
-          {renderDescription(description, skeleton)}
-          {renderLabels(labels, skeleton)}
+          {description && renderDescription(description, skeleton)}
+          {labels && renderLabels(labels, skeleton)}
         </div>
       )}
     </>
