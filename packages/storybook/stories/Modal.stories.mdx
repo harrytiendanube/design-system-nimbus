@@ -3,7 +3,13 @@ import { withKnobs, text, boolean, select } from "@storybook/addon-knobs";
 import { action } from "@storybook/addon-actions";
 import { withA11y } from "@storybook/addon-a11y";
 import { SlidersIcon } from "@tiendanube/icons";
-import { Modal, Select, Button, Alert } from "@tiendanube/components/src";
+import {
+  Modal,
+  Select,
+  Button,
+  Alert,
+  Input,
+} from "@tiendanube/components/src";
 import { STATUS_ORDER, SHIPPING_METHOD } from "./utils/constants";
 
 import "../utils/style.css";
@@ -23,13 +29,13 @@ TODO: complete
       primaryAction={{
         children: "Filter Orders",
         onClick: action("onClickPrimary"),
-        appearance: select("appearancePrimary", [
+        appearance: select(
+          "appearancePrimary",
+          ["primary", "secondary", "danger"],
           "primary",
-          "secondary",
-          "danger",
-        ],"primary"),
+        ),
         icon: SlidersIcon,
-        disabled: boolean("disabled", false)
+        disabled: boolean("disabled", false),
       }}
       secondaryAction={{
         children: "Clear filters",
@@ -121,5 +127,48 @@ TODO: complete
         </div>
       );
     }}
+  </Story>
+</Preview>
+
+# Stressed
+
+<Preview>
+  <Story name="stressed" parameters={{ decorators: [withKnobs, withA11y] }}>
+    <Modal
+      title="Stressed modal"
+      show={boolean("show", false)}
+      onDismiss={action("onDismiss")}
+      primaryAction={{
+        children: "Accept",
+        onClick: action("onClickPrimary"),
+        appearance: select(
+          "appearancePrimary",
+          ["primary", "secondary", "danger"],
+          "primary",
+        ),
+        disabled: boolean("disabled", false),
+      }}
+      secondaryAction={{
+        children: "Cancel",
+        onClick: action("onClickSecondary"),
+      }}
+    >
+      <Select
+        label={text("label", "Select 1")}
+        name={text("name", "select1")}
+        options={STATUS_ORDER}
+        onChange={action("onChange")}
+      />
+      <Select
+        label={text("label 2", "Select 2")}
+        name={text("name", "select2")}
+        options={SHIPPING_METHOD}
+        onChange={action("onChange")}
+      />
+      <Input label="Input 1" name="input1" />
+      <Input label="Input 2" name="input2" />
+      <Input label="Input 3" name="input3" />
+      <Input label="Input 4" name="input4" />
+    </Modal>
   </Story>
 </Preview>

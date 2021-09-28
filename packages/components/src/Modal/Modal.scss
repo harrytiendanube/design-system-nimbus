@@ -39,6 +39,9 @@ body {
 .#{$prefix}--modal-wrapper {
   background-color: $color-background;
   border-radius: $actions-border-radius;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
   height: auto;
   max-height: 100%;
   max-width: calc(100% - #{$spacing-large});
@@ -60,6 +63,7 @@ body {
   }
 
   .#{$prefix}--modal-header {
+    flex: 0 0 auto;
     position: relative;
 
     .#{$prefix}--modal-header__title {
@@ -102,6 +106,7 @@ body {
   }
 
   .#{$prefix}--modal-body {
+    flex: 1 1 auto;
     overflow-y: auto;
 
     > *:not(:last-of-type) {
@@ -113,6 +118,7 @@ body {
     @include nimbus--action-wrapper(flex-end);
 
     display: flex;
+    flex: 0 0 auto;
     justify-content: flex-end;
   }
 }
