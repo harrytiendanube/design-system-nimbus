@@ -64,6 +64,8 @@ export interface InterfaceInput {
   autoCorrect?: boolean;
   /** Determines whether the input is disabled */
   disabled?: boolean;
+  /** Controls if text input is automatically selected */
+  autoSelect?: boolean;
   /** OnChange callback function */
   onChange?: (event: InterfaceNameValue) => void;
   /** OnSubmit callback function */
@@ -106,6 +108,7 @@ function Input({
   autoCapitalize = false,
   autoCorrect = false,
   disabled = false,
+  autoSelect = false,
   onChange,
   onSubmit,
   onBlur,
@@ -135,6 +138,7 @@ function Input({
   ) => {
     const { target } = event;
     onFocus?.({ name: target.name, value: target.value });
+    if (autoSelect) inputRef.current?.select();
   };
 
   const handleBlur = (
