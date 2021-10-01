@@ -20,7 +20,7 @@
     "check:size": "yarn build && size-limit"
   },
   "dependencies": {
-    "@tiendanube/icons": "0.2.2",
+    "@tiendanube/icons": "0.2.4",
     "@types/classnames": "2.2.10",
     "classnames": "2.2.6",
     "react": "16.13.1",

@@ -3314,6 +3314,19 @@
     trim-newlines "3.0.0"
     yargs "15.3.1"
 
+"@tiendanube/icons@0.2.4":
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/@tiendanube/icons/-/icons-0.2.4.tgz#75ab15a027d1a652d126509670c3b61f791e7746"
+  integrity sha512-VhcfF1iXv9MTcnDH/yvabk79yEWm2fsOzS2FTvvjAVLJYaLFOsJgIwqCvgNjBV7RqJmj51Gs66ZIul8MumPokg==
+  dependencies:
+    cheerio "1.0.0-rc.3"
+    globby "11.0.1"
+    lodash.merge "4.6.2"
+    path "0.12.7"
+    svgo "1.3.2"
+    trim-newlines "3.0.0"
+    yargs "15.3.1"
+
 "@types/anymatch@*":
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/@types/anymatch/-/anymatch-1.3.1.tgz#336badc1beecb9dacc38bea2cf32adf627a8421a"
