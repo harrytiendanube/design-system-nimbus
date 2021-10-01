@@ -1,6 +1,6 @@
 {
   "name": "@tiendanube/components",
-  "version": "1.0.71",
+  "version": "1.0.72",
   "main": "dist/index.js",
   "module": "dist/index.ts",
   "types": "dist/index.d.ts",
