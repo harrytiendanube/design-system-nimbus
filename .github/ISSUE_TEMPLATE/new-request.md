@@ -15,6 +15,10 @@ assignees: juanchigallego, diegopsilverio, gabifagundes, juniorconquista
 
 Who's the team or squad requesting this change.
 
+🗓 **Timeline**
+
+Optionally, you can indicate a deadline for this to be ready.
+
 📖 **Describe the feature or component**
 
 Please take the time to describe what feature is needed or what the component will do.
@@ -30,3 +34,12 @@ If available, add sketches, UI designs or link a design project that clearly sho
 ❗️ **Additional context**
 
 Add any other context about the problem here.
+
+📋 **Next Steps**
+
+(Delete if not needed)
+
+- [ ] If needed, you can add
+- [ ] additional tasks
+- [ ] that have to be completed
+- [ ] for this issue to be solved
