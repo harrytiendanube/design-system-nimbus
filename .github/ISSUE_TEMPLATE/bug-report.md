@@ -1,7 +1,7 @@
 ---
 name: Bug report
 about: Create a report to help us improve
-title: "[NIMBUS]"
+title: "[BUG]"
 labels: bug
 assignees: juanchigallego, diegopsilverio, gabifagundes, juniorconquista
 
