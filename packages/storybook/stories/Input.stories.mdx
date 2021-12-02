@@ -33,6 +33,7 @@ TODO: complete
             "password",
             "email",
             "search",
+            "color",
           ])}
           appearance={select("appearance", [
             "default",
@@ -118,6 +119,15 @@ TODO: complete
           label="Label"
           prependIcon={ArrowRightIcon}
           value={value}
+          type={select("type", [
+            "text",
+            "tel",
+            "number",
+            "password",
+            "email",
+            "search",
+            "color",
+          ])}
           appearance={select("appearance", [
             "default",
             "warning",
@@ -160,6 +170,15 @@ TODO: complete
               "validation_loading",
               "validation_success",
               "validation_error",
+            ])}
+            type={select("type", [
+              "text",
+              "tel",
+              "number",
+              "password",
+              "email",
+              "search",
+              "color",
             ])}
             helpText={text("helpText", "some helper text")}
             prependLabel={select("prependLabel", ["$", "R$", "U$S"], "$")}

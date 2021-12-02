@@ -114,6 +114,7 @@ function Input({
   onBlur,
   onFocus,
 }: InterfaceInput): JSX.Element {
+  const [colorInput, setColorInput] = React.useState("#ffffff");
   const [showPassword, setsShowPassword] = React.useState(false);
   if (prependLabel && PrependIcon) {
     throw new Error(
@@ -130,6 +131,7 @@ function Input({
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { target } = event;
+    if (type === "color") setColorInput(target.value);
     onChange?.({ name: target.name, value: target.value });
   };
 
@@ -194,6 +196,18 @@ function Input({
     </span>
   );
 
+  const renderColorInput = type === "color" && (
+    <div className="nimbus--input--color--container">
+      <input
+        type="color"
+        className="nimbus--input--color"
+        value={colorInput}
+        data-testid="inputField-color"
+        onChange={(e) => setColorInput(e.target.value)}
+      />
+    </div>
+  );
+
   const getIcon = (iconType: string) => {
     switch (iconType) {
       case "search":
@@ -255,11 +269,13 @@ function Input({
     </>
   );
 
-  const newType = showPassword ? "text" : type;
+  const newType = showPassword || type === "color" ? "text" : type;
+  const newValue = type === "color" ? colorInput : value;
 
   const classname = classNames("nimbus--input__field", {
     "with-prepend": renderLeftIcon,
     "with-append": type === "search" || type === "password",
+    "with-color": type === "color",
   });
 
   const inputRef = React.useRef<HTMLInputElement>(null);
@@ -276,7 +292,7 @@ function Input({
   const inputField = (
     <>
       <div className="nimbus--input">
-        {multiRows ? (
+        {multiRows && (
           <textarea
             data-testid="textAreaField"
             className="nimbus--input__field"
@@ -297,7 +313,8 @@ function Input({
             required={required}
             disabled={disabled}
           />
-        ) : (
+        )}
+        {!multiRows && (
           <>
             <input
               data-testid="inputField"
@@ -307,7 +324,7 @@ function Input({
               type={newType}
               inputMode={inputMode}
               ref={inputRef}
-              value={value}
+              value={newValue}
               placeholder={placeholder}
               autoCapitalize={autoCapitalize ? "on" : "off"}
               autoCorrect={autoCorrect ? "on" : "off"}
@@ -322,6 +339,7 @@ function Input({
             />
             {renderLeftIcon}
             {renderRightIcon}
+            {renderColorInput}
           </>
         )}
       </div>

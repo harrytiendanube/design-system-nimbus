@@ -399,3 +399,26 @@ describe("<Input type='password' />", () => {
     expect(passwordInput).toHaveAttribute("type", "password");
   });
 });
+
+describe("<Input type='color' />", () => {
+  it("should render the color box and input text when type is color", () => {
+    setup({ props: { type: "color" } });
+
+    expect(screen.getByTestId("inputField-color")).toBeTruthy();
+    expect(screen.getByTestId("inputField")).toBeTruthy();
+  });
+
+  it("should input text have color value selected by color box", () => {
+    setup({ props: { type: "color" } });
+    const colorInput = screen.getByTestId("inputField-color");
+    fireEvent.input(colorInput, { target: { value: "#333333" } });
+    expect(screen.getByTestId("inputField")).toHaveValue("#333333");
+  });
+
+  it("should color box have color selected by input field", () => {
+    setup({ props: { type: "color" } });
+    const inputField = screen.getByTestId("inputField");
+    fireEvent.input(inputField, { target: { value: "#cecece" } });
+    expect(screen.getByTestId("inputField")).toHaveValue("#cecece");
+  });
+});

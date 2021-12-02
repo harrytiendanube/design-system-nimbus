@@ -11,9 +11,19 @@
     .#{$prefix}--input__field {
       border-color: $color-danger-pure;
 
+      ~ .#{$prefix}--input--color--container {
+        border-color: $color-danger-pure;
+        border-right-color: $color-grey-50;
+      }
+
       &:focus {
         border-color: $color-danger-active;
         box-shadow: 0 0 0 $input-border-width $color-danger-active;
+        
+        ~ .#{$prefix}--input--color--container {
+          border-color: $color-primary-active;
+          border-right-color: $color-grey-50;
+        }
 
         ~ .#{$prefix}--input__append svg {
           fill: $color-danger-pure;
@@ -32,9 +42,19 @@
     .#{$prefix}--input__field {
       border-color: $color-success-pure;
 
+      ~ .#{$prefix}--input--color--container {
+        border-color: $color-success-pure;
+        border-right-color: $color-grey-50;
+      }
+
       &:focus {
         border-color: $color-success-active;
         box-shadow: 0 0 0 $input-border-width $color-success-active;
+
+        ~ .#{$prefix}--input--color--container {
+          border-color: $color-success-active;
+          border-right-color: $color-grey-50;
+        }
 
         ~ .#{$prefix}--input__append svg {
           fill: $color-success-pure;
@@ -54,9 +74,19 @@
       background-color: $color-warning-lighter;
       border-color: $color-warning-pure;
 
+      ~ .#{$prefix}--input--color--container {
+        border-color: $color-warning-pure;
+        border-right-color: $color-grey-50;
+      }
+
       &:focus {
         border-color: $color-warning-pure;
         box-shadow: 0 0 0 $input-border-width $color-warning-pure;
+
+        ~ .#{$prefix}--input--color--container {
+          border-color: $color-warning-pure;
+          border-right-color: $color-grey-50;
+        }
 
         ~ .#{$prefix}--input__append svg {
           fill: $color-warning-pure;
@@ -76,9 +106,19 @@
       background-color: $color-danger-lighter;
       border-color: $color-danger-pure;
 
+      ~ .#{$prefix}--input--color--container {
+        border-color: $color-danger-pure;
+        border-right-color: $color-grey-50;
+      }
+
       &:focus {
         border-color: $color-danger-pure;
         box-shadow: 0 0 0 $input-border-width $color-danger-pure;
+
+        ~ .#{$prefix}--input--color--container {
+          border-color: $color-danger-pure;
+          border-right-color: $color-grey-50;
+        }
 
         ~ .#{$prefix}--input__append svg {
           fill: $color-danger-pure;
@@ -171,7 +211,16 @@
 }
 
 .#{$prefix}--input {
+  display: flex;
   position: relative;
+  
+  input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+  }
+
+  input[type="color"]::-webkit-color-swatch {
+    border: 0;
+  }
 
   .#{$prefix}--input__prepend,
   .#{$prefix}--input__append {
@@ -206,6 +255,30 @@
     cursor: pointer;
   }
 
+  .#{$prefix}--input--color--container {
+    background: transparent;
+    border: 1px solid $color-grey-50;
+   
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 0;
+   
+    height: 42px;
+    overflow: hidden;
+    position: absolute;
+    width: 42px;
+
+    .#{$prefix}--input--color {
+      height: 100%;
+    }
+  }
+
+  .#{$prefix}--input--color--container + input {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+  }
+
   .#{$prefix}--input__field {
     @include nimbus--type("text-body");
     appearance: none;
@@ -220,6 +293,10 @@
 
     &.with-prepend {
       padding-left: $spacing-large;
+    }
+
+    &.with-color {
+      padding-left: $spacing-xx-large;
     }
 
     &.with-append {
@@ -246,6 +323,11 @@
     &:focus {
       border-color: $color-primary-active;
       box-shadow: 0 0 0 $input-border-width $color-primary-active;
+
+      ~ .#{$prefix}--input--color--container {
+        border-color: $color-primary-active;
+        border-right-color: $color-grey-50;
+      }
 
       ~ .#{$prefix}--input__prepend svg,
       ~ .#{$prefix}--input__append svg {
