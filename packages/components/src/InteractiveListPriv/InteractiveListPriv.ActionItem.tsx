@@ -1,8 +1,8 @@
 import * as React from "react";
 import classNames from "classnames";
-import { ChevronRightIcon } from "@tiendanube/icons";
+import { ChevronRightIcon, Icon as IconType } from "@tiendanube/icons";
 import { Text, InterfaceLabel } from "..";
-import { renderBelow } from "./utils";
+import { renderBelow, renderIcon } from "./utils";
 import { InterfaceNameChecked } from "../common/interfaces";
 
 export interface InterfaceInteractiveListActionItem {
@@ -20,6 +20,16 @@ export interface InterfaceInteractiveListActionItem {
   hideBorder?: boolean;
   /** OnChange callback */
   onChange: (event: InterfaceNameChecked) => void;
+  /** Icon Component imported from @tiendanube/icons */
+  icon?: IconType;
+  /** Appearance of the IconItem determines the background color */
+  iconAppearance?:
+    | "default"
+    | "primary"
+    | "secondary"
+    | "danger"
+    | "warning"
+    | "success";
 }
 
 function Item({
@@ -30,6 +40,8 @@ function Item({
   skeleton,
   hideBorder,
   onChange,
+  icon,
+  iconAppearance,
 }: InterfaceInteractiveListActionItem): JSX.Element {
   const mainClass = classNames("nimbus--interactive-list-item", {
     "nimbus--interactive-list-item__borderBottom": hideBorder,
@@ -48,9 +60,14 @@ function Item({
         onClick={handleChange}
         className="nimbus--interactive-list-item__button"
       >
-        <div className="nimbus--interactive-list-item__title">
-          {skeleton ? <Text.Skeleton /> : <Text>{title}</Text>}
-          {!skeleton && <ChevronRightIcon />}
+        <div className="nimbus--interactive-list-item__wrapper--all">
+          <div className="nimbus--interactive-list-item__wrapper--upper">
+            {renderIcon(icon, iconAppearance)}
+            <div className="nimbus--interactive-list-item__title">
+              {skeleton ? <Text.Skeleton /> : <Text>{title}</Text>}
+              {!skeleton && <ChevronRightIcon />}
+            </div>
+          </div>
         </div>
         {renderBelow(description, labels, skeleton)}
       </button>

@@ -1,5 +1,6 @@
 import * as React from "react";
 
+import { Icon as IconType } from "@tiendanube/icons";
 import { InteractiveListPriv, InterfaceLabel } from "..";
 import { InterfaceNameChecked } from "../common/interfaces";
 
@@ -16,6 +17,16 @@ export interface InterfaceInteractiveListOptions {
   active?: boolean;
   /** Hide border bottom on options */
   hideBorder?: boolean;
+  /** Icon Component imported from @tiendanube/icons */
+  icon?: IconType;
+  /** Appearance of the IconItem determines the background color */
+  iconAppearance?:
+    | "default"
+    | "primary"
+    | "secondary"
+    | "danger"
+    | "warning"
+    | "success";
 }
 
 export interface InterfaceInteractiveList {
@@ -76,6 +87,8 @@ function InteractiveList({
         skeleton={skeleton}
         onChange={handleChangeAction}
         hideBorder={option.hideBorder}
+        icon={option.icon}
+        iconAppearance={option.iconAppearance}
       />
     ));
 
@@ -92,6 +105,8 @@ function InteractiveList({
         skeleton={skeleton}
         onChange={handleChangeCheck}
         hideBorder={option.hideBorder}
+        icon={option.icon}
+        iconAppearance={option.iconAppearance}
       />
     ));
 
@@ -108,6 +123,8 @@ function InteractiveList({
         skeleton={skeleton}
         onChange={handleChangeRadio}
         hideBorder={option.hideBorder}
+        icon={option.icon}
+        iconAppearance={option.iconAppearance}
       />
     ));
 

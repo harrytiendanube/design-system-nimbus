@@ -8,7 +8,7 @@ import Text from "../Text";
 
 export interface InterfaceIconItem {
   /** Icon Component imported from @tiendanube/icons */
-  icon: IconType;
+  icon?: IconType;
   /** Appearance of the IconItem determines the background color */
   appearance?:
     | "default"
@@ -18,7 +18,7 @@ export interface InterfaceIconItem {
     | "warning"
     | "success";
   /** Title for the IconItem */
-  title: string;
+  title?: string;
   /** Subtitle for the IconItem */
   subtitle?: string;
   /** Link to display in the IconItem */
@@ -50,7 +50,7 @@ function IconItem({
   return (
     <div className="nimbus--icon-item" role="status">
       <div className={classname} aria-label={title}>
-        <Icon />
+        {Icon && <Icon />}
       </div>
       <div className="nimbus--icon-item__info">
         <Text>{title}</Text>

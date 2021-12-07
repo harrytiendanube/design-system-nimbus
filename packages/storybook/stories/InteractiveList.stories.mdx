@@ -2,6 +2,7 @@ import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
 import { withKnobs, boolean } from "@storybook/addon-knobs";
 import { withA11y } from "@storybook/addon-a11y";
 import { action } from "@storybook/addon-actions";
+import { MoneyIcon, RemoveFormatIcon, CheckIcon } from "@tiendanube/icons";
 
 import { InteractiveList } from "@tiendanube/components/src";
 import "../utils/style.css";
@@ -152,6 +153,67 @@ TODO: complete
             ...option,
             active: selected[0] === option.name,
           }));
+          return newOptions;
+        });
+      };
+      return (
+        <InteractiveList
+          onChange={handleChange}
+          mode="single"
+          skeleton={skeleton}
+          options={options}
+        />
+      );
+    }}
+  </Story>
+</Preview>
+
+## Radio with Icon
+
+<Preview>
+  <Story
+    name="radio with icon"
+    parameters={{ decorators: [withKnobs, withA11y] }}
+  >
+    {() => {
+      const skeleton = boolean("skeleton", false);
+      const optionsInitial = [
+        {
+          title: "Payment not realized",
+          name: "paymentNotRealized",
+          active: true,
+          labels: [
+            {
+              id: 1,
+              label: "label",
+              appearance: "success",
+            },
+          ],
+          icon: RemoveFormatIcon,
+          iconAppearance: "default",
+        },
+        {
+          title: "Processing payment",
+          name: "processingPayment",
+          icon: MoneyIcon,
+          iconAppearance: "warning",
+          description: "description",
+        },
+        {
+          title: "Payment received",
+          name: "paymentNotReceived",
+          icon: CheckIcon,
+          iconAppearance: "success",
+        },
+      ];
+      const [options, setOptions] = React.useState(optionsInitial);
+      const handleChange = (selected) => {
+        action("onChange")(selected);
+        setOptions((currentOptions) => {
+          const newOptions = currentOptions.map((option) => {
+            const active = selected[0] === option.name;
+            return { ...option, active };
+          });
           return newOptions;
         });
       };

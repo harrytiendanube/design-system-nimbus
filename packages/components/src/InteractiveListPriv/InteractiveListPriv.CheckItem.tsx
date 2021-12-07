@@ -1,8 +1,8 @@
 import * as React from "react";
 import classNames from "classnames";
-import { CheckIcon } from "@tiendanube/icons";
+import { CheckIcon, Icon as IconType } from "@tiendanube/icons";
 import { Text, InterfaceLabel, Checkbox } from "..";
-import { renderBelow } from "./utils";
+import { renderBelow, renderIcon } from "./utils";
 import { InterfaceNameChecked } from "../common/interfaces";
 
 export interface InterfaceInteractiveListCheckItem {
@@ -22,6 +22,16 @@ export interface InterfaceInteractiveListCheckItem {
   hideBorder?: boolean;
   /** OnChange callback */
   onChange: (event: InterfaceNameChecked) => void;
+  /** Icon Component imported from @tiendanube/icons */
+  icon?: IconType;
+  /** Appearance of the IconItem determines the background color */
+  iconAppearance?:
+    | "default"
+    | "primary"
+    | "secondary"
+    | "danger"
+    | "warning"
+    | "success";
 }
 
 function Item({
@@ -33,6 +43,8 @@ function Item({
   skeleton,
   hideBorder,
   onChange,
+  icon,
+  iconAppearance,
 }: InterfaceInteractiveListCheckItem): JSX.Element {
   const mainClass = classNames("nimbus--interactive-list-item", {
     "nimbus--interactive-list-item__borderBottom": hideBorder,
@@ -47,32 +59,37 @@ function Item({
 
   return (
     <label htmlFor={id} className={mainClass} role="listitem">
-      <div className="nimbus--interactive-list-item__title">
-        {skeleton ? <Text.Skeleton /> : <Text>{title}</Text>}
-        <div className="nimbus--checkbox-wrapper">
-          {skeleton ? (
-            <Checkbox.Skeleton />
-          ) : (
-            <>
-              <input
-                type="checkbox"
-                id={id}
-                name={name}
-                checked={checked}
-                onChange={handleChange}
-                className="nimbus--checkbox"
-              />
-              <div className="nimbus--checkbox-label" />
-              {checked && (
-                <div className="nimbus--checkbox__check">
-                  <CheckIcon />
-                </div>
+      <div className="nimbus--interactive-list-item__wrapper--all">
+        <div className="nimbus--interactive-list-item__wrapper--upper">
+          {renderIcon(icon, iconAppearance)}
+          <div className="nimbus--interactive-list-item__title">
+            {skeleton ? <Text.Skeleton /> : <Text>{title}</Text>}
+            <div className="nimbus--checkbox-wrapper">
+              {skeleton ? (
+                <Checkbox.Skeleton />
+              ) : (
+                <>
+                  <input
+                    type="checkbox"
+                    id={id}
+                    name={name}
+                    checked={checked}
+                    onChange={handleChange}
+                    className="nimbus--checkbox"
+                  />
+                  <div className="nimbus--checkbox-label" />
+                  {checked && (
+                    <div className="nimbus--checkbox__check">
+                      <CheckIcon />
+                    </div>
+                  )}
+                </>
               )}
-            </>
-          )}
+            </div>
+          </div>
         </div>
+        {renderBelow(description, labels, skeleton)}
       </div>
-      {renderBelow(description, labels, skeleton)}
     </label>
   );
 }

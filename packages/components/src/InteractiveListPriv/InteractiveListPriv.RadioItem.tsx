@@ -1,8 +1,8 @@
 import * as React from "react";
 import classNames from "classnames";
-import { CheckIcon } from "@tiendanube/icons";
+import { CheckIcon, Icon as IconType } from "@tiendanube/icons";
 import { Text, Checkbox, InterfaceLabel, InterfaceNameChecked } from "..";
-import { renderBelow } from "./utils";
+import { renderBelow, renderIcon } from "./utils";
 
 export interface InterfaceInteractiveListRadioItem {
   /** Title */
@@ -21,6 +21,16 @@ export interface InterfaceInteractiveListRadioItem {
   hideBorder?: boolean;
   /** OnChange callback */
   onChange: (event: InterfaceNameChecked) => void;
+  /** Icon Component imported from @tiendanube/icons */
+  icon?: IconType;
+  /** Appearance of the IconItem determines the background color */
+  iconAppearance?:
+    | "default"
+    | "primary"
+    | "secondary"
+    | "danger"
+    | "warning"
+    | "success";
 }
 
 function Item({
@@ -32,6 +42,8 @@ function Item({
   skeleton,
   hideBorder,
   onChange,
+  icon,
+  iconAppearance,
 }: InterfaceInteractiveListRadioItem): JSX.Element {
   const mainClass = classNames("nimbus--interactive-list-item", {
     "nimbus--interactive-list-item__borderBottom": hideBorder,
@@ -46,32 +58,37 @@ function Item({
 
   return (
     <label htmlFor={id} className={mainClass} role="listitem">
-      <div className="nimbus--interactive-list-item__title">
-        {skeleton ? <Text.Skeleton /> : <Text>{title}</Text>}
-        <div className="nimbus--radio-wrapper">
-          {skeleton ? (
-            <Checkbox.Skeleton />
-          ) : (
-            <>
-              <input
-                type="radio"
-                id={id}
-                value={value}
-                checked={checked}
-                onChange={handleChange}
-                className="nimbus--radio"
-              />
-              <div className="nimbus--radio-label" />
-              {checked && (
-                <div className="nimbus--radio__check">
-                  <CheckIcon />
-                </div>
+      <div className="nimbus--interactive-list-item__wrapper--all">
+        <div className="nimbus--interactive-list-item__wrapper--upper">
+          {renderIcon(icon, iconAppearance)}
+          <div className="nimbus--interactive-list-item__title">
+            {skeleton ? <Text.Skeleton /> : <Text>{title}</Text>}
+            <div className="nimbus--radio-wrapper">
+              {skeleton ? (
+                <Checkbox.Skeleton />
+              ) : (
+                <>
+                  <input
+                    type="radio"
+                    id={id}
+                    value={value}
+                    checked={checked}
+                    onChange={handleChange}
+                    className="nimbus--radio"
+                  />
+                  <div className="nimbus--radio-label" />
+                  {checked && (
+                    <div className="nimbus--radio__check">
+                      <CheckIcon />
+                    </div>
+                  )}
+                </>
               )}
-            </>
-          )}
+            </div>
+          </div>
         </div>
+        {renderBelow(description, labels)}
       </div>
-      {renderBelow(description, labels)}
     </label>
   );
 }

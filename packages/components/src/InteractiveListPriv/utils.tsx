@@ -1,5 +1,6 @@
 import * as React from "react";
-import { Text, Stack, Label, InterfaceLabel } from "..";
+import { Icon as IconType } from "@tiendanube/icons";
+import { Text, Stack, Label, InterfaceLabel, IconItem } from "..";
 
 const renderDescription = (
   description?: string,
@@ -62,4 +63,18 @@ const renderBelow = (
     </>
   );
 };
-export { renderBelow };
+
+const renderIcon = (
+  icon?: IconType,
+  appearance?:
+    | "default"
+    | "primary"
+    | "secondary"
+    | "danger"
+    | "warning"
+    | "success",
+): JSX.Element | undefined => {
+  return icon && <IconItem icon={icon} appearance={appearance} />;
+};
+
+export { renderBelow, renderIcon };

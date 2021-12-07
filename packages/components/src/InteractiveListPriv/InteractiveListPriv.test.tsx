@@ -1,6 +1,7 @@
 import * as React from "react";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { CheckCircleIcon } from "@tiendanube/icons";
 
 import InteractiveListPriv from ".";
 
@@ -207,5 +208,25 @@ describe("<InteractiveListPriv />", () => {
     expect(container.querySelectorAll(".nimbus--label--success")).toHaveLength(
       1,
     );
+  });
+
+  it("render items with Icons", () => {
+    const handleChange = jest.fn();
+    const { container } = render(
+      <InteractiveListPriv>
+        <InteractiveListPriv.ActionItem
+          title="item"
+          name="item"
+          onChange={handleChange}
+          icon={CheckCircleIcon}
+          iconAppearance="danger"
+        />
+      </InteractiveListPriv>,
+    );
+    expect(screen.getByRole("list")).toHaveClass("nimbus--interactive-list");
+    expect(
+      container.querySelectorAll(".nimbus--icon-item__icon--danger"),
+    ).toBeTruthy();
+    expect(container.querySelectorAll("svg")).toHaveLength(2);
   });
 });

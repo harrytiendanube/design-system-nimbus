@@ -19,6 +19,16 @@
   }
 }
 
+.#{$prefix}--interactive-list-item__wrapper--all {
+  display: flex;
+  flex-direction: column;
+}
+
+.#{$prefix}--interactive-list-item__wrapper--upper {
+  display: flex;
+  flex-direction: row;
+}
+
 .#{$prefix}--interactive-list__add-item {
   .#{$prefix}--interactive-list-item {
     border-bottom: 0;
@@ -51,6 +61,7 @@
 .#{$prefix}--interactive-list-item__title {
   align-items: center;
   display: flex;
+  flex: 1;
   justify-content: space-between;
 
   .#{$prefix}--text {
