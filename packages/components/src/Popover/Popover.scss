@@ -25,7 +25,7 @@
   transition: opacity $motion-base ease, visibility 0s linear;
   visibility: visible;
   width: 280px;
-  z-index: 500;
+  z-index: 999;
 
   &.position--right {
     left: initial;
