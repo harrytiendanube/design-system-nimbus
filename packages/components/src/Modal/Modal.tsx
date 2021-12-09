@@ -90,12 +90,14 @@ function Modal({
         {memorizedDismissable}
       </div>
       <div className="nimbus--modal-body">{children}</div>
-      <div className="nimbus--modal-footer">
-        <div className="nimbus--action-wrapper">
-          {memorizedSecondary}
-          {memorizedPrimary}
+      {(memorizedSecondary || memorizedPrimary) && (
+        <div className="nimbus--modal-footer">
+          <div className="nimbus--action-wrapper">
+            {memorizedSecondary}
+            {memorizedPrimary}
+          </div>
         </div>
-      </div>
+      )}
     </BaseModal>
   );
 }
