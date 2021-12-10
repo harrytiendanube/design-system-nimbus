@@ -27,6 +27,8 @@ export interface InterfacePage {
   children: React.ReactNode;
   /** Title */
   title: string;
+  /** Subtitle */
+  subtitle?: string;
   /** Header left action */
   headerNavigation?: Pick<InterfaceButton, "children" | "onClick">;
   /** Defines whether the page has pagination to previous */
@@ -61,6 +63,7 @@ function Page({
   primaryAction,
   secondaryActions,
   headerLabels,
+  subtitle,
 }: InterfacePage): JSX.Element {
   const [showTitle, setShowTitle] = React.useState(false);
 
@@ -263,6 +266,15 @@ function Page({
               )}
             </div>
           </Responsive>
+          {subtitle && (
+            <div className="nimbus--page-header__subtitle">
+              {subtitle === "skeleton" ? (
+                <Text.Skeleton />
+              ) : (
+                <Text>{subtitle}</Text>
+              )}
+            </div>
+          )}
           {renderHeaderLabels}
         </div>
       </div>

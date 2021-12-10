@@ -95,7 +95,7 @@ describe("<Page /> on Desktop", () => {
   it("renders with optional parameters", () => {
     setup({
       Component: (
-        <Page title="myTitle">
+        <Page title="myTitle" subtitle="subtitle">
           <Text>Page content</Text>
         </Page>
       ),
@@ -120,11 +120,13 @@ describe("<Page /> on Desktop", () => {
 
     expect(screen.getByRole("heading", { name: "myTitle" }));
     expect(screen.queryByRole("status")).toBeFalsy();
+    expect(screen.getByText("subtitle")).toBeInTheDocument();
   });
 
   it("renders skeletons", () => {
     const props = {
       title: "skeleton",
+      subtitle: "skeleton",
       primaryAction: "skeleton",
       secondaryActions: ["skeleton", "skeleton"],
       headerLabels: ["skeleton", "skeleton"],
@@ -134,6 +136,9 @@ describe("<Page /> on Desktop", () => {
       container.querySelector(".nimbus--page-title-skeleton"),
     ).toBeTruthy();
     expect(container.querySelectorAll(".nimbus--button-skeleton")).toHaveLength(
+      1,
+    );
+    expect(container.querySelectorAll(".nimbus--text-skeleton")).toHaveLength(
       1,
     );
     expect(container.querySelectorAll(".nimbus--label-skeleton")).toHaveLength(

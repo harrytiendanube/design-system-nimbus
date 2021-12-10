@@ -63,6 +63,10 @@ body {
   }
 }
 
+.#{$prefix}--page-header__subtitle {
+  margin: $spacing-small 0;
+}
+
 .#{$prefix}--page-heading__pagination {
   flex: 0 0 auto;
   margin-left: $spacing-small;
