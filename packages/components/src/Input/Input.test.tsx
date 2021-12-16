@@ -408,7 +408,7 @@ describe("<Input type='color' />", () => {
     expect(screen.getByTestId("inputField")).toBeTruthy();
   });
 
-  it.only("should input text have color value selected by color box", () => {
+  it("should input text have color value selected by color box", () => {
     const handleChange = jest.fn();
     setup({ props: { type: "color", onChange: handleChange } });
     const colorInput = screen.getByTestId("inputField-color");
