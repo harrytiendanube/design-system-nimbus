@@ -19,7 +19,7 @@
       &:focus {
         border-color: $color-danger-active;
         box-shadow: 0 0 0 $input-border-width $color-danger-active;
-        
+
         ~ .#{$prefix}--input--color--container {
           border-color: $color-primary-active;
           border-right-color: $color-grey-50;
@@ -213,7 +213,7 @@
 .#{$prefix}--input {
   display: flex;
   position: relative;
-  
+
   input[type="color"]::-webkit-color-swatch-wrapper {
     padding: 0;
   }
@@ -258,12 +258,12 @@
   .#{$prefix}--input--color--container {
     background: transparent;
     border: 1px solid $color-grey-50;
-   
+
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 0;
     border-top-left-radius: 8px;
     border-top-right-radius: 0;
-   
+
     height: 42px;
     overflow: hidden;
     position: absolute;
@@ -314,6 +314,17 @@
       color: $input-disabled-text;
       cursor: not-allowed;
       pointer-events: none;
+
+      &::placeholder {
+        color: $input-disabled-text;
+      }
+    }
+
+    &:read-only,
+    &:hover:read-only,
+    &:focus:read-only {
+      background-color: $input-disabled-background;
+      color: $input-disabled-text;
 
       &::placeholder {
         color: $input-disabled-text;

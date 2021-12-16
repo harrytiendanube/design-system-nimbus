@@ -64,6 +64,8 @@ export interface InterfaceInput {
   autoCorrect?: boolean;
   /** Determines whether the input is disabled */
   disabled?: boolean;
+  /** Determines whether the input is readOnly */
+  readOnly?: boolean;
   /** Controls if text input is automatically selected */
   autoSelect?: boolean;
   /** OnChange callback function */
@@ -108,6 +110,7 @@ function Input({
   autoCapitalize = false,
   autoCorrect = false,
   disabled = false,
+  readOnly = false,
   autoSelect = false,
   onChange,
   onSubmit,
@@ -311,6 +314,7 @@ function Input({
             maxLength={maxLength}
             required={required}
             disabled={disabled}
+            readOnly={readOnly}
           />
         )}
         {!multiRows && (
@@ -335,6 +339,7 @@ function Input({
               maxLength={maxLength}
               required={required}
               disabled={disabled}
+              readOnly={readOnly}
             />
             {renderLeftIcon}
             {renderRightIcon}
@@ -348,6 +353,7 @@ function Input({
   const className = classNames("nimbus--input-wrapper", {
     "nimbus--input-validation--error": appearance === "validation_error",
     "nimbus--input--disabled": disabled,
+    "nimbus--input--read-only": readOnly,
     "nimbus--input-validation--success": appearance === "validation_success",
     "nimbus--input-danger": appearance === "danger",
     "nimbus--input-warning": appearance === "warning",
