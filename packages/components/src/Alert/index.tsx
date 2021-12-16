@@ -16,7 +16,7 @@ import Text from "../Text";
 
 interface InterfaceAlert {
   /** Text to be displayed in the alert */
-  children: React.ReactText;
+  children: React.ReactNode;
   /** Appearance of the alert */
   appearance?: "primary" | "secondary" | "danger" | "success" | "warning";
   /** Title of the alert */
