@@ -114,7 +114,7 @@ function Input({
   onBlur,
   onFocus,
 }: InterfaceInput): JSX.Element {
-  const [colorInput, setColorInput] = React.useState("#ffffff");
+
   const [showPassword, setsShowPassword] = React.useState(false);
   if (prependLabel && PrependIcon) {
     throw new Error(
@@ -131,7 +131,6 @@ function Input({
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { target } = event;
-    if (type === "color") setColorInput(target.value);
     onChange?.({ name: target.name, value: target.value });
   };
 
@@ -201,9 +200,10 @@ function Input({
       <input
         type="color"
         className="nimbus--input--color"
-        value={colorInput}
+        name={name}
+        value={value}
         data-testid="inputField-color"
-        onChange={(e) => setColorInput(e.target.value)}
+        onChange={handleChange} 
       />
     </div>
   );
@@ -270,7 +270,6 @@ function Input({
   );
 
   const newType = showPassword || type === "color" ? "text" : type;
-  const newValue = type === "color" ? colorInput : value;
 
   const classname = classNames("nimbus--input__field", {
     "with-prepend": renderLeftIcon,
@@ -324,7 +323,7 @@ function Input({
               type={newType}
               inputMode={inputMode}
               ref={inputRef}
-              value={newValue}
+              value={value}
               placeholder={placeholder}
               autoCapitalize={autoCapitalize ? "on" : "off"}
               autoCorrect={autoCorrect ? "on" : "off"}
