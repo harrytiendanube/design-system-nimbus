@@ -408,12 +408,15 @@ describe("<Input type='color' />", () => {
     expect(screen.getByTestId("inputField")).toBeTruthy();
   });
 
-  it("should input text have color value selected by color box", () => {
+  it.only("should input text have color value selected by color box", () => {
     const handleChange = jest.fn();
     setup({ props: { type: "color", onChange: handleChange } });
     const colorInput = screen.getByTestId("inputField-color");
     fireEvent.input(colorInput, { target: { value: "#333333" } });
-    expect(handleChange).toHaveBeenCalledWith({ "name": "", "value": "#333333" });
+    expect(handleChange).toHaveBeenCalledWith({
+      name: "myName",
+      value: "#333333",
+    });
   });
 
   it("should color box have color selected by input field", () => {
@@ -421,6 +424,9 @@ describe("<Input type='color' />", () => {
     setup({ props: { type: "color", onChange: handleChange } });
     const inputField = screen.getByTestId("inputField");
     fireEvent.input(inputField, { target: { value: "#cecece" } });
-    expect(handleChange).toHaveBeenCalledWith({ "name": "myName", "value": "#cecece" });
+    expect(handleChange).toHaveBeenCalledWith({
+      name: "myName",
+      value: "#cecece",
+    });
   });
 });
