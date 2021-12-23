@@ -2,7 +2,7 @@ import * as React from "react";
 import classNames from "classnames";
 import { ChevronRightIcon, Icon as IconType } from "@tiendanube/icons";
 import { Text, InterfaceLabel } from "..";
-import { renderBelow, renderIcon } from "./utils";
+import { renderBelow, renderIcon, renderBlockLeft } from "./utils";
 import { InterfaceNameChecked } from "../common/interfaces";
 
 export interface InterfaceInteractiveListActionItem {
@@ -20,6 +20,8 @@ export interface InterfaceInteractiveListActionItem {
   hideBorder?: boolean;
   /** OnChange callback */
   onChange: (event: InterfaceNameChecked) => void;
+  /** Renders a content block to the left of the component */
+  blockLeft?: React.ReactNode;
   /** Icon Component imported from @tiendanube/icons */
   icon?: IconType;
   /** Appearance of the IconItem determines the background color */
@@ -40,6 +42,7 @@ function Item({
   skeleton,
   hideBorder,
   onChange,
+  blockLeft,
   icon,
   iconAppearance,
 }: InterfaceInteractiveListActionItem): JSX.Element {
@@ -56,20 +59,18 @@ function Item({
       <button
         type="button"
         id={name}
-        style={{ display: "block" }}
         onClick={handleChange}
         className="nimbus--interactive-list-item__button"
       >
-        <div className="nimbus--interactive-list-item__wrapper--all">
-          <div className="nimbus--interactive-list-item__wrapper--upper">
+        {renderBlockLeft(blockLeft)}
+        <div className="nimbus--interactive-list-item__content">
+          <div className="nimbus--interactive-list-item__title">
             {renderIcon(icon, iconAppearance)}
-            <div className="nimbus--interactive-list-item__title">
-              {skeleton ? <Text.Skeleton /> : <Text>{title}</Text>}
-              {!skeleton && <ChevronRightIcon />}
-            </div>
+            {skeleton ? <Text.Skeleton /> : <Text>{title}</Text>}
+            {!skeleton && <ChevronRightIcon />}
           </div>
+          {renderBelow(description, labels, skeleton)}
         </div>
-        {renderBelow(description, labels, skeleton)}
       </button>
     </div>
   );

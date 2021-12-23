@@ -64,6 +64,16 @@ const renderBelow = (
   );
 };
 
+const renderBlockLeft = (blockLeft?: React.ReactNode): JSX.Element => {
+  return (
+    <>
+      {blockLeft && (
+        <div className="nimbus--interactive-list-item__block">{blockLeft}</div>
+      )}
+    </>
+  );
+};
+
 const renderIcon = (
   icon?: IconType,
   appearance?:
@@ -77,4 +87,4 @@ const renderIcon = (
   return icon && <IconItem icon={icon} appearance={appearance} />;
 };
 
-export { renderBelow, renderIcon };
+export { renderBelow, renderIcon, renderBlockLeft };

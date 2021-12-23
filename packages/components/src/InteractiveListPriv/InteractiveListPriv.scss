@@ -13,6 +13,14 @@
   flex-direction: column;
 
   .#{$prefix}--interactive-list-item {
+    display: flex;
+    gap: $spacing-small;
+
+    > .#{$prefix}--interactive-list-item__button {
+      display: flex;
+      gap: $spacing-small;
+    }
+
     &:first-child {
       border-top: $input-border-width solid $color-default;
     }
@@ -58,21 +66,27 @@
   width: 100%;
 }
 
+.#{$prefix}--interactive-list-item__content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
 .#{$prefix}--interactive-list-item__title {
   align-items: center;
   display: flex;
-  flex: 1;
-  justify-content: space-between;
+  gap: $spacing-x-small;
 
   .#{$prefix}--text {
     @include nimbus--text-trim(1);
+    flex: 1 1 auto;
   }
 }
 
 .#{$prefix}--interactive-list-item__info {
   margin-top: $spacing-x-small;
   text-align: left;
-  
+
   .#{$prefix}--interactive-list-item__description-wrapper {
     margin-bottom: $spacing-x-small;
   }

@@ -3,8 +3,13 @@ import { withKnobs, boolean } from "@storybook/addon-knobs";
 import { withA11y } from "@storybook/addon-a11y";
 import { action } from "@storybook/addon-actions";
 
-import { InteractiveListPriv, Text } from "@tiendanube/components/src";
+import {
+  InteractiveListPriv,
+  Text,
+  Thumbnail,
+} from "@tiendanube/components/src";
 import "../utils/style.css";
+import { images } from "./utils/constants";
 
 <Meta
   title="Composite components/InteractiveListPriv"
@@ -165,3 +170,57 @@ TODO: complete
   - Parameters <Text appearance="primary">description </Text> and{" "}
   <Text appearance="primary"> labels </Text> parameters are mutually exclusive
 </Text>
+
+## Block Left
+
+<Preview withToolbar>
+  <Story name="block left" parameters={{ decorators: [withKnobs, withA11y] }}>
+    {() => {
+      return (
+        <InteractiveListPriv
+          addItemLabel="Add a variant"
+          onClickAddItem={action("onClickAddItem")}
+        >
+          <InteractiveListPriv.ActionItem
+            title="Color"
+            name="color"
+            labels={[
+              { id: "1", label: "pink", colorTag: "#E68CFA" },
+              { id: "2", label: "black", colorTag: "#000000" },
+              { id: "3", label: "red", colorTag: "#ff0000" },
+              { id: "4", label: "blue", colorTag: "#027cdc" },
+              { id: "5", label: "gray", colorTag: "#f9f9f9" },
+              { id: "6", label: "light gray", colorTag: "#fafafa" },
+              { id: "7", label: "dark blue", colorTag: "#2c3357" },
+            ]}
+            onChange={action("onChange")}
+            blockLeft={
+              <Thumbnail width="72px" altText="alt text" src={images.image1} />
+            }
+          />
+          <InteractiveListPriv.RadioItem
+            title="Size"
+            value="size"
+            labels={[
+              { id: "1", label: "S" },
+              { id: "2", label: "XS" },
+            ]}
+            onChange={action("onChange")}
+            blockLeft={
+              <Thumbnail width="72px" altText="alt text" src={images.image2} />
+            }
+          />
+          <InteractiveListPriv.CheckItem
+            title="Variant"
+            value="variant"
+            description="description"
+            onChange={action("onChange")}
+            blockLeft={
+              <Thumbnail width="72px" altText="alt text" src={images.image3} />
+            }
+          />
+        </InteractiveListPriv>
+      );
+    }}
+  </Story>
+</Preview>

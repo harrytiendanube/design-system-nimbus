@@ -117,7 +117,6 @@ function Input({
   onBlur,
   onFocus,
 }: InterfaceInput): JSX.Element {
-
   const [showPassword, setsShowPassword] = React.useState(false);
   if (prependLabel && PrependIcon) {
     throw new Error(
@@ -206,7 +205,7 @@ function Input({
         name={name}
         value={value}
         data-testid="inputField-color"
-        onChange={handleChange} 
+        onChange={handleChange}
       />
     </div>
   );

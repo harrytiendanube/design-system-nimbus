@@ -4,8 +4,9 @@ import { withA11y } from "@storybook/addon-a11y";
 import { action } from "@storybook/addon-actions";
 import { MoneyIcon, RemoveFormatIcon, CheckIcon } from "@tiendanube/icons";
 
-import { InteractiveList } from "@tiendanube/components/src";
+import { InteractiveList, Thumbnail } from "@tiendanube/components/src";
 import "../utils/style.css";
+import { images } from "./utils/constants";
 
 <Meta
   title="Composite components/InteractiveList"
@@ -81,6 +82,13 @@ TODO: complete
           title: "Shirts",
           name: "shirts",
           active: true,
+          blockLeft: (
+            <img
+              width="100"
+              alt="shirts"
+              src="https://d3ugyf2ht6aenh.cloudfront.net/stores/239/907/products/img_20211022_122704-30ba8be74d4828400416349196866101-640-0.jpg"
+            />
+          ),
         },
         {
           title: "Pants",
@@ -221,6 +229,67 @@ TODO: complete
         <InteractiveList
           onChange={handleChange}
           mode="single"
+          skeleton={skeleton}
+          options={options}
+        />
+      );
+    }}
+  </Story>
+</Preview>
+
+## Block left
+
+<Preview>
+  <Story name="block left" parameters={{ decorators: [withKnobs, withA11y] }}>
+    {() => {
+      const skeleton = boolean("skeleton", false);
+      const optionsInitial = [
+        {
+          title: "Color",
+          name: "color",
+          labels: [
+            { id: "1", label: "pink", colorTag: "#E68CFA" },
+            { id: "2", label: "black", colorTag: "#000000" },
+            { id: "3", label: "red", colorTag: "#ff0000" },
+            { id: "4", label: "blue", colorTag: "#027cdc" },
+            { id: "5", label: "gray", colorTag: "#f9f9f9" },
+            { id: "6", label: "light gray", colorTag: "#fafafa" },
+            { id: "7", label: "dark blue", colorTag: "#2c3357" },
+            { id: "8", label: "success", appearance: "success" },
+          ],
+          blockLeft: (
+            <Thumbnail width="72px" altText="alt text" src={images.image1} />
+          ),
+        },
+        {
+          title: "Size",
+          name: "size",
+          labels: [
+            { id: "1", label: "S" },
+            { id: "2", label: "XS" },
+          ],
+          blockLeft: (
+            <Thumbnail width="72px" altText="alt text" src={images.image2} />
+          ),
+        },
+        {
+          title: "Variant",
+          name: "variant",
+          description: "description",
+          labels: [{ id: "8", label: "success", appearance: "success" }],
+          hideBorder: true,
+          blockLeft: (
+            <Thumbnail width="72px" altText="alt text" src={images.image3} />
+          ),
+        },
+      ];
+      const [options] = React.useState(optionsInitial);
+      return (
+        <InteractiveList
+          addItemLabel="Add a variant"
+          onClickAddItem={action("onClickAddItem")}
+          onChange={action("onChange")}
+          mode="action"
           skeleton={skeleton}
           options={options}
         />

@@ -17,6 +17,8 @@ export interface InterfaceInteractiveListOptions {
   active?: boolean;
   /** Hide border bottom on options */
   hideBorder?: boolean;
+  /** Renders a content block to the left of the component */
+  blockLeft?: React.ReactNode;
   /** Icon Component imported from @tiendanube/icons */
   icon?: IconType;
   /** Appearance of the IconItem determines the background color */
@@ -87,6 +89,7 @@ function InteractiveList({
         skeleton={skeleton}
         onChange={handleChangeAction}
         hideBorder={option.hideBorder}
+        blockLeft={option.blockLeft}
         icon={option.icon}
         iconAppearance={option.iconAppearance}
       />
@@ -105,6 +108,7 @@ function InteractiveList({
         skeleton={skeleton}
         onChange={handleChangeCheck}
         hideBorder={option.hideBorder}
+        blockLeft={option.blockLeft}
         icon={option.icon}
         iconAppearance={option.iconAppearance}
       />
@@ -123,6 +127,7 @@ function InteractiveList({
         skeleton={skeleton}
         onChange={handleChangeRadio}
         hideBorder={option.hideBorder}
+        blockLeft={option.blockLeft}
         icon={option.icon}
         iconAppearance={option.iconAppearance}
       />
