@@ -53,7 +53,7 @@ function Item({
     "nimbus--interactive-list-item__borderBottom": hideBorder,
   });
 
-  const id = `input_${title}`;
+  const id = `input_${name}_ID`;
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const target = event.target as HTMLInputElement;
