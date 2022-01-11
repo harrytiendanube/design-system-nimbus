@@ -16,6 +16,8 @@ export interface InterfaceMenuItem {
   subItem?: InterfaceMenuSubItem[];
   /** Menu Item label */
   label?: Pick<InterfaceLabel, "id" | "appearance" | "icon" | "label">;
+  /** Current option disabled */
+  disabled?: boolean;
 }
 
 export interface InterfaceMenuSubItem {
@@ -36,9 +38,11 @@ function Item({
   onClick,
   subItem,
   label,
+  disabled = false,
 }: InterfaceMenuItem): JSX.Element {
   const wrapperClass = classNames("nimbus--menu-item-wrapper", {
     "nimbus--menu-item--active": active,
+    "nimbus--menu-item--disabled": disabled,
   });
   const renderLabel = label && (
     <Label
@@ -50,7 +54,11 @@ function Item({
   );
   return (
     <div className={wrapperClass}>
-      <button type="button" onClick={onClick} className="nimbus--menu-item">
+      <button
+        type="button"
+        onClick={!disabled ? onClick : undefined}
+        className="nimbus--menu-item"
+      >
         <Icon />
         <span className="nimbus--menu-item__label">{children}</span>
         {renderLabel}

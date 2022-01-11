@@ -10,7 +10,7 @@
 
     .#{$prefix}--input__field {
       border-color: $color-danger-pure;
-
+      padding-right: $spacing-large;
       ~ .#{$prefix}--input--color--container {
         border-color: $color-danger-pure;
         border-right-color: $color-grey-50;
@@ -33,6 +33,15 @@
   }
 }
 
+.#{$prefix}--input-validation--loading {
+  .#{$prefix}--input {
+    .#{$prefix}--input__field {
+      padding-right: $spacing-large;
+    }
+  }
+}
+
+
 .#{$prefix}--input-validation--success {
   .#{$prefix}--input {
     .#{$prefix}--input__append svg {
@@ -41,7 +50,7 @@
 
     .#{$prefix}--input__field {
       border-color: $color-success-pure;
-
+      padding-right: $spacing-large;
       ~ .#{$prefix}--input--color--container {
         border-color: $color-success-pure;
         border-right-color: $color-grey-50;
@@ -73,7 +82,6 @@
     .#{$prefix}--input__field {
       background-color: $color-warning-lighter;
       border-color: $color-warning-pure;
-
       ~ .#{$prefix}--input--color--container {
         border-color: $color-warning-pure;
         border-right-color: $color-grey-50;

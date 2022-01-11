@@ -34,7 +34,7 @@ const MenuComponent = (props: any) => {
         </Menu.Item>
       </Menu.Section>
       <Menu.Section title="Manage">
-        <Menu.Item icon={CashIcon} onClick={handleClickOption}>
+        <Menu.Item icon={CashIcon} onClick={handleClickOption} disabled>
           Sales
         </Menu.Item>
         <Menu.Item icon={TagIcon} onClick={handleClickOption}>
@@ -126,7 +126,7 @@ describe("<Menu />", () => {
     userEvent.click(buttonSales);
     userEvent.click(buttonProducts);
     userEvent.click(buttonKeyboard);
-    expect(handleClickOption).toHaveBeenCalledTimes(4);
+    expect(handleClickOption).toHaveBeenCalledTimes(3);
   });
 
   it("calls onClose when clicks outside menu", () => {
@@ -141,5 +141,10 @@ describe("<Menu />", () => {
     const footer = screen.queryByTestId("nimbus--menu__footer");
     expect(header).toBeNull();
     expect(footer).toBeNull();
+  });
+  it("should not call handleClick function when item is disabled", () => {
+    const { buttonSales, handleClickOption } = setup();
+    userEvent.click(buttonSales);
+    expect(handleClickOption).toHaveBeenCalledTimes(0);
   });
 });

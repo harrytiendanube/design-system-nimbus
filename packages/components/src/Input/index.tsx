@@ -62,6 +62,8 @@ export interface InterfaceInput {
   autoCapitalize?: boolean;
   /** Controls if text input is automatically corrected */
   autoCorrect?: boolean;
+  /** Controls if text input will have autocomplete */
+  autoComplete?: boolean;
   /** Determines whether the input is disabled */
   disabled?: boolean;
   /** Determines whether the input is readOnly */
@@ -109,6 +111,7 @@ function Input({
   required = false,
   autoCapitalize = false,
   autoCorrect = false,
+  autoComplete = false,
   disabled = false,
   readOnly = false,
   autoSelect = false,
@@ -160,6 +163,11 @@ function Input({
 
   const handleClose = () => {
     onSubmit?.({ name, value: "" });
+  };
+
+  const handlePassword = () => {
+    setsShowPassword(!showPassword);
+    inputRef.current?.focus();
   };
 
   const renderLabel = type !== "search" && label && (
@@ -240,7 +248,7 @@ function Input({
           <button
             type="button"
             className="nimbus--input__append nimbus--input__password"
-            onClick={() => setsShowPassword(!showPassword)}
+            onClick={handlePassword}
           >
             {showPassword ? <EyeOffIcon /> : <EyeIcon />}
           </button>
@@ -306,6 +314,7 @@ function Input({
             rows={rows}
             autoCapitalize={autoCapitalize ? "on" : "off"}
             autoCorrect={autoCorrect ? "on" : "off"}
+            autoComplete={autoComplete ? "on" : "off"}
             onChange={handleChange}
             onBlur={handleBlur}
             onFocus={handleFocus}
@@ -330,6 +339,7 @@ function Input({
               placeholder={placeholder}
               autoCapitalize={autoCapitalize ? "on" : "off"}
               autoCorrect={autoCorrect ? "on" : "off"}
+              autoComplete={autoComplete ? "on" : "off"}
               onChange={handleChange}
               onKeyPress={handleKeyPress}
               onBlur={handleBlur}
@@ -354,6 +364,7 @@ function Input({
     "nimbus--input--disabled": disabled,
     "nimbus--input--read-only": readOnly,
     "nimbus--input-validation--success": appearance === "validation_success",
+    "nimbus--input-validation--loading": appearance === "validation_loading",
     "nimbus--input-danger": appearance === "danger",
     "nimbus--input-warning": appearance === "warning",
   });
