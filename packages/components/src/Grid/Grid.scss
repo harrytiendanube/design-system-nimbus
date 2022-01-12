@@ -1,0 +1,43 @@
+@import "../../styles/core";
+
+// Grid
+
+$nimbus-grid-spacing: (
+  "none": 0,
+  "tight": map-get($nimbus--spacers, "x-small"),
+  "base": map-get($nimbus--spacers, "small"),
+  "loose": map-get($nimbus--spacers, "medium"),
+);
+
+@mixin nimbus-grid-spacing {
+  @each $name, $value in $nimbus-grid-spacing {
+    .#{$prefix}--grid--spacing-#{$name} {
+      row-gap: $value;
+
+      .#{$prefix}--grid__row {
+        margin-left: -$value / 2;
+        margin-right: -$value / 2;
+        row-gap: $value;
+      }
+
+      .#{$prefix}--grid__column {
+        padding-left: $value / 2;
+        padding-right: $value / 2;
+      }
+    }
+  }
+}
+
+.#{$prefix}--grid {
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: nimbus--rem(1200px);
+}
+
+.#{$prefix}--grid--fluid {
+  max-width: 100%;
+}
+
+@include nimbus-grid-spacing;

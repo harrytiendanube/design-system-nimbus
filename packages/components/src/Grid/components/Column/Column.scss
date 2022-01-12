@@ -1,0 +1,35 @@
+@import "../../../../styles/core";
+
+// Column
+
+.#{$prefix}--grid__column {
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
+  width: 100%;
+
+  @for $n from 1 through 6 {
+    &.#{$prefix}--grid__column--sm-#{$n} {
+      flex: 0 0 percentage($n / 6);
+      max-width: percentage($n / 6);
+    }
+  }
+
+  @for $n from 1 through 6 {
+    @include nimbus--breakpoint-up(md) {
+      &.#{$prefix}--grid__column--md-#{$n} {
+        flex: 0 0 percentage($n / 6);
+        max-width: percentage($n / 6);
+      }
+    }
+  }
+
+  @for $n from 1 through 6 {
+    @include nimbus--breakpoint-up(lg) {
+      &.#{$prefix}--grid__column--lg-#{$n} {
+        flex: 0 0 percentage($n / 6);
+        max-width: percentage($n / 6);
+      }
+    }
+  }
+}

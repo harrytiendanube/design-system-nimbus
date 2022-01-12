@@ -47,3 +47,11 @@
   color: var(--color-white);
   margin-top: var(--spacing-medium);
 }
+
+.nimbus--demo-component-story {
+  background-color: var(--color-blue-primary-lighter);
+  border: 1px dashed var(--color-blue-primary-pure);
+  display: block;
+  height: 90px;
+  padding: var(--spacing-x-small);
+}

@@ -1,0 +1,130 @@
+import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
+import { withKnobs, select, number, boolean } from "@storybook/addon-knobs";
+import { withA11y } from "@storybook/addon-a11y";
+
+import { Grid, Text, Button, Stack } from "@tiendanube/components/src";
+
+<Meta title="Composite components/Grid" component={Grid} />
+
+# Grid with auto width cols
+
+TODO: Complete
+
+<Preview>
+  <Story
+    name="auto width cols"
+    parameters={{ decorators: [withKnobs, withA11y] }}
+  >
+    {() => {
+      const [cardCount, setCardCount] = React.useState(3);
+      const repeatingCards = [];
+      for (let i = 1; i <= cardCount; i++) {
+        repeatingCards.push(
+          <Grid.Column key={i}>
+            <div className="nimbus--demo-component-story">
+              <Text size="small" appearance="primary" block>
+                Column with auto width
+              </Text>
+            </div>
+          </Grid.Column>,
+        );
+      }
+      return (
+        <>
+          <Grid
+            fluid={boolean("fluid", false)}
+            spacing={select("spacing", ["none", "tight", "base", "loose"])}
+          >
+            <Grid.Row>{repeatingCards}</Grid.Row>
+          </Grid>
+          <div style={{ display: "block", width: "100%", paddingTop: 16 }} />
+          <Stack>
+            <Stack.Item>
+              <Button onClick={() => setCardCount(cardCount - 1)}>
+                Remove column
+              </Button>
+            </Stack.Item>
+            <Stack.Item>
+              <Button onClick={() => setCardCount(cardCount + 1)}>
+                Add column
+              </Button>
+            </Stack.Item>
+          </Stack>
+        </>
+      );
+    }}
+  </Story>
+</Preview>
+
+# Grid with fixed width cols
+
+TODO: Complete
+
+<Preview>
+  <Story
+    name="fixed width cols"
+    parameters={{ decorators: [withKnobs, withA11y] }}
+  >
+    {() => {
+      const [cardCount, setCardCount] = React.useState(1);
+      const repeatingCards = [];
+      for (let i = 1; i <= cardCount; i++) {
+        repeatingCards.push(
+          <Grid.Column
+            key={i}
+            sm={number("sm", 6)}
+            md={number("md", 6)}
+            lg={number("lg", 6)}
+          >
+            <div className="nimbus--demo-component-story">
+              <Text size="small" appearance="primary" block>
+                Width sm {number("sm", 6)}
+              </Text>
+              <Text size="small" appearance="primary" block>
+                Width md {number("md", 6)}
+              </Text>
+              <Text size="small" appearance="primary" block>
+                Width lg {number("lg", 6)}
+              </Text>
+            </div>
+          </Grid.Column>,
+        );
+      }
+      return (
+        <>
+          <Grid
+            fluid={boolean("fluid", false)}
+            spacing={select("spacing", ["none", "tight", "base", "loose"])}
+          >
+            <Grid.Row>{repeatingCards}</Grid.Row>
+          </Grid>
+          <div style={{ display: "block", width: "100%", paddingTop: 16 }} />
+          <Stack>
+            <Stack.Item>
+              <Button onClick={() => setCardCount(cardCount - 1)}>
+                Remove column
+              </Button>
+            </Stack.Item>
+            <Stack.Item>
+              <Button onClick={() => setCardCount(cardCount + 1)}>
+                Add column
+              </Button>
+            </Stack.Item>
+          </Stack>
+        </>
+      );
+    }}
+  </Story>
+</Preview>
+
+## Properties
+
+<Props of={Grid} />
+
+## Properties of Row
+
+<Props of={Grid.Row} />
+
+## Properties of Column
+
+<Props of={Grid.Column} />

@@ -191,3 +191,6 @@ export * from "./CustomInput";
 
 // KeyboardToolbar reference added
 export * from "./KeyboardToolbar";
+
+// Grid reference added
+export * from "./Grid";
