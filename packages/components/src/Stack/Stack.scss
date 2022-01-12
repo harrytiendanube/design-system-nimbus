@@ -2,6 +2,13 @@
 
 // Stack
 
+$nimbus-stack-spacing: (
+  "none": 0,
+  "tight": map-get($nimbus--spacers, "x-small"),
+  "base": map-get($nimbus--spacers, "small"),
+  "loose": map-get($nimbus--spacers, "medium"),
+);
+
 .#{$prefix}--stack-wrapper {
   display: flex;
   flex-wrap: nowrap;
@@ -42,19 +49,9 @@
     align-items: stretch;
   }
 
-  &.spacing--base {
-    margin: -#{$spacing-small} -#{$spacing-x-small} 0;
-
-    > .#{$prefix}--stack-item {
-      padding: #{$spacing-small} #{$spacing-x-small} 0;
-    }
-  }
-
-  &.spacing--tight {
-    margin: -#{$spacing-x-small} -#{$spacing-xx-small} 0;
-
-    > .#{$prefix}--stack-item {
-      padding: #{$spacing-x-small} #{$spacing-xx-small} 0;
+  @each $name, $value in $nimbus-stack-spacing {
+    &.spacing--#{$name} {
+      gap: $value;
     }
   }
 
@@ -65,19 +62,11 @@
   &.stack--wrap {
     flex-wrap: wrap;
   }
-
-  @for $n from 2 through 6 {
-    &.columns--#{$n} {
-      .#{$prefix}--stack-item {
-        flex: 1 1 percentage(1 / $n);
-        max-width: percentage(1 / $n);
-      }
-    }
-  }
 }
 
 .#{$prefix}--stack-item {
   flex: 0 0 auto;
+  min-width: 0;
 
   &.stack-item--fill {
     flex: 1 1 auto;
