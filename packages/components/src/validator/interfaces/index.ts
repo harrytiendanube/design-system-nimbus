@@ -26,7 +26,8 @@ export type InputTypes =
   | "password"
   | "email"
   | "search"
-  | "color";
+  | "color"
+  | "date";
 
 export type InputModes = "text" | "decimal";
 

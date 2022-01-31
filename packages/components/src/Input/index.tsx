@@ -54,6 +54,10 @@ export interface InterfaceInput {
   minLength?: number;
   /** Maximum count of inserted chars */
   maxLength?: number;
+  /** The earliest date to accept */
+  min?: string;
+  /** The latest date to accept */
+  max?: string;
   /** Custom Regex needed for validate inserted chars */
   pattern?: string;
   /** Input is required */
@@ -108,6 +112,8 @@ function Input({
   helpText,
   minLength = 0,
   maxLength = 50,
+  min,
+  max,
   required = false,
   autoCapitalize = false,
   autoCorrect = false,
@@ -346,6 +352,8 @@ function Input({
               onFocus={handleFocus}
               minLength={minLength}
               maxLength={maxLength}
+              max={max}
+              min={min}
               required={required}
               disabled={disabled}
               readOnly={readOnly}
