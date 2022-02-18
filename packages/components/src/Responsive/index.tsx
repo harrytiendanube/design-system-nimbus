@@ -1,7 +1,9 @@
 import * as React from "react";
 
+export type TypeDisplays = ("desktop" | "mobile" | "tablet")[];
+
 export interface InterfaceResponsive {
-  displays: ("desktop" | "mobile" | "tablet")[];
+  displays: TypeDisplays;
   children: React.ReactNode;
 }
 

@@ -8,7 +8,7 @@ import {
   ArrowRightIcon,
 } from "@tiendanube/icons";
 import classNames from "classnames";
-import Responsive from "../Responsive";
+import Responsive, { TypeDisplays } from "../Responsive";
 import PageTitle from "../PageTitle";
 import {
   Button,
@@ -51,6 +51,9 @@ export interface InterfacePage {
   )[];
   /** Labels for the title section */
   headerLabels?: (InterfaceLabel | "skeleton")[];
+
+  /** Provisional property to force the headerAction view in desktop mode */
+  headerDisplays?: TypeDisplays;
 }
 
 function Page({
@@ -64,6 +67,7 @@ function Page({
   secondaryActions,
   headerLabels,
   subtitle,
+  headerDisplays = [],
 }: InterfacePage): JSX.Element {
   const [showTitle, setShowTitle] = React.useState(false);
 
@@ -165,7 +169,7 @@ function Page({
         </div>
       </Responsive>
       <div className="nimbus--page-navbar__toolbar">
-        <Responsive displays={["mobile"]}>
+        <Responsive displays={[...headerDisplays, "mobile"]}>
           {headerAction && (
             <Link
               appearance={headerAction.appearance}
