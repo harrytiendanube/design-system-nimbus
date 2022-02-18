@@ -1,5 +1,11 @@
 import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
-import { withKnobs, text, select, boolean } from "@storybook/addon-knobs";
+import {
+  withKnobs,
+  text,
+  select,
+  boolean,
+  number,
+} from "@storybook/addon-knobs";
 import { withA11y } from "@storybook/addon-a11y";
 
 import { Text } from "@tiendanube/components/src";
@@ -105,6 +111,11 @@ TODO: complete
 
 <Preview>
   <Story name="stressed" parameters={{ decorators: [withKnobs, withA11y] }}>
-    <Text>{LOREM_STRESS}</Text>
+    <Text
+      trimText={boolean("trim text", false)}
+      trimLines={number("trim lines", 1)}
+    >
+      {LOREM_STRESS}
+    </Text>
   </Story>
 </Preview>

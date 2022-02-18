@@ -12,7 +12,7 @@ export interface InterfaceDataTableRow {
   /** Callback to be called when a row is clicked */
   onClick?: (id: string) => void;
   /** Defines the alignment of the elements as in a flex container */
-  align?: "flex-start" | "center" | "flex-end";
+  align?: "flex-start" | "center" | "flex-end" | "initial";
 }
 
 function Row({

@@ -30,16 +30,18 @@ export interface InterfaceText {
   bold?: boolean;
   /** Text alignment */
   textAlign?: "left" | "right" | "center";
+  /**
+   * Applies an ellipsis to overflowing content. Must specify amount of lines to
+   * be trimmed using trimLines
+   */
+  trimText?: boolean;
+  /**
+   * Specifies the amount of lines of text to be visible before applying an
+   * ellipsis for overflowing text
+   */
+  trimLines?: number;
 }
-/**
- * @param children Text to be displayed
- * @param size Size
- * @param block Defines if the text is to be rendered as a block element
- * @param appearance Text color
- * @param background Text background
- * @param bold Bold font for the text component
- * @param textAlign Text alignment
- */
+
 const Text = React.memo(function Text({
   children,
   size = "base",
@@ -48,19 +50,19 @@ const Text = React.memo(function Text({
   background = false,
   bold = false,
   textAlign = "left",
+  trimText = false,
+  trimLines,
 }: InterfaceText): JSX.Element {
-  const className = React.useMemo(
-    () =>
-      classNames(
-        "nimbus--text",
-        `nimbus--text-size--${size}`,
-        `nimbus--text-color--${appearance}`,
-        `nimbus--text-align--${textAlign}`,
-        { [`nimbus--text-background--${appearance}`]: background },
-        { "nimbus--text--block": block },
-        { "nimbus--text--bold": bold },
-      ),
-    [size, appearance, textAlign, background, block, bold],
+  const className = classNames(
+    "nimbus--text",
+    `nimbus--text-size--${size}`,
+    `nimbus--text-color--${appearance}`,
+    `nimbus--text-align--${textAlign}`,
+    { [`nimbus--text-background--${appearance}`]: background },
+    { "nimbus--text--block": block },
+    { "nimbus--text--bold": bold },
+    { "nimbus--text--trim": trimText },
+    { [`nimbus--text--trim-${trimLines}`]: trimText },
   );
 
   return <p className={className}>{children}</p>;

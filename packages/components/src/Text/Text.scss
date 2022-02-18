@@ -101,6 +101,21 @@ $text-background-colors: (
   &.#{$prefix}--text-background {
     @include nimbus--text-background;
   }
+
+  &.#{$prefix}--text--trim {
+    /* stylelint-disable-next-line property-no-vendor-prefix */
+    -webkit-box-orient: vertical;
+    /* stylelint-disable-next-line value-no-vendor-prefix */
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    @for $n from 1 to 10 {
+      &.#{$prefix}--text--trim-#{$n} {
+        -webkit-line-clamp: $n;
+      }
+    }
+  }
 }
 
 $text-skeleton-widths: (

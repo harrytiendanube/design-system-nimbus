@@ -20,22 +20,26 @@ export interface InterfaceTextSpan {
   background?: boolean;
   /** Bold font for the text component */
   bold?: boolean;
+  /**
+   * Applies an ellipsis to overflowing content. Must specify amount of lines to
+   * be trimmed using trimLines
+   */
+  trimText?: boolean;
+  /**
+   * Specifies the amount of lines of text to be visible before applying an
+   * ellipsis for overflowing text
+   */
+  trimLines?: number;
 }
-/**
- * @param children Text to be displayed
- * @param size Size
- * @param block Defines if the text is to be rendered as a block element
- * @param appearance Text color
- * @param background Text background
- * @param bold Bold font for the text component
- * @param textAlign Text alignment
- */
+
 function Span({
   children,
   size = "base",
   appearance = "default",
   background = false,
   bold = false,
+  trimText = false,
+  trimLines,
 }: InterfaceTextSpan): JSX.Element {
   const className = classNames(
     "nimbus--text",
@@ -44,6 +48,8 @@ function Span({
     `nimbus--text-color--${appearance}`,
     { [`nimbus--text-background--${appearance}`]: background },
     { "nimbus--text--bold": bold },
+    { "nimbus--text--trim": trimText },
+    { [`nimbus--text--trim-${trimLines}`]: trimText },
   );
   return <span className={className}>{children}</span>;
 }
