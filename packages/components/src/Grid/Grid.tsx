@@ -12,11 +12,10 @@ export { ColumnProps } from "./components/Column";
 interface GridProps {
   /** React children of type Node */
   children: React.ReactNode;
-  /**
-   * Grid takes up 100% of available container size. If false with default to
-   * max 1200px
-   */
+  /** Grid takes up 100% of available container size */
   fluid?: boolean;
+  /** Specifies the max width of the Grid container in px */
+  maxWidth?: number;
   /** Defines spacing for rows and columns */
   spacing?: "none" | "tight" | "base" | "loose";
 }
@@ -25,14 +24,21 @@ function Grid({
   children,
   fluid = false,
   spacing = "base",
+  maxWidth = 1200,
 }: GridProps): JSX.Element {
   const className = classNames(
     "nimbus--grid",
     `nimbus--grid--spacing-${spacing}`,
-    { "nimbus--grid--fluid": fluid },
   );
 
-  return <div className={className}>{children}</div>;
+  return (
+    <div
+      style={{ maxWidth: !fluid && maxWidth ? `${maxWidth}px` : "100%" }}
+      className={className}
+    >
+      {children}
+    </div>
+  );
 }
 
 Grid.Row = Row;
