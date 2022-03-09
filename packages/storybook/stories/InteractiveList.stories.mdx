@@ -51,6 +51,14 @@ TODO: complete
           labels: [{ id: "8", label: "success", appearance: "success" }],
           hideBorder: true,
         },
+        {
+          title: "Disabled option",
+          name: "disabled option",
+          description: "option",
+          labels: [{ id: "8", label: "success", appearance: "success" }],
+          hideBorder: true,
+          disabled: true,
+        },
       ];
       const [options] = React.useState(optionsInitial);
       return (
@@ -105,6 +113,11 @@ TODO: complete
             },
           ],
         },
+        {
+          title: "Disabled pants",
+          name: "disabled pants",
+          disabled: true,
+        },
       ];
       const [options, setOptions] = React.useState(optionsInitial);
       const handleChange = (selected) => {
@@ -151,6 +164,11 @@ TODO: complete
         {
           title: "Unlimited",
           name: "unlimited",
+        },
+        {
+          title: "Disabled option",
+          name: "limited",
+          disabled: true,
         },
       ];
       const [options, setOptions] = React.useState(optionsInitial);

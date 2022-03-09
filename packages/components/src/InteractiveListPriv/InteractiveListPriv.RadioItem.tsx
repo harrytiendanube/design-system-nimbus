@@ -33,6 +33,8 @@ export interface InterfaceInteractiveListRadioItem {
     | "danger"
     | "warning"
     | "success";
+  /** Disabled some option */
+  disabled?: boolean;
 }
 
 function Item({
@@ -47,16 +49,18 @@ function Item({
   blockLeft,
   icon,
   iconAppearance,
+  disabled,
 }: InterfaceInteractiveListRadioItem): JSX.Element {
   const mainClass = classNames("nimbus--interactive-list-item", {
     "nimbus--interactive-list-item__borderBottom": hideBorder,
+    "nimbus--interactive-list-disabled": disabled,
   });
 
   const id = `input_${title}`;
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const target = event.target as HTMLInputElement;
-    onChange({ name: target.value, checked: target.checked });
+    if (!disabled) onChange({ name: target.value, checked: target.checked });
   };
 
   return (

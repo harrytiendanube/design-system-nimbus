@@ -210,6 +210,47 @@ describe("<InteractiveListPriv />", () => {
     );
   });
 
+  it("render Interactivelist with disabled props where onChange doesn't have to work", () => {
+    const handleChange = jest.fn();
+    render(
+      <InteractiveListPriv>
+        <InteractiveListPriv.ActionItem
+          title="option"
+          name="other"
+          onChange={handleChange}
+          disabled
+        />
+        <InteractiveListPriv.RadioItem
+          title="radio1"
+          value="radio"
+          onChange={handleChange}
+          disabled
+        />
+        <InteractiveListPriv.CheckItem
+          title="checkbox"
+          name="checkbox"
+          onChange={handleChange}
+          disabled
+        />
+      </InteractiveListPriv>,
+    );
+
+    const button = screen.getByRole("button", {
+      name: "option",
+    });
+    const checkbox = screen.getByRole("checkbox", {
+      name: "checkbox",
+    });
+    const radioButton = screen.getByRole("radio", {
+      name: "radio1",
+    });
+
+    userEvent.click(button);
+    userEvent.click(checkbox);
+    userEvent.click(radioButton);
+    expect(handleChange).toBeCalledTimes(0);
+  });
+
   it("render items with Icons", () => {
     const handleChange = jest.fn();
     const { container } = render(

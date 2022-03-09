@@ -34,6 +34,8 @@ export interface InterfaceInteractiveListCheckItem {
     | "danger"
     | "warning"
     | "success";
+  /** Disabled some option */
+  disabled?: boolean;
 }
 
 function Item({
@@ -48,16 +50,17 @@ function Item({
   blockLeft,
   icon,
   iconAppearance,
+  disabled,
 }: InterfaceInteractiveListCheckItem): JSX.Element {
   const mainClass = classNames("nimbus--interactive-list-item", {
     "nimbus--interactive-list-item__borderBottom": hideBorder,
+    "nimbus--interactive-list-disabled": disabled,
   });
 
   const id = `input_${name}_ID`;
-
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const target = event.target as HTMLInputElement;
-    onChange({ name: target.name, checked: target.checked });
+    if (!disabled) onChange({ name: target.name, checked: target.checked });
   };
 
   return (

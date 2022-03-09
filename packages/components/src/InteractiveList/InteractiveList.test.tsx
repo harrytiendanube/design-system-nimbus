@@ -155,4 +155,28 @@ describe("<InteractiveList />", () => {
       ),
     ).toHaveLength(1);
   });
+
+  it("render Interactivelist with disabled props where onChange doesn't have to work", () => {
+    const handleChange = jest.fn();
+    render(
+      <InteractiveList
+        addItemLabel="Add a variant"
+        onChange={handleChange}
+        mode="single"
+        options={[
+          {
+            title: "Limited",
+            name: "limited",
+            disabled: true,
+          },
+        ]}
+      />,
+    );
+    const radioLimited = screen.getByRole("radio", {
+      name: "Limited",
+    });
+
+    userEvent.click(radioLimited);
+    expect(handleChange).toBeCalledTimes(0);
+  });
 });

@@ -29,6 +29,8 @@ export interface InterfaceInteractiveListOptions {
     | "danger"
     | "warning"
     | "success";
+  /** Disabled some option */
+  disabled?: boolean;
 }
 
 export interface InterfaceInteractiveList {
@@ -92,6 +94,7 @@ function InteractiveList({
         blockLeft={option.blockLeft}
         icon={option.icon}
         iconAppearance={option.iconAppearance}
+        disabled={option.disabled}
       />
     ));
 
@@ -111,6 +114,7 @@ function InteractiveList({
         blockLeft={option.blockLeft}
         icon={option.icon}
         iconAppearance={option.iconAppearance}
+        disabled={option.disabled}
       />
     ));
 
@@ -130,6 +134,7 @@ function InteractiveList({
         blockLeft={option.blockLeft}
         icon={option.icon}
         iconAppearance={option.iconAppearance}
+        disabled={option.disabled}
       />
     ));
 

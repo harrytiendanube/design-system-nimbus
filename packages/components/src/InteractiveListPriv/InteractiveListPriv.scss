@@ -66,6 +66,12 @@
   width: 100%;
 }
 
+.#{$prefix}--interactive-list-disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+
 .#{$prefix}--interactive-list-item__content {
   display: flex;
   flex: 1;

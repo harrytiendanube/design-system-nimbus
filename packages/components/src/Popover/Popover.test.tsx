@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Popover, Text } from "..";
 
@@ -148,9 +148,12 @@ describe("<Popover />", () => {
     const elementToggler2: HTMLElement = container.querySelectorAll(
       "a",
     )[1] as HTMLElement;
+
     userEvent.click(elementToggler2);
-    expect(screen.queryByText("myText")).toBeFalsy();
-    expect(screen.getByText("myText2")).toBeTruthy();
+    waitFor(() => {
+      expect(screen.getByText("myText2")).toBeTruthy();
+      expect(screen.queryByText("myText")).toBeFalsy();
+    });
   });
 
   it("render skeleton", () => {
