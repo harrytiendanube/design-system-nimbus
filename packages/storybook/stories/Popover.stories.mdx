@@ -3,9 +3,9 @@ import { withKnobs, select, text } from "@storybook/addon-knobs";
 import { action } from "@storybook/addon-actions";
 import { withA11y } from "@storybook/addon-a11y";
 
-import { DownloadIcon, ListIcon, PlusCircleIcon } from "@tiendanube/icons";
+import { DownloadIcon, ListIcon, PlusCircleIcon, ChevronDownIcon } from "@tiendanube/icons";
 
-import { Popover, ImageItem } from "@tiendanube/components/src";
+import { Popover, ImageItem, Button } from "@tiendanube/components/src";
 
 import "../utils/style.css";
 
@@ -20,7 +20,7 @@ TODO: complete
     <Popover
       name="120"
       label={text("label", "5 products")}
-      title={text("title", "Order #120")}
+      title={text("title", "Order #1201111")}
       position={select("position", ["left", "right"])}
     >
       <ImageItem
@@ -71,20 +71,7 @@ TODO: complete
         },
       ]}
       position={select("position", ["left", "right"])}
-    >
-      <ImageItem
-        thumbnail="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=943&q=80"
-        link={{ children: "Product", onClick: action("link.OnClick") }}
-        subtitle={{ children: "Variant" }}
-        description={{ children: "1 x $3.500" }}
-      />
-      <ImageItem
-        thumbnail="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=943&q=80"
-        link={{ children: "Product", onClick: action("link.OnClick") }}
-        subtitle={{ children: "Variant" }}
-        description={{ children: "1 x $3.500" }}
-      />
-    </Popover>
+    />
   </Story>
 </Preview>
 
@@ -93,5 +80,37 @@ TODO: complete
 <Preview>
   <Story name="skeleton" parameters={{ decorators: [withKnobs, withA11y] }}>
     <Popover.Skeleton />
+  </Story>
+</Preview>
+
+# with renderInitiator
+
+<Preview>
+  <Story name="renderInitiator" parameters={{ decorators: [withKnobs, withA11y] }}>
+    <Popover
+      name="120"
+      menu={[
+        {
+          children: "Widgets",
+          icon: DownloadIcon,
+          onClick: action("menu[0].OnClick"),
+        },
+        {
+          children: "OCA",
+          icon: ListIcon,
+          onClick: action("menu[1].OnClick"),
+        },
+        {
+          children: "Other App",
+          icon: PlusCircleIcon,
+          onClick: action("menu[2].OnClick"),
+        },
+      ]}
+      renderInitiator={(onClick, onBlur)=>(
+        <Button onClick={onClick} onBlur={onBlur} icon={ChevronDownIcon} iconPosition={select("position", ["start", "end"], "end")}>
+          {text("label", "My Applications")}
+        </Button>
+      )}
+    />
   </Story>
 </Preview>

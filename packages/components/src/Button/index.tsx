@@ -26,6 +26,8 @@ export interface InterfaceButton {
   spinner?: boolean;
   /** Type of react mouse event onclick to manage event click and void return. */
   onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  /** Type of react event to manage blur and void return. */
+  onBlur?: (event: React.FocusEvent<HTMLButtonElement>) => void;
   /** The type of button */
   type?: "button" | "submit" | "reset";
 }
@@ -38,6 +40,7 @@ function Button({
   iconPosition = "start",
   appearance = "default",
   onClick,
+  onBlur,
   disabled = false,
   iconSize = "small",
   spinner,
@@ -85,12 +88,20 @@ function Button({
     }
   };
 
+  const handleBlur = (e: React.FocusEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    if (typeof onClick === "function") {
+      onBlur?.(e);
+    }
+  };
+
   return (
     <button
       aria-label={ariaLabel}
       type={type}
       className={buttonClass}
       onClick={handleClick}
+      onBlur={handleBlur}
       disabled={disabled}
     >
       {iconSpinner}

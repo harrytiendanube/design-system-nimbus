@@ -24,6 +24,8 @@ export interface InterfacePopover {
     | Pick<InterfaceLink, "children" | "appearance" | "onClick" | "icon">
     | "skeleton"
   )[];
+  /** Custom Render Prop Initiator */
+  renderInitiator?: (onClick: () => void, onBlur: () => void) => JSX.Element;
   /** Determines the position of the popover menu */
   position?: "left" | "right";
 }
@@ -34,6 +36,7 @@ function Popover({
   title,
   children,
   menu,
+  renderInitiator,
   position = "left",
 }: InterfacePopover): JSX.Element {
   const [active, setActive] = React.useState(false);
@@ -92,6 +95,10 @@ function Popover({
 
   const handleClick = () => {
     setActive((currentActive) => !currentActive);
+  };
+
+  const handleBlur = () => {
+    setActive(false);
   };
 
   const getTagFromEvent = (target: HTMLElement) =>
@@ -155,6 +162,23 @@ function Popover({
     };
   }, [active, handleClickGlobal]);
 
+  const renderMenuOrDefault = menu ?
+    <Link
+      icon={EllipsisIcon}
+      iconSize="medium"
+      appearance="secondary"
+      onClick={handleClick}
+    > {label} </Link>
+    :
+    <Link
+      icon={active ? ChevronUpIcon : ChevronDownIcon}
+      iconPosition="end"
+      appearance="default"
+      onClick={handleClick}
+    >
+      {label}
+    </Link>
+
   return (
     <div
       id={`nimbus-popover-${name}`}
@@ -164,23 +188,9 @@ function Popover({
       onTouchStart={handleTouchOnDiv}
     >
       <div id={`nimbus-popover-initiator-${name}`}>
-        {menu ? (
-          <Link
-            icon={EllipsisIcon}
-            iconSize="medium"
-            appearance="secondary"
-            onClick={handleClick}
-          />
-        ) : (
-          <Link
-            icon={active ? ChevronUpIcon : ChevronDownIcon}
-            iconPosition="end"
-            appearance="default"
-            onClick={handleClick}
-          >
-            {label}
-          </Link>
-        )}
+        {
+          renderInitiator ? renderInitiator(handleClick, handleBlur) : renderMenuOrDefault
+        }
       </div>
       {renderActive}
     </div>
