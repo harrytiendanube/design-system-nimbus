@@ -67,7 +67,7 @@ export interface InterfaceInput {
   /** Controls if text input is automatically corrected */
   autoCorrect?: boolean;
   /** Controls if text input will have autocomplete */
-  autoComplete?: boolean;
+  autoComplete?: string;
   /** Determines whether the input is disabled */
   disabled?: boolean;
   /** Determines whether the input is readOnly */
@@ -117,7 +117,7 @@ function Input({
   required = false,
   autoCapitalize = false,
   autoCorrect = false,
-  autoComplete = false,
+  autoComplete = "",
   disabled = false,
   readOnly = false,
   autoSelect = false,
@@ -320,7 +320,7 @@ function Input({
             rows={rows}
             autoCapitalize={autoCapitalize ? "on" : "off"}
             autoCorrect={autoCorrect ? "on" : "off"}
-            autoComplete={autoComplete ? "on" : "off"}
+            autoComplete={autoComplete}
             onChange={handleChange}
             onBlur={handleBlur}
             onFocus={handleFocus}
@@ -345,7 +345,7 @@ function Input({
               placeholder={placeholder}
               autoCapitalize={autoCapitalize ? "on" : "off"}
               autoCorrect={autoCorrect ? "on" : "off"}
-              autoComplete={autoComplete ? "on" : "off"}
+              autoComplete={autoComplete}
               onChange={handleChange}
               onKeyPress={handleKeyPress}
               onBlur={handleBlur}
