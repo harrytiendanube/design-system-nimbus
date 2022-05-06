@@ -37,13 +37,6 @@ export * from "./Alert";
 export { default as LayoutBackground } from "./LayoutBackground";
 export * from "./LayoutBackground";
 
-// Layout reference added
-export { default as Layout } from "./Layout";
-export * from "./Layout";
-
-// Page reference added
-export * from "./Page";
-
 // RadioButton reference added
 export { default as RadioButtonGroup } from "./RadioButtonGroup";
 export * from "./RadioButtonGroup";
@@ -126,10 +119,6 @@ export * from "./InteractiveListPriv";
 export { default as InteractiveList } from "./InteractiveList";
 export * from "./InteractiveList";
 
-// ImageGallery reference added
-export { default as ImageGallery } from "./ImageGallery";
-export * from "./ImageGallery";
-
 // Toast reference added
 export { default as Toast } from "./Toast";
 export * from "./Toast";
@@ -156,10 +145,6 @@ export * from "./NavTabs";
 export { default as List } from "./List";
 export * from "./List";
 
-// List reference added
-export { default as PullToRefresh } from "./PullToRefresh";
-export * from "./PullToRefresh";
-
 // Spinner reference added
 export * from "./Spinner";
 
@@ -174,9 +159,6 @@ export * from "./ToastProgress";
 // IconButton reference added
 export * from "./IconButton";
 
-// NimbusApp reference added
-export * from "./NimbusApp";
-
 // Portal reference added
 export * from "./Portal";
 
@@ -185,12 +167,6 @@ export * from "./Data";
 
 // Thumbnail reference added
 export * from "./Thumbnail";
-
-// CustomInput reference added
-export * from "./CustomInput";
-
-// KeyboardToolbar reference added
-export * from "./KeyboardToolbar";
 
 // Grid reference added
 export * from "./Grid";
