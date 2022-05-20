@@ -31,6 +31,8 @@ export interface InterfaceBaseMenu {
   title?: string;
   /** Href Link */
   href?: string;
+  /** Custom Header */
+  customHeader?: React.ReactNode;
   /** Footer */
   footer?: InterfaceFooterMenu;
 }
@@ -38,34 +40,39 @@ export interface InterfaceBaseMenu {
 function BaseMenu({
   title,
   href,
+  customHeader,
   children,
   footer,
 }: InterfaceBaseMenu): JSX.Element {
   const hasHeader = title && href;
+  const hasCustomHeader = !!customHeader;
   const IconFooter = footer?.icon as React.ElementType;
   return (
     <>
-      {hasHeader && (
+      {(hasHeader || hasCustomHeader) && (
         <div className="nimbus--menu-header" data-testid="nimbus--menu__header">
-          <Stack justify="space-between">
-            <Stack.Item fill>
-              <Stack spacing="tight">
-                <Stack.Item>
-                  <TiendanubeIcon size="medium" />
-                </Stack.Item>
-                <Stack.Item>
-                  <Title type="h5">{title || ""}</Title>
-                </Stack.Item>
-              </Stack>
-            </Stack.Item>
-            <Stack.Item>
-              <IconButton
-                icon={ExternalLinkIcon}
-                ariaLabel={title || ""}
-                href={href || ""}
-              />
-            </Stack.Item>
-          </Stack>
+          {hasCustomHeader && customHeader}
+          {!hasCustomHeader && (
+            <Stack justify="space-between">
+              <Stack.Item fill>
+                <Stack spacing="tight">
+                  <Stack.Item>
+                    <TiendanubeIcon size="medium" />
+                  </Stack.Item>
+                  <Stack.Item>
+                    <Title type="h5">{title || ""}</Title>
+                  </Stack.Item>
+                </Stack>
+              </Stack.Item>
+              <Stack.Item>
+                <IconButton
+                  icon={ExternalLinkIcon}
+                  ariaLabel={title || ""}
+                  href={href || ""}
+                />
+              </Stack.Item>
+            </Stack>
+          )}
         </div>
       )}
       <div className="nimbus--menu-body">{children}</div>
