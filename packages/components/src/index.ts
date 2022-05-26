@@ -95,6 +95,10 @@ export * from "./Label";
 export { default as Card } from "./Card";
 export * from "./Card";
 
+// Card reference added
+export { default as BaseCard } from "./BaseCard";
+export * from "./BaseCard";
+
 // Stack reference added
 export { default as Stack } from "./Stack";
 export * from "./Stack";

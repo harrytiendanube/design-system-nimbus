@@ -1,0 +1,35 @@
+@import "../../styles/core";
+
+$card-paddings: (
+  none: 0,
+  tight: $spacing-x-small,
+  base: $spacing-small,
+  loose: $spacing-medium,
+);
+// BaseCard
+
+.#{$prefix}--base-card {
+  background-color: $color-background;
+  border: $input-border-width solid $color-default;
+  border-radius: $actions-border-radius;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  width: 100%;
+
+  // Added this rule to make data list work properly.
+  .#{$prefix}--data-list-wrapper {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .#{$prefix}--base-card__header,
+  .#{$prefix}--base-card__body,
+  .#{$prefix}--base-card__footer {
+    @each $name, $value in $card-paddings {
+      &.padding--#{$name} {
+        padding: $value;
+      }
+    }
+  }
+}

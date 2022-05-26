@@ -1,0 +1,87 @@
+import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
+import { withKnobs, select } from "@storybook/addon-knobs";
+import { withA11y } from "@storybook/addon-a11y";
+import { BaseCard, Text, DataList } from "@tiendanube/components/src";
+
+import "../utils/style.css";
+
+<Meta title="Composite components/BaseCard" component={BaseCard} />
+
+# BaseCard
+
+TODO: complete
+
+<Preview>
+  <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
+    <BaseCard>
+        <BaseCard.Header
+          padding={select(
+            "HeaderPadding",
+            ["none", "tight", "base", "loose"],
+            "base",
+          )}
+            >
+              <Text>Header content</Text>
+        </BaseCard.Header>
+        <BaseCard.Body
+        padding={select(
+          "BodyPadding",
+          ["none", "tight", "base", "loose"],
+          "none",
+        )}
+        >
+            <DataList>
+              <DataList.Row>
+                <DataList.Cell>
+                  <Text>Shirt</Text>
+                </DataList.Cell>
+                <DataList.Cell>
+                  <Text>2</Text>
+                </DataList.Cell>
+              </DataList.Row>
+              <DataList.Row>
+                <DataList.Cell>
+                  <Text>Trainers</Text>
+                </DataList.Cell>
+                <DataList.Cell>
+                  <Text>10</Text>
+                </DataList.Cell>
+              </DataList.Row>
+            </DataList>
+        </BaseCard.Body>
+        <BaseCard.Footer
+          padding={select(
+            "FooterPadding",
+            ["none", "tight", "base", "loose"],
+            "base",
+          )}
+        >
+              <Text>Footer content</Text>
+        </BaseCard.Footer>
+    </BaseCard>
+  </Story>
+</Preview>
+
+## Properties
+
+<Props of={BaseCard} />
+
+## Properties Header / Body / Footer
+
+<Props of={BaseCard.Header} />
+
+## Deep inside
+
+<Preview>
+  <Story name="Deep inside">
+    <BaseCard>
+      <BaseCard.Body padding="base">
+        <BaseCard>
+          <BaseCard.Body padding="base">
+            <Text>Body content</Text>
+          </BaseCard.Body>
+        </BaseCard>
+      </BaseCard.Body>
+    </BaseCard>
+  </Story>
+</Preview>
