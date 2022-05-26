@@ -174,3 +174,6 @@ export * from "./Thumbnail";
 
 // Grid reference added
 export * from "./Grid";
+
+// Badge reference added
+export * from "./Badge";

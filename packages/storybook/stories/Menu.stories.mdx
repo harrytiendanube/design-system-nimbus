@@ -50,7 +50,11 @@ TODO: complete
           <Menu.Item icon={CashIcon} onClick={action("onClick Sales")} disabled>
             Sales
           </Menu.Item>
-          <Menu.Item icon={TagIcon} onClick={action("onClick Products")}>
+          <Menu.Item
+            icon={TagIcon}
+            onClick={action("onClick Products")}
+            badge={{ label: "1349" }}
+          >
             Products
           </Menu.Item>
           <Menu.Item

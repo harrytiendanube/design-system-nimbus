@@ -4,7 +4,7 @@ import "./Button.css";
 
 import classNames from "classnames";
 import { Icon as IconType } from "@tiendanube/icons";
-import { Spinner } from "..";
+import { Spinner, Badge } from "..";
 
 export interface InterfaceButton {
   /** React node of type children. */
@@ -13,6 +13,7 @@ export interface InterfaceButton {
   ariaLabel?: string;
   /** Type of appearance */
   appearance?: "default" | "primary" | "secondary" | "default" | "danger";
+  /** Determines whether the button shows a badge */
   badge?: React.ReactText;
   /** Icon Component imported from @tiendanube/icons */
   icon?: IconType;
@@ -52,34 +53,17 @@ function Button({
     { "nimbus--button-loading": spinner },
   );
 
-  const iconStartClass = classNames("nimbus--button__icon", {
-    "nimbus--button__icon--start":
-      (iconPosition === "start" && children) || badge,
-  });
-
-  const iconEndClass = classNames("nimbus--button__icon", {
-    "nimbus--button__icon--end": (iconPosition === "end" && children) || badge,
-  });
-
-  const badgeClass = classNames("nimbus--button__badge", {
-    "nimbus--button__badge--margin": children,
-  });
-
   const iconSpinner = spinner && <Spinner />;
 
   const iconStart = !spinner && Icon && iconPosition === "start" && (
-    <i className={iconStartClass}>
-      <Icon size={iconSize} />
-    </i>
+    <Icon size={iconSize} />
   );
 
   const iconEnd = !spinner && Icon && iconPosition === "end" && (
-    <i className={iconEndClass}>
-      <Icon size={iconSize} />
-    </i>
+    <Icon size={iconSize} />
   );
 
-  const buttonBadge = badge && <span className={badgeClass}>{badge}</span>;
+  const buttonBadge = badge && <Badge appearance={appearance} label={badge} />;
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.stopPropagation();

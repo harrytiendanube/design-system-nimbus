@@ -1,0 +1,54 @@
+import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
+import { withKnobs, select, text } from "@storybook/addon-knobs";
+import { withA11y } from "@storybook/addon-a11y";
+
+import { Badge, Stack } from "@tiendanube/components/src";
+
+<Meta title="Atomic components/Badge" component={Badge} />
+
+# Badge
+
+TODO: Complete
+
+<Preview>
+  <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
+    <div style={{ backgroundColor: "#ECEBEC", padding: "30px" }}>
+      <Badge
+        appearance={select("appearance", [
+          "default",
+          "primary",
+          "secondary",
+          "danger",
+        ])}
+        label={text("label", "Badge label")}
+      />
+    </div>
+  </Story>
+</Preview>
+
+## Properties
+
+<Props of={Badge} />
+
+# Variants
+
+<Preview>
+  <Story name="variants" parameters={{ decorators: [withKnobs, withA11y] }}>
+    <div style={{ backgroundColor: "#ECEBEC", padding: "30px" }}>
+      <Stack spacing="base">
+        <Badge appearance="default" label="Default badge" />
+        <Badge appearance="primary" label="Primary badge" />
+        <Badge appearance="secondary" label="Secondary badge" />
+        <Badge appearance="danger" label="Danger badge" />
+      </Stack>
+    </div>
+  </Story>
+</Preview>
+
+# Skeleton
+
+<Preview>
+  <Story name="skeleton" parameters={{ decorators: [withA11y] }}>
+    <Badge.Skeleton />
+  </Story>
+</Preview>

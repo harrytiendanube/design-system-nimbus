@@ -7,18 +7,6 @@
   padding: $spacing-xx-small 0;
 }
 
-.#{$prefix}--button__icon--start {
-  margin-right: $spacing-x-small;
-}
-
-.#{$prefix}--button__icon--end {
-  margin-left: $spacing-x-small;
-}
-
-.#{$prefix}--button__badge--margin {
-  margin-left: $spacing-x-small;
-}
-
 .#{$prefix}--button--default {
   @include button(
     $color-secondary-pure,

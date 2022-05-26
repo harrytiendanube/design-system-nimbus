@@ -30,9 +30,6 @@ describe("<Button/>", () => {
     expect(screen.getByRole("button", { name: myAriaLabel })).toHaveClass(
       `nimbus--button nimbus--button--${myAppearance}`,
     );
-    expect(container.querySelector("i")).toHaveClass(
-      `nimbus--button__icon--${myIconPosition}`,
-    );
     expect(container.querySelector("svg")).toBeTruthy();
   });
 
@@ -41,7 +38,6 @@ describe("<Button/>", () => {
     expect(screen.getByRole("button", { name: myText })).toHaveClass(
       `nimbus--button nimbus--button--${myAppearance}`,
     );
-    expect(container.querySelector("i")).toBeNull();
     expect(container.querySelector("svg")).toBeNull();
   });
 
@@ -54,17 +50,6 @@ describe("<Button/>", () => {
     expect(screen.getByRole("button", { name: myText })).toHaveProperty(
       "disabled",
       true,
-    );
-  });
-
-  it("renders with end position icon", () => {
-    const { container } = render(
-      <Button icon={ArrowRightIcon} iconPosition="end" onClick={jest.fn()}>
-        {myText}
-      </Button>,
-    );
-    expect(container.querySelector("i")).toHaveClass(
-      `nimbus--button__icon--end`,
     );
   });
 

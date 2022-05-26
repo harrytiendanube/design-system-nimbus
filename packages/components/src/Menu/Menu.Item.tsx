@@ -2,6 +2,7 @@ import * as React from "react";
 import classNames from "classnames";
 import { Icon as IconType } from "@tiendanube/icons";
 import Label, { InterfaceLabel } from "../Label";
+import { Badge, InterfaceBadge } from "../Badge";
 
 export interface InterfaceMenuItem {
   /** React node of type children */
@@ -16,6 +17,8 @@ export interface InterfaceMenuItem {
   subItem?: InterfaceMenuSubItem[];
   /** Menu Item label */
   label?: Pick<InterfaceLabel, "id" | "appearance" | "icon" | "label">;
+  /** Menu Item Badge */
+  badge?: Pick<InterfaceBadge, "appearance" | "label">;
   /** Current option disabled */
   disabled?: boolean;
 }
@@ -29,6 +32,8 @@ export interface InterfaceMenuSubItem {
   active?: boolean;
   /** Menu Item label */
   label?: Pick<InterfaceLabel, "id" | "appearance" | "icon" | "label">;
+  /** Menu Item Badge */
+  badge?: Pick<InterfaceBadge, "label">;
 }
 
 function Item({
@@ -38,6 +43,7 @@ function Item({
   onClick,
   subItem,
   label,
+  badge,
   disabled = false,
 }: InterfaceMenuItem): JSX.Element {
   const wrapperClass = classNames("nimbus--menu-item-wrapper", {
@@ -52,6 +58,7 @@ function Item({
       label={label.label}
     />
   );
+  const renderBadge = badge && <Badge label={badge.label} />;
   return (
     <div className={wrapperClass}>
       <button
@@ -62,6 +69,7 @@ function Item({
         <Icon />
         <span className="nimbus--menu-item__label">{children}</span>
         {renderLabel}
+        {renderBadge}
       </button>
       {subItem && (
         <div className="nimbus--menu-sub-item-wrapper">
@@ -77,6 +85,9 @@ function Item({
                 label={item.label.label}
               />
             );
+            const renderSubItemBadge = item.badge && (
+              <Badge label={item.badge.label} />
+            );
             return (
               <button
                 key={index}
@@ -88,6 +99,7 @@ function Item({
                   {item.children}
                 </span>
                 {renderSubItemLabel}
+                {renderSubItemBadge}
               </button>
             );
           })}

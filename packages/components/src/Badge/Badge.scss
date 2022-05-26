@@ -1,0 +1,46 @@
+@import "../../styles/core";
+
+// Badge
+
+$nimbus-badge-appearances: (
+  default: (
+    background-color: $color-secondary-pure,
+    color: $color-white
+  ),
+  primary: (
+    background-color: $color-white,
+    color: $color-primary-pure
+  ),
+  secondary: (
+    background-color: $color-white,
+    color: $color-secondary-pure
+  ),
+  danger: (
+    background-color: $color-white,
+    color: $color-danger-pure
+  )
+);
+
+.#{$prefix}--badge {
+  @include nimbus--type("text-small");
+  border-radius: $spacing-x-small;
+  display: inline-block;
+  min-width: $spacing-small;
+  padding: 2px $spacing-xx-small;
+  text-align: center;
+
+  @each $name, $appearance in $nimbus-badge-appearances {
+    &--#{$name} {
+      $token: map-get($nimbus-badge-appearances, $name);
+
+      @each $property, $value in $token {
+        #{$property}: $value;
+      }
+    }
+  }
+}
+
+.#{$prefix}--badge-skeleton {
+  @include nimbus--skeleton($spacing-small, $spacing-medium, 0, 0);
+  border-radius: $spacing-x-small;
+}
