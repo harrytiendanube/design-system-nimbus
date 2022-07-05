@@ -55,7 +55,7 @@
   width: 100%;
 }
 
-&.#{$prefix}--interactive-list-item__borderBottom {
+.#{$prefix}--interactive-list-item__borderBottom {
   border-bottom: 0;
 }
 
@@ -70,7 +70,6 @@
   opacity: 0.5;
   pointer-events: none;
 }
-
 
 .#{$prefix}--interactive-list-item__content {
   display: flex;
