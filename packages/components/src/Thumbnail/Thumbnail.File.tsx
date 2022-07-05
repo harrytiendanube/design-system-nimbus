@@ -2,7 +2,7 @@ import * as React from "react";
 import { PlusCircleIcon } from "@tiendanube/icons";
 
 import ThumbnailButton, { InterfaceThumbnailButton } from "./Thumbnail.Button";
-
+import Text from "../Text";
 import "./Thumbnail.css";
 
 export interface InterfaceThumbnailFile
@@ -13,6 +13,10 @@ export interface InterfaceThumbnailFile
   open?: boolean;
   /** OnChange callback */
   onChange: (files: File[]) => void;
+  /** When present, it specifies that the user is allowed to enter more than one file. */
+  multiple?: boolean;
+  /** Provide additional context to the action */
+  helperText?: string;
 }
 
 function File({
@@ -23,6 +27,8 @@ function File({
   accept = "image/jpeg,image/gif,image/png",
   open = false,
   onChange,
+  multiple = true,
+  helperText,
 }: InterfaceThumbnailFile): JSX.Element {
   const inputRef = React.useRef<HTMLInputElement>(null);
 
@@ -52,6 +58,11 @@ function File({
       className="nimbus--thumbnail-button-add"
     >
       <PlusCircleIcon size="large" />
+      {helperText && (
+        <Text size="small" appearance="primary" bold textAlign="center">
+          {helperText}
+        </Text>
+      )}
       <input
         className="nimbus--thumbnail-file"
         ref={inputRef}
@@ -59,7 +70,7 @@ function File({
         accept={accept}
         id="thumbnail-file"
         name="thumbnail-file"
-        multiple
+        multiple={multiple}
         onChange={handleChange}
       />
     </ThumbnailButton>

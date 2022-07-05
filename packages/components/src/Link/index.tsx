@@ -30,6 +30,8 @@ export interface InterfaceLink {
   spinner?: boolean;
   /** OnClick callback function */
   onClick?: () => void;
+  /** Specifies the name file to download */
+  download?: string;
 }
 
 function Link({
@@ -43,6 +45,7 @@ function Link({
   iconSize = "small",
   disabled = false,
   spinner = false,
+  download,
   onClick,
 }: InterfaceLink): JSX.Element {
   const classname = classNames(
@@ -91,6 +94,7 @@ function Link({
       href={href}
       onClick={handleOnClick}
       target={href && target}
+      download={download}
     >
       {iconSpinner}
       {renderStartIcon}
