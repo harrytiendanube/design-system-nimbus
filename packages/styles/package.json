@@ -18,7 +18,6 @@
   "dependencies": {
     "@tiendanube/design-tokens-nimbus": "0.2.3",
     "autoprefixer": "^9.7.6",
-    "nodemon": "^2.0.3",
     "postcss-cli": "7.1.2",
     "sass": "1.52.3"
   },

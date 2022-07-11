@@ -62,7 +62,7 @@
     "eslint-plugin-testing-library": "3.8.0",
     "jest": "26.4.2",
     "lint-staged": "10.4.0",
-    "nodemon": "2.0.4",
+    "nodemon": "2.0.19",
     "postcss-cli": "7.1.2",
     "prettier": "2.1.1",
     "prettier-plugin-jsdoc": "0.3.30",
