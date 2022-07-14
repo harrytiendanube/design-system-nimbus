@@ -52,18 +52,25 @@ $text-label-tight: (
   line-height: map-get($nimbus--line-heights, "base"),
 ) !default;
 
-$text-small: (
+$text-small-tight: (
   font-family: $font-family,
   font-weight: map-get($nimbus--font-weights, "regular"),
   font-size: nimbus--rem(map-get($nimbus--body-sizes, "smaller")),
   line-height: map-get($nimbus--line-heights, "base"),
 ) !default;
 
+$text-small: (
+  font-family: $font-family,
+  font-weight: map-get($nimbus--font-weights, "regular"),
+  font-size: nimbus--rem(map-get($nimbus--body-sizes, "smaller")),
+  line-height: map-get($nimbus--line-heights, "heading"),
+) !default;
+
 $text-button: (
   font-family: $font-family,
   font-weight: map-get($nimbus--font-weights, "bold"),
-  font-size: nimbus--rem(map-get($nimbus--body-sizes, "base")),
-  line-height: map-get($nimbus--line-heights, "body"),
+  font-size: nimbus--rem(map-get($nimbus--body-sizes, "small")),
+  line-height: nimbus--rem(map-get($nimbus--body-sizes, "base")),
 ) !default;
 
 // Map with all font values
@@ -76,6 +83,7 @@ $nimbus--type-tokens: (
   text-body: $text-body,
   text-label: $text-label,
   text-label-tight: $text-label-tight,
+  text-small-tight: $text-small-tight,
   text-small: $text-small,
   text-button: $text-button,
 ) !default;

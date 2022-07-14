@@ -40,11 +40,11 @@ interface InterfaceAlert {
  * @param title Title of the alert
  * @param primaryLabel Label of primary action
  * @param onClickPrimary Type of react mouse event onclick to manage event click
- *     and void return
+ *   and void return
  * @param secondaryLabel Label of secondary action
  * @param secondaryTo Destination link of secondary action
  * @param onDismiss Type of react mouse event onclick to manage event click and
- *     void return
+ *   void return
  * @param show Indicates whether the alert should be displayed
  */
 function Alert({
@@ -87,7 +87,9 @@ function Alert({
       secondaryLabel &&
       secondaryTo && (
         <div className="nimbus--action-wrapper__item">
-          <Link href={secondaryTo}>{secondaryLabel}</Link>
+          <Link size="small" href={secondaryTo}>
+            {secondaryLabel}
+          </Link>
         </div>
       ),
     [secondaryLabel, secondaryTo],
@@ -129,8 +131,8 @@ function Alert({
           <div className="nimbus--alert__icon">{memorizedIcon}</div>
           <div className="nimbus--alert__details">
             <div className="nimbus--alert__body">
-              {title && <Title type="h5">{title}</Title>}
-              <Text>{children}</Text>
+              {title && <Title type="h6">{title}</Title>}
+              <Text size="small">{children}</Text>
             </div>
             {withActions}
           </div>

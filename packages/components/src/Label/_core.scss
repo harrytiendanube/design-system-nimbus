@@ -3,12 +3,12 @@
 // Label Mixins
 
 $label-padding: (
-  "base": $spacing-xx-small $spacing-x-small,
+  "base": 3px $spacing-x-small,
   "tight": $spacing-xx-small,
 ) !default;
 
 @mixin label-base {
-  @include nimbus--type("text-label-tight");
+  @include nimbus--type("text-small-tight");
   align-items: center;
   background-color: transparent;
   border-radius: $spacing-small;
@@ -16,7 +16,9 @@ $label-padding: (
   max-width: 100%;
 
   svg {
+    height: 12px;
     margin-right: $spacing-xx-small;
+    width: 12px;
   }
 
   .#{$prefix}--text {

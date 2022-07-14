@@ -74,6 +74,10 @@ $text-background-colors: (
     @include nimbus--type("text-label");
   }
 
+  &.#{$prefix}--text-size--tiny {
+    @include nimbus--type("text-small-tight");
+  }
+
   &.#{$prefix}--text--block {
     display: block;
   }

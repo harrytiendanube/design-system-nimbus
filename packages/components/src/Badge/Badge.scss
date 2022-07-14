@@ -22,7 +22,7 @@ $nimbus-badge-appearances: (
 );
 
 .#{$prefix}--badge {
-  @include nimbus--type("text-small");
+  @include nimbus--type("text-small-tight");
   border-radius: $spacing-x-small;
   display: inline-block;
   min-width: $spacing-small;

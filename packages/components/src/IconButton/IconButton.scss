@@ -40,6 +40,12 @@ $icon-button-size: $spacing-large + 2px;
     display: flex;
     padding: $spacing-x-small;
     transition: $button-hover-delay ease;
+    
+    @include nimbus--breakpoint-down(md) {
+      > * {
+        pointer-events: none;
+      }
+    }
   }
 }
 

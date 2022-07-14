@@ -2,9 +2,10 @@ import * as React from "react";
 
 import "./CalloutCard.css";
 
-import { Icon as IconType } from "@tiendanube/icons";
+import { ChevronRightIcon, Icon as IconType } from "@tiendanube/icons";
 import classNames from "classnames";
 import Text from "../Text";
+import Link, { InterfaceLink } from "../Link";
 
 export interface InterfaceCalloutCard {
   /** ID */
@@ -21,6 +22,8 @@ export interface InterfaceCalloutCard {
   onClick?: (id: string | undefined) => void;
   /** Renders the component as skeleton */
   skeleton?: boolean;
+  /** Renders an optional text link */
+  textLink?: Pick<InterfaceLink, "children" | "icon" | "iconPosition">;
 }
 
 function CalloutCard({
@@ -31,31 +34,12 @@ function CalloutCard({
   subtitle,
   onClick,
   skeleton = false,
+  textLink,
 }: InterfaceCalloutCard): JSX.Element {
   const className = classNames(
     "nimbus--callout-card",
     `nimbus--callout-card--${appearance}`,
     { "nimbus--callout-card--skeleton": skeleton },
-  );
-
-  const renderTitle = skeleton ? <Text.Skeleton /> : <Text bold>{title}</Text>;
-  const renderSubtitle =
-    subtitle && skeleton ? (
-      <Text.Skeleton width="fill" />
-    ) : (
-      <Text>{subtitle}</Text>
-    );
-
-  const cardContent = (
-    <>
-      <div className="nimbus--callout-card__icon" aria-label={title}>
-        {!skeleton && <Icon size="medium" />}
-      </div>
-      <div className="nimbus--callout-card__info">
-        {renderTitle}
-        {renderSubtitle}
-      </div>
-    </>
   );
 
   const handleClick = (
@@ -64,6 +48,51 @@ function CalloutCard({
     event.stopPropagation();
     onClick?.(id);
   };
+
+  const renderTitle = skeleton ? (
+    <Text.Skeleton />
+  ) : (
+    <Text size="small" bold>
+      {title}
+    </Text>
+  );
+  const renderSubtitle =
+    subtitle && skeleton ? (
+      <Text.Skeleton width="fill" />
+    ) : (
+      <Text size="small">{subtitle}</Text>
+    );
+
+  const renderTextLink = textLink && (
+    <Link
+      appearance="primary"
+      icon={textLink.icon}
+      iconPosition={textLink.iconPosition}
+      size="small"
+    >
+      {textLink.children}
+    </Link>
+  );
+
+  const cardContent = (
+    <>
+      <div className="nimbus--callout-card__icon" aria-label={title}>
+        {!skeleton && <Icon size="medium" />}
+      </div>
+      <div className="nimbus--callout-card__content">
+        <div className="nimbus--callout-card__info">
+          {renderTitle}
+          {renderSubtitle}
+          {renderTextLink}
+        </div>
+        {!textLink && (
+          <i className="nimbus--callout-card__carat" aria-hidden="true">
+            <ChevronRightIcon />
+          </i>
+        )}
+      </div>
+    </>
+  );
 
   return onClick ? (
     <button id={id} type="button" className={className} onClick={handleClick}>

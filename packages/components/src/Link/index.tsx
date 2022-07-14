@@ -32,6 +32,8 @@ export interface InterfaceLink {
   onClick?: () => void;
   /** Specifies the name file to download */
   download?: string;
+  /** Determines font size for the link */
+  size?: "base" | "small";
 }
 
 function Link({
@@ -47,10 +49,12 @@ function Link({
   spinner = false,
   download,
   onClick,
+  size = "base",
 }: InterfaceLink): JSX.Element {
   const classname = classNames(
     "nimbus--link",
     `nimbus--link--${appearance}`,
+    `nimbus--link--${size}`,
     { "nimbus--link--underlined": underline },
     { "nimbus--link--disabled": disabled },
     { "nimbus--link--loading": spinner },

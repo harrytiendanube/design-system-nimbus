@@ -61,8 +61,8 @@
     cursor: pointer;
     display: flex;
     flex-wrap: nowrap;
-    min-height: $spacing-medium;
-    padding-left: $spacing-large;
+    min-height: 20px;
+    padding-left: $spacing-medium;
     position: relative;
     white-space: nowrap;
 
@@ -71,18 +71,18 @@
       border: $input-border-width solid $input-border-color;
       border-radius: $spacing-xx-small;
       content: "";
-      height: $spacing-medium - 2px;
+      height: $spacing-medium - 6px;
       left: 0;
       position: absolute;
       top: 0;
-      width: $spacing-medium - 2px;
+      width: $spacing-medium - 6px;
     }
 
     &::after {
       background-color: $color-background;
       content: "";
       height: 2px;
-      left: $spacing-xx-small;
+      left: 2px;
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
@@ -91,7 +91,7 @@
     }
 
     .#{$prefix}--text {
-      @include nimbus--type("text-body");
+      @include nimbus--type("text-label");
       color: $color-body-text;
     }
   }
@@ -120,14 +120,14 @@
   .#{$prefix}--checkbox__check {
     align-items: center;
     display: flex;
-    height: 24px;
+    height: 20px;
     justify-content: center;
     left: 0;
     pointer-events: none;
     position: absolute;
     top: 0;
     visibility: hidden;
-    width: 24px;
+    width: 20px;
 
     svg {
       fill: $color-background;

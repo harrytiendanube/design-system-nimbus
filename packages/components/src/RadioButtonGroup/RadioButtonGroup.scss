@@ -76,7 +76,7 @@
 }
 
 .#{$prefix}--radio-button-group__label {
-  @include nimbus--type("text-label");
+  @include nimbus--type("text-small-tight");
   color: $color-body-text;
   display: block;
   margin-bottom: $spacing-x-small;

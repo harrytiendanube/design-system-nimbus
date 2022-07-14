@@ -14,7 +14,8 @@
 
   svg {
     fill: inherit;
-    margin-top: -$spacing-xx-small;
+    margin-top: -2px;
+    width: 12px;
   }
 
   .#{$prefix}--chip__icon,

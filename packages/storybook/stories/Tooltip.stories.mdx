@@ -1,5 +1,5 @@
 import { Meta, Story, Props, Preview } from "@storybook/addon-docs/blocks";
-import { withKnobs } from "@storybook/addon-knobs";
+import { withKnobs, text } from "@storybook/addon-knobs";
 import { withA11y } from "@storybook/addon-a11y";
 
 import { InfoCircleIcon } from "@tiendanube/icons";
@@ -14,7 +14,7 @@ TODO: complete
 <Preview>
   <Story name="default" parameters={{ decorators: [withKnobs, withA11y] }}>
     <Tooltip labelIcon={InfoCircleIcon}>
-      <Text>Tooltip text</Text>
+      <Text>{text("Tooltip text", "Tooltip text")}</Text>
     </Tooltip>
   </Story>
 </Preview>

@@ -17,7 +17,7 @@ describe("<CalloutCard />", () => {
     );
     expect(screen.getByText("myTitle")).toBeTruthy();
     expect(screen.getByText("mySubtitle")).toBeTruthy();
-    expect(container.querySelectorAll("svg")).toHaveLength(1);
+    expect(container.querySelectorAll("svg")).toHaveLength(2);
     expect(screen.queryAllByRole("button")).toHaveLength(0);
   });
 

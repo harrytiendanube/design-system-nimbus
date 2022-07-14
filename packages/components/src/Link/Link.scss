@@ -6,14 +6,6 @@
   display: inline-flex;
 }
 
-.#{$prefix}--link__icon--start {
-  margin-right: $spacing-xx-small;
-}
-
-.#{$prefix}--link__icon--end {
-  margin-left: $spacing-xx-small;
-}
-
 .#{$prefix}--link--default {
   @include link(
     $color-body-text,
@@ -40,6 +32,14 @@
 
 .#{$prefix}--link--danger {
   @include link($color-danger-pure, $color-danger-hover, $color-danger-light);
+}
+
+.#{$prefix}--link--base {
+  @include nimbus--type("text-body");
+}
+
+.#{$prefix}--link--small {
+  @include nimbus--type("text-label");
 }
 
 .#{$prefix}--link-skeleton {

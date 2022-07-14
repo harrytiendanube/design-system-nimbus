@@ -4,7 +4,6 @@
 
 @mixin link($font-color, $hover-font-color, $focus-color) {
   @include button-base;
-  @include nimbus--type("text-body");
   border: $button-border-width solid transparent;
   border-radius: $actions-border-radius;
   color: $font-color;
@@ -36,8 +35,6 @@
   }
 
   .#{$prefix}--spinner {
-    margin-right: $spacing-xx-small;
-
     path {
       stroke: $font-color;
     }

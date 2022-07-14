@@ -36,7 +36,7 @@ function Chip({
           <Icon />
         </div>
       )}
-      <Text>{label}</Text>
+      <Text size="tiny">{label}</Text>
       <div className="nimbus--chip__close">
         <CloseIcon />
       </div>

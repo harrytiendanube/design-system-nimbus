@@ -3,6 +3,8 @@ import * as React from "react";
 import "./IconButton.css";
 
 import { Icon as IconType } from "@tiendanube/icons";
+import Tooltip from "../Tooltip";
+import Text from "../Text";
 
 export interface InterfaceIconButton {
   /** Icon Component imported from @tiendanube/icons */
@@ -44,7 +46,9 @@ function IconButton({
       role="button"
     >
       <i className="nimbus--icon-button">
-        <Icon />
+        <Tooltip labelIcon={Icon} ariaLabel={ariaLabel}>
+          <Text>{ariaLabel}</Text>
+        </Tooltip>
       </i>
     </a>
   );

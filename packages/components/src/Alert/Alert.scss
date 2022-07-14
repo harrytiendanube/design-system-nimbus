@@ -19,7 +19,7 @@
     align-items: center;
     display: flex;
     flex: 0 0 auto;
-    height: $spacing-medium;
+    height: $spacing-small;
     left: 0;
     margin: $spacing-small 0 0 $spacing-small;
     position: absolute;
@@ -46,14 +46,17 @@
     width: auto;
   }
 
-  .#{$prefix}--title-h5,
+  .#{$prefix}--title-h6,
   .#{$prefix}--text {
     margin-right: $spacing-x-small;
   }
 
-  .#{$prefix}--title-h5 {
-    @include nimbus--type("text-heading");
+  .#{$prefix}--title-h6 {
     color: $color-body-text;
+  }
+
+  .#{$prefix}--text {
+    line-height: map-get($nimbus--line-heights, "heading");
   }
 
   .#{$prefix}--alert__actions {

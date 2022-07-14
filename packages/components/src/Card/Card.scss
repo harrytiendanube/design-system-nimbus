@@ -4,15 +4,11 @@
 
 .#{$prefix}--card-wrapper {
   background-color: $color-background;
-  border: $input-border-width solid $color-default;
   border-radius: $actions-border-radius;
+  box-shadow: $shadow-card;
   display: block;
   padding: $spacing-x-small;
   width: 100%;
-
-  @include nimbus--breakpoint(md) {
-    padding: $spacing-small;
-  }
 
   &.#{$prefix}--input__fluid {
     padding-left: 0;

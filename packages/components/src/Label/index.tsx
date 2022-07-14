@@ -59,7 +59,7 @@ function Label({
     backgroundColor: colorTag,
   };
 
-  const renderLabel = label && <Text size="small">{label}</Text>;
+  const renderLabel = label && <Text size="tiny">{label}</Text>;
 
   return onClick ? (
     <button type="button" id={id} className={className} onClick={handleClick}>

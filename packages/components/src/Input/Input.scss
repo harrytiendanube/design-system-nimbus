@@ -137,7 +137,7 @@
 }
 
 .#{$prefix}--input__label {
-  @include nimbus--type("text-label");
+  @include nimbus--type("text-small-tight");
   color: $color-body-text;
   display: block;
   margin-bottom: $spacing-x-small;
@@ -149,7 +149,9 @@
 
     svg {
       fill: $color-body-text;
-      margin-top: -$spacing-xx-small;
+      height: 12px;
+      margin-top: -2px;
+      width: 12px;
     }
   }
 }
@@ -160,12 +162,13 @@
 
   .#{$prefix}--input__prepend,
   .#{$prefix}--input__append {
-    @include nimbus--type("text-body");
+    @include nimbus--type("text-label-tight");
     background-color: $color-default;
     border-color: $input-border-color;
     border-style: solid;
     color: $color-body-text;
     flex: 0 0 auto;
+    line-height: 1rem;
     padding: $spacing-x-small;
   }
 
@@ -198,17 +201,22 @@
       }
     }
   }
+
+  + .#{$prefix}--text {
+    margin-top: $spacing-x-small;
+  }
 }
 
 .#{$prefix}--input__container:focus-within {
   .#{$prefix}--input__prepend,
   .#{$prefix}--input__append {
-    @include nimbus--type("text-body");
+    @include nimbus--type("text-label-tight");
     background-color: $color-primary-active;
     border: 1px solid;
     border-color: $color-primary-active;
     box-shadow: 0 0 0 1px $color-primary-active;
     color: $color-background;
+    line-height: 1rem;
   }
 
   .#{$prefix}--input__append__inside__icon {
@@ -242,6 +250,7 @@
 
     svg {
       fill: $input-border-color;
+      margin-top: -2px;
     }
   }
 
@@ -291,12 +300,13 @@
   }
 
   .#{$prefix}--input__field {
-    @include nimbus--type("text-body");
+    @include nimbus--type("text-label-tight");
     appearance: none;
     background-color: transparent;
     border: $input-border-width solid $input-border-color;
     border-radius: $actions-border-radius;
     color: $color-secondary-pure;
+    line-height: 1rem;
     padding: $spacing-x-small;
     text-align: left;
     transition: $motion-fast ease;
@@ -364,6 +374,10 @@
     &::-webkit-search-cancel-button {
       appearance: none;
     }
+  }
+
+  + .#{$prefix}--text {
+    margin-top: $spacing-x-small;
   }
 }
 

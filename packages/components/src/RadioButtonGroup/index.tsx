@@ -86,7 +86,7 @@ function RadioButtonGroup({
                 htmlFor={`radio_${name}_${value}`}
                 className="nimbus--radio-button-label"
               >
-                <Text>{label}</Text>
+                <Text size="tiny">{label}</Text>
               </label>
             </div>
           ),

@@ -40,8 +40,12 @@ function ToastProgress({
     <div className={wrapperClassName}>
       <div className="nimbus--toast-progress">
         <Spinner appearance="light" />
-        <Text>{label}</Text>
-        {percentage && <Text bold>{percentage}%</Text>}
+        <Text size="small">{label}</Text>
+        {percentage && (
+          <Text size="small" bold>
+            {percentage}%
+          </Text>
+        )}
       </div>
     </div>
   );

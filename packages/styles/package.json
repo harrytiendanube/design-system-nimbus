@@ -16,7 +16,7 @@
     "build": "yarn clean && yarn sync:components && yarn build-css && yarn post-css"
   },
   "dependencies": {
-    "@tiendanube/design-tokens-nimbus": "0.2.3",
+    "@tiendanube/design-tokens-nimbus": "0.2.4",
     "autoprefixer": "^9.7.6",
     "postcss-cli": "7.1.2",
     "sass": "1.52.3"

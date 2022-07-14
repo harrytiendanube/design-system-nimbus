@@ -3,7 +3,7 @@
 // Select
 
 .#{$prefix}--select__label {
-  @include nimbus--type("text-label");
+  @include nimbus--type("text-small-tight");
   color: $color-body-text;
   display: block;
   margin-bottom: $spacing-x-small;
@@ -15,7 +15,9 @@
 
     svg {
       fill: $color-body-text;
-      margin-top: -$spacing-xx-small;
+      height: 12px;
+      margin-top: -2px;
+      width: 12px;
     }
   }
 }
@@ -37,12 +39,13 @@
   }
 
   .#{$prefix}--select__field {
-    @include nimbus--type("text-body");
+    @include nimbus--type("text-label");
     appearance: none;
     background-color: transparent;
     border: $input-border-width solid $input-border-color;
     border-radius: $actions-border-radius;
     color: $color-secondary-pure;
+    line-height: 1rem;
     padding: $spacing-x-small;
     text-align: left;
     transition: $motion-fast ease;

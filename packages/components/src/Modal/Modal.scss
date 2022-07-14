@@ -39,6 +39,7 @@ body {
 .#{$prefix}--modal-wrapper {
   background-color: $color-background;
   border-radius: $actions-border-radius;
+  box-shadow: $shadow-modal;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -53,7 +54,6 @@ body {
 
   @include nimbus--breakpoint(md) {
     max-width: 500px;
-    padding: $spacing-x-small;
   }
 
   .#{$prefix}--modal-header,

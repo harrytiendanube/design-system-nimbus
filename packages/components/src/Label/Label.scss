@@ -74,12 +74,12 @@
 
 .#{$prefix}--label__color-tag {
   border-radius: $spacing-x-small;
-  height: $spacing-small;
+  height: 12px;
   margin-right: $spacing-xx-small;
-  width: $spacing-small;
+  width: 12px;
 }
 
 .#{$prefix}--label-skeleton {
   @include label(transparent, transparent, transparent, transparent, "base");
-  @include nimbus--skeleton($spacing-medium, 120px, 0, 0);
+  @include nimbus--skeleton(20px, 90px, 0, 0);
 }

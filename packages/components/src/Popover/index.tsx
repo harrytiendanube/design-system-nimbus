@@ -47,7 +47,7 @@ function Popover({
 
   const renderTitle = title && (
     <div className="nimbus--popover-header">
-      <Title type="h5">{title}</Title>
+      <Title type="h6">{title}</Title>
     </div>
   );
 
@@ -71,6 +71,7 @@ function Popover({
               option !== "skeleton" ? (
                 <li key={index} className="nimbus--popover-menu__item">
                   <Link
+                    size="small"
                     onClick={() => {
                       option.onClick?.();
                       setActive(false);
@@ -162,14 +163,17 @@ function Popover({
     };
   }, [active, handleClickGlobal]);
 
-  const renderMenuOrDefault = menu ?
+  const renderMenuOrDefault = menu ? (
     <Link
       icon={EllipsisIcon}
       iconSize="medium"
       appearance="secondary"
       onClick={handleClick}
-    > {label} </Link>
-    :
+    >
+      {" "}
+      {label}{" "}
+    </Link>
+  ) : (
     <Link
       icon={active ? ChevronUpIcon : ChevronDownIcon}
       iconPosition="end"
@@ -178,6 +182,7 @@ function Popover({
     >
       {label}
     </Link>
+  );
 
   return (
     <div
@@ -188,9 +193,9 @@ function Popover({
       onTouchStart={handleTouchOnDiv}
     >
       <div id={`nimbus-popover-initiator-${name}`}>
-        {
-          renderInitiator ? renderInitiator(handleClick, handleBlur) : renderMenuOrDefault
-        }
+        {renderInitiator
+          ? renderInitiator(handleClick, handleBlur)
+          : renderMenuOrDefault}
       </div>
       {renderActive}
     </div>

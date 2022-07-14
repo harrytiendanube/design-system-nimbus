@@ -394,12 +394,7 @@ function Input({
         inputField
       )}
       {helpText && (
-        <Text
-          block
-          size="small"
-          appearance={appearanceMessage}
-          textAlign="left"
-        >
+        <Text block size="tiny" appearance={appearanceMessage} textAlign="left">
           {helpText}
         </Text>
       )}

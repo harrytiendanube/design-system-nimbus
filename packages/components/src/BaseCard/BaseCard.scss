@@ -10,8 +10,8 @@ $card-paddings: (
 
 .#{$prefix}--base-card {
   background-color: $color-background;
-  border: $input-border-width solid $color-default;
   border-radius: $actions-border-radius;
+  box-shadow: $shadow-card;
   display: flex;
   flex-direction: column;
   overflow: hidden;

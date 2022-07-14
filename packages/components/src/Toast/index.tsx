@@ -77,7 +77,7 @@ function Toast({
     <div className={wrapperClassName}>
       <div className={className}>
         <Icon />
-        <Text>{label}</Text>
+        <Text size="small">{label}</Text>
       </div>
     </div>
   );

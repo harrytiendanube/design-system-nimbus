@@ -34,3 +34,31 @@ TODO: Complete
 ## Properties
 
 <Props of={CalloutCard} />
+
+## With text link
+
+TODO: Complete
+
+<Preview>
+  <Story
+    name="with text link"
+    parameters={{ decorators: [withKnobs, withA11y] }}
+  >
+    <CalloutCard
+      id="myId"
+      appearance={select(
+        "appearance",
+        ["primary", "secondary", "danger", "warning", "success"],
+        "primary",
+      )}
+      icon={BoxUnpackedIcon}
+      title={text("title", "title")}
+      subtitle={text("subtitle", "subtitle")}
+      onClick={action("onClick")}
+      skeleton={boolean("skeleton", false)}
+      textLink={{
+        children: text("text link label", "text link"),
+      }}
+    />
+  </Story>
+</Preview>
