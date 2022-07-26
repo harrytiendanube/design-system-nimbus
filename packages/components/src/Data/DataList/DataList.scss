@@ -12,11 +12,6 @@
   margin-left: -$spacing-small;
   margin-right: -$spacing-small;
 
-  @include nimbus--breakpoint(lg) {
-    margin-left: -$spacing-medium;
-    margin-right: -$spacing-medium;
-  }
-
   .#{$prefix}--data-list__mass-actions {
     @include nimbus--safe-area($spacing-x-small);
 
@@ -142,10 +137,6 @@
 
     .#{$prefix}--data-list-row {
       padding: $spacing-small $spacing-x-small;
-
-      @include nimbus--breakpoint(lg) {
-        padding: $spacing-small;
-      }
 
       .#{$prefix}--data-list-row__item {
         padding: 0 $spacing-x-small;
